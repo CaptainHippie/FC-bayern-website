@@ -1,0 +1,107 @@
+{% load static %}
+
+<div id="tabbed-widget-2" class="widget widget--sidebar card widget-tabbed">
+  <div class="widget__content card__content"></div>
+  <div class="widget__title card__header">
+    <h4>Top Trending News</h4>
+  </div>
+  <div class="widget__content card__content">
+    <div class="widget-tabbed__tabs">
+      <!-- Widget Tabs -->
+      <ul class="nav nav-tabs nav-justified widget-tabbed__nav" role="tablist">
+        <li class="nav-item">
+            <a href="#widget-tabbed-sm-newest-9693" class="nav-link active" role="tab" data-toggle="tab">Newest</a>
+        </li>
+        <li class="nav-item">
+            <a href="#widget-tabbed-sm-commented-9693" class="nav-link" role="tab" data-toggle="tab">Most Commented</a>
+        </li>
+        <li class="nav-item">
+            <a href="#widget-tabbed-sm-popular-9693" class="nav-link" role="tab" data-toggle="tab">Popular</a>
+        </li>
+      </ul>
+
+      <!-- Widget Tab panes -->
+      <div class="tab-content widget-tabbed__tab-content">
+        <!-- Newest -->
+        <div role="tabpanel" class="tab-pane fade show active" id="widget-tabbed-sm-newest-9693">
+            <ul class="posts posts--simple-list">
+
+            {% for news in newest_news %}
+            <li class="posts__item posts__item--category-1">
+              <div class="posts__inner">
+                <div class="posts__cat">
+                  <span class="label posts__cat-label posts__cat-label--category-1 category-the-team">{{news.news_type}}</span>
+                </div>
+                <h6 class="posts__title" title="{{news.title}}">
+                    <a href="{{news.get_absolute_url}}">{{news.title}}</a>
+                </h6>
+                <time datetime="2017-04-05T12:23:52+00:00" class="posts__date">{{news.added|date:"F j, Y"}}</time>
+                <div class="posts__excerpt">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut...
+                </div>
+              </div>
+            </li>
+            {% endfor %}
+
+            </ul>
+        </div>
+        <!-- Commented -->
+        <div role="tabpanel" class="tab-pane fade" id="widget-tabbed-sm-commented-9693">
+          <ul class="posts posts--simple-list">
+
+            {% for news in favourite_news %}
+            <li class="posts__item posts__item--category-1">
+              <div class="posts__inner">
+                <div class="posts__cat">
+                  <span class="label posts__cat-label posts__cat-label--category-1 category-the-team">{{news.news_type}}</span>
+                </div>
+                <h6 class="posts__title" title="{{news.title}}">
+                    <a href="{{news.get_absolute_url}}">{{news.title}}</a>
+                </h6>
+                <time datetime="2017-04-05T12:23:52+00:00" class="posts__date">{{news.added|date:"F j, Y"}}</time>
+                <div class="posts__excerpt">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut...
+                </div>
+              </div>
+            </li>
+            {% endfor %}
+            
+          </ul>
+        </div>
+
+
+        <!-- Popular -->
+        <div role="tabpanel" class="tab-pane fade" id="widget-tabbed-sm-popular-9693">
+          <ul class="posts posts--simple-list">
+
+            {% for news in popular_news %}
+            <li class="posts__item posts__item--category-1">
+              <div class="posts__inner">
+                <div class="posts__cat">
+                  <span class="label posts__cat-label posts__cat-label--category-1 category-the-team">{{news.news_type}}</span>
+                </div>
+                <h6 class="posts__title" title="{{news.title}}">
+                    <a href="{{news.get_absolute_url}}">{{news.title}}</a>
+                </h6>
+                <time datetime="2017-03-05T12:12:58+00:00" class="posts__date">{{news.added|date:"F j, Y"}}</time>
+                <div class="posts__excerpt">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut...
+                </div>
+              </div>
+            </li>
+            {% endfor %}
+
+          </ul>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

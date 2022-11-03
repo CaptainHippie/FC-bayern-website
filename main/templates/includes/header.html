@@ -1,0 +1,983 @@
+{% load static %}
+<div class="header-mobile clearfix" id="header-mobile">
+    <div class="header-mobile__logo">
+      <a href="index.html" rel="home">
+        <img
+          src="{% static 'images/logo.png' %}"
+          class="header-mobile__logo-img"
+          srcset="
+            https://soccer-dark-alc.dan-fisher.dev/wp-content/themes/alchemists/assets/images/soccer/logo@2x.png 2x
+          "
+          alt="Alchemists"
+        />
+      </a>
+    </div>
+    <div class="header-mobile__inner">
+      <a id="header-mobile__toggle" class="burger-menu-icon" href="#"
+        ><span class="burger-menu-icon__line"></span
+      ></a>
+
+      <div class="header-mobile__secondary">
+        <span
+          class="header-mobile__search-icon"
+          id="header-mobile__search-icon"
+        ></span>
+
+        <span class="header-mobile-pushy-panel__toggle">
+          <i class="fas fa-ellipsis-v"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Desktop -->
+  <header class="header header--layout-1">
+    <div class="header__top-bar clearfix">
+      <div class="container">
+        <div class="header__top-bar-inner">
+          <ul
+            id="menu-top-menu"
+            class="nav-account nav-account__divider-slash"
+          >
+            <li
+              id="menu-item-1233"
+              class="nmr-logged-out menu-item menu-item-type-post_type menu-item-object-page nav-account__item"
+            >
+              <a href="my-account/index.html">Register</a>
+            </li>
+            <li
+              id="menu-item-1234"
+              class="nmr-logged-out menu-item menu-item-type-post_type menu-item-object-page nav-account__item"
+            >
+              <a href="my-account/index.html">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="header__secondary">
+      <div class="container">
+        <div class="header__secondary-inner">
+          <div class="header-search-form">
+            <form action="https://soccer-dark-alc.dan-fisher.dev/" id="mobile-search-form" class="search-form">
+                {% csrf_token %}
+              <input id="s" name="s" type="text" class="form-control header-mobile__search-control" value="" placeholder="Enter your search here...">
+              <button type="submit" class="header-mobile__search-submit"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
+          <ul class="info-block info-block--header">
+            <li class="info-block__item info-block__item--contact-primary">
+              <svg role="img" class="df-icon df-icon--whistle">
+                <use
+                  xlink:href="{% static 'images/icons-soccer.svg' %}"
+                />
+              </svg>
+
+              <h6 class="info-block__heading">Join Our Team!</h6>
+              <a
+                class="info-block__link"
+                href="mailto:tryouts@alchemists.com"
+              >
+                tryouts@alchemists.com
+              </a>
+            </li>
+
+            <li
+              class="info-block__item info-block__item--contact-secondary"
+            >
+              <svg role="img" class="df-icon df-icon--soccer-ball">
+                <use
+                  xlink:href="{% static 'images/icons-soccer.svg' %}"
+                />
+              </svg>
+
+              <h6 class="info-block__heading">Contact Us</h6>
+              <a class="info-block__link" href="mailto:info@alchemists.com">
+                info@alchemists.com
+              </a>
+            </li>
+
+            <li
+              class="info-block__item info-block__item--shopping-cart has-children js-info-block__item--onhover"
+            >
+              <a
+                href="cart/index.html"
+                class="info-block__link-wrapper"
+                title="View your shopping cart"
+              >
+                <div class="df-icon-stack df-icon-stack--bag">
+                  <svg role="img" class="df-icon df-icon--bag">
+                    <use
+                      xlink:href="{% static 'images/icons-basket.svg' %}"
+                    />
+                  </svg>
+                  <svg role="img" class="df-icon df-icon--bag-handle">
+                    <use
+                      xlink:href="{% static 'images/icons-basket.svg' %}"
+                    />
+                  </svg>
+                </div>
+
+                <h6 class="info-block__heading">Your Bag (0 items)</h6>
+                <span class="info-block__cart-sum"
+                  ><span class="woocommerce-Price-amount amount"
+                    ><bdi
+                      ><span class="woocommerce-Price-currencySymbol"
+                        >&#36;</span
+                      >0.00</bdi
+                    ></span
+                  ></span
+                >
+              </a>
+
+              <div class="header-cart-dropdown">
+                <div class="widget_shopping_cart_content"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="header__primary">
+      <div class="container">
+        <div class="header__primary-inner">
+          <!-- Header Logo -->
+          <div class="header-logo">
+            <a href="index.html" rel="home">
+              <img src="{% static 'images/logo.png' %}" class="header-logo__img">
+              <header class="club-title">FC Bayern München</header>
+            </a>
+          </div>
+          <!-- Header Logo / End -->
+
+          <!-- Main Navigation -->
+          <nav class="main-nav">
+            <ul id="menu-primary-menu" class="main-nav__list">
+              <li
+                id="menu-item-588"
+                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-583 current_page_item no-mega-menu"
+              >
+                <a class="menu-item-link" href="index.html">Home</a>
+              </li>
+              <li
+                id="menu-item-1149"
+                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children has-mega-menu"
+              >
+                <a class="menu-item-link" href="#">Features</a>
+                <ul class="main-nav__sub-0 megamenu-item megamenu-col-4">
+                  <li
+                    id="menu-item-1150"
+                    class="col-12 col-lg-3 col-xl-2 menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children megamenu-item col megamenu-col-4"
+                  >
+                    <div class="main-nav__title">Features</div>
+                    <ul
+                      class="main-nav__sub-1 megamenu-item megamenu-col-4"
+                    >
+                      <li
+                        id="menu-item-1155"
+                        class="menu-item menu-item-type-post_type menu-item-object-page"
+                      >
+                        <a
+                          class="menu-item-link"
+                          href="shortcodes/index.html"
+                          >Shortcodes</a
+                        >
+                      </li>
+                      <li
+                        id="menu-item-1190"
+                        class="menu-item menu-item-type-post_type menu-item-object-page"
+                      >
+                        <a
+                          class="menu-item-link"
+                          href="shortcodes/shortcodes-player/index.html"
+                          >Shortcodes – Player</a
+                        >
+                      </li>
+                      <li
+                        id="menu-item-1189"
+                        class="menu-item menu-item-type-post_type menu-item-object-page"
+                      >
+                        <a
+                          class="menu-item-link"
+                          href="shortcodes/shortcodes-club/index.html"
+                          >Shortcodes – Club</a
+                        >
+                      </li>
+                      <li
+                        id="menu-item-1191"
+                        class="menu-item menu-item-type-post_type menu-item-object-page"
+                      >
+                        <a
+                          class="menu-item-link"
+                          href="shortcodes/shortcodes-match/index.html"
+                          >Shortcodes – Match</a
+                        >
+                      </li>
+                      <li
+                        id="menu-item-1154"
+                        class="menu-item menu-item-type-post_type menu-item-object-page"
+                      >
+                        <a
+                          class="menu-item-link"
+                          href="typography/index.html"
+                          >Typography</a
+                        >
+                      </li>
+                      <li
+                        id="menu-item-1192"
+                        class="menu-item menu-item-type-custom menu-item-object-custom"
+                      >
+                        <a
+                          class="menu-item-link"
+                          href="index67b7.html?s=planetrotters"
+                          >Search Results</a
+                        >
+                      </li>
+                      <li
+                        id="menu-item-1193"
+                        class="menu-item menu-item-type-custom menu-item-object-custom"
+                      >
+                        <a class="menu-item-link" href="404.html"
+                          >404 Error Page</a
+                        >
+                      </li>
+                      <li
+                        id="menu-item-1194"
+                        class="menu-item menu-item-type-post_type menu-item-object-page"
+                      >
+                        <a
+                          class="menu-item-link"
+                          href="contact-us/index.html"
+                          >Contact Us</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    id="menu-item-1151"
+                    class="col-12 col-lg-3 col-xl-2 menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children megamenu-item col megamenu-col-4"
+                  >
+                    <div class="main-nav__title">Main Features</div>
+                    <ul
+                      class="main-nav__sub-1 megamenu-item megamenu-col-4"
+                    >
+                      <li
+                        id="menu-item-1364"
+                        class="menu-item menu-item-type-post_type menu-item-object-page"
+                      >
+                        <a class="menu-item-link" href="sponsors/index.html"
+                          >Sponsors</a
+                        >
+                      </li>
+                      <li
+                        id="menu-item-1196"
+                        class="menu-item menu-item-type-custom menu-item-object-custom"
+                      >
+                        <a
+                          class="menu-item-link"
+                          href="team/alchemists/roster/index.html"
+                          >Club Roster</a
+                        >
+                      </li>
+                      <li
+                        id="menu-item-1243"
+                        class="menu-item menu-item-type-post_type menu-item-object-sp_player"
+                      >
+                        <a
+                          class="menu-item-link"
+                          href="player/james-messinal/index.html"
+                          >Player &#8211; Default</a
+                        >
+                      </li>
+                      <li
+                        id="menu-item-1242"
+                        class="menu-item menu-item-type-custom menu-item-object-custom"
+                      >
+                        <a
+                          class="menu-item-link"
+                          href="player/james-messinal/index9d51.html?player_info_layout=vertical"
+                          >Player &#8211; Vertical</a
+                        >
+                      </li>
+                      <li
+                        id="menu-item-1198"
+                        class="menu-item menu-item-type-post_type menu-item-object-page"
+                      >
+                        <a class="menu-item-link" href="news/index.html"
+                          >News</a
+                        >
+                      </li>
+                      <li
+                        id="menu-item-1201"
+                        class="menu-item menu-item-type-post_type menu-item-object-page"
+                      >
+                        <a class="menu-item-link" href="shop/index.html"
+                          >Shop</a
+                        >
+                      </li>
+                      <li
+                        id="menu-item-1200"
+                        class="menu-item menu-item-type-post_type menu-item-object-page"
+                      >
+                        <a class="menu-item-link" href="cart/index.html"
+                          >Shopping Cart</a
+                        >
+                      </li>
+                      <li
+                        id="menu-item-1199"
+                        class="menu-item menu-item-type-post_type menu-item-object-page"
+                      >
+                        <a class="menu-item-link" href="checkout/index.html"
+                          >Checkout</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    id="menu-item-1152"
+                    class="col-12 col-lg-3 col-xl-4 menu-item menu-item-type-custom menu-item-object-custom megamenu-item col megamenu-col-4"
+                  >
+                    <div class="megamenu-widgets-container">
+                      <div
+                        id="recent-posts-widget-3"
+                        class="widget recent-posts"
+                      >
+                        <div
+                          class="posts posts--simple-list posts--simple-list--lg posts--simple-list--lg--clean"
+                        >
+                          <div
+                            class="posts__item posts__item--category-1 post-102 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-alchemists tag-stadium tag-team"
+                          >
+                            <div class="posts__inner">
+                              <div class="posts__cat">
+                                <span
+                                  class="label posts__cat-label posts__cat-label--category-1 category-the-team"
+                                  >The Team</span
+                                >
+                              </div>
+                              <h6
+                                class="posts__title"
+                                title="Alchemists New Stadium is gonna be ready in September"
+                              >
+                                <a
+                                  href="alchemists-new-stadium-is-gonna-be-ready-in-september-2017/index.html"
+                                  >Alchemists New Stadium is gonna be ready
+                                  in September</a
+                                >
+                              </h6>
+                              <time
+                                datetime="2017-03-05T12:12:58+00:00"
+                                class="posts__date"
+                              >
+                                March 5, 2017
+                              </time>
+
+                              <div class="posts__excerpt">
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.
+                                Ut...
+                              </div>
+                            </div>
+
+                            <div class="posts__footer">
+                              <div class="post-author">
+                                <figure class="post-author__avatar">
+                                  <img
+                                    alt=""
+                                    src="https://secure.gravatar.com/avatar/c4a4bfa7304c328ed1ba7cd74c25c87f?s=24&amp;d=mm&amp;r=g"
+                                    srcset="
+                                      https://secure.gravatar.com/avatar/c4a4bfa7304c328ed1ba7cd74c25c87f?s=48&#038;d=mm&#038;r=g 2x
+                                    "
+                                    class="avatar avatar-24 photo"
+                                    height="24"
+                                    width="24"
+                                    loading="lazy"
+                                  />
+                                </figure>
+                                <div class="post-author__info">
+                                  <h4 class="post-author__name">
+                                    Dan Fisher
+                                  </h4>
+                                </div>
+                              </div>
+
+                              <div class="post__meta meta">
+                                <div class="meta__item meta__item--likes">
+                                  <a
+                                    href="wp-admin/admin-ajax3f66.html?action=process_simple_like&amp;post_id=102&amp;nonce=1316b20c12&amp;is_comment=0&amp;disabled=true"
+                                    class="sl-button sl-button-102"
+                                    data-nonce="1316b20c12"
+                                    data-post-id="102"
+                                    data-iscomment="0"
+                                    title="Like"
+                                    ><span class="sl-icon"
+                                      ><i
+                                        class="meta-like icon-heart"
+                                      ></i></span
+                                    ><span class="sl-count">142</span></a
+                                  ><span class="sl-loader"></span>
+                                </div>
+                                <div
+                                  class="meta__item meta__item--comments"
+                                >
+                                  <a
+                                    href="alchemists-new-stadium-is-gonna-be-ready-in-september-2017/index.html#respond"
+                                    >0</a
+                                  >
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li
+                    id="menu-item-1153"
+                    class="col-12 col-lg-3 col-xl-4 menu-item menu-item-type-custom menu-item-object-custom megamenu-item col megamenu-col-4"
+                  >
+                    <div class="megamenu-widgets-container">
+                      <div
+                        id="recent-posts-widget-4"
+                        class="widget recent-posts"
+                      >
+                        <div class="posts posts--simple-list">
+                          <div
+                            class="posts__item posts__item--category-1 post-91 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-alchemists tag-awards tag-coach tag-stadium"
+                          >
+                            <figure
+                              class="posts__thumb posts__thumb--hover"
+                            >
+                              <a
+                                href="the-new-eco-friendly-stadium-won-a-leafy-award-in-2016/index.html"
+                              >
+                                <img
+                                  width="80"
+                                  height="80"
+                                  src="{% static 'images/post-img3-80x80.jpg' %}"
+                                  class="wp-post-image"
+                                  alt=""
+                                  loading="lazy"
+                                  srcset="
+                                    {% static 'images/post-img3-80x80.jpg' %}    80w,
+                                    {% static 'images/post-img3-300x300.jpg' %} 300w,
+                                    {% static 'images/post-img3-100x100.jpg' %} 100w,
+                                    {% static 'images/post-img3-150x150.jpg' %} 150w,
+                                    {% static 'images/post-img3-400x400.jpg' %} 400w,
+                                    {% static 'images/post-img3-40x40.jpg' %}    40w
+                                  "
+                                  sizes="(max-width: 80px) 100vw, 80px"
+                                />
+                              </a>
+                            </figure>
+
+                            <div class="posts__inner">
+                              <div class="posts__cat">
+                                <span
+                                  class="label posts__cat-label posts__cat-label--category-1 category-the-team"
+                                  >The Team</span
+                                >
+                              </div>
+                              <h6
+                                class="posts__title posts__title--color-hover"
+                                title="The new eco friendly stadium won a Leafy Award in 2016"
+                              >
+                                <a
+                                  href="the-new-eco-friendly-stadium-won-a-leafy-award-in-2016/index.html"
+                                  >The new eco friendly stadium won a Leafy
+                                  Award in 2016</a
+                                >
+                              </h6>
+                              <time
+                                datetime="2017-04-05T12:23:52+00:00"
+                                class="posts__date"
+                              >
+                                April 5, 2017
+                              </time>
+                            </div>
+                          </div>
+
+                          <div
+                            class="posts__item posts__item--category-1 post-90 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-alchemists tag-players tag-playoffs"
+                          >
+                            <figure
+                              class="posts__thumb posts__thumb--hover"
+                            >
+                              <a
+                                href="the-alchemists-team-is-appearing-in-l-a-beach-for-charity/index.html"
+                              >
+                                <img
+                                  width="80"
+                                  height="80"
+                                  src="{% static 'images/post-img5-80x80.jpg' %}"
+                                  class="wp-post-image"
+                                  alt=""
+                                  loading="lazy"
+                                  srcset="
+                                  {% static 'images/post-img5-80x80.jpg' %}    80w,
+                                  {% static 'images/post-img5-300x300.jpg' %} 300w,
+                                  {% static 'images/post-img5-100x100.jpg' %} 100w,
+                                  {% static 'images/post-img5-150x150.jpg' %} 150w,
+                                  {% static 'images/post-img5-400x400.jpg' %} 400w,
+                                  {% static 'images/post-img5-40x40.jpg' %}    40w
+                                  "
+                                  sizes="(max-width: 80px) 100vw, 80px"
+                                />
+                              </a>
+                            </figure>
+
+                            <div class="posts__inner">
+                              <div class="posts__cat">
+                                <span
+                                  class="label posts__cat-label posts__cat-label--category-1 category-the-team"
+                                  >The Team</span
+                                >
+                              </div>
+                              <h6
+                                class="posts__title posts__title--color-hover"
+                                title="The Alchemists team is appearing in L.A. Beach for charity"
+                              >
+                                <a
+                                  href="the-alchemists-team-is-appearing-in-l-a-beach-for-charity/index.html"
+                                  >The Alchemists team is appearing in L.A.
+                                  Beach for charity</a
+                                >
+                              </h6>
+                              <time
+                                datetime="2017-04-05T12:22:43+00:00"
+                                class="posts__date"
+                              >
+                                April 5, 2017
+                              </time>
+                            </div>
+                          </div>
+
+                          <div
+                            class="posts__item posts__item--category-1 post-89 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-alchemists tag-injuries tag-playoffs"
+                          >
+                            <figure
+                              class="posts__thumb posts__thumb--hover"
+                            >
+                              <a
+                                href="brian-kingster-saw-the-red-card-after-a-kick-against-jason-t/index.html"
+                              >
+                                <img
+                                  width="80"
+                                  height="80"
+                                  src="{% static 'images/soccer_post_1-80x80.jpg' %}"
+                                  class="wp-post-image"
+                                  alt=""
+                                  loading="lazy"
+                                  srcset="
+                                  {% static 'images/soccer_post_1-80x80.jpg' %}    80w,
+                                  {% static 'images/soccer_post_1-300x300.jpg' %} 300w,
+                                  {% static 'images/soccer_post_1-100x100.jpg' %} 100w,
+                                  {% static 'images/soccer_post_1-150x150.jpg' %} 150w,
+                                  {% static 'images/soccer_post_1-400x400.jpg' %} 400w,
+                                  {% static 'images/soccer_post_1-40x40.jpg' %}    40w
+                                  "
+                                  sizes="(max-width: 80px) 100vw, 80px"
+                                />
+                              </a>
+                            </figure>
+
+                            <div class="posts__inner">
+                              <div class="posts__cat">
+                                <span
+                                  class="label posts__cat-label posts__cat-label--category-1 category-the-team"
+                                  >The Team</span
+                                >
+                              </div>
+                              <h6
+                                class="posts__title posts__title--color-hover"
+                                title="Brian Kingster saw the red card after a kick against Jason T."
+                              >
+                                <a
+                                  href="brian-kingster-saw-the-red-card-after-a-kick-against-jason-t/index.html"
+                                  >Brian Kingster saw the red card after a
+                                  kick against Jason T.</a
+                                >
+                              </h6>
+                              <time
+                                datetime="2017-04-05T12:21:01+00:00"
+                                class="posts__date"
+                              >
+                                April 5, 2017
+                              </time>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li
+                id="menu-item-1133"
+                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children no-mega-menu"
+              >
+                <a class="menu-item-link" href="#">SportsPress</a>
+                <ul class="main-nav__sub-0">
+                  <li
+                    id="menu-item-1135"
+                    class="menu-item menu-item-type-post_type menu-item-object-sp_team menu-item-has-children"
+                  >
+                    <a
+                      class="menu-item-link"
+                      href="team/alchemists/index.html"
+                      >Club</a
+                    >
+                    <ul class="main-nav__sub-1">
+                      <li
+                        id="menu-item-1137"
+                        class="menu-item menu-item-type-post_type menu-item-object-sp_team"
+                      >
+                        <a
+                          class="menu-item-link"
+                          href="team/alchemists/index.html"
+                          >Overview</a
+                        >
+                      </li>
+                      <li
+                        id="menu-item-1136"
+                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"
+                      >
+                        <a
+                          class="menu-item-link"
+                          href="team/alchemists/roster/index.html"
+                          >Roster</a
+                        >
+                        <ul class="main-nav__sub-2">
+                          <li
+                            id="menu-item-1247"
+                            class="menu-item menu-item-type-custom menu-item-object-custom"
+                          >
+                            <a
+                              class="menu-item-link"
+                              href="team/alchemists/roster/indexf972.html?roster_type=slider"
+                              >Roster &#8211; Slider</a
+                            >
+                          </li>
+                          <li
+                            id="menu-item-1246"
+                            class="menu-item menu-item-type-custom menu-item-object-custom"
+                          >
+                            <a
+                              class="menu-item-link"
+                              href="team/alchemists/roster/index54c1.html?roster_type=gallery"
+                              >Roster &#8211; Gallery</a
+                            >
+                          </li>
+                          <li
+                            id="menu-item-1244"
+                            class="menu-item menu-item-type-custom menu-item-object-custom"
+                          >
+                            <a
+                              class="menu-item-link"
+                              href="team/alchemists/roster/indexeeff.html?roster_type=blocks"
+                              >Roster &#8211; Blocks</a
+                            >
+                          </li>
+                          <li
+                            id="menu-item-1245"
+                            class="menu-item menu-item-type-custom menu-item-object-custom"
+                          >
+                            <a
+                              class="menu-item-link"
+                              href="team/alchemists/roster/index5d86.html?roster_type=cards"
+                              >Roster &#8211; Cards</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li
+                        id="menu-item-1138"
+                        class="menu-item menu-item-type-custom menu-item-object-custom"
+                      >
+                        <a
+                          class="menu-item-link"
+                          href="team/alchemists/standings/index.html"
+                          >Standings</a
+                        >
+                      </li>
+                      <li
+                        id="menu-item-1139"
+                        class="menu-item menu-item-type-custom menu-item-object-custom"
+                      >
+                        <a
+                          class="menu-item-link"
+                          href="team/alchemists/results/index.html"
+                          >Latest Results</a
+                        >
+                      </li>
+                      <li
+                        id="menu-item-1140"
+                        class="menu-item menu-item-type-custom menu-item-object-custom"
+                      >
+                        <a
+                          class="menu-item-link"
+                          href="team/alchemists/schedule/index.html"
+                          >Schedule</a
+                        >
+                      </li>
+                      <li
+                        id="menu-item-1141"
+                        class="menu-item menu-item-type-custom menu-item-object-custom"
+                      >
+                        <a
+                          class="menu-item-link"
+                          href="team/alchemists/gallery/index.html"
+                          >Gallery</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    id="menu-item-1142"
+                    class="menu-item menu-item-type-post_type menu-item-object-sp_player menu-item-has-children"
+                  >
+                    <a
+                      class="menu-item-link"
+                      href="player/james-messinal/index.html"
+                      >Player</a
+                    >
+                    <ul class="main-nav__sub-1">
+                      <li
+                        id="menu-item-1143"
+                        class="menu-item menu-item-type-post_type menu-item-object-sp_player"
+                      >
+                        <a
+                          class="menu-item-link"
+                          href="player/james-messinal/index.html"
+                          >Overview</a
+                        >
+                      </li>
+                      <li
+                        id="menu-item-1144"
+                        class="menu-item menu-item-type-custom menu-item-object-custom"
+                      >
+                        <a
+                          class="menu-item-link"
+                          href="player/james-messinal/stats/index.html"
+                          >Statistics</a
+                        >
+                      </li>
+                      <li
+                        id="menu-item-1145"
+                        class="menu-item menu-item-type-custom menu-item-object-custom"
+                      >
+                        <a
+                          class="menu-item-link"
+                          href="player/james-messinal/bio/index.html"
+                          >Biography</a
+                        >
+                      </li>
+                      <li
+                        id="menu-item-1146"
+                        class="menu-item menu-item-type-custom menu-item-object-custom"
+                      >
+                        <a
+                          class="menu-item-link"
+                          href="player/james-messinal/news/index.html"
+                          >Related News</a
+                        >
+                      </li>
+                      <li
+                        id="menu-item-1147"
+                        class="menu-item menu-item-type-custom menu-item-object-custom"
+                      >
+                        <a
+                          class="menu-item-link"
+                          href="player/james-messinal/gallery/index.html"
+                          >Gallery</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    id="menu-item-1148"
+                    class="menu-item menu-item-type-post_type menu-item-object-sp_event"
+                  >
+                    <a
+                      class="menu-item-link"
+                      href="event/alchemists-vs-clovers-2/index.html"
+                      >Match</a
+                    >
+                  </li>
+                  <li
+                    id="menu-item-1134"
+                    class="menu-item menu-item-type-post_type menu-item-object-sp_staff"
+                  >
+                    <a
+                      class="menu-item-link"
+                      href="staff/robert-frankson/index.html"
+                      >Staff</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li
+                id="menu-item-589"
+                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children no-mega-menu"
+              >
+                <a class="menu-item-link" href="news/index.html">News</a>
+                <ul class="main-nav__sub-0">
+                  <li
+                    id="menu-item-591"
+                    class="menu-item menu-item-type-custom menu-item-object-custom"
+                  >
+                    <a
+                      class="menu-item-link"
+                      href="news/index7def.html?posts_layout=1"
+                      >News &#8211; version 1</a
+                    >
+                  </li>
+                  <li
+                    id="menu-item-592"
+                    class="menu-item menu-item-type-custom menu-item-object-custom"
+                  >
+                    <a
+                      class="menu-item-link"
+                      href="news/indexc2dc.html?posts_layout=2"
+                      >News &#8211; version 2</a
+                    >
+                  </li>
+                  <li
+                    id="menu-item-593"
+                    class="menu-item menu-item-type-custom menu-item-object-custom"
+                  >
+                    <a
+                      class="menu-item-link"
+                      href="news/index978a.html?posts_layout=3"
+                      >News &#8211; version 3</a
+                    >
+                  </li>
+                  <li
+                    id="menu-item-594"
+                    class="menu-item menu-item-type-custom menu-item-object-custom"
+                  >
+                    <a
+                      class="menu-item-link"
+                      href="news/indexfaec.html?posts_layout=4"
+                      >News &#8211; version 4</a
+                    >
+                  </li>
+                  <li
+                    id="menu-item-595"
+                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"
+                  >
+                    <a class="menu-item-link" href="#">Single Post</a>
+                    <ul class="main-nav__sub-1">
+                      <li
+                        id="menu-item-599"
+                        class="menu-item menu-item-type-post_type menu-item-object-post"
+                      >
+                        <a
+                          class="menu-item-link"
+                          href="the-alchemists-need-two-win-the-next-two-games/index.html"
+                          >Single Post &#8211; Version 1</a
+                        >
+                      </li>
+                      <li
+                        id="menu-item-596"
+                        class="menu-item menu-item-type-custom menu-item-object-custom"
+                      >
+                        <a
+                          class="menu-item-link"
+                          href="the-alchemists-need-two-win-the-next-two-games/index49cc.html?single_post=2"
+                          >Single Post &#8211; Version 2</a
+                        >
+                      </li>
+                      <li
+                        id="menu-item-597"
+                        class="menu-item menu-item-type-custom menu-item-object-custom"
+                      >
+                        <a
+                          class="menu-item-link"
+                          href="the-alchemists-need-two-win-the-next-two-games/index4032.html?single_post=3"
+                          >Single Post &#8211; Version 3</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li id="menu-item-590"
+                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children no-mega-menu">
+                <a class="menu-item-link" href="shop/index.html">Shop</a>
+                <ul class="main-nav__sub-0">
+                  <li id="menu-item-1079"
+                    class="menu-item menu-item-type-post_type menu-item-object-page">
+                    <a class="menu-item-link" href="shop/index.html">Shop</a>
+                  </li>
+                  <li id="menu-item-1078"
+                    class="menu-item menu-item-type-post_type menu-item-object-page">
+                    <a class="menu-item-link" href="cart/index.html">Cart</a>
+                  </li>
+                  <li id="menu-item-1077"
+                    class="menu-item menu-item-type-post_type menu-item-object-page">
+                    <a class="menu-item-link" href="checkout/index.html">Checkout</a>
+                  </li>
+                  <li id="menu-item-1076"
+                    class="menu-item menu-item-type-post_type menu-item-object-page">
+                    <a class="menu-item-link" href="my-account/index.html">My account</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+
+            <!-- Social Links -->
+            <ul
+              class="social-links social-links--inline social-links--main-nav"
+            >
+              <li class="social-links__item">
+                <a
+                  href="#"
+                  class="social-links__link"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="Facebook"
+                  target="_blank"
+                  ><i class="fab fa-facebook"></i
+                ></a>
+              </li>
+              <li class="social-links__item">
+                <a
+                  href="#"
+                  class="social-links__link"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="Twitter"
+                  target="_blank"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+              </li>
+              <li class="social-links__item">
+                <a
+                  href="#"
+                  class="social-links__link"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="Instagram"
+                  target="_blank"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+              </li>
+            </ul>
+            <!-- Social Links / End -->
+
+            <!-- Pushy Panel Toggle -->
+            <a href="#" class="pushy-panel__toggle">
+              <span class="pushy-panel__line"></span>
+            </a>
+            <!-- Pushy Panel Toggle / Eng -->
+          </nav>
+          <!-- Main Navigation / End -->
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Header / End -->

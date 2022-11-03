@@ -1,0 +1,315 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<br><br>
+
+<style>
+    .post__content {
+
+    }
+    img {
+        max-width:100%;
+        max-height:380px;
+    }
+</style>
+<div class="container">
+    <div class="row">
+
+        <div id="primary" class="content-area col-lg-8">
+
+            <!-- Article -->
+            <article id="post-87" class="card post post--single posts__item--category-2 card--lg post-87 type-post status-publish format-standard has-post-thumbnail hentry category-the-league tag-alchemists tag-injuries tag-playoffs">
+                <figure class="post__thumbnail">
+                    <img width="773" height="380" src="/media/{{post.image}}" class="attachment-alchemists_thumbnail-lg size-alchemists_thumbnail-lg wp-post-image">
+                </figure>
+
+                <div class="card__content">
+                    <div class="post__category">
+                        <span class="label posts__cat-label posts__cat-label--category-2 category-the-league">{{post.news_type}}</span>
+                    </div>
+                    <header class="post__header">
+                        <h1 class='post__title'>{{post.title}}</h1>
+                        <div class="post__meta meta ">
+                            <div class="meta__item meta__item--date">
+                                <time datetime="2017-03-06T12:37:43+00:00" class="posts__date">{{post.added|date:"F j, Y"}}</time>
+                            </div>
+                            <div class="meta__item meta__item--views js-meta__item--views-count"
+                                data-id="87" data-nonce="7cb6e66b1e">{{post.views}}</div>
+                            <div class="meta__item meta__item--likes "><a
+                                    href="../wp-admin/admin-ajax312d.html?action=process_simple_like&amp;post_id=87&amp;nonce=1316b20c12&amp;is_comment=0&amp;disabled=true"
+                                    class="sl-button sl-button-87" data-nonce="1316b20c12" data-post-id="87"
+                                    data-iscomment="0" title="Like"><span class="sl-icon"><i
+                                            class="meta-like icon-heart"></i></span><span
+                                        class="sl-count">96</span></a><span class="sl-loader"></span></div>
+                            <div class="meta__item meta__item--comments"><a href="index.html#respond">0</a>
+                            </div>
+                        </div>
+                    </header>
+
+                    <div class="post__content">
+
+                        {{post.post_content|safe}}
+                    </div>
+
+                </div>
+            </article>
+
+            <div class="post-sharing">
+
+
+                <a target="_blank"
+                    onClick="popup = window.open('https://www.facebook.com/sharer.php?u=https%3A%2F%2Fsoccer-dark-alc.dan-fisher.dev%2Fthe-alchemists-need-two-win-the-next-two-games%2F', 'PopupPage', 'height=450,width=500,scrollbars=yes,resizable=yes'); return false"
+                    href="#" class="btn btn-default btn-facebook btn-icon btn-block" rel="nofollow"><i
+                        class="fa fa-facebook"></i> <span class="post-sharing__label hidden-xs">Share on
+                        Facebook</span></a>
+
+
+                <a target="_blank"
+                    onClick="popup = window.open('https://twitter.com/intent/tweet?text=The+Alchemists+need+two+win+the+next+two+games&amp;url=https%3A%2F%2Fsoccer-dark-alc.dan-fisher.dev%2Fthe-alchemists-need-two-win-the-next-two-games%2F', 'PopupPage', 'height=450,width=500,scrollbars=yes,resizable=yes'); return false"
+                    href="#" class="btn btn-default btn-twitter btn-icon btn-block" rel="nofollow"><i
+                        class="fa fa-twitter"></i> <span class="post-sharing__label hidden-xs">Share on
+                        Twitter</span></a>
+
+
+            </div>
+
+            <!-- Post Author -->
+            <div class="post-author card card--lg">
+                <div class="card__content">
+
+
+                    <header class="post-author__header">
+
+                        <figure class="post-author__avatar">
+                            <img alt=''
+                                src='https://secure.gravatar.com/avatar/c4a4bfa7304c328ed1ba7cd74c25c87f?s=60&amp;d=mm&amp;r=g'
+                                srcset='https://secure.gravatar.com/avatar/c4a4bfa7304c328ed1ba7cd74c25c87f?s=120&#038;d=mm&#038;r=g 2x'
+                                class='avatar avatar-60 photo' height='60' width='60' loading='lazy' />
+                        </figure>
+
+                        <div class="post-author__info">
+                            <h4 class="post-author__name">{{post.author}}</h4>
+                            <span class="post-author__slogan">admin</span>
+                        </div>
+                        <ul class="post-author__social-links social-links social-links--btn">
+                            <li class="social-links__item">
+                                <a href="mailto:dan.fisher85@yahoo.com"
+                                    class="social-links__link social-links__link--mail"><i
+                                        class="fa fa-envelope"></i></a>
+                            </li>
+                        </ul>
+                    </header>
+                </div>
+            </div>
+            <!-- Post Author / End -->
+            <!-- Next/Prev Posts -->
+            <div class="post-related row">
+
+
+                <div class="col-6">
+                    <!-- Prev Post -->
+                    <div class="card post-related__prev">
+                        <div class="card__content">
+
+                            <!-- Prev Post Links -->
+                            <a href="../the-team-is-starting-a-new-power-breakfast-regimen/index.html"
+                                class="btn-nav">
+                                <i class="fa fa-chevron-left"></i>
+                            </a>
+                            <!-- Prev Post Links / End -->
+
+                            <ul class="posts posts--simple-list">
+                                <li
+                                    class="posts__item posts__item--category-1 post-86 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-incorporation tag-team tag-uniforms">
+                                    <div class="posts__inner">
+
+                                        <div class="posts__cat"><span
+                                                class="label posts__cat-label posts__cat-label--category-1 category-the-team">The
+                                                Team</span></div>
+                                        <h6 class="posts__title"><a
+                                                href="../the-team-is-starting-a-new-power-breakfast-regimen/index.html">The
+                                                team is starting a new power breakfast regimen</a></h6>
+                                        <time datetime="2017-03-06T12:37:21+00:00" class="posts__date">March
+                                            6, 2017</time>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <!-- Prev Post / End -->
+                </div>
+
+
+                <div class="col-6">
+                    <div class="card post-related__next">
+                        <!-- Next Post -->
+                        <div class="card__content">
+
+                            <ul class="posts posts--simple-list">
+                                <li
+                                    class="posts__item posts__item--category-1 post-567 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-alchemists tag-stadium">
+                                    <div class="posts__inner">
+
+                                        <div class="posts__cat"><span
+                                                class="label posts__cat-label posts__cat-label--category-1 category-the-team">The
+                                                Team</span></div>
+                                        <h6 class="posts__title"><a
+                                                href="../the-planetrotters-will-perform-this-may-4th-at-madison-cube/index.html">The
+                                                Planetrotters will perform this May 4th at Madison Cube</a>
+                                        </h6>
+                                        <time datetime="2017-04-05T12:05:16+00:00" class="posts__date">April
+                                            5, 2017</time>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <!-- Next Post Link -->
+                            <a href="../the-planetrotters-will-perform-this-may-4th-at-madison-cube/index.html"
+                                class="btn-nav">
+                                <i class="fa fa-chevron-right"></i>
+                            </a>
+                            <!-- Next Post Link / End -->
+
+                        </div>
+                        <!-- Next Post / End -->
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- Next/Prev / End -->
+
+
+
+
+            <!-- Comment Form -->
+            <div class="post-comment-form card card--lg">
+                <div id="respond" class="comment-respond">
+                    <header class="post-comment-form__header card__header">
+                        <h4>Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link"
+                                    href="index.html#respond" style="display:none;">Cancel Reply</a></small>
+                        </h4>
+                    </header>
+                    <form action="https://soccer-dark-alc.dan-fisher.dev/wp-comments-post.php" method="post"
+                        id="commentform" class="post-comment-form__content card__content" novalidate>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="comment-form-author form-group"><label class="control-label"
+                                        for="author">Your Name</label><input id="author" name="author"
+                                        type="text" class="form-control" value="" size="30"
+                                        aria-required=true /></div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="comment-form-email form-group"><label class="control-label"
+                                        for="email">Email Address</label><input id="email" name="email"
+                                        type="email" class="form-control" value="" size="30"
+                                        aria-required=true /></div>
+                            </div>
+                        </div>
+                        <div class="comment-form-message form-group"><label class="control-label"
+                                for="comment">Your Comment</label><textarea id="comment" name="comment"
+                                cols="30" rows="7" class="form-control" aria-required="true"></textarea>
+                        </div>
+                        <p class="comment-form-cookies-consent"><label class="checkbox checkbox-inline"
+                                for="wp-comment-cookies-consent"><input type="checkbox"
+                                    name="wp-comment-cookies-consent" type="checkbox"
+                                    id="wp-comment-cookies-consent" value="yes">Save my name and email in
+                                this browser for the next time I comment.<span
+                                    class="checkbox-indicator"></span></label></p>
+                        <p class="form-submit"><input name="submit" type="submit" id="submit"
+                                class="btn btn-block btn-lg btn-default" value="Post Your Comment" /> <input
+                                type='hidden' name='comment_post_ID' value='87' id='comment_post_ID' />
+                            <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+                        </p>
+                    </form>
+                </div><!-- #respond -->
+            </div>
+            <!-- Comment Form / End -->
+
+        </div><!-- #primary -->
+
+
+        <aside id="secondary" class="sidebar widget-area col-lg-4">
+
+            <div id="df-social-count-1" class="widget widget--sidebar card df-social-count-widget">
+                <div class="widget__content card__content">
+                    <div class="df-social-count df-social-count--columns"><a
+                            class="btn-social-counter btn-social-counter--facebook"
+                            href="https://www.facebook.com/danfisher.dev" rel="nofollow noopener noreferrer"
+                            target="_blank">
+                            <div class="btn-social-counter__icon"><i class="fa fa-facebook"></i></div>
+                            <h6 class="btn-social-counter__title">Like our Facebook page</h6><span
+                                class="btn-social-counter__count"><span
+                                    class="btn-social-counter__count-num">307</span> likes</span><span
+                                class="btn-social-counter__add-icon"></span>
+                        </a><a class="btn-social-counter btn-social-counter--twitter"
+                            href="https://twitter.com/danfisher_dev" rel="nofollow noopener noreferrer"
+                            target="_blank">
+                            <div class="btn-social-counter__icon"><i class="fa fa-twitter"></i></div>
+                            <h6 class="btn-social-counter__title">Follow us on Twitter</h6><span
+                                class="btn-social-counter__count"><span
+                                    class="btn-social-counter__count-num">275</span> followers</span><span
+                                class="btn-social-counter__add-icon"></span>
+                        </a><a class="btn-social-counter btn-social-counter--instagram"
+                            href="https://instagram.com/dan.fisher.dev" rel="nofollow noopener noreferrer"
+                            target="_blank">
+                            <div class="btn-social-counter__icon"><i class="fa fa-instagram"></i></div>
+                            <h6 class="btn-social-counter__title">Follow us on Instagram</h6><span
+                                class="btn-social-counter__count"><span
+                                    class="btn-social-counter__count-num">0</span> followers</span><span
+                                class="btn-social-counter__add-icon"></span>
+                        </a></div>
+                </div>
+            </div>
+            
+            {% include 'includes/widgets/popular_news.html' %}
+
+            <div id="tag_cloud-1" class="widget widget--sidebar card widget_tag_cloud">
+                <div class="widget__content card__content"></div>
+                <div class="widget__title card__header">
+                    <h4>Tag Cloud</h4>
+                </div>
+                <div class="widget__content card__content">
+                    <div class="tagcloud"><a href="../tag/alchemists/index.html"
+                            class="tag-cloud-link tag-link-19 btn btn-primary btn-xs btn-outline btn-sm  tag-link-position-1"
+                            aria-label="Alchemists (10 items)">Alchemists</a>
+                        <a href="../tag/awards/index.html"
+                            class="tag-cloud-link tag-link-21 btn btn-primary btn-xs btn-outline btn-sm  tag-link-position-2"
+                            aria-label="awards (2 items)">awards</a>
+                        <a href="../tag/coach/index.html"
+                            class="tag-cloud-link tag-link-23 btn btn-primary btn-xs btn-outline btn-sm  tag-link-position-3"
+                            aria-label="Coach (2 items)">Coach</a>
+                        <a href="../tag/injuries/index.html"
+                            class="tag-cloud-link tag-link-26 btn btn-primary btn-xs btn-outline btn-sm  tag-link-position-4"
+                            aria-label="Injuries (3 items)">Injuries</a>
+                        <a href="../tag/playoffs/index.html"
+                            class="tag-cloud-link tag-link-29 btn btn-primary btn-xs btn-outline btn-sm  tag-link-position-5"
+                            aria-label="Playoffs (5 items)">Playoffs</a>
+                        <a href="../tag/stadium/index.html"
+                            class="tag-cloud-link tag-link-30 btn btn-primary btn-xs btn-outline btn-sm  tag-link-position-6"
+                            aria-label="stadium (6 items)">stadium</a>
+                    </div>
+                </div>
+            </div>
+            <div id="media_image-1" class="widget widget--sidebar card widget_media_image">
+                <div class="widget__content card__content"></div>
+                <div class="widget__title card__header">
+                    <h4>Advertisement</h4>
+                </div>
+                <div class="widget__content card__content"><a href="http://bit.ly/2y4ZKHd"><img width="300"
+                            height="250" src="../wp-content/uploads/2018/04/banner.jpg"
+                            class="image wp-image-1264  attachment-medium size-medium" alt="" loading="lazy"
+                            style="max-width: 100%; height: auto;"
+                            srcset="https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2018/04/banner.jpg 300w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2018/04/banner-128x107.jpg 128w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2018/04/banner-32x27.jpg 32w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2018/04/banner-70x58.jpg 70w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2018/04/banner-100x83.jpg 100w"
+                            sizes="(max-width: 300px) 100vw, 300px" /></a></div>
+            </div>
+            
+            {% include 'includes/widgets/tabbed_news.html' %}
+        </aside><!-- #secondary -->
+
+    </div>
+</div>
+
+{% endblock %}

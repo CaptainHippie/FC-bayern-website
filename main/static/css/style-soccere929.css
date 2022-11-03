@@ -6622,6 +6622,7 @@ body {
           backface-visibility: hidden;
   transition: all 0.4s ease-in-out;
   overflow-x: hidden;
+  background-color: #00091a;
 }
 @media (min-width: 992px) {
   .site-wrapper .site-wrapper {
@@ -6903,6 +6904,7 @@ body {
   left: 0;
   display: block;
   bottom: 21px;
+  margin: 8.5% -27%;
 }
 @media (max-width: 991px) {
   .header-logo {
@@ -6912,8 +6914,17 @@ body {
 
 .header-logo__img {
   position: relative;
+  max-width: 17%;
+  height: auto;
+  
 }
 
+.club-title{
+  margin: -12% 22%;
+  color: white;
+  font-weight: bolder;
+  font-size: 210%;
+}
 /* Header Mobile */
 .header-mobile {
   display: none;
@@ -9498,6 +9509,7 @@ body.admin-bar .pushy-panel {
 /* Footer Widgets */
 .footer-widgets {
   background: #1e2024;
+  
   position: relative;
 }
 .footer-widgets [class^=col-]:last-child .widget--footer {

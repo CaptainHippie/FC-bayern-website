@@ -1541,7 +1541,7 @@ table.sp-responsive-table tbody tr th::before {
   width: 14px !important;
 }
 .game-timeline__icon .sp-icon-sub {
-  background-image: url("../images/soccer/icon-substitution.svg");
+  background-image: url("../images/icon-substitution.svg");
   background-position: 50% 50%;
   background-repeat: no-repeat;
 }

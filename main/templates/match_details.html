@@ -1,0 +1,937 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load custom_calculations %}
+
+<aside class="pushy-panel pushy-panel--dark">
+    <div class="pushy-panel__inner">
+
+        <header class="pushy-panel__header">
+            <div class="pushy-panel__logo">
+                <a href="../../index.html" rel="home">
+                    <img src="../../wp-content/themes/alchemists/assets/images/soccer/logo.png"
+                        class="pushy-panel__logo-img"
+                        srcset="https://soccer-dark-alc.dan-fisher.dev/wp-content/themes/alchemists/assets/images/soccer/logo@2x.png 2x"
+                        alt="Alchemists">
+                </a>
+            </div>
+        </header>
+
+        <div class="pushy-panel__content">
+
+
+            <div id="recent-posts-widget-5" class="widget widget--side-panel recent-posts">
+                <div class="posts posts--simple-list">
+
+                    <div
+                        class="posts__item posts__item--category-1 post-91 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-alchemists tag-awards tag-coach tag-stadium">
+
+                        <figure class="posts__thumb posts__thumb--hover">
+                            <a href="../../the-new-eco-friendly-stadium-won-a-leafy-award-in-2016/index.html">
+                                <img width="80" height="80"
+                                    src="../../wp-content/uploads/2017/04/post-img3-80x80.jpg"
+                                    class=" wp-post-image" alt="" loading="lazy"
+                                    srcset="https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/04/post-img3-80x80.jpg 80w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/04/post-img3-300x300.jpg 300w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/04/post-img3-100x100.jpg 100w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/04/post-img3-150x150.jpg 150w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/04/post-img3-400x400.jpg 400w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/04/post-img3-40x40.jpg 40w"
+                                    sizes="(max-width: 80px) 100vw, 80px" /> </a>
+                        </figure>
+
+                        <div class="posts__inner">
+
+                            <div class="posts__cat"><span
+                                    class="label posts__cat-label posts__cat-label--category-1 category-the-team">The
+                                    Team</span></div>
+                            <h6 class="posts__title posts__title--color-hover"
+                                title="The new eco friendly stadium won a Leafy Award in 2016"><a
+                                    href="../../the-new-eco-friendly-stadium-won-a-leafy-award-in-2016/index.html">The
+                                    new eco friendly stadium won a Leafy Award in 2016</a></h6>
+                            <time datetime="2017-04-05T12:23:52+00:00" class="posts__date">
+                                April 5, 2017 </time>
+
+
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="posts__item posts__item--category-1 post-90 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-alchemists tag-players tag-playoffs">
+
+                        <figure class="posts__thumb posts__thumb--hover">
+                            <a
+                                href="../../the-alchemists-team-is-appearing-in-l-a-beach-for-charity/index.html">
+                                <img width="80" height="80"
+                                    src="../../wp-content/uploads/2017/04/post-img5-80x80.jpg"
+                                    class=" wp-post-image" alt="" loading="lazy"
+                                    srcset="https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/04/post-img5-80x80.jpg 80w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/04/post-img5-300x300.jpg 300w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/04/post-img5-100x100.jpg 100w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/04/post-img5-150x150.jpg 150w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/04/post-img5-400x400.jpg 400w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/04/post-img5-40x40.jpg 40w"
+                                    sizes="(max-width: 80px) 100vw, 80px" /> </a>
+                        </figure>
+
+                        <div class="posts__inner">
+
+                            <div class="posts__cat"><span
+                                    class="label posts__cat-label posts__cat-label--category-1 category-the-team">The
+                                    Team</span></div>
+                            <h6 class="posts__title posts__title--color-hover"
+                                title="The Alchemists team is appearing in L.A. Beach for charity"><a
+                                    href="../../the-alchemists-team-is-appearing-in-l-a-beach-for-charity/index.html">The
+                                    Alchemists team is appearing in L.A. Beach for charity</a></h6>
+                            <time datetime="2017-04-05T12:22:43+00:00" class="posts__date">
+                                April 5, 2017 </time>
+
+
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="posts__item posts__item--category-1 post-89 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-alchemists tag-injuries tag-playoffs">
+
+                        <figure class="posts__thumb posts__thumb--hover">
+                            <a
+                                href="../../brian-kingster-saw-the-red-card-after-a-kick-against-jason-t/index.html">
+                                <img width="80" height="80"
+                                    src="../../wp-content/uploads/2017/04/soccer_post_1-80x80.jpg"
+                                    class=" wp-post-image" alt="" loading="lazy"
+                                    srcset="https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/04/soccer_post_1-80x80.jpg 80w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/04/soccer_post_1-300x300.jpg 300w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/04/soccer_post_1-100x100.jpg 100w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/04/soccer_post_1-150x150.jpg 150w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/04/soccer_post_1-400x400.jpg 400w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/04/soccer_post_1-40x40.jpg 40w"
+                                    sizes="(max-width: 80px) 100vw, 80px" /> </a>
+                        </figure>
+
+                        <div class="posts__inner">
+
+                            <div class="posts__cat"><span
+                                    class="label posts__cat-label posts__cat-label--category-1 category-the-team">The
+                                    Team</span></div>
+                            <h6 class="posts__title posts__title--color-hover"
+                                title="Brian Kingster saw the red card after a kick against Jason T."><a
+                                    href="../../brian-kingster-saw-the-red-card-after-a-kick-against-jason-t/index.html">Brian
+                                    Kingster saw the red card after a kick against Jason T.</a></h6>
+                            <time datetime="2017-04-05T12:21:01+00:00" class="posts__date">
+                                April 5, 2017 </time>
+
+
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="posts__item posts__item--category-1 posts__item--category-3 post-88 post type-post status-publish format-video has-post-thumbnail hentry category-injuries tag-alchemists tag-injuries tag-playoffs post_format-post-format-video">
+
+                        <figure class="posts__thumb posts__thumb--hover">
+                            <a href="../../jenny-jackson-wont-be-able-to-play-next-game/index.html">
+                                <img width="80" height="80"
+                                    src="../../wp-content/uploads/2017/04/soccer_post_2-80x80.jpg"
+                                    class=" wp-post-image" alt="" loading="lazy"
+                                    srcset="https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/04/soccer_post_2-80x80.jpg 80w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/04/soccer_post_2-300x300.jpg 300w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/04/soccer_post_2-100x100.jpg 100w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/04/soccer_post_2-150x150.jpg 150w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/04/soccer_post_2-400x400.jpg 400w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/04/soccer_post_2-40x40.jpg 40w"
+                                    sizes="(max-width: 80px) 100vw, 80px" /> </a>
+                        </figure>
+
+                        <div class="posts__inner">
+
+                            <div class="posts__cat"><span
+                                    class="label posts__cat-label posts__cat-label--category-3 category-injuries">Injuries</span>
+                            </div>
+                            <h6 class="posts__title posts__title--color-hover"
+                                title="Jenny Jackson won&#8217;t be able to play next game"><a
+                                    href="../../jenny-jackson-wont-be-able-to-play-next-game/index.html">Jenny
+                                    Jackson won&#8217;t be able to play next game</a></h6>
+                            <time datetime="2017-04-05T12:19:47+00:00" class="posts__date">
+                                April 5, 2017 </time>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div id="tag_cloud-2" class="widget widget--side-panel widget_tag_cloud">
+                <h4 class="widget__title">Popular Tags</h4>
+                <div class="tagcloud"><a href="../../tag/alchemists/index.html"
+                        class="tag-cloud-link tag-link-19 btn btn-primary btn-xs btn-outline btn-sm  tag-link-position-1"
+                        aria-label="Alchemists (10 items)">Alchemists</a>
+                    <a href="../../tag/awards/index.html"
+                        class="tag-cloud-link tag-link-21 btn btn-primary btn-xs btn-outline btn-sm  tag-link-position-2"
+                        aria-label="awards (2 items)">awards</a>
+                    <a href="../../tag/coach/index.html"
+                        class="tag-cloud-link tag-link-23 btn btn-primary btn-xs btn-outline btn-sm  tag-link-position-3"
+                        aria-label="Coach (2 items)">Coach</a>
+                    <a href="../../tag/injuries/index.html"
+                        class="tag-cloud-link tag-link-26 btn btn-primary btn-xs btn-outline btn-sm  tag-link-position-4"
+                        aria-label="Injuries (3 items)">Injuries</a>
+                    <a href="../../tag/playoffs/index.html"
+                        class="tag-cloud-link tag-link-29 btn btn-primary btn-xs btn-outline btn-sm  tag-link-position-5"
+                        aria-label="Playoffs (5 items)">Playoffs</a>
+                    <a href="../../tag/stadium/index.html"
+                        class="tag-cloud-link tag-link-30 btn btn-primary btn-xs btn-outline btn-sm  tag-link-position-6"
+                        aria-label="stadium (6 items)">stadium</a>
+                </div>
+            </div>
+            <div id="media_image-2" class="widget widget--side-panel widget_media_image"><a
+                    href="http://bit.ly/2y4ZKHd"><img width="300" height="250"
+                        src="../../wp-content/uploads/2018/04/banner.jpg"
+                        class="image wp-image-1264  attachment-medium size-medium" alt="" loading="lazy"
+                        style="max-width: 100%; height: auto;"
+                        srcset="https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2018/04/banner.jpg 300w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2018/04/banner-128x107.jpg 128w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2018/04/banner-32x27.jpg 32w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2018/04/banner-70x58.jpg 70w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2018/04/banner-100x83.jpg 100w"
+                        sizes="(max-width: 300px) 100vw, 300px" /></a></div>
+
+        </div>
+        <a href="#" class="pushy-panel__back-btn"></a>
+    </div>
+</aside>
+
+<!-- Page Heading
+================================================== -->
+<div class="page-heading 1" style="background-image: url(/media/{{match.banner}});">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-10 offset-lg-1">
+                <h1 class='page-heading__title'>- FC Bayern Munich vs {{match.opponent}} -</h1>
+                
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="site-content " id="content">
+    <div class="container">
+        <div class="row">
+
+            <div id="primary" class="content-area col-lg-8">
+
+                <div class="sp-section-content sp-section-content-logos">
+                    <div class="card" itemscope itemtype="http://schema.org/SportsEvent">
+                        <div class="card__header">
+                            <h4 itemprop="name" content="Alchemists vs Clovers">Statistics</h4>
+                        </div>
+                        <div class="card__content">
+
+                            <!-- Game Result -->
+                            <div class="game-result">
+
+
+                                <section class="game-result__section pt-0">
+                                    <header class="game-result__header game-result__header--alt">
+
+                                        <span class="game-result__league">
+                                            {{match.competition}}
+                                        </span>
+
+
+                                        <h3 class="game-result__title" itemprop="location" itemscope
+                                            itemtype="http://schema.org/Place">
+                                            <span itemprop="name">{{match.venue}}</span><span class="d-none"
+                                                itemprop="address"
+                                                itemtype="http://schema.org/PostalAddress">68-49-68-51 Main St,
+                                                Flushing, NY 11367, USA</span>
+                                        </h3>
+
+
+                                        <time class="game-result__date" itemprop="startDate"
+                                            datetime="2016-03-05 18:00:00">
+                                            {{match.time|date:"F j, Y"}}
+                                            <span class="event-time-status event-time-status--has-divider">{{match.time|date:"g:i A"}}</span>
+                                            <meta itemprop="eventStatus" content="http://schema.org/EventScheduled">
+                                        </time>
+
+
+                                    </header>
+
+                                    <!-- Team Logos + Game Result -->
+                                    <div class="game-result__content">
+                                        <div class="game-result__team game-result__team--odd">
+                                        {% if match.at_home == True %}
+                                            <figure class="game-result__team-logo"><img width="100" height="100"
+                                                src="{% static 'images/logo.png' %}" class="attachment-alchemists_team-logo-fit size-alchemists_team-logo-fit wp-post-image">
+                                            </figure>
+                                            <div class="game-result__team-info" itemprop="performer" itemscope itemtype="http://schema.org/Organization">
+                                                <h5 class="game-result__team-name" itemprop="name">FC Bayern Munich</h5>
+                                                <div class="game-result__team-desc">Julian Nagelsmann</div>
+                                            </div>
+                                        {% else %}
+                                            <figure class="game-result__team-logo"><img width="100" height="100"
+                                                src="/media/{{match.opponent.logo}}" class="attachment-alchemists_team-logo-fit size-alchemists_team-logo-fit wp-post-image">
+                                            </figure>
+                                            <div class="game-result__team-info" itemprop="performer" itemscope itemtype="http://schema.org/Organization">
+                                                <h5 class="game-result__team-name" itemprop="name">{{match.opponent}}</h5>
+                                                <div class="game-result__team-desc">{{match.opponent.manager}}</div>
+                                            </div>
+                                        {% endif %}
+                                        </div>
+                                        <div class="game-result__team game-result__team--even">
+                                        {% if match.at_home == True %}
+                                            <figure class="game-result__team-logo"><img width="100" height="100" src="/media/{{match.opponent.logo}}" alt=""
+                                                class="attachment-alchemists_team-logo-fit size-alchemists_team-logo-fit wp-post-image" loading="lazy">
+                                            </figure>
+                                            <div class="game-result__team-info" itemprop="performer" itemscope itemtype="http://schema.org/Organization">
+                                                <h5 class="game-result__team-name" itemprop="name">{{match.opponent}}</h5>
+                                                <div class="game-result__team-desc">{{match.opponent.manager}}</div>
+                                            </div>
+                                        {% else %}
+                                            <figure class="game-result__team-logo"><img width="100" height="100" src="{% static 'images/logo.png' %}" alt=""
+                                                class="attachment-alchemists_team-logo-fit size-alchemists_team-logo-fit wp-post-image" loading="lazy">
+                                            </figure>
+                                            <div class="game-result__team-info" itemprop="performer" itemscope itemtype="http://schema.org/Organization">
+                                                <h5 class="game-result__team-name" itemprop="name">FC Bayern Munich</h5>
+                                                <div class="game-result__team-desc">Julian Nagelsmann</div>
+                                            </div>
+                                        {% endif %}
+                                        </div>
+
+                                        <!-- Game Score -->
+                                        <div class="game-result__score-wrap">
+                                            <div class="game-result__score game-result__score--lg">
+                                                {% if match.at_home == True %}
+                                                    {% if match.scored > match.conceded %}
+                                                        <span class="game-result__score-result game-result__score-result--winner">{{match.scored}}</span>
+                                                        <span class="game-result__score-dash">-</span>
+                                                        <span class="game-result__score-result game-result__score-result--loser">{{match.conceded}}</span>
+                                                    {% elif match.scored == match.conceded %}
+                                                        <span class="game-result__score-result game-result__score-result--loser">{{match.scored}}</span>
+                                                        <span class="game-result__score-dash">-</span>
+                                                        <span class="game-result__score-result game-result__score-result--loser">{{match.conceded}}</span> 
+                                                    {% else %}
+                                                        <span class="game-result__score-result game-result__score-result--loser">{{match.scored}}</span>
+                                                        <span class="game-result__score-dash">-</span>
+                                                        <span class="game-result__score-result game-result__score-result--winner">{{match.conceded}}</span>
+                                                    {% endif %}
+                                                {% else %}
+                                                    {% if match.scored > match.conceded %}
+                                                        <span class="game-result__score-result game-result__score-result--loser">{{match.conceded}}</span>
+                                                        <span class="game-result__score-dash">-</span>
+                                                        <span class="game-result__score-result game-result__score-result--winner">{{match.scored}}</span>
+                                                    {% elif match.scored == match.conceded %}
+                                                        <span class="game-result__score-result game-result__score-result--loser">{{match.conceded}}</span>
+                                                        <span class="game-result__score-dash">-</span>
+                                                        <span class="game-result__score-result game-result__score-result--loser">{{match.scored}}</span> 
+                                                    {% else %}
+                                                        <span class="game-result__score-result game-result__score-result--winner">{{match.conceded}}</span>
+                                                        <span class="game-result__score-dash">-</span>
+                                                        <span class="game-result__score-result game-result__score-result--loser">{{match.scored}}</span>
+                                                    {% endif %}
+                                                {% endif %}
+                                            </div>
+                                            <div class="game-result__score-label"> Final Score </div>
+                                        </div>
+                                        <!-- Game Score / End -->
+
+                                    </div>
+                                    <!-- Team Logos + Game Result / End -->
+                                </section>
+
+
+                                <div class="spacer"></div>
+                                <section class="game-result__section">
+
+
+                                    <header class="game-result__header game-result__header--alt">
+                                        <div class="game-result__header--alt__team">
+                                        {% if match.at_home == True %}
+                                            {% for goal in match.goalscorers_set.all %}
+                                            <span class="game-result__goal">{{goal.name}} - ({{goal.minute}}')
+                                                <i class="game-result__icon sp-icon-soccerball" style="color: #ffffff"></i></span>
+                                            {% endfor %}
+                                        {% else %}
+                                            {% for goal in match.opponent_goalscorers_set.all %}
+                                            <span class="game-result__goal">{{goal.name}} - ({{goal.minute}}')
+                                                <i class="game-result__icon sp-icon-soccerball" style="color: #ffffff"></i></span>
+                                            {% endfor %}
+                                        {% endif %}
+                                        </div>
+                                        <div class="game-result__header--alt__team">
+                                        {% if match.at_home == True %}
+                                            {% for goal in match.opponent_goalscorers_set.all %}
+                                            <span class="game-result__goal">{{goal.name}} - ({{goal.minute}}')
+                                                <i class="game-result__icon sp-icon-soccerball" style="color: #ffffff"></i></span>
+                                            {% endfor %}
+                                        {% else %}
+                                            {% for goal in match.goalscorers_set.all %}
+                                            <span class="game-result__goal">{{goal.name}} - ({{goal.minute}}')
+                                                <i class="game-result__icon sp-icon-soccerball" style="color: #ffffff"></i></span>
+                                            {% endfor %}
+                                        {% endif %}
+                                        </div>
+                                    </header>
+
+
+                                  
+
+
+                                    <!-- Game Stats -->
+                                    <div class="game-result__stats">
+                                        <div class="row">
+                                            <div class="col-12 col-lg-6 order-lg-2 game-result__stats-scoreboard">
+                                                <div class="game-result__table-stats game-result__table-stats--soccer">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-wrap-bordered table-thead-color">
+                                                            <thead>
+                                                                <tr><th colspan="3">Game Statistics</th></tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {% if match.at_home == True %}
+                                                                <tr><td>{{match.shots}}</td><td>Shots</td><td>{{match.shots_opp}}</td></tr>
+                                                                <tr><td>{{match.shots_target}}</td><td>Shots on Goal</td><td>{{match.shots_target_opp}}</td></tr>
+                                                                <tr><td>{{match.corners}}</td><td>Corner Kick</td><td>{{match.corners_opp}}</td></tr>
+                                                                <tr><td>{{match.yellows}}</td><td>Yellow cards</td><td>{{match.yellows_opp}}</td></tr>
+                                                                <tr><td>{{match.reds}}</td><td>Red cards</td><td>{{match.reds_opp}}</td></tr>
+                                                                <tr><td>{{match.saves}}</td><td>Saves</td><td>{{match.saves_opp}}</td></tr>
+                                                                {% else %}
+                                                                <tr><td>{{match.shots_opp}}</td><td>Shots</td><td>{{match.shots}}</td></tr>
+                                                                <tr><td>{{match.shots_target_opp}}</td><td>Shots on Goal</td><td>{{match.shots_target}}</td></tr>
+                                                                <tr><td>{{match.corners_opp}}</td><td>Corner Kick</td><td>{{match.corners}}</td></tr>
+                                                                <tr><td>{{match.yellows_opp}}</td><td>Yellow cards</td><td>{{match.yellows}}</td></tr>
+                                                                <tr><td>{{match.reds_opp}}</td><td>Red cards</td><td>{{match.reds}}</td></tr>
+                                                                <tr><td>{{match.saves_opp}}</td><td>Saves</td><td>{{match.saves}}</td></tr>
+                                                                {% endif %}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            
+                                            <div class="col-6 col-lg-3 order-lg-1 game-result__stats-team-1">
+                                                <div class="row">
+                                                    {% if match.at_home == True %}
+                                                    <div class="col-6">
+                                                        <div class="circular circular--size-70">
+                                                            <div class="circular__bar" data-percent="{{match.pass_acc}}" data-bar-color="rgb(220, 5, 45)">
+                                                                <span class="circular__percents">{{match.pass_acc}}<small>%</small></span>
+                                                            </div>
+                                                            <span class="circular__label">Pass Accuracy</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="circular circular--size-70">
+                                                            <div class="circular__bar" data-percent="{{match.shot_acc}}" data-bar-color="rgb(220, 5, 45)">
+                                                                <span class="circular__percents">{{match.shot_acc}}<small>%</small></span>
+                                                            </div>
+                                                            <span class="circular__label">Shot Accuracy</span>
+                                                        </div>
+                                                    </div>
+                                                    {% else %}
+                                                    <div class="col-6">
+                                                        <div class="circular circular--size-70">
+                                                            <div class="circular__bar" data-percent="{{match.pass_acc_opp}}" data-bar-color="{{match.opponent.color}}">
+                                                                <span class="circular__percents">{{match.pass_acc_opp}}<small>%</small></span>
+                                                            </div>
+                                                            <span class="circular__label">Pass Accuracy</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="circular circular--size-70">
+                                                            <div class="circular__bar" data-percent="{{match.shot_acc_opp}}" data-bar-color="{{match.opponent.color}}">
+                                                                <span class="circular__percents">{{match.shot_acc_opp}}<small>%</small></span>
+                                                            </div>
+                                                            <span class="circular__label">Shot Accuracy</span>
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+                                                </div>
+
+
+
+                                                <div class="spacer"></div>
+                                                <table class="progress-table progress-table--xs-space progress-table--fullwidth progress-table--bar-fullwidth">
+                                                    <tbody>
+                                                        {% if match.at_home == True %}
+                                                        <tr>
+                                                            <td class="progress-table__progress-label progress-table__progress-label--highlight"> OFF </td>
+                                                            <td class="progress-table__progress-bar">
+                                                                <div class="progress">
+                                                                    <div class="progress__bar" style="width: {% call_offsides match.offsides match.offsides_opp %}%; background-color: rgb(220, 5, 45)"
+                                                                        role="progressbar" aria-valuenow="{% call_offsides match.offsides match.offsides_opp %}" aria-valuemin="0" aria-valuemax="100">
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="progress-table__progress-label font-weight-normal"> {{ match.offsides }} </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="progress-table__progress-label progress-table__progress-label--highlight"> F </td>
+                                                            <td class="progress-table__progress-bar">
+                                                                <div class="progress">
+                                                                    <div class="progress__bar" style="width: {% call_fouls match.fouls match.fouls_opp %}%; background-color: rgb(220, 5, 45)"
+                                                                        role="progressbar" aria-valuenow="{% call_fouls match.fouls match.fouls_opp %}" aria-valuemin="0" aria-valuemax="100">
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="progress-table__progress-label font-weight-normal"> {{ match.fouls }} </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="progress-table__progress-label progress-table__progress-label--highlight"> SH </td>
+                                                            <td class="progress-table__progress-bar">
+                                                                <div class="progress">
+                                                                    <div class="progress__bar" style="width: {% call_shots match.shots match.shots_opp %}%; background-color: rgb(220, 5, 45)"
+                                                                        role="progressbar" aria-valuenow="{% call_shots match.shots match.shots_opp %}" aria-valuemin="0" aria-valuemax="100">
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="progress-table__progress-label font-weight-normal"> {{ match.shots }} </td>
+                                                        </tr>
+                                                        {% else %}
+                                                        <tr>
+                                                            <td class="progress-table__progress-label progress-table__progress-label--highlight"> OFF </td>
+                                                            <td class="progress-table__progress-bar">
+                                                                <div class="progress">
+                                                                    <div class="progress__bar" style="width: {% call_offsides match.offsides_opp match.offsides %}%; background-color: {{match.opponent.color}}"
+                                                                        role="progressbar" aria-valuenow="{% call_offsides match.offsides_opp match.offsides %}" aria-valuemin="0" aria-valuemax="100">
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="progress-table__progress-label font-weight-normal"> {{ match.offsides_opp }} </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="progress-table__progress-label progress-table__progress-label--highlight"> F </td>
+                                                            <td class="progress-table__progress-bar">
+                                                                <div class="progress">
+                                                                    <div class="progress__bar" style="width: {% call_fouls match.fouls_opp match.fouls %}%; background-color: {{match.opponent.color}}"
+                                                                        role="progressbar" aria-valuenow="{% call_fouls match.fouls_opp match.fouls %}" aria-valuemin="0" aria-valuemax="100">
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="progress-table__progress-label font-weight-normal"> {{ match.fouls_opp }} </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="progress-table__progress-label progress-table__progress-label--highlight"> SH </td>
+                                                            <td class="progress-table__progress-bar">
+                                                                <div class="progress">
+                                                                    <div class="progress__bar" style="width: {% call_shots match.shots_opp match.shots %}%; background-color: {{match.opponent.color}}"
+                                                                        role="progressbar" aria-valuenow="{% call_shots match.shots_opp match.shots %}" aria-valuemin="0" aria-valuemax="100">
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="progress-table__progress-label font-weight-normal"> {{ match.shots_opp }} </td>
+                                                        </tr>
+                                                        {% endif %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+
+                                            <div class="col-6 col-lg-3 order-lg-3 game-result__stats-team-2">
+                                                <div class="row">
+                                                    {% if match.at_home == True %}
+                                                    <div class="col-6">
+                                                        <div class="circular circular--size-70">
+                                                            <div class="circular__bar" data-percent="{{match.pass_acc_opp}}" data-bar-color="{{match.opponent.color}}">
+                                                                <span class="circular__percents">{{match.pass_acc_opp}}<small>%</small></span>
+                                                            </div>
+                                                            <span class="circular__label">Pass Accuracy</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="circular circular--size-70">
+                                                            <div class="circular__bar" data-percent="{{match.shot_acc_opp}}" data-bar-color="{{match.opponent.color}}">
+                                                                <span class="circular__percents">{{match.shot_acc_opp}}<small>%</small></span>
+                                                            </div>
+                                                            <span class="circular__label">Shot Accuracy</span>
+                                                        </div>
+                                                    </div>
+                                                    {% else %}
+                                                    <div class="col-6">
+                                                        <div class="circular circular--size-70">
+                                                            <div class="circular__bar" data-percent="{{match.pass_acc}}" data-bar-color="rgb(220, 5, 45)">
+                                                                <span class="circular__percents">{{match.pass_acc}}<small>%</small></span>
+                                                            </div>
+                                                            <span class="circular__label">Pass Accuracy</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="circular circular--size-70">
+                                                            <div class="circular__bar" data-percent="{{match.shot_acc}}" data-bar-color="rgb(220, 5, 45)">
+                                                                <span class="circular__percents">{{match.shot_acc}}<small>%</small></span>
+                                                            </div>
+                                                            <span class="circular__label">Shot Accuracy</span>
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+                                                </div>
+
+
+                                                <div class="spacer"></div>
+                                                <table class="progress-table progress-table--xs-space progress-table--fullwidth progress-table--bar-fullwidth">
+                                                    <tbody>
+                                                        {% if match.at_home == True %}
+                                                        <tr>
+                                                            <td class="progress-table__progress-label font-weight-normal"> {{ match.offsides_opp }} </td>
+                                                            <td class="progress-table__progress-bar progress-table__progress-bar--inverse">
+                                                                <div class="progress">
+                                                                    <div class="progress__bar progress__bar--success" style="width: {% call_offsides match.offsides_opp match.offsides %}%; background-color: {{match.opponent.color}}"
+                                                                        role="progressbar" aria-valuenow="{% call_offsides match.offsides_opp match.offsides %}" aria-valuemin="0" aria-valuemax="100">
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="progress-table__progress-label progress-table__progress-label--highlight"> OFF </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="progress-table__progress-label font-weight-normal"> {{ match.fouls_opp }} </td>
+                                                            <td class="progress-table__progress-bar progress-table__progress-bar--inverse">
+                                                                <div class="progress">
+                                                                    <div class="progress__bar progress__bar--success" style="width: {% call_fouls match.fouls_opp match.fouls %}%; background-color: {{match.opponent.color}}"
+                                                                        role="progressbar" aria-valuenow="{% call_fouls match.fouls_opp match.fouls %}" aria-valuemin="0" aria-valuemax="100">
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="progress-table__progress-label progress-table__progress-label--highlight"> F </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="progress-table__progress-label font-weight-normal"> {{ match.shots_opp }} </td>
+                                                            <td class="progress-table__progress-bar progress-table__progress-bar--inverse">
+                                                                <div class="progress">
+                                                                    <div class="progress__bar progress__bar--success" style="width: {% call_shots match.shots_opp match.shots %}%; background-color: {{match.opponent.color}}"
+                                                                        role="progressbar" aria-valuenow="{% call_shots match.shots_opp match.shots %}" aria-valuemin="0" aria-valuemax="100">
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="progress-table__progress-label progress-table__progress-label--highlight"> SH </td>
+                                                        </tr>
+                                                        {% else %}
+                                                        <tr>
+                                                            <td class="progress-table__progress-label font-weight-normal"> {{ match.offsides }} </td>
+                                                            <td class="progress-table__progress-bar progress-table__progress-bar--inverse">
+                                                                <div class="progress">
+                                                                    <div class="progress__bar progress__bar--success" style="width: {% call_offsides match.offsides match.offsides_opp %}%; background-color: rgb(220, 5, 45)"
+                                                                        role="progressbar" aria-valuenow="{% call_offsides match.offsides match.offsides_opp %}" aria-valuemin="0" aria-valuemax="100">
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="progress-table__progress-label progress-table__progress-label--highlight"> OFF </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="progress-table__progress-label font-weight-normal"> {{ match.fouls}} </td>
+                                                            <td class="progress-table__progress-bar progress-table__progress-bar--inverse">
+                                                                <div class="progress">
+                                                                    <div class="progress__bar progress__bar--success" style="width: {% call_fouls match.fouls match.fouls_opp %}%; background-color: rgb(220, 5, 45)"
+                                                                        role="progressbar" aria-valuenow="{% call_fouls match.fouls match.fouls_opp %}" aria-valuemin="0" aria-valuemax="100">
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="progress-table__progress-label progress-table__progress-label--highlight"> F </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="progress-table__progress-label font-weight-normal"> {{ match.shots }} </td>
+                                                            <td class="progress-table__progress-bar progress-table__progress-bar--inverse">
+                                                                <div class="progress">
+                                                                    <div class="progress__bar progress__bar--success" style="width: {% call_shots match.shots match.shots_opp %}%; background-color: rgb(220, 5, 45)"
+                                                                        role="progressbar" aria-valuenow="{% call_shots match.shots match.shots_opp %}" aria-valuemin="0" aria-valuemax="100">
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="progress-table__progress-label progress-table__progress-label--highlight"> SH </td>
+                                                        </tr>
+                                                        {% endif %}
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Game Stats / End -->
+
+                                </section>
+                                <!-- Ball Possession -->
+                                <section class="game-result__section">
+                                    <header class="game-result__subheader card__subheader">
+                                        <h5 class="game-result__subtitle">Ball Possession</h5>
+                                    </header>
+                                    <div class="game-result__content">
+
+                                        <!-- Progress: Ball Possession -->
+                                        <div class="progress-double-wrapper">
+                                            <div class="spacer-sm"></div>
+                                            <div class="progress-inner-holder">
+                                                {% if match.at_home == True %}
+                                                <div class="progress__digit progress__digit--left progress__digit--highlight"> {{ match.possession }}%</div>
+                                                <div class="progress__double">
+                                                    <div class="progress progress--lg">
+                                                        <div class="progress__bar" role="progressbar" aria-valuenow="{{ match.possession }}" aria-valuemin="0"
+                                                            aria-valuemax="100" style="width: {{ match.possession }}%; background-color: rgb(220, 5, 45)">
+                                                        </div>
+                                                    </div>
+                                                    <div class="progress progress--lg">
+                                                        <div class="progress__bar progress__bar--success" role="progressbar" aria-valuenow="{% get_other_possession match.possession %}"
+                                                            aria-valuemin="0" aria-valuemax="100" style="width: {% get_other_possession match.possession %}%; background-color:{{match.opponent.color}}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="progress__digit progress__digit--right progress__digit--highlight"> {% get_other_possession match.possession %}%</div>
+                                                {% else %}
+                                                <div class="progress__digit progress__digit--left progress__digit--highlight"> {% get_other_possession match.possession %}%</div>
+                                                <div class="progress__double">
+                                                    <div class="progress progress--lg">
+                                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% get_other_possession match.possession %}" aria-valuemin="0"
+                                                            aria-valuemax="100" style="width: {% get_other_possession match.possession %}%; background-color: {{match.opponent.color}}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="progress progress--lg">
+                                                        <div class="progress__bar progress__bar--success" role="progressbar" aria-valuenow="{{ match.possession }}"
+                                                            aria-valuemin="0" aria-valuemax="100" style="width: {{ match.possession }}%; background-color: rgb(220, 5, 45)">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="progress__digit progress__digit--right progress__digit--highlight"> {{ match.possession }}%</div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <!-- Progress: Ball Possession / End -->
+                                    </div>
+                                </section>
+                                <!-- Ball Possession / End -->
+
+
+
+                                <!-- Game Timeline -->
+                                <section class="game-result__section">
+                                    <header class="game-result__subheader card__subheader">
+                                        <h5 class="game-result__subtitle">Game Timeline</h5>
+                                    </header>
+                                    <div class="game-result__content game-result__content--block game-result__content--visible mb-0">
+
+                                        <!-- Timeline -->
+                                        <div class="game-timeline-wrapper game-timeline-wrapper--horizontal">
+
+                                            <div class="game-timeline-teams">
+                                                <div class="game-timeline__event game-timeline__event--kickoff game-timeline__event--side-away" title="Kick Off">
+
+                                                    {% if match.at_home == True %}
+                                                    <span class="game-timeline__team-logo" title="{{match.opponent}}"><img width="125" height="125" src="/media/{{match.opponent.logo}}"
+                                                        class="attachment-sportspress-fit-icon size-sportspress-fit-icon wp-post-image" alt="" loading="lazy"></span>
+                                                    {% else %}
+                                                    <span class="game-timeline__team-logo" title="FC_Bayern"><img width="125" height="125" src="{% static 'images/logo.png' %}"
+                                                        class="attachment-sportspress-fit-icon size-sportspress-fit-icon wp-post-image" alt="" loading="lazy"></span>
+                                                    {% endif %}
+
+                                                    <div class="game-timeline__time game-timeline__time--kickoff game-timeline__time--kickoff-away">KO</div>
+                                                </div>
+                                                <div class="game-timeline__event game-timeline__event--kickoff game-timeline__event--side-home" title="Kick Off">
+
+                                                    {% if match.at_home == True %}
+                                                    <span class="game-timeline__team-logo" title="FC_Bayern"><img width="125" height="125" src="{% static 'images/logo.png' %}"
+                                                        class="attachment-sportspress-fit-icon size-sportspress-fit-icon wp-post-image" alt="" loading="lazy"></span>
+                                                    {% else %}
+                                                    <span class="game-timeline__team-logo" title="{{match.opponent}}"><img width="125" height="125" src="/media/{{match.opponent.logo}}"
+                                                        class="attachment-sportspress-fit-icon size-sportspress-fit-icon wp-post-image" alt="" loading="lazy"></span>
+                                                    {% endif %}
+
+                                                    <div class="game-timeline__time game-timeline__time--kickoff game-timeline__time--kickoff-home">KO</div>
+                                                </div>
+                                            </div>
+                                           
+
+                                            <div class="game-timeline">
+                                            {% for event in events %}
+                                            {% if match.at_home == True %}
+                                                {% if event.homeside == True %}
+                                                
+                                                <div class="game-timeline__event game-timeline__event--side-home" style="left: {{event.minute}}%;">
+                                                    <div class="game-timeline__event-info game-timeline__event-info--side-home">
+                                                        <div class="game-timeline__event-name">{{event.who}}</div>
+                                                        <div class="game-timeline__icon game-timeline__icon--home">
+                                                        {% if event.name.name == "Yellow Card" %}
+                                                            <i class="sp-icon-card" title="Yellow Card" style="color:#f4d014 !important"></i>
+                                                        {% elif event.name.name == 'Red Card' %}
+                                                            <i class="sp-icon-card" title="Red Card" style="color:#d4000f !important"></i>
+                                                        {% elif event.name.name == 'Goal' %}
+                                                            <i class="sp-icon-soccerball" title="Goal" style="color:#ffffff !important"></i>
+                                                        {% else %}
+                                                            <i class="sp-icon-sub" title="Substitution"></i>
+                                                        {% endif %}
+                                                        </div>
+                                                    </div>
+                                                    <div class="game-timeline__time" data-toggle="tooltip" data-placement="top" title="{{event.who}}">{{event.minute}}'</div>
+                                                </div>
+                                                {% else %}
+                                                <div class="game-timeline__event game-timeline__event--side-away" style="left: {{event.minute}}%;">
+                                                    <div class="game-timeline__event-info game-timeline__event-info--side-away">
+                                                        <div class="game-timeline__event-name">{{event.who}}</div>
+                                                        <div class="game-timeline__icon game-timeline__icon--away">
+                                                        {% if event.name.name == 'Yellow Card' %}
+                                                            <i class="sp-icon-card" title="Yellow Card" style="color:#f4d014 !important"></i>
+                                                        {% elif event.name.name == 'Red Card' %}
+                                                            <i class="sp-icon-card" title="Red Card" style="color:#d4000f !important"></i>
+                                                        {% elif event.name.name == 'Goal' %}
+                                                            <i class="sp-icon-soccerball" title="Goal" style="color:#ffffff !important"></i>
+                                                        {% else %}
+                                                            <i class="sp-icon-sub" title="Substitution"></i>
+                                                        {% endif %}
+                                                        </div>
+                                                    </div>
+                                                    <div class="game-timeline__time" data-toggle="tooltip" data-placement="top" title="{{event.who}}">{{event.minute}}'</div>
+                                                </div>
+                                                {% endif %}
+
+                                            {% else %}
+                                                {% if event.homeside == True %}
+                                                
+                                                <div class="game-timeline__event game-timeline__event--side-away" style="left: {{event.minute}}%;">
+                                                    <div class="game-timeline__event-info game-timeline__event-info--side-away">
+                                                        <div class="game-timeline__event-name">{{event.who}}</div>
+                                                        <div class="game-timeline__icon game-timeline__icon--away">
+                                                        {% if event.name.name == "Yellow Card" %}
+                                                            <i class="sp-icon-card" title="Yellow Card" style="color:#f4d014 !important"></i>
+                                                        {% elif event.name.name == 'Red Card' %}
+                                                            <i class="sp-icon-card" title="Red Card" style="color:#d4000f !important"></i>
+                                                        {% elif event.name.name == 'Goal' %}
+                                                            <i class="sp-icon-soccerball" title="Goal" style="color:#ffffff !important"></i>
+                                                        {% else %}
+                                                            <i class="sp-icon-sub" title="Substitution"></i>
+                                                        {% endif %}
+                                                        </div>
+                                                    </div>
+                                                    <div class="game-timeline__time" data-toggle="tooltip" data-placement="top" title="{{event.who}}">{{event.minute}}'</div>
+                                                </div>
+                                                {% else %}
+                                                <div class="game-timeline__event game-timeline__event--side-home" style="left: {{event.minute}}%;">
+                                                    <div class="game-timeline__event-info game-timeline__event-info--side-home">
+                                                        <div class="game-timeline__event-name">{{event.who}}</div>
+                                                        <div class="game-timeline__icon game-timeline__icon--home">
+                                                        {% if event.name.name == 'Yellow Card' %}
+                                                            <i class="sp-icon-card" title="Yellow Card" style="color:#f4d014 !important"></i>
+                                                        {% elif event.name.name == 'Red Card' %}
+                                                            <i class="sp-icon-card" title="Red Card" style="color:#d4000f !important"></i>
+                                                        {% elif event.name.name == 'Goal' %}
+                                                            <i class="sp-icon-soccerball" title="Goal" style="color:#ffffff !important"></i>
+                                                        {% else %}
+                                                            <i class="sp-icon-sub" title="Substitution"></i>
+                                                        {% endif %}
+                                                        </div>
+                                                    </div>
+                                                    <div class="game-timeline__time" data-toggle="tooltip" data-placement="top" title="{{event.who}}">{{event.minute}}'</div>
+                                                </div>
+                                                {% endif %}
+
+                                            {% endif %}
+                                            {% endfor %}
+                                            </div>
+
+                                            <div class="game-timeline-ft">
+                                                <div class="game-timeline__event game-timeline__event--ft" title="Full Time">
+                                                    <div class="game-timeline__time">FT</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Timeline / End -->
+
+                                        <div class="spacer-sm"></div>
+                                        <div class="game-result__section-decor"></div>
+                                    </div>
+                                </section>
+
+
+                            </div>
+                            <!-- Game Result / End -->
+                        </div>
+                    </div>
+                </div>
+                <div class="sp-section-content sp-section-content-excerpt"></div>
+                <div class="sp-section-content sp-section-content-content">
+                    <div class="sp-post-content">
+                        <h3 class="sp-post-caption">Summary</h3>
+                        <p>{{match.summary}}</p>
+                    </div>
+                </div>
+                <div class="sp-section-content sp-section-content-video">
+                    <div class="card card--no-paddings sp-template sp-template-event-video sp-event-video">
+                        <div class="card__header">
+                            <h4 class="sp-table-caption">Highlights</h4>
+                        </div>
+                        <div class="card__content text-center">
+                            <div class="alc-embeded-player alc-embeded-player--container">
+                                <iframe width="640" height="360" src="{{match.video_url}}" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            
+            </div><!-- #primary -->
+
+
+            <aside id="secondary" class="sidebar widget-area col-lg-4">
+
+                <div id="df-social-count-1" class="widget widget--sidebar card df-social-count-widget">
+                    <div class="widget__content card__content">
+                        <div class="df-social-count df-social-count--columns"><a
+                                class="btn-social-counter btn-social-counter--facebook"
+                                href="https://www.facebook.com/danfisher.dev" rel="nofollow noopener noreferrer"
+                                target="_blank">
+                                <div class="btn-social-counter__icon"><i class="fa fa-facebook"></i></div>
+                                <h6 class="btn-social-counter__title">Like our Facebook page</h6><span
+                                    class="btn-social-counter__count"><span
+                                        class="btn-social-counter__count-num">307</span> likes</span><span
+                                    class="btn-social-counter__add-icon"></span>
+                            </a><a class="btn-social-counter btn-social-counter--twitter"
+                                href="https://twitter.com/danfisher_dev" rel="nofollow noopener noreferrer"
+                                target="_blank">
+                                <div class="btn-social-counter__icon"><i class="fa fa-twitter"></i></div>
+                                <h6 class="btn-social-counter__title">Follow us on Twitter</h6><span
+                                    class="btn-social-counter__count"><span
+                                        class="btn-social-counter__count-num">275</span> followers</span><span
+                                    class="btn-social-counter__add-icon"></span>
+                            </a><a class="btn-social-counter btn-social-counter--instagram"
+                                href="https://instagram.com/dan.fisher.dev" rel="nofollow noopener noreferrer"
+                                target="_blank">
+                                <div class="btn-social-counter__icon"><i class="fa fa-instagram"></i></div>
+                                <h6 class="btn-social-counter__title">Follow us on Instagram</h6><span
+                                    class="btn-social-counter__count"><span
+                                        class="btn-social-counter__count-num">0</span> followers</span><span
+                                    class="btn-social-counter__add-icon"></span>
+                            </a></div>
+                    </div>
+                </div>
+                
+                
+                {% include 'includes/widgets/popular_news.html' %}
+
+
+                <div id="tag_cloud-1" class="widget widget--sidebar card widget_tag_cloud">
+                    <div class="widget__content card__content"></div>
+                    <div class="widget__title card__header">
+                        <h4>Tag Cloud</h4>
+                    </div>
+                    <div class="widget__content card__content">
+                        <div class="tagcloud"><a href="../../tag/alchemists/index.html"
+                                class="tag-cloud-link tag-link-19 btn btn-primary btn-xs btn-outline btn-sm  tag-link-position-1"
+                                aria-label="Alchemists (10 items)">Alchemists</a>
+                            <a href="../../tag/awards/index.html"
+                                class="tag-cloud-link tag-link-21 btn btn-primary btn-xs btn-outline btn-sm  tag-link-position-2"
+                                aria-label="awards (2 items)">awards</a>
+                            <a href="../../tag/coach/index.html"
+                                class="tag-cloud-link tag-link-23 btn btn-primary btn-xs btn-outline btn-sm  tag-link-position-3"
+                                aria-label="Coach (2 items)">Coach</a>
+                            <a href="../../tag/injuries/index.html"
+                                class="tag-cloud-link tag-link-26 btn btn-primary btn-xs btn-outline btn-sm  tag-link-position-4"
+                                aria-label="Injuries (3 items)">Injuries</a>
+                            <a href="../../tag/playoffs/index.html"
+                                class="tag-cloud-link tag-link-29 btn btn-primary btn-xs btn-outline btn-sm  tag-link-position-5"
+                                aria-label="Playoffs (5 items)">Playoffs</a>
+                            <a href="../../tag/stadium/index.html"
+                                class="tag-cloud-link tag-link-30 btn btn-primary btn-xs btn-outline btn-sm  tag-link-position-6"
+                                aria-label="stadium (6 items)">stadium</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="media_image-1" class="widget widget--sidebar card widget_media_image">
+                    <div class="widget__content card__content"></div>
+                    <div class="widget__title card__header">
+                        <h4>Advertisement</h4>
+                    </div>
+                    <div class="widget__content card__content"><a href="http://bit.ly/2y4ZKHd"><img width="300"
+                                height="250" src="../../wp-content/uploads/2018/04/banner.jpg"
+                                class="image wp-image-1264  attachment-medium size-medium" alt="" loading="lazy"
+                                style="max-width: 100%; height: auto;"
+                                srcset="https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2018/04/banner.jpg 300w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2018/04/banner-128x107.jpg 128w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2018/04/banner-32x27.jpg 32w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2018/04/banner-70x58.jpg 70w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2018/04/banner-100x83.jpg 100w"
+                                sizes="(max-width: 300px) 100vw, 300px" /></a></div>
+                </div>
+                
+                {% include 'includes/widgets/tabbed_news.html' %}
+
+            </aside><!-- #secondary -->
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
