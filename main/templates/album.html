@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="page-heading page-heading--has-bg" style="background-image: url('/media/{{all_images.first.parent_album.featured_image}}')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <h1 class='page-heading__title'>{{all_images.first.parent_album.title}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="site-content" id="content">
+
+    <div class="container">
+        <div class="content-title">
+            <a href="{% url 'roster' %}" class="btn btn-xs btn-default btn-outline">Go Back</a>
+        </div>
+    </div>
+
+    <div id="primary" class="content-area">
+        <main id="main" class="site-main ">
+
+            <!-- Gallery Album -->
+            <div class="album album--condensed">
+                <div class="row">
+
+                    {% for cur_image in all_images %}
+                    <div class="album__item col-6 col-sm-4">
+                        <div class="album__item-holder">
+                            <figure class="album__thumb">
+                                <img src="/media/{{cur_image.image}}" alt="">
+                            </figure>
+                            <div class="album__item-desc">
+                                <h4 class="album__item-title">{{cur_image.description}}</h4>
+                                <div class="album__item-date">{{cur_image.date|date:"F j, Y"}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+            <!-- Gallery Album / End -->
+
+        </main>
+    </div>
+</div>
+
+{% endblock %}

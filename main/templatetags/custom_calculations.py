@@ -29,8 +29,10 @@ def get_other_possession(possession):
         return 0
     return (100 - possession)
 
-'''@register.simple_tag
-def progress_bar(total_quantity, availability):
-    progress_precent = availability
-    progress_precent = availability/total_quantity * 100
-    return math.floor(progress_precent)'''
+@register.simple_tag
+def player_rating_percent(rating):
+    if rating is None:
+        return 0
+    return (rating * 10)
+
+

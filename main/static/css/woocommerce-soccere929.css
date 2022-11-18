@@ -2154,7 +2154,7 @@ button.pswp__button--zoom:hover {
 .woocommerce-message strong,
 .woocommerce-error strong,
 .woocommerce-info strong {
-  color: #31404b;
+  color: #fffd07;
   font-size: 11px;
   text-transform: uppercase;
   font-family: "Montserrat", sans-serif;

@@ -1,0 +1,421 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load custom_calculations %}
+
+{% include 'includes/widgets/right_tab.html' %}
+        
+<div class="player-heading player-heading--has-bg">
+    <div class="container">
+        <div class="player-info__title player-info__title--mobile">
+            <div class="player-info__number">{{player.kit_no}}</div>
+            <h1 class="player-info__name">{{player.name}}</h1>
+        </div>
+
+        <div class="player-info">
+            <!-- Player Photo -->
+            <div class="player-info__item player-info__item--photo">
+                <figure class="player-info__photo"><img src="/media/{{player.profile_pic}}" alt=""></figure>
+            </div>
+            <!-- Player Photo / End -->
+
+            <!-- Player Details -->
+            <div class="player-info__item player-info__item--details player-info__item--details-horizontal">
+                <div class="player-info__title player-info__title--desktop">
+                    <div class="player-info__number">{{player.kit_no}}</div>
+                    <h1 class="player-info__name">{{player.name}}</h1>
+                </div>
+
+                <div class="player-info-details">
+                    <div class="player-info-details__item player-info-details__item--height">
+                        <h6 class="player-info-details__title">Height</h6>
+                        <div class="player-info-details__value">{{player.height}}m</div>
+                    </div>
+                    <div class="player-info-details__item player-info-details__item--weight">
+                        <h6 class="player-info-details__title">Weight</h6>
+                        <div class="player-info-details__value">{{player.weight}}kg</div>
+                    </div>
+                    <div class="player-info-details__item player-info-details__item--age">
+                        <h6 class="player-info-details__title">Age</h6>
+                        <div class="player-info-details__value">{{player.age}}</div>
+                    </div>
+                    <div class="player-info-details__item player-info-details__item--birthday">
+                        <h6 class="player-info-details__title">Birthday</h6>
+                        <div class="player-info-details__value">{{player.born|date:"F j, Y"}}</div>
+                    </div>
+                    <div class="player-info-details__item player-info-details__item--past-team">
+                        <h6 class="player-info-details__title">Past Team</h6>
+                        <div class="player-info-details__value">{{player.past_club}}</div>
+                    </div>
+                    <div class="player-info-details__item player-info-details__item--nationality">
+                        <h6 class="player-info-details__title">Nationality</h6>
+                        <div class="player-info-details__value"><img src="{{player.nationality.flag}}" style="max-width:22px"
+                            class="player-info-details__flag">{{player.nationality.name}}</div>
+                    </div>
+                    <div class="player-info-details__item player-info-details__item--position">
+                        <h6 class="player-info-details__title">Position</h6>
+                        <div class="player-info-details__value">{{player.position}}</div>
+                    </div>
+                </div>
+
+                <div class="player-info-stats pt-0">
+                    <div class="player-info-stats__item">
+                        <div class="player-info-details player-info-details--extra-stats"></div>
+                    </div>
+
+                    <div class="player-info-stats__item player-info-stats__item--top-padding">
+                        <div class="circular circular--size-">
+                            <div class="circular__bar" data-percent="{% player_rating_percent player.rating %}" data-line-width="8"
+                                data-track-color="rgba(255,255,255,.2)" data-bar-color="#9fe900">
+                                <span class="circular__percents">{{player.rating}}</span>
+                            </div>
+                            <span class="circular__label">Avg Rating</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Player Details / End -->
+
+        </div>
+    </div>
+</div>
+<!-- Player Pages Filter -->
+<nav class="content-filter">
+    <div class="container">
+        <div class="content-filter__inner">
+            <a href="#" class="content-filter__toggle"></a>
+            <ul class="content-filter__list">
+                <li class="content-filter__item content-filter__item--active" onclick="player_page_switch_tabs(event, 'zzz_biography')">
+                    <span class="content-filter__link">Biography</span>
+                </li>
+                <li class="content-filter__item" onclick="player_page_switch_tabs(event, 'zzz_statistics')">
+                    <span class="content-filter__link">Full Statistics</span>
+                </li>
+                <li class="content-filter__item" onclick="player_page_switch_tabs(event, 'zzz_player_news')">
+                    <span class="content-filter__link">Related News</span>
+                </li>
+                <li class="content-filter__item" onclick="player_page_switch_tabs(event, 'zzz_gallery_tab')">
+                    <span class="content-filter__link">Gallery</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="site-content" id="zzz_biography">
+
+    <div class="container">
+        <div class="row">
+
+            <div class="content col-lg-8">
+
+                <article class="card card--lg post post--single">
+                    <figure class="post__thumbnail">
+                        <img src="/media/{{player.profile_banner}}">
+                    </figure>
+                    <div class="card__content">{{player.biography|safe}}</div>
+                </article>
+
+            </div>
+
+            <!-- Player Sidebar -->
+            <div class="sidebar sidebar--player col-lg-4">
+
+                <!-- Widget: Player Newslog -->
+                {% include 'includes/widgets/player_newslog.html' %}
+                <!-- Widget: Player Newslog / End -->
+
+            </div>
+            <!-- Player Sidebar / End -->
+
+        </div>
+    </div>
+</div>
+<!-- Player Pages Filter / End -->
+<div class="site-content" id="zzz_statistics">
+
+    <div class="container">
+        <div class="row">
+
+            <div id="primary" class="content-area col-lg-12">
+                <main id="main" class="site-main">
+                    <h3 class="sp-post-caption sp-player-statistics-section"></h3>
+
+                    <div class="sp-template sp-template-player-statistics">
+                        <div class="card card--has-table">
+                            <div class="card__header">
+                                <h4>Bundesliga</h4>
+                            </div>
+                            <div class="card__content">
+                                <div class="table-wrapper  table-responsive">
+                                    <table class="table table-hover player-league">
+                                        <thead>
+                                            <tr>
+                                                <th>Season</th><th>Apps</th><th>Minutes</th><th>Goals</th>
+                                                <th>Assists</th><th>Yellows</th><th>Reds</th><th>Own Goals</th>
+                                                <th>Fouls</th><th>Offsides</th><th>PPG</th>
+                                                <th>Win Ratio</th><th>MotM</th><th>Rating</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            {% for league in all_league_stats %}
+                                            <tr>
+                                                <td>{{league.season}}</td><td>{{league.apps}}</td><td>{{league.minutes}}</td><td>{{league.goals}}</td>
+                                                <td>{{league.assists}}</td><td>{{league.yellows}}</td><td>{{league.reds}}</td><td>{{league.own_goals}}</td>
+                                                <td>{{league.fouls}}</td><td>{{league.offsides}}</td><td>{{league.ppg}}</td>
+                                                <td>{{league.win_ratio}}</td><td>{{league.motm}}</td><td>{{league.rating}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                            <tr>
+                                                <td class="sp-highlight">Total</td><td class="sp-highlight">{{league_total.apps}}</td>
+                                                <td class="sp-highlight">{{league_total.minutes}}</td><td class="sp-highlight">{{league_total.goals}}</td>
+                                                <td class="sp-highlight">{{league_total.assists}}</td><td class="sp-highlight">{{league_total.yellows}}</td>
+                                                <td class="sp-highlight">{{league_total.reds}}</td><td class="sp-highlight">{{league_total.own_goals}}</td>
+                                                <td class="sp-highlight">{{league_total.fouls}}</td><td class="sp-highlight">{{league_total.offsides}}</td>
+                                                <td class="sp-highlight">{{league_total.ppg}}</td><td class="sp-highlight">{{league_total.win_ratio}}</td>
+                                                <td class="sp-highlight">{{league_total.motm}}</td><td class="sp-highlight">{{league_total.rating}}</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sp-template sp-template-player-statistics">
+                        <div class="card card--has-table">
+                            <div class="card__header">
+                                <h4>UEFA Champions League</h4>
+                            </div>
+                            <div class="card__content">
+                                <div class="table-wrapper  table-responsive">
+                                    <table class="table table-hover player-league">
+                                        <thead>
+                                            <tr>
+                                                <th>Season</th><th>Apps</th><th>Minutes</th><th>Goals</th>
+                                                <th>Assists</th><th>Yellows</th><th>Reds</th><th>Own Goals</th>
+                                                <th>Fouls</th><th>Offsides</th><th>PPG</th>
+                                                <th>Win Ratio</th><th>MotM</th><th>Rating</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            {% for league in ucl_stats %}
+                                            <tr>
+                                                <td>{{league.season}}</td><td>{{league.apps}}</td><td>{{league.minutes}}</td><td>{{league.goals}}</td>
+                                                <td>{{league.assists}}</td><td>{{league.yellows}}</td><td>{{league.reds}}</td><td>{{league.own_goals}}</td>
+                                                <td>{{league.fouls}}</td><td>{{league.offsides}}</td><td>{{league.ppg}}</td>
+                                                <td>{{league.win_ratio}}</td><td>{{league.motm}}</td><td>{{league.rating}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                            <tr>
+                                                <td class="sp-highlight">Total</td><td class="sp-highlight">{{ucl_total.apps}}</td>
+                                                <td class="sp-highlight">{{ucl_total.minutes}}</td><td class="sp-highlight">{{ucl_total.goals}}</td>
+                                                <td class="sp-highlight">{{ucl_total.assists}}</td><td class="sp-highlight">{{ucl_total.yellows}}</td>
+                                                <td class="sp-highlight">{{ucl_total.reds}}</td><td class="sp-highlight">{{ucl_total.own_goals}}</td>
+                                                <td class="sp-highlight">{{ucl_total.fouls}}</td><td class="sp-highlight">{{ucl_total.offsides}}</td>
+                                                <td class="sp-highlight">{{ucl_total.ppg}}</td><td class="sp-highlight">{{ucl_total.win_ratio}}</td>
+                                                <td class="sp-highlight">{{ucl_total.motm}}</td><td class="sp-highlight">{{ucl_total.rating}}</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sp-template sp-template-player-statistics">
+                        <div class="card card--has-table">
+                            <div class="card__header">
+                                <h4>DFB-Pokal</h4>
+                            </div>
+                            <div class="card__content">
+                                <div class="table-wrapper  table-responsive">
+                                    <table class="table table-hover player-league">
+                                        <thead>
+                                            <tr>
+                                                <th>Season</th><th>Apps</th><th>Minutes</th><th>Goals</th>
+                                                <th>Assists</th><th>Yellows</th><th>Reds</th><th>Own Goals</th>
+                                                <th>Fouls</th><th>Offsides</th><th>PPG</th>
+                                                <th>Win Ratio</th><th>MotM</th><th>Rating</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            {% for league in pokal_stats %}
+                                            <tr>
+                                                <td>{{league.season}}</td><td>{{league.apps}}</td><td>{{league.minutes}}</td><td>{{league.goals}}</td>
+                                                <td>{{league.assists}}</td><td>{{league.yellows}}</td><td>{{league.reds}}</td><td>{{league.own_goals}}</td>
+                                                <td>{{league.fouls}}</td><td>{{league.offsides}}</td><td>{{league.ppg}}</td>
+                                                <td>{{league.win_ratio}}</td><td>{{league.motm}}</td><td>{{league.rating}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                            <tr>
+                                                <td class="sp-highlight">Total</td><td class="sp-highlight">{{pokal_total.apps}}</td>
+                                                <td class="sp-highlight">{{pokal_total.minutes}}</td><td class="sp-highlight">{{pokal_total.goals}}</td>
+                                                <td class="sp-highlight">{{pokal_total.assists}}</td><td class="sp-highlight">{{pokal_total.yellows}}</td>
+                                                <td class="sp-highlight">{{pokal_total.reds}}</td><td class="sp-highlight">{{pokal_total.own_goals}}</td>
+                                                <td class="sp-highlight">{{pokal_total.fouls}}</td><td class="sp-highlight">{{pokal_total.offsides}}</td>
+                                                <td class="sp-highlight">{{pokal_total.ppg}}</td><td class="sp-highlight">{{pokal_total.win_ratio}}</td>
+                                                <td class="sp-highlight">{{pokal_total.motm}}</td><td class="sp-highlight">{{pokal_total.rating}}</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sp-template sp-template-player-statistics">
+                        <div class="card card--has-table">
+                            <div class="card__header">
+                                <h4>Career Total</h4>
+                            </div>
+                            <div class="card__content">
+                                <div class="table-wrapper  table-responsive">
+                                    <table class="table table-hover player-league">
+                                        <thead>
+                                            <tr>
+                                                <th>Season</th><th>Apps</th><th>Minutes</th><th>Goals</th>
+                                                <th>Assists</th><th>Yellows</th><th>Reds</th><th>Own Goals</th>
+                                                <th>Fouls</th><th>Offsides</th><th>PPG</th>
+                                                <th>Win Ratio</th><th>MotM</th><th>Rating</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            {% for season in season_models %}
+                                            <tr>
+                                                <td>{{season.season}}</td><td>{{season.apps}}</td>
+                                                <td>{{season.minutes}}</td><td>{{season.goals}}</td>
+                                                <td>{{season.assists}}</td><td>{{season.yellows}}</td>
+                                                <td>{{season.reds}}</td><td>{{season.own_goals}}</td>
+                                                <td>{{season.fouls}}</td><td>{{season.offsides}}</td>
+                                                <td>{{season.ppg}}</td><td>{{season.win_ratio}}</td>
+                                                <td>{{season.motm}}</td><td>{{season.rating}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                            <tr>
+                                                <td class="sp-highlight">Total</td><td class="sp-highlight">{{grand_total.apps}}</td>
+                                                <td class="sp-highlight">{{grand_total.minutes}}</td><td class="sp-highlight">{{grand_total.goals}}</td>
+                                                <td class="sp-highlight">{{grand_total.assists}}</td><td class="sp-highlight">{{grand_total.yellows}}</td>
+                                                <td class="sp-highlight">{{grand_total.reds}}</td><td class="sp-highlight">{{grand_total.own_goals}}</td>
+                                                <td class="sp-highlight">{{grand_total.fouls}}</td><td class="sp-highlight">{{grand_total.offsides}}</td>
+                                                <td class="sp-highlight">{{grand_total.ppg}}</td><td class="sp-highlight">{{grand_total.win_ratio}}</td>
+                                                <td class="sp-highlight">{{grand_total.motm}}</td><td class="sp-highlight">{{grand_total.rating}}</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </main><!-- #main -->
+            </div><!-- #primary -->
+        </div>
+    </div>
+</div>
+
+<div class="site-content " id="zzz_player_news">
+    <div class="container">
+        <div class="row">
+            <div id="primary" class="content-area col-lg-12">
+                <main id="main" class="site-main">
+                    <div class="posts posts--cards post-grid row">
+
+                        {% for news in player_news %}
+                        <article
+                            class="post-grid__item col-sm-6 col-lg-4 posts__item--category-1 post-91 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-alchemists tag-awards tag-coach tag-stadium">
+                            <div class="posts__item posts__item--card posts__item--category-1 card">
+
+                                <figure class="posts__thumb">
+                                    <div class="posts__cat">
+                                        <span class="label posts__cat-label posts__cat-label--category-1 category-the-team">{{news.news_type}}</span>
+                                    </div>
+                                    <a href="{{news.get_absolute_url}}">
+                                        <img width="380" height="270" src="/media/{{news.image}}" class="attachment-alchemists_thumbnail size-alchemists_thumbnail wp-post-image">
+                                    </a>
+                                </figure>
+                                <div class="posts__inner card__content">
+                                    <a href="{{news.get_absolute_url}}" class="posts__cta"></a>
+                                    <time datetime="2017-04-05T12:23:52+00:00" class="posts__date">{{news.born|date:"F j, Y"}}</time>
+                                    <h2 class="posts__title">
+                                        <a href="{{news.get_absolute_url}}" rel="bookmark">{{news.title}}</a>
+                                    </h2>
+                                    <div class="posts__excerpt">{{news.excerpt|truncatechars:300}}</div>
+                                </div>
+                                <footer class="posts__footer card__footer">
+                                    <div class="post-author">
+                                        <figure class="post-author__avatar">
+                                            <img src='https://secure.gravatar.com/avatar/c4a4bfa7304c328ed1ba7cd74c25c87f?s=24&#038;d=mm&#038;r=g'
+                                                class='avatar avatar-24 photo' height='24' width='24' loading='lazy'>
+                                        </figure>
+                                        <div class="post-author__info">
+                                            <h4 class="post-author__name">{{news.author}}</h4>
+                                        </div>
+                                    </div>
+                                    <div class="post__meta meta">
+                                        <div class="meta__item meta__item--views">{{news.views}}</div>
+                                        <div class="meta__item meta__item--likes ">
+                                            <a href="https://soccer-dark-alc.dan-fisher.dev/wp-admin/admin-ajax.php?action=process_simple_like&post_id=91&nonce=461be8ea1e&is_comment=0&disabled=true"
+                                                class="sl-button sl-button-91" data-nonce="461be8ea1e" data-post-id="91" data-iscomment="0" title="Like">
+                                                <span class="sl-icon"><i class="meta-like icon-heart"></i></span>
+                                                <span class="sl-count">68</span>
+                                            </a>
+                                            <span class="sl-loader"></span></div>
+                                        <div class="meta__item meta__item--comments">
+                                            <a href="https://soccer-dark-alc.dan-fisher.dev/the-new-eco-friendly-stadium-won-a-leafy-award-in-2016/#respond">0</a>
+                                        </div>
+                                    </div>
+                                </footer>
+
+                            </div>
+                        </article><!-- #post-## -->
+                        {% endfor %}
+
+                    </div>
+                </main><!-- #main -->
+            </div><!-- #primary -->
+        </div>
+    </div>
+</div>
+
+<div class="site-content " id="zzz_gallery_tab">
+
+    <div id="primary" class="content-area">
+        <main id="main" class="site-main ">
+            <!-- Gallery Album -->
+            <div class="album-wrapper">
+                <div class="album">
+
+                    {% for img in gallery_images %}
+                    <div class="album__item col-6 col-sm-4">
+                        <div class="album__item-holder album__item-holder--color--primary">
+                            <a href="/media/{{img.image}}" class="album__item-link mp_gallery">
+                                <figure class="album__thumb"><img src="/media/{{img.image}}"></figure>
+                                <div class="album__item-desc">
+                                    <div class="album__item-desc-inner">
+                                        <h4 class="album__item-title">{{img.description}}</h4>
+                                        <div class="album__item-date">{{img.date|date:"F j, Y"}}</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor%}
+
+                </div>
+            </div>
+            <!-- Gallery Album / End -->
+
+        </main><!-- #main -->
+    </div><!-- #primary -->
+</div>
+
+{% endblock %}

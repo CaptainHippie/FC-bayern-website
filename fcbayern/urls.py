@@ -24,5 +24,12 @@ urlpatterns = [
     path('', views.index, name='home'),
     path('news/<slug:slug>', views.NEWS, name='newspage'),
     path('match/', views.MATCH_DETAIL, name='match'),
+    path('player/<slug:slug_name>', views.PLAYER_DETAIL, name='player'),
+    path('roster/', views.CLUB_ROSTER, name='roster'),
+    path('staff/<slug:slug_name>', views.STAFF, name='staff'),
+    path('album/<slug:slug_name>', views.ALBUM, name='album'),
+    path('account/<slug:slug_name>', views.ACCOUNT, name='account'),
+    path('login/', views.REG_LOGIN, name='login'),
+    path('shop/', views.SHOP, name='shop')
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT )

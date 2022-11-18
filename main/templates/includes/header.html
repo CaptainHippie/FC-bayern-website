@@ -59,13 +59,6 @@
     <div class="header__secondary">
       <div class="container">
         <div class="header__secondary-inner">
-          <div class="header-search-form">
-            <form action="https://soccer-dark-alc.dan-fisher.dev/" id="mobile-search-form" class="search-form">
-                {% csrf_token %}
-              <input id="s" name="s" type="text" class="form-control header-mobile__search-control" value="" placeholder="Enter your search here...">
-              <button type="submit" class="header-mobile__search-submit"><i class="fa fa-search"></i></button>
-            </form>
-          </div>
           <ul class="info-block info-block--header">
             <li class="info-block__item info-block__item--contact-primary">
               <svg role="img" class="df-icon df-icon--whistle">
@@ -141,6 +134,14 @@
     </div>
 
     <div class="header__primary">
+      <!-- Header Logo -->
+      <div class="header-logo">
+        <a href="index.html" rel="home">
+          <img src="{% static 'images/logo.png' %}" class="header-logo__img">
+          <header class="club-title">FC Bayern München</header>
+        </a>
+      </div>
+      <!-- Header Logo / End -->
       <div class="container">
         <div class="header__primary-inner">
           <!-- Header Logo -->
@@ -155,470 +156,14 @@
           <!-- Main Navigation -->
           <nav class="main-nav">
             <ul id="menu-primary-menu" class="main-nav__list">
-              <li
-                id="menu-item-588"
-                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-583 current_page_item no-mega-menu"
-              >
-                <a class="menu-item-link" href="index.html">Home</a>
+              <li id="menu-item-588" ="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-583 current_page_item no-mega-menu">
+                <a class="menu-item-link" href="{% url 'home' %}">Home</a>
               </li>
-              <li
-                id="menu-item-1149"
-                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children has-mega-menu"
-              >
-                <a class="menu-item-link" href="#">Features</a>
-                <ul class="main-nav__sub-0 megamenu-item megamenu-col-4">
-                  <li
-                    id="menu-item-1150"
-                    class="col-12 col-lg-3 col-xl-2 menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children megamenu-item col megamenu-col-4"
-                  >
-                    <div class="main-nav__title">Features</div>
-                    <ul
-                      class="main-nav__sub-1 megamenu-item megamenu-col-4"
-                    >
-                      <li
-                        id="menu-item-1155"
-                        class="menu-item menu-item-type-post_type menu-item-object-page"
-                      >
-                        <a
-                          class="menu-item-link"
-                          href="shortcodes/index.html"
-                          >Shortcodes</a
-                        >
-                      </li>
-                      <li
-                        id="menu-item-1190"
-                        class="menu-item menu-item-type-post_type menu-item-object-page"
-                      >
-                        <a
-                          class="menu-item-link"
-                          href="shortcodes/shortcodes-player/index.html"
-                          >Shortcodes – Player</a
-                        >
-                      </li>
-                      <li
-                        id="menu-item-1189"
-                        class="menu-item menu-item-type-post_type menu-item-object-page"
-                      >
-                        <a
-                          class="menu-item-link"
-                          href="shortcodes/shortcodes-club/index.html"
-                          >Shortcodes – Club</a
-                        >
-                      </li>
-                      <li
-                        id="menu-item-1191"
-                        class="menu-item menu-item-type-post_type menu-item-object-page"
-                      >
-                        <a
-                          class="menu-item-link"
-                          href="shortcodes/shortcodes-match/index.html"
-                          >Shortcodes – Match</a
-                        >
-                      </li>
-                      <li
-                        id="menu-item-1154"
-                        class="menu-item menu-item-type-post_type menu-item-object-page"
-                      >
-                        <a
-                          class="menu-item-link"
-                          href="typography/index.html"
-                          >Typography</a
-                        >
-                      </li>
-                      <li
-                        id="menu-item-1192"
-                        class="menu-item menu-item-type-custom menu-item-object-custom"
-                      >
-                        <a
-                          class="menu-item-link"
-                          href="index67b7.html?s=planetrotters"
-                          >Search Results</a
-                        >
-                      </li>
-                      <li
-                        id="menu-item-1193"
-                        class="menu-item menu-item-type-custom menu-item-object-custom"
-                      >
-                        <a class="menu-item-link" href="404.html"
-                          >404 Error Page</a
-                        >
-                      </li>
-                      <li
-                        id="menu-item-1194"
-                        class="menu-item menu-item-type-post_type menu-item-object-page"
-                      >
-                        <a
-                          class="menu-item-link"
-                          href="contact-us/index.html"
-                          >Contact Us</a
-                        >
-                      </li>
-                    </ul>
-                  </li>
-                  <li
-                    id="menu-item-1151"
-                    class="col-12 col-lg-3 col-xl-2 menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children megamenu-item col megamenu-col-4"
-                  >
-                    <div class="main-nav__title">Main Features</div>
-                    <ul
-                      class="main-nav__sub-1 megamenu-item megamenu-col-4"
-                    >
-                      <li
-                        id="menu-item-1364"
-                        class="menu-item menu-item-type-post_type menu-item-object-page"
-                      >
-                        <a class="menu-item-link" href="sponsors/index.html"
-                          >Sponsors</a
-                        >
-                      </li>
-                      <li
-                        id="menu-item-1196"
-                        class="menu-item menu-item-type-custom menu-item-object-custom"
-                      >
-                        <a
-                          class="menu-item-link"
-                          href="team/alchemists/roster/index.html"
-                          >Club Roster</a
-                        >
-                      </li>
-                      <li
-                        id="menu-item-1243"
-                        class="menu-item menu-item-type-post_type menu-item-object-sp_player"
-                      >
-                        <a
-                          class="menu-item-link"
-                          href="player/james-messinal/index.html"
-                          >Player &#8211; Default</a
-                        >
-                      </li>
-                      <li
-                        id="menu-item-1242"
-                        class="menu-item menu-item-type-custom menu-item-object-custom"
-                      >
-                        <a
-                          class="menu-item-link"
-                          href="player/james-messinal/index9d51.html?player_info_layout=vertical"
-                          >Player &#8211; Vertical</a
-                        >
-                      </li>
-                      <li
-                        id="menu-item-1198"
-                        class="menu-item menu-item-type-post_type menu-item-object-page"
-                      >
-                        <a class="menu-item-link" href="news/index.html"
-                          >News</a
-                        >
-                      </li>
-                      <li
-                        id="menu-item-1201"
-                        class="menu-item menu-item-type-post_type menu-item-object-page"
-                      >
-                        <a class="menu-item-link" href="shop/index.html"
-                          >Shop</a
-                        >
-                      </li>
-                      <li
-                        id="menu-item-1200"
-                        class="menu-item menu-item-type-post_type menu-item-object-page"
-                      >
-                        <a class="menu-item-link" href="cart/index.html"
-                          >Shopping Cart</a
-                        >
-                      </li>
-                      <li
-                        id="menu-item-1199"
-                        class="menu-item menu-item-type-post_type menu-item-object-page"
-                      >
-                        <a class="menu-item-link" href="checkout/index.html"
-                          >Checkout</a
-                        >
-                      </li>
-                    </ul>
-                  </li>
-                  <li
-                    id="menu-item-1152"
-                    class="col-12 col-lg-3 col-xl-4 menu-item menu-item-type-custom menu-item-object-custom megamenu-item col megamenu-col-4"
-                  >
-                    <div class="megamenu-widgets-container">
-                      <div
-                        id="recent-posts-widget-3"
-                        class="widget recent-posts"
-                      >
-                        <div
-                          class="posts posts--simple-list posts--simple-list--lg posts--simple-list--lg--clean"
-                        >
-                          <div
-                            class="posts__item posts__item--category-1 post-102 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-alchemists tag-stadium tag-team"
-                          >
-                            <div class="posts__inner">
-                              <div class="posts__cat">
-                                <span
-                                  class="label posts__cat-label posts__cat-label--category-1 category-the-team"
-                                  >The Team</span
-                                >
-                              </div>
-                              <h6
-                                class="posts__title"
-                                title="Alchemists New Stadium is gonna be ready in September"
-                              >
-                                <a
-                                  href="alchemists-new-stadium-is-gonna-be-ready-in-september-2017/index.html"
-                                  >Alchemists New Stadium is gonna be ready
-                                  in September</a
-                                >
-                              </h6>
-                              <time
-                                datetime="2017-03-05T12:12:58+00:00"
-                                class="posts__date"
-                              >
-                                March 5, 2017
-                              </time>
+              <li id="menu-item-1149" class="menu-item menu-item-type-post menu-item-object-page">
+                <a class="menu-item-link" href="{% url 'roster' %}">Team</a>
 
-                              <div class="posts__excerpt">
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.
-                                Ut...
-                              </div>
-                            </div>
-
-                            <div class="posts__footer">
-                              <div class="post-author">
-                                <figure class="post-author__avatar">
-                                  <img
-                                    alt=""
-                                    src="https://secure.gravatar.com/avatar/c4a4bfa7304c328ed1ba7cd74c25c87f?s=24&amp;d=mm&amp;r=g"
-                                    srcset="
-                                      https://secure.gravatar.com/avatar/c4a4bfa7304c328ed1ba7cd74c25c87f?s=48&#038;d=mm&#038;r=g 2x
-                                    "
-                                    class="avatar avatar-24 photo"
-                                    height="24"
-                                    width="24"
-                                    loading="lazy"
-                                  />
-                                </figure>
-                                <div class="post-author__info">
-                                  <h4 class="post-author__name">
-                                    Dan Fisher
-                                  </h4>
-                                </div>
-                              </div>
-
-                              <div class="post__meta meta">
-                                <div class="meta__item meta__item--likes">
-                                  <a
-                                    href="wp-admin/admin-ajax3f66.html?action=process_simple_like&amp;post_id=102&amp;nonce=1316b20c12&amp;is_comment=0&amp;disabled=true"
-                                    class="sl-button sl-button-102"
-                                    data-nonce="1316b20c12"
-                                    data-post-id="102"
-                                    data-iscomment="0"
-                                    title="Like"
-                                    ><span class="sl-icon"
-                                      ><i
-                                        class="meta-like icon-heart"
-                                      ></i></span
-                                    ><span class="sl-count">142</span></a
-                                  ><span class="sl-loader"></span>
-                                </div>
-                                <div
-                                  class="meta__item meta__item--comments"
-                                >
-                                  <a
-                                    href="alchemists-new-stadium-is-gonna-be-ready-in-september-2017/index.html#respond"
-                                    >0</a
-                                  >
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li
-                    id="menu-item-1153"
-                    class="col-12 col-lg-3 col-xl-4 menu-item menu-item-type-custom menu-item-object-custom megamenu-item col megamenu-col-4"
-                  >
-                    <div class="megamenu-widgets-container">
-                      <div
-                        id="recent-posts-widget-4"
-                        class="widget recent-posts"
-                      >
-                        <div class="posts posts--simple-list">
-                          <div
-                            class="posts__item posts__item--category-1 post-91 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-alchemists tag-awards tag-coach tag-stadium"
-                          >
-                            <figure
-                              class="posts__thumb posts__thumb--hover"
-                            >
-                              <a
-                                href="the-new-eco-friendly-stadium-won-a-leafy-award-in-2016/index.html"
-                              >
-                                <img
-                                  width="80"
-                                  height="80"
-                                  src="{% static 'images/post-img3-80x80.jpg' %}"
-                                  class="wp-post-image"
-                                  alt=""
-                                  loading="lazy"
-                                  srcset="
-                                    {% static 'images/post-img3-80x80.jpg' %}    80w,
-                                    {% static 'images/post-img3-300x300.jpg' %} 300w,
-                                    {% static 'images/post-img3-100x100.jpg' %} 100w,
-                                    {% static 'images/post-img3-150x150.jpg' %} 150w,
-                                    {% static 'images/post-img3-400x400.jpg' %} 400w,
-                                    {% static 'images/post-img3-40x40.jpg' %}    40w
-                                  "
-                                  sizes="(max-width: 80px) 100vw, 80px"
-                                />
-                              </a>
-                            </figure>
-
-                            <div class="posts__inner">
-                              <div class="posts__cat">
-                                <span
-                                  class="label posts__cat-label posts__cat-label--category-1 category-the-team"
-                                  >The Team</span
-                                >
-                              </div>
-                              <h6
-                                class="posts__title posts__title--color-hover"
-                                title="The new eco friendly stadium won a Leafy Award in 2016"
-                              >
-                                <a
-                                  href="the-new-eco-friendly-stadium-won-a-leafy-award-in-2016/index.html"
-                                  >The new eco friendly stadium won a Leafy
-                                  Award in 2016</a
-                                >
-                              </h6>
-                              <time
-                                datetime="2017-04-05T12:23:52+00:00"
-                                class="posts__date"
-                              >
-                                April 5, 2017
-                              </time>
-                            </div>
-                          </div>
-
-                          <div
-                            class="posts__item posts__item--category-1 post-90 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-alchemists tag-players tag-playoffs"
-                          >
-                            <figure
-                              class="posts__thumb posts__thumb--hover"
-                            >
-                              <a
-                                href="the-alchemists-team-is-appearing-in-l-a-beach-for-charity/index.html"
-                              >
-                                <img
-                                  width="80"
-                                  height="80"
-                                  src="{% static 'images/post-img5-80x80.jpg' %}"
-                                  class="wp-post-image"
-                                  alt=""
-                                  loading="lazy"
-                                  srcset="
-                                  {% static 'images/post-img5-80x80.jpg' %}    80w,
-                                  {% static 'images/post-img5-300x300.jpg' %} 300w,
-                                  {% static 'images/post-img5-100x100.jpg' %} 100w,
-                                  {% static 'images/post-img5-150x150.jpg' %} 150w,
-                                  {% static 'images/post-img5-400x400.jpg' %} 400w,
-                                  {% static 'images/post-img5-40x40.jpg' %}    40w
-                                  "
-                                  sizes="(max-width: 80px) 100vw, 80px"
-                                />
-                              </a>
-                            </figure>
-
-                            <div class="posts__inner">
-                              <div class="posts__cat">
-                                <span
-                                  class="label posts__cat-label posts__cat-label--category-1 category-the-team"
-                                  >The Team</span
-                                >
-                              </div>
-                              <h6
-                                class="posts__title posts__title--color-hover"
-                                title="The Alchemists team is appearing in L.A. Beach for charity"
-                              >
-                                <a
-                                  href="the-alchemists-team-is-appearing-in-l-a-beach-for-charity/index.html"
-                                  >The Alchemists team is appearing in L.A.
-                                  Beach for charity</a
-                                >
-                              </h6>
-                              <time
-                                datetime="2017-04-05T12:22:43+00:00"
-                                class="posts__date"
-                              >
-                                April 5, 2017
-                              </time>
-                            </div>
-                          </div>
-
-                          <div
-                            class="posts__item posts__item--category-1 post-89 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-alchemists tag-injuries tag-playoffs"
-                          >
-                            <figure
-                              class="posts__thumb posts__thumb--hover"
-                            >
-                              <a
-                                href="brian-kingster-saw-the-red-card-after-a-kick-against-jason-t/index.html"
-                              >
-                                <img
-                                  width="80"
-                                  height="80"
-                                  src="{% static 'images/soccer_post_1-80x80.jpg' %}"
-                                  class="wp-post-image"
-                                  alt=""
-                                  loading="lazy"
-                                  srcset="
-                                  {% static 'images/soccer_post_1-80x80.jpg' %}    80w,
-                                  {% static 'images/soccer_post_1-300x300.jpg' %} 300w,
-                                  {% static 'images/soccer_post_1-100x100.jpg' %} 100w,
-                                  {% static 'images/soccer_post_1-150x150.jpg' %} 150w,
-                                  {% static 'images/soccer_post_1-400x400.jpg' %} 400w,
-                                  {% static 'images/soccer_post_1-40x40.jpg' %}    40w
-                                  "
-                                  sizes="(max-width: 80px) 100vw, 80px"
-                                />
-                              </a>
-                            </figure>
-
-                            <div class="posts__inner">
-                              <div class="posts__cat">
-                                <span
-                                  class="label posts__cat-label posts__cat-label--category-1 category-the-team"
-                                  >The Team</span
-                                >
-                              </div>
-                              <h6
-                                class="posts__title posts__title--color-hover"
-                                title="Brian Kingster saw the red card after a kick against Jason T."
-                              >
-                                <a
-                                  href="brian-kingster-saw-the-red-card-after-a-kick-against-jason-t/index.html"
-                                  >Brian Kingster saw the red card after a
-                                  kick against Jason T.</a
-                                >
-                              </h6>
-                              <time
-                                datetime="2017-04-05T12:21:01+00:00"
-                                class="posts__date"
-                              >
-                                April 5, 2017
-                              </time>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
               </li>
-              <li
-                id="menu-item-1133"
-                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children no-mega-menu"
-              >
+              <li id="menu-item-1133" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children no-mega-menu">
                 <a class="menu-item-link" href="#">SportsPress</a>
                 <ul class="main-nav__sub-0">
                   <li
@@ -819,10 +364,7 @@
                   </li>
                 </ul>
               </li>
-              <li
-                id="menu-item-589"
-                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children no-mega-menu"
-              >
+              <li id="menu-item-589" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children no-mega-menu">
                 <a class="menu-item-link" href="news/index.html">News</a>
                 <ul class="main-nav__sub-0">
                   <li
@@ -905,8 +447,7 @@
                   </li>
                 </ul>
               </li>
-              <li id="menu-item-590"
-                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children no-mega-menu">
+              <li id="menu-item-590" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children no-mega-menu">
                 <a class="menu-item-link" href="shop/index.html">Shop</a>
                 <ul class="main-nav__sub-0">
                   <li id="menu-item-1079"
@@ -930,9 +471,7 @@
             </ul>
 
             <!-- Social Links -->
-            <ul
-              class="social-links social-links--inline social-links--main-nav"
-            >
+            <ul class="social-links social-links--inline social-links--main-nav">
               <li class="social-links__item">
                 <a
                   href="#"

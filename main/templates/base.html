@@ -42,26 +42,10 @@
     <link rel="stylesheet" id="df-compiled-sportspress-css" href="{% static 'css/compiled/df-compiled-sportspress3b23.css' %}" media="all" >
     <script src="{% static 'js/jquery/jquery.minaf6c.js' %}" id="jquery-core-js"></script>
     <script src="{% static 'js/jquery/jquery-migrate.mind617.js' %}" id="jquery-migrate-js"></script>
-    <script id="simple-likes-public-js-js-extra">
-      var simpleLikes = {
-        ajaxurl:
-          "https:\/\/soccer-dark-alc.dan-fisher.dev\/wp-admin\/admin-ajax.php",
-        like: "Like",
-        unlike: "Unlike",
-      };
-    </script>
+
     <script src="{% static 'js/simple-likes-public-min6a79.js' %}" id="simple-likes-public-js-js"></script>
     <script src="{% static 'js/jquery.blockUI.mine230.js' %}" id="jquery-blockui-js" ></script>
-    <script id="wc-add-to-cart-js-extra">
-      var wc_add_to_cart_params = {
-        ajax_url: "\/wp-admin\/admin-ajax.php",
-        wc_ajax_url: "\/?wc-ajax=%%endpoint%%",
-        i18n_view_cart: "View cart",
-        cart_url: "https:\/\/soccer-dark-alc.dan-fisher.dev\/cart\/",
-        is_cart: "",
-        cart_redirect_after_add: "no",
-      };
-    </script>
+
     <script src="{% static 'js/add-to-cart.minaec2.js' %}" id="wc-add-to-cart-js" ></script>
     <script src="{% static 'js/woocommerce-add-to-cart8e94.js' %}" id="vc_woocommerce-add-to-cart-js-js" ></script>
     <link rel="https://api.w.org/" href="wp-json/index.html" />
@@ -150,7 +134,7 @@
     >
   </head>
 
-<body class="home page-template page-template-template-full-width page-template-template-full-width-php page page-id-583 theme-alchemists woocommerce-no-js template-soccer alc-is-activated wpb-js-composer js-comp-ver-6.8.0 vc_responsive">
+<body onload="hide_stuff_after_load()" class="home page-template page-template-template-full-width page-template-template-full-width-php page page-id-583 theme-alchemists woocommerce-no-js template-soccer alc-is-activated wpb-js-composer js-comp-ver-6.8.0 vc_responsive">
     <div class="site-wrapper clearfix">
       <div class="site-overlay"></div>
 
@@ -164,10 +148,7 @@
     </div>
     <!-- .site-wrapper -->
 
-    <!-- Instagram Feed JS -->
-    <script type="text/javascript">
-      var sbiajaxurl = "wp-admin/admin-ajax.html";
-    </script>
+
     <script type="text/javascript">
       (function ($) {
         $(function () {
@@ -260,6 +241,7 @@
       defer
     ></script>
 
+
     <script id="contact-form-7-js-extra">
       var wpcf7 = {
         api: {
@@ -281,22 +263,7 @@
       };
     </script>
 
-    <script id="woocommerce-js-extra">
-      var woocommerce_params = {
-        ajax_url: "\/wp-admin\/admin-ajax.php",
-        wc_ajax_url: "\/?wc-ajax=%%endpoint%%",
-      };
-    </script>
 
-    <script id="wc-cart-fragments-js-extra">
-      var wc_cart_fragments_params = {
-        ajax_url: "\/wp-admin\/admin-ajax.php",
-        wc_ajax_url: "\/?wc-ajax=%%endpoint%%",
-        cart_hash_key: "wc_cart_hash_8810f7743e9f1f33c77d7c010d72d07f",
-        fragment_name: "wc_fragments_8810f7743e9f1f33c77d7c010d72d07f",
-        request_timeout: "5000",
-      };
-    </script>
 
     <script id="rocket-browser-checker-js-after">
       "use strict";
@@ -642,6 +609,9 @@
     <script id="alchemists-init-js-extra">
       var alchemistsData = { color_primary: "#38a9ff", track_color: "#3f4246" };
     </script>
+
+    <script src="{% static 'js/player_page_edits.js' %}" id="player_gallery_edits-js" defer></script>
+    
   </body>
 
 </html>

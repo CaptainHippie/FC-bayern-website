@@ -2262,7 +2262,7 @@ table.sp-responsive-table tbody tr th::before {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 24px 24px;
+  /*padding: 24px 24px;*/
   pointer-events: none;
 }
 @media (min-width: 375px) and (max-width: 479px) {
@@ -2311,10 +2311,10 @@ table.sp-responsive-table tbody tr th::before {
 }
 @media (min-width: 1200px) {
   .team-roster--grid .team-roster__member-number {
-    width: 90px;
-    height: 90px;
-    line-height: 90px;
-    font-size: 48px;
+    width: 60px;
+    height: 60px;
+    line-height: 50px;
+    font-size: 32px;
   }
 }
 @media (min-width: 375px) and (max-width: 479px) {
@@ -2358,8 +2358,8 @@ table.sp-responsive-table tbody tr th::before {
 }
 @media (min-width: 1200px) {
   .team-roster--grid .team-roster__member-name {
-    font-size: 30px;
-    line-height: 28px;
+    font-size: 20px;
+    line-height: 22px;
   }
 }
 @media (min-width: 375px) and (max-width: 479px) {
@@ -2375,7 +2375,7 @@ table.sp-responsive-table tbody tr th::before {
 }
 .team-roster--grid .team-roster__member-last-name {
   display: block;
-  color: #38a9ff;
+  color: rgb(220, 5, 45);
 }
 .team-roster--grid .team-roster__member-position {
   font-size: 10px;
@@ -2441,8 +2441,8 @@ table.sp-responsive-table tbody tr th::before {
 @media (min-width: 1200px) {
   .team-roster--grid-col-0 .team-roster__item,
 .team-roster--grid-col-3 .team-roster__item {
-    flex-basis: 33.33333333%;
-    max-width: 33.33333333%;
+    flex-basis: 25%;
+    max-width: 25%;
   }
 }
 
@@ -4512,6 +4512,7 @@ table.sp-responsive-table tbody tr th::before {
 
 .player-info__title {
   margin-bottom: 17px;
+  margin-left: 19%;
   position: relative;
 }
 
@@ -4566,7 +4567,7 @@ table.sp-responsive-table tbody tr th::before {
 }
 @media (min-width: 1200px) {
   .player-info__number {
-    font-size: 92px;
+    font-size: 80px;
   }
 }
 
@@ -4603,14 +4604,15 @@ table.sp-responsive-table tbody tr th::before {
 }
 @media (min-width: 1200px) {
   .player-info__last-name {
-    font-size: 54px;
-    line-height: 46px;
+    font-size: 38px;
+    line-height: 37px;
   }
 }
 
 .player-info-details {
   display: flex;
   flex-wrap: wrap;
+  margin-left: 10%;
 }
 @media (max-width: 991px) {
   .player-info-details {
@@ -4758,6 +4760,7 @@ table.sp-responsive-table tbody tr th::before {
 @media (min-width: 992px) {
   .player-info-stats {
     padding: 25px 0 0 0;
+    margin-left: 10%;
   }
 }
 
@@ -5061,8 +5064,8 @@ table.sp-responsive-table tbody tr th::before {
 .player-league tbody > tr > td {
   vertical-align: middle;
   text-align: center;
-  padding-left: 8px;
-  padding-right: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .player-league thead > tr > th.player-league__vs,
 .player-league tbody > tr > td.player-league__vs {
@@ -5073,7 +5076,7 @@ table.sp-responsive-table tbody tr th::before {
 }
 @media (min-width: 1200px) {
   .player-league .data-name {
-    padding-left: 23px;
+    padding-left: 30px;
   }
 }
 .player-league .data-team {
@@ -6172,12 +6175,12 @@ table.sp-responsive-table tbody tr th::before {
 }
 
 .sp-row + .sp-row .widget-game-result__item {
-  margin-top: 48px;
+  margin-top: 18px;
 }
 
 .widget-game-result__header {
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 0px;
 }
 .widget-game-result__header + .widget-game-result__header {
   margin-top: 1.5rem;
@@ -6252,7 +6255,7 @@ table.sp-responsive-table tbody tr th::before {
 
 .widget-game-result__team {
   text-align: center;
-  width: 26%;
+  width: 100%;
 }
 
 .widget-game-result__team--odd {
@@ -6264,7 +6267,7 @@ table.sp-responsive-table tbody tr th::before {
 }
 
 .widget-game-result__team-logo {
-  height: 70px;
+  /*height: 70px;*/
   display: block;
   position: relative;
 }
@@ -6274,7 +6277,7 @@ table.sp-responsive-table tbody tr th::before {
 }
 
 .widget-game-result__team-info {
-  padding: 6px 0 0 0;
+  padding: 14px 0 0 0;
 }
 
 .widget-game-result__team-name {
@@ -7515,7 +7518,7 @@ td.team-leader__goals {
 
 .alc-staff__header-last-name {
   display: block;
-  font-size: 46px;
+  font-size: 36px;
   line-height: 1em;
   color: #38a9ff;
   overflow: hidden;

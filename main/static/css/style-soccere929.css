@@ -2800,7 +2800,7 @@ fieldset[disabled] .button.alt.focus {
   padding: 0;
 }
 .card--clean > .card__header + .card__content {
-  padding: 15px 0 0 0;
+  /*padding: 15px 0 0 0;*/
 }
 
 .card--has-table > .card__content {
@@ -4441,7 +4441,7 @@ div.wpcf7 .ajax-loader::before {
   flex-wrap: nowrap;
 }
 .progress__double .progress {
-  width: 50%;
+  width: 100%;
   margin-bottom: 0;
   top: 3px;
 }
@@ -4449,7 +4449,7 @@ div.wpcf7 .ajax-loader::before {
   border-radius: 3px 0 0 3px;
 }
 .progress__double .progress:first-child .progress__bar {
-  margin-left: auto;
+  /*margin-left: auto;*/
   border-radius: 3px 0 0 3px;
 }
 .progress__double .progress:last-child {
@@ -9889,7 +9889,7 @@ body.admin-bar .pushy-panel {
   }
 }
 .sponsors__item img {
-  opacity: 0.2;
+  opacity: 0.7;
   transition: opacity 0.3s ease;
 }
 .sponsors__item img:hover {
