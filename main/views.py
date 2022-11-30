@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate
+from cart.cart import Cart
 from . models import *
 from . import calculations
 
@@ -17,12 +18,12 @@ def index(request):
     return render(request, 'home.html', context)
 
 def NEWS(request, slug):
-    post = News_article.objects.filter(slug = slug)
+    post = News_article.objects.filter(slug=slug)
     popular_news = News_article.objects.all().order_by('-views')[0:4]
     newest_news = News_article.objects.all().order_by('-added')[0:4]
     favourite_news = News_article.objects.all().order_by('-added')[0:4]
     if post.exists():
-        post = News_article.objects.get(slug = slug)
+        post = News_article.objects.get(slug=slug)
     else:
         return redirect('home')
     post.views = post.views + 1
@@ -39,7 +40,7 @@ def MATCH_DETAIL(request):
     popular_news = News_article.objects.all().order_by('-views')[0:4]
     newest_news = News_article.objects.all().order_by('-added')[0:4]
     favourite_news = News_article.objects.all().order_by('-added')[0:4]
-    match = Match.objects.get(id = 1)
+    match = Match.objects.get(id=1)
     events = Match_timeline.objects.order_by('minute')
     context = {
             'match': match,
@@ -53,7 +54,7 @@ def MATCH_DETAIL(request):
 def PLAYER_DETAIL(request, slug_name):
     all_sponsors = Sponsor.objects.all()
 
-    player = Player.objects.get(slug = slug_name)
+    player = Player.objects.get(slug=slug_name)
     all_league_stats = Player_Stats.objects.filter(player__slug=slug_name, competition__name="BundesLiga").order_by('-season__start_year')
     ucl_stats = Player_Stats.objects.filter(player__slug=slug_name, competition__name="UEFA Champions League").order_by('-season__start_year')
     pokal_stats = Player_Stats.objects.filter(player__slug=slug_name, competition__name="DFB Pokal").order_by('-season__start_year')
@@ -111,7 +112,7 @@ def CLUB_ROSTER(request):
 
 
 def STAFF(request, slug_name):
-    staff = Staff.objects.get(slug = slug_name)
+    staff = Staff.objects.get(slug=slug_name)
     staff_news = News_article.objects.order_by('-added')
     staff_news_models = calculations.get_staff_news_models(staff_news, str(slug_name))
 
@@ -122,16 +123,22 @@ def STAFF(request, slug_name):
     return render(request, 'staff.html', context)
 
 def ALBUM(request, slug_name):
-    all_images = Album_Image.objects.filter(parent_album__slug = slug_name)
+    all_images = Album_Image.objects.filter(parent_album__slug=slug_name)
     context = {
             'all_images' : all_images
     }
     return render(request, 'album.html', context)
 
 def ACCOUNT(request, slug_name):
-    logged_user = CustomUser.objects.get(id = request.session['logged_user_id'])
+    logged_user = CustomUser.objects.get(slug=slug_name)
+    all_orders = Order.objects.filter(user__slug=slug_name)
+    billing_address = Address.objects.filter(address_type="billing").first()
+    shipping_address = Address.objects.filter(address_type="shipping").first()
     context = {
-            'logged_user' : logged_user
+            'logged_user' : logged_user,
+            'all_orders' : all_orders,
+            'billing_address' : billing_address,
+            'shipping_address' : shipping_address
     }
     if 'save_account_details' in request.POST:
         username = request.POST.get('account_username')
@@ -142,7 +149,7 @@ def ACCOUNT(request, slug_name):
         cur_pass = request.POST.get('password_current')
         new_pass = request.POST.get('password_1')
         conf_pass = request.POST.get('password_2')
-        user = CustomUser.objects.get(id = request.session['logged_user_id'])
+        user = CustomUser.objects.get(slug=slug_name)
         
         if user:
             user.username = username
@@ -169,6 +176,50 @@ def ACCOUNT(request, slug_name):
         return redirect('account', slug_name=slug_name)
     return render(request, 'account.html', context)
 
+def ADDRESS(request, slug_name, addr_type):
+    logged_user = CustomUser.objects.get(slug=slug_name)
+    current_address_set = logged_user.address_set.filter(address_type=addr_type)
+    context = {
+        'address_type': addr_type,
+        'current_address': current_address_set
+    }
+    
+    if request.method == 'POST':
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        company = request.POST.get('company')
+        country = request.POST.get('country')
+        address_1 = request.POST.get('address_1')
+        address_2 = request.POST.get('address_2')
+        postcode = request.POST.get('postcode')
+        city = request.POST.get('city')
+        state = request.POST.get('state')
+        phone = request.POST.get('phone')
+        email = request.POST.get('email')
+
+        if not current_address_set.exists():
+            current_address = Address()
+        else:
+            current_address = current_address_set.first()
+        current_address.address_type = addr_type
+        current_address.first_name = first_name
+        current_address.last_name = last_name
+        current_address.company = company
+        current_address.country = country
+        current_address.user_id = logged_user.id
+        current_address.city = city
+        current_address.email = email
+        current_address.phone_number = phone
+        current_address.postcode = postcode
+        current_address.state = state
+        current_address.address_1 = address_1
+        current_address.address_2 = address_2
+        current_address.save()
+        messages.success(request,"Address Updated successfully")
+        return redirect('account', slug_name=logged_user.slug)
+
+    return render(request, 'address.html', context)
+
 def REG_LOGIN(request):
     if 'register' in request.POST:
         email = request.POST.get('email')
@@ -191,28 +242,123 @@ def REG_LOGIN(request):
         password = request.POST.get('password')
 
         user = None
-        if CustomUser.objects.filter(username = username).exists():
-            user = CustomUser.objects.get(username = username)
-        elif CustomUser.objects.filter(email = username).exists():
-            user = CustomUser.objects.get(email = username)
+        if CustomUser.objects.filter(username=username).exists():
+            user = CustomUser.objects.get(username=username)
+        elif CustomUser.objects.filter(email=username).exists():
+            user = CustomUser.objects.get(email=username)
         else:
             messages.error(request, 'invalid username or email not registered!')
             return redirect('login')
         user_auth = authenticate(request, username=username, password=password)
         if user_auth is not None:
-            request.session['logged_user_id'] =  user.id
+            request.session['logged_user_id'] = user.id
             return redirect('account', slug_name=user.slug)
         else:
             messages.error(request, 'Invalid password!')
             return redirect('login')
     return render(request, 'register_login.html')
 
-    '''def login(request, *args, **kwargs):
-    if request.method == 'POST':
-        if not request.POST.get('remember_me', None):
-            request.session.set_expiry(0)
-    return auth_views.login(request, *args, **kwargs)
-'''
-
 def SHOP(request):
-    return render(request, 'shop.html')
+    all_products = Merchandise.objects.all()
+    context = {
+            'all_products' : all_products
+    }
+    return render(request, 'shop.html', context)
+
+
+def PRODUCT(request, slug_name):
+    product = Merchandise.objects.get(slug=slug_name)
+    all_players = Player.objects.all().order_by('kit_no')
+    if request.method == 'POST':
+        name = str(request.POST['kit_select'])
+        size = str(request.POST['size_select'])
+    context = {
+            'product' : product,
+            'all_players' : all_players
+    }
+    return render(request, 'product_detail.html', context)
+
+
+def TEST(request):
+    return render(request, 'test.html')
+
+
+
+
+
+def cart_add(request, id):
+    cart = Cart(request)
+    product = Merchandise.objects.get(id=id)
+    if request.method == 'POST':
+        qty = int(request.POST['qty'])
+        cart.add(product=product,quantity=qty)
+    else:
+        cart.add(product=product)
+    return redirect("cart")
+
+def item_clear(request, id):
+    cart = Cart(request)
+    product = Merchandise.objects.get(id=id)
+    cart.remove(product)
+    return redirect("cart")
+
+def item_increment(request, id, qty=1):
+    cart = Cart(request)
+    product = Merchandise.objects.get(id=id)
+    cart.add(product=product, quantity=qty)
+    return redirect("cart")
+
+def item_decrement(request, id, quantity=1):
+    cart = Cart(request)
+    product = Merchandise.objects.get(id=id)
+    cart.decrement(product=product, qty=quantity)
+    return redirect("cart")
+
+def cart_clear(request):
+    cart = Cart(request)
+    cart.clear()
+    return redirect("cart")
+
+
+def CART(request):
+    cart = request.session.get('cart')
+    #packing_cost = sum(i['packing_cost'] for i in cart.values() if i)
+    newcart = Cart(request)
+    if request.method == 'POST':
+        cur_cart = Cart(request)
+        for key in cart.copy():
+            product_id = cart[key]['product_id']
+            product = Merchandise.objects.get(id=product_id)
+            new_qty = int(request.POST['product_id_'+ str(key)])
+            cur_qty = int(cart[key]['quantity'])
+            if new_qty > cur_qty:
+                cur_cart.add(product=product, quantity=(new_qty-cur_qty))
+            if new_qty < cur_qty:
+                cur_cart.decrement(product=product, qty=(cur_qty-new_qty))
+            if new_qty < 1:
+                cur_cart.remove(product)
+        messages.success(request,"cart updated!")
+        return redirect("cart")
+    context = {
+	    #'packing_cost': packing_cost,
+        }
+
+    return render(request, 'cart.html', context)
+
+def ORDER(request, slug_name, order_id):
+    current_order = Order.objects.get(id=order_id)
+    context = {
+            'order' : current_order,
+    }
+
+    return render(request, 'orders.html', context)
+
+
+def CHECKOUT(request):
+    logged_user = CustomUser.objects.get(id=request.session['logged_user_id'])
+    billing_address = logged_user.address_set.filter(address_type="billing")
+
+    context = {
+        'billing_address' : billing_address
+    }
+    return render(request, 'checkout.html', context)

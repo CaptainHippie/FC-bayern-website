@@ -1616,6 +1616,7 @@ p.demo_store a,
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  font-size: 16px;
 }
 .woocommerce .button.loading,
 .woocommerce #respond input#submit.loading,
@@ -4242,7 +4243,7 @@ ul.product_list_widget {
 }
 @media (min-width: 1200px) {
   .list.products--list-lg .product__title {
-    font-size: 30px;
+    font-size: 28px;
   }
 }
 .list.products--list-lg .product__ratings {
@@ -4647,7 +4648,7 @@ ul.product_list_widget {
 }
 @media (min-width: 992px) {
   .products.grid .product__header {
-    margin-bottom: 10px;
+    margin-bottom: -2px;
   }
 }
 .products.grid .product__header-inner {

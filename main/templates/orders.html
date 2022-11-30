@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<title>Orders - FC Bayern</title>
+
+<div class="site-content " id="content">
+    <div class="container">
+        <div class="row">
+
+            <div id="primary" class="content-area col-lg-12">
+                <main id="main" class="site-main">
+
+
+                    <div id="post-83" class="post-83 page type-page status-publish hentry">
+
+                        <div class="entry-content">
+                            <div class="woocommerce">
+
+                                <div class="row woocommerce-account">
+
+
+                                    <div class="col-lg-12 alc-account-content alc-account-content--default">
+
+                                        <div class="card card--lg">
+                                            <header class="card__header"><h4>Orders</h4></header>
+                                            <div class="card__content">
+                                                <div class="woocommerce-notices-wrapper"></div>
+
+                                                <p>Order #<mark class="order-number">{{order.id}}</mark> was placed on
+                                                    <mark class="order-date">{{order.order_date|date:"F d, Y"}}</mark> and is currently 
+                                                    {% if order.dispatched == True %}
+                                                    <strong style="color:#049904">dispatched</strong>
+                                                    {% else %}
+                                                    <mark class="order-status">On hold</mark>
+                                                    {% endif %}.</p>
+                                                <section class="woocommerce-order-details">
+
+                                                    <div class="row">
+                                                        <div class="col-lg-4">
+                                                            <div class="card card--has-table">
+                                                                <header class="card__header">
+                                                                    <h4 class="woocommerce-order-details__title">Order details</h4>
+                                                                </header>
+                                                                <div class="card__content">
+                                                                    <table class="woocommerce-table woocommerce-table--order-details shop_table order_details table">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th class="woocommerce-table__product-name product-name">Product</th>
+                                                                                <th class="woocommerce-table__product-table product-total">Total</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            {% for item in order.order_item_set.all %}
+                                                                            <tr class="woocommerce-table__line-item order_item">
+                                                                                <td class="woocommerce-table__product-name product-name">
+                                                                                    <a href="{% url 'product' item.product.slug %}">{{item.product.name}}</a>
+                                                                                    <strong class="product-quantity">&times;&nbsp;{{item.quantity}}</strong>
+                                                                                </td>
+                                                                                <td class="woocommerce-table__product-total product-total">
+                                                                                    <span class="woocommerce-Price-amount amount">
+                                                                                        <bdi><span class="woocommerce-Price-currencySymbol">&euro;</span>{{item.price}}</bdi>
+                                                                                    </span>
+                                                                                </td>
+                                                                            </tr>
+                                                                            {% endfor %}
+                                                                        </tbody>
+
+                                                                        <tfoot>
+                                                                            <tr>
+                                                                                <th scope="row">Subtotal:</th>
+                                                                                <td><span class="woocommerce-Price-amount amount">
+                                                                                        <span class="woocommerce-Price-currencySymbol">&euro;</span>{{order.subtotal}}
+                                                                                    </span>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th scope="row">Payment method:</th>
+                                                                                <td>{{order.payment_method}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th scope="row">Total:</th>
+                                                                                <td><span class="woocommerce-Price-amount amount">
+                                                                                        <span class="woocommerce-Price-currencySymbol">&euro;</span>{{order.total_amount}}
+                                                                                    </span>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tfoot>
+                                                                    </table>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-8">
+                                                            <section class="woocommerce-customer-details">
+                                                                <div class="card">
+                                                                    <header class="card__header"><h4>Billing address</h4></header>
+                                                                    <div class="card__content">
+                                                                        <address>
+                                                                            {{order.company}}<br>{{order.first_name}} {{order.last_name}}<br>
+                                                                            {{order.address_1}}, {{order.address_2}}<br>
+                                                                            {{order.city}}, {{order.postcode}}<br>
+                                                                            {{order.state}}, {{order.country.name}}
+                                                                            <p class="woocommerce-customer-details--phone">{{order.phone_number}}</p>
+                                                                            <p class="woocommerce-customer-details--email">{{order.email}}</p>
+                                                                        </address>
+                                                                    </div>
+                                                                </div>
+                                                            </section>
+                                                        </div>
+                                                    </div>
+                                                </section>
+
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+
+                                </div><!-- .row -->
+                            </div>
+                        </div><!-- .entry-content -->
+                    </div><!-- #post-## -->
+
+                </main><!-- #main -->
+            </div><!-- #primary -->
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -342,12 +342,89 @@ class Address(models.Model):
     last_name = models.CharField(max_length=100, null=True)
     company = models.CharField(max_length=100, null=True)
     country = CountryField(blank_label='(select country)')
-    address = models.TextField(null=True)
+    address_1 = models.CharField(max_length=200, null=True, blank=True)
+    address_2 = models.CharField(max_length=200, null=True, blank=True)
     postcode = models.BigIntegerField(null=True, blank=True)
     city = models.CharField(max_length=100, null=True)
+    state = models.CharField(max_length=100, null=True)
     phone_number = models.CharField(max_length=20, null=True, blank=True)
     email = models.CharField(max_length=100, null=True)
 
     def __str__(self):
         return str(self.user.username) + "-" + str(self.address_type)
     
+class Merchandise_Type(models.Model):
+    name = models.CharField(max_length=100, null=True)
+    size_option = models.BooleanField(default=False, null=True)
+    unique_player = models.BooleanField(default=False, null=True)
+
+    def __str__(self):
+        return self.name
+    
+class Merchandise(models.Model):
+    name = models.CharField(max_length=100, null=True)
+    category = models.ForeignKey(Merchandise_Type, on_delete=models.CASCADE, null=True)
+
+    featured_image = models.ImageField(default='shop/product_default.jpg', upload_to='shop', null=True)
+    price = models.DecimalField(decimal_places=2, max_digits=10, null=True)
+    discount = models.IntegerField()
+    description = models.TextField(null=True)
+    product_information = RichTextField(null=True)
+    slug = models.SlugField(default='', max_length=500, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+    
+class Merchandise_Image(models.Model):
+    product = models.ForeignKey(Merchandise, on_delete=models.CASCADE)
+    image_url = models.ImageField(default='shop/product_default.jpg', upload_to='shop', null=True)
+
+class Merchandise_Size(models.Model):
+    product = models.ForeignKey(Merchandise_Type, on_delete=models.CASCADE)
+    size = models.CharField(max_length=100, null=True)
+    def __str__(self):
+        return self.size
+    
+
+class Merchandise_Information(models.Model):
+    product = models.ForeignKey(Merchandise, on_delete=models.CASCADE)
+    specification = models.CharField(max_length=100)
+    detail = models.CharField(max_length=100)
+
+    
+class Order(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
+    first_name = models.CharField(max_length=100, null=True)
+    last_name = models.CharField(max_length=100, null=True)
+    company = models.CharField(max_length=100, null=True)
+    country = CountryField(blank_label='(select country)', null=True)
+    address_1 = models.CharField(max_length=200, null=True, blank=True)
+    address_2 = models.CharField(max_length=200, null=True, blank=True)
+    postcode = models.BigIntegerField(null=True, blank=True)
+    city = models.CharField(max_length=100, null=True)
+    state = models.CharField(max_length=100, null=True)
+    phone_number = models.CharField(max_length=20, null=True, blank=True)
+    email = models.CharField(max_length=100, null=True)
+
+    order_notes = models.TextField()
+    subtotal = models.DecimalField(decimal_places=2, max_digits=10, null=True)
+    tax = models.DecimalField(decimal_places=2, max_digits=4, null=True)
+    packaging = models.DecimalField(decimal_places=2, max_digits=4, null=True)
+    total_amount = models.DecimalField(decimal_places=2, max_digits=10, null=True)
+    payment_method = models.CharField(max_length=100)
+    dispatched = models.BooleanField(default=False)
+    order_date = models.DateTimeField(auto_now_add=True, null=True)
+
+    def __str__(self):
+        return str(self.user.name_display) + "-" + str(self.total_amount)
+
+class Order_Item(models.Model):
+    parent_order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    product = models.ForeignKey(Merchandise, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1, null=True)
+    price = models.DecimalField(decimal_places=2, max_digits=10, null=True)
+    player = models.ForeignKey(Player, on_delete=models.CASCADE, null=True, blank=True)
+    size = models.ForeignKey(Merchandise_Size, on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return self.parent_order.user.username + self.product.name + str(self.quantity)

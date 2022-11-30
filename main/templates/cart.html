@@ -1,0 +1,200 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load cart_tag %}
+
+<title>Cart - FC Bayern</title>
+<div class="page-heading page-heading--has-bg">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-10 offset-lg-1">
+                <h1 class='page-heading__title'>Cart</h1>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="site-content " id="content">
+    <div class="container">
+        <div class="row">
+
+            <div id="primary" class="content-area col-lg-12">
+                <main id="main" class="site-main">
+
+                    <div id="post-81" class="post-81 page type-page status-publish hentry">
+
+                        <div class="entry-content">
+                            <div class="woocommerce">
+                                <div class="woocommerce-notices-wrapper">
+                                    {% for message in messages %}{% if messages %}
+                                    <div class="woocommerce-message" role="alert">{{message}}</div>
+                                    {% endif %}{% endfor %}
+                                </div>
+
+
+                                <form class="woocommerce-cart-form" method="post">
+                                    {% csrf_token %}
+                                    <div class="card card--has-table">
+                                        <header class="card__header">
+                                            <h4>Your Shopping Cart</h4>
+                                        </header>
+                                        <div class="card__content">
+                                            <table class="table shop-table shop_table shop_table_responsive cart woocommerce-cart-form__contents"
+                                                cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="product__photo">Photo</th>
+                                                        <th class="product__info">Product</th>
+                                                        <th class="product__price">Price</th>
+                                                        <th class="product__quantity">Quantity</th>
+                                                        <th class="product__total">Total</th>
+                                                        <th class="product__remove">Remove</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                    {% for key,value in request.session.cart.items %}
+                                                    <tr class="woocommerce-cart-form__cart-item cart_item">
+
+                                                        <td class="product__photo">
+                                                            <a href="{% url 'product' value.link %}">
+                                                                <figure class="product__thumb" style="background-image: linear-gradient(to left top, #ffffff, #ffffff);">
+                                                                    <img width="280" height="280" src="/media/{{value.image}}"
+                                                                        class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail">
+                                                                </figure>
+                                                            </a>
+                                                        </td>
+
+                                                        <td class="product__info" data-title="Product">
+                                                            <h5 class="product__name"><a href="{% url 'product' value.link %}">{{value.name|truncatechars:50}}</a></h5>
+                                                        </td>
+
+                                                        <td class="product__price" data-title="Price">
+                                                            <span class="woocommerce-Price-amount amount">
+                                                                <bdi><span class="woocommerce-Price-currencySymbol">&euro;</span>{{value.price}}</bdi>
+                                                            </span>
+                                                        </td>
+
+                                                        <td class="product__quantity" data-title="Quantity">
+                                                            <div class="quantity">
+                                                                <input type="number" class="input-text qty text" name="product_id_{{value.product_id}}" step="1" min="0" value="{{value.quantity}}">
+                                                            </div>
+                                                        </td>
+
+                                                        <td class="product__total" data-title="Subtotal">
+                                                            <span class="woocommerce-Price-amount amount">
+                                                                <bdi><span class="woocommerce-Price-currencySymbol">&euro;</span>{{ value.price|multiply:value.quantity }}</bdi>
+                                                            </span>
+                                                        </td>
+
+                                                        <td class="product__remove">
+                                                            <a href="{% url 'item_clear' key %}" class="fa fa-times product__remove-icon"></a>
+                                                        </td>
+
+                                                    </tr>
+                                                    {% endfor %}
+
+
+                                                    <tr>
+                                                        <td colspan="6" class="actions">
+                                                            <div class="coupon form-inline">
+                                                                <div class="input-group">
+                                                                    <input type="text" name="coupon_code" class="form-control" id="coupon_code" value="" placeholder="Coupon code">
+                                                                    <div class="input-group-append">
+                                                                        <input type="submit" class="button input-group-text" name="apply_coupon" value="Apply">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <button type="submit" class="button" name="update_cart" value="Update cart">Update cart</button>
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </form>
+
+
+                                <div class="cart-collaterals">
+                                    <div class="cart_totals ">
+                                        <div class="row">
+                                            <div class="col-lg-4 offset-md-4">
+
+                                            </div>
+
+                                            <div class="col-lg-4">
+
+                                                <div class="card card--has-table">
+                                                    <header class="card__header"><h4>Cart totals</h4></header>
+                                                    <div class="card__content">
+
+                                                        <!-- Checkout Review Order -->
+                                                        <div class="woocommerce-checkout-review-order">
+                                                            <div class="table-responsive">
+                                                                <table class="woocommerce-checkout-review-order-table table">
+                                                                    <tfoot>
+                                                                        <tr class="cart-subtotal">
+                                                                            <th>Subtotal</th>
+                                                                            <td data-title="Subtotal">
+                                                                                <span class="amount">
+                                                                                    <span class="woocommerce-Price-amount amount">
+                                                                                        <bdi>
+                                                                                            <span class="woocommerce-Price-currencySymbol">&#36;</span>
+                                                                                            {{cart_total_amount}}
+                                                                                        </bdi>
+                                                                                    </span>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+
+
+                                                                        <tr class="order-total">
+                                                                            <th>Total</th>
+                                                                            <td data-title="Total"><strong><span
+                                                                                        class="woocommerce-Price-amount amount"><bdi><span
+                                                                                                class="woocommerce-Price-currencySymbol">&#36;</span>{{cart_total_amount}}</bdi></span></strong>
+                                                                            </td>
+                                                                        </tr>
+
+                                                                    </tfoot>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Checkout Review Order / End -->
+
+                                                        <!-- Checkout Payment -->
+                                                        <div class="woocommerce-checkout-payment">
+                                                            <div class="form-row place-order">
+                                                                <a href="http://alchemists-wp.dan-fisher.com/soccer-dark/checkout/"
+                                                                    class="checkout-button wc-forward btn btn-lg btn-block btn-primary">
+                                                                    Proceed to checkout</a>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Checkout Payment / End -->
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!-- .entry-content -->
+                    </div><!-- #post-## -->
+
+                </main><!-- #main -->
+            </div><!-- #primary -->
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

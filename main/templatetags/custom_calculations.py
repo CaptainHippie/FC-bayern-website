@@ -35,4 +35,10 @@ def player_rating_percent(rating):
         return 0
     return (rating * 10)
 
-
+@register.simple_tag
+def discounted_price(price, discount):
+    if discount is None or discount is 0:
+        return price
+    sellprice = price
+    sellprice = price - (price * discount/100)
+    return round(sellprice, 2)

@@ -41,6 +41,28 @@ class Album_Image_Admin(admin.TabularInline):
 class Club_Album_Admin(admin.ModelAdmin):
     inlines = [Album_Image_Admin]
 
+class Merchandise_Size_Admin(admin.TabularInline):
+    model = Merchandise_Size
+
+
+
+class Merchandise_Type_Admin(admin.ModelAdmin):
+    inlines = [Merchandise_Size_Admin]
+class Merchandise_Image_Admin(admin.TabularInline):
+    model = Merchandise_Image
+class Merchandise_Information_Admin(admin.TabularInline):
+    model = Merchandise_Information
+class Merchandise_Admin(admin.ModelAdmin):
+    inlines = (Merchandise_Image_Admin, Merchandise_Information_Admin)
+    list_display = ('name','category','price','discount')
+    list_editable = ('price','discount')
+
+
+class Order_Item_Admin(admin.TabularInline):
+    model = Order_Item
+class Order_Admin(admin.ModelAdmin):
+    inlines = [Order_Item_Admin]
+
 
 admin.site.register(article_type)
 admin.site.register(News_article, News_article_Admin)
@@ -64,4 +86,7 @@ admin.site.register(CustomUser)
 
 admin.site.register(Address)
 
+admin.site.register(Merchandise_Type, Merchandise_Type_Admin)
+admin.site.register(Merchandise, Merchandise_Admin)
 
+admin.site.register(Order, Order_Admin)

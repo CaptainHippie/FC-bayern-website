@@ -3206,3 +3206,53 @@ body {
 .woocommerce form .form-row .required {
   visibility: visible;
 }
+
+
+
+.cart-plus-minus {
+  position: relative;
+  width: 180px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 2px;
+  box-shadow: none;
+  color: white;
+  text-align: center;
+}
+.cart-qty-value {
+  border:none;
+  color:white;
+  transition: all 0.3s ease-out 0s;
+  background-color:rgba(255, 255, 255, 0.03);text-align: center;
+  height: 52px;
+  padding: 0 50px;
+  width: 180px
+}
+.inc-qtybutton {
+  position: absolute;
+  top: 50%;
+  height: 30px;
+  width: 30px;                                          
+  cursor: pointer;
+  text-align: center;                                         
+  transform: translateY(-50%);
+  left: 20px
+}
+.dec-qtybutton {
+  position: absolute;
+  top: 50%;
+  height: 30px;
+  width: 30px;                                          
+  cursor: pointer;
+  text-align: center;                                         
+  transform: translateY(-50%);
+  right: 20px
+}
+.qtybutton {
+  height: 35px;
+  position: relative;
+  width: 35px;                                          
+  cursor: pointer;
+  font-size: 28px;
+  text-align: center;
+}

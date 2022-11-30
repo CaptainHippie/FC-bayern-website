@@ -1842,7 +1842,7 @@ fieldset[disabled] .button.focus {
 .btn-primary:hover,
 .button.alt:hover {
   color: #fff;
-  background-color: #1892ed;
+  background-color: #ed1826;
   border-color: rgba(0, 0, 0, 0);
 }
 .btn-primary:active, .btn-primary.active, .open > .btn-primary.dropdown-toggle,

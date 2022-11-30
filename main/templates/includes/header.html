@@ -1,15 +1,8 @@
 {% load static %}
 <div class="header-mobile clearfix" id="header-mobile">
     <div class="header-mobile__logo">
-      <a href="index.html" rel="home">
-        <img
-          src="{% static 'images/logo.png' %}"
-          class="header-mobile__logo-img"
-          srcset="
-            https://soccer-dark-alc.dan-fisher.dev/wp-content/themes/alchemists/assets/images/soccer/logo@2x.png 2x
-          "
-          alt="Alchemists"
-        />
+      <a href="{% url 'home' %}" rel="home">
+        <img src="{% static 'images/logo.png' %}" class="header-mobile__logo-img">
       </a>
     </div>
     <div class="header-mobile__inner">
@@ -35,21 +28,12 @@
     <div class="header__top-bar clearfix">
       <div class="container">
         <div class="header__top-bar-inner">
-          <ul
-            id="menu-top-menu"
-            class="nav-account nav-account__divider-slash"
-          >
-            <li
-              id="menu-item-1233"
-              class="nmr-logged-out menu-item menu-item-type-post_type menu-item-object-page nav-account__item"
-            >
-              <a href="my-account/index.html">Register</a>
+          <ul id="menu-top-menu" class="nav-account nav-account__divider-slash">
+            <li id="menu-item-1233" class="nmr-logged-out menu-item menu-item-type-post_type menu-item-object-page nav-account__item">
+              <a href="{% url 'login' %}">Register</a>
             </li>
-            <li
-              id="menu-item-1234"
-              class="nmr-logged-out menu-item menu-item-type-post_type menu-item-object-page nav-account__item"
-            >
-              <a href="my-account/index.html">Login</a>
+            <li id="menu-item-1234" class="nmr-logged-out menu-item menu-item-type-post_type menu-item-object-page nav-account__item">
+              <a href="{% url 'login' %}">Login</a>
             </li>
           </ul>
         </div>
@@ -60,68 +44,24 @@
       <div class="container">
         <div class="header__secondary-inner">
           <ul class="info-block info-block--header">
-            <li class="info-block__item info-block__item--contact-primary">
-              <svg role="img" class="df-icon df-icon--whistle">
-                <use
-                  xlink:href="{% static 'images/icons-soccer.svg' %}"
-                />
-              </svg>
-
-              <h6 class="info-block__heading">Join Our Team!</h6>
-              <a
-                class="info-block__link"
-                href="mailto:tryouts@alchemists.com"
-              >
-                tryouts@alchemists.com
-              </a>
-            </li>
-
-            <li
-              class="info-block__item info-block__item--contact-secondary"
-            >
-              <svg role="img" class="df-icon df-icon--soccer-ball">
-                <use
-                  xlink:href="{% static 'images/icons-soccer.svg' %}"
-                />
-              </svg>
-
-              <h6 class="info-block__heading">Contact Us</h6>
-              <a class="info-block__link" href="mailto:info@alchemists.com">
-                info@alchemists.com
-              </a>
-            </li>
-
-            <li
-              class="info-block__item info-block__item--shopping-cart has-children js-info-block__item--onhover"
-            >
-              <a
-                href="cart/index.html"
-                class="info-block__link-wrapper"
-                title="View your shopping cart"
-              >
+            
+            <li class="info-block__item info-block__item--shopping-cart has-children js-info-block__item--onhover">
+              <a href="{% url 'cart' %}" class="info-block__link-wrapper" title="View your shopping cart">
                 <div class="df-icon-stack df-icon-stack--bag">
                   <svg role="img" class="df-icon df-icon--bag">
-                    <use
-                      xlink:href="{% static 'images/icons-basket.svg' %}"
-                    />
+                    <use xlink:href="{% static 'images/icons-basket.svg' %}">
                   </svg>
                   <svg role="img" class="df-icon df-icon--bag-handle">
-                    <use
-                      xlink:href="{% static 'images/icons-basket.svg' %}"
-                    />
+                    <use xlink:href="{% static 'images/icons-basket.svg' %}">
                   </svg>
                 </div>
 
                 <h6 class="info-block__heading">Your Bag (0 items)</h6>
-                <span class="info-block__cart-sum"
-                  ><span class="woocommerce-Price-amount amount"
-                    ><bdi
-                      ><span class="woocommerce-Price-currencySymbol"
-                        >&#36;</span
-                      >0.00</bdi
-                    ></span
-                  ></span
-                >
+                <span class="info-block__cart-sum">
+                  <span class="woocommerce-Price-amount amount">
+                    <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>0.00</bdi>
+                  </span>
+                </span>
               </a>
 
               <div class="header-cart-dropdown">
@@ -136,7 +76,7 @@
     <div class="header__primary">
       <!-- Header Logo -->
       <div class="header-logo">
-        <a href="index.html" rel="home">
+        <a href="{% url 'home' %}" rel="home">
           <img src="{% static 'images/logo.png' %}" class="header-logo__img">
           <header class="club-title">FC Bayern München</header>
         </a>
@@ -146,7 +86,7 @@
         <div class="header__primary-inner">
           <!-- Header Logo -->
           <div class="header-logo">
-            <a href="index.html" rel="home">
+            <a href="{% url 'home' %}" rel="home">
               <img src="{% static 'images/logo.png' %}" class="header-logo__img">
               <header class="club-title">FC Bayern München</header>
             </a>
