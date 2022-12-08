@@ -4178,7 +4178,7 @@ div.wpcf7 .ajax-loader::before {
   padding: 10px 24px;
 }
 .sp-data-table + .paging_simple_numbers {
-  margin-top: 48px;
+  margin-top: 0px;
   text-align: center;
 }
 .paging_simple_numbers .paginate_button {
@@ -4423,10 +4423,14 @@ div.wpcf7 .ajax-loader::before {
 
 .progress__digit--left {
   padding-right: 20px;
+  width: 42px;
+  text-align: center;
 }
 
 .progress__digit--right {
   padding-left: 20px;
+  width: 43px;
+  text-align: center;
 }
 
 .progress-title {
@@ -7052,6 +7056,7 @@ input.header-mobile__search-control:focus {
     position: relative;
     top: 0;
     left: 0;
+    height: 120px;
     width: 100%;
     z-index: 5;
   }

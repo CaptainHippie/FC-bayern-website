@@ -2,18 +2,29 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate
 from cart.cart import Cart
+from django.core.files.storage import FileSystemStorage
 from . models import *
 from . import calculations
 
 # Create your views here.
-def index(request):
+def HOME(request):
     popular_news = News_article.objects.all().order_by('-views')[0:4]
     newest_news = News_article.objects.all().order_by('-added')[0:4]
-    favourite_news = News_article.objects.all().order_by('-added')[0:4]
+    favourite_news = News_article.objects.all().order_by('-comment')[0:4]
+    featured_news = News_article.objects.filter(featured=True)
+    last_match = Match.objects.all().order_by('-time').first()
+    events = Match_timeline.objects.filter(match=last_match).order_by('minute')
+    league_stats_widget = Club_season_stats.objects.filter(competition__name="BundesLiga").order_by('-points','-goal_diff','-scored')[0:8]
+    bayern = Bayern.objects.first()
     context = {
+            'bayern' : bayern,
             'popular_news': popular_news,
             'newest_news' : newest_news,
-            'favourite_news' : favourite_news
+            'favourite_news' : favourite_news,
+            'featured_news' : featured_news,
+            'last_match' : last_match,
+            'events' : events,
+            'league_stats_widget' : league_stats_widget
     }
     return render(request, 'home.html', context)
 
@@ -22,26 +33,35 @@ def NEWS(request, slug):
     popular_news = News_article.objects.all().order_by('-views')[0:4]
     newest_news = News_article.objects.all().order_by('-added')[0:4]
     favourite_news = News_article.objects.all().order_by('-added')[0:4]
+    
     if post.exists():
         post = News_article.objects.get(slug=slug)
     else:
         return redirect('home')
     post.views = post.views + 1
     post.save()
+    
+    comments = Comment.objects.filter(parent_comment=None, parent_news=post).order_by('-added')
+    logged_user = CustomUser.objects.get(id=request.session['logged_user_id'])
+    comment_count = Comment.objects.filter(parent_news=post).count()
+
     context = {
             'post': post,
             'popular_news': popular_news,
             'newest_news' : newest_news,
-            'favourite_news' : favourite_news
+            'favourite_news' : favourite_news,
+            'comments':comments,
+            'comment_count': comment_count,
+            'logged_user': logged_user
     }
     return render(request, 'news.html', context)
 
-def MATCH_DETAIL(request):
+def MATCH_DETAIL(request, slug_name):
     popular_news = News_article.objects.all().order_by('-views')[0:4]
     newest_news = News_article.objects.all().order_by('-added')[0:4]
     favourite_news = News_article.objects.all().order_by('-added')[0:4]
-    match = Match.objects.get(id=1)
-    events = Match_timeline.objects.order_by('minute')
+    match = Match.objects.get(slug=slug_name)
+    events = Match_timeline.objects.filter(match=match).order_by('minute')
     context = {
             'match': match,
             'events': events,
@@ -157,6 +177,13 @@ def ACCOUNT(request, slug_name):
             user.last_name = l_name
             user.name_display = d_name
             user.email = email
+            request_file = request.FILES['profile_pic'] if 'profile_pic' in request.FILES else None
+            if request_file:
+                upload = request.FILES['profile_pic']
+                fss = FileSystemStorage()
+                path = 'user_pfps/' + str(upload.name)
+                fss.save(path, upload)
+                user.profile_pic = path
             user.save()
             messages.success(request,"account information updated successfully")
             if cur_pass != "":
@@ -258,6 +285,10 @@ def REG_LOGIN(request):
             return redirect('login')
     return render(request, 'register_login.html')
 
+def LOGOUT(request):
+    del request.session['logged_user_id']
+    return redirect('login')
+
 def SHOP(request):
     all_products = Merchandise.objects.all()
     context = {
@@ -270,8 +301,15 @@ def PRODUCT(request, slug_name):
     product = Merchandise.objects.get(slug=slug_name)
     all_players = Player.objects.all().order_by('kit_no')
     if request.method == 'POST':
-        name = str(request.POST['kit_select'])
-        size = str(request.POST['size_select'])
+        cur_cart = Cart(request)
+        pl_id = request.POST['kit_select'] if ('kit_select' in request.POST) else None
+        pl_id = int(pl_id) if (pl_id != "" and pl_id != None) else None
+        size_id = request.POST['size_select'] if ('size_select' in request.POST) else None
+        size_id = int(size_id) if (size_id != "" and size_id != None) else None
+        qty = int(request.POST['quantity'])
+        cur_cart.add(size=size_id, player=pl_id, product=product, quantity=qty)
+        messages.success(request,"cart updated!")
+        return redirect("cart")
     context = {
             'product' : product,
             'all_players' : all_players
@@ -286,14 +324,14 @@ def TEST(request):
 
 
 
-def cart_add(request, id):
+def cart_add(request, size, player, id):
     cart = Cart(request)
     product = Merchandise.objects.get(id=id)
     if request.method == 'POST':
         qty = int(request.POST['qty'])
-        cart.add(product=product,quantity=qty)
+        cart.add(size, player, product=product, quantity=qty)
     else:
-        cart.add(product=product)
+        cart.add(size, player, product=product)
     return redirect("cart")
 
 def item_clear(request, id):
@@ -302,10 +340,10 @@ def item_clear(request, id):
     cart.remove(product)
     return redirect("cart")
 
-def item_increment(request, id, qty=1):
+def item_increment(request, size, player, id, qty=1):
     cart = Cart(request)
     product = Merchandise.objects.get(id=id)
-    cart.add(product=product, quantity=qty)
+    cart.add(size, player, product=product, quantity=qty)
     return redirect("cart")
 
 def item_decrement(request, id, quantity=1):
@@ -323,7 +361,6 @@ def cart_clear(request):
 def CART(request):
     cart = request.session.get('cart')
     #packing_cost = sum(i['packing_cost'] for i in cart.values() if i)
-    newcart = Cart(request)
     if request.method == 'POST':
         cur_cart = Cart(request)
         for key in cart.copy():
@@ -332,7 +369,7 @@ def CART(request):
             new_qty = int(request.POST['product_id_'+ str(key)])
             cur_qty = int(cart[key]['quantity'])
             if new_qty > cur_qty:
-                cur_cart.add(product=product, quantity=(new_qty-cur_qty))
+                cur_cart.add(size=cart[key]['size'], player=cart[key]['player'], product=product, quantity=(new_qty-cur_qty))
             if new_qty < cur_qty:
                 cur_cart.decrement(product=product, qty=(cur_qty-new_qty))
             if new_qty < 1:
@@ -353,12 +390,64 @@ def ORDER(request, slug_name, order_id):
 
     return render(request, 'orders.html', context)
 
-
 def CHECKOUT(request):
     logged_user = CustomUser.objects.get(id=request.session['logged_user_id'])
     billing_address = logged_user.address_set.filter(address_type="billing")
 
+    if request.method == 'POST':
+        cart_at_checkout = request.session.get('cart')
+        new_order = Order()
+        new_order.first_name = request.POST.get('billing_first_name')
+        new_order.last_name = request.POST.get('billing_last_name')
+        new_order.company = request.POST.get('billing_company')
+        new_order.country = request.POST.get('billing_country')
+        new_order.address_1 = request.POST.get('billing_address_1')
+        new_order.address_2 = request.POST.get('billing_address_2')
+        new_order.postcode = int(request.POST.get('billing_postcode'))
+        new_order.city = request.POST.get('billing_city')
+        new_order.state = request.POST.get('billing_state')
+        new_order.phone_number = request.POST.get('billing_phone')
+        new_order.email = request.POST.get('billing_email')
+        new_order.order_notes = request.POST.get('order_comments')
+        subtotal = 0.0
+        for key, value in request.session['cart'].items():
+            subtotal = subtotal + (float(value['price']) * value['quantity'])
+
+        new_order.subtotal = subtotal
+        new_order.tax = 0
+        packaging = 2 if subtotal > 10 else 0
+        new_order.packaging = packaging
+        new_order.total_amount = (subtotal + packaging + 0)
+        new_order.payment_method = "Cash on Delivery"
+        new_order.user_id = logged_user.id
+        new_order.save()
+        last_order_id = Order.objects.latest('id').id
+        for key in cart_at_checkout.copy():
+            new_order_item = Order_Item()
+            new_order_item.product_id = cart_at_checkout[key]['product_id']
+            new_order_item.parent_order_id = last_order_id
+            new_order_item.quantity = cart_at_checkout[key]['quantity']
+            new_order_item.price = cart_at_checkout[key]['price']
+            new_order_item.size_id = None if cart_at_checkout[key]['size'] == 0 else cart_at_checkout[key]['size']
+            new_order_item.player_id = None if cart_at_checkout[key]['player'] == 0 else cart_at_checkout[key]['player']
+            new_order_item.save()
+        cart = Cart(request)
+        cart.clear()
+        messages.success(request,"Order placed succesfully!")
+        return redirect("account", slug_name=logged_user.slug)
     context = {
-        'billing_address' : billing_address
+        'billing_address' : billing_address,
     }
     return render(request, 'checkout.html', context)
+
+def save_comment(request, user_id):
+    new_comment = Comment()
+    current_news_id = request.POST.get('comment_post_ID')
+    new_comment.parent_news_id = current_news_id
+    new_comment.parent_comment_id = request.POST['comment_parent'] if 'comment_parent' in request.POST else None
+    new_comment.from_user_id = user_id
+    new_comment.text = request.POST.get('comment_text')
+    new_comment.save()
+    current_news = News_article.objects.get(id=current_news_id)
+    return redirect('newspage', slug=current_news.slug)
+    

@@ -27,32 +27,21 @@
             <div id="primary" class="content-area col-lg-8">
 
                 <div class="sp-section-content sp-section-content-logos">
-                    <div class="card" itemscope itemtype="http://schema.org/SportsEvent">
-                        <div class="card__header">
-                            <h4 itemprop="name" content="Alchemists vs Clovers">Statistics</h4>
-                        </div>
+                    <div class="card">
+                        <div class="card__header"><h4>Statistics</h4></div>
                         <div class="card__content">
 
                             <!-- Game Result -->
                             <div class="game-result">
 
-
                                 <section class="game-result__section pt-0">
                                     <header class="game-result__header game-result__header--alt">
 
                                         <span class="game-result__league">
-                                            {{match.competition}}
+                                            {{match.competition}}, {{match.match_title}}
                                         </span>
 
-
-                                        <h3 class="game-result__title" itemprop="location" itemscope
-                                            itemtype="http://schema.org/Place">
-                                            <span itemprop="name">{{match.venue}}</span><span class="d-none"
-                                                itemprop="address"
-                                                itemtype="http://schema.org/PostalAddress">68-49-68-51 Main St,
-                                                Flushing, NY 11367, USA</span>
-                                        </h3>
-
+                                        <h3 class="game-result__title"><span>{{match.venue}}</span></h3>
 
                                         <time class="game-result__date" itemprop="startDate"
                                             datetime="2016-03-05 18:00:00">

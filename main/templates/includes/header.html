@@ -1,76 +1,65 @@
 {% load static %}
 <div class="header-mobile clearfix" id="header-mobile">
     <div class="header-mobile__logo">
-      <a href="{% url 'home' %}" rel="home">
-        <img src="{% static 'images/logo.png' %}" class="header-mobile__logo-img">
-      </a>
+        <a href="{% url 'home' %}" rel="home">
+            <img src="{% static 'images/logo.png' %}" class="header-mobile__logo-img">
+        </a>
     </div>
     <div class="header-mobile__inner">
-      <a id="header-mobile__toggle" class="burger-menu-icon" href="#"
-        ><span class="burger-menu-icon__line"></span
-      ></a>
-
-      <div class="header-mobile__secondary">
-        <span
-          class="header-mobile__search-icon"
-          id="header-mobile__search-icon"
-        ></span>
-
-        <span class="header-mobile-pushy-panel__toggle">
-          <i class="fas fa-ellipsis-v"></i>
-        </span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Header Desktop -->
-  <header class="header header--layout-1">
-    <div class="header__top-bar clearfix">
-      <div class="container">
-        <div class="header__top-bar-inner">
-          <ul id="menu-top-menu" class="nav-account nav-account__divider-slash">
-            <li id="menu-item-1233" class="nmr-logged-out menu-item menu-item-type-post_type menu-item-object-page nav-account__item">
-              <a href="{% url 'login' %}">Register</a>
-            </li>
-            <li id="menu-item-1234" class="nmr-logged-out menu-item menu-item-type-post_type menu-item-object-page nav-account__item">
-              <a href="{% url 'login' %}">Login</a>
-            </li>
-          </ul>
+        <a id="header-mobile__toggle" class="burger-menu-icon" href="#">
+            <span class="burger-menu-icon__line"></span>
+        </a>
+        <div class="header-mobile__secondary">
+            <span class="header-mobile__search-icon" id="header-mobile__search-icon"></span>
+            <span class="header-mobile-pushy-panel__toggle"><i class="fas fa-ellipsis-v"></i></span>
         </div>
-      </div>
+    </div>
+</div>
+
+<!-- Header Desktop -->
+<header class="header header--layout-1">
+    <div class="header__top-bar clearfix">
+        <div class="container">
+            <div class="header__top-bar-inner">
+                <ul id="menu-top-menu" class="nav-account nav-account__divider-slash">
+                    <li class="nmr-logged-out menu-item menu-item-type-post_type menu-item-object-page nav-account__item">
+                        <a href="{% url 'login' %}">Login / Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <div class="header__secondary">
-      <div class="container">
-        <div class="header__secondary-inner">
-          <ul class="info-block info-block--header">
-            
-            <li class="info-block__item info-block__item--shopping-cart has-children js-info-block__item--onhover">
-              <a href="{% url 'cart' %}" class="info-block__link-wrapper" title="View your shopping cart">
-                <div class="df-icon-stack df-icon-stack--bag">
-                  <svg role="img" class="df-icon df-icon--bag">
-                    <use xlink:href="{% static 'images/icons-basket.svg' %}">
-                  </svg>
-                  <svg role="img" class="df-icon df-icon--bag-handle">
-                    <use xlink:href="{% static 'images/icons-basket.svg' %}">
-                  </svg>
-                </div>
+        <div class="container">
+            <div class="header__secondary-inner">
+                <ul class="info-block info-block--header">
+                    <li class="info-block__item info-block__item--shopping-cart has-children js-info-block__item--onhover">
+                        <a href="{% url 'cart' %}" class="info-block__link-wrapper" title="View your shopping cart">
+                            <div class="df-icon-stack df-icon-stack--bag">
+                                <svg role="img" class="df-icon df-icon--bag">
+                                    <use xlink:href="{% static 'images/icons-basket.svg' %}">
+                                </svg>
+                                <svg role="img" class="df-icon df-icon--bag-handle">
+                                    <use xlink:href="{% static 'images/icons-basket.svg' %}">
+                                </svg>
+                            </div>
 
-                <h6 class="info-block__heading">Your Bag (0 items)</h6>
-                <span class="info-block__cart-sum">
-                  <span class="woocommerce-Price-amount amount">
-                    <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>0.00</bdi>
-                  </span>
-                </span>
-              </a>
+                            <h6 class="info-block__heading">Your Bag (0 items)</h6>
+                            <span class="info-block__cart-sum">
+                                <span class="woocommerce-Price-amount amount">
+                                <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>0.00</bdi>
+                                </span>
+                            </span>
+                        </a>
 
-              <div class="header-cart-dropdown">
-                <div class="widget_shopping_cart_content"></div>
-              </div>
-            </li>
-          </ul>
+                        <div class="header-cart-dropdown">
+                            <div class="widget_shopping_cart_content"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
     </div>
 
     <div class="header__primary">
@@ -94,7 +83,7 @@
           <!-- Header Logo / End -->
 
           <!-- Main Navigation -->
-          <nav class="main-nav">
+          <nav class="main-nav" style="background-color: rgb(220, 5, 45)">
             <ul id="menu-primary-menu" class="main-nav__list">
               <li id="menu-item-588" ="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-583 current_page_item no-mega-menu">
                 <a class="menu-item-link" href="{% url 'home' %}">Home</a>

@@ -21,9 +21,11 @@ from main import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='home'),
+    path('', views.HOME, name='home'),
     path('news/<slug:slug>/', views.NEWS, name='newspage'),
-    path('match/', views.MATCH_DETAIL, name='match'),
+    path('add_comment/<int:user_id>/', views.save_comment, name='save_comment'),
+
+    path('match/<slug:slug_name>/', views.MATCH_DETAIL, name='match'),
     path('player/<slug:slug_name>/', views.PLAYER_DETAIL, name='player'),
     path('roster/', views.CLUB_ROSTER, name='roster'),
     path('staff/<slug:slug_name>/', views.STAFF, name='staff'),
@@ -31,6 +33,7 @@ urlpatterns = [
     path('account/<slug:slug_name>/', views.ACCOUNT, name='account'),
     path('account/<slug:slug_name>/<str:addr_type>/', views.ADDRESS, name='address'),
     path('account/<slug:slug_name>/order/<int:order_id>/', views.ORDER, name='order'),
+    path('logout/', views.LOGOUT, name='logout'),
     path('login/', views.REG_LOGIN, name='login'),
     path('shop/', views.SHOP, name='shop'),
     path('product/<slug:slug_name>/', views.PRODUCT, name='product'),
@@ -39,7 +42,7 @@ urlpatterns = [
     path('test/', views.TEST, name='test'),
 
     #cart
-    path('cart/add/<int:id>/', views.cart_add, name='cart_add'),
+    path('cart/add/<int:size>/<int:player>/<int:id>/', views.cart_add, name='cart_add'),
     path('cart/item_clear/<int:id>/', views.item_clear, name='item_clear'),
     path('cart/item_increment/<int:id>/<int:qty>/', views.item_increment, name='item_increment'),
     path('cart/item_decrement/<int:id>/<int:quantity>/', views.item_decrement, name='item_decrement'),

@@ -90,3 +90,6 @@ admin.site.register(Merchandise_Type, Merchandise_Type_Admin)
 admin.site.register(Merchandise, Merchandise_Admin)
 
 admin.site.register(Order, Order_Admin)
+
+admin.site.register(Comment)
+admin.site.register(Bayern)

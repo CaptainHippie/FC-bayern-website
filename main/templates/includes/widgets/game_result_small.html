@@ -1,0 +1,323 @@
+{% load static %}
+{% load custom_calculations %}
+
+<div id="widget-game-result-1" class="widget widget--sidebar card widget-game-result">
+    <div class="widget__content card__content">
+        <div class="card card--no-paddings">
+            <header class="card__header"><h4>Latest Results</h4></header>
+            <div class="card__content">
+                <!-- Game Score -->
+                <div class="widget-game-result__section">
+                    <div class="widget-game-result__section-inner">
+                        <a href="{% url 'match' last_match.slug %}" class="widget-game-result__item">
+                            <header class="widget-game-result__header">
+                                <h3 class="widget-game-result__title">{{last_match.competition}}</h3>
+                                <time class="widget-game-result__date">{{last_match.time|date:"F j, Y - g:i A"}}</time>
+                            </header>
+
+                            {% if last_match.at_home == True %}
+                            <div class="widget-game-result__main">
+                                <div class="widget-game-result__team widget-game-result__team--odd" style="margin-left: -16px">
+                                    <figure class="widget-game-result__team-logo">
+                                        <img width="60" height="60" src="{% static 'images/logo.png' %}"
+                                            class="attachment-alchemists_team-logo-sm-fit size-alchemists_team-logo-sm-fit wp-post-image">
+                                    </figure>
+                                    <div class="widget-game-result__team-info">
+                                        <h5 class="widget-game-result__team-name">{{bayern.full_name}}</h5>
+                                        <div class="widget-game-result__team-desc">{{bayern.manager}}</div>
+                                    </div>
+                                </div>
+                                <div class="widget-game-result__team widget-game-result__team--even" style="margin-right: -16px">
+                                    <figure class="widget-game-result__team-logo">
+                                        <img width="60" height="60" src="/media/{{last_match.opponent.logo}}"
+                                            class="attachment-alchemists_team-logo-sm-fit size-alchemists_team-logo-sm-fit wp-post-image">
+                                    </figure>
+                                    <div class="widget-game-result__team-info">
+                                        <h5 class="widget-game-result__team-name">{{last_match.opponent}}</h5>
+                                        <div class="widget-game-result__team-desc">{{last_match.opponent.manager}}</div>
+                                    </div>
+                                </div>
+                                <div class="widget-game-result__score-wrap">
+                                    <div class="widget-game-result__score">
+                                        {% if last_match.scored > last_match.conceded %}
+                                        <span class="widget-game-result__score-result widget-game-result__score-result--winner">{{last_match.scored}}</span>
+                                        <span class="widget-game-result__score-dash">-</span>
+                                        <span class="widget-game-result__score-result widget-game-result__score-result--loser">{{last_match.conceded}}</span>
+                                        {% elif last_match.scored == last_match.conceded %}
+                                        <span class="widget-game-result__score-result widget-game-result__score-result--loser">{{last_match.scored}}</span>
+                                        <span class="widget-game-result__score-dash">-</span>
+                                        <span class="widget-game-result__score-result widget-game-result__score-result--loser">{{last_match.conceded}}</span>
+                                        {% else %}
+                                        <span class="widget-game-result__score-result widget-game-result__score-result--loser">{{last_match.scored}}</span>
+                                        <span class="widget-game-result__score-dash">-</span>
+                                        <span class="widget-game-result__score-result widget-game-result__score-result--winner">{{last_match.conceded}}</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% else %}
+                            <div class="widget-game-result__main">
+                                <div class="widget-game-result__team widget-game-result__team--odd" style="margin-left: -16px">
+                                    <figure class="widget-game-result__team-logo">
+                                        <img width="60" height="60" src="/media/{{last_match.opponent.logo}}"
+                                            class="attachment-alchemists_team-logo-sm-fit size-alchemists_team-logo-sm-fit wp-post-image">
+                                    </figure>
+                                    <div class="widget-game-result__team-info">
+                                        <h5 class="widget-game-result__team-name">{{last_match.opponent}}</h5>
+                                        <div class="widget-game-result__team-desc">{{last_match.opponent.manager}}</div>
+                                    </div>
+                                </div>
+                                <div class="widget-game-result__team widget-game-result__team--even" style="margin-right: -16px">
+                                    <figure class="widget-game-result__team-logo">
+                                        <img width="60" height="60" src="{% static 'images/logo.png' %}"
+                                            class="attachment-alchemists_team-logo-sm-fit size-alchemists_team-logo-sm-fit wp-post-image">
+                                    </figure>
+                                    <div class="widget-game-result__team-info">
+                                        <h5 class="widget-game-result__team-name">{{bayern.full_name}}</h5>
+                                        <div class="widget-game-result__team-desc">{{bayern.manager}}</div>
+                                    </div>
+                                </div>
+                                <div class="widget-game-result__score-wrap">
+                                    <div class="widget-game-result__score">
+                                        {% if last_match.scored > last_match.conceded %}
+                                        <span class="widget-game-result__score-result widget-game-result__score-result--loser">{{last_match.conceded}}</span>
+                                        <span class="widget-game-result__score-dash">-</span>
+                                        <span class="widget-game-result__score-result widget-game-result__score-result--winner">{{last_match.scored}}</span>
+                                        {% elif last_match.scored == last_match.conceded %}
+                                        <span class="widget-game-result__score-result widget-game-result__score-result--loser">{{last_match.conceded}}</span>
+                                        <span class="widget-game-result__score-dash">-</span>
+                                        <span class="widget-game-result__score-result widget-game-result__score-result--loser">{{last_match.scored}}</span>
+                                        {% else %}
+                                        <span class="widget-game-result__score-result widget-game-result__score-result--winner">{{last_match.conceded}}</span>
+                                        <span class="widget-game-result__score-dash">-</span>
+                                        <span class="widget-game-result__score-result widget-game-result__score-result--loser">{{last_match.scored}}</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% endif %}
+                        </a><!-- .widget-game-result__item -->
+                    </div>
+                </div>
+                <!-- Game Score / End -->
+
+                <!-- include 'includes/widgets/game_result_small_events.html' -->
+
+                <!-- Game Statistics -->
+                <div class="widget-game-result__section">
+                    <header class="widget-game-result__subheader card__subheader card__subheader--sm card__subheader--nomargins">
+                        <h5 class="widget-game-result__subtitle">Game Statistics</h5>
+                    </header>
+
+                    {% if last_match.at_home == True %}
+                    <div class="widget-game-result__section-inner">
+
+                        <div class="progress-double-wrapper">
+                            <h6 class="progress-title">Possession</h6>
+                            <div class="progress-inner-holder">
+                                <div class="progress__digit progress__digit--left progress__digit--highlight">{% rnd_pos last_match.possession %}%</div>
+                                <div class="progress__double">
+                                    <div class="progress" style="background-color:{{last_match.opponent.color}}">
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{{last_match.possession}}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{{last_match.possession}}%;background-color:{{bayern.color}}"></div>
+                                    </div>
+                                </div>
+                                <div class="progress__digit progress__digit--right">{% rnd_pos_opp last_match.possession %}%</div>
+                            </div>
+                        </div>
+
+                        <div class="progress-double-wrapper">
+                            <h6 class="progress-title">Shots</h6>
+                            <div class="progress-inner-holder">
+                                <div class="progress__digit progress__digit--left progress__digit--highlight">{{ last_match.shots }}</div>
+                                <div class="progress__double">
+                                    <div class="progress" style="background-color:{{last_match.opponent.color}}">
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% call_bookings last_match.shots last_match.shots_opp %}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{% call_bookings last_match.shots last_match.shots_opp %}%;background-color:{{bayern.color}}"></div>
+                                    </div>
+                                </div>
+                                <div class="progress__digit progress__digit--right">{{ last_match.shots_opp }}</div>
+                            </div>
+                        </div>
+
+                        <div class="progress-double-wrapper">
+                            <h6 class="progress-title">Shots on Goal</h6>
+                            <div class="progress-inner-holder">
+                                <div class="progress__digit progress__digit--left progress__digit--highlight">{{ last_match.shots_target }}</div>
+                                <div class="progress__double">
+                                    <div class="progress" style="background-color:{{last_match.opponent.color}}">
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% call_bookings last_match.shots_target last_match.shots_target_opp %}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{% call_bookings last_match.shots_target last_match.shots_target_opp %}%;background-color:{{bayern.color}}"></div>
+                                    </div>
+                                </div>
+                                <div class="progress__digit progress__digit--right">{{ last_match.shots_target_opp }}</div>
+                            </div>
+                        </div>
+
+                        <div class="progress-double-wrapper">
+                            <h6 class="progress-title">Corner Kick</h6>
+                            <div class="progress-inner-holder">
+                                <div class="progress__digit progress__digit--left progress__digit--highlight">{{ last_match.corners }}</div>
+                                <div class="progress__double">
+                                    <div class="progress" style="background-color:{{last_match.opponent.color}}">
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% call_bookings last_match.corners last_match.corners_opp %}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{% call_bookings last_match.corners last_match.corners_opp %}%;background-color:{{bayern.color}}"></div>
+                                    </div>
+                                </div>
+                                <div class="progress__digit progress__digit--right">{{last_match.corners_opp}}</div>
+                            </div>
+                        </div>
+
+                        <div class="progress-double-wrapper">
+                            <h6 class="progress-title">Fouls</h6>
+                            <div class="progress-inner-holder">
+                                <div class="progress__digit progress__digit--left progress__digit--highlight">{{ last_match.fouls }}</div>
+                                <div class="progress__double">
+                                    <div class="progress" style="background-color:{{last_match.opponent.color}}">
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% call_bookings last_match.fouls last_match.fouls_opp %}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{% call_bookings last_match.fouls last_match.fouls_opp %}%;background-color:{{bayern.color}}"></div>
+                                    </div>
+                                </div>
+                                <div class="progress__digit progress__digit--right">{{ last_match.fouls_opp }}</div>
+                            </div>
+                        </div>
+
+                        <div class="progress-double-wrapper">
+                            <h6 class="progress-title">Yellow cards</h6>
+                            <div class="progress-inner-holder">
+                                <div class="progress__digit progress__digit--left progress__digit--highlight">{{ last_match.yellows }}</div>
+                                <div class="progress__double">
+                                    <div class="progress" style="background-color:{{last_match.opponent.color}}">
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% call_bookings last_match.yellows last_match.yellows_opp %}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{% call_bookings last_match.yellows last_match.yellows_opp %}%;background-color:{{bayern.color}}"></div>
+                                    </div>
+                                </div>
+                                <div class="progress__digit progress__digit--right">{{ last_match.yellows_opp }}</div>
+                            </div>
+                        </div>
+
+                        <div class="progress-double-wrapper">
+                            <h6 class="progress-title">Red cards</h6>
+                            <div class="progress-inner-holder">
+                                <div class="progress__digit progress__digit--left progress__digit--highlight">{{ last_match.reds }}</div>
+                                <div class="progress__double">
+                                    <div class="progress" style="background-color:{{last_match.opponent.color}}">
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% call_bookings last_match.reds last_match.reds_opp %}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{% call_bookings last_match.reds last_match.reds_opp %}%;background-color:{{bayern.color}}"></div>
+                                    </div>
+                                </div>
+                                <div class="progress__digit progress__digit--right">{{last_match.reds_opp}}</div>
+                            </div>
+                        </div>
+
+                    </div>
+                    {% else %}
+                    <div class="widget-game-result__section-inner">
+
+                        <div class="progress-double-wrapper">
+                            <h6 class="progress-title">Possession</h6>
+                            <div class="progress-inner-holder">
+                                <div class="progress__digit progress__digit--left progress__digit--highlight">{% rnd_pos_opp last_match.possession %}%</div>
+                                <div class="progress__double">
+                                    <div class="progress" style="background-color:{{bayern.color}}">
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{{last_match.possession}}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{{last_match.possession}}%;background-color:{{last_match.opponent.color}}"></div>
+                                    </div>
+                                </div>
+                                <div class="progress__digit progress__digit--right">{% rnd_pos last_match.possession %}%</div>
+                            </div>
+                        </div>
+
+                        <div class="progress-double-wrapper">
+                            <h6 class="progress-title">Shots</h6>
+                            <div class="progress-inner-holder">
+                                <div class="progress__digit progress__digit--left progress__digit--highlight">{{last_match.shots_opp}}</div>
+                                <div class="progress__double">
+                                    <div class="progress" style="background-color:{{bayern.color}}">
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% call_bookings_away last_match.shots last_match.shots_opp %}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{% call_bookings_away last_match.shots last_match.shots_opp %}%;background-color:{{last_match.opponent.color}}"></div>
+                                    </div>
+                                </div>
+                                <div class="progress__digit progress__digit--right">{{last_match.shots}}</div>
+                            </div>
+                        </div>
+
+                        <div class="progress-double-wrapper">
+                            <h6 class="progress-title">Shots on Goal</h6>
+                            <div class="progress-inner-holder">
+                                <div class="progress__digit progress__digit--left progress__digit--highlight">{{last_match.shots_target_opp}}</div>
+                                <div class="progress__double">
+                                    <div class="progress" style="background-color:{{bayern.color}}">
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% call_bookings_away last_match.shots_target last_match.shots_target_opp %}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{% call_bookings_away last_match.shots_target last_match.shots_target_opp %}%;background-color:{{last_match.opponent.color}}"></div>
+                                    </div>
+                                </div>
+                                <div class="progress__digit progress__digit--right">{{last_match.shots_target}}</div>
+                            </div>
+                        </div>
+
+                        <div class="progress-double-wrapper">
+                            <h6 class="progress-title">Corner Kick</h6>
+                            <div class="progress-inner-holder">
+                                <div class="progress__digit progress__digit--left progress__digit--highlight">{{last_match.corners_opp}}</div>
+                                <div class="progress__double">
+                                    <div class="progress" style="background-color:{{bayern.color}}">
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% call_bookings_away last_match.corners last_match.corners_opp %}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{% call_bookings_away last_match.corners last_match.corners_opp %}%;background-color:{{last_match.opponent.color}}"></div>
+                                    </div>
+                                </div>
+                                <div class="progress__digit progress__digit--right">{{last_match.corners}}</div>
+                            </div>
+                        </div>
+
+                        <div class="progress-double-wrapper">
+                            <h6 class="progress-title">Fouls</h6>
+                            <div class="progress-inner-holder">
+                                <div class="progress__digit progress__digit--left progress__digit--highlight">{{last_match.fouls_opp}}</div>
+                                <div class="progress__double">
+                                    <div class="progress" style="background-color:{{bayern.color}}">
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% call_bookings_away last_match.fouls last_match.fouls_opp %}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{% call_bookings_away last_match.fouls last_match.fouls_opp %}%;background-color:{{last_match.opponent.color}}"></div>
+                                    </div>
+                                </div>
+                                <div class="progress__digit progress__digit--right">{{last_match.fouls}}</div>
+                            </div>
+                        </div>
+
+                        <div class="progress-double-wrapper">
+                            <h6 class="progress-title">Yellow cards</h6>
+                            <div class="progress-inner-holder">
+                                <div class="progress__digit progress__digit--left progress__digit--highlight">{{last_match.yellows_opp}}</div>
+                                <div class="progress__double">
+                                    <div class="progress" style="background-color:{{bayern.color}}">
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% call_bookings_away last_match.yellows last_match.yellows_opp %}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{% call_bookings_away last_match.yellows last_match.yellows_opp %}%;background-color:{{last_match.opponent.color}}"></div>
+                                    </div>
+                                </div>
+                                <div class="progress__digit progress__digit--right">{{last_match.yellows}}</div>
+                            </div>
+                        </div>
+
+                        <div class="progress-double-wrapper">
+                            <h6 class="progress-title">Red cards</h6>
+                            <div class="progress-inner-holder">
+                                <div class="progress__digit progress__digit--left progress__digit--highlight">{{last_match.reds_opp}}</div>
+                                <div class="progress__double">
+                                    <div class="progress" style="background-color:{{bayern.color}}">
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% call_bookings_away last_match.reds last_match.reds_opp %}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{% call_bookings_away last_match.reds last_match.reds_opp %}%;background-color:{{last_match.opponent.color}}"></div>
+                                    </div>
+                                </div>
+                                <div class="progress__digit progress__digit--right">{{last_match.reds}}</div>
+                            </div>
+                        </div>
+
+                    </div>
+                    {% endif %}
+                </div>
+                <!-- Game Statistics / End -->
+            </div>
+        </div>
+    </div>
+</div>

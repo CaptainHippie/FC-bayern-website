@@ -56,6 +56,13 @@
                                                                                 <td class="woocommerce-table__product-name product-name">
                                                                                     <a href="{% url 'product' item.product.slug %}">{{item.product.name}}</a>
                                                                                     <strong class="product-quantity">&times;&nbsp;{{item.quantity}}</strong>
+                                                                                    {% if item.size != None or item.player != None %}
+                                                                                    (
+                                                                                        {% if item.size != None %}{{item.size.size}}{% endif %}
+                                                                                        {% if item.size != None and item.player != None %},&nbsp; {% endif %}
+                                                                                        {% if item.player != None %}{{item.player.name}}{% endif %}
+                                                                                    )
+                                                                                    {% endif %}
                                                                                 </td>
                                                                                 <td class="woocommerce-table__product-total product-total">
                                                                                     <span class="woocommerce-Price-amount amount">

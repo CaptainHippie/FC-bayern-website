@@ -2,6 +2,7 @@
 {% block content %}
 {% load static %}
 {% load custom_calculations %}
+{% load cart_tag %}
 
 <title>Shop - FC Bayern</title>
 <script
@@ -113,7 +114,7 @@
                                             <p>{{product.description|truncatechars:300}}</p>
                                         </div>
                                         <footer class="product__footer">
-                                            <a href="{% url 'cart_add' product.id %}" class="btn product_type_simple add_to_cart_button ajax_add_to_cart btn-primary-inverse">
+                                            <a href="{% url 'cart_add' 0 0 product.id %}" class="btn product_type_simple add_to_cart_button ajax_add_to_cart btn-primary-inverse">
                                                 Add to cart</a>
                                             <a href="{% url 'product' product.slug %}"
                                                 class="btn product__view btn-default btn-inverse btn-single-icon">

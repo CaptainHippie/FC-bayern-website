@@ -86,7 +86,7 @@
 
                                             <option value="">Select Kit No & Name&hellip;</option>
                                             {% for player in all_players %}
-                                            <option style="color:black" value="{{ player.kit_no }}">{{ player.kit_no }}. {{ player.name }}</option>
+                                            <option style="color:black" value="{{ player.id }}">{{ player.kit_no }}. {{ player.name }}</option>
                                             {% endfor %}
 
                                         </select>
@@ -102,7 +102,7 @@
 
                                             <option value="">Select size&hellip;</option>
                                             {% for cur_size in product.category.merchandise_size_set.all %}
-                                            <option style="color:black" value="{{ cur_size.size }}">{{ cur_size.size }}</option>
+                                            <option style="color:black" value="{{ cur_size.id }}">{{ cur_size.size }}</option>
                                             {% endfor %}
 
                                         </select>

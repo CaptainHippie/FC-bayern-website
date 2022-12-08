@@ -184,8 +184,8 @@
                                             {% for cur_club in club_league_stats %}
                                             <tr class="{% cycle 'odd' 'even' %} {% if cur_club.club.name == 'FC Bayern Munich' %}highlighted{% endif %} sp-row-no-{{ forloop.counter0 }}"
                                             {% if forloop.counter == 4 %} style="border-bottom:2px solid white"{% endif %}>
-                                                <td class="data-rank {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="Pos">{{ forloop.counter }}</td>
-                                                <td class="data-name has-logo {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="Club">
+                                                <td class="data-rank{% if cur_club.club.name == 'FC Bayern Munich' %} sp-highlight{% endif %}" data-label="Pos">{{ forloop.counter }}</td>
+                                                <td class="data-name has-logo{% if cur_club.club.name == 'FC Bayern Munich' %} sp-highlight{% endif %}" data-label="Club">
                                                     <span lass="team-logo">
                                                         <img width="30" height="30" class="attachment-sportspress-fit-icon size-sportspress-fit-icon wp-post-image" src="/media/{{cur_club.club.logo}}">
                                                     </span>&nbsp;{{cur_club.club}}</td>
@@ -339,7 +339,7 @@
                                                                                             <header class="widget-game-result__header">
                                                                                                 <time class="widget-game-result__date">
                                                                                                     {{cur_match.time|date:"F j, Y"}}<span class="event-time-status event-time-status--has-divider">{{cur_match.time|date:"g:i A"}}</span>
-                                                                                                    <span class="widget-game-competition-info">{{cur_match.competition}}, MatchDay 13</span>
+                                                                                                    <span class="widget-game-competition-info">{{cur_match.competition}}, {{cur_match.match_title}}</span>
                                                                                                 </time>
                                                                                             </header>
 
@@ -369,7 +369,7 @@
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="widget-game-result__score-wrap">
-                                                                                                    <a href="http://alchemists-wp.dan-fisher.com/soccer-dark/event/red-wings-vs-alchemists/" class="widget-game-result__score">
+                                                                                                    <a href="{% url 'match' cur_match.slug %}" class="widget-game-result__score">
                                                                                                         {% if cur_match.scored > cur_match.conceded %}
                                                                                                         <span class="widget-game-result__score-result widget-game-result__score-result--winner">{{cur_match.scored}}</span>
                                                                                                         <span class="widget-game-result__score-dash">-</span>
@@ -406,7 +406,7 @@
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="widget-game-result__score-wrap">
-                                                                                                    <a href="http://alchemists-wp.dan-fisher.com/soccer-dark/event/red-wings-vs-alchemists/" class="widget-game-result__score">
+                                                                                                    <a href="{% url 'match' cur_match.slug %}" class="widget-game-result__score">
                                                                                                         {% if cur_match.scored < cur_match.conceded %}
                                                                                                         <span class="widget-game-result__score-result widget-game-result__score-result--winner">{{cur_match.conceded}}</span>
                                                                                                         <span class="widget-game-result__score-dash">-</span>

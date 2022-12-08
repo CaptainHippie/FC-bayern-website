@@ -950,7 +950,7 @@ fieldset[disabled] .sp-team-gallery-link>a.focus {
 .widget-game-result__date {
     font-family: Montserrat;
     color: #9a9da2;
-    text-align: left;
+    text-align: center;
 }
 .widget-game-competition-info {
     font-family: Montserrat;

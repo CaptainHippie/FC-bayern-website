@@ -2,7 +2,7 @@
 {% block content %}
 {% load static %}
 
-<title>News - FC Bayern</title>
+<title>News - {{post.title|truncatechars:40}}</title>
 <div class="site-content" id="content">
 <div class="container">
     <div class="row">
@@ -30,17 +30,17 @@
                         <h1 class='post__title'>{{post.title}}</h1>
                         <div class="post__meta meta ">
                             <div class="meta__item meta__item--date">
-                                <time datetime="2017-03-06T12:37:43+00:00" class="posts__date">{{post.added|date:"F j, Y"}}</time>
+                                <time class="posts__date">{{post.added|date:"F j, Y"}}</time>
                             </div>
-                            <div class="meta__item meta__item--views js-meta__item--views-count"
-                                data-id="87" data-nonce="7cb6e66b1e">{{post.views}}</div>
-                            <div class="meta__item meta__item--likes "><a
-                                    href="../wp-admin/admin-ajax312d.html?action=process_simple_like&amp;post_id=87&amp;nonce=1316b20c12&amp;is_comment=0&amp;disabled=true"
-                                    class="sl-button sl-button-87" data-nonce="1316b20c12" data-post-id="87"
-                                    data-iscomment="0" title="Like"><span class="sl-icon"><i
-                                            class="meta-like icon-heart"></i></span><span
-                                        class="sl-count">96</span></a><span class="sl-loader"></span></div>
-                            <div class="meta__item meta__item--comments"><a href="index.html#respond">0</a>
+                            <div class="meta__item meta__item--views js-meta__item--views-count">{{post.views}}</div>
+                            <div class="meta__item meta__item--likes ">
+                                <a href="" class="sl-button sl-button-87" title="Like">
+                                    <span class="sl-icon"><i class="meta-like icon-heart"></i></span>
+                                    <span class="sl-count">96</span>
+                                </a>
+                                <span class="sl-loader"></span>
+                            </div>
+                            <div class="meta__item meta__item--comments"><a href="">{{comment_count}}</a>
                             </div>
                         </div>
                     </header>
@@ -76,25 +76,18 @@
             <div class="post-author card card--lg">
                 <div class="card__content">
 
-
                     <header class="post-author__header">
-
                         <figure class="post-author__avatar">
-                            <img alt=''
-                                src='https://secure.gravatar.com/avatar/c4a4bfa7304c328ed1ba7cd74c25c87f?s=60&amp;d=mm&amp;r=g'
-                                srcset='https://secure.gravatar.com/avatar/c4a4bfa7304c328ed1ba7cd74c25c87f?s=120&#038;d=mm&#038;r=g 2x'
-                                class='avatar avatar-60 photo' height='60' width='60' loading='lazy' />
+                            <img src="/media/{{post.author.profile_pic}}" class='avatar avatar-60 photo' height='60' width='60' loading='lazy' />
                         </figure>
 
                         <div class="post-author__info">
-                            <h4 class="post-author__name">{{post.author}}</h4>
-                            <span class="post-author__slogan">admin</span>
+                            <h4 class="post-author__name">{{post.author.name_display}}</h4>
+                            {% if post.author.is_staff == True %}<span class="post-author__slogan">admin</span>{% endif %}
                         </div>
                         <ul class="post-author__social-links social-links social-links--btn">
                             <li class="social-links__item">
-                                <a href="mailto:dan.fisher85@yahoo.com"
-                                    class="social-links__link social-links__link--mail"><i
-                                        class="fa fa-envelope"></i></a>
+                                <a href="{{post.author.social_link}}" class="social-links__link social-links__link--mail"><i class="fa fa-envelope"></i></a>
                             </li>
                         </ul>
                     </header>
@@ -102,272 +95,96 @@
             </div>
             <!-- Post Author / End -->
             <!-- Next/Prev Posts -->
-            <div class="post-related row">
-
-
-                <div class="col-6">
-                    <!-- Prev Post -->
-                    <div class="card post-related__prev">
-                        <div class="card__content">
-
-                            <!-- Prev Post Links -->
-                            <a href="../the-team-is-starting-a-new-power-breakfast-regimen/index.html"
-                                class="btn-nav">
-                                <i class="fa fa-chevron-left"></i>
-                            </a>
-                            <!-- Prev Post Links / End -->
-
-                            <ul class="posts posts--simple-list">
-                                <li
-                                    class="posts__item posts__item--category-1 post-86 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-incorporation tag-team tag-uniforms">
-                                    <div class="posts__inner">
-
-                                        <div class="posts__cat"><span
-                                                class="label posts__cat-label posts__cat-label--category-1 category-the-team">The
-                                                Team</span></div>
-                                        <h6 class="posts__title"><a
-                                                href="../the-team-is-starting-a-new-power-breakfast-regimen/index.html">The
-                                                team is starting a new power breakfast regimen</a></h6>
-                                        <time datetime="2017-03-06T12:37:21+00:00" class="posts__date">March
-                                            6, 2017</time>
-                                    </div>
-                                </li>
-                            </ul>
-
-                        </div>
-                    </div>
-                    <!-- Prev Post / End -->
-                </div>
-
-
-                <div class="col-6">
-                    <div class="card post-related__next">
-                        <!-- Next Post -->
-                        <div class="card__content">
-
-                            <ul class="posts posts--simple-list">
-                                <li
-                                    class="posts__item posts__item--category-1 post-567 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-alchemists tag-stadium">
-                                    <div class="posts__inner">
-
-                                        <div class="posts__cat"><span
-                                                class="label posts__cat-label posts__cat-label--category-1 category-the-team">The
-                                                Team</span></div>
-                                        <h6 class="posts__title"><a
-                                                href="../the-planetrotters-will-perform-this-may-4th-at-madison-cube/index.html">The
-                                                Planetrotters will perform this May 4th at Madison Cube</a>
-                                        </h6>
-                                        <time datetime="2017-04-05T12:05:16+00:00" class="posts__date">April
-                                            5, 2017</time>
-                                    </div>
-                                </li>
-                            </ul>
-
-                            <!-- Next Post Link -->
-                            <a href="../the-planetrotters-will-perform-this-may-4th-at-madison-cube/index.html"
-                                class="btn-nav">
-                                <i class="fa fa-chevron-right"></i>
-                            </a>
-                            <!-- Next Post Link / End -->
-
-                        </div>
-                        <!-- Next Post / End -->
-                    </div>
-                </div>
-
-
-            </div>
             <!-- Next/Prev / End -->
 
 
             <div id="comments" class="post-comments card card--lg">
 
                 <header class="post-commments__header card__header">
-                    <h4>Comments (4)</h4>
+                    <h4>Comments ({{comment_count}})</h4>
                 </header><!-- .post-commments__header -->
 
                 <div class="post-comments__content card__content pb-0">
 
                     <ol class="comments">
-                        <li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1 parent"
-                            id="comment-2">
-
-                            <div id="comments__inner-2" class="comments__inner">
-
+                        
+                        {% for comment in comments %}
+                        <li class="comment byuser comment-author-admin bypostauthor {% cycle 'even' 'odd' %} thread-{% cycle 'even' 'odd' %} depth-1 parent" id="comment-{{forloop.counter}}">
+                            <div id="comments__inner-{{forloop.counter}}" class="comments__inner">
                                 <header class="comment__header">
                                     <div class="comment__author">
                                         <figure class="comment__author-avatar">
-                                            <img alt=''
-                                                src='http://0.gravatar.com/avatar/c4a4bfa7304c328ed1ba7cd74c25c87f?s=60&#038;d=mm&#038;r=g'
-                                                srcset='http://0.gravatar.com/avatar/c4a4bfa7304c328ed1ba7cd74c25c87f?s=120&#038;d=mm&#038;r=g 2x'
-                                                class='avatar avatar-60 photo' height='60' width='60'
-                                                loading='lazy' />
+                                            <img src="/media/{{comment.from_user.profile_pic}}" class='avatar avatar-60 photo' height='60' width='60'>
                                         </figure>
 
                                         <div class="comment__author-info">
-                                            <h5 class="comment__author-name">admin</h5>
-                                            <div class="comment__post-date">
-                                                <a
-                                                    href="http://alchemists-wp.dan-fisher.com/soccer-dark/the-team-is-starting-a-new-power-breakfast-regimen/#comment-2">
-                                                    March 6, 2017 </a>
-                                            </div>
+                                            <h5 class="comment__author-name">{{comment.from_user.name_display}}</h5>
+                                            <div class="comment__post-date">{{comment.added|date:"g:i A, M j, Y"}}</div>
                                         </div>
                                     </div>
-                                    <div class="comment__reply">
-                                        <a rel='nofollow' class='comment-reply-link'
-                                            href='http://alchemists-wp.dan-fisher.com/soccer-dark/the-team-is-starting-a-new-power-breakfast-regimen/?replytocom=2#respond'
-                                            data-commentid="2" data-postid="86"
-                                            data-belowelement="comment-2" data-respondelement="respond"
-                                            data-replyto="Reply to admin" aria-label='Reply to admin'><span
-                                                class="comment__reply-link btn btn-link btn-xs">Reply</span></a>
+                                    <div class="comment__reply" onclick="reply_mode_on({{forloop.counter}})">
+                                        <span class="comment__reply-link btn btn-link btn-xs" style="color: rgb(203 217 228 / 78%)">Reply</span>
                                     </div>
                                 </header>
 
                                 <div class="comment__body">
-                                    <p>labore et dolore magna aliqua. Ut enim ad mini veniam, quis</p>
+                                    <p>{{comment.text}}</p>
                                 </div>
-
-
                             </div>
-                        </li>
-                        <ul class="children">
-                            <li class="comment byuser comment-author-admin bypostauthor odd alt depth-2"
-                                id="comment-4">
-
-                                <div id="comments__inner-4" class="comments__inner">
-
-                                    <header class="comment__header">
-                                        <div class="comment__author">
-                                            <figure class="comment__author-avatar">
-                                                <img alt=''
-                                                    src='http://0.gravatar.com/avatar/c4a4bfa7304c328ed1ba7cd74c25c87f?s=60&#038;d=mm&#038;r=g'
-                                                    srcset='http://0.gravatar.com/avatar/c4a4bfa7304c328ed1ba7cd74c25c87f?s=120&#038;d=mm&#038;r=g 2x'
-                                                    class='avatar avatar-60 photo' height='60' width='60'
-                                                    loading='lazy' />
-                                            </figure>
-
-                                            <div class="comment__author-info">
-                                                <h5 class="comment__author-name">Dan Fisher</h5>
-                                                <div class="comment__post-date">
-                                                    <a
-                                                        href="http://alchemists-wp.dan-fisher.com/soccer-dark/the-team-is-starting-a-new-power-breakfast-regimen/#comment-4">
-                                                        March 25, 2017 </a>
+                            {% for reply in comment.comment_set.all %}
+                            <ul class="children">
+                                <li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-4">
+    
+                                    <div id="comments__inner-4" class="comments__inner">
+                                        <header class="comment__header">
+                                            <div class="comment__author">
+                                                <figure class="comment__author-avatar">
+                                                    <img src='/media/{{reply.from_user.profile_pic}}' class='avatar avatar-60 photo' height='60' width='60'>
+                                                </figure>
+                                                <div class="comment__author-info">
+                                                    <h5 class="comment__author-name">{{reply.from_user.name_display}}</h5>
+                                                    <div class="comment__post-date">{{reply.added|date:"g:i A, M j, Y"}}</div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="comment__reply">
-                                            <a rel='nofollow' class='comment-reply-link'
-                                                href='http://alchemists-wp.dan-fisher.com/soccer-dark/the-team-is-starting-a-new-power-breakfast-regimen/?replytocom=4#respond'
-                                                data-commentid="4" data-postid="86"
-                                                data-belowelement="comment-4" data-respondelement="respond"
-                                                data-replyto="Reply to Dan Fisher"
-                                                aria-label='Reply to Dan Fisher'><span
-                                                    class="comment__reply-link btn btn-link btn-xs">Reply</span></a>
-                                        </div>
-                                    </header>
-
-                                    <div class="comment__body">
-                                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                                            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                                            quae ab illo inventore veritatis et quasi architecto.</p>
+                                        </header>
+                                        <div class="comment__body">
+                                            <p>{{reply.text}}</p>
+                                        </div>    
                                     </div>
-
-
-                                </div>
-                            </li>
-                            </li><!-- #comment-## -->
-                        </ul><!-- .children -->
-                        </li><!-- #comment-## -->
-                        <li class="comment byuser comment-author-admin bypostauthor even thread-odd thread-alt depth-1"
-                            id="comment-3">
-
-                            <div id="comments__inner-3" class="comments__inner">
-
-                                <header class="comment__header">
-                                    <div class="comment__author">
-                                        <figure class="comment__author-avatar">
-                                            <img alt=''
-                                                src='http://0.gravatar.com/avatar/c4a4bfa7304c328ed1ba7cd74c25c87f?s=60&#038;d=mm&#038;r=g'
-                                                srcset='http://0.gravatar.com/avatar/c4a4bfa7304c328ed1ba7cd74c25c87f?s=120&#038;d=mm&#038;r=g 2x'
-                                                class='avatar avatar-60 photo' height='60' width='60'
-                                                loading='lazy' />
-                                        </figure>
-
-                                        <div class="comment__author-info">
-                                            <h5 class="comment__author-name">admin</h5>
-                                            <div class="comment__post-date">
-                                                <a
-                                                    href="http://alchemists-wp.dan-fisher.com/soccer-dark/the-team-is-starting-a-new-power-breakfast-regimen/#comment-3">
-                                                    March 16, 2017 </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="comment__reply">
-                                        <a rel='nofollow' class='comment-reply-link'
-                                            href='http://alchemists-wp.dan-fisher.com/soccer-dark/the-team-is-starting-a-new-power-breakfast-regimen/?replytocom=3#respond'
-                                            data-commentid="3" data-postid="86"
-                                            data-belowelement="comment-3" data-respondelement="respond"
-                                            data-replyto="Reply to admin" aria-label='Reply to admin'><span
-                                                class="comment__reply-link btn btn-link btn-xs">Reply</span></a>
-                                    </div>
-                                </header>
-
-                                <div class="comment__body">
-                                    <p>incididunt ut labore et dolore magna aliqua. Ut enim ad mini veniam,
-                                        quis nostrud en</p>
-                                </div>
-
-
-                            </div>
+                                </li>
+                                
+                            </ul>
+                            {% endfor %}
                         </li>
-                        </li><!-- #comment-## -->
-                        <li class="comment byuser comment-author-admin bypostauthor odd alt thread-even depth-1"
-                            id="comment-5">
 
-                            <div id="comments__inner-5" class="comments__inner">
 
-                                <header class="comment__header">
-                                    <div class="comment__author">
-                                        <figure class="comment__author-avatar">
-                                            <img alt=''
-                                                src='http://0.gravatar.com/avatar/c4a4bfa7304c328ed1ba7cd74c25c87f?s=60&#038;d=mm&#038;r=g'
-                                                srcset='http://0.gravatar.com/avatar/c4a4bfa7304c328ed1ba7cd74c25c87f?s=120&#038;d=mm&#038;r=g 2x'
-                                                class='avatar avatar-60 photo' height='60' width='60'
-                                                loading='lazy' />
-                                        </figure>
-
-                                        <div class="comment__author-info">
-                                            <h5 class="comment__author-name">Dan Fisher</h5>
-                                            <div class="comment__post-date">
-                                                <a
-                                                    href="http://alchemists-wp.dan-fisher.com/soccer-dark/the-team-is-starting-a-new-power-breakfast-regimen/#comment-5">
-                                                    March 25, 2017 </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="comment__reply">
-                                        <a rel='nofollow' class='comment-reply-link'
-                                            href='http://alchemists-wp.dan-fisher.com/soccer-dark/the-team-is-starting-a-new-power-breakfast-regimen/?replytocom=5#respond'
-                                            data-commentid="5" data-postid="86"
-                                            data-belowelement="comment-5" data-respondelement="respond"
-                                            data-replyto="Reply to Dan Fisher"
-                                            aria-label='Reply to Dan Fisher'><span
-                                                class="comment__reply-link btn btn-link btn-xs">Reply</span></a>
-                                    </div>
-                                </header>
-
-                                <div class="comment__body">
-                                    <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                        consectetur, adipisci velit, sed quia non numquam eius modi tempora
-                                        incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut
-                                        enim ad minima veniam, quis nostrum exercitationem ullam corporis
-                                        suscipit laboriosam.</p>
+                        <div id="respond-{{forloop.counter}}" class="comment-respond">
+                            <header class="post-comment-form__header">
+                                <h4>Leave a Reply <small>
+                                    <a rel="nofollow" id="cancel-comment-reply-link" onclick="reply_mode_off()" style="cursor:pointer">Cancel Reply</a>
+                                </small>
+                                </h4>
+                            </header>
+                            <form action="{% url 'save_comment' logged_user.id %}" method="post" id="commentform-{{ forloop.counter }}" class="post-comment-form__content card__content" novalidate="">
+                                {% csrf_token %}
+                                <p class="logged-in-as">
+                                    Logged in as {{ logged_user.username }}. <a href="">Log out?</a>
+                                </p>
+                                <div class="comment-form-message form-group">
+                                    <label class="control-label hidden" for="comment">Your Reply</label>
+                                    <textarea id="comment" name="comment_text" cols="30" rows="7" class="form-control" aria-required="true"></textarea>
                                 </div>
+                                <p class="form-submit">
+                                    <input name="submit" type="submit" id="submit" class="btn btn-block btn-lg btn-default" value="Post Your Comment">
+                                    <input type="hidden" name="comment_post_ID" value="{{post.id}}" id="comment_post_ID">
+                                    <input type="hidden" name="comment_parent" id="comment_parent" value="{{comment.id}}">
+                                </p>
+                            </form>	
+                        </div>
 
-
-                            </div>
-                        </li>
-                        </li><!-- #comment-## -->
+                        
+                        {% endfor %}
+                        
                     </ol><!-- .comments -->
 
                 </div>
@@ -376,31 +193,18 @@
 
             <!-- Comment Form -->
             <div class="post-comment-form card card--lg">
-                <div id="respond" class="comment-respond">
-                    <header class="post-comment-form__header card__header">
-                        <h4>Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link"
-                                    href="/soccer-dark/the-team-is-starting-a-new-power-breakfast-regimen/#respond"
-                                    style="display:none;">Cancel Reply</a></small></h4>
-                    </header>
-                    <form action="http://alchemists-wp.dan-fisher.com/soccer-dark/wp-comments-post.php"
-                        method="post" id="commentform" class="post-comment-form__content card__content"
-                        novalidate>
-                        <p class="logged-in-as"><a
-                                href="http://alchemists-wp.dan-fisher.com/soccer-dark/wp-admin/profile.php"
-                                aria-label="Logged in as neerajvb. Edit your profile.">Logged in as
-                                neerajvb</a>. <a
-                                href="http://alchemists-wp.dan-fisher.com/soccer-dark/wp-login.php?action=logout&amp;redirect_to=http%3A%2F%2Falchemists-wp.dan-fisher.com%2Fsoccer-dark%2Fthe-team-is-starting-a-new-power-breakfast-regimen%2F&amp;_wpnonce=3a46f48646">Log
-                                out?</a> <span class="required-field-message" aria-hidden="true">Required
-                                fields are marked <span class="required" aria-hidden="true">*</span></span>
-                        </p>
-                        <div class="comment-form-message form-group"><label class="control-label"
-                                for="comment">Your Comment</label><textarea id="comment" name="comment"
-                                cols="30" rows="7" class="form-control" aria-required="true"></textarea>
+                <div id="respond" class="comment-respond-main">
+                    <header class="post-comment-form__header card__header"><h4>Leave a Comment</h4></header>
+                    <form action="{% url 'save_comment' logged_user.id %}" method="post" id="main-commentform" class="post-comment-form__content card__content">
+                        {% csrf_token %}
+                        <p class="logged-in-as">Logged in as {{ logged_user.username }}. <a href="">Log out?</a></p>
+                        <div class="comment-form-message form-group">
+                            <label class="control-label" for="comment">Your Comment</label>
+                            <textarea id="comment" name="comment_text" cols="30" rows="7" class="form-control" aria-required="true"></textarea>
                         </div>
-                        <p class="form-submit"><input name="submit" type="submit" id="submit"
-                                class="btn btn-block btn-lg btn-default" value="Post Your Comment" /> <input
-                                type='hidden' name='comment_post_ID' value='86' id='comment_post_ID' />
-                            <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+                        <p class="form-submit">
+                            <input name="submit" type="submit" id="submit" class="btn btn-block btn-lg btn-default" value="Post Your Comment"> 
+                            <input type='hidden' name='comment_post_ID' value="{{post.id}}" id='comment_post_ID'>
                         </p>
                     </form>
                 </div><!-- #respond -->
@@ -492,4 +296,7 @@
     </div>
 </div>
 </div>
+
+<script src="{% static 'js/news_comment.js' %}" id="news_comment-js" defer></script>
+
 {% endblock %}

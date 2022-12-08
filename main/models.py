@@ -9,15 +9,39 @@ from django_countries.fields import CountryField
 
 class article_type(models.Model):
     name = models.CharField(max_length=50)
+    css_name = models.CharField(max_length=50, null=True, blank=True)
+    category = models.SmallIntegerField(default=1)
 
     def __str__(self):
         return self.name
 
+class Bayern(models.Model):
+    full_name = models.CharField(max_length=100, default='Bayern')
+    logo = models.ImageField(default='logos/bayern_logo.png', upload_to='logos', null=True)
+    color = models.CharField(max_length=50, null=True)
+    alt_color = models.CharField(max_length=50, null=True)
+    manager = models.CharField(max_length=100, null=True)
+    fb_link = models.CharField(max_length=100, null=True)
+    insta_link = models.CharField(max_length=100, null=True)
+    twitter_link = models.CharField(max_length=100, null=True)
+
+    def __str__(self):
+        return self.full_name
+
+class CustomUser(User):
+    name_display = models.CharField(max_length=100, null=True)
+    profile_pic = models.ImageField(default='user_pfps/default.jpg', upload_to='user_pfps', null=True, blank=True)
+    content_creator = models.BooleanField(default=False)
+    slug = models.SlugField(default='', max_length=500, null=True, blank=True)
+    social_link = models.CharField(max_length=100, null=True, blank=True)
+
+    def __str__(self):
+        return self.name_display
 
 class News_article(models.Model):
     title = models.CharField(max_length=100)
     news_type = models.ForeignKey(article_type, on_delete=models.CASCADE)
-    author = models.CharField(max_length=100, null=True)
+    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, blank=True, null=True)
     image = models.ImageField(upload_to='uploads')
     post_content = RichTextField()
     added = models.DateTimeField(auto_now_add=True, null=True)
@@ -25,6 +49,7 @@ class News_article(models.Model):
     slug = models.SlugField(default='', max_length=500, null=True, blank=True)
     views = models.IntegerField(default=0, null=True, blank=True)
     excerpt = models.TextField(null=True)
+    featured = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
@@ -56,13 +81,11 @@ def pre_save_post_receiver(sender, instance, *args, **kwargs):
 
 pre_save.connect(pre_save_post_receiver, News_article)
 
-
 class Competition(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
-
 
 class Team(models.Model):
     name = models.CharField(max_length=100)
@@ -77,7 +100,6 @@ class Team(models.Model):
 
     def __str__(self):
         return self.name
-
 
 class Club_season_stats(models.Model):
     club = models.ForeignKey(Team, on_delete=models.CASCADE, null=True)
@@ -95,9 +117,9 @@ class Club_season_stats(models.Model):
     def __str__(self):
         return str(self.club) + str(self.competition)
 
-
 class Match(models.Model):
     competition = models.ForeignKey(Competition, on_delete=models.CASCADE)
+    match_title = models.CharField(max_length=100, null=True, blank=True)
     venue = models.CharField(max_length=100, null=True)
     opponent = models.ForeignKey(Team, on_delete=models.CASCADE)
     scored = models.IntegerField(null=True)
@@ -110,34 +132,31 @@ class Match(models.Model):
     banner = models.ImageField(
         default='banners/Allianz_Arena_wide.jpg', upload_to='banners', null=True)
 
-    pass_acc = models.DecimalField(decimal_places=1, max_digits=3, null=True)
-    shot_acc = models.DecimalField(decimal_places=1, max_digits=3, null=True)
-    offsides = models.IntegerField(null=True)
-    fouls = models.IntegerField(null=True)
-    shots = models.IntegerField(null=True)
-    shots_target = models.IntegerField(null=True)
-    yellows = models.IntegerField(null=True)
-    reds = models.IntegerField(null=True)
-    corners = models.IntegerField(null=True)
-    saves = models.IntegerField(null=True)
+    pass_acc = models.DecimalField(decimal_places=1, max_digits=3, null=True, default=0)
+    shot_acc = models.DecimalField(decimal_places=1, max_digits=3, null=True, default=0)
+    offsides = models.IntegerField(null=True, default=0)
+    fouls = models.IntegerField(null=True, default=0)
+    shots = models.IntegerField(null=True, default=0)
+    shots_target = models.IntegerField(null=True, default=0)
+    yellows = models.IntegerField(null=True, default=0)
+    reds = models.IntegerField(null=True, default=0)
+    corners = models.IntegerField(null=True, default=0)
+    saves = models.IntegerField(null=True, default=0)
     possession = models.DecimalField(decimal_places=1, max_digits=3, null=True)
 
-    pass_acc_opp = models.DecimalField(
-        decimal_places=1, max_digits=3, null=True)
-    shot_acc_opp = models.DecimalField(
-        decimal_places=1, max_digits=3, null=True)
-    offsides_opp = models.IntegerField(null=True)
-    fouls_opp = models.IntegerField(null=True)
-    shots_opp = models.IntegerField(null=True)
-    shots_target_opp = models.IntegerField(null=True)
-    yellows_opp = models.IntegerField(null=True)
-    reds_opp = models.IntegerField(null=True)
-    corners_opp = models.IntegerField(null=True)
-    saves_opp = models.IntegerField(null=True)
+    pass_acc_opp = models.DecimalField(decimal_places=1, max_digits=3, null=True, default=0)
+    shot_acc_opp = models.DecimalField(decimal_places=1, max_digits=3, null=True, default=0)
+    offsides_opp = models.IntegerField(null=True, default=0)
+    fouls_opp = models.IntegerField(null=True, default=0)
+    shots_opp = models.IntegerField(null=True, default=0)
+    shots_target_opp = models.IntegerField(null=True, default=0)
+    yellows_opp = models.IntegerField(null=True, default=0)
+    reds_opp = models.IntegerField(null=True, default=0)
+    corners_opp = models.IntegerField(null=True, default=0)
+    saves_opp = models.IntegerField(null=True, default=0)
 
     def __str__(self):
         return str(self.opponent) + "_" + str(self.id)
-
 
 class Nationality(models.Model):
     name = models.CharField(max_length=100)
@@ -147,13 +166,11 @@ class Nationality(models.Model):
     def __str__(self):
         return self.name
 
-
 class Position(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
-
 
 class Player(models.Model):
     name = models.CharField(max_length=100)
@@ -179,18 +196,15 @@ class Player(models.Model):
     def __str__(self):
         return self.name
 
-
 class Goalscorers(models.Model):
     name = models.ForeignKey(Player, on_delete=models.CASCADE)
     match = models.ForeignKey(Match, on_delete=models.CASCADE)
     minute = models.IntegerField(null=True)
 
-
 class Opponent_Goalscorers(models.Model):
     name = models.CharField(max_length=100, null=True)
     match = models.ForeignKey(Match, on_delete=models.CASCADE)
     minute = models.IntegerField(null=True)
-
 
 class Match_event(models.Model):
     name = models.CharField(max_length=100)
@@ -198,14 +212,12 @@ class Match_event(models.Model):
     def __str__(self):
         return self.name
 
-
 class Match_timeline(models.Model):
     name = models.ForeignKey(Match_event, on_delete=models.CASCADE)
     match = models.ForeignKey(Match, on_delete=models.CASCADE)
     homeside = models.BooleanField(default=True)
     minute = models.IntegerField(null=True)
     who = models.CharField(max_length=100, null=True, blank=True)
-
 
 class Season(models.Model):
     name = models.CharField(max_length=100)
@@ -246,11 +258,9 @@ def create_player_slug(instance, new_slug=None):
     return_slug(slug, qs, instance)
     return slug
 
-
 def pre_save_post_receiver_player(sender, instance, *args, **kwargs):
     if not instance.slug:
         instance.slug = create_player_slug(instance)
-
 
 pre_save.connect(pre_save_post_receiver_player, Player)
 
@@ -320,14 +330,6 @@ class Album_Image(models.Model):
         default='album/default.jpg', upload_to='album', null=True)
     description = models.CharField(max_length=100, null=True)
     date = models.DateField(null=True)
-
-
-class CustomUser(User):
-    name_display = models.CharField(max_length=100, null=True)
-    slug = models.SlugField(default='', max_length=500, null=True, blank=True)
-
-    def __str__(self):
-        return self.name_display
 
 
 ADDRESS_TYPE = (("billing", "Billing Address"),
@@ -428,3 +430,14 @@ class Order_Item(models.Model):
 
     def __str__(self):
         return self.parent_order.user.username + self.product.name + str(self.quantity)
+
+class Comment(models.Model):
+    parent_news = models.ForeignKey(News_article, on_delete=models.CASCADE)
+    parent_comment = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
+    from_user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    added = models.DateTimeField(auto_now_add=True, null=True)
+    text = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return self.from_user.username + "_" + self.parent_news.title
+    

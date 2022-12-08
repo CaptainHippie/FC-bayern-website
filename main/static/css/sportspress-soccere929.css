@@ -6248,6 +6248,7 @@ table.sp-responsive-table tbody tr th::before {
 }
 
 .widget-game-result__main {
+  margin-top: 14px;
   margin-bottom: 6px;
   display: flex;
   align-items: center;
@@ -6291,12 +6292,12 @@ table.sp-responsive-table tbody tr th::before {
 }
 @media (max-width: 479px) {
   .widget-game-result__team-name {
-    max-width: 80px;
+    max-width: 200px;
   }
 }
 @media (min-width: 992px) {
   .widget-game-result__team-name {
-    font-size: 13px;
+    font-size: 11px;
   }
 }
 

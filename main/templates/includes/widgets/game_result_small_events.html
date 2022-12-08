@@ -1,0 +1,110 @@
+{% load custom_calculations %}
+
+<div class="widget-game-result__section">
+    <!-- Timeline -->
+    <div class="game-timeline-wrapper game-timeline-wrapper--vertical">
+        <div class="game-timeline">
+            <div class="game-timeline__event game-timeline__event--kickoff game-timeline__event--side-away" title="Kick Off">
+                <span class="game-timeline__team-logo" title="Clovers">
+                    <img width="128" height="114" src="wp-content/uploads/2017/09/Lucky-Clovers-128x114.png"
+                        class="attachment-sportspress-fit-icon size-sportspress-fit-icon wp-post-image">
+                </span>
+                <div class="game-timeline__time game-timeline__time--kickoff game-timeline__time--kickoff-away">KO</div>
+            </div>
+
+            <div class="game-timeline__event game-timeline__event--kickoff game-timeline__event--side-home" title="Kick Off">
+                <span class="game-timeline__team-logo" title="Alchemists">
+                    <img width="111" height="128" src="wp-content/uploads/2017/09/Alchemists-Soccer-Big-111x128.png"
+                        class="attachment-sportspress-fit-icon size-sportspress-fit-icon wp-post-image">
+                </span>
+                <div class="game-timeline__time game-timeline__time--kickoff game-timeline__time--kickoff-home">KO</div>
+            </div>
+
+            {% for event in events %}
+                {% if last_match.at_home == True %}
+                    {% if event.homeside == True %}
+                        <div class="game-timeline__event game-timeline__event--side-home" style="left: {{event.minute}}%">
+                            <div class="game-timeline__event-info game-timeline__event-info--side-home">
+                                <div class="game-timeline__event-name">{{event.who}}</div>
+                                <div class="game-timeline__icon game-timeline__icon--home">
+                                    {% if event.name.name == 'Yellow Card' %}
+                                        <i class="sp-icon-card" title="Yellow Card" style="color: #f4d014 !important"></i>
+                                    {% elif event.name.name == 'Red Card' %}
+                                        <i class="sp-icon-card" title="Red Card" style="color:#d4000f !important"></i>
+                                    {% elif event.name.name == 'Goal' %}
+                                        <i class="sp-icon-soccerball" title="Goal" style="color:#ffffff !important"></i>
+                                    {% else %}
+                                        <i class="sp-icon-sub" title="Substitution"></i>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        <div class="game-timeline__time" title="{{event.who}}">{{event.minute}}'</div>
+                        </div>
+                    {% else %}
+                        <div class="game-timeline__event game-timeline__event--side-away" style="left: {{event.minute}}%">
+                            <div class="game-timeline__event-info game-timeline__event-info--side-away">
+                                <div class="game-timeline__event-name">{{event.who}}</div>
+                                <div class="game-timeline__icon game-timeline__icon--away">
+                                    {% if event.name.name == 'Yellow Card' %}
+                                        <i class="sp-icon-card" title="Yellow Card" style="color: #f4d014 !important"></i>
+                                    {% elif event.name.name == 'Red Card' %}
+                                        <i class="sp-icon-card" title="Red Card" style="color:#d4000f !important"></i>
+                                    {% elif event.name.name == 'Goal' %}
+                                        <i class="sp-icon-soccerball" title="Goal" style="color:#ffffff !important"></i>
+                                    {% else %}
+                                        <i class="sp-icon-sub" title="Substitution"></i>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        <div class="game-timeline__time" title="{{event.who}}">{{event.minute}}'</div>
+                        </div>
+                    {% endif %}
+                {% else %}
+                    {% if event.homeside == True %}
+                        <div class="game-timeline__event game-timeline__event--side-away" style="left: {{event.minute}}%">
+                            <div class="game-timeline__event-info game-timeline__event-info--side-away">
+                                <div class="game-timeline__event-name">{{event.who}}</div>
+                                <div class="game-timeline__icon game-timeline__icon--away">
+                                    {% if event.name.name == 'Yellow Card' %}
+                                        <i class="sp-icon-card" title="Yellow Card" style="color: #f4d014 !important"></i>
+                                    {% elif event.name.name == 'Red Card' %}
+                                        <i class="sp-icon-card" title="Red Card" style="color:#d4000f !important"></i>
+                                    {% elif event.name.name == 'Goal' %}
+                                        <i class="sp-icon-soccerball" title="Goal" style="color:#ffffff !important"></i>
+                                    {% else %}
+                                        <i class="sp-icon-sub" title="Substitution"></i>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        <div class="game-timeline__time" title="{{event.who}}">{{event.minute}}'</div>
+                        </div>
+                    {% else %}
+                        <div class="game-timeline__event game-timeline__event--side-home" style="left: {{event.minute}}%">
+                            <div class="game-timeline__event-info game-timeline__event-info--side-home">
+                                <div class="game-timeline__event-name">{{event.who}}</div>
+                                <div class="game-timeline__icon game-timeline__icon--home">
+                                    {% if event.name.name == 'Yellow Card' %}
+                                        <i class="sp-icon-card" title="Yellow Card" style="color: #f4d014 !important"></i>
+                                    {% elif event.name.name == 'Red Card' %}
+                                        <i class="sp-icon-card" title="Red Card" style="color:#d4000f !important"></i>
+                                    {% elif event.name.name == 'Goal' %}
+                                        <i class="sp-icon-soccerball" title="Goal" style="color:#ffffff !important"></i>
+                                    {% else %}
+                                        <i class="sp-icon-sub" title="Substitution"></i>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        <div class="game-timeline__time" title="{{event.who}}">{{event.minute}}'</div>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+
+            
+            <div class="game-timeline__event game-timeline__event--ft" title="Full Time">
+                <div class="game-timeline__time">FT</div>
+            </div>
+        </div>
+    </div>
+    <!-- Timeline / End -->
+</div>

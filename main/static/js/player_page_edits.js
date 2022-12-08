@@ -22,7 +22,7 @@ function player_page_switch_tabs(evt, tabName) {
 
 function hide_stuff_after_load() {
   setTimeout(function () {
-    console.log(window.location.pathname);
+    //console.log(window.location.pathname);
     if (document.getElementById("zzz_statistics") != null){
       document.getElementById("zzz_statistics").style.display = "none";
     };
@@ -41,5 +41,15 @@ function hide_stuff_after_load() {
     if (document.getElementById("zzz_schedules") != null){
       document.getElementById("zzz_schedules").style.display = "none";
     };
+
+    /*if (document.getElementById("account-orders") != null){
+      document.getElementById("account-orders").style.display = "none";
+    };
+    if (document.getElementById("account-addresses") != null){
+      document.getElementById("account-addresses").style.display = "none";
+    };
+    if (document.getElementById("account-account") != null){
+      document.getElementById("account-account").style.display = "none";
+    };*/
   }, 30);
 }
