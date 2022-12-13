@@ -81,3 +81,30 @@ def get_staff_news_models(all_news_queryset, slug_name):
             if tag.staff_tag.slug == slug_name:
                 staff_news_models.append(news)
     return staff_news_models
+
+class Time_Diff:
+
+    def __init__(self, days, hours, minutes, seconds):
+        self.days = days
+        self.hours = hours
+        self.minutes = minutes
+        self.seconds = seconds
+
+    def add_leading_zeros(self):
+        self.days = ("0" + str(self.days)) if (len(str(self.days)) < 2) else self.days
+        self.hours = ("0" + str(self.hours)) if (len(str(self.hours)) < 2) else self.hours
+        self.minutes = ("0" + str(self.minutes)) if (len(str(self.minutes)) < 2) else self.minutes
+        self.seconds = ("0" + str(self.seconds)) if (len(str(self.seconds)) < 2) else self.seconds
+
+def get_time_difference(timedelta):
+    days = timedelta.days
+    td_seconds = timedelta.seconds
+    hours_fraction = td_seconds / 3600
+    hours = int(hours_fraction)
+    minutes_fraction = (hours_fraction - int(hours)) * 60
+    minutes = int(minutes_fraction)
+    seconds_calc = ((hours * 60) + minutes) * 60
+    seconds_left = td_seconds - seconds_calc
+    time_left = Time_Diff(days, hours, minutes, seconds_left)
+    time_left.add_leading_zeros()
+    return time_left

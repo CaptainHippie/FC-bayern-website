@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'django_countries',
-    'cart'
+    'cart',
+    'active_link'
 
 ]
 
@@ -72,7 +73,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'cart.context_processor.cart_total_amount'
+                'cart.context_processor.cart_total_amount',
+                'main.common_context_processor.bayern_data'
             ],
         },
     },

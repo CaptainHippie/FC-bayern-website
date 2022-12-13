@@ -6878,7 +6878,7 @@ body {
   display: none;
   top: 0;
   bottom: 0;
-  width: 210px;
+  width: 256px;
   background-color: #1e2024;
   left: -25px;
   margin-left: 0;
@@ -7447,6 +7447,7 @@ input.header-mobile__search-control:focus {
   position: relative;
   font-style: normal;
   color: #fff;
+  margin-top: 4px;
   padding: 0 34px;
   line-height: 62px;
   text-decoration: none;

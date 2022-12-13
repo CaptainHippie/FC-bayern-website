@@ -17,14 +17,14 @@
         <div id="primary" class="content-area col-lg-8">
 
             <!-- Article -->
-            <article id="post-87" class="card post post--single posts__item--category-2 card--lg post-87 type-post status-publish format-standard has-post-thumbnail hentry category-the-league tag-alchemists tag-injuries tag-playoffs">
+            <article id="post-87" class="card post post--single posts__item--category-{{post.news_type.category}} card--lg post-87 type-post status-publish format-standard has-post-thumbnail hentry category-{{post.news_type.css_name}}">
                 <figure class="post__thumbnail">
                     <img width="773" height="380" src="/media/{{post.image}}" class="attachment-alchemists_thumbnail-lg size-alchemists_thumbnail-lg wp-post-image">
                 </figure>
 
                 <div class="card__content">
                     <div class="post__category">
-                        <span class="label posts__cat-label posts__cat-label--category-2 category-the-league">{{post.news_type}}</span>
+                        <span class="label posts__cat-label posts__cat-label--category-{{post.news_type.category}} category-{{post.news_type.css_name}}">{{post.news_type}}</span>
                     </div>
                     <header class="post__header">
                         <h1 class='post__title'>{{post.title}}</h1>

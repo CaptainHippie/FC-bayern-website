@@ -3,384 +3,100 @@
 {% load static %}
 
 <title>FC Bayern</title>
-<aside class="pushy-panel pushy-panel--dark">
-    <div class="pushy-panel__inner">
-        <header class="pushy-panel__header">
-            <div class="pushy-panel__logo">
-            <a href="index.html" rel="home">
-                <img src="{% static 'images/logo.png' %}" class="pushy-panel__logo-img">
-            </a>
-            </div>
-        </header>
-
-    <div class="pushy-panel__content">
-        <div id="recent-posts-widget-5" class="widget widget--side-panel recent-posts">
-            <div class="posts posts--simple-list">
-                <div class="posts__item posts__item--category-1 post-91 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-alchemists tag-awards tag-coach tag-stadium">
-                    <figure class="posts__thumb posts__thumb--hover">
-                    <a href="the-new-eco-friendly-stadium-won-a-leafy-award-in-2016/index.html">
-                <img width="80" height="80" src="{% static 'images/post-img3-80x80.jpg' %}"
-                  class="wp-post-image" alt="" loading="lazy"
-                  srcset="
-      {% static 'images/post-img3-80x80.jpg' %}    80w,
-      {% static 'images/post-img3-300x300.jpg' %} 300w,
-      {% static 'images/post-img3-100x100.jpg' %} 100w,
-      {% static 'images/post-img3-150x150.jpg' %} 150w,
-      {% static 'images/post-img3-400x400.jpg' %} 400w,
-      {% static 'images/post-img3-40x40.jpg' %}    40w
-                  "
-                  sizes="(max-width: 80px) 100vw, 80px">
-              </a>
-            </figure>
-
-            <div class="posts__inner">
-              <div class="posts__cat">
-                <span
-                  class="label posts__cat-label posts__cat-label--category-1 category-the-team"
-                  >The Team</span
-                >
-              </div>
-              <h6
-                class="posts__title posts__title--color-hover"
-                title="The new eco friendly stadium won a Leafy Award in 2016"
-              >
-                <a
-                  href="the-new-eco-friendly-stadium-won-a-leafy-award-in-2016/index.html"
-                  >The new eco friendly stadium won a Leafy Award in
-                  2016</a
-                >
-              </h6>
-              <time
-                datetime="2017-04-05T12:23:52+00:00"
-                class="posts__date"
-              >
-                April 5, 2017
-              </time>
-            </div>
-          </div>
-
-          <div
-            class="posts__item posts__item--category-1 post-90 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-alchemists tag-players tag-playoffs"
-          >
-            <figure class="posts__thumb posts__thumb--hover">
-              <a
-                href="the-alchemists-team-is-appearing-in-l-a-beach-for-charity/index.html"
-              >
-                <img
-                  width="80"
-                  height="80"
-                  src="{% static 'images/post-img5-80x80.jpg' %}"
-                  class="wp-post-image"
-                  alt=""
-                  loading="lazy"
-                  srcset="
-      {% static 'images/post-img5-80x80.jpg' %}    80w,
-      {% static 'images/post-img5-300x300.jpg' %} 300w,
-      {% static 'images/post-img5-100x100.jpg' %} 100w,
-      {% static 'images/post-img5-150x150.jpg' %} 150w,
-      {% static 'images/post-img5-400x400.jpg' %} 400w,
-      {% static 'images/post-img5-40x40.jpg' %}    40w
-                  "
-                  sizes="(max-width: 80px) 100vw, 80px"
-                />
-              </a>
-            </figure>
-
-            <div class="posts__inner">
-              <div class="posts__cat">
-                <span
-                  class="label posts__cat-label posts__cat-label--category-1 category-the-team"
-                  >The Team</span
-                >
-              </div>
-              <h6
-                class="posts__title posts__title--color-hover"
-                title="The Alchemists team is appearing in L.A. Beach for charity"
-              >
-                <a
-                  href="the-alchemists-team-is-appearing-in-l-a-beach-for-charity/index.html"
-                  >The Alchemists team is appearing in L.A. Beach for
-                  charity</a
-                >
-              </h6>
-              <time
-                datetime="2017-04-05T12:22:43+00:00"
-                class="posts__date"
-              >
-                April 5, 2017
-              </time>
-            </div>
-          </div>
-
-          <div
-            class="posts__item posts__item--category-1 post-89 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-alchemists tag-injuries tag-playoffs"
-          >
-            <figure class="posts__thumb posts__thumb--hover">
-              <a
-                href="brian-kingster-saw-the-red-card-after-a-kick-against-jason-t/index.html"
-              >
-                <img
-                  width="80"
-                  height="80"
-                  src="{% static 'images/soccer_post_1-80x80.jpg' %}"
-                  class="wp-post-image"
-                  alt=""
-                  loading="lazy"
-                  srcset="
-      {% static 'images/soccer_post_1-80x80.jpg' %}    80w,
-      {% static 'images/soccer_post_1-300x300.jpg' %} 300w,
-      {% static 'images/soccer_post_1-100x100.jpg' %} 100w,
-      {% static 'images/soccer_post_1-150x150.jpg' %} 150w,
-      {% static 'images/soccer_post_1-400x400.jpg' %} 400w,
-      {% static 'images/soccer_post_1-40x40.jpg' %}    40w
-                  "
-                  sizes="(max-width: 80px) 100vw, 80px"
-                />
-              </a>
-            </figure>
-
-            <div class="posts__inner">
-              <div class="posts__cat">
-                <span
-                  class="label posts__cat-label posts__cat-label--category-1 category-the-team"
-                  >The Team</span
-                >
-              </div>
-              <h6
-                class="posts__title posts__title--color-hover"
-                title="Brian Kingster saw the red card after a kick against Jason T."
-              >
-                <a
-                  href="brian-kingster-saw-the-red-card-after-a-kick-against-jason-t/index.html"
-                  >Brian Kingster saw the red card after a kick against
-                  Jason T.</a
-                >
-              </h6>
-              <time
-                datetime="2017-04-05T12:21:01+00:00"
-                class="posts__date"
-              >
-                April 5, 2017
-              </time>
-            </div>
-          </div>
-
-          <div
-            class="posts__item posts__item--category-1 posts__item--category-3 post-88 post type-post status-publish format-video has-post-thumbnail hentry category-injuries tag-alchemists tag-injuries tag-playoffs post_format-post-format-video"
-          >
-            <figure class="posts__thumb posts__thumb--hover">
-              <a
-                href="jenny-jackson-wont-be-able-to-play-next-game/index.html"
-              >
-                <img
-                  width="80"
-                  height="80"
-                  src="{% static 'images/soccer_post_2-80x80.jpg' %}"
-                  class="wp-post-image"
-                  alt=""
-                  loading="lazy"
-                  srcset="
-      {% static 'images/soccer_post_2-80x80.jpg' %}    80w,
-      {% static 'images/soccer_post_2-300x300.jpg' %} 300w,
-      {% static 'images/soccer_post_2-100x100.jpg' %} 100w,
-      {% static 'images/soccer_post_2-150x150.jpg' %} 150w,
-      {% static 'images/soccer_post_2-400x400.jpg' %} 400w,
-      {% static 'images/soccer_post_2-40x40.jpg' %}    40w
-                  "
-                  sizes="(max-width: 80px) 100vw, 80px"
-                />
-              </a>
-            </figure>
-
-            <div class="posts__inner">
-              <div class="posts__cat">
-                <span
-                  class="label posts__cat-label posts__cat-label--category-3 category-injuries"
-                  >Injuries</span
-                >
-              </div>
-              <h6
-                class="posts__title posts__title--color-hover"
-                title="Jenny Jackson won&#8217;t be able to play next game"
-              >
-                <a
-                  href="jenny-jackson-wont-be-able-to-play-next-game/index.html"
-                  >Jenny Jackson won&#8217;t be able to play next game</a
-                >
-              </h6>
-              <time
-                datetime="2017-04-05T12:19:47+00:00"
-                class="posts__date"
-              >
-                April 5, 2017
-              </time>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        id="tag_cloud-2"
-        class="widget widget--side-panel widget_tag_cloud"
-      >
-        <h4 class="widget__title">Popular Tags</h4>
-        <div class="tagcloud">
-          <a
-            href="tag/alchemists/index.html"
-            class="tag-cloud-link tag-link-19 btn btn-primary btn-xs btn-outline btn-sm tag-link-position-1"
-            aria-label="Alchemists (10 items)"
-            >Alchemists</a
-          >
-          <a
-            href="tag/awards/index.html"
-            class="tag-cloud-link tag-link-21 btn btn-primary btn-xs btn-outline btn-sm tag-link-position-2"
-            aria-label="awards (2 items)"
-            >awards</a
-          >
-          <a
-            href="tag/coach/index.html"
-            class="tag-cloud-link tag-link-23 btn btn-primary btn-xs btn-outline btn-sm tag-link-position-3"
-            aria-label="Coach (2 items)"
-            >Coach</a
-          >
-          <a
-            href="tag/injuries/index.html"
-            class="tag-cloud-link tag-link-26 btn btn-primary btn-xs btn-outline btn-sm tag-link-position-4"
-            aria-label="Injuries (3 items)"
-            >Injuries</a
-          >
-          <a
-            href="tag/playoffs/index.html"
-            class="tag-cloud-link tag-link-29 btn btn-primary btn-xs btn-outline btn-sm tag-link-position-5"
-            aria-label="Playoffs (5 items)"
-            >Playoffs</a
-          >
-          <a
-            href="tag/stadium/index.html"
-            class="tag-cloud-link tag-link-30 btn btn-primary btn-xs btn-outline btn-sm tag-link-position-6"
-            aria-label="stadium (6 items)"
-            >stadium</a
-          >
-        </div>
-      </div>
-      <div
-        id="media_image-2"
-        class="widget widget--side-panel widget_media_image"
-      >
-        <a href="http://bit.ly/2y4ZKHd"
-          ><img
-            width="300"
-            height="250"
-            src="{% static 'images/banner.jpg' %}"
-            class="image wp-image-1264 attachment-medium size-medium"
-            alt=""
-            loading="lazy"
-            style="max-width: 100%; height: auto"
-            srcset="
-              https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2018/04/banner.jpg         300w,
-              https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2018/04/banner-128x107.jpg 128w,
-              https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2018/04/banner-32x27.jpg    32w,
-              https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2018/04/banner-70x58.jpg    70w,
-              https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2018/04/banner-100x83.jpg  100w
-            "
-            sizes="(max-width: 300px) 100vw, 300px"
-        /></a>
-      </div>
-    </div>
-    <a href="#" class="pushy-panel__back-btn"></a>
-  </div>
-</aside>
-
 <!-- Hero Slider
 ================================================== -->
 <div class="hero-slider-wrapper">
   <!-- Slides -->
-  <div class="hero-slider hero-slider--thumbs hero-slider--overlay-on">
+    <div class="hero-slider hero-slider--thumbs hero-slider--overlay-on">
 
-  {% for news in popular_news %}
+    {% for news in popular_news %}
 
-    <div class="hero-slider__item posts__item--category-{{news.news_type.category}} post type-post status-publish format-standard has-post-thumbnail hentry category-{{news.news_type.css_name}}">
-      <div class="hero-slider__item-image" style="background-image: url(/media/{{news.image}});"></div>
-      <div class="container hero-slider__item-container">
-        <div class="row">
-          <div class="col-lg-8 offset-md-2">
-            <!-- Post Meta - Top -->
-            <div class="post__meta-block post__meta-block--top">
-              <div class="posts__cat">
-                <span class="label posts__cat-label posts__cat-label--category-{{news.news_type.category}} category-{{news.news_type.css_name}}">{{news.news_type}}</span>
-              </div>
-              <!-- Post Title -->
-              <h1 class="posts__title">
-                <a href="{{news.get_absolute_url}}" rel="bookmark">{{news.title}}</a>
-              </h1>
-              <!-- Post Title / End -->
-              <!-- Post Meta Info -->
-              <ul class="post__meta meta">
-                <li class="meta__item meta__item--date">
-                  <time>{{news.added|date:"F j, Y"}}</time>
-                </li>
+        <div class="hero-slider__item posts__item--category-{{news.news_type.category}} post type-post status-publish format-standard has-post-thumbnail hentry category-{{news.news_type.css_name}}">
+            <div class="hero-slider__item-image" style="background-image: url(/media/{{news.image}});"></div>
+            <div class="container hero-slider__item-container">
+                <div class="row">
+                    <div class="col-lg-8 offset-md-2">
+                        <!-- Post Meta - Top -->
+                        <div class="post__meta-block post__meta-block--top">
+                            <div class="posts__cat">
+                                <span class="label posts__cat-label posts__cat-label--category-{{news.news_type.category}} category-{{news.news_type.css_name}}">{{news.news_type}}</span>
+                            </div>
+                            <!-- Post Title -->
+                            <h1 class="posts__title">
+                                <a href="{{news.get_absolute_url}}" rel="bookmark">{{news.title}}</a>
+                            </h1>
+                            <!-- Post Title / End -->
 
-                <div class="meta__item meta__item--views">{{news.views}}</div>
-                <li class="meta__item meta__item--likes">
-                  <div class="meta__item meta__item--likes">
-                    <a href="" class="sl-button sl-button-102" title="Like">
-                      <span class="sl-icon"><i class="meta-like icon-heart"></i></span>
-                      <span class="sl-count">142</span></a><span class="sl-loader"></span>
-                  </div>
-                </li>
-                <div class="meta__item meta__item--comments">
-                  <a href="">{{news.comment_set.count}}</a>
+                            <!-- Post Meta Info -->
+                            <ul class="post__meta meta">
+                                <li class="meta__item meta__item--date">
+                                    <time>{{news.added|date:"F j, Y"}}</time>
+                                </li>
+
+                                <div class="meta__item meta__item--views">{{news.views}}</div>
+                                <li class="meta__item meta__item--likes">
+                                    <div class="meta__item meta__item--likes">
+                                        <a href="" class="sl-button sl-button-102" title="Like">
+                                            <span class="sl-icon"><i class="meta-like icon-heart"></i></span>
+                                            <span class="sl-count">142</span>
+                                        </a>
+                                        <span class="sl-loader"></span>
+                                    </div>
+                                </li>
+                                <div class="meta__item meta__item--comments">
+                                    <a href="">{{news.comment_set.count}}</a>
+                                </div>
+                            </ul>
+                            <!-- Post Meta Info / End -->
+
+                            <!-- Post Author -->
+                            <div class="post-author">
+                                <figure class="post-author__avatar">
+                                    <img src="/media/{{news.author.profile_pic}}" class="avatar avatar-40 photo" height="40" width="40">
+                                </figure>
+                                <div class="post-author__info">
+                                    <h4 class="post-author__name">{{news.author.name_display}}</h4>
+                                {% if news.author.is_staff == True %}<span class="post-author__slogan">admin</span>{% endif %}
+                                </div>
+                            </div>
+                            <!-- Post Author / End -->
+                        </div>
+                    <!-- Post Meta - Top / End -->
+                    </div>
                 </div>
-              </ul>
-              <!-- Post Meta Info / End -->
-
-              <!-- Post Author -->
-              <div class="post-author">
-                <figure class="post-author__avatar">
-                  <img src="/media/{{news.author.profile_pic}}" class="avatar avatar-40 photo" height="40" width="40">
-                </figure>
-                <div class="post-author__info">
-                  <h4 class="post-author__name">{{news.author.name_display}}</h4>
-                  {% if news.author.is_staff == True %}<span class="post-author__slogan">admin</span>{% endif %}
-                </div>
-              </div>
-              <!-- Post Author / End -->
             </div>
-            <!-- Post Meta - Top / End -->
-          </div>
         </div>
-      </div>
-    </div>
 
     {% endfor %}
-  
-  </div>
-  <!-- Slides / End -->
 
-  <!-- Thumbs -->
-  <div class="hero-slider-thumbs-wrapper">
-    <div class="container">
-      <div class="hero-slider-thumbs posts posts--simple-list">
-
-        {% for news in popular_news %}
-        <div class="hero-slider-thumbs__item posts__item--category-{{news.news_type.category}} post type-post status-publish format-standard has-post-thumbnail hentry category-{{news.news_type.css_name}}">
-          <div class="posts__item posts__item--category-{{news.news_type.category}}">
-            <div class="posts__inner">
-              <div class="posts__cat">
-                <span class="label posts__cat-label posts__cat-label--category-{{news.news_type.category}} category-{{news.news_type.css_name}}">{{news.news_type}}</span>
-              </div>
-              <h6 class="posts__title">{{news.title}}</h6>
-              <time class="posts__date">{{news.added|date:"F j, Y"}}</time>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-
-      </div>
     </div>
-  </div>
-  <!-- Thumbs / End -->
+    <!-- Slides / End -->
 
-  <script type="text/javascript">
+    <!-- Thumbs -->
+    <div class="hero-slider-thumbs-wrapper">
+        <div class="container">
+            <div class="hero-slider-thumbs posts posts--simple-list">
+
+            {% for news in popular_news %}
+                <div class="hero-slider-thumbs__item posts__item--category-{{news.news_type.category}} post type-post status-publish format-standard has-post-thumbnail hentry category-{{news.news_type.css_name}}">
+                    <div class="posts__item posts__item--category-{{news.news_type.category}}">
+                        <div class="posts__inner">
+                            <div class="posts__cat">
+                                <span class="label posts__cat-label posts__cat-label--category-{{news.news_type.category}} category-{{news.news_type.css_name}}">{{news.news_type}}</span>
+                            </div>
+                            <h6 class="posts__title">{{news.title}}</h6>
+                            <time class="posts__date">{{news.added|date:"F j, Y"}}</time>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    <!-- Thumbs / End -->
+
+    <script type="text/javascript">
     (function ($) {
       $(function () {
         var rtl = $("html").attr("dir") ? true : false;
@@ -419,447 +135,286 @@
         });
       });
     })(jQuery);
-  </script>
+    </script>
 </div>
 
 <div class="site-content" id="content">
-<div class="container">
-    <div class="row">
-    <div id="primary" class="content-area col-lg-12">
-        <main id="main" class="site-main">
-            <div class="page type-page status-publish hentry">
-                <div class="entry-content">
-                    <div class="vc_row wpb_row vc_row-fluid">
-                        <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-md-8">
-                            <div class="vc_column-inner">
-                                <div class="wpb_wrapper">
-                                    <!-- Post Loop -->
-                                    <div class="card card--clean">
-                                        <div class="card__header card__header--has-filter">
-                                            <h4 class="">Featured News</h4>
-                                            <ul class="category-filter" id="category-filter-629328544">
-                                                <li class="category-filter__item">
-                                                    <a href="#" class="category-filter__link category-filter__link--reset category-filter__link--active">All</a>
-                                                </li>
-                                                <li class="category-filter__item">
-                                                    <a href="#" class="category-filter__link" data-category="category-the-team">The Team</a>
-                                                </li>
-                                                <li class="category-filter__item">
-                                                    <a href="#" class="category-filter__link" data-category="category-the-league">The League</a>
-                                                </li>
-                                                <li class="category-filter__item">
-                                                    <a href="#" class="category-filter__link" data-category="category-injuries">Injuries</a>
-                                                </li>
-                                            </ul>
-                                        </div>
+    <div class="container">
+        <div class="row">
+            <div id="primary" class="content-area col-lg-12">
+                <main id="main" class="site-main">
+                    <div class="page type-page status-publish hentry">
+                        <div class="entry-content">
+                            <div class="vc_row wpb_row vc_row-fluid">
+                                <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-md-8">
+                                    <div class="vc_column-inner">
+                                        <div class="wpb_wrapper">
+                                            <!-- Post Loop -->
+                                            <div class="card card--clean">
+                                                <div class="card__header card__header--has-filter">
+                                                    <h4 class="">Featured News</h4>
+                                                    <ul class="category-filter" id="category-filter-629328544">
+                                                        <li class="category-filter__item">
+                                                            <a href="#" class="category-filter__link category-filter__link--reset category-filter__link--active">All</a>
+                                                        </li>
+                                                        <li class="category-filter__item">
+                                                            <a href="#" class="category-filter__link" data-category="category-the-team">The Team</a>
+                                                        </li>
+                                                        <li class="category-filter__item">
+                                                            <a href="#" class="category-filter__link" data-category="category-the-league">The League</a>
+                                                        </li>
+                                                        <li class="category-filter__item">
+                                                            <a href="#" class="category-filter__link" data-category="category-injuries">Injuries</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
 
-                                        <div class="card__content">
-                                            <div id="slick-629328544" class="posts posts--slider-featured slick">
+                                                <div class="card__content">
+                                                    <div id="slick-629328544" class="posts posts--slider-featured slick">
 
-                                            {% for news in featured_news %}
-                                                <article class="posts__item post type-post status-publish format-standard has-post-thumbnail hentry category-{{news.news_type.css_name}} tag-awards tag-coach tag-stadium">
-                                                    <figure class="posts__thumb">
-                                                        <a href="{{news.get_absolute_url}}" class="posts__link-wrapper">
-                                                            <img width="773" height="408" src="/media/{{news.image}}" class="attachment-alchemists_thumbnail-lg-alt size-alchemists_thumbnail-lg-alt wp-post-image">
-                                                        </a>
-                                                    </figure>
-                                                    <div class="posts__inner">
-                                                        <div class="posts__cat">
-                                                            <span class="label posts__cat-label posts__cat-label--category-{{news.news_type.category}} category-{{news.news_type.css_name}}">{{news.news_type}}</span>
-                                                        </div>
-                                                        <h3 class="posts__title">{{news.title}}</h3>
-                                                        <div class="post-author">
-                                                            <figure class="post-author__avatar">
-                                                                <img src="/media/{{news.author.profile_pic}}" class="avatar avatar-24 photo" height="24" width="24">
+                                                    {% for news in featured_news %}
+                                                        <article class="posts__item post type-post status-publish format-standard has-post-thumbnail hentry category-{{news.news_type.css_name}} tag-awards tag-coach tag-stadium">
+                                                            <figure class="posts__thumb">
+                                                                <a href="{{news.get_absolute_url}}" class="posts__link-wrapper">
+                                                                    <img width="773" height="408" src="/media/{{news.image}}" class="attachment-alchemists_thumbnail-lg-alt size-alchemists_thumbnail-lg-alt wp-post-image">
+                                                                </a>
                                                             </figure>
-                                                            <div class="post-author__info">
-                                                                <h4 class="post-author__name">{{news.author.name_display}}</h4>
-                                                                <time class="posts__date">{{news.added|date:"F j, Y"}}</time>
+                                                            <div class="posts__inner">
+                                                                <div class="posts__cat">
+                                                                    <span class="label posts__cat-label posts__cat-label--category-{{news.news_type.category}} category-{{news.news_type.css_name}}">{{news.news_type}}</span>
+                                                                </div>
+                                                                <h3 class="posts__title">{{news.title}}</h3>
+                                                                <div class="post-author">
+                                                                    <figure class="post-author__avatar">
+                                                                        <img src="/media/{{news.author.profile_pic}}" class="avatar avatar-24 photo" height="24" width="24">
+                                                                    </figure>
+                                                                    <div class="post-author__info">
+                                                                        <h4 class="post-author__name">{{news.author.name_display}}</h4>
+                                                                        <time class="posts__date">{{news.added|date:"F j, Y"}}</time>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
+                                                        </article>
+                                                    {% endfor %}
                                                     </div>
-                                                </article>
-                                            {% endfor %}
-                                            </div>
-                                            <!-- .posts -->
-                      
-                                            <script type="text/javascript">
-                                                (function ($) {
-                                                    $(function () {
-                                                        var rtl = $("html").attr("dir")
-                                                            ? true
-                                                            : false;
-                                        
-                                                        // Posts
-                                                        ($slick_post_slider_629328544 =
-                                                            $("#slick-629328544")),
-                                                            $slick_post_slider_629328544.slick({
-                                                                slidesToShow: 1,
-                                                                slidesToScroll: 1,
-                                                                autoplay: true,
-                                                                autoplaySpeed: 5000,
-                                                                arrows: true,
-                                                                rtl: rtl,
-                                                                rows: 0,
-                                        
-                                                                responsive: [
-                                                                    {
-                                                                        breakpoint: 769,
-                                                                        settings: {
-                                                                            arrows: false,
-                                                                        },
-                                                                    },
-                                                                ],
+                                                    <!-- .posts -->
+
+                                                    <script type="text/javascript">
+                                                        (function ($) {
+                                                            $(function () {
+                                                                var rtl = $("html").attr("dir")
+                                                                    ? true
+                                                                    : false;
+
+                                                                // Posts
+                                                                ($slick_post_slider_629328544 =
+                                                                    $("#slick-629328544")),
+                                                                    $slick_post_slider_629328544.slick({
+                                                                        slidesToShow: 1,
+                                                                        slidesToScroll: 1,
+                                                                        autoplay: true,
+                                                                        autoplaySpeed: 5000,
+                                                                        arrows: true,
+                                                                        rtl: rtl,
+                                                                        rows: 0,
+
+                                                                        responsive: [
+                                                                            {
+                                                                                breakpoint: 769,
+                                                                                settings: {
+                                                                                    arrows: false,
+                                                                                },
+                                                                            },
+                                                                        ],
+                                                                    });
+
+                                                                // Filter by Categories
+                                                                var filtered = false;
+
+                                                                $(
+                                                                    "#category-filter-629328544 .category-filter__link"
+                                                                ).on("click", function (e) {
+                                                                    var category = $(this).data("category");
+                                                                    $slick_post_slider_629328544.slick(
+                                                                        "slickUnfilter"
+                                                                    );
+                                                                    $slick_post_slider_629328544.slick(
+                                                                        "slickFilter",
+                                                                        "." + category
+                                                                    );
+                                                                    $(
+                                                                        "#category-filter-629328544 .category-filter__link--active"
+                                                                    ).removeClass(
+                                                                        "category-filter__link--active"
+                                                                    );
+                                                                    $(this).addClass(
+                                                                        "category-filter__link--active"
+                                                                    );
+                                                                    e.preventDefault();
+                                                                });
+
+                                                                // Reset Filter (Show All posts)
+                                                                $(
+                                                                    "#category-filter-629328544 .category-filter__link--reset"
+                                                                ).on("click", function (e) {
+                                                                    $slick_post_slider_629328544.slick(
+                                                                        "slickUnfilter"
+                                                                    );
+                                                                    $(
+                                                                        "#category-filter-629328544 .category-filter__link"
+                                                                    ).removeClass(
+                                                                        "category-filter__link--active"
+                                                                    );
+                                                                    $(this).addClass(
+                                                                        "category-filter__link--active"
+                                                                    );
+                                                                    filtered = false;
+                                                                    e.preventDefault();
+                                                                });
                                                             });
-                                        
-                                                        // Filter by Categories
-                                                        var filtered = false;
-                                        
-                                                        $(
-                                                            "#category-filter-629328544 .category-filter__link"
-                                                        ).on("click", function (e) {
-                                                            var category = $(this).data("category");
-                                                            $slick_post_slider_629328544.slick(
-                                                                "slickUnfilter"
-                                                            );
-                                                            $slick_post_slider_629328544.slick(
-                                                                "slickFilter",
-                                                                "." + category
-                                                            );
-                                                            $(
-                                                                "#category-filter-629328544 .category-filter__link--active"
-                                                            ).removeClass(
-                                                                "category-filter__link--active"
-                                                            );
-                                                            $(this).addClass(
-                                                                "category-filter__link--active"
-                                                            );
-                                                            e.preventDefault();
-                                                        });
-                                        
-                                                        // Reset Filter (Show All posts)
-                                                        $(
-                                                            "#category-filter-629328544 .category-filter__link--reset"
-                                                        ).on("click", function (e) {
-                                                            $slick_post_slider_629328544.slick(
-                                                                "slickUnfilter"
-                                                            );
-                                                            $(
-                                                                "#category-filter-629328544 .category-filter__link"
-                                                            ).removeClass(
-                                                                "category-filter__link--active"
-                                                            );
-                                                            $(this).addClass(
-                                                                "category-filter__link--active"
-                                                            );
-                                                            filtered = false;
-                                                            e.preventDefault();
-                                                        });
-                                                    });
-                                                })(jQuery);
-                                            </script>
-                                        </div>
-                                    </div>
-                                    <!-- Post Loop / End -->
-
-                                    <!-- Post Loop -->
-                                    <div class="card card--clean mb-0">
-                                        <div class="card__header">
-                                            <h4 class="">Latest News</h4>
-                                            <a class="btn btn-xs btn-default card-header__button btn-outline" href="#" title="See All Posts">See All Posts</a>
-                                        </div>
-                                        <div class="card__content">
-                                            <div class="posts posts--cards post-grid post-grid--2cols row">
-
-                                                {% for news in newest_news %}
-                                                <article class="post-grid__item col-sm-6 posts__item--category-{{news.news_type.category}} post type-post status-publish format-standard has-post-thumbnail hentry category-{{news.news_type.css_name}}">
-                                                    <div class="posts__item posts__item--card card">
-                                                        <figure class="posts__thumb">
-                                                            <div class="posts__cat">
-                                                                <span class="label posts__cat-label posts__cat-label--category-{{news.news_type.category}} category-{{news.news_type.css_name}}">{{news.news_type}}</span>
-                                                            </div>
-                                                            <a href="{{news.get_absolute_url}}">
-                                                                <img width="380" height="270" src="/media/{{news.image}}" class="attachment-alchemists_thumbnail size-alchemists_thumbnail wp-post-image">
-                                                            </a>
-                                                        </figure>
-                                    
-                                                        <div class="posts__inner card__content">                                                         
-                                                            <time class="posts__date">{{news.added|date:"F j, Y"}}</time>
-                                                            <h2 class="posts__title">
-                                                                <a href="{{news.get_absolute_url}}" rel="bookmark">{{news.title}}</a>
-                                                            </h2>
-                                                            <div class="posts__excerpt">{{news.excerpt|truncatechars:200}}</div>
-                                                        </div>
-                                    
-                                                        <footer class="posts__footer card__footer">
-                                                            <div class="post-author">
-                                                                <figure class="post-author__avatar">
-                                                                    <img src="/media/{{news.author.profile_pic}}" height="24" width="24">
-                                                                </figure>
-                                                                <div class="post-author__info">
-                                                                    <h4 class="post-author__name">{{news.author.name_display}}</h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="post__meta meta">
-                                                                <div class="meta__item meta__item--views">{{news.views}}</div>
-                                                                <div class="meta__item meta__item--likes">
-                                                                    <a href="" class="sl-button sl-button-560" title="Like">
-                                                                        <span class="sl-icon"><i class="meta-like icon-heart"></i></span>
-                                                                        <span class="sl-count">88</span>
-                                                                    </a>
-                                                                    <span class="sl-loader"></span>
-                                                                </div>
-                                                                <div class="meta__item meta__item--comments">
-                                                                    <a href="">{{news.comment_set.count}}</a>
-                                                                </div>
-                                                            </div>
-                                                        </footer>
-                                                    </div>
-                                                </article>
-                                                {% endfor %}
-
+                                                        })(jQuery);
+                                                    </script>
+                                                </div>
                                             </div>
-                                            <!-- .posts -->
-                                        </div>
-                                    </div>
-                                    <!-- Post Loop / End -->
-                                    
-                                    <!-- Main News Banner -->
-                                    <div class="main-news-banner main-news-banner--img-left main-news-banner--soccer-ball">
-                                        <div class="main-news-banner__inner">
-                                            <div class="posts posts--simple-list posts--simple-list--xlg">
-                                                <div
-                                                    class="posts__item posts__item--category-1 post-102 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-alchemists tag-stadium tag-team">
-                                                    <div class="posts__inner">
-                                                        <div class="posts__cat">
-                                                            <span class="label posts__cat-label posts__cat-label--category-1 category-the-team">The
-                                                                Team</span>
-                                                        </div>
-                                                        <h6 class="posts__title">
-                                                            <a href="alchemists-new-stadium-is-gonna-be-ready-in-september-2017/index.html"
-                                                                rel="bookmark">Today was unveiled the
-                                                                <span class="main-news-banner__highlight">New Football</span> for the league</a>
-                                                        </h6>
-                                                        <time datetime="2017-03-05T12:12:58+00:00" class="posts__date">March 5, 2017</time>
-                                    
-                                                        <div class="posts__excerpt">
-                                                            Lorem ipsum dolor sit amet, consectetur
-                                                            adipisicing elit, sed do eiusmod tempor
-                                                            incididunt...
-                                                        </div>
-                                    
-                                                        <div class="posts__more">
-                                                            <a href="alchemists-new-stadium-is-gonna-be-ready-in-september-2017/index.html"
-                                                                class="btn btn-inverse btn-sm btn-outline btn-icon-right btn-condensed">Read More
-                                                                <i class="fa fa-plus text-primary"></i></a>
+                                            <!-- Post Loop / End -->
+
+                                            <!-- Post Loop -->
+                                            <div class="card card--clean mb-0">
+                                                <div class="card__header">
+                                                    <h4 class="">Latest News</h4>
+                                                    <a class="btn btn-xs btn-default card-header__button btn-outline" href="#" title="See All Posts">See All Posts</a>
+                                                </div>
+                                                <div class="card__content">
+                                                    <div class="posts posts--cards post-grid post-grid--2cols row">
+
+                                                        {% for news in newest_news %}
+                                                        <article class="post-grid__item col-sm-6 posts__item--category-{{news.news_type.category}} post type-post status-publish format-standard has-post-thumbnail hentry category-{{news.news_type.css_name}}">
+                                                            <div class="posts__item posts__item--card card">
+                                                                <figure class="posts__thumb">
+                                                                    <div class="posts__cat">
+                                                                        <span class="label posts__cat-label posts__cat-label--category-{{news.news_type.category}} category-{{news.news_type.css_name}}">{{news.news_type}}</span>
+                                                                    </div>
+                                                                    <a href="{{news.get_absolute_url}}">
+                                                                        <img width="380" height="270" src="/media/{{news.image}}" class="attachment-alchemists_thumbnail size-alchemists_thumbnail wp-post-image">
+                                                                    </a>
+                                                                </figure>
+
+                                                                <div class="posts__inner card__content">
+                                                                    <time class="posts__date">{{news.added|date:"F j, Y"}}</time>
+                                                                    <h2 class="posts__title">
+                                                                        <a href="{{news.get_absolute_url}}" rel="bookmark">{{news.title}}</a>
+                                                                    </h2>
+                                                                    <div class="posts__excerpt">{{news.excerpt|truncatechars:200}}</div>
+                                                                </div>
+
+                                                                <footer class="posts__footer card__footer">
+                                                                    <div class="post-author">
+                                                                        <figure class="post-author__avatar">
+                                                                            <img src="/media/{{news.author.profile_pic}}" height="24" width="24">
+                                                                        </figure>
+                                                                        <div class="post-author__info">
+                                                                            <h4 class="post-author__name">{{news.author.name_display}}</h4>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="post__meta meta">
+                                                                        <div class="meta__item meta__item--views">{{news.views}}</div>
+                                                                        <div class="meta__item meta__item--likes">
+                                                                            <a href="" class="sl-button sl-button-560" title="Like">
+                                                                                <span class="sl-icon"><i class="meta-like icon-heart"></i></span>
+                                                                                <span class="sl-count">88</span>
+                                                                            </a>
+                                                                            <span class="sl-loader"></span>
+                                                                        </div>
+                                                                        <div class="meta__item meta__item--comments">
+                                                                            <a href="">{{news.comment_set.count}}</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </footer>
+                                                            </div>
+                                                        </article>
+                                                        {% endfor %}
+
+                                                    </div>
+                                                    <!-- .posts -->
+                                                </div>
+                                            </div>
+                                            <!-- Post Loop / End -->
+
+                                            <!-- Main News Banner -->
+                                            <div class="main-news-banner main-news-banner--img-left main-news-banner--soccer-ball">
+                                                <div class="main-news-banner__inner">
+                                                    <div class="posts posts--simple-list posts--simple-list--xlg">
+                                                        <div
+                                                            class="posts__item posts__item--category-1 post-102 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-alchemists tag-stadium tag-team">
+                                                            <div class="posts__inner">
+                                                                <div class="posts__cat">
+                                                                    <span class="label posts__cat-label posts__cat-label--category-1 category-the-team">The
+                                                                        Team</span>
+                                                                </div>
+                                                                <h6 class="posts__title">
+                                                                    <a href="alchemists-new-stadium-is-gonna-be-ready-in-september-2017/index.html"
+                                                                        rel="bookmark">Today was unveiled the
+                                                                        <span class="main-news-banner__highlight">New Football</span> for the league</a>
+                                                                </h6>
+                                                                <time datetime="2017-03-05T12:12:58+00:00" class="posts__date">March 5, 2017</time>
+
+                                                                <div class="posts__excerpt">
+                                                                    Lorem ipsum dolor sit amet, consectetur
+                                                                    adipisicing elit, sed do eiusmod tempor
+                                                                    incididunt...
+                                                                </div>
+
+                                                                <div class="posts__more">
+                                                                    <a href="alchemists-new-stadium-is-gonna-be-ready-in-september-2017/index.html"
+                                                                        class="btn btn-inverse btn-sm btn-outline btn-icon-right btn-condensed">Read More
+                                                                        <i class="fa fa-plus text-primary"></i></a>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <!-- Main News Banner / End -->
                                         </div>
                                     </div>
-                                    <!-- Main News Banner / End -->
+                                </div>
 
+                                <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-md-4">
+                                    <div class="vc_column-inner">
+                                        <div class="wpb_wrapper">
+                                            <div class="wpb_widgetised_column wpb_content_element">
+                                                <div class="wpb_wrapper">
+
+                                                    {% include 'includes/widgets/match_countdown.html' %}
+
+                                                    {% include 'includes/widgets/scoreboard.html' %}
+
+                                                    {% include 'includes/widgets/social_media.html' %}
+
+                                                    <!-- include 'includes/widgets/popular_news.html' -->
+
+                                                    <!-- include 'includes/widgets/featured_player.html' -->
+
+                                                    {% include 'includes/widgets/game_result_small.html' %}
+
+                                                    <!-- include 'includes/widgets/tabbed_news.html' -->
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-
-                <div
-                  class="wpb_column vc_column_container vc_col-sm-12 vc_col-md-4"
-                >
-                  <div class="vc_column-inner">
-                    <div class="wpb_wrapper">
-                      <div
-                        class="wpb_widgetised_column wpb_content_element"
-                      >
-                        <div class="wpb_wrapper">
-                          
-                            
-                            {% include 'includes/widgets/scoreboard.html' %}
-
-                            {% include 'includes/widgets/social_media.html' %}
-
-                            <!-- include 'includes/widgets/popular_news.html' -->
-                          
-
-                            <!-- include 'includes/widgets/featured_player.html' -->
-                          
-                          {% include 'includes/widgets/game_result_small.html' %}
-                          
-
-                          <!-- include 'includes/widgets/tabbed_news.html' -->
-
-
-                          <div class="sp-widget-align-none">
-                            <div
-                              id="sportspress-countdown-1"
-                              class="widget widget--sidebar card widget_sportspress widget_countdown widget_sp_countdown"
-                            >
-                              <div
-                                class="widget__content card__content"
-                              ></div>
-                              <div class="widget__title card__header">
-                                <h4>Next Match</h4>
-                              </div>
-                              <div class="widget__content card__content">
-                                <div class="card">
-                                  <div class="card__content">
-                                    <header class="match-preview__header">
-                                      <h3 class="match-preview__title">
-                                        Primary League
-                                      </h3>
-                                    </header>
-                                    <div class="match-preview">
-                                      <section
-                                        class="match-preview__body"
-                                      >
-                                        <div
-                                          class="match-preview__content"
-                                        >
-                                          <div
-                                            class="match-preview__team match-preview__team--odd"
-                                          >
-                                            <figure
-                                              class="match-preview__team-logo"
-                                            >
-                                              <img
-                                                width="87"
-                                                height="100"
-                                                src="wp-content/uploads/2017/09/Alchemists-Soccer-Big-87x100.png"
-                                                class="attachment-alchemists_team-logo-fit size-alchemists_team-logo-fit wp-post-image"
-                                                alt=""
-                                                loading="lazy"
-                                                srcset="
-                                                  https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/09/Alchemists-Soccer-Big-87x100.png    87w,
-                                                  https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/09/Alchemists-Soccer-Big-600x693.png  600w,
-                                                  https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/09/Alchemists-Soccer-Big-260x300.png  260w,
-                                                  https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/09/Alchemists-Soccer-Big-886x1024.png 886w,
-                                                  https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/09/Alchemists-Soccer-Big-768x888.png  768w,
-                                                  https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/09/Alchemists-Soccer-Big-111x128.png  111w,
-                                                  https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/09/Alchemists-Soccer-Big-28x32.png     28w,
-                                                  https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/09/Alchemists-Soccer-Big-346x400.png  346w,
-                                                  https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/09/Alchemists-Soccer-Big-470x543.png  470w,
-                                                  https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/09/Alchemists-Soccer-Big-61x70.png     61w,
-                                                  https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/09/Alchemists-Soccer-Big.png          957w
-                                                "
-                                                sizes="(max-width: 87px) 100vw, 87px"
-                                              />
-                                            </figure>
-                                            <h5
-                                              class="match-preview__team-name"
-                                            >
-                                              Alchemists
-                                            </h5>
-                                          </div>
-                                          <div
-                                            class="match-preview__team match-preview__team--even"
-                                          >
-                                            <figure
-                                              class="match-preview__team-logo"
-                                            >
-                                              <img
-                                                width="100"
-                                                height="85"
-                                                src="wp-content/uploads/2017/09/Bloody-Wave-100x85.png"
-                                                class="attachment-alchemists_team-logo-fit size-alchemists_team-logo-fit wp-post-image"
-                                                alt=""
-                                                loading="lazy"
-                                                srcset="
-                                                  https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/09/Bloody-Wave-100x85.png  100w,
-                                                  https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/09/Bloody-Wave-128x109.png 128w,
-                                                  https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/09/Bloody-Wave-32x27.png    32w,
-                                                  https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/09/Bloody-Wave-70x59.png    70w,
-                                                  https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2017/09/Bloody-Wave.png         278w
-                                                "
-                                                sizes="(max-width: 100px) 100vw, 100px"
-                                              />
-                                            </figure>
-                                            <h5
-                                              class="match-preview__team-name"
-                                            >
-                                              Bloody Wave
-                                            </h5>
-                                          </div>
-
-                                          <div class="match-preview__vs">
-                                            <div
-                                              class="match-preview__conj"
-                                            >
-                                              VS
-                                            </div>
-                                            <div
-                                              class="match-preview__match-info"
-                                            >
-                                              <div
-                                                class="match-preview__match-place"
-                                              >
-                                                Alchemists Stadium
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </section>
-
-                                      <div class="countdown__content">
-                                        <div
-                                          class="countdown sp-countdown long-countdown"
-                                        >
-                                          <time
-                                            class="countdown-counter"
-                                            datetime="2022-11-19 12:00:32"
-                                            data-countdown="2022/11/19 12:00:32"
-                                          >
-                                            <span
-                                              >24
-                                              <small>days</small></span
-                                            >
-                                            <span
-                                              >02 <small>hrs</small></span
-                                            >
-                                            <span
-                                              >08
-                                              <small>mins</small></span
-                                            >
-                                            <span
-                                              >14
-                                              <small>secs</small></span
-                                            >
-                                          </time>
-                                        </div>
-                                      </div>
-
-                                      <div
-                                        class="match-preview__action match-preview__action--ticket"
-                                      >
-                                        <a
-                                          href="event/alchemists-vs-bloody-wave/index.html"
-                                          class="btn btn-primary-inverse btn-lg btn-block"
-                                          >Read More</a
-                                        >
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                        <!-- .entry-content -->
                     </div>
-                  </div>
-                </div>
-              </div>
+                    <!-- #post-## -->
+                </main>
+                <!-- #main -->
             </div>
-            <!-- .entry-content -->
-          </div>
-          <!-- #post-## -->
-        </main>
-        <!-- #main -->
-      </div>
-      <!-- #primary -->
+        <!-- #primary -->
+        </div>
     </div>
-  </div>
 </div>
 
 {% endblock %}

@@ -21,17 +21,17 @@
                                 <tbody>
 
                                     {% for club in league_stats_widget %}
-                                    <tr class="{% cycle 'odd' 'even' %}{% if club.club.name == 'FC Bayern München' %} highlighted{% endif %} sp-row-no-{{forloop.counter0}}">
-                                        <td class="data-rank{% if club.club.name == 'FC Bayern München' %} sp-highlight{% endif %}" data-label="Pos">{{forloop.counter}}</td>
-                                        <td class="data-name has-logo{% if club.club.name == 'FC Bayern München' %} sp-highlight{% endif %}" data-label="Club">
+                                    <tr class="{% cycle 'odd' 'even' %}{% if club.club.name == bayern.full_name %} highlighted{% endif %} sp-row-no-{{forloop.counter0}}">
+                                        <td class="data-rank{% if club.club.name == bayern.full_name %} sp-highlight{% endif %}" data-label="Pos">{{forloop.counter}}</td>
+                                        <td class="data-name has-logo{% if club.club.name == bayern.full_name %} sp-highlight{% endif %}" data-label="Club">
                                             <span class="team-logo">
                                                 <img width="130" height="130" src="/media/{{club.club.logo}}" class="attachment-sportspress-fit-icon size-sportspress-fit-icon wp-post-image">
                                             </span>{{club.club.name|truncatechars:12}}
                                         </td>
-                                        <td class="data-w{% if club.club.name == 'FC Bayern München' %} sp-highlight{% endif %}" data-label="W">{{club.wins}}</td>
-                                        <td class="data-d{% if club.club.name == 'FC Bayern München' %} sp-highlight{% endif %}" data-label="D">{{club.draw}}</td>
-                                        <td class="data-l{% if club.club.name == 'FC Bayern München' %} sp-highlight{% endif %}" data-label="L">{{club.loss}}</td>
-                                        <td class="data-pts{% if club.club.name == 'FC Bayern München' %} sp-highlight{% endif %}" data-label="Pts">{{club.points}}</td>
+                                        <td class="data-w{% if club.club.name == bayern.full_name %} sp-highlight{% endif %}" data-label="W">{{club.wins}}</td>
+                                        <td class="data-d{% if club.club.name == bayern.full_name %} sp-highlight{% endif %}" data-label="D">{{club.draw}}</td>
+                                        <td class="data-l{% if club.club.name == bayern.full_name %} sp-highlight{% endif %}" data-label="L">{{club.loss}}</td>
+                                        <td class="data-pts{% if club.club.name == bayern.full_name %} sp-highlight{% endif %}" data-label="Pts">{{club.points}}</td>
                                     </tr>
                                     {% endfor %}
 

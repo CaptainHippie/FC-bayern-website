@@ -3,6 +3,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate
 from cart.cart import Cart
 from django.core.files.storage import FileSystemStorage
+from django.utils import timezone
+from django.db.models import Count
 from . models import *
 from . import calculations
 
@@ -15,16 +17,21 @@ def HOME(request):
     last_match = Match.objects.all().order_by('-time').first()
     events = Match_timeline.objects.filter(match=last_match).order_by('minute')
     league_stats_widget = Club_season_stats.objects.filter(competition__name="BundesLiga").order_by('-points','-goal_diff','-scored')[0:8]
-    bayern = Bayern.objects.first()
+
+    current_time = timezone.now()
+    upcoming_match = Scheduled_Match.objects.filter(time__gte = current_time).order_by('time').first()
+    time_left = calculations.get_time_difference(upcoming_match.time - current_time)
+
     context = {
-            'bayern' : bayern,
             'popular_news': popular_news,
             'newest_news' : newest_news,
             'favourite_news' : favourite_news,
             'featured_news' : featured_news,
             'last_match' : last_match,
             'events' : events,
-            'league_stats_widget' : league_stats_widget
+            'league_stats_widget' : league_stats_widget,
+            'upcoming_match': upcoming_match,
+            'time_left': time_left
     }
     return render(request, 'home.html', context)
 
@@ -56,14 +63,17 @@ def NEWS(request, slug):
     }
     return render(request, 'news.html', context)
 
-def MATCH_DETAIL(request, slug_name):
+def MATCH_DETAIL(request, type, slug_name):
     popular_news = News_article.objects.all().order_by('-views')[0:4]
     newest_news = News_article.objects.all().order_by('-added')[0:4]
     favourite_news = News_article.objects.all().order_by('-added')[0:4]
-    match = Match.objects.get(slug=slug_name)
+    match = Match.objects.get(slug=slug_name) if (type=='result') else Scheduled_Match.objects.get(slug=slug_name)
+    match_status = 'result' if (type=='result') else 'fixture'
     events = Match_timeline.objects.filter(match=match).order_by('minute')
+
     context = {
             'match': match,
+            'match_status': match_status,
             'events': events,
             'popular_news': popular_news,
             'newest_news' : newest_news,
@@ -118,6 +128,10 @@ def CLUB_ROSTER(request):
     all_albums = Club_Album.objects.all()
 
     all_matches = Match.objects.all()
+
+    current_time = timezone.now()
+    scheduled_matches = Scheduled_Match.objects.filter(time__gte = current_time)
+
     context = {
             'all_positions': all_positions,
             'all_staff': all_staff,
@@ -126,6 +140,7 @@ def CLUB_ROSTER(request):
             'club_ucl_stats': club_ucl_stats,
             'club_pokal_stats': club_pokal_stats,
             'all_matches' : all_matches,
+            'scheduled_matches': scheduled_matches,
             'all_albums': all_albums
     }
     return render(request, 'roster.html', context)
@@ -450,4 +465,52 @@ def save_comment(request, user_id):
     new_comment.save()
     current_news = News_article.objects.get(id=current_news_id)
     return redirect('newspage', slug=current_news.slug)
-    
+
+'''  <option value="inj">Injuries</option>
+                    <option value="league">Competitions</option>
+                    <option value="team">Team News</option>
+                </select>
+            </div>
+            <div class="post-filter__select">
+                <label class="post-filter__label">Order By</label>
+                <select class="cs-select cs-skin-border" name="sort">
+                    <option value="time">Date Posted</option>
+                    <option value="title">Title</option>
+                    <option value="views">Popular</option>
+                    <option value="liked">Most liked</option>'''
+
+news_sort={ 'inj':3,'league':2,'team':1,
+        'time':'added','title':'title','views':'views','likes':'views',
+        'asc':'','desc':'-'
+    }
+
+def ALL_NEWS(request):
+    all_news = News_article.objects.all()
+    all_authors = CustomUser.objects.annotate(num_articles=Count('news_article')).filter(num_articles__gt = 0)
+
+    categories = request.GET['cat'] if ('cat' in request.GET) else None
+    sort = request.GET['sort'] if ('sort' in request.GET) else None
+    order = request.GET['order'] if ('order' in request.GET) else None
+    author = request.GET['author'] if ('author' in request.GET) else None
+
+    if all_news.exists():
+        if (categories != None) and (categories != ""):
+            all_news = all_news.filter(news_type__category=news_sort[categories])
+        if (author != None) and (author != ""):
+            all_news = all_news.filter(author__id=author)
+        if (sort != None):
+            filter_cmd = news_sort[order] + news_sort[sort]
+            all_news = all_news.order_by(filter_cmd)
+
+    news_count = all_news.count()
+    #news_count = 43
+    extra_pages_count = (int(news_count/10) - 1) if (news_count>10) else 0
+    context = {
+        'all_news' : all_news,
+        'all_authors' : all_authors,
+        'pages_count' : extra_pages_count
+    }
+    return render(request, 'all_news.html', context)
+
+def CONTACT_US(request):
+    return render(request, 'contact_us.html')

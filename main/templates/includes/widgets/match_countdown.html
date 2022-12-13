@@ -1,0 +1,60 @@
+{% load static %}
+
+<div class="sp-widget-align-none">
+    <div id="sportspress-countdown-2" class="widget widget--sidebar card widget_sportspress widget_countdown widget_sp_countdown">
+        <div class="widget__content card__content"></div>
+        <div class="widget__title card__header"><h4>Upcoming Match</h4></div>
+        <div class="widget__content card__content">
+            <div class="card">
+                <div class="card__content">
+
+                    <header class="match-preview__header"><h3 class="match-preview__title">{{upcoming_match.competition.name}}</h3></header>
+                    <div class="match-preview">
+                        <section class="match-preview__body">
+                            <div class="match-preview__content">
+                                <div class="match-preview__team match-preview__team--odd">
+                                    <figure class="match-preview__team-logo">
+                                        <img width="100" height="84" src="/media/{{upcoming_match.opponent.logo}}"
+                                            class="attachment-alchemists_team-logo-fit size-alchemists_team-logo-fit wp-post-image">
+                                    </figure>
+                                    <h5 class="match-preview__team-name">{{upcoming_match.opponent.name}}</h5>
+                                </div>
+                                <div class="match-preview__team match-preview__team--even">
+                                    <figure class="match-preview__team-logo">
+                                        <img width="87" height="100" src="/media/{{bayern.logo}}"
+                                            class="attachment-alchemists_team-logo-fit size-alchemists_team-logo-fit wp-post-image">
+                                    </figure>
+                                    <h5 class="match-preview__team-name">{{bayern.full_name}}</h5>
+                                </div>
+
+                                <div class="match-preview__vs">
+                                    <div class="match-preview__conj">VS</div>
+                                    <div class="match-preview__match-info">
+                                        <div class="match-preview__match-place">{{upcoming_match.venue}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <div class="countdown__content">
+                            <div class="countdown sp-countdown">
+                                <time class="countdown-counter" datetime="{{upcoming_match.time|date:"Y-m-d H:i:s"}}"
+                                    data-countdown="{{upcoming_match.time|date:"Y/m/d H:i:s"}}">
+                                    <span>{{time_left.days}}<small>days</small></span>
+                                    <span>{{time_left.hours}}<small>hrs</small></span>
+                                    <span>{{time_left.minutes}}<small>mins</small></span>
+                                    <span>{{time_left.seconds}}<small>secs</small></span>
+                                </time>
+                            </div>
+                        </div>
+
+                        <div class="match-preview__action match-preview__action--ticket ">
+                            <a href="{% url 'match' 'fixture' upcoming_match.slug %}" class="btn btn-primary-inverse btn-lg btn-block">Learn More</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

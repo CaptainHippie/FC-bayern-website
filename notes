@@ -11,3 +11,20 @@ Superusers:
 username = Vibez
 email = neerajvb4@gmail.com
 password = hello
+
+
+
+Things left to do:
+Main Newspage with sorting functions
+Fix most commented news selection
+Razorpay implementation
+Scheduled matches - done
+Next match countdown - done(recheck if its latest match)
+Club history, honours, trophies pages
+fix the footer
+cleanup headers
+refine shop with filters
+fix roster page toggle tab missing in mobile - done
+middlewares
+rework login system with builtin tools
+implement news likes

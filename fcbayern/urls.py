@@ -22,10 +22,11 @@ from main import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.HOME, name='home'),
+    path('all_news/', views.ALL_NEWS, name='news_all'),
     path('news/<slug:slug>/', views.NEWS, name='newspage'),
     path('add_comment/<int:user_id>/', views.save_comment, name='save_comment'),
 
-    path('match/<slug:slug_name>/', views.MATCH_DETAIL, name='match'),
+    path('match/<str:type>/<slug:slug_name>/', views.MATCH_DETAIL, name='match'),
     path('player/<slug:slug_name>/', views.PLAYER_DETAIL, name='player'),
     path('roster/', views.CLUB_ROSTER, name='roster'),
     path('staff/<slug:slug_name>/', views.STAFF, name='staff'),
@@ -46,6 +47,8 @@ urlpatterns = [
     path('cart/item_clear/<int:id>/', views.item_clear, name='item_clear'),
     path('cart/item_increment/<int:id>/<int:qty>/', views.item_increment, name='item_increment'),
     path('cart/item_decrement/<int:id>/<int:quantity>/', views.item_decrement, name='item_decrement'),
-    path('cart/cart_clear/', views.cart_clear, name='cart_clear')
+    path('cart/cart_clear/', views.cart_clear, name='cart_clear'),
+
+    path('contact_us/', views.CONTACT_US, name='contact')
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT )

@@ -3,7 +3,6 @@
 {% load static %}
 {% load custom_calculations %}
 
-{% include 'includes/widgets/right_tab.html' %}
 
 <!-- Page Heading
 ================================================== -->
@@ -12,7 +11,7 @@
         <div class="row">
 
             <div class="col-lg-10 offset-lg-1">
-                <h1 class='page-heading__title'>- FC Bayern Munich vs {{match.opponent}} -</h1>
+                <h1 class='page-heading__title'>- {{bayern.full_name}} vs {{match.opponent}} -</h1>
                 
             </div>
 
@@ -43,9 +42,7 @@
 
                                         <h3 class="game-result__title"><span>{{match.venue}}</span></h3>
 
-                                        <time class="game-result__date" itemprop="startDate"
-                                            datetime="2016-03-05 18:00:00">
-                                            {{match.time|date:"F j, Y"}}
+                                        <time class="game-result__date">{{match.time|date:"F j, Y"}}
                                             <span class="event-time-status event-time-status--has-divider">{{match.time|date:"g:i A"}}</span>
                                             <meta itemprop="eventStatus" content="http://schema.org/EventScheduled">
                                         </time>
@@ -61,8 +58,8 @@
                                                 src="{% static 'images/logo.png' %}" class="attachment-alchemists_team-logo-fit size-alchemists_team-logo-fit wp-post-image">
                                             </figure>
                                             <div class="game-result__team-info" itemprop="performer" itemscope itemtype="http://schema.org/Organization">
-                                                <h5 class="game-result__team-name" itemprop="name">FC Bayern Munich</h5>
-                                                <div class="game-result__team-desc">Julian Nagelsmann</div>
+                                                <h5 class="game-result__team-name" itemprop="name">{{bayern.full_name}}</h5>
+                                                <div class="game-result__team-desc">{{bayern.manager}}</div>
                                             </div>
                                         {% else %}
                                             <figure class="game-result__team-logo"><img width="100" height="100"
@@ -88,8 +85,8 @@
                                                 class="attachment-alchemists_team-logo-fit size-alchemists_team-logo-fit wp-post-image" loading="lazy">
                                             </figure>
                                             <div class="game-result__team-info" itemprop="performer" itemscope itemtype="http://schema.org/Organization">
-                                                <h5 class="game-result__team-name" itemprop="name">FC Bayern Munich</h5>
-                                                <div class="game-result__team-desc">Julian Nagelsmann</div>
+                                                <h5 class="game-result__team-name" itemprop="name">{{bayern.full_name}}</h5>
+                                                <div class="game-result__team-desc">{{bayern.manager}}</div>
                                             </div>
                                         {% endif %}
                                         </div>
@@ -127,7 +124,6 @@
                                                     {% endif %}
                                                 {% endif %}
                                             </div>
-                                            <div class="game-result__score-label"> Final Score </div>
                                         </div>
                                         <!-- Game Score / End -->
 
@@ -135,7 +131,7 @@
                                     <!-- Team Logos + Game Result / End -->
                                 </section>
 
-
+                                {% if match_status == 'result' %}
                                 <div class="spacer"></div>
                                 <section class="game-result__section">
 
@@ -255,8 +251,8 @@
                                                             <td class="progress-table__progress-label progress-table__progress-label--highlight"> OFF </td>
                                                             <td class="progress-table__progress-bar">
                                                                 <div class="progress">
-                                                                    <div class="progress__bar" style="width: {% call_offsides match.offsides match.offsides_opp %}%; background-color: rgb(220, 5, 45)"
-                                                                        role="progressbar" aria-valuenow="{% call_offsides match.offsides match.offsides_opp %}" aria-valuemin="0" aria-valuemax="100">
+                                                                    <div class="progress__bar" style="width: {% avg_percent match.offsides match.offsides_opp %}%; background-color: rgb(220, 5, 45)"
+                                                                        role="progressbar" aria-valuenow="{% avg_percent match.offsides match.offsides_opp %}" aria-valuemin="0" aria-valuemax="100">
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -266,8 +262,8 @@
                                                             <td class="progress-table__progress-label progress-table__progress-label--highlight"> F </td>
                                                             <td class="progress-table__progress-bar">
                                                                 <div class="progress">
-                                                                    <div class="progress__bar" style="width: {% call_fouls match.fouls match.fouls_opp %}%; background-color: rgb(220, 5, 45)"
-                                                                        role="progressbar" aria-valuenow="{% call_fouls match.fouls match.fouls_opp %}" aria-valuemin="0" aria-valuemax="100">
+                                                                    <div class="progress__bar" style="width: {% avg_percent match.fouls match.fouls_opp %}%; background-color: rgb(220, 5, 45)"
+                                                                        role="progressbar" aria-valuenow="{% avg_percent match.fouls match.fouls_opp %}" aria-valuemin="0" aria-valuemax="100">
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -277,8 +273,8 @@
                                                             <td class="progress-table__progress-label progress-table__progress-label--highlight"> SH </td>
                                                             <td class="progress-table__progress-bar">
                                                                 <div class="progress">
-                                                                    <div class="progress__bar" style="width: {% call_shots match.shots match.shots_opp %}%; background-color: rgb(220, 5, 45)"
-                                                                        role="progressbar" aria-valuenow="{% call_shots match.shots match.shots_opp %}" aria-valuemin="0" aria-valuemax="100">
+                                                                    <div class="progress__bar" style="width: {% avg_percent match.shots match.shots_opp %}%; background-color: rgb(220, 5, 45)"
+                                                                        role="progressbar" aria-valuenow="{% avg_percent match.shots match.shots_opp %}" aria-valuemin="0" aria-valuemax="100">
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -289,8 +285,8 @@
                                                             <td class="progress-table__progress-label progress-table__progress-label--highlight"> OFF </td>
                                                             <td class="progress-table__progress-bar">
                                                                 <div class="progress">
-                                                                    <div class="progress__bar" style="width: {% call_offsides match.offsides_opp match.offsides %}%; background-color: {{match.opponent.color}}"
-                                                                        role="progressbar" aria-valuenow="{% call_offsides match.offsides_opp match.offsides %}" aria-valuemin="0" aria-valuemax="100">
+                                                                    <div class="progress__bar" style="width: {% avg_percent match.offsides_opp match.offsides %}%; background-color: {{match.opponent.color}}"
+                                                                        role="progressbar" aria-valuenow="{% avg_percent match.offsides_opp match.offsides %}" aria-valuemin="0" aria-valuemax="100">
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -300,8 +296,8 @@
                                                             <td class="progress-table__progress-label progress-table__progress-label--highlight"> F </td>
                                                             <td class="progress-table__progress-bar">
                                                                 <div class="progress">
-                                                                    <div class="progress__bar" style="width: {% call_fouls match.fouls_opp match.fouls %}%; background-color: {{match.opponent.color}}"
-                                                                        role="progressbar" aria-valuenow="{% call_fouls match.fouls_opp match.fouls %}" aria-valuemin="0" aria-valuemax="100">
+                                                                    <div class="progress__bar" style="width: {% avg_percent match.fouls_opp match.fouls %}%; background-color: {{match.opponent.color}}"
+                                                                        role="progressbar" aria-valuenow="{% avg_percent match.fouls_opp match.fouls %}" aria-valuemin="0" aria-valuemax="100">
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -311,8 +307,8 @@
                                                             <td class="progress-table__progress-label progress-table__progress-label--highlight"> SH </td>
                                                             <td class="progress-table__progress-bar">
                                                                 <div class="progress">
-                                                                    <div class="progress__bar" style="width: {% call_shots match.shots_opp match.shots %}%; background-color: {{match.opponent.color}}"
-                                                                        role="progressbar" aria-valuenow="{% call_shots match.shots_opp match.shots %}" aria-valuemin="0" aria-valuemax="100">
+                                                                    <div class="progress__bar" style="width: {% avg_percent match.shots_opp match.shots %}%; background-color: {{match.opponent.color}}"
+                                                                        role="progressbar" aria-valuenow="{% avg_percent match.shots_opp match.shots %}" aria-valuemin="0" aria-valuemax="100">
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -372,8 +368,8 @@
                                                             <td class="progress-table__progress-label font-weight-normal"> {{ match.offsides_opp }} </td>
                                                             <td class="progress-table__progress-bar progress-table__progress-bar--inverse">
                                                                 <div class="progress">
-                                                                    <div class="progress__bar progress__bar--success" style="width: {% call_offsides match.offsides_opp match.offsides %}%; background-color: {{match.opponent.color}}"
-                                                                        role="progressbar" aria-valuenow="{% call_offsides match.offsides_opp match.offsides %}" aria-valuemin="0" aria-valuemax="100">
+                                                                    <div class="progress__bar progress__bar--success" style="width: {% avg_percent match.offsides_opp match.offsides %}%; background-color: {{match.opponent.color}}"
+                                                                        role="progressbar" aria-valuenow="{% avg_percent match.offsides_opp match.offsides %}" aria-valuemin="0" aria-valuemax="100">
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -383,8 +379,8 @@
                                                             <td class="progress-table__progress-label font-weight-normal"> {{ match.fouls_opp }} </td>
                                                             <td class="progress-table__progress-bar progress-table__progress-bar--inverse">
                                                                 <div class="progress">
-                                                                    <div class="progress__bar progress__bar--success" style="width: {% call_fouls match.fouls_opp match.fouls %}%; background-color: {{match.opponent.color}}"
-                                                                        role="progressbar" aria-valuenow="{% call_fouls match.fouls_opp match.fouls %}" aria-valuemin="0" aria-valuemax="100">
+                                                                    <div class="progress__bar progress__bar--success" style="width: {% avg_percent match.fouls_opp match.fouls %}%; background-color: {{match.opponent.color}}"
+                                                                        role="progressbar" aria-valuenow="{% avg_percent match.fouls_opp match.fouls %}" aria-valuemin="0" aria-valuemax="100">
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -394,8 +390,8 @@
                                                             <td class="progress-table__progress-label font-weight-normal"> {{ match.shots_opp }} </td>
                                                             <td class="progress-table__progress-bar progress-table__progress-bar--inverse">
                                                                 <div class="progress">
-                                                                    <div class="progress__bar progress__bar--success" style="width: {% call_shots match.shots_opp match.shots %}%; background-color: {{match.opponent.color}}"
-                                                                        role="progressbar" aria-valuenow="{% call_shots match.shots_opp match.shots %}" aria-valuemin="0" aria-valuemax="100">
+                                                                    <div class="progress__bar progress__bar--success" style="width: {% avg_percent match.shots_opp match.shots %}%; background-color: {{match.opponent.color}}"
+                                                                        role="progressbar" aria-valuenow="{% avg_percent match.shots_opp match.shots %}" aria-valuemin="0" aria-valuemax="100">
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -406,8 +402,8 @@
                                                             <td class="progress-table__progress-label font-weight-normal"> {{ match.offsides }} </td>
                                                             <td class="progress-table__progress-bar progress-table__progress-bar--inverse">
                                                                 <div class="progress">
-                                                                    <div class="progress__bar progress__bar--success" style="width: {% call_offsides match.offsides match.offsides_opp %}%; background-color: rgb(220, 5, 45)"
-                                                                        role="progressbar" aria-valuenow="{% call_offsides match.offsides match.offsides_opp %}" aria-valuemin="0" aria-valuemax="100">
+                                                                    <div class="progress__bar progress__bar--success" style="width: {% avg_percent match.offsides match.offsides_opp %}%; background-color: rgb(220, 5, 45)"
+                                                                        role="progressbar" aria-valuenow="{% avg_percent match.offsides match.offsides_opp %}" aria-valuemin="0" aria-valuemax="100">
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -417,8 +413,8 @@
                                                             <td class="progress-table__progress-label font-weight-normal"> {{ match.fouls}} </td>
                                                             <td class="progress-table__progress-bar progress-table__progress-bar--inverse">
                                                                 <div class="progress">
-                                                                    <div class="progress__bar progress__bar--success" style="width: {% call_fouls match.fouls match.fouls_opp %}%; background-color: rgb(220, 5, 45)"
-                                                                        role="progressbar" aria-valuenow="{% call_fouls match.fouls match.fouls_opp %}" aria-valuemin="0" aria-valuemax="100">
+                                                                    <div class="progress__bar progress__bar--success" style="width: {% avg_percent match.fouls match.fouls_opp %}%; background-color: rgb(220, 5, 45)"
+                                                                        role="progressbar" aria-valuenow="{% avg_percent match.fouls match.fouls_opp %}" aria-valuemin="0" aria-valuemax="100">
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -428,8 +424,8 @@
                                                             <td class="progress-table__progress-label font-weight-normal"> {{ match.shots }} </td>
                                                             <td class="progress-table__progress-bar progress-table__progress-bar--inverse">
                                                                 <div class="progress">
-                                                                    <div class="progress__bar progress__bar--success" style="width: {% call_shots match.shots match.shots_opp %}%; background-color: rgb(220, 5, 45)"
-                                                                        role="progressbar" aria-valuenow="{% call_shots match.shots match.shots_opp %}" aria-valuemin="0" aria-valuemax="100">
+                                                                    <div class="progress__bar progress__bar--success" style="width: {% avg_percent match.shots match.shots_opp %}%; background-color: rgb(220, 5, 45)"
+                                                                        role="progressbar" aria-valuenow="{% avg_percent match.shots match.shots_opp %}" aria-valuemin="0" aria-valuemax="100">
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -445,6 +441,7 @@
                                     <!-- Game Stats / End -->
 
                                 </section>
+
                                 <!-- Ball Possession -->
                                 <section class="game-result__section">
                                     <header class="game-result__subheader card__subheader">
@@ -484,8 +481,6 @@
 
                                 </section>
                                 <!-- Ball Possession / End -->
-
-
 
                                 <!-- Game Timeline -->
                                 <section class="game-result__section">
@@ -623,13 +618,14 @@
                                         <div class="game-result__section-decor"></div>
                                     </div>
                                 </section>
-
+                                {% endif %}
 
                             </div>
                             <!-- Game Result / End -->
                         </div>
                     </div>
                 </div>
+                {% if match.summary %}
                 <div class="sp-section-content sp-section-content-excerpt"></div>
                 <div class="sp-section-content sp-section-content-content">
                     <div class="sp-post-content">
@@ -637,6 +633,9 @@
                         <p>{{match.summary}}</p>
                     </div>
                 </div>
+                {% endif %}
+
+                {% if match.video_url %}
                 <div class="sp-section-content sp-section-content-video">
                     <div class="card card--no-paddings sp-template sp-template-event-video sp-event-video">
                         <div class="card__header">
@@ -649,44 +648,14 @@
                         </div>
                     </div>
                 </div>
-                
+                {% endif %}
             
             </div><!-- #primary -->
 
 
             <aside id="secondary" class="sidebar widget-area col-lg-4">
 
-                <div id="df-social-count-1" class="widget widget--sidebar card df-social-count-widget">
-                    <div class="widget__content card__content">
-                        <div class="df-social-count df-social-count--columns"><a
-                                class="btn-social-counter btn-social-counter--facebook"
-                                href="https://www.facebook.com/danfisher.dev" rel="nofollow noopener noreferrer"
-                                target="_blank">
-                                <div class="btn-social-counter__icon"><i class="fa fa-facebook"></i></div>
-                                <h6 class="btn-social-counter__title">Like our Facebook page</h6><span
-                                    class="btn-social-counter__count"><span
-                                        class="btn-social-counter__count-num">307</span> likes</span><span
-                                    class="btn-social-counter__add-icon"></span>
-                            </a><a class="btn-social-counter btn-social-counter--twitter"
-                                href="https://twitter.com/danfisher_dev" rel="nofollow noopener noreferrer"
-                                target="_blank">
-                                <div class="btn-social-counter__icon"><i class="fa fa-twitter"></i></div>
-                                <h6 class="btn-social-counter__title">Follow us on Twitter</h6><span
-                                    class="btn-social-counter__count"><span
-                                        class="btn-social-counter__count-num">275</span> followers</span><span
-                                    class="btn-social-counter__add-icon"></span>
-                            </a><a class="btn-social-counter btn-social-counter--instagram"
-                                href="https://instagram.com/dan.fisher.dev" rel="nofollow noopener noreferrer"
-                                target="_blank">
-                                <div class="btn-social-counter__icon"><i class="fa fa-instagram"></i></div>
-                                <h6 class="btn-social-counter__title">Follow us on Instagram</h6><span
-                                    class="btn-social-counter__count"><span
-                                        class="btn-social-counter__count-num">0</span> followers</span><span
-                                    class="btn-social-counter__add-icon"></span>
-                            </a></div>
-                    </div>
-                </div>
-                
+                {% include 'includes/widgets/social_media.html' %}
                 
                 {% include 'includes/widgets/popular_news.html' %}
 

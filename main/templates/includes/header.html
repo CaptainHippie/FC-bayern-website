@@ -1,4 +1,6 @@
 {% load static %}
+{% load active_link_tags %}
+
 <div class="header-mobile clearfix" id="header-mobile">
     <div class="header-mobile__logo">
         <a href="{% url 'home' %}" rel="home">
@@ -67,7 +69,7 @@
       <div class="header-logo">
         <a href="{% url 'home' %}" rel="home">
           <img src="{% static 'images/logo.png' %}" class="header-logo__img">
-          <header class="club-title">FC Bayern München</header>
+          <header class="club-title">{{bayern.full_name}}</header>
         </a>
       </div>
       <!-- Header Logo / End -->
@@ -77,362 +79,45 @@
           <div class="header-logo">
             <a href="{% url 'home' %}" rel="home">
               <img src="{% static 'images/logo.png' %}" class="header-logo__img">
-              <header class="club-title">FC Bayern München</header>
+              <header class="club-title">{{bayern.full_name}}</header>
             </a>
           </div>
           <!-- Header Logo / End -->
 
           <!-- Main Navigation -->
-          <nav class="main-nav" style="background-color: rgb(220, 5, 45)">
+          <nav class="main-nav" style="background-color: rgb(198, 4, 40)">
             <ul id="menu-primary-menu" class="main-nav__list">
-              <li id="menu-item-588" ="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-583 current_page_item no-mega-menu">
+              <li class="menu-item menu-item-type-post menu-item-object-page menu-item-home {% active_link 'home' 'current-menu-item' strict=True %}">
                 <a class="menu-item-link" href="{% url 'home' %}">Home</a>
               </li>
-              <li id="menu-item-1149" class="menu-item menu-item-type-post menu-item-object-page">
+              <li class="menu-item menu-item-type-post menu-item-object-page {% active_link 'roster' 'current-menu-item' strict=True %}">
                 <a class="menu-item-link" href="{% url 'roster' %}">Team</a>
-
               </li>
-              <li id="menu-item-1133" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children no-mega-menu">
-                <a class="menu-item-link" href="#">SportsPress</a>
-                <ul class="main-nav__sub-0">
-                  <li
-                    id="menu-item-1135"
-                    class="menu-item menu-item-type-post_type menu-item-object-sp_team menu-item-has-children"
-                  >
-                    <a
-                      class="menu-item-link"
-                      href="team/alchemists/index.html"
-                      >Club</a
-                    >
-                    <ul class="main-nav__sub-1">
-                      <li
-                        id="menu-item-1137"
-                        class="menu-item menu-item-type-post_type menu-item-object-sp_team"
-                      >
-                        <a
-                          class="menu-item-link"
-                          href="team/alchemists/index.html"
-                          >Overview</a
-                        >
-                      </li>
-                      <li
-                        id="menu-item-1136"
-                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"
-                      >
-                        <a
-                          class="menu-item-link"
-                          href="team/alchemists/roster/index.html"
-                          >Roster</a
-                        >
-                        <ul class="main-nav__sub-2">
-                          <li
-                            id="menu-item-1247"
-                            class="menu-item menu-item-type-custom menu-item-object-custom"
-                          >
-                            <a
-                              class="menu-item-link"
-                              href="team/alchemists/roster/indexf972.html?roster_type=slider"
-                              >Roster &#8211; Slider</a
-                            >
-                          </li>
-                          <li
-                            id="menu-item-1246"
-                            class="menu-item menu-item-type-custom menu-item-object-custom"
-                          >
-                            <a
-                              class="menu-item-link"
-                              href="team/alchemists/roster/index54c1.html?roster_type=gallery"
-                              >Roster &#8211; Gallery</a
-                            >
-                          </li>
-                          <li
-                            id="menu-item-1244"
-                            class="menu-item menu-item-type-custom menu-item-object-custom"
-                          >
-                            <a
-                              class="menu-item-link"
-                              href="team/alchemists/roster/indexeeff.html?roster_type=blocks"
-                              >Roster &#8211; Blocks</a
-                            >
-                          </li>
-                          <li
-                            id="menu-item-1245"
-                            class="menu-item menu-item-type-custom menu-item-object-custom"
-                          >
-                            <a
-                              class="menu-item-link"
-                              href="team/alchemists/roster/index5d86.html?roster_type=cards"
-                              >Roster &#8211; Cards</a
-                            >
-                          </li>
-                        </ul>
-                      </li>
-                      <li
-                        id="menu-item-1138"
-                        class="menu-item menu-item-type-custom menu-item-object-custom"
-                      >
-                        <a
-                          class="menu-item-link"
-                          href="team/alchemists/standings/index.html"
-                          >Standings</a
-                        >
-                      </li>
-                      <li
-                        id="menu-item-1139"
-                        class="menu-item menu-item-type-custom menu-item-object-custom"
-                      >
-                        <a
-                          class="menu-item-link"
-                          href="team/alchemists/results/index.html"
-                          >Latest Results</a
-                        >
-                      </li>
-                      <li
-                        id="menu-item-1140"
-                        class="menu-item menu-item-type-custom menu-item-object-custom"
-                      >
-                        <a
-                          class="menu-item-link"
-                          href="team/alchemists/schedule/index.html"
-                          >Schedule</a
-                        >
-                      </li>
-                      <li
-                        id="menu-item-1141"
-                        class="menu-item menu-item-type-custom menu-item-object-custom"
-                      >
-                        <a
-                          class="menu-item-link"
-                          href="team/alchemists/gallery/index.html"
-                          >Gallery</a
-                        >
-                      </li>
-                    </ul>
-                  </li>
-                  <li
-                    id="menu-item-1142"
-                    class="menu-item menu-item-type-post_type menu-item-object-sp_player menu-item-has-children"
-                  >
-                    <a
-                      class="menu-item-link"
-                      href="player/james-messinal/index.html"
-                      >Player</a
-                    >
-                    <ul class="main-nav__sub-1">
-                      <li
-                        id="menu-item-1143"
-                        class="menu-item menu-item-type-post_type menu-item-object-sp_player"
-                      >
-                        <a
-                          class="menu-item-link"
-                          href="player/james-messinal/index.html"
-                          >Overview</a
-                        >
-                      </li>
-                      <li
-                        id="menu-item-1144"
-                        class="menu-item menu-item-type-custom menu-item-object-custom"
-                      >
-                        <a
-                          class="menu-item-link"
-                          href="player/james-messinal/stats/index.html"
-                          >Statistics</a
-                        >
-                      </li>
-                      <li
-                        id="menu-item-1145"
-                        class="menu-item menu-item-type-custom menu-item-object-custom"
-                      >
-                        <a
-                          class="menu-item-link"
-                          href="player/james-messinal/bio/index.html"
-                          >Biography</a
-                        >
-                      </li>
-                      <li
-                        id="menu-item-1146"
-                        class="menu-item menu-item-type-custom menu-item-object-custom"
-                      >
-                        <a
-                          class="menu-item-link"
-                          href="player/james-messinal/news/index.html"
-                          >Related News</a
-                        >
-                      </li>
-                      <li
-                        id="menu-item-1147"
-                        class="menu-item menu-item-type-custom menu-item-object-custom"
-                      >
-                        <a
-                          class="menu-item-link"
-                          href="player/james-messinal/gallery/index.html"
-                          >Gallery</a
-                        >
-                      </li>
-                    </ul>
-                  </li>
-                  <li
-                    id="menu-item-1148"
-                    class="menu-item menu-item-type-post_type menu-item-object-sp_event"
-                  >
-                    <a
-                      class="menu-item-link"
-                      href="event/alchemists-vs-clovers-2/index.html"
-                      >Match</a
-                    >
-                  </li>
-                  <li
-                    id="menu-item-1134"
-                    class="menu-item menu-item-type-post_type menu-item-object-sp_staff"
-                  >
-                    <a
-                      class="menu-item-link"
-                      href="staff/robert-frankson/index.html"
-                      >Staff</a
-                    >
-                  </li>
-                </ul>
+              <li class="menu-item menu-item-type-post menu-item-object-page {% active_link 'roster' 'current-menu-item' strict=True %}">
+                <a class="menu-item-link" href="{% url 'roster' %}">Club</a>
               </li>
-              <li id="menu-item-589" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children no-mega-menu">
-                <a class="menu-item-link" href="news/index.html">News</a>
-                <ul class="main-nav__sub-0">
-                  <li
-                    id="menu-item-591"
-                    class="menu-item menu-item-type-custom menu-item-object-custom"
-                  >
-                    <a
-                      class="menu-item-link"
-                      href="news/index7def.html?posts_layout=1"
-                      >News &#8211; version 1</a
-                    >
-                  </li>
-                  <li
-                    id="menu-item-592"
-                    class="menu-item menu-item-type-custom menu-item-object-custom"
-                  >
-                    <a
-                      class="menu-item-link"
-                      href="news/indexc2dc.html?posts_layout=2"
-                      >News &#8211; version 2</a
-                    >
-                  </li>
-                  <li
-                    id="menu-item-593"
-                    class="menu-item menu-item-type-custom menu-item-object-custom"
-                  >
-                    <a
-                      class="menu-item-link"
-                      href="news/index978a.html?posts_layout=3"
-                      >News &#8211; version 3</a
-                    >
-                  </li>
-                  <li
-                    id="menu-item-594"
-                    class="menu-item menu-item-type-custom menu-item-object-custom"
-                  >
-                    <a
-                      class="menu-item-link"
-                      href="news/indexfaec.html?posts_layout=4"
-                      >News &#8211; version 4</a
-                    >
-                  </li>
-                  <li
-                    id="menu-item-595"
-                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"
-                  >
-                    <a class="menu-item-link" href="#">Single Post</a>
-                    <ul class="main-nav__sub-1">
-                      <li
-                        id="menu-item-599"
-                        class="menu-item menu-item-type-post_type menu-item-object-post"
-                      >
-                        <a
-                          class="menu-item-link"
-                          href="the-alchemists-need-two-win-the-next-two-games/index.html"
-                          >Single Post &#8211; Version 1</a
-                        >
-                      </li>
-                      <li
-                        id="menu-item-596"
-                        class="menu-item menu-item-type-custom menu-item-object-custom"
-                      >
-                        <a
-                          class="menu-item-link"
-                          href="the-alchemists-need-two-win-the-next-two-games/index49cc.html?single_post=2"
-                          >Single Post &#8211; Version 2</a
-                        >
-                      </li>
-                      <li
-                        id="menu-item-597"
-                        class="menu-item menu-item-type-custom menu-item-object-custom"
-                      >
-                        <a
-                          class="menu-item-link"
-                          href="the-alchemists-need-two-win-the-next-two-games/index4032.html?single_post=3"
-                          >Single Post &#8211; Version 3</a
-                        >
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
+              
+              <li class="menu-item menu-item-type-post menu-item-object-page {% active_link 'news_all' 'current-menu-item' strict=True %}">
+                <a class="menu-item-link" href="{% url 'news_all' %}">News</a>
               </li>
-              <li id="menu-item-590" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children no-mega-menu">
-                <a class="menu-item-link" href="shop/index.html">Shop</a>
-                <ul class="main-nav__sub-0">
-                  <li id="menu-item-1079"
-                    class="menu-item menu-item-type-post_type menu-item-object-page">
-                    <a class="menu-item-link" href="shop/index.html">Shop</a>
-                  </li>
-                  <li id="menu-item-1078"
-                    class="menu-item menu-item-type-post_type menu-item-object-page">
-                    <a class="menu-item-link" href="cart/index.html">Cart</a>
-                  </li>
-                  <li id="menu-item-1077"
-                    class="menu-item menu-item-type-post_type menu-item-object-page">
-                    <a class="menu-item-link" href="checkout/index.html">Checkout</a>
-                  </li>
-                  <li id="menu-item-1076"
-                    class="menu-item menu-item-type-post_type menu-item-object-page">
-                    <a class="menu-item-link" href="my-account/index.html">My account</a>
-                  </li>
-                </ul>
+              <li class="menu-item menu-item-type-post menu-item-object-page {% active_link 'shop' 'current-menu-item' strict=True %}">
+                <a class="menu-item-link" href="{% url 'shop' %}">Shop</a>
+              </li>
+              <li class="menu-item menu-item-type-post menu-item-object-page {% active_link 'contact' 'current-menu-item' strict=True %}">
+                <a class="menu-item-link" href="{% url 'contact' %}">Contact Us</a>
               </li>
             </ul>
 
             <!-- Social Links -->
             <ul class="social-links social-links--inline social-links--main-nav">
               <li class="social-links__item">
-                <a
-                  href="#"
-                  class="social-links__link"
-                  data-toggle="tooltip"
-                  data-placement="bottom"
-                  title="Facebook"
-                  target="_blank"
-                  ><i class="fab fa-facebook"></i
-                ></a>
+                <a href="{{bayern.fb_link}}" class="social-links__link" title="Facebook" target="_blank"><i class="fab fa-facebook"></i></a>
               </li>
               <li class="social-links__item">
-                <a
-                  href="#"
-                  class="social-links__link"
-                  data-toggle="tooltip"
-                  data-placement="bottom"
-                  title="Twitter"
-                  target="_blank"
-                  ><i class="fab fa-twitter"></i
-                ></a>
+                <a href="{{bayern.twitter_link}}" class="social-links__link" title="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
               </li>
               <li class="social-links__item">
-                <a
-                  href="#"
-                  class="social-links__link"
-                  data-toggle="tooltip"
-                  data-placement="bottom"
-                  title="Instagram"
-                  target="_blank"
-                  ><i class="fab fa-instagram"></i
-                ></a>
+                <a href="{{bayern.insta_link}}" class="social-links__link" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
               </li>
             </ul>
             <!-- Social Links / End -->

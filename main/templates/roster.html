@@ -2,39 +2,36 @@
 {% block content %}
 {% load static %}
 
-{% include 'includes/widgets/right_tab.html' %}
-
 <div class="site-content " id="content">
     <div class="container">
         <div class="row">
             <img src="/media/Team-photo.png">
 
-
-            <div class="container" style="padding-right: 0px;padding-left: 0px">
-                <div class="content-filter__inner">
-                    <a href="#" class="content-filter__toggle"></a>
-                    <ul class="content-filter__list" style="border-left: none;border-right: none">
-                        <li class="content-filter__item content-filter__item--active" onclick="player_page_switch_tabs(event, 'zzz_roster')">
-                            <span class="content-filter__link">Full Squad</span>
-                        </li>
-                        <li class="content-filter__item" onclick="player_page_switch_tabs(event, 'zzz_table')">
-                            <span class="content-filter__link">Standings</span>
-                        </li>
-                        <li class="content-filter__item" onclick="player_page_switch_tabs(event, 'zzz_results')">
-                            <span class="content-filter__link">Latest Results</span>
-                        </li>
-                        <li class="content-filter__item" onclick="player_page_switch_tabs(event, 'zzz_schedules')">
-                            <span class="content-filter__link">Match Schedules</span>
-                        </li>
-                        <li class="content-filter__item" onclick="player_page_switch_tabs(event, 'zzz_gallery_tab')">
-                            <span class="content-filter__link">Gallery</span>
-                        </li>
-                    </ul>
+            <nav class="content-filter">
+                <div class="container" style="padding-right: 0px;padding-left: 0px">
+                    <div class="content-filter__inner">
+                        <a href="#" class="content-filter__toggle"></a>
+                        <ul class="content-filter__list" style="border-left: none;border-right: none">
+                            <li class="content-filter__item content-filter__item--active" onclick="player_page_switch_tabs(event, 'zzz_roster')">
+                                <span class="content-filter__link">Full Squad</span>
+                            </li>
+                            <li class="content-filter__item" onclick="player_page_switch_tabs(event, 'zzz_table')">
+                                <span class="content-filter__link">Standings</span>
+                            </li>
+                            <li class="content-filter__item" onclick="player_page_switch_tabs(event, 'zzz_results')">
+                                <span class="content-filter__link">Latest Results</span>
+                            </li>
+                            <li class="content-filter__item" onclick="player_page_switch_tabs(event, 'zzz_schedules')">
+                                <span class="content-filter__link">Match Schedules</span>
+                            </li>
+                            <li class="content-filter__item" onclick="player_page_switch_tabs(event, 'zzz_gallery_tab')">
+                                <span class="content-filter__link">Gallery</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-
-
-
+            </nav>
+            
             <div id="zzz_roster" class="content-area col-lg-12">
                 <main id="main" class="site-main">
                     <div id="post-1166" class="post-1166 page type-page status-publish hentry">
@@ -182,20 +179,20 @@
                                         </thead>
                                         <tbody>
                                             {% for cur_club in club_league_stats %}
-                                            <tr class="{% cycle 'odd' 'even' %} {% if cur_club.club.name == 'FC Bayern Munich' %}highlighted{% endif %} sp-row-no-{{ forloop.counter0 }}"
+                                            <tr class="{% cycle 'odd' 'even' %} {% if cur_club.club.name == bayern.full_name %}highlighted{% endif %} sp-row-no-{{ forloop.counter0 }}"
                                             {% if forloop.counter == 4 %} style="border-bottom:2px solid white"{% endif %}>
-                                                <td class="data-rank{% if cur_club.club.name == 'FC Bayern Munich' %} sp-highlight{% endif %}" data-label="Pos">{{ forloop.counter }}</td>
-                                                <td class="data-name has-logo{% if cur_club.club.name == 'FC Bayern Munich' %} sp-highlight{% endif %}" data-label="Club">
+                                                <td class="data-rank{% if cur_club.club.name == bayern.full_name %} sp-highlight{% endif %}" data-label="Pos">{{ forloop.counter }}</td>
+                                                <td class="data-name has-logo{% if cur_club.club.name == bayern.full_name %} sp-highlight{% endif %}" data-label="Club">
                                                     <span lass="team-logo">
                                                         <img width="30" height="30" class="attachment-sportspress-fit-icon size-sportspress-fit-icon wp-post-image" src="/media/{{cur_club.club.logo}}">
                                                     </span>&nbsp;{{cur_club.club}}</td>
-                                                <td class="data-p {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="P">{{cur_club.played}}</td>
-                                                <td class="data-w {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="W">{{cur_club.wins}}</td>
-                                                <td class="data-d {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="D">{{cur_club.draw}}</td>
-                                                <td class="data-l {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="L">{{cur_club.loss}}</td>
-                                                <td class="data-f {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="F">{{cur_club.scored}} : {{cur_club.conceded}}</td>
-                                                <td class="data-gd {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="GD">{{cur_club.goal_diff}}</td>
-                                                <td class="data-pts {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="Pts">{{cur_club.points}}</td>
+                                                <td class="data-p {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="P">{{cur_club.played}}</td>
+                                                <td class="data-w {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="W">{{cur_club.wins}}</td>
+                                                <td class="data-d {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="D">{{cur_club.draw}}</td>
+                                                <td class="data-l {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="L">{{cur_club.loss}}</td>
+                                                <td class="data-f {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="F">{{cur_club.scored}} : {{cur_club.conceded}}</td>
+                                                <td class="data-gd {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="GD">{{cur_club.goal_diff}}</td>
+                                                <td class="data-pts {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="Pts">{{cur_club.points}}</td>
                                             </tr>
                                             {% endfor %}
                                         </tbody>
@@ -228,20 +225,20 @@
                                         </thead>
                                         <tbody>
                                             {% for cur_club in club_ucl_stats %}
-                                            <tr class="{% cycle 'odd' 'even' %} {% if cur_club.club.name == 'FC Bayern Munich' %}highlighted{% endif %} sp-row-no-{{ forloop.counter0 }}"
+                                            <tr class="{% cycle 'odd' 'even' %} {% if cur_club.club.name == bayern.full_name %}highlighted{% endif %} sp-row-no-{{ forloop.counter0 }}"
                                             {% if forloop.counter == 4 %} style="border-bottom:2px solid white"{% endif %}>
-                                                <td class="data-rank {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="Pos">{{ forloop.counter }}</td>
-                                                <td class="data-name has-logo {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="Club">
+                                                <td class="data-rank {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="Pos">{{ forloop.counter }}</td>
+                                                <td class="data-name has-logo {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="Club">
                                                     <span lass="team-logo">
                                                         <img width="30" height="30" class="attachment-sportspress-fit-icon size-sportspress-fit-icon wp-post-image" src="/media/{{cur_club.club.logo}}">
                                                     </span>&nbsp;{{cur_club.club}}</td>
-                                                <td class="data-p {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="P">{{cur_club.played}}</td>
-                                                <td class="data-w {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="W">{{cur_club.wins}}</td>
-                                                <td class="data-d {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="D">{{cur_club.draw}}</td>
-                                                <td class="data-l {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="L">{{cur_club.loss}}</td>
-                                                <td class="data-f {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="F">{{cur_club.scored}} : {{cur_club.conceded}}</td>
-                                                <td class="data-gd {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="GD">{{cur_club.goal_diff}}</td>
-                                                <td class="data-pts {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="Pts">{{cur_club.points}}</td>
+                                                <td class="data-p {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="P">{{cur_club.played}}</td>
+                                                <td class="data-w {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="W">{{cur_club.wins}}</td>
+                                                <td class="data-d {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="D">{{cur_club.draw}}</td>
+                                                <td class="data-l {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="L">{{cur_club.loss}}</td>
+                                                <td class="data-f {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="F">{{cur_club.scored}} : {{cur_club.conceded}}</td>
+                                                <td class="data-gd {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="GD">{{cur_club.goal_diff}}</td>
+                                                <td class="data-pts {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="Pts">{{cur_club.points}}</td>
                                             </tr>
                                             {% endfor %}
                                         </tbody>
@@ -275,20 +272,20 @@
                                         </thead>
                                         <tbody>
                                             {% for cur_club in club_pokal_stats %}
-                                            <tr class="{% cycle 'odd' 'even' %} {% if cur_club.club.name == 'FC Bayern Munich' %}highlighted{% endif %} sp-row-no-{{ forloop.counter0 }}"
+                                            <tr class="{% cycle 'odd' 'even' %} {% if cur_club.club.name == bayern.full_name %}highlighted{% endif %} sp-row-no-{{ forloop.counter0 }}"
                                             {% if forloop.counter == 4 %} style="border-bottom:2px solid white"{% endif %}>
-                                                <td class="data-rank {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="Pos">{{ forloop.counter }}</td>
-                                                <td class="data-name has-logo {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="Club">
+                                                <td class="data-rank {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="Pos">{{ forloop.counter }}</td>
+                                                <td class="data-name has-logo {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="Club">
                                                     <span lass="team-logo">
                                                         <img width="30" height="30" class="attachment-sportspress-fit-icon size-sportspress-fit-icon wp-post-image" src="/media/{{cur_club.club.logo}}">
                                                     </span>&nbsp;{{cur_club.club}}</td>
-                                                <td class="data-p {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="P">{{cur_club.played}}</td>
-                                                <td class="data-w {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="W">{{cur_club.wins}}</td>
-                                                <td class="data-d {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="D">{{cur_club.draw}}</td>
-                                                <td class="data-l {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="L">{{cur_club.loss}}</td>
-                                                <td class="data-f {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="F">{{cur_club.scored}} : {{cur_club.conceded}}</td>
-                                                <td class="data-gd {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="GD">{{cur_club.goal_diff}}</td>
-                                                <td class="data-pts {% if cur_club.club.name == 'FC Bayern Munich' %}sp-highlight{% endif %}" data-label="Pts">{{cur_club.points}}</td>
+                                                <td class="data-p {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="P">{{cur_club.played}}</td>
+                                                <td class="data-w {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="W">{{cur_club.wins}}</td>
+                                                <td class="data-d {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="D">{{cur_club.draw}}</td>
+                                                <td class="data-l {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="L">{{cur_club.loss}}</td>
+                                                <td class="data-f {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="F">{{cur_club.scored}} : {{cur_club.conceded}}</td>
+                                                <td class="data-gd {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="GD">{{cur_club.goal_diff}}</td>
+                                                <td class="data-pts {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="Pts">{{cur_club.points}}</td>
                                             </tr>
                                             {% endfor %}
                                         </tbody>
@@ -369,7 +366,7 @@
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="widget-game-result__score-wrap">
-                                                                                                    <a href="{% url 'match' cur_match.slug %}" class="widget-game-result__score">
+                                                                                                    <a href="{% url 'match' 'result' cur_match.slug %}" class="widget-game-result__score">
                                                                                                         {% if cur_match.scored > cur_match.conceded %}
                                                                                                         <span class="widget-game-result__score-result widget-game-result__score-result--winner">{{cur_match.scored}}</span>
                                                                                                         <span class="widget-game-result__score-dash">-</span>
@@ -406,7 +403,7 @@
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="widget-game-result__score-wrap">
-                                                                                                    <a href="{% url 'match' cur_match.slug %}" class="widget-game-result__score">
+                                                                                                    <a href="{% url 'match' 'result' cur_match.slug %}" class="widget-game-result__score">
                                                                                                         {% if cur_match.scored < cur_match.conceded %}
                                                                                                         <span class="widget-game-result__score-result widget-game-result__score-result--winner">{{cur_match.conceded}}</span>
                                                                                                         <span class="widget-game-result__score-dash">-</span>
@@ -472,20 +469,17 @@
                                                         <div class="card card--no-paddings">
 
                                                             <header class="card__header">
-                                                                <h4 class="sp-table-caption">Match Results</h4>
+                                                                <h4 class="sp-table-caption">Match Fixtures</h4>
                                                             </header>
                                                             <div class="card__content">
                                                                 <div class="widget-game-result__section">
-                                                                    <div
-                                                                        class="widget-game-result__section-inner">
+                                                                    <div class="widget-game-result__section-inner">
 
-                                                                        <table
-                                                                            class="alc-event-blocks table--no-border table--no-paddings sp-data-table sp-paginated-table"
-                                                                            data-sp-rows="5">
+                                                                        <table class="alc-event-blocks table--no-border table--no-paddings sp-data-table sp-paginated-table" data-sp-rows="5">
                                                                             <thead> <tr> <th></th> </tr> </thead>
                                                                             <tbody>
 
-                                                                                {% for cur_match in all_matches %}
+                                                                                {% for cur_match in scheduled_matches %}
                                                                                 <tr class="sp-row sp-post alternate">
                                                                                     <td>
                                                                                         <div class="widget-game-result__item widget-game-result__item--ok">
@@ -522,16 +516,10 @@
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="widget-game-result__score-wrap">
-                                                                                                    <a href="http://alchemists-wp.dan-fisher.com/soccer-dark/event/red-wings-vs-alchemists/" class="widget-game-result__score">
-                                                                                                        {% if cur_match.scored > cur_match.conceded %}
-                                                                                                        <span class="widget-game-result__score-result widget-game-result__score-result--winner">{{cur_match.scored}}</span>
-                                                                                                        <span class="widget-game-result__score-dash">-</span>
-                                                                                                        <span class="widget-game-result__score-result widget-game-result__score-result--loser">{{cur_match.conceded}}</span>
-                                                                                                        {% else %}
+                                                                                                    <a href="{% url 'match' 'fixture' cur_match.slug %}" class="widget-game-result__score">
                                                                                                         <span class="widget-game-result__score-result widget-game-result__score-result--loser">{{cur_match.scored}}</span>
                                                                                                         <span class="widget-game-result__score-dash">-</span>
-                                                                                                        <span class="widget-game-result__score-result widget-game-result__score-result--winner">{{cur_match.conceded}}</span>
-                                                                                                        {% endif %}
+                                                                                                        <span class="widget-game-result__score-result widget-game-result__score-result--loser">{{cur_match.conceded}}</span>
                                                                                                     </a>
                                                                                                     <div class="widget-game-result__score-label">{{cur_match.venue}}</div>
                                                                                                 </div>
@@ -559,16 +547,10 @@
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="widget-game-result__score-wrap">
-                                                                                                    <a href="http://alchemists-wp.dan-fisher.com/soccer-dark/event/red-wings-vs-alchemists/" class="widget-game-result__score">
-                                                                                                        {% if cur_match.scored < cur_match.conceded %}
-                                                                                                        <span class="widget-game-result__score-result widget-game-result__score-result--winner">{{cur_match.conceded}}</span>
-                                                                                                        <span class="widget-game-result__score-dash">-</span>
-                                                                                                        <span class="widget-game-result__score-result widget-game-result__score-result--loser">{{cur_match.scored}}</span>
-                                                                                                        {% else %}
+                                                                                                    <a href="{% url 'match' 'fixture' cur_match.slug %}" class="widget-game-result__score">
                                                                                                         <span class="widget-game-result__score-result widget-game-result__score-result--loser">{{cur_match.conceded}}</span>
                                                                                                         <span class="widget-game-result__score-dash">-</span>
-                                                                                                        <span class="widget-game-result__score-result widget-game-result__score-result--winner">{{cur_match.scored}}</span>
-                                                                                                        {% endif %}
+                                                                                                        <span class="widget-game-result__score-result widget-game-result__score-result--loser">{{cur_match.scored}}</span>
                                                                                                     </a>
                                                                                                     <div class="widget-game-result__score-label">{{cur_match.venue}}</div>
                                                                                                 </div>

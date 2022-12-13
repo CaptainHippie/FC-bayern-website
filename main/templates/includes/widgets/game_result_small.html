@@ -9,10 +9,10 @@
                 <!-- Game Score -->
                 <div class="widget-game-result__section">
                     <div class="widget-game-result__section-inner">
-                        <a href="{% url 'match' last_match.slug %}" class="widget-game-result__item">
+                        <a href="{% url 'match' 'result' last_match.slug %}" class="widget-game-result__item">
                             <header class="widget-game-result__header">
                                 <h3 class="widget-game-result__title">{{last_match.competition}}</h3>
-                                <time class="widget-game-result__date">{{last_match.time|date:"F j, Y - g:i A"}}</time>
+                                <time class="widget-game-result__date" style="text-align:center">{{last_match.time|date:"F j, Y - g:i A"}}</time>
                             </header>
 
                             {% if last_match.at_home == True %}
@@ -133,8 +133,8 @@
                                 <div class="progress__digit progress__digit--left progress__digit--highlight">{{ last_match.shots }}</div>
                                 <div class="progress__double">
                                     <div class="progress" style="background-color:{{last_match.opponent.color}}">
-                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% call_bookings last_match.shots last_match.shots_opp %}"
-                                            aria-valuemin="0" aria-valuemax="100" style="width:{% call_bookings last_match.shots last_match.shots_opp %}%;background-color:{{bayern.color}}"></div>
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% avg_percent last_match.shots last_match.shots_opp %}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{% avg_percent last_match.shots last_match.shots_opp %}%;background-color:{{bayern.color}}"></div>
                                     </div>
                                 </div>
                                 <div class="progress__digit progress__digit--right">{{ last_match.shots_opp }}</div>
@@ -147,8 +147,8 @@
                                 <div class="progress__digit progress__digit--left progress__digit--highlight">{{ last_match.shots_target }}</div>
                                 <div class="progress__double">
                                     <div class="progress" style="background-color:{{last_match.opponent.color}}">
-                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% call_bookings last_match.shots_target last_match.shots_target_opp %}"
-                                            aria-valuemin="0" aria-valuemax="100" style="width:{% call_bookings last_match.shots_target last_match.shots_target_opp %}%;background-color:{{bayern.color}}"></div>
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% avg_percent last_match.shots_target last_match.shots_target_opp %}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{% avg_percent last_match.shots_target last_match.shots_target_opp %}%;background-color:{{bayern.color}}"></div>
                                     </div>
                                 </div>
                                 <div class="progress__digit progress__digit--right">{{ last_match.shots_target_opp }}</div>
@@ -161,8 +161,8 @@
                                 <div class="progress__digit progress__digit--left progress__digit--highlight">{{ last_match.corners }}</div>
                                 <div class="progress__double">
                                     <div class="progress" style="background-color:{{last_match.opponent.color}}">
-                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% call_bookings last_match.corners last_match.corners_opp %}"
-                                            aria-valuemin="0" aria-valuemax="100" style="width:{% call_bookings last_match.corners last_match.corners_opp %}%;background-color:{{bayern.color}}"></div>
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% avg_percent last_match.corners last_match.corners_opp %}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{% avg_percent last_match.corners last_match.corners_opp %}%;background-color:{{bayern.color}}"></div>
                                     </div>
                                 </div>
                                 <div class="progress__digit progress__digit--right">{{last_match.corners_opp}}</div>
@@ -175,8 +175,8 @@
                                 <div class="progress__digit progress__digit--left progress__digit--highlight">{{ last_match.fouls }}</div>
                                 <div class="progress__double">
                                     <div class="progress" style="background-color:{{last_match.opponent.color}}">
-                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% call_bookings last_match.fouls last_match.fouls_opp %}"
-                                            aria-valuemin="0" aria-valuemax="100" style="width:{% call_bookings last_match.fouls last_match.fouls_opp %}%;background-color:{{bayern.color}}"></div>
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% avg_percent last_match.fouls last_match.fouls_opp %}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{% avg_percent last_match.fouls last_match.fouls_opp %}%;background-color:{{bayern.color}}"></div>
                                     </div>
                                 </div>
                                 <div class="progress__digit progress__digit--right">{{ last_match.fouls_opp }}</div>
@@ -189,8 +189,8 @@
                                 <div class="progress__digit progress__digit--left progress__digit--highlight">{{ last_match.yellows }}</div>
                                 <div class="progress__double">
                                     <div class="progress" style="background-color:{{last_match.opponent.color}}">
-                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% call_bookings last_match.yellows last_match.yellows_opp %}"
-                                            aria-valuemin="0" aria-valuemax="100" style="width:{% call_bookings last_match.yellows last_match.yellows_opp %}%;background-color:{{bayern.color}}"></div>
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% avg_percent last_match.yellows last_match.yellows_opp %}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{% avg_percent last_match.yellows last_match.yellows_opp %}%;background-color:{{bayern.color}}"></div>
                                     </div>
                                 </div>
                                 <div class="progress__digit progress__digit--right">{{ last_match.yellows_opp }}</div>
@@ -203,8 +203,8 @@
                                 <div class="progress__digit progress__digit--left progress__digit--highlight">{{ last_match.reds }}</div>
                                 <div class="progress__double">
                                     <div class="progress" style="background-color:{{last_match.opponent.color}}">
-                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% call_bookings last_match.reds last_match.reds_opp %}"
-                                            aria-valuemin="0" aria-valuemax="100" style="width:{% call_bookings last_match.reds last_match.reds_opp %}%;background-color:{{bayern.color}}"></div>
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% avg_percent last_match.reds last_match.reds_opp %}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{% avg_percent last_match.reds last_match.reds_opp %}%;background-color:{{bayern.color}}"></div>
                                     </div>
                                 </div>
                                 <div class="progress__digit progress__digit--right">{{last_match.reds_opp}}</div>
@@ -235,8 +235,8 @@
                                 <div class="progress__digit progress__digit--left progress__digit--highlight">{{last_match.shots_opp}}</div>
                                 <div class="progress__double">
                                     <div class="progress" style="background-color:{{bayern.color}}">
-                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% call_bookings_away last_match.shots last_match.shots_opp %}"
-                                            aria-valuemin="0" aria-valuemax="100" style="width:{% call_bookings_away last_match.shots last_match.shots_opp %}%;background-color:{{last_match.opponent.color}}"></div>
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% avg_percent_away last_match.shots last_match.shots_opp %}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{% avg_percent_away last_match.shots last_match.shots_opp %}%;background-color:{{last_match.opponent.color}}"></div>
                                     </div>
                                 </div>
                                 <div class="progress__digit progress__digit--right">{{last_match.shots}}</div>
@@ -249,8 +249,8 @@
                                 <div class="progress__digit progress__digit--left progress__digit--highlight">{{last_match.shots_target_opp}}</div>
                                 <div class="progress__double">
                                     <div class="progress" style="background-color:{{bayern.color}}">
-                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% call_bookings_away last_match.shots_target last_match.shots_target_opp %}"
-                                            aria-valuemin="0" aria-valuemax="100" style="width:{% call_bookings_away last_match.shots_target last_match.shots_target_opp %}%;background-color:{{last_match.opponent.color}}"></div>
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% avg_percent_away last_match.shots_target last_match.shots_target_opp %}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{% avg_percent_away last_match.shots_target last_match.shots_target_opp %}%;background-color:{{last_match.opponent.color}}"></div>
                                     </div>
                                 </div>
                                 <div class="progress__digit progress__digit--right">{{last_match.shots_target}}</div>
@@ -263,8 +263,8 @@
                                 <div class="progress__digit progress__digit--left progress__digit--highlight">{{last_match.corners_opp}}</div>
                                 <div class="progress__double">
                                     <div class="progress" style="background-color:{{bayern.color}}">
-                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% call_bookings_away last_match.corners last_match.corners_opp %}"
-                                            aria-valuemin="0" aria-valuemax="100" style="width:{% call_bookings_away last_match.corners last_match.corners_opp %}%;background-color:{{last_match.opponent.color}}"></div>
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% avg_percent_away last_match.corners last_match.corners_opp %}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{% avg_percent_away last_match.corners last_match.corners_opp %}%;background-color:{{last_match.opponent.color}}"></div>
                                     </div>
                                 </div>
                                 <div class="progress__digit progress__digit--right">{{last_match.corners}}</div>
@@ -277,8 +277,8 @@
                                 <div class="progress__digit progress__digit--left progress__digit--highlight">{{last_match.fouls_opp}}</div>
                                 <div class="progress__double">
                                     <div class="progress" style="background-color:{{bayern.color}}">
-                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% call_bookings_away last_match.fouls last_match.fouls_opp %}"
-                                            aria-valuemin="0" aria-valuemax="100" style="width:{% call_bookings_away last_match.fouls last_match.fouls_opp %}%;background-color:{{last_match.opponent.color}}"></div>
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% avg_percent_away last_match.fouls last_match.fouls_opp %}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{% avg_percent_away last_match.fouls last_match.fouls_opp %}%;background-color:{{last_match.opponent.color}}"></div>
                                     </div>
                                 </div>
                                 <div class="progress__digit progress__digit--right">{{last_match.fouls}}</div>
@@ -291,8 +291,8 @@
                                 <div class="progress__digit progress__digit--left progress__digit--highlight">{{last_match.yellows_opp}}</div>
                                 <div class="progress__double">
                                     <div class="progress" style="background-color:{{bayern.color}}">
-                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% call_bookings_away last_match.yellows last_match.yellows_opp %}"
-                                            aria-valuemin="0" aria-valuemax="100" style="width:{% call_bookings_away last_match.yellows last_match.yellows_opp %}%;background-color:{{last_match.opponent.color}}"></div>
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% avg_percent_away last_match.yellows last_match.yellows_opp %}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{% avg_percent_away last_match.yellows last_match.yellows_opp %}%;background-color:{{last_match.opponent.color}}"></div>
                                     </div>
                                 </div>
                                 <div class="progress__digit progress__digit--right">{{last_match.yellows}}</div>
@@ -305,8 +305,8 @@
                                 <div class="progress__digit progress__digit--left progress__digit--highlight">{{last_match.reds_opp}}</div>
                                 <div class="progress__double">
                                     <div class="progress" style="background-color:{{bayern.color}}">
-                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% call_bookings_away last_match.reds last_match.reds_opp %}"
-                                            aria-valuemin="0" aria-valuemax="100" style="width:{% call_bookings_away last_match.reds last_match.reds_opp %}%;background-color:{{last_match.opponent.color}}"></div>
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% avg_percent_away last_match.reds last_match.reds_opp %}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{% avg_percent_away last_match.reds last_match.reds_opp %}%;background-color:{{last_match.opponent.color}}"></div>
                                     </div>
                                 </div>
                                 <div class="progress__digit progress__digit--right">{{last_match.reds}}</div>

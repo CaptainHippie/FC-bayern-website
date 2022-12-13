@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="page-heading page-heading--has-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1"><h1 class="page-heading__title">News</h1></div>
+        </div>
+    </div>
+</div>
+
+<!-- Post Filter -->
+<div class="post-filter">
+    <div class="container">
+
+        <form action="" class="post-filter__form clearfix" method="get">
+
+            <div class="post-filter__select">
+                <label class="post-filter__label">Category</label>
+                <select class="cs-select cs-skin-border" name="cat">
+                    <option value="">All Articles</option>
+
+                    <option value="inj" {% if request.GET.cat == 'inj' %}selected{% endif %}>Injuries</option>
+                    <option value="league" {% if request.GET.cat == 'league' %}selected{% endif %}>Competitions</option>
+                    <option value="team" {% if request.GET.cat == 'team' %}selected{% endif %}>Team News</option>
+                </select>
+            </div>
+            <div class="post-filter__select">
+                <label class="post-filter__label">Order By</label>
+                <select class="cs-select cs-skin-border" name="sort">
+                    <option value="time" {% if request.GET.sort == 'time'  or request.GET.sort == None %}selected{% endif %}>Date Posted</option>
+                    <option value="title" {% if request.GET.sort == 'title' %}selected{% endif %}>Title</option>
+                    <option value="views" {% if request.GET.sort == 'views' %}selected{% endif %}>Popular</option>
+                    <option value="liked" {% if request.GET.sort == 'liked' %}selected{% endif %}>Most liked</option>
+                </select>
+            </div>
+            <div class="post-filter__select">
+                <select class="cs-select cs-skin-border" name="order">
+                    <option value="desc" {% if request.GET.order != 'asc' or request.GET.order == None %}selected{% endif %}>Descending</option>
+                    <option value="asc" {% if request.GET.order == 'asc' %}selected{% endif %}>Ascending</option>
+                </select>
+            </div>
+            <div class="post-filter__select">
+                <label class="post-filter__label">Author</label>
+                <select class="cs-select cs-skin-border" name="author">
+                    <option value="">All Authors</option>
+                    {% for user in all_authors %}
+                    <option value="{{user.id}}">{{user.name_display}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="post-filter__submit">
+                <button type="submit" class="btn btn-block btn-lg btn-default">Filter News</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Post Filter / End -->
+
+<div class="site-content" id="content">
+    <div class="container">
+        <div class="row">
+
+            <div id="primary" class="content-area col-lg-12">
+                <main id="main" class="site-main">
+
+                    <div class="posts posts--cards posts--cards-thumb-left post-list">
+
+                        {% for news in all_news %}
+                        <article id="post-{{news.id}}"
+                            class="post-list__item posts__item posts__item--card card card--block posts__item--category-{{news.news_type.category}} post type-post status-publish format-standard has-post-thumbnail hentry category-{{news.news_type.css_name}}">
+
+                            <figure class="posts__thumb">
+                                <a href="{{news.get_absolute_url}}">
+                                    <img style="width:100%;height:342px;object-fit:cover;"
+                                        src="/media/{{news.image}}"
+                                        class="attachment-post-thumbnail size-post-thumbnail wp-post-image"> 
+                                </a>
+                            </figure>
+
+                            <div class="posts__inner">
+
+                                <div class="card__content" style="height: 273px">
+                                    <div class="posts__cat">
+                                        <span class="label posts__cat-label posts__cat-label--category-{{news.news_type.category}} category-{{news.news_type.css_name}}">{{news.news_type}}</span>
+                                    </div>
+                                    <h2 class="posts__title">
+                                        <a href="{{news.get_absolute_url}}" rel="bookmark">{{news.title}}</a>
+                                    </h2>
+                                    <time class="posts__date">{{news.added|date:"F j, Y"}}</time>
+                                    <div class="posts__excerpt">{{news.excerpt|truncatechars:300}}
+                                    </div>
+                                </div>
+
+                                <footer class="posts__footer card__footer">
+                                    <div class="post-author">
+                                        <figure class="post-author__avatar">
+                                            <img src="/media/{{news.author.profile_pic}}" class='avatar avatar-24 photo' height='24' width='24'>
+                                        </figure>
+                                        <div class="post-author__info">
+                                            <h4 class="post-author__name">{{news.author}}</h4>
+                                        </div>
+                                    </div>
+                                    <div class="post__meta meta">
+                                        <div class="meta__item meta__item--views">{{news.views}}</div>
+                                        <div class="meta__item meta__item--likes ">
+                                            <a class="sl-button" title="Like">
+                                                <span class="sl-icon"><i class="meta-like icon-heart"></i></span>
+                                                <span class="sl-count">71</span>
+                                            </a>
+                                            <span class="sl-loader"></span>
+                                        </div>
+                                        <div class="meta__item meta__item--comments"><a>{{news.comment_set.count}}</a></div>
+                                    </div>
+                                </footer>
+
+                            </div>
+                        </article><!-- #post-## -->
+                        {% endfor %}
+
+                    </div><!-- .posts -->
+
+                    <nav class="post-pagination">
+                        <ul class="pagination justify-content-center pagination--condensed pagination--lg">
+                            <li class='active' id="snk-page-no-1"><span>1</span></li>
+                            {% if pages_count > 0 %}
+                                {% for item in "x"|ljust:pages_count %}
+                                    <li id="snk-page-no-{{forloop.counter|add:1}}"><a href="">{{forloop.counter|add:1}}</a></li>
+                                {% endfor %}
+                                <li><a href="">
+                                    <i class="fa fa-angle-right"></i>
+                                </a></li>
+                            {% endif %}
+                            
+                        </ul>
+                    </nav>
+
+                </main><!-- #main -->
+            </div><!-- #primary -->
+
+
+        </div>
+    </div>
+</div>
+5
+{% endblock %}
