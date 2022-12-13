@@ -15,9 +15,10 @@ password = hello
 
 
 Things left to do:
-Main Newspage with sorting functions
-Fix most commented news selection
-Razorpay implementation
+Main Newspage with sorting functions(done)
+Build JS posts-per-logic in shop and news
+Fix most commented news selection bug
+Razorpay implementation(not mandatory)
 Scheduled matches - done
 Next match countdown - done(recheck if its latest match)
 Club history, honours, trophies pages

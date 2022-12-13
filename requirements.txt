@@ -3,4 +3,6 @@ django-ckeditor
 django-countries
 mysqlclient
 Pillow
-
+django-active-link
+django-shopping-cart
+instaloader
