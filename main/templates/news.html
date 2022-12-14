@@ -118,7 +118,9 @@
                                         </figure>
 
                                         <div class="comment__author-info">
-                                            <h5 class="comment__author-name">{{comment.from_user.name_display}}</h5>
+                                            <h5 class="comment__author-name" 
+                                            {% if comment.from_user.name_display == post.author.name_display %} style="color:rgb(220, 5, 45)"{% endif %}>
+                                            {{comment.from_user.name_display}}</h5>
                                             <div class="comment__post-date">{{comment.added|date:"g:i A, M j, Y"}}</div>
                                         </div>
                                     </div>
@@ -165,6 +167,7 @@
                                 </small>
                                 </h4>
                             </header>
+                            {% if logged_user %}
                             <form action="{% url 'save_comment' logged_user.id %}" method="post" id="commentform-{{ forloop.counter }}" class="post-comment-form__content card__content" novalidate="">
                                 {% csrf_token %}
                                 <p class="logged-in-as">
@@ -179,7 +182,8 @@
                                     <input type="hidden" name="comment_post_ID" value="{{post.id}}" id="comment_post_ID">
                                     <input type="hidden" name="comment_parent" id="comment_parent" value="{{comment.id}}">
                                 </p>
-                            </form>	
+                            </form>
+                            {% endif %}
                         </div>
 
                         
@@ -195,6 +199,7 @@
             <div class="post-comment-form card card--lg">
                 <div id="respond" class="comment-respond-main">
                     <header class="post-comment-form__header card__header"><h4>Leave a Comment</h4></header>
+                    {% if logged_user %}
                     <form action="{% url 'save_comment' logged_user.id %}" method="post" id="main-commentform" class="post-comment-form__content card__content">
                         {% csrf_token %}
                         <p class="logged-in-as">Logged in as {{ logged_user.username }}. <a href="">Log out?</a></p>
@@ -207,6 +212,7 @@
                             <input type='hidden' name='comment_post_ID' value="{{post.id}}" id='comment_post_ID'>
                         </p>
                     </form>
+                    {% endif %}
                 </div><!-- #respond -->
             </div>
             <!-- Comment Form / End -->

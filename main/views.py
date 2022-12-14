@@ -48,8 +48,9 @@ def NEWS(request, slug):
     post.views = post.views + 1
     post.save()
     
+    logged_user_id = request.session['logged_user_id'] if 'name' in request.session else None
     comments = Comment.objects.filter(parent_comment=None, parent_news=post).order_by('-added')
-    logged_user = CustomUser.objects.get(id=request.session['logged_user_id'])
+    logged_user = CustomUser.objects.filter(id=logged_user_id).first()
     comment_count = Comment.objects.filter(parent_news=post).count()
 
     context = {
@@ -465,19 +466,6 @@ def save_comment(request, user_id):
     new_comment.save()
     current_news = News_article.objects.get(id=current_news_id)
     return redirect('newspage', slug=current_news.slug)
-
-'''  <option value="inj">Injuries</option>
-                    <option value="league">Competitions</option>
-                    <option value="team">Team News</option>
-                </select>
-            </div>
-            <div class="post-filter__select">
-                <label class="post-filter__label">Order By</label>
-                <select class="cs-select cs-skin-border" name="sort">
-                    <option value="time">Date Posted</option>
-                    <option value="title">Title</option>
-                    <option value="views">Popular</option>
-                    <option value="liked">Most liked</option>'''
 
 news_sort={ 'inj':3,'league':2,'team':1,
         'time':'added','title':'title','views':'views','likes':'views',
