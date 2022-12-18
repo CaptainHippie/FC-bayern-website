@@ -13,7 +13,7 @@
             <div class="posts__item posts__item--category-1 post-102 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-alchemists tag-stadium tag-team">
                 <figure class="posts__thumb posts__thumb--hover">
                     <a href="{{news.get_absolute_url}}">
-                        <img width="80" height="80" src="/media/{{news.image}}" class=" wp-post-image" alt="" loading="lazy">
+                        <img width="80" height="80" src="{% if news.image %}/media/{{news.image}}{% else %}{{news.image_url}}{% endif %}" class=" wp-post-image" alt="" loading="lazy">
                     </a>
                 </figure>
                 <div class="posts__inner">

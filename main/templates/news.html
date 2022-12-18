@@ -19,7 +19,7 @@
             <!-- Article -->
             <article id="post-87" class="card post post--single posts__item--category-{{post.news_type.category}} card--lg post-87 type-post status-publish format-standard has-post-thumbnail hentry category-{{post.news_type.css_name}}">
                 <figure class="post__thumbnail">
-                    <img width="773" height="380" src="/media/{{post.image}}" class="attachment-alchemists_thumbnail-lg size-alchemists_thumbnail-lg wp-post-image">
+                    <img width="773" height="380" src="{% if post.image %}/media/{{post.image}}{% else %}{{post.image_url}}{% endif %}" class="attachment-alchemists_thumbnail-lg size-alchemists_thumbnail-lg wp-post-image">
                 </figure>
 
                 <div class="card__content">
@@ -124,9 +124,11 @@
                                             <div class="comment__post-date">{{comment.added|date:"g:i A, M j, Y"}}</div>
                                         </div>
                                     </div>
+                                    {% if logged_user %}
                                     <div class="comment__reply" onclick="reply_mode_on({{forloop.counter}})">
                                         <span class="comment__reply-link btn btn-link btn-xs" style="color: rgb(203 217 228 / 78%)">Reply</span>
                                     </div>
+                                    {% endif %}
                                 </header>
 
                                 <div class="comment__body">
@@ -144,7 +146,7 @@
                                                     <img src='/media/{{reply.from_user.profile_pic}}' class='avatar avatar-60 photo' height='60' width='60'>
                                                 </figure>
                                                 <div class="comment__author-info">
-                                                    <h5 class="comment__author-name">{{reply.from_user.name_display}}</h5>
+                                                    <h5 class="comment__author-name" {% if reply.from_user.name_display == post.author.name_display %} style="color:rgb(220, 5, 45)"{% endif %}>{{reply.from_user.name_display}}</h5>
                                                     <div class="comment__post-date">{{reply.added|date:"g:i A, M j, Y"}}</div>
                                                 </div>
                                             </div>
@@ -159,7 +161,7 @@
                             {% endfor %}
                         </li>
 
-
+                        {% if logged_user %}
                         <div id="respond-{{forloop.counter}}" class="comment-respond">
                             <header class="post-comment-form__header">
                                 <h4>Leave a Reply <small>
@@ -167,7 +169,7 @@
                                 </small>
                                 </h4>
                             </header>
-                            {% if logged_user %}
+                            
                             <form action="{% url 'save_comment' logged_user.id %}" method="post" id="commentform-{{ forloop.counter }}" class="post-comment-form__content card__content" novalidate="">
                                 {% csrf_token %}
                                 <p class="logged-in-as">
@@ -183,9 +185,8 @@
                                     <input type="hidden" name="comment_parent" id="comment_parent" value="{{comment.id}}">
                                 </p>
                             </form>
-                            {% endif %}
                         </div>
-
+                        {% endif %}
                         
                         {% endfor %}
                         
@@ -195,11 +196,11 @@
 
             </div><!-- #comments -->
 
+            {% if logged_user %}
             <!-- Comment Form -->
             <div class="post-comment-form card card--lg">
                 <div id="respond" class="comment-respond-main">
                     <header class="post-comment-form__header card__header"><h4>Leave a Comment</h4></header>
-                    {% if logged_user %}
                     <form action="{% url 'save_comment' logged_user.id %}" method="post" id="main-commentform" class="post-comment-form__content card__content">
                         {% csrf_token %}
                         <p class="logged-in-as">Logged in as {{ logged_user.username }}. <a href="">Log out?</a></p>
@@ -212,55 +213,23 @@
                             <input type='hidden' name='comment_post_ID' value="{{post.id}}" id='comment_post_ID'>
                         </p>
                     </form>
-                    {% endif %}
                 </div><!-- #respond -->
             </div>
             <!-- Comment Form / End -->
-
+            {% endif %}
 
         </div><!-- #primary -->
 
 
         <aside id="secondary" class="sidebar widget-area col-lg-4">
 
-            <div id="df-social-count-1" class="widget widget--sidebar card df-social-count-widget">
-                <div class="widget__content card__content">
-                    <div class="df-social-count df-social-count--columns"><a
-                            class="btn-social-counter btn-social-counter--facebook"
-                            href="https://www.facebook.com/danfisher.dev" rel="nofollow noopener noreferrer"
-                            target="_blank">
-                            <div class="btn-social-counter__icon"><i class="fa fa-facebook"></i></div>
-                            <h6 class="btn-social-counter__title">Like our Facebook page</h6><span
-                                class="btn-social-counter__count"><span
-                                    class="btn-social-counter__count-num">307</span> likes</span><span
-                                class="btn-social-counter__add-icon"></span>
-                        </a><a class="btn-social-counter btn-social-counter--twitter"
-                            href="https://twitter.com/danfisher_dev" rel="nofollow noopener noreferrer"
-                            target="_blank">
-                            <div class="btn-social-counter__icon"><i class="fa fa-twitter"></i></div>
-                            <h6 class="btn-social-counter__title">Follow us on Twitter</h6><span
-                                class="btn-social-counter__count"><span
-                                    class="btn-social-counter__count-num">275</span> followers</span><span
-                                class="btn-social-counter__add-icon"></span>
-                        </a><a class="btn-social-counter btn-social-counter--instagram"
-                            href="https://instagram.com/dan.fisher.dev" rel="nofollow noopener noreferrer"
-                            target="_blank">
-                            <div class="btn-social-counter__icon"><i class="fa fa-instagram"></i></div>
-                            <h6 class="btn-social-counter__title">Follow us on Instagram</h6><span
-                                class="btn-social-counter__count"><span
-                                    class="btn-social-counter__count-num">0</span> followers</span><span
-                                class="btn-social-counter__add-icon"></span>
-                        </a></div>
-                </div>
-            </div>
+            {% include 'includes/widgets/social_media.html' %}
             
             {% include 'includes/widgets/popular_news.html' %}
 
             <div id="tag_cloud-1" class="widget widget--sidebar card widget_tag_cloud">
                 <div class="widget__content card__content"></div>
-                <div class="widget__title card__header">
-                    <h4>Tag Cloud</h4>
-                </div>
+                <div class="widget__title card__header"><h4>Tag Cloud</h4></div>
                 <div class="widget__content card__content">
                     <div class="tagcloud"><a href="../tag/alchemists/index.html"
                             class="tag-cloud-link tag-link-19 btn btn-primary btn-xs btn-outline btn-sm  tag-link-position-1"

@@ -6,11 +6,7 @@
     function account_switch_tabs(evt, tabName) {
     //console.log(evt);
     var i, tabcontent, tablinks;
-    if (window.location.pathname == '/account/neerajvb3/'){
-      tabcontent = document.getElementsByClassName("card--lg");
-    } else {
-      tabcontent = document.getElementsByClassName("site-content");
-    };
+    tabcontent = document.getElementsByClassName("card--lg");
 
     for (i = 0; i < tabcontent.length; i++) {
       tabcontent[i].style.display = "none";
@@ -39,7 +35,15 @@
     };
   })();
 
-
+  function Snk_PreviewImage()
+  {
+      var oFReader = new FileReader();
+      oFReader.readAsDataURL(document.getElementById("select_image").files[0]);
+      oFReader.onload = function (oFREvent)
+      {
+          document.getElementById("uploadPreview").src = oFREvent.target.result;
+      };
+  };
 
 
   /*function hide_stuff_after_load() {

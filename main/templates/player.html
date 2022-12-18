@@ -110,9 +110,11 @@
             <div class="content col-lg-8">
 
                 <article class="card card--lg post post--single">
+                    {% if player.profile_banner %}
                     <figure class="post__thumbnail">
                         <img src="/media/{{player.profile_banner}}">
                     </figure>
+                    {% endif %}
                     <div class="card__content">{{player.biography|safe}}</div>
                 </article>
 
@@ -339,7 +341,7 @@
                                         <span class="label posts__cat-label posts__cat-label--category-1 category-the-team">{{news.news_type}}</span>
                                     </div>
                                     <a href="{{news.get_absolute_url}}">
-                                        <img width="380" height="270" src="/media/{{news.image}}" class="attachment-alchemists_thumbnail size-alchemists_thumbnail wp-post-image">
+                                        <img width="380" height="270" src="{% if news.image %}/media/{{news.image}}{% else %}{{news.image_url}}{% endif %}" class="attachment-alchemists_thumbnail size-alchemists_thumbnail wp-post-image">
                                     </a>
                                 </figure>
                                 <div class="posts__inner card__content">
@@ -417,5 +419,7 @@
         </main><!-- #main -->
     </div><!-- #primary -->
 </div>
+
+<script src="{% static 'js/player_page_edits.js' %}" id="account_switch_tabs-js" defer></script>
 
 {% endblock %}

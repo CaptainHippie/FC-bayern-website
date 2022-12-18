@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from cart.cart import Cart
 from django.core.files.storage import FileSystemStorage
 from django.utils import timezone
-from django.db.models import Count
+from django.db.models import Count, Max, Min
 from . models import *
 from . import calculations
 
@@ -20,7 +21,7 @@ def HOME(request):
 
     current_time = timezone.now()
     upcoming_match = Scheduled_Match.objects.filter(time__gte = current_time).order_by('time').first()
-    time_left = calculations.get_time_difference(upcoming_match.time - current_time)
+    time_left = calculations.get_time_difference(upcoming_match.time - current_time) if upcoming_match else None
 
     context = {
             'popular_news': popular_news,
@@ -48,9 +49,7 @@ def NEWS(request, slug):
     post.views = post.views + 1
     post.save()
     
-    logged_user_id = request.session['logged_user_id'] if 'name' in request.session else None
     comments = Comment.objects.filter(parent_comment=None, parent_news=post).order_by('-added')
-    logged_user = CustomUser.objects.filter(id=logged_user_id).first()
     comment_count = Comment.objects.filter(parent_news=post).count()
 
     context = {
@@ -59,8 +58,7 @@ def NEWS(request, slug):
             'newest_news' : newest_news,
             'favourite_news' : favourite_news,
             'comments':comments,
-            'comment_count': comment_count,
-            'logged_user': logged_user
+            'comment_count': comment_count
     }
     return render(request, 'news.html', context)
 
@@ -119,19 +117,19 @@ def PLAYER_DETAIL(request, slug_name):
     }
     return render(request, 'player.html', context)
 
-def CLUB_ROSTER(request):
+def TEAM_DATA(request):
     all_positions = Position.objects.all()
     all_staff = Staff.objects.exclude(designation="Executive Sporting Director")
-    director = Staff.objects.get(designation="Executive Sporting Director")
+    director = Staff.objects.filter(designation="Executive Sporting Director").first() or None
     club_league_stats = Club_season_stats.objects.filter(competition__name="BundesLiga").order_by('-points','-goal_diff','-scored')[0:20]
     club_ucl_stats = Club_season_stats.objects.filter(competition__name="UEFA Champions League").order_by('-points','-goal_diff','-scored')[0:6]
     club_pokal_stats = Club_season_stats.objects.filter(competition__name="DFB Pokal").order_by('-points','-goal_diff','-scored')
     all_albums = Club_Album.objects.all()
 
-    all_matches = Match.objects.all()
+    all_matches = Match.objects.all().order_by('-time')[0:10]
 
     current_time = timezone.now()
-    scheduled_matches = Scheduled_Match.objects.filter(time__gte = current_time)
+    scheduled_matches = Scheduled_Match.objects.filter(time__gte = current_time).order_by('time')[0:10]
 
     context = {
             'all_positions': all_positions,
@@ -144,7 +142,36 @@ def CLUB_ROSTER(request):
             'scheduled_matches': scheduled_matches,
             'all_albums': all_albums
     }
-    return render(request, 'roster.html', context)
+    return render(request, 'team.html', context)
+
+
+def CLUB_HISTORY(request):
+    membership_articles = Mini_Articles.objects.filter(category="mem")
+    venues = Mini_Articles.objects.filter(category="venue")
+
+    ceo = Board_Member.objects.filter(board_type="ag", designation="Chief Executive Officer").first()
+    ag_members = Board_Member.objects.filter(board_type="ag").exclude(designation="Chief Executive Officer")
+    president = Board_Member.objects.filter(board_type="ev", designation="President").first()
+    ev_members = Board_Member.objects.filter(board_type="ev").exclude(designation="President")
+
+    trophies = Trophies.objects.all().order_by('-count')
+
+    honourary_members = Mini_Articles.objects.filter(category="past_mem")
+    milestones = Mini_Articles.objects.filter(category="milestone")
+    hall_of_famers = Mini_Articles.objects.filter(category="hof")
+    context = {
+            'membership_articles' : membership_articles,
+            'venues' : venues,
+            'ceo' : ceo,
+            'president' : president,
+            'ag_members' : ag_members,
+            'ev_members' : ev_members, 
+            'all_trophies' : trophies,
+            'honourary_members' : honourary_members,
+            'milestones' : milestones,
+            'hall_of_famers' : hall_of_famers
+    }
+    return render(request, 'club.html', context)
 
 
 def STAFF(request, slug_name):
@@ -158,6 +185,21 @@ def STAFF(request, slug_name):
     }
     return render(request, 'staff.html', context)
 
+
+def BOARD_MEMBER(request, slug_name):
+    officer = Board_Member.objects.filter(slug=slug_name).first()
+    context = {
+            'officer' : officer
+    }
+    return render(request, 'board_member.html', context)
+
+def MINI_ARTICLE(request, slug_name):
+    article = Mini_Articles.objects.filter(slug=slug_name).first()
+    context = {
+            'article' : article
+    }
+    return render(request, 'mini_article.html', context)
+
 def ALBUM(request, slug_name):
     all_images = Album_Image.objects.filter(parent_album__slug=slug_name)
     context = {
@@ -165,6 +207,7 @@ def ALBUM(request, slug_name):
     }
     return render(request, 'album.html', context)
 
+@login_required(login_url='login')
 def ACCOUNT(request, slug_name):
     logged_user = CustomUser.objects.get(slug=slug_name)
     all_orders = Order.objects.filter(user__slug=slug_name)
@@ -219,6 +262,7 @@ def ACCOUNT(request, slug_name):
         return redirect('account', slug_name=slug_name)
     return render(request, 'account.html', context)
 
+@login_required(login_url='login')
 def ADDRESS(request, slug_name, addr_type):
     logged_user = CustomUser.objects.get(slug=slug_name)
     current_address_set = logged_user.address_set.filter(address_type=addr_type)
@@ -281,34 +325,48 @@ def REG_LOGIN(request):
         return redirect('login')
 
     if 'login' in request.POST:
-        username = request.POST.get('username')
+        uname_or_email = request.POST.get('username')
         password = request.POST.get('password')
 
-        user = None
-        if CustomUser.objects.filter(username=username).exists():
-            user = CustomUser.objects.get(username=username)
-        elif CustomUser.objects.filter(email=username).exists():
-            user = CustomUser.objects.get(email=username)
+        customuser = None
+        user_auth = None
+        if CustomUser.objects.filter(username=uname_or_email).exists():
+            customuser = CustomUser.objects.get(username=uname_or_email)
+            user_auth = authenticate(request, username=uname_or_email, password=password)
+        elif CustomUser.objects.filter(email=uname_or_email).exists():
+            customuser = CustomUser.objects.get(email=uname_or_email)
+            user_auth = authenticate(request, username=customuser.username, password=password)
         else:
             messages.error(request, 'invalid username or email not registered!')
             return redirect('login')
-        user_auth = authenticate(request, username=username, password=password)
+
         if user_auth is not None:
-            request.session['logged_user_id'] = user.id
-            return redirect('account', slug_name=user.slug)
+            login(request, user_auth)
+            return redirect('account', slug_name=customuser.slug)
         else:
             messages.error(request, 'Invalid password!')
             return redirect('login')
     return render(request, 'register_login.html')
 
+@login_required(login_url='login')
 def LOGOUT(request):
-    del request.session['logged_user_id']
+    logout(request)
     return redirect('login')
 
 def SHOP(request):
     all_products = Merchandise.objects.all()
+    all_categories = Merchandise_Type.objects.all()
+    min_price = Merchandise.objects.all().aggregate(Min('price'))
+    max_price = Merchandise.objects.all().aggregate(Max('price'))
+
+   
+    min_rounded, max_rounded = calculations.round_min_max_price(min_price['price__min'], max_price['price__max'])
+
     context = {
-            'all_products' : all_products
+            'all_products' : all_products,
+            'all_categories' : all_categories,
+            'min_rounded' : min_rounded,
+            'max_rounded' : max_rounded
     }
     return render(request, 'shop.html', context)
 
@@ -398,6 +456,7 @@ def CART(request):
 
     return render(request, 'cart.html', context)
 
+@login_required(login_url='login')
 def ORDER(request, slug_name, order_id):
     current_order = Order.objects.get(id=order_id)
     context = {
@@ -406,9 +465,12 @@ def ORDER(request, slug_name, order_id):
 
     return render(request, 'orders.html', context)
 
+@login_required(login_url='login')
 def CHECKOUT(request):
-    logged_user = CustomUser.objects.get(id=request.session['logged_user_id'])
-    billing_address = logged_user.address_set.filter(address_type="billing")
+    logged_user_id = request.user.id if request.user.is_authenticated else None
+    logged_user = CustomUser.objects.filter(id=logged_user_id).first() if logged_user_id else None
+    has_billing_address = hasattr(logged_user,  'address_set') if logged_user else None
+    billing_address = logged_user.address_set.filter(address_type="billing") if has_billing_address else None
 
     if request.method == 'POST':
         cart_at_checkout = request.session.get('cart')
@@ -456,6 +518,7 @@ def CHECKOUT(request):
     }
     return render(request, 'checkout.html', context)
 
+@login_required(login_url='login')
 def save_comment(request, user_id):
     new_comment = Comment()
     current_news_id = request.POST.get('comment_post_ID')

@@ -523,7 +523,7 @@
                                             <div class="game-timeline">
                                             {% for event in events %}
                                             {% if match.at_home == True %}
-                                                {% if event.homeside == True %}
+                                                {% if event.is_bayern_player == True %}
                                                 
                                                 <div class="game-timeline__event game-timeline__event--side-home" style="left: {{event.minute}}%;">
                                                     <div class="game-timeline__event-info game-timeline__event-info--side-home">
@@ -563,7 +563,7 @@
                                                 {% endif %}
 
                                             {% else %}
-                                                {% if event.homeside == True %}
+                                                {% if event.is_bayern_player == True %}
                                                 
                                                 <div class="game-timeline__event game-timeline__event--side-away" style="left: {{event.minute}}%;">
                                                     <div class="game-timeline__event-info game-timeline__event-info--side-away">

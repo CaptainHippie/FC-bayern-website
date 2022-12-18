@@ -16,7 +16,7 @@
 
                             <div class="card__header">
                                 <h4 class="">{{staff.designation}}</h4>
-                                <a class="btn btn-xs btn-default card-header__button btn-outline" href="{% url 'roster' %}" title="Go to the Team">Go to the Team</a>
+                                <a class="btn btn-xs btn-default card-header__button btn-outline" href="{% url 'team' %}" title="Go to the Team">Go to the Team</a>
                             </div>
 
                             <div class="card__content">
@@ -82,7 +82,7 @@
                                                     <span class="label posts__cat-label posts__cat-label--category-1 category-the-team">{{article.news_type}}</span>
                                                 </div>
                                                     <a href="{{article.get_absolute_url}}">
-                                                        <img width="380" height="270" src="/media/{{article.image}}">
+                                                        <img width="380" height="270" src="{% if article.image %}/media/{{article.image}}{% else %}{{article.image_url}}{% endif %}">
                                                     </a>
                                             </figure>
                                             <div class="posts__inner card__content">

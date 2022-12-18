@@ -218,12 +218,12 @@
 
                                                 </div>
                                                 <div class="player-info__item player-info__item--photo">
-                                                    <figure class="player-info__photo"><img src="/media/{{logged_user.profile_pic}}" width="222px"></figure>
+                                                    <figure class="player-info__photo"><img id="uploadPreview" src="/media/{{logged_user.profile_pic}}" width="222px"></figure>
                                                 </div>
                                             
                                                 <form class="woocommerce-EditAccountForm edit-account" method="post" enctype="multipart/form-data">
                                                 {% csrf_token %}
-                                                    <input type="file" name="profile_pic" id="select_image" style="visibility:hidden" accept=".jpg,.png">
+                                                    <input type="file" name="profile_pic" id="select_image" style="visibility:hidden" accept=".jpg,.png" onchange="Snk_PreviewImage();">
                                                     <div class="btn-container btn-container--align-inline">
                                                         <label class="btn btn-default btn-outline btn-sm" for="select_image" title="Button Title">Change Profile Image</label>
                                                     </div>
@@ -303,5 +303,7 @@
     </div>
 </div>
 
+<script src="{% static 'js/account_switch_tabs.js' %}" id="account_switch_tabs-js" defer></script>
 
 {% endblock %}
+

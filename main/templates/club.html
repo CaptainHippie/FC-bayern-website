@@ -1,0 +1,598 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+
+    .team-roster--grid-col-trophy .team-roster__item {
+      flex-basis: 50%;
+      max-width: 50%;
+    }
+    @media (min-width: 768px) {
+
+    .team-roster--grid-col-trophy .team-roster__item {
+        flex-basis: 33.3%;
+        max-width: 33.3%;
+        }
+    .team-roster--grid-col-3 .custom-card-item {
+        flex-basis: 50%;
+        max-width: 50%;
+        }
+    .team-roster--grid-col-3 .custom-card-item .custom-card-heading {
+            font-size:12px;
+        }
+    }
+    @media (min-width: 992px) {
+    .team-roster--grid-col-trophy .team-roster__item {
+        flex-basis: 33.3%;
+        max-width: 33.3%;
+      }
+    .team-roster--grid-col-3 .custom-card-item {
+        flex-basis: 33.3%;
+        max-width: 33.3%;
+        }
+    }
+    @media (min-width: 1200px) {
+    .team-roster--grid-col-trophy .team-roster__item {
+        flex-basis: 20%;
+        max-width: 20%;
+      }
+    .team-roster--grid-col-3 .custom-card-item {
+        flex-basis: 33.3%;
+        max-width: 33.3%;
+        }
+    .team-roster--grid-col-3 .custom-card-item .custom-card-subheading {
+        font-size: 12px;
+        padding: 8px 8px 6px 14px;
+        }
+    .team-roster--grid-col-3 .custom-card-item .custom-card-heading {
+        padding: 0px 12px 19px 15px;
+            font-size:15px;
+        }
+
+
+    .team-roster--grid-col-3 .custom-card-item-bigger {
+        flex-basis: 50%;
+        max-width: 50%;
+        }
+    .team-roster--grid-col-3 .custom-card-item-bigger .custom-card-subheading {
+        font-size: 12px;
+        padding: 8px 8px 6px 14px;
+        }
+    .team-roster--grid-col-3 .custom-card-item-bigger .custom-card-heading {
+        padding: 0px 12px 19px 15px;
+        font-size:15px;
+        }
+    }
+
+    .custom-card-item {
+        flex-basis: 50%;
+        max-width: 50%;
+        margin-bottom: 15px;
+        position: relative;
+        padding-left: 8px;
+        padding-right: 8px;
+        float: left;
+        
+    }
+    .custom-card-item-bigger {
+        flex-basis: 100%;
+        max-width: 100%;
+        margin-bottom: 15px;
+        position: relative;
+        padding-left: 8px;
+        padding-right: 8px;
+        float: left;
+        
+    }
+    
+    .custom-card-heading {
+        padding: 0px 9px 6px 8px;
+        font-size:10px;
+    }
+    .custom-card-subheading {
+        text-transform: uppercase;
+        font-size: 9px;
+        color: #dad7d7;
+        padding: 4px 6px 0px 8px;
+        letter-spacing: 1px;
+    }
+
+</style>
+<title>Club - {{bayern.full_name}}</title>
+<div class="site-content " id="content">
+    <div class="container">
+        <div class="row">
+            <img src="/media/banners/club_page_banner.png">
+
+            <nav class="content-filter">
+                <div class="container" style="padding-right: 0px;padding-left: 0px">
+                    <div class="content-filter__inner">
+                        <a href="#" class="content-filter__toggle"></a>
+                        <ul class="content-filter__list" style="border-left: none;border-right: none">
+                            <li class="content-filter__item content-filter__item--active" onclick="player_page_switch_tabs(event, 'zzz_membership')">
+                                <span class="content-filter__link">Membership</span>
+                            </li>
+
+                            <li class="content-filter__item" onclick="player_page_switch_tabs(event, 'zzz_board_ag')">
+                                <span class="content-filter__link">Board Members</span>
+                            </li>
+                            
+                            <li class="content-filter__item" onclick="player_page_switch_tabs(event, 'zzz_board_ev')">
+                                <span class="content-filter__link">Supervisory Board Members</span>
+                            </li>
+
+                            <li class="content-filter__item" onclick="player_page_switch_tabs(event, 'zzz_trophies')">
+                                <span class="content-filter__link">Honours</span>
+                            </li>
+
+                            <li class="content-filter__item" onclick="player_page_switch_tabs(event, 'zzz_sponsors')">
+                                <span class="content-filter__link">Sponsors</span>
+                            </li>
+
+                            <li class="content-filter__item" onclick="player_page_switch_tabs(event, 'zzz_history')">
+                                <span class="content-filter__link">History</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            
+            <div id="zzz_membership" class="content-area col-lg-12">
+                <main id="main" class="site-main">
+                    <p>With over 290,000 club members, FC Bayern M&uuml;nchen eV is the sports club boasting the largest number of members in the world. 
+                        Through their membership, our supporters not only document their identification with the club, but are also part of the large FC Bayern family.</p>
+                    <p>Your heart also beats for FC Bayern Munich and you would like to be part of the red and white club family? Then apply for&nbsp;
+                        <a href="https://online.fcbayern.com/ev-mitglied-werden/en#/">membership</a>&nbsp;
+                        now - we look forward to welcoming you!</p>
+                    <p>You can find all the important information about membership here on this page.</p>
+                    <p><strong>Oh, and by the way:</strong></p>
+                    <p>100% of the income generated by memberships benefits FC Bayern M&uuml;nchen eV, which primarily supports our youth work and our grassroots sports departments.</p>
+
+                    <div class="main-news-banner__inner" style="background: linear-gradient(87.03deg, rgb(118, 35, 47) 5.27%, rgb(220, 5, 45) 97.41%);padding: 20px 20px 18px 25px;border-radius: 4px">
+                        <div class="posts posts--simple-list posts--simple-list--xlg">
+                            <div class="posts__item post type-post status-publish format-standard has-post-thumbnail hentry">
+                                <div class="posts__inner">
+
+                                    <h6 class="posts__title">Become part of the FC Bayern family</h6>
+                                    <div class="posts__excerpt">You want to be part of the club family? Then apply for your membership now!</div>
+                                    <div class="posts__more" style="padding-top: 16px">
+                                        <a href="{% url 'login' %}" class="btn btn-inverse btn-sm btn-outline btn-icon-right btn-condensed"
+                                        style="background-color: #f3f3f3;color: rgb(198, 4, 40);border: none;border-radius: 3px">
+                                            Become a Member now!
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="vc_empty_space" style="height: 40px"></div>
+
+                    <h3>FC Bayern Membership at a glance</h3>  
+                    <div class="team-roster team-roster--grid team-roster--grid-col-3 sp-player-gallery-wrapper sp-gallery-wrapper">
+                                                                   
+                        {% for article in membership_articles %}
+                    
+                        <div class='custom-card-item'>
+                            <div style="background-color: rgb(18 31 56)">
+                                <a href="{% url 'article' article.slug %}">
+                                    <img src="{{article.banner}}">
+                                </a>
+                                <div class="custom-card-subheading"><span>{{article.sub_heading}}</span></div>
+                                <h6 class="custom-card-heading">{{article.name}}</h6>
+                            </div>
+                        </div>
+                        {% endfor%}
+                    </div>
+
+                    <div class="vc_empty_space" style="height: 16px"></div>
+
+                    <h3>Venues</h3>  
+                    <div class="team-roster team-roster--grid team-roster--grid-col-3 sp-player-gallery-wrapper sp-gallery-wrapper">
+                                                                   
+                        {% for article in venues %}
+                    
+                        <div class='custom-card-item'>
+                            <div style="background-color: rgb(18 31 56)">
+                                <a href="{% url 'article' article.slug %}">s
+                                    <img src="{{article.banner}}">
+                                </a>
+                                <div class="custom-card-subheading"><span>{{article.sub_heading}}</span></div>
+                                <h6 class="custom-card-heading">{{article.name}}</h6>
+                            </div>
+                        </div>
+                        {% endfor%}
+                    </div>
+
+
+                </main><!-- #main -->
+            </div>
+
+            <div id="zzz_board_ag" class="content-area col-lg-12">
+                <main id="main" class="site-main">
+                    <div id="post-1166" class="post-1166 page type-page status-publish hentry">
+
+                        <div class="entry-content">
+                            <div class="vc_row wpb_row vc_row-fluid">
+                                <div class="wpb_column vc_column_container vc_col-sm-12">
+                                    <div class="vc_column-inner">
+                                        <div class="wpb_wrapper">
+
+                                            <div class="wpb_text_column wpb_content_element ">
+                                                <div class="wpb_wrapper">
+                                                    <div class="sportspress sp-widget-align-none">
+                                                        <div id='sp-player-gallery-57' class='gallery galleryid-57 gallery-columns-3 gallery-size-sportspress-crop-medium'>
+                                                            <div class="sp-template sp-template-player-gallery sp-template-gallery">
+
+                                                                <div class="vc_empty_space" style="height: 25px"></div>
+
+
+                                                                <h3>{{ceo.designation}}</h3>
+                                                                        
+                                                                <div class="team-roster team-roster--grid team-roster--grid-col-3 sp-player-gallery-wrapper sp-gallery-wrapper">     
+                                                                    <div class='team-roster__item' style="flex-basis: 100%;max-width: 100%">
+                                                                        <div class='team-roster__holder'>
+                                                                            <figure class='team-roster__img'>
+                                                                            <a href="{% url 'officer' ceo.slug %}">
+                                                                                <img src="{{ceo.profile_pic}}">
+                                                                            </a>
+                                                                            </figure>
+                                                                            <div class='team-roster__content' style="padding: 25px 25px">
+                                                                                <div class='team-roster__content-inner'>
+                                                                                    <div class='team-roster__member-info'>
+                                                                                    <h2 class='team-roster__member-name team-roster__member-name--has-link'>
+                                                                                        <a href="{% url 'officer' ceo.slug %}">{{ceo.name}}</a>
+                                                                                    </h2>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="vc_empty_space" style="height: 32px"></div>
+
+
+                                                                <div class="team-roster team-roster--grid team-roster--grid-col-3 sp-player-gallery-wrapper sp-gallery-wrapper">                                                       
+                                                                    {% for member in ag_members %}
+                                                                
+                                                                    <div class='team-roster__item' style="flex-basis: 100%;max-width: 100%" >
+                                                                        <div class='team-roster__holder'>
+                                                                            <h3>{{member.designation}}</h3>
+                                                                            <figure class='team-roster__img'>
+                                                                            <a href="{% url 'officer' member.slug %}">
+                                                                                <img src="{{member.profile_pic}}">
+                                                                            </a>
+                                                                            </figure>
+                                                                            <div class='team-roster__content' style="padding: 25px 25px">
+                                                                                <div class='team-roster__content-inner'>
+                                                                                    <div class='team-roster__member-info'>
+                                                                                    <h2 class='team-roster__member-name team-roster__member-name--has-link'>
+                                                                                        <a href="{% url 'officer' member.slug %}">{{member.name}}</a>
+                                                                                    </h2>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    {% endfor%}
+                                                                </div>
+                                                                <div class="vc_empty_space" style="height: 32px"></div>
+
+
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- .entry-content -->
+                    </div><!-- #post-## -->
+
+                </main><!-- #main -->
+            </div>
+
+            <div id="zzz_board_ev" class="content-area col-lg-12">
+                <main id="main" class="site-main">
+                    <div id="post-1166" class="post-1166 page type-page status-publish hentry">
+
+                        <div class="entry-content">
+                            <div class="vc_row wpb_row vc_row-fluid">
+                                <div class="wpb_column vc_column_container vc_col-sm-12">
+                                    <div class="vc_column-inner">
+                                        <div class="wpb_wrapper">
+
+                                            <div class="wpb_text_column wpb_content_element ">
+                                                <div class="wpb_wrapper">
+                                                    <div class="sportspress sp-widget-align-none">
+                                                        <div id='sp-player-gallery-57' class='gallery galleryid-57 gallery-columns-3 gallery-size-sportspress-crop-medium'>
+                                                            <div class="sp-template sp-template-player-gallery sp-template-gallery">
+
+                                                                <div class="vc_empty_space" style="height: 25px"></div>
+
+                                                                <h3>{{president.designation}}</h3>     
+                                                                <div class="team-roster team-roster--grid team-roster--grid-col-3 sp-player-gallery-wrapper sp-gallery-wrapper">     
+                                                                    <div class='team-roster__item' style="flex-basis: 100%;max-width: 100%">
+                                                                        <div class='team-roster__holder'>
+                                                                            <figure class='team-roster__img'>
+                                                                            <a href="{% url 'officer' president.slug %}">
+                                                                                <img src="{{president.profile_pic}}">
+                                                                            </a>
+                                                                            </figure>
+                                                                            <div class='team-roster__content' style="padding: 25px 25px">
+                                                                                <div class='team-roster__content-inner'>
+                                                                                    <div class='team-roster__member-info'>
+                                                                                    <h2 class='team-roster__member-name team-roster__member-name--has-link'>
+                                                                                        <a href="{% url 'officer' president.slug %}">{{president.name}}</a>
+                                                                                    </h2>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="vc_empty_space" style="height: 32px"></div>
+
+
+                                                                <div class="team-roster team-roster--grid team-roster--grid-col-3 sp-player-gallery-wrapper sp-gallery-wrapper">                                                       
+                                                                    {% for member in ev_members %}
+                                                                
+                                                                    <div class='team-roster__item' style="flex-basis: 100%;max-width: 100%" >
+                                                                        <div class='team-roster__holder'>
+                                                                            <h3>{{member.designation}}</h3>
+                                                                            <figure class='team-roster__img'>
+                                                                            <a href="{% url 'officer' member.slug %}">
+                                                                                <img src="{{member.profile_pic}}">
+                                                                            </a>
+                                                                            </figure>
+                                                                            <div class='team-roster__content' style="padding: 25px 25px">
+                                                                                <div class='team-roster__content-inner'>
+                                                                                    <div class='team-roster__member-info'>
+                                                                                    <h2 class='team-roster__member-name team-roster__member-name--has-link'>
+                                                                                        <a href="{% url 'officer' member.slug %}">{{member.name}}</a>
+                                                                                    </h2>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    {% endfor%}
+                                                                </div>
+                                                                <div class="vc_empty_space" style="height: 32px"></div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- .entry-content -->
+                    </div><!-- #post-## -->
+
+                </main><!-- #main -->
+            </div>
+
+            <div id="zzz_trophies" class="content-area col-lg-12">
+                <main id="main" class="site-main">
+                    <div id="post-1166" class="post-1166 page type-page status-publish hentry">
+
+                        <div class="entry-content">
+                            <div class="vc_row wpb_row vc_row-fluid">
+                                <div class="wpb_column vc_column_container vc_col-sm-12">
+                                    <div class="vc_column-inner">
+                                        <div class="wpb_wrapper">
+
+                                            <div class="wpb_text_column wpb_content_element ">
+                                                <div class="wpb_wrapper">
+                                                    <div class="sportspress sp-widget-align-none">
+                                                        <div id='sp-player-gallery-57' class='gallery galleryid-57 gallery-columns-3 gallery-size-sportspress-crop-medium'>
+                                                            <div class="sp-template sp-template-player-gallery sp-template-gallery">
+
+                                                                <div class="vc_empty_space" style="height: 25px"></div>
+
+                                                                <div class="team-roster team-roster--grid team-roster--grid-col-trophy sp-player-gallery-wrapper sp-gallery-wrapper">                                                       
+                                                                    {% for trophy in all_trophies %}
+                                                                
+                                                                    <div class='team-roster__item' style="height: 260px;flex-basis" >
+                                                                        <div class='team-roster__holder' 
+                                                                        style="height: inherit;background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.9))">
+                                                                            <figure class='team-roster__img' style="border: none">
+                                                                                <img src="{{trophy.image}}">
+                                                                            </figure>
+                                                                            <div class='team-roster__content'>
+                                                                                <div class='team-roster__content-inner'>
+                                                                                    <div class='team-roster__member-info'>
+                                                                                        <div style="font-size:20px;text-align:center;color:white"><b>{{trophy.count}}</b></div> 
+                                                                                        <div style="font-size:17px;text-align:center;color:#c4ccd8">{{trophy.name}}</div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    {% endfor%}
+                                                                </div>
+                                                                <div class="vc_empty_space" style="height: 32px"></div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- .entry-content -->
+                    </div><!-- #post-## -->
+
+                </main><!-- #main -->
+            </div>
+
+            <div id="zzz_sponsors" class="content-area col-lg-12">
+                <main id="main" class="site-main">
+                    <div id="post-1166" class="post-1166 page type-page status-publish hentry">
+
+                        <div class="entry-content">
+                            <div class="vc_row wpb_row vc_row-fluid">
+                                <div class="wpb_column vc_column_container vc_col-sm-12">
+                                    <div class="vc_column-inner">
+                                        <div class="wpb_wrapper">
+
+                                            <div class="wpb_text_column wpb_content_element ">
+                                                <div class="wpb_wrapper">
+                                                    <div class="sportspress sp-widget-align-none">
+                                                        <div id='sp-player-gallery-57' class='gallery galleryid-57 gallery-columns-3 gallery-size-sportspress-crop-medium'>
+                                                            <div class="sp-template sp-template-player-gallery sp-template-gallery">
+
+                                                                <div class="vc_empty_space" style="height: 25px"></div>
+
+
+                                                                <h3>{{ceo.designation}}</h3>
+                                                                        
+                                                                <div class="team-roster team-roster--grid team-roster--grid-col-3 sp-player-gallery-wrapper sp-gallery-wrapper">     
+                                                                    <div class='team-roster__item' style="flex-basis: 100%;max-width: 100%">
+                                                                        <div class='team-roster__holder'>
+                                                                            <figure class='team-roster__img'>
+                                                                            <a href="{% url 'officer' ceo.slug %}">
+                                                                                <img src="{{ceo.profile_pic}}">
+                                                                            </a>
+                                                                            </figure>
+                                                                            <div class='team-roster__content' style="padding: 25px 25px">
+                                                                                <div class='team-roster__content-inner'>
+                                                                                    <div class='team-roster__member-info'>
+                                                                                    <h2 class='team-roster__member-name team-roster__member-name--has-link'>
+                                                                                        <a href="{% url 'officer' ceo.slug %}">{{ceo.name}}</a>
+                                                                                    </h2>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="vc_empty_space" style="height: 32px"></div>
+
+
+                                                                <div class="team-roster team-roster--grid team-roster--grid-col-3 sp-player-gallery-wrapper sp-gallery-wrapper">                                                       
+                                                                    {% for member in ag_members %}
+                                                                
+                                                                    <div class='team-roster__item' style="flex-basis: 100%;max-width: 100%" >
+                                                                        <div class='team-roster__holder'>
+                                                                            <h3>{{member.designation}}</h3>
+                                                                            <figure class='team-roster__img'>
+                                                                            <a href="{% url 'officer' member.slug %}">
+                                                                                <img src="{{member.profile_pic}}">
+                                                                            </a>
+                                                                            </figure>
+                                                                            <div class='team-roster__content' style="padding: 25px 25px">
+                                                                                <div class='team-roster__content-inner'>
+                                                                                    <div class='team-roster__member-info'>
+                                                                                    <h2 class='team-roster__member-name team-roster__member-name--has-link'>
+                                                                                        <a href="{% url 'officer' member.slug %}">{{member.name}}</a>
+                                                                                    </h2>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    {% endfor%}
+                                                                </div>
+                                                                <div class="vc_empty_space" style="height: 32px"></div>
+
+
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- .entry-content -->
+                    </div><!-- #post-## -->
+
+                </main><!-- #main -->
+            </div>
+
+            <div id="zzz_history" class="content-area col-lg-12">
+                <main id="main" class="site-main">
+                    <div class="vc_empty_space" style="height: 40px"></div>
+
+                    <div class="team-roster team-roster--grid team-roster--grid-col-3 sp-player-gallery-wrapper sp-gallery-wrapper">
+                                                                   
+                        {% for article in honourary_members %}
+                    
+                        <div class='custom-card-item-bigger'>
+                            <div style="background-color: rgb(18 31 56)">
+                                <a href="{% url 'article' article.slug %}">
+                                    <img src="{{article.banner}}">
+                                </a>
+                                <div class="custom-card-subheading"><span>{{article.sub_heading}}</span></div>
+                                <h6 class="custom-card-heading">{{article.name}}</h6>
+                            </div>
+                        </div>
+                        {% endfor%}
+                    </div>
+
+                    <h3>Milestones</h3>
+                    <div class="team-roster team-roster--grid team-roster--grid-col-3 sp-player-gallery-wrapper sp-gallery-wrapper">
+                                                                   
+                        {% for article in milestones %}
+                    
+                        <div class='custom-card-item'>
+                            <div style="background-color: rgb(18 31 56)">
+                                <a href="{% url 'article' article.slug %}">
+                                    <img src="{{article.banner}}">
+                                </a>
+                                <div class="custom-card-subheading"><span>{{article.sub_heading}}</span></div>
+                                <h6 class="custom-card-heading">{{article.name}}</h6>
+                            </div>
+                        </div>
+                        {% endfor%}
+                    </div>
+
+                    <h3>Hall of Fame</h3>
+                    <div class="team-roster team-roster--grid team-roster--grid-col-3 sp-player-gallery-wrapper sp-gallery-wrapper">
+                                                                   
+                        {% for article in hall_of_famers %}
+                    
+                        <div class='custom-card-item'>
+                            <div style="background-color: rgb(18 31 56)">
+                                <a href="{% url 'article' article.slug %}">
+                                    <img src="{{article.banner}}">
+                                </a>
+                                <div class="custom-card-subheading"><span>{{article.sub_heading}}</span></div>
+                                <h6 class="custom-card-heading">{{article.name}}</h6>
+                            </div>
+                        </div>
+                        {% endfor%}
+                    </div>
+
+
+                </main><!-- #main -->
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/team_page_edits.js' %}" id="team-page-edits-js" defer></script>
+{% endblock%}

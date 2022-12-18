@@ -5,7 +5,7 @@ from django.utils.text import slugify
 from django.db.models.signals import pre_save
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
-
+from django.utils import timezone
 
 class article_type(models.Model):
     name = models.CharField(max_length=50)
@@ -15,22 +15,9 @@ class article_type(models.Model):
     def __str__(self):
         return self.name
 
-class Bayern(models.Model):
-    full_name = models.CharField(max_length=100, default='Bayern')
-    logo = models.ImageField(default='logos/bayern_logo.png', upload_to='logos', null=True)
-    color = models.CharField(max_length=50, null=True)
-    alt_color = models.CharField(max_length=50, null=True)
-    manager = models.CharField(max_length=100, null=True)
-    fb_link = models.CharField(max_length=100, null=True)
-    insta_link = models.CharField(max_length=100, null=True)
-    twitter_link = models.CharField(max_length=100, null=True)
-
-    def __str__(self):
-        return self.full_name
-
 class CustomUser(User):
     name_display = models.CharField(max_length=100, null=True)
-    profile_pic = models.ImageField(default='user_pfps/default.jpg', upload_to='user_pfps', null=True, blank=True)
+    profile_pic = models.ImageField(default='user_pfps/default.jpg', upload_to='user_pfps')
     content_creator = models.BooleanField(default=False)
     slug = models.SlugField(default='', max_length=500, null=True, blank=True)
     social_link = models.CharField(max_length=100, null=True, blank=True)
@@ -42,9 +29,10 @@ class News_article(models.Model):
     title = models.CharField(max_length=100)
     news_type = models.ForeignKey(article_type, on_delete=models.CASCADE)
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, blank=True, null=True)
-    image = models.ImageField(upload_to='uploads')
+    image = models.ImageField(upload_to='uploads', null=True, blank=True)
+    image_url = models.CharField(max_length=600, null=True)
     post_content = RichTextField()
-    added = models.DateTimeField(auto_now_add=True, null=True)
+    added = models.DateTimeField(default=timezone.now, null=True)
     updated = models.DateTimeField(auto_now=True, null=True)
     slug = models.SlugField(default='', max_length=500, null=True, blank=True)
     views = models.IntegerField(default=0, null=True, blank=True)
@@ -165,14 +153,6 @@ class Match(Scheduled_Match):
     saves_opp = models.IntegerField(null=True, default=0)
 
 
-class Nationality(models.Model):
-    name = models.CharField(max_length=100)
-    flag = models.ImageField(default='flags/Germany.jpg',
-                             upload_to='flags', null=True)
-
-    def __str__(self):
-        return self.name
-
 class Position(models.Model):
     name = models.CharField(max_length=100)
 
@@ -195,8 +175,7 @@ class Player(models.Model):
     born = models.DateField(null=True)
     contract_end = models.DateField(null=True)
     rating = models.DecimalField(decimal_places=1, max_digits=3, null=True)
-    profile_banner = models.ImageField(
-        default='players/default_banner.jpg', upload_to='players', null=True)
+    profile_banner = models.ImageField(blank=True, upload_to='players', null=True)
     biography = RichTextField(null=True)
     slug = models.SlugField(default='', max_length=500, null=True, blank=True)
 
@@ -222,7 +201,7 @@ class Match_event(models.Model):
 class Match_timeline(models.Model):
     name = models.ForeignKey(Match_event, on_delete=models.CASCADE)
     match = models.ForeignKey(Match, on_delete=models.CASCADE)
-    homeside = models.BooleanField(default=True)
+    is_bayern_player = models.BooleanField(default=True)
     minute = models.IntegerField(null=True)
     who = models.CharField(max_length=100, null=True, blank=True)
 
@@ -295,7 +274,7 @@ class Staff(models.Model):
     designation = models.CharField(max_length=100, null=True)
     nationality = CountryField(blank_label='(select country)', null=True)
     profile_pic = models.ImageField(
-        default='players/player-placeholder-380x570.jpg', upload_to='players', null=True)
+        default='players/player-placeholder-380x570.jpg', upload_to='staff', null=True)
     age = models.IntegerField(null=True)
     previous_post = models.CharField(max_length=100, null=True)
     short_name = models.CharField(max_length=10, null=True)
@@ -448,3 +427,39 @@ class Comment(models.Model):
     def __str__(self):
         return self.from_user.username + "_" + self.parent_news.title
     
+BOARD_TYPE = (("ag", "AG"),
+                ("ev", "eV"))
+class Board_Member(models.Model):
+    name = models.CharField(max_length=100)
+    board_type = models.CharField(max_length=5, choices=BOARD_TYPE, default='ag')
+    designation = models.CharField(max_length=100, null=True)
+    profile_pic = models.CharField(default='/media/staff/long-placeholder-800x450.jpg', max_length=600)
+    biography = RichTextField(null=True)
+    slug = models.SlugField(default='', max_length=500, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+class Trophies(models.Model):
+    name = models.CharField(max_length=100)
+    count = models.SmallIntegerField(blank=True, null=True)
+    image = models.CharField(default='/media/trophies/placeholder-210x210.png', max_length=600)
+
+    def __str__(self):
+        return self.name
+
+ARTICLE_TYPE = (("mem", "Membership"),
+                ("venue", "Venue"),
+                ("past_mem", "Honoured Members"),
+                ("hof", "Hall of Fame"),
+                ("milestone", "MileStones"))
+class Mini_Articles(models.Model):
+    name = models.CharField(max_length=100)
+    sub_heading = models.CharField(max_length=100, blank=True, null=True)
+    category = models.CharField(max_length=20, choices=ARTICLE_TYPE, null=True)
+    banner = models.CharField(default='/media/article/default-banner-800x450.png', max_length=600)
+    content = RichTextField(null=True)
+    slug = models.SlugField(default='', max_length=500, null=True, blank=True)
+
+    def __str__(self):
+        return self.name

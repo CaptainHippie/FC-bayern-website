@@ -27,5 +27,5 @@ cleanup headers
 refine shop with filters
 fix roster page toggle tab missing in mobile - done
 middlewares
-rework login system with builtin tools
+rework login system with builtin tools - almost done
 implement news likes

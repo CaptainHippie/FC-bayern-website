@@ -108,3 +108,13 @@ def get_time_difference(timedelta):
     time_left = Time_Diff(days, hours, minutes, seconds_left)
     time_left.add_leading_zeros()
     return time_left
+
+def round_min_max_price(min, max):
+    if min==None or max ==None:
+        return 0, 100
+    min_round = round(min/10)*10
+    max_round = round(max/10)*10
+    min_round = (min_round - 10) if (min_round > min) else min_round
+    max_round = (max_round + 10) if (max_round < max) else max_round
+
+    return min_round, max_round

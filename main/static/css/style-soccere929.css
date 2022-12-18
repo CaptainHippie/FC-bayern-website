@@ -15688,7 +15688,7 @@ ul.posts:not(.post-grid) {
 }
 
 .newslog__item--award .newslog__item-inner::before {
-  background-image: url("../images/soccer/icon-trophy.svg");
+  background-image: url("/media/icons/icon-trophy.svg");
   background-size: 18px 19px;
   width: 18px;
   height: 19px;

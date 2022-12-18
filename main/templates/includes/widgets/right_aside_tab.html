@@ -4,8 +4,8 @@
     <div class="pushy-panel__inner">
         <header class="pushy-panel__header">
             <div class="pushy-panel__logo">
-                <a href="index.html" rel="home">
-                    <img src="{% static 'images/logo.png' %}" class="pushy-panel__logo-img">
+                <a href="{% url 'home' %}" rel="home">
+                    <img src="/media/{{bayern.logo}}" class="pushy-panel__logo-img">
                 </a>
             </div>
         </header>
@@ -13,136 +13,27 @@
         <div class="pushy-panel__content">
             <div id="recent-posts-widget-5" class="widget widget--side-panel recent-posts">
                 <div class="posts posts--simple-list">
-                    <div
-                        class="posts__item posts__item--category-1 post-91 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-alchemists tag-awards tag-coach tag-stadium">
+                    {% for news in banner_news %}
+                    <div class="posts__item posts__item--category-{{news.news_type.category}} post type-post status-publish format-standard has-post-thumbnail hentry category-{{news.news_type.css_name}}">
                         <figure class="posts__thumb posts__thumb--hover">
-                            <a href="the-new-eco-friendly-stadium-won-a-leafy-award-in-2016/index.html">
-                                <img width="80" height="80" src="{% static 'images/post-img3-80x80.jpg' %}"
-                                    class="wp-post-image" alt="" loading="lazy" srcset="
-      {% static 'images/post-img3-80x80.jpg' %}    80w,
-      {% static 'images/post-img3-300x300.jpg' %} 300w,
-      {% static 'images/post-img3-100x100.jpg' %} 100w,
-      {% static 'images/post-img3-150x150.jpg' %} 150w,
-      {% static 'images/post-img3-400x400.jpg' %} 400w,
-      {% static 'images/post-img3-40x40.jpg' %}    40w
-                  " sizes="(max-width: 80px) 100vw, 80px">
+                            <a href="{{news.get_absolute_url}}">
+                                <img width="80" height="80" src="{% if news.image %}/media/{{news.image}}{% else %}{{news.image_url}}{% endif %}" class="wp-post-image" style="object-fit: cover;height: 86px">
                             </a>
                         </figure>
 
                         <div class="posts__inner">
                             <div class="posts__cat">
-                                <span class="label posts__cat-label posts__cat-label--category-1 category-the-team">The
-                                    Team</span>
+                                <span class="label posts__cat-label posts__cat-label--category-{{news.news_type.category}} category-{{news.news_type.css_name}}">{{news.news_type}}</span>
                             </div>
-                            <h6 class="posts__title posts__title--color-hover"
-                                title="The new eco friendly stadium won a Leafy Award in 2016">
-                                <a href="the-new-eco-friendly-stadium-won-a-leafy-award-in-2016/index.html">The new eco
-                                    friendly stadium won a Leafy Award in
-                                    2016</a>
+                            <h6 class="posts__title posts__title--color-hover" title="{{news.title}}" style="height: 43px">
+                                <a href="{{news.get_absolute_url}}">{{news.title|truncatechars:40}}</a>
                             </h6>
-                            <time datetime="2017-04-05T12:23:52+00:00" class="posts__date">
-                                April 5, 2017
-                            </time>
+                            <time class="posts__date">{{news.added|date:"F j, Y"}}</time>
                         </div>
                     </div>
+                    {% endfor %}
 
-                    <div
-                        class="posts__item posts__item--category-1 post-90 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-alchemists tag-players tag-playoffs">
-                        <figure class="posts__thumb posts__thumb--hover">
-                            <a href="the-alchemists-team-is-appearing-in-l-a-beach-for-charity/index.html">
-                                <img width="80" height="80" src="{% static 'images/post-img5-80x80.jpg' %}"
-                                    class="wp-post-image" alt="" loading="lazy" srcset="
-      {% static 'images/post-img5-80x80.jpg' %}    80w,
-      {% static 'images/post-img5-300x300.jpg' %} 300w,
-      {% static 'images/post-img5-100x100.jpg' %} 100w,
-      {% static 'images/post-img5-150x150.jpg' %} 150w,
-      {% static 'images/post-img5-400x400.jpg' %} 400w,
-      {% static 'images/post-img5-40x40.jpg' %}    40w
-                  " sizes="(max-width: 80px) 100vw, 80px" />
-                            </a>
-                        </figure>
 
-                        <div class="posts__inner">
-                            <div class="posts__cat">
-                                <span class="label posts__cat-label posts__cat-label--category-1 category-the-team">The
-                                    Team</span>
-                            </div>
-                            <h6 class="posts__title posts__title--color-hover"
-                                title="The Alchemists team is appearing in L.A. Beach for charity">
-                                <a href="the-alchemists-team-is-appearing-in-l-a-beach-for-charity/index.html">The
-                                    Alchemists team is appearing in L.A. Beach for
-                                    charity</a>
-                            </h6>
-                            <time datetime="2017-04-05T12:22:43+00:00" class="posts__date">
-                                April 5, 2017
-                            </time>
-                        </div>
-                    </div>
-
-                    <div
-                        class="posts__item posts__item--category-1 post-89 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-alchemists tag-injuries tag-playoffs">
-                        <figure class="posts__thumb posts__thumb--hover">
-                            <a href="brian-kingster-saw-the-red-card-after-a-kick-against-jason-t/index.html">
-                                <img width="80" height="80" src="{% static 'images/soccer_post_1-80x80.jpg' %}"
-                                    class="wp-post-image" alt="" loading="lazy" srcset="
-      {% static 'images/soccer_post_1-80x80.jpg' %}    80w,
-      {% static 'images/soccer_post_1-300x300.jpg' %} 300w,
-      {% static 'images/soccer_post_1-100x100.jpg' %} 100w,
-      {% static 'images/soccer_post_1-150x150.jpg' %} 150w,
-      {% static 'images/soccer_post_1-400x400.jpg' %} 400w,
-      {% static 'images/soccer_post_1-40x40.jpg' %}    40w
-                  " sizes="(max-width: 80px) 100vw, 80px" />
-                            </a>
-                        </figure>
-
-                        <div class="posts__inner">
-                            <div class="posts__cat">
-                                <span class="label posts__cat-label posts__cat-label--category-1 category-the-team">The
-                                    Team</span>
-                            </div>
-                            <h6 class="posts__title posts__title--color-hover"
-                                title="Brian Kingster saw the red card after a kick against Jason T.">
-                                <a href="brian-kingster-saw-the-red-card-after-a-kick-against-jason-t/index.html">Brian
-                                    Kingster saw the red card after a kick against
-                                    Jason T.</a>
-                            </h6>
-                            <time datetime="2017-04-05T12:21:01+00:00" class="posts__date">
-                                April 5, 2017
-                            </time>
-                        </div>
-                    </div>
-
-                    <div
-                        class="posts__item posts__item--category-1 posts__item--category-3 post-88 post type-post status-publish format-video has-post-thumbnail hentry category-injuries tag-alchemists tag-injuries tag-playoffs post_format-post-format-video">
-                        <figure class="posts__thumb posts__thumb--hover">
-                            <a href="jenny-jackson-wont-be-able-to-play-next-game/index.html">
-                                <img width="80" height="80" src="{% static 'images/soccer_post_2-80x80.jpg' %}"
-                                    class="wp-post-image" alt="" loading="lazy" srcset="
-      {% static 'images/soccer_post_2-80x80.jpg' %}    80w,
-      {% static 'images/soccer_post_2-300x300.jpg' %} 300w,
-      {% static 'images/soccer_post_2-100x100.jpg' %} 100w,
-      {% static 'images/soccer_post_2-150x150.jpg' %} 150w,
-      {% static 'images/soccer_post_2-400x400.jpg' %} 400w,
-      {% static 'images/soccer_post_2-40x40.jpg' %}    40w
-                  " sizes="(max-width: 80px) 100vw, 80px" />
-                            </a>
-                        </figure>
-
-                        <div class="posts__inner">
-                            <div class="posts__cat">
-                                <span
-                                    class="label posts__cat-label posts__cat-label--category-3 category-injuries">Injuries</span>
-                            </div>
-                            <h6 class="posts__title posts__title--color-hover"
-                                title="Jenny Jackson won&#8217;t be able to play next game">
-                                <a href="jenny-jackson-wont-be-able-to-play-next-game/index.html">Jenny Jackson
-                                    won&#8217;t be able to play next game</a>
-                            </h6>
-                            <time datetime="2017-04-05T12:19:47+00:00" class="posts__date">
-                                April 5, 2017
-                            </time>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div id="tag_cloud-2" class="widget widget--side-panel widget_tag_cloud">
