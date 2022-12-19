@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 19, 2022 at 12:36 AM
+-- Generation Time: Dec 20, 2022 at 01:26 AM
 -- Server version: 10.6.11-MariaDB-0ubuntu0.22.04.1
 -- PHP Version: 8.1.2-1ubuntu2.9
 
@@ -233,7 +233,11 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (169, 'Can add mini_ articles', 43, 'add_mini_articles'),
 (170, 'Can change mini_ articles', 43, 'change_mini_articles'),
 (171, 'Can delete mini_ articles', 43, 'delete_mini_articles'),
-(172, 'Can view mini_ articles', 43, 'view_mini_articles');
+(172, 'Can view mini_ articles', 43, 'view_mini_articles'),
+(173, 'Can add likes', 44, 'add_likes'),
+(174, 'Can change likes', 44, 'change_likes'),
+(175, 'Can delete likes', 44, 'delete_likes'),
+(176, 'Can view likes', 44, 'view_likes');
 
 -- --------------------------------------------------------
 
@@ -260,7 +264,9 @@ CREATE TABLE `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(2, 'pbkdf2_sha256$390000$hU9yZogGfHRoBaXPNbTJtU$WiPUwhQC8Hvl/y6NUnkBBDVjhPKTgD7ltn3R9PfN5ZE=', '2022-12-16 09:45:53.950572', 1, 'Neerajvibez', 'Neeraj', 'V B', 'neerajvb@gmail.com', 1, 1, '2022-12-16 09:09:59.000000');
+(2, 'pbkdf2_sha256$390000$hU9yZogGfHRoBaXPNbTJtU$WiPUwhQC8Hvl/y6NUnkBBDVjhPKTgD7ltn3R9PfN5ZE=', '2022-12-19 15:01:16.758625', 1, 'Neerajvibez', 'Neeraj', 'V B', 'neerajvb@gmail.com', 1, 1, '2022-12-16 09:09:59.000000'),
+(3, 'pbkdf2_sha256$390000$cPkRaIlss4jDv2JHgZi2Wx$BCAllESlQvH7MWVbVtx0RpGeiMMlzl+dW1D8+XWVzKE=', '2022-12-18 19:32:17.038673', 0, 'NeerajVB3', '', '', 'neerajvb3@gmail.com', 0, 1, '2022-12-18 19:30:49.000000'),
+(6, 'pbkdf2_sha256$390000$XAsXIGfD1IRTzfdWS3inb7$VrNg/esjbXY4BW49mJJ2yi/8zb9X+Qoin7IDqiJivHg=', '2022-12-19 14:55:58.462393', 0, 'ihsankpkd@gmail.com', '', '', 'ihsankpkd@gmail.com', 0, 1, '2022-12-19 14:55:47.064975');
 
 -- --------------------------------------------------------
 
@@ -360,7 +366,34 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 (53, '2022-12-18 08:03:32.219073', '5', 'FC Bayern members\' club presidents', 1, '[{\"added\": {}}]', 43, 2),
 (54, '2022-12-18 08:21:24.724198', '6', 'The historic treble', 1, '[{\"added\": {}}]', 43, 2),
 (55, '2022-12-18 08:23:09.678960', '7', 'Move to the Allianz Arena', 1, '[{\"added\": {}}]', 43, 2),
-(56, '2022-12-18 08:28:33.844042', '8', 'Klaus Augenthaler', 1, '[{\"added\": {}}]', 43, 2);
+(56, '2022-12-18 08:28:33.844042', '8', 'Klaus Augenthaler', 1, '[{\"added\": {}}]', 43, 2),
+(57, '2022-12-18 19:29:23.731325', '1', 'jamal-musiala-is-the-fc-bayern-player-of-the-month-for-november-2022Neerajvibez', 1, '[{\"added\": {}}]', 44, 2),
+(58, '2022-12-18 19:32:04.463772', '3', 'neerajvb3@gmail.com', 2, '[{\"changed\": {\"fields\": [\"Slug\"]}}]', 11, 2),
+(59, '2022-12-18 20:43:15.399439', '1', 'Jamal Musiala is the FC Bayern Player of the Month for November 2022', 2, '[{\"changed\": {\"fields\": [\"Video url\"]}}]', 17, 2),
+(60, '2022-12-18 21:35:57.939194', '3', 'manuel-neuer-undergoes-successful-surgery-Neerajvibez', 3, '', 44, 2),
+(61, '2022-12-18 21:35:57.945292', '2', 'stanisic-misses-out-on-world-cup-final-with-croatia-Neerajvibez', 3, '', 44, 2),
+(62, '2022-12-18 21:35:57.946633', '1', 'jamal-musiala-is-the-fc-bayern-player-of-the-month-for-november-2022-Neerajvibez', 3, '', 44, 2),
+(63, '2022-12-18 21:57:13.928048', '5', 'Stanišić misses out on World Cup final with Croatia', 2, '[{\"changed\": {\"fields\": [\"Author\"]}}]', 17, 2),
+(64, '2022-12-19 14:55:10.595343', '5', 'NeeruHack@gmail.com', 3, '', 11, 2),
+(65, '2022-12-19 14:55:10.603304', '4', 'ahbinav@gmail.com', 3, '', 11, 2),
+(66, '2022-12-19 15:21:34.713872', '6', 'Straight into the top corner – Fans honour Eric Maxim Choupo-Moting', 1, '[{\"added\": {}}, {\"added\": {\"name\": \"news_ tag_ player\", \"object\": \"News_Tag_Player object (1)\"}}]', 17, 2),
+(67, '2022-12-19 15:22:34.691761', '6', 'Straight into the top corner – Fans honour Eric Maxim Choupo-Moting', 2, '[{\"changed\": {\"fields\": [\"Image\", \"Image url\"]}}]', 17, 2),
+(68, '2022-12-19 15:23:16.865757', '6', 'Straight into the top corner – Fans honour Eric Maxim Choupo-Moting', 2, '[{\"changed\": {\"fields\": [\"Video url\"]}}]', 17, 2),
+(69, '2022-12-19 16:15:42.516649', '1', 'Telekom', 1, '[{\"added\": {}}]', 23, 2),
+(70, '2022-12-19 16:19:04.961836', '2', 'Adidas', 1, '[{\"added\": {}}]', 23, 2),
+(71, '2022-12-19 16:26:26.716143', '3', 'Audi', 1, '[{\"added\": {}}]', 23, 2),
+(72, '2022-12-19 16:27:08.551406', '4', 'Allianz', 1, '[{\"added\": {}}]', 23, 2),
+(73, '2022-12-19 17:09:38.312422', '4', 'Allianz', 2, '[{\"changed\": {\"fields\": [\"Kind\"]}}]', 23, 2),
+(74, '2022-12-19 17:17:45.546540', '4', 'Allianz', 2, '[{\"changed\": {\"fields\": [\"Kind\"]}}]', 23, 2),
+(75, '2022-12-19 17:43:10.547366', '4', 'Allianz', 2, '[{\"changed\": {\"fields\": [\"Kind\"]}}]', 23, 2),
+(76, '2022-12-19 18:01:44.937890', '4', 'Allianz', 2, '[{\"changed\": {\"fields\": [\"Kind\"]}}]', 23, 2),
+(77, '2022-12-19 19:22:26.964666', '5', 'Adobe', 1, '[{\"added\": {}}]', 23, 2),
+(78, '2022-12-19 19:23:20.832722', '6', 'Hypovereinsbank', 1, '[{\"added\": {}}]', 23, 2),
+(79, '2022-12-19 19:23:44.364806', '7', 'Hylo', 1, '[{\"added\": {}}]', 23, 2),
+(80, '2022-12-19 19:26:58.618240', '7', 'Hylo', 2, '[{\"changed\": {\"fields\": [\"Logo white\"]}}]', 23, 2),
+(81, '2022-12-19 19:27:06.504008', '6', 'Hypovereinsbank', 2, '[{\"changed\": {\"fields\": [\"Logo white\"]}}]', 23, 2),
+(82, '2022-12-19 19:27:21.329728', '5', 'Adobe', 2, '[{\"changed\": {\"fields\": [\"Logo white\"]}}]', 23, 2),
+(83, '2022-12-19 19:39:19.136380', '8', 'Konami', 1, '[{\"added\": {}}]', 23, 2);
 
 -- --------------------------------------------------------
 
@@ -395,6 +428,7 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (10, 'main', 'competition'),
 (11, 'main', 'customuser'),
 (40, 'main', 'goalscorers'),
+(44, 'main', 'likes'),
 (26, 'main', 'match'),
 (12, 'main', 'match_event'),
 (39, 'main', 'match_timeline'),
@@ -473,7 +507,12 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (30, 'main', '0010_board_member_board_type', '2022-12-17 08:05:49.677775'),
 (31, 'main', '0011_trophies', '2022-12-17 09:56:43.840876'),
 (32, 'main', '0012_mini_articles_alter_board_member_profile_pic_and_more', '2022-12-17 20:57:35.634361'),
-(33, 'main', '0013_rename_board_type_mini_articles_category', '2022-12-17 21:04:49.935424');
+(33, 'main', '0013_rename_board_type_mini_articles_category', '2022-12-17 21:04:49.935424'),
+(34, 'main', '0014_news_article_liked_alter_news_article_author_likes', '2022-12-18 19:27:35.700390'),
+(35, 'main', '0015_news_article_video_url', '2022-12-18 20:41:27.250787'),
+(36, 'main', '0016_alter_match_video_url_alter_news_article_video_url', '2022-12-18 20:42:31.760085'),
+(37, 'main', '0017_alter_news_article_image_url', '2022-12-19 15:22:15.691981'),
+(38, 'main', '0018_sponsor_kind_sponsor_logo_white', '2022-12-19 16:10:01.613429');
 
 -- --------------------------------------------------------
 
@@ -494,7 +533,9 @@ CREATE TABLE `django_session` (
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
 ('1ug6m4u0exvsj2bp2s51iqnwz6gqbwt8', 'eyJpbnN0YS1mb2xsb3dlcnMiOiIzNS41TSJ9:1p6QXH:GqJSkYBb-aOjP2t7HFni5THY80bwrxG8rVj_4wZZB4I', '2022-12-31 06:19:03.154007'),
 ('6ptim8ys298c0ul1x4293u1rjr1wb8xi', 'e30:1p66kV:cb3rUeqJqBqMcmDMeEei7fjG_qYo3RTcpC843xL0xTQ', '2022-12-30 09:11:23.903579'),
-('vz2tbhpf4pibntarcb070r7chjftk0d0', '.eJxVjUEOgyAURO_C2hJRUOyye89gPp9PtRpJAOPCePdi4qLdzpt5c7ABtjQOW6QwTJY9WcWK38wAzrRewH5gfXuOfk1hMvyq8JtG3ntLy-vu_glGiGNeG6UBFVbagDCdaVqtbN21oBqN0rhKloacECjBOuo6Eso1TlApK2oklm2WIoTEnsdZsEQxoffzRNm8-zDTdTqtMcHD-WXxO4WYUa246tn5BQJbS5c:1p6yoE:Dk_PPR_YjHjSuvXp3Y-d4s4Yt1xLQtPsXrInduOKiGI', '2023-01-01 18:54:50.274269');
+('ax2srpq51cf9jrmjygujlxlb0aimapqm', '.eJxVjEEOgyAUBe_C2hJBQOiye89gPvCptgYSwHRhvHs1cdFu38ybjYyw1mlcC-Zx9uROOGl-NwvujfEE_gXxmahLsebZ0lOhFy10SB6Xx-X-BSYo0_G2UoOTjmsLzBqrei19Z3qQSjthAxetxcCYE-ADGoNMBhUYtoKjEq7tj6iDXMl92xsyx1LhFtKypA_mcuQ7SeVA9i_ClEPj:1p7MEE:p9e-ItWhporFimHot0FgfyIpMUf0Y9Kt_ew7qtPU4Ww', '2023-01-02 19:55:14.114044'),
+('b9bi7vxs7p9aatr7wb9zwxl7es3vzy5v', 'e30:1p6zNC:AvflqbDrX70MA-5s5NZFqkLvWLkqgF2dHXDZdA-MdLI', '2023-01-01 19:30:58.275569'),
+('u7co98bhy5sqcrap4dbhvf03ur1680n5', 'eyJpbnN0YS1mb2xsb3dlcnMiOiIzNS41TSJ9:1p70FI:Ye5utLdiH572ZqbLGOqIiQAq0gGhssO-u0ATYGNoA2s', '2023-01-01 20:26:52.449094');
 
 -- --------------------------------------------------------
 
@@ -693,7 +734,9 @@ CREATE TABLE `main_customuser` (
 --
 
 INSERT INTO `main_customuser` (`user_ptr_id`, `name_display`, `profile_pic`, `content_creator`, `slug`, `social_link`) VALUES
-(2, 'Neeraj Vibez', 'user_pfps/neeraj_pfp_sqr.png', 0, 'neerajvibez', NULL);
+(2, 'Neeraj Vibez', 'user_pfps/neeraj_pfp_sqr.png', 0, 'neerajvibez', NULL),
+(3, 'Neeraj V B New', 'user_pfps/default.jpg', 0, 'neerajvb3', NULL),
+(6, 'ihsankpkd@gmail.com', 'user_pfps/default.jpg', 0, 'ihsankpkd', NULL);
 
 -- --------------------------------------------------------
 
@@ -715,6 +758,29 @@ CREATE TABLE `main_goalscorers` (
 INSERT INTO `main_goalscorers` (`id`, `minute`, `name_id`, `match_id`) VALUES
 (1, 52, 2, 3),
 (2, 38, 3, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `main_likes`
+--
+
+CREATE TABLE `main_likes` (
+  `id` bigint(20) NOT NULL,
+  `value` tinyint(1) NOT NULL,
+  `post_id` bigint(20) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `main_likes`
+--
+
+INSERT INTO `main_likes` (`id`, `value`, `post_id`, `user_id`) VALUES
+(4, 1, 1, 2),
+(5, 0, 4, 2),
+(6, 0, 5, 2),
+(7, 1, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -971,19 +1037,41 @@ CREATE TABLE `main_news_article` (
   `featured` tinyint(1) NOT NULL,
   `author_id` int(11) DEFAULT NULL,
   `news_type_id` bigint(20) NOT NULL,
-  `image_url` varchar(600) DEFAULT NULL
+  `image_url` varchar(600) DEFAULT NULL,
+  `video_url` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `main_news_article`
 --
 
-INSERT INTO `main_news_article` (`id`, `title`, `image`, `post_content`, `added`, `updated`, `slug`, `views`, `excerpt`, `featured`, `author_id`, `news_type_id`, `image_url`) VALUES
-(1, 'Jamal Musiala is the FC Bayern Player of the Month for November 2022', '', '<p>As FC Bayern&#39;s year of competitive matches slowly came to an end, one whirlwind of a player really turned up the heat again: In November,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/jamal-musiala\">Jamal Musiala</a>&nbsp;thrilled the fans of the German record champions once again and secured the award for FC Bayern Player of the Month one more time. The 19-year-old received almost 50 per cent of the vote (49.6%), ahead of&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/eric-maxim-choupo-moting\">Eric Maxim Choupo-Moting</a>&nbsp;(34.9%) and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/serge-gnabry\">Serge Gnabry</a>&nbsp;(5.8%). It&#39;s already the fourth time Musialy has won the award this season - the only time he didn&#39;t get it was in October, when Choupo-Moting managed to edge the fleet-footed sensation into second place.</p>\r\n\r\n<h2>Youngest player to make 100 competitive appearances for Bayern</h2>\r\n\r\n<p><img alt=\"Celebration Jamal Musiala FC Bayern\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1671119065/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Musiala/201108-musiala-jubel-ima.jpg\" style=\"height:2160px; width:3840px\" title=\"An indispensable part of the Bayern team this season: Jamal Musiala celebrates with his teammates.\" /></p>\r\n\r\n<p>An indispensable part of the Bayern team this season: Jamal Musiala celebrates with his teammates.</p>\r\n\r\n<p>The statistics once again spoke clearly in favour of the Germany international: In four competitive games last month, Musiala was directly involved in four goals (two goals, two assists). In the last match of the year&nbsp;<a href=\"https://fcbayern.com/en/matches/profis/bundesliga/2022-2023/fc-schalke-04-fc-bayern-muenchen-12-11-2022/report\">at Schalke (2-0)</a>, the artistic dribbler made his 100th competitive appearance for Bayern - and that at the tender age of just 19 years and 259 days. No other player ever managed to reach this milestone in professional football at such a young age for the German record champions. And anyone who has watched the youngster play can hardly wait for match number 101 in January.</p>', '2022-12-16 22:47:00.000000', '2022-12-18 07:44:26.159286', 'jamal-musiala-is-the-fc-bayern-player-of-the-month-for-november-2022', 7, 'As FC Bayern\'s year of competitive matches slowly came to an end, one whirlwind of a player really turned up the heat again: In November, Jamal Musiala thrilled the fans of the German record champions once again and secured the award for FC Bayern Player of the Month one more time. The 19-year-old received almost 50 per cent of the vote (49.6%), ahead of Eric Maxim Choupo-Moting (34.9%) and Serge Gnabry (5.8%).', 1, 2, 2, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1671118950/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Musiala/201108-musiala-gnabry-jubel-mel.jpg'),
-(2, 'Manuel Neuer undergoes successful surgery', '', '<p><a href=\"https://fcbayern.com/de/teams/profis/manuel-neuer\">Manuel Neuer</a>, 36, will not be available to FC Bayern Munich for the rest of the season. The FC Bayern captain suffered a fracture of his lower right leg in a fall while skiing this Friday. He has already undergone successful surgery.</p>\r\n\r\n<p>CEO&nbsp;<a href=\"https://fcbayern.com/de/club/fcb-ag/oliver-kahn\">Oliver Kahn</a>: &quot;The news of Manuel&#39;s injury shocked us all. We will stand by him and support him on his way to his comeback. He will overcome this serious injury and return to the pitch as strong as before.&quot;</p>\r\n\r\n<p>Board Member for Sport:&nbsp;<a href=\"https://fcbayern.com/de/club/fcb-ag/hasan-salihamidzic\">Hasan Salihamidžić</a>: &quot;The fact Manuel had such an accident is terrible. And, of course, all our thoughts are with him. I spoke to him yesterday and today, and the surgery went as well as possible. Manuel will receive all the support he needs. He is a strong personality and he will be back. I wish him all the best, he can rely on FC Bayern!&quot;</p>', '2022-12-10 17:41:00.000000', '2022-12-17 04:01:46.190154', 'manuel-neuer-undergoes-successful-surgery', 0, 'Manuel Neuer, 36, will not be available to FC Bayern Munich for the rest of the season. The FC Bayern captain suffered a fracture of his lower right leg in a fall while skiing this Friday. He has already undergone successful surgery.', 1, 2, 3, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1670670343/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Neuer/220827-neuer-mel.jpg'),
-(3, 'Bundesliga 2023/24 outline schedule confirmed', '', '<p>The German Football Association (DFB) executive committee revealed the&nbsp;<a href=\"https://www.dfl.de/en/news/calendar-for-the-2023-24-season/\">outline schedule for the 2023/24 Bundesliga season</a>&nbsp;on Friday. The next Bundesliga campaign begins with the opening match on 18 August 2023, and ends with the final matchday on Saturday 18 May 2024.</p>\r\n\r\n<h2>Only one midweek round</h2>\r\n\r\n<p>The Bundesliga winter break starts after Matchday 16 (19/20 December 2023), which is also the only midweek matchday of the season. The action will recommence in Germany&#39;s top flight on 12 January 2024.</p>\r\n\r\n<p><img alt=\"FC Bayern DFL-Supercup winners 2022\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1670589939/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Spiele/Supercup-Leipzig-FCB/33-supercup-rbl-fcb-220730-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"Bayern won the 2022 DFL-Supercup against Leipzig - Julian Nagelsmann’s side still need to qualify for the next edition on 12 August 2023.\" /></p>\r\n\r\n<p>Bayern won the 2022 DFL-Supercup against Leipzig - Julian Nagelsmann&rsquo;s side still need to qualify for the next edition on 12 August 2023.</p>\r\n\r\n<p>A week before the league season starts, the Supercup between the Bundesliga champions and DFB Cup winners takes place on Saturday 12 August 2023. The DFB Cup begins on the same weekend (11-14 August) with the first round. The cup ties involving the Supercup participants have therefore been arranged for 26 and 27 September. The DFB Cup final is set to be played one week after the conclusion of the Bundesliga season, on Saturday 25 May 2024 at Berlin&#39;s Olympiastadion.</p>', '2022-12-09 19:21:00.000000', '2022-12-17 04:04:16.713743', 'bundesliga-202324-outline-schedule-confirmed', 1, 'The German Football Association (DFB) executive committee revealed the outline schedule for the 2023/24 Bundesliga season on Friday. The next Bundesliga campaign begins with the opening match on 18 August 2023, and ends with the final matchday on Saturday 18 May 2024.', 1, 2, 1, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1670590369/cms/public/images/fcbayern-com/homepage/platzhalter/pokale/220730-meisterschale-dfb-pokal-supercup-ima.jpg'),
-(4, 'Upamecano and Co reach World Cup final with France', '', '<p>Three Bayern players with France are just one step away from reaching football&#39;s summit - but for&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/noussair-mazraoui\">Noussair Mazraoui</a>, the dream of the World Cup final is over. On Wednesday evening, Les Bleus beat Morocco 2-0 in the semi-finals and now have the chance to become the first team since Brazil in 1962 to defend the world title.</p>\r\n\r\n<p><img alt=\"Noussair Mazraoui Morocco\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1671049330/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Nationalspieler/221214-mazraoui-marokko-frankreich-get.jpg\" style=\"height:2160px; width:3840px\" title=\"Noussair Mazraoui started for Morocco and was subbed at half-time.\" /></p>\r\n\r\n<p>Noussair Mazraoui started for Morocco and was subbed at half-time.</p>\r\n\r\n<p>While Mazraoui came off at half-time for the North Africans,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/kingsley-coman\">Kingsley Coman</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/dayot-upamecano\">Dayot Upamecano</a>&nbsp;and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/benjamin-pavard\">Benjamin Pavard</a>&nbsp;did not feature for the reigning champions. The two teams produced a high-quality encounter with numerous chances at both ends. After Theo Hern&aacute;ndez, brother of&nbsp;<a href=\"https://fcbayern.com/en/news/2022/11/lucas-hernandez-successfully-operated-on\">injured FCB defender</a><a href=\"https://fcbayern.com/de/teams/profis/lucas-hernandez\">Lucas Hern&aacute;ndez</a>, gave France an early lead in the fifth minute, it wasn&#39;t until the 79th minute that the net rippled again through Frankfurt striker Randal Kolo Muani, who had only just come on.</p>\r\n\r\n<h2>Fighting for a third star</h2>\r\n\r\n<p>Didier Deschamps&#39; men now face Argentina in the final at the Lusail Iconic Stadium on Sunday afternoon (16:00 CET). Both teams have been world champions on two occassions and are bidding to get a third star on their shirt. On Saturday (16:00 CET), Mazraoui will go up against Bayern teammate Josip&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/josip-stani%C5%A1i%C4%87\">Stani&scaron;ić</a>&nbsp;and Croatia in the third place playoff.</p>', '2022-12-15 15:11:00.000000', '2022-12-17 04:03:20.107033', 'upamecano-and-co-reach-world-cup-final-with-france', 0, 'Three Bayern players with France are just one step away from reaching football\'s summit - but for Noussair Mazraoui, the dream of the World Cup final is over. On Wednesday evening, Les Bleus beat Morocco 2-0 in the semi-finals and now have the chance to become the first team since Brazil in 1962 to defend the world title.', 1, 2, 2, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1671051371/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Nationalspieler/221214-juebl-upamecano-frankreich-get.jpg'),
-(5, 'Stanišić misses out on World Cup final with Croatia', '', '<p>Such a shame, Josip! On Tuesday evening, the Croatian national team featuring Bayern player Josip Stani&scaron;ić missed out on a place in the final of the World Cup in Qatar. In the 3-0 (2-0) semi-final loss to Argentina, the 22-year-old full-back once again watched the game from the bench. The South Americans dominated the first half and deservedly took the lead through Lionel Messi (34&#39;/pen) and Juli&aacute;n &Aacute;lvarez (39&#39;). After the break, the Croatians tried everything they could to turn the game around, but ultimately had no luck. Instead, &Aacute;lvarez (69&#39;) bagged his second goal of the evening with around 20 minutes to go.</p>\r\n\r\n<h2>Regroup and focus on the third place play-off</h2>\r\n\r\n<p>Stani&scaron;ić and Co. now need to prepare for the third place play-off on Saturday (16:00 CET), where Zlatko Dalić&#39;s side will meet the losers of the second semi-final between Morocco and France (Wednesday, 20:00 CET). After finishing in third place at the 1998 World Cup and reaching the final in 2018, the Croats now have a third chance to end a World Cup tournament with a medal.</p>', '2022-12-14 15:05:00.000000', '2022-12-17 04:13:02.198899', 'stanisic-misses-out-on-world-cup-final-with-croatia', 0, 'On Tuesday evening, the Croatian national team featuring Bayern player Josip Stanišić missed out on a place in the final of the World Cup in Qatar. In the 3-0 (2-0) semi-final loss to Argentina, the 22-year-old full-back once again watched the game from the bench.', 1, 2, 2, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1670962050/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Nationalspieler/221213-stanisic-kroatien-ima.jpg');
+INSERT INTO `main_news_article` (`id`, `title`, `image`, `post_content`, `added`, `updated`, `slug`, `views`, `excerpt`, `featured`, `author_id`, `news_type_id`, `image_url`, `video_url`) VALUES
+(1, 'Jamal Musiala is the FC Bayern Player of the Month for November 2022', '', '<p>As FC Bayern&#39;s year of competitive matches slowly came to an end, one whirlwind of a player really turned up the heat again: In November,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/jamal-musiala\">Jamal Musiala</a>&nbsp;thrilled the fans of the German record champions once again and secured the award for FC Bayern Player of the Month one more time. The 19-year-old received almost 50 per cent of the vote (49.6%), ahead of&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/eric-maxim-choupo-moting\">Eric Maxim Choupo-Moting</a>&nbsp;(34.9%) and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/serge-gnabry\">Serge Gnabry</a>&nbsp;(5.8%). It&#39;s already the fourth time Musialy has won the award this season - the only time he didn&#39;t get it was in October, when Choupo-Moting managed to edge the fleet-footed sensation into second place.</p>\r\n\r\n<h2>Youngest player to make 100 competitive appearances for Bayern</h2>\r\n\r\n<p><img alt=\"Celebration Jamal Musiala FC Bayern\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1671119065/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Musiala/201108-musiala-jubel-ima.jpg\" style=\"height:2160px; width:3840px\" title=\"An indispensable part of the Bayern team this season: Jamal Musiala celebrates with his teammates.\" /></p>\r\n\r\n<p>An indispensable part of the Bayern team this season: Jamal Musiala celebrates with his teammates.</p>\r\n\r\n<p>The statistics once again spoke clearly in favour of the Germany international: In four competitive games last month, Musiala was directly involved in four goals (two goals, two assists). In the last match of the year&nbsp;<a href=\"https://fcbayern.com/en/matches/profis/bundesliga/2022-2023/fc-schalke-04-fc-bayern-muenchen-12-11-2022/report\">at Schalke (2-0)</a>, the artistic dribbler made his 100th competitive appearance for Bayern - and that at the tender age of just 19 years and 259 days. No other player ever managed to reach this milestone in professional football at such a young age for the German record champions. And anyone who has watched the youngster play can hardly wait for match number 101 in January.</p>', '2022-12-16 22:47:00.000000', '2022-12-18 20:44:08.528208', 'jamal-musiala-is-the-fc-bayern-player-of-the-month-for-november-2022', 12, 'As FC Bayern\'s year of competitive matches slowly came to an end, one whirlwind of a player really turned up the heat again: In November, Jamal Musiala thrilled the fans of the German record champions once again and secured the award for FC Bayern Player of the Month one more time. The 19-year-old received almost 50 per cent of the vote (49.6%), ahead of Eric Maxim Choupo-Moting (34.9%) and Serge Gnabry (5.8%).', 1, 2, 2, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1671118950/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Musiala/201108-musiala-gnabry-jubel-mel.jpg', 'https://www.youtube.com/embed/G7HBU9jkb9k'),
+(2, 'Manuel Neuer undergoes successful surgery', '', '<p><a href=\"https://fcbayern.com/de/teams/profis/manuel-neuer\">Manuel Neuer</a>, 36, will not be available to FC Bayern Munich for the rest of the season. The FC Bayern captain suffered a fracture of his lower right leg in a fall while skiing this Friday. He has already undergone successful surgery.</p>\r\n\r\n<p>CEO&nbsp;<a href=\"https://fcbayern.com/de/club/fcb-ag/oliver-kahn\">Oliver Kahn</a>: &quot;The news of Manuel&#39;s injury shocked us all. We will stand by him and support him on his way to his comeback. He will overcome this serious injury and return to the pitch as strong as before.&quot;</p>\r\n\r\n<p>Board Member for Sport:&nbsp;<a href=\"https://fcbayern.com/de/club/fcb-ag/hasan-salihamidzic\">Hasan Salihamidžić</a>: &quot;The fact Manuel had such an accident is terrible. And, of course, all our thoughts are with him. I spoke to him yesterday and today, and the surgery went as well as possible. Manuel will receive all the support he needs. He is a strong personality and he will be back. I wish him all the best, he can rely on FC Bayern!&quot;</p>', '2022-12-10 17:41:00.000000', '2022-12-19 10:04:16.184502', 'manuel-neuer-undergoes-successful-surgery', 2, 'Manuel Neuer, 36, will not be available to FC Bayern Munich for the rest of the season. The FC Bayern captain suffered a fracture of his lower right leg in a fall while skiing this Friday. He has already undergone successful surgery.', 1, 2, 3, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1670670343/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Neuer/220827-neuer-mel.jpg', NULL),
+(3, 'Bundesliga 2023/24 outline schedule confirmed', '', '<p>The German Football Association (DFB) executive committee revealed the&nbsp;<a href=\"https://www.dfl.de/en/news/calendar-for-the-2023-24-season/\">outline schedule for the 2023/24 Bundesliga season</a>&nbsp;on Friday. The next Bundesliga campaign begins with the opening match on 18 August 2023, and ends with the final matchday on Saturday 18 May 2024.</p>\r\n\r\n<h2>Only one midweek round</h2>\r\n\r\n<p>The Bundesliga winter break starts after Matchday 16 (19/20 December 2023), which is also the only midweek matchday of the season. The action will recommence in Germany&#39;s top flight on 12 January 2024.</p>\r\n\r\n<p><img alt=\"FC Bayern DFL-Supercup winners 2022\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1670589939/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Spiele/Supercup-Leipzig-FCB/33-supercup-rbl-fcb-220730-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"Bayern won the 2022 DFL-Supercup against Leipzig - Julian Nagelsmann’s side still need to qualify for the next edition on 12 August 2023.\" /></p>\r\n\r\n<p>Bayern won the 2022 DFL-Supercup against Leipzig - Julian Nagelsmann&rsquo;s side still need to qualify for the next edition on 12 August 2023.</p>\r\n\r\n<p>A week before the league season starts, the Supercup between the Bundesliga champions and DFB Cup winners takes place on Saturday 12 August 2023. The DFB Cup begins on the same weekend (11-14 August) with the first round. The cup ties involving the Supercup participants have therefore been arranged for 26 and 27 September. The DFB Cup final is set to be played one week after the conclusion of the Bundesliga season, on Saturday 25 May 2024 at Berlin&#39;s Olympiastadion.</p>', '2022-12-09 19:21:00.000000', '2022-12-17 04:04:16.713743', 'bundesliga-202324-outline-schedule-confirmed', 1, 'The German Football Association (DFB) executive committee revealed the outline schedule for the 2023/24 Bundesliga season on Friday. The next Bundesliga campaign begins with the opening match on 18 August 2023, and ends with the final matchday on Saturday 18 May 2024.', 1, 2, 1, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1670590369/cms/public/images/fcbayern-com/homepage/platzhalter/pokale/220730-meisterschale-dfb-pokal-supercup-ima.jpg', NULL),
+(4, 'Upamecano and Co reach World Cup final with France', '', '<p>Three Bayern players with France are just one step away from reaching football&#39;s summit - but for&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/noussair-mazraoui\">Noussair Mazraoui</a>, the dream of the World Cup final is over. On Wednesday evening, Les Bleus beat Morocco 2-0 in the semi-finals and now have the chance to become the first team since Brazil in 1962 to defend the world title.</p>\r\n\r\n<p><img alt=\"Noussair Mazraoui Morocco\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1671049330/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Nationalspieler/221214-mazraoui-marokko-frankreich-get.jpg\" style=\"height:2160px; width:3840px\" title=\"Noussair Mazraoui started for Morocco and was subbed at half-time.\" /></p>\r\n\r\n<p>Noussair Mazraoui started for Morocco and was subbed at half-time.</p>\r\n\r\n<p>While Mazraoui came off at half-time for the North Africans,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/kingsley-coman\">Kingsley Coman</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/dayot-upamecano\">Dayot Upamecano</a>&nbsp;and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/benjamin-pavard\">Benjamin Pavard</a>&nbsp;did not feature for the reigning champions. The two teams produced a high-quality encounter with numerous chances at both ends. After Theo Hern&aacute;ndez, brother of&nbsp;<a href=\"https://fcbayern.com/en/news/2022/11/lucas-hernandez-successfully-operated-on\">injured FCB defender</a><a href=\"https://fcbayern.com/de/teams/profis/lucas-hernandez\">Lucas Hern&aacute;ndez</a>, gave France an early lead in the fifth minute, it wasn&#39;t until the 79th minute that the net rippled again through Frankfurt striker Randal Kolo Muani, who had only just come on.</p>\r\n\r\n<h2>Fighting for a third star</h2>\r\n\r\n<p>Didier Deschamps&#39; men now face Argentina in the final at the Lusail Iconic Stadium on Sunday afternoon (16:00 CET). Both teams have been world champions on two occassions and are bidding to get a third star on their shirt. On Saturday (16:00 CET), Mazraoui will go up against Bayern teammate Josip&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/josip-stani%C5%A1i%C4%87\">Stani&scaron;ić</a>&nbsp;and Croatia in the third place playoff.</p>', '2022-12-15 15:11:00.000000', '2022-12-17 04:03:20.107033', 'upamecano-and-co-reach-world-cup-final-with-france', 0, 'Three Bayern players with France are just one step away from reaching football\'s summit - but for Noussair Mazraoui, the dream of the World Cup final is over. On Wednesday evening, Les Bleus beat Morocco 2-0 in the semi-finals and now have the chance to become the first team since Brazil in 1962 to defend the world title.', 1, 2, 2, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1671051371/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Nationalspieler/221214-juebl-upamecano-frankreich-get.jpg', NULL),
+(5, 'Stanišić misses out on World Cup final with Croatia', '', '<p>Such a shame, Josip! On Tuesday evening, the Croatian national team featuring Bayern player Josip Stani&scaron;ić missed out on a place in the final of the World Cup in Qatar. In the 3-0 (2-0) semi-final loss to Argentina, the 22-year-old full-back once again watched the game from the bench. The South Americans dominated the first half and deservedly took the lead through Lionel Messi (34&#39;/pen) and Juli&aacute;n &Aacute;lvarez (39&#39;). After the break, the Croatians tried everything they could to turn the game around, but ultimately had no luck. Instead, &Aacute;lvarez (69&#39;) bagged his second goal of the evening with around 20 minutes to go.</p>\r\n\r\n<h2>Regroup and focus on the third place play-off</h2>\r\n\r\n<p>Stani&scaron;ić and Co. now need to prepare for the third place play-off on Saturday (16:00 CET), where Zlatko Dalić&#39;s side will meet the losers of the second semi-final between Morocco and France (Wednesday, 20:00 CET). After finishing in third place at the 1998 World Cup and reaching the final in 2018, the Croats now have a third chance to end a World Cup tournament with a medal.</p>', '2022-12-14 15:05:00.000000', '2022-12-19 15:25:15.385743', 'stanisic-misses-out-on-world-cup-final-with-croatia', 2, 'On Tuesday evening, the Croatian national team featuring Bayern player Josip Stanišić missed out on a place in the final of the World Cup in Qatar. In the 3-0 (2-0) semi-final loss to Argentina, the 22-year-old full-back once again watched the game from the bench.', 1, 3, 2, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1670962050/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Nationalspieler/221213-stanisic-kroatien-ima.jpg', NULL),
+(6, 'Straight into the top corner – Fans honour Eric Maxim Choupo-Moting', 'uploads/chupo-goal-of-the-month-nov.jpg', '<p>Head up and into the top corner - that&#39;s how to do it! In FC Bayern&#39;s final Champions League group game against Inter Milan at the start of November,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/eric-maxim-choupo-moting\">Eric Maxim Choupo-Moting</a>&nbsp;went for goal with around a quarter of an hour left and lashed the ball into the top left corner from a good 20 metres out. The strike didn&#39;t just wrap up the&nbsp;<a href=\"https://fcbayern.com/en/matches/profis/champions-league/2022-2023/fc-bayern-muenchen-inter-mailand-01-11-2022/report\">2-0 final scoreline</a>&nbsp;and a&nbsp;<a href=\"https://fcbayern.com/en/news/2022/11/record-breaking-fc-bayern-complete-third-perfect-champions-league-group-stage\">sixth win in six games</a>&nbsp;in this UCL season, but also sent a ripple around the&nbsp;<a href=\"https://allianz-arena.com/en\">Allianz Arena</a>. It&#39;s not every day that you see such a brilliant goal, even at FCB&#39;s home stadium.</p>\r\n\r\n<h2>Choupo earns over a third of the votes</h2>\r\n\r\n<p><img alt=\"Choupo-Moting FC Bayern\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1671121333/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Spiele/FCB-Inter/19-fcb-inter-011122-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"Choupo-Moting instinctively drilled the ball into the top corner in the 72nd minute of the final Champions League group game.\" /></p>\r\n\r\n<p>Choupo-Moting instinctively drilled the ball into the top corner in the 72nd minute of the final Champions League group game.</p>\r\n\r\n<p>Fans of the German record champions agreed and voted Choupo-Moting&#39;s effort as the FC Bayern Goal of the Month for November, with the Cameroon international receiving 38% of the votes. Second place went to&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/jamal-musiala\">Jamal Musiala</a>&nbsp;(26%) for his skilful opening goal in the&nbsp;<a href=\"https://fcbayern.com/en/matches/profis/bundesliga/2022-2023/fc-bayern-muenchen-sv-werder-bremen-08-11-2022/report\">6-1 win</a>&nbsp;over Werder Bremen, while Carolin Simon&#39;s wonderful free-kick in the 7-0 DFB Cup win at MSV Duisburg came third (17%).</p>', '2022-12-17 19:11:00.000000', '2022-12-19 15:23:25.307881', 'straight-into-the-top-corner-fans-honour-eric-maxim-choupo-moting', 2, 'Head up and into the top corner - that\'s how to do it! In FC Bayern\'s final Champions League group game against Inter Milan at the start of November, Eric Maxim Choupo-Moting went for goal with around a quarter of an hour left and lashed the ball into the top left corner from a good 20 metres out. The strike didn\'t just wrap up the 2-0 final scoreline and a sixth win in six games in this UCL season, but also sent a ripple around the Allianz Arena. It\'s not every day that you see such a brilliant goal, even at FCB\'s home stadium.', 0, 3, 2, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `main_news_article_liked`
+--
+
+CREATE TABLE `main_news_article_liked` (
+  `id` bigint(20) NOT NULL,
+  `news_article_id` bigint(20) NOT NULL,
+  `customuser_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `main_news_article_liked`
+--
+
+INSERT INTO `main_news_article_liked` (`id`, `news_article_id`, `customuser_id`) VALUES
+(18, 1, 2),
+(17, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -996,6 +1084,13 @@ CREATE TABLE `main_news_tag_player` (
   `news_id` bigint(20) NOT NULL,
   `player_tag_id` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `main_news_tag_player`
+--
+
+INSERT INTO `main_news_tag_player` (`id`, `news_id`, `player_tag_id`) VALUES
+(1, 6, 2);
 
 -- --------------------------------------------------------
 
@@ -1238,8 +1333,24 @@ CREATE TABLE `main_sponsor` (
   `id` bigint(20) NOT NULL,
   `name` varchar(100) DEFAULT NULL,
   `url` varchar(100) DEFAULT NULL,
-  `logo` varchar(100) DEFAULT NULL
+  `logo` varchar(100) DEFAULT NULL,
+  `kind` varchar(30) NOT NULL,
+  `logo_white` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `main_sponsor`
+--
+
+INSERT INTO `main_sponsor` (`id`, `name`, `url`, `logo`, `kind`, `logo_white`) VALUES
+(1, 'Telekom', 'https://www.telekom.com/', 'logos/telekom_neu.png', 'main', 'logos/Telekom.png'),
+(2, 'Adidas', 'https://www.adidas.co.in/', 'logos/adidas.png', 'main', 'logos/Adidas.png'),
+(3, 'Audi', 'https://www.audi.com/en/company/home-of-football.html', 'logos/audi-neu.png', 'main', 'logos/Audi.png'),
+(4, 'Allianz', 'https://www.allianz.com/en.html', 'logos/allianz.png', 'main', 'logos/Allianz.png'),
+(5, 'Adobe', 'https://www.adobe.com/uk/lead/fcbayern.html?sdid=55KD8PV1&mv=social', 'logos/Kachel_Adobe_Rot.png', 'platinum', 'logos/Adobe_Corporate_25px.png'),
+(6, 'Hypovereinsbank', 'https://www.hypovereinsbank.de/hvb/privatkunden', 'logos/hypovereinsbank.png', 'platinum', 'logos/Hypovereinsbank.png'),
+(7, 'Hylo', 'https://fcb.hylo.de/', 'logos/hylo_new.png', 'platinum', 'logos/Hylo_2.png'),
+(8, 'Konami', 'https://www.konami.com/efootball/en/', 'logos/konami_new.png', 'platinum', 'logos/Konami.png');
 
 -- --------------------------------------------------------
 
@@ -1466,6 +1577,14 @@ ALTER TABLE `main_goalscorers`
   ADD KEY `main_goalscorers_match_id_90bd65b1_fk_main_matc` (`match_id`);
 
 --
+-- Indexes for table `main_likes`
+--
+ALTER TABLE `main_likes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `main_likes_post_id_f1c7c0bd_fk_main_news_article_id` (`post_id`),
+  ADD KEY `main_likes_user_id_e4bca4de_fk_main_customuser_user_ptr_id` (`user_id`);
+
+--
 -- Indexes for table `main_match`
 --
 ALTER TABLE `main_match`
@@ -1535,6 +1654,14 @@ ALTER TABLE `main_news_article`
   ADD KEY `main_news_article_author_id_0234057f_fk_main_cust` (`author_id`),
   ADD KEY `main_news_article_news_type_id_f71bd068_fk_main_article_type_id` (`news_type_id`),
   ADD KEY `main_news_article_slug_8a87ba29` (`slug`);
+
+--
+-- Indexes for table `main_news_article_liked`
+--
+ALTER TABLE `main_news_article_liked`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `main_news_article_liked_news_article_id_customus_f189b282_uniq` (`news_article_id`,`customuser_id`),
+  ADD KEY `main_news_article_li_customuser_id_123e1990_fk_main_cust` (`customuser_id`);
 
 --
 -- Indexes for table `main_news_tag_player`
@@ -1666,13 +1793,13 @@ ALTER TABLE `auth_group_permissions`
 -- AUTO_INCREMENT for table `auth_permission`
 --
 ALTER TABLE `auth_permission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=177;
 
 --
 -- AUTO_INCREMENT for table `auth_user`
 --
 ALTER TABLE `auth_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `auth_user_groups`
@@ -1690,19 +1817,19 @@ ALTER TABLE `auth_user_user_permissions`
 -- AUTO_INCREMENT for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `django_content_type`
 --
 ALTER TABLE `django_content_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `main_address`
@@ -1759,6 +1886,12 @@ ALTER TABLE `main_goalscorers`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `main_likes`
+--
+ALTER TABLE `main_likes`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `main_match_event`
 --
 ALTER TABLE `main_match_event`
@@ -1810,13 +1943,19 @@ ALTER TABLE `main_mini_articles`
 -- AUTO_INCREMENT for table `main_news_article`
 --
 ALTER TABLE `main_news_article`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `main_news_article_liked`
+--
+ALTER TABLE `main_news_article_liked`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `main_news_tag_player`
 --
 ALTER TABLE `main_news_tag_player`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `main_news_tag_staff`
@@ -1882,7 +2021,7 @@ ALTER TABLE `main_season`
 -- AUTO_INCREMENT for table `main_sponsor`
 --
 ALTER TABLE `main_sponsor`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `main_staff`
@@ -1981,6 +2120,13 @@ ALTER TABLE `main_goalscorers`
   ADD CONSTRAINT `main_goalscorers_name_id_67b48faf_fk_main_player_id` FOREIGN KEY (`name_id`) REFERENCES `main_player` (`id`);
 
 --
+-- Constraints for table `main_likes`
+--
+ALTER TABLE `main_likes`
+  ADD CONSTRAINT `main_likes_post_id_f1c7c0bd_fk_main_news_article_id` FOREIGN KEY (`post_id`) REFERENCES `main_news_article` (`id`),
+  ADD CONSTRAINT `main_likes_user_id_e4bca4de_fk_main_customuser_user_ptr_id` FOREIGN KEY (`user_id`) REFERENCES `main_customuser` (`user_ptr_id`);
+
+--
 -- Constraints for table `main_match`
 --
 ALTER TABLE `main_match`
@@ -2023,6 +2169,13 @@ ALTER TABLE `main_merchandise_size`
 ALTER TABLE `main_news_article`
   ADD CONSTRAINT `main_news_article_author_id_0234057f_fk_main_cust` FOREIGN KEY (`author_id`) REFERENCES `main_customuser` (`user_ptr_id`),
   ADD CONSTRAINT `main_news_article_news_type_id_f71bd068_fk_main_article_type_id` FOREIGN KEY (`news_type_id`) REFERENCES `main_article_type` (`id`);
+
+--
+-- Constraints for table `main_news_article_liked`
+--
+ALTER TABLE `main_news_article_liked`
+  ADD CONSTRAINT `main_news_article_li_customuser_id_123e1990_fk_main_cust` FOREIGN KEY (`customuser_id`) REFERENCES `main_customuser` (`user_ptr_id`),
+  ADD CONSTRAINT `main_news_article_li_news_article_id_a8d6b27f_fk_main_news` FOREIGN KEY (`news_article_id`) REFERENCES `main_news_article` (`id`);
 
 --
 -- Constraints for table `main_news_tag_player`

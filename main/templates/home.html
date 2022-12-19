@@ -2,8 +2,6 @@
 {% block content %}
 {% load static %}
 
-<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-
 <title>{{bayern.full_name}}</title>
 <!-- Hero Slider
 ================================================== -->
@@ -38,9 +36,11 @@
                                 <div class="meta__item meta__item--views">{{news.views}}</div>
                                 <li class="meta__item meta__item--likes">
                                     <div class="meta__item meta__item--likes">
-                                        <a href="" class="sl-button" title="Like">
-                                            <span class="sl-icon"><i class="fas fa-thumbs-up" style="font-size: 13px"></i></span>
-                                            <span class="sl-count">142</span>
+                                        <a {% if logged_user %}href="{% url 'like' logged_user.id news.id %}"{% endif %} class="sl-button" title="Like">
+                                            <span class="sl-icon">
+                                                <i class="{% if logged_user and logged_user in news.liked.all %}fas{% else %}far{% endif %} fa-thumbs-up" style="font-size: 13px"></i>
+                                            </span>
+                                            <span class="sl-count">&nbsp;{{news.num_likes}}</span>
                                         </a>
                                         <span class="sl-loader"></span>
                                     </div>
@@ -321,9 +321,11 @@
                                                                     <div class="post__meta meta">
                                                                         <div class="meta__item meta__item--views">{{news.views}}</div>
                                                                         <div class="meta__item meta__item--likes">
-                                                                            <a href="" class="sl-button sl-button-560" title="Like">
-                                                                                <span class="sl-icon"><i class="meta-like icon-heart"></i></span>
-                                                                                <span class="sl-count">88</span>
+                                                                            <a {% if logged_user %}href="{% url 'like' logged_user.id news.id %}"{% endif %} class="sl-button" title="Like">
+                                                                                <span class="sl-icon">
+                                                                                    <i class="{% if logged_user and logged_user in news.liked.all %}fas{% else %}far{% endif %} fa-thumbs-up" style="font-size: 13px"></i>
+                                                                                </span>
+                                                                                <span class="sl-count">&nbsp;{{news.num_likes}}</span>
                                                                             </a>
                                                                             <span class="sl-loader"></span>
                                                                         </div>
@@ -342,41 +344,10 @@
                                             </div>
                                             <!-- Post Loop / End -->
 
-                                            <!-- Main News Banner -->
-                                            <div class="main-news-banner main-news-banner--img-left main-news-banner--soccer-ball">
-                                                <div class="main-news-banner__inner">
-                                                    <div class="posts posts--simple-list posts--simple-list--xlg">
-                                                        <div
-                                                            class="posts__item posts__item--category-1 post-102 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-alchemists tag-stadium tag-team">
-                                                            <div class="posts__inner">
-                                                                <div class="posts__cat">
-                                                                    <span class="label posts__cat-label posts__cat-label--category-1 category-the-team">The
-                                                                        Team</span>
-                                                                </div>
-                                                                <h6 class="posts__title">
-                                                                    <a href="alchemists-new-stadium-is-gonna-be-ready-in-september-2017/index.html"
-                                                                        rel="bookmark">Today was unveiled the
-                                                                        <span class="main-news-banner__highlight">New Football</span> for the league</a>
-                                                                </h6>
-                                                                <time datetime="2017-03-05T12:12:58+00:00" class="posts__date">March 5, 2017</time>
 
-                                                                <div class="posts__excerpt">
-                                                                    Lorem ipsum dolor sit amet, consectetur
-                                                                    adipisicing elit, sed do eiusmod tempor
-                                                                    incididunt...
-                                                                </div>
 
-                                                                <div class="posts__more">
-                                                                    <a href="alchemists-new-stadium-is-gonna-be-ready-in-september-2017/index.html"
-                                                                        class="btn btn-inverse btn-sm btn-outline btn-icon-right btn-condensed">Read More
-                                                                        <i class="fa fa-plus text-primary"></i></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Main News Banner / End -->
+                                            {% include 'includes/widgets/membership.html' %}
+
                                         </div>
                                     </div>
                                 </div>

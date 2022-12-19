@@ -10,100 +10,103 @@
 <!-- Footer
 ================================================== -->
 <footer id="footer" class="footer">
-  <!-- Footer Widgets -->
-  <div class="footer-widgets">
-    <!-- Sponsors -->
+    <!-- Footer Widgets -->
+    <div class="footer-widgets">
+        <!-- Sponsors -->
+        <div class="sponsors-container container">
+            <div class="sponsors row justify-content-md-center sponsors--default">
+                <div>
 
-    <div class="sponsors-container container">
-      <div class="sponsors row justify-content-md-center sponsors--default">
-
-        <div >
-          <div>
-            <div class="footer-logo__heading">
-              <h4 class="footer-logo__txt">PARTNER</h4>
-            </div>
-          </div>
-          <div class="sponsors-logos-custom">
-            {% for sponsor in sponsors %}
-            <div class="sponsors__item">
-              <img src="/media/{{sponsor.logo}}">
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sponsors / End -->
-    <div class="footer-widgets__inner">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6 col-lg-3">
+                        <div class="footer-logo__heading" style="text-align: center">
+                            <h4 class="footer-logo__txt">PARTNER</h4>
+                        </div>
 
 
-            <div class="footer-col-inner">
-              <div id="contact-info-widget-1" class="widget widget--footer widget-contact-info">
-                <div class="widget__content"></div>
-                <h4 class="widget__title">Contact Info</h4>
-                <div class="widget__content">
-                  <div class="widget-contact-info__desc">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur cing elit,
-                      sed do eiusmod tempor incididunt uten labore et
-                      dolore magna aliqua. Ut enim ad minim veniam.
-                    </p>
-                  </div>
-                  <div class="widget-contact-info__body info-block">
-                    <div class="info-block__item">
-                      <svg role="img" class="df-icon df-icon--soccer-ball">
-                        <use xlink:href="{% static 'images/icons-soccer.svg' %}" />
-                      </svg>
-
-                      <h6 class="info-block__heading">Contact Us</h6>
-                      <a class="info-block__link" href="mailto:info@alchemists.com">info@alchemists.com</a>
+                    <div class="team-roster team-roster--grid team-roster--grid-col-3" style="padding: 3px 15px 3px 15px">                                
+                        {% for partner in partners_footer %}
+                        <div class="custom-sponsor-footer-item"
+                            style="display: flex;justify-content: center;align-items: center;text-align: center">
+                            <a href="{{partner.url}}" target="_blank">
+                                <img src="/media/{{partner.logo_white}}">
+                            </a>
+                        </div>
+                        {% endfor%}
                     </div>
 
-                    <div class="info-block__item">
-                      <svg role="img" class="df-icon df-icon--whistle">
-                        <use xlink:href="{% static 'images/icons-soccer.svg' %}" />
-                      </svg>
-
-                      <h6 class="info-block__heading">Join Our Team</h6>
-                      <a class="info-block__link" href="mailto:tryouts@alchemists.com">tryouts@alchemists.com</a>
-                    </div>
-
-                    <div class="info-block__item info-block__item--nopadding">
-                      <ul class="social-links">
-                        <li class="social-links__item">
-                          <a href="https://twitter.com/danfisher_dev" class="social-links__link" target="_blank"><i
-                              class="fa fa-facebook"></i> Facebook</a>
-                        </li>
-
-                        <li class="social-links__item">
-                          <a href="https://www.facebook.com/danfisher.dev/" class="social-links__link"
-                            target="_blank"><i class="fa fa-twitter"></i> Twitter</a>
-                        </li>
-
-                        <li class="social-links__item">
-                          <a href="#" class="social-links__link" target="_blank"><i class="fa fa-google-plus"></i>
-                            Google+</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
-
-
         </div>
-      </div>
-    </div>
+        <!-- Sponsors / End -->
+        <div class="footer-widgets__inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-3">
+        
+                        <div class="footer-col-inner">
+                            <div id="contact-info-widget-1" class="widget widget--footer widget-contact-info">
+                                <div class="widget__content"></div>
+                                <h4 class="widget__title">Contact Info</h4>
+                                <div class="widget__content">
+                                    <div class="widget-contact-info__desc">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur cing elit,
+                                            sed do eiusmod tempor incididunt uten labore et
+                                            dolore magna aliqua. Ut enim ad minim veniam.
+                                        </p>
+                                    </div>
+                                    <div class="widget-contact-info__body info-block">
+                                        <div class="info-block__item">
+                                            <svg role="img" class="df-icon df-icon--soccer-ball">
+                                                <use xlink:href="{% static 'images/icons-soccer.svg' %}" />
+                                            </svg>
+        
+                                            <h6 class="info-block__heading">Contact Us</h6>
+                                            <a class="info-block__link"
+                                                href="mailto:info@alchemists.com">info@alchemists.com</a>
+                                        </div>
+        
+                                        <div class="info-block__item">
+                                            <svg role="img" class="df-icon df-icon--whistle">
+                                                <use xlink:href="{% static 'images/icons-soccer.svg' %}" />
+                                            </svg>
+        
+                                            <h6 class="info-block__heading">Join Our Team</h6>
+                                            <a class="info-block__link"
+                                                href="mailto:tryouts@alchemists.com">tryouts@alchemists.com</a>
+                                        </div>
+        
+                                        <div class="info-block__item info-block__item--nopadding">
+                                            <ul class="social-links">
+                                                <li class="social-links__item">
+                                                    <a href="https://twitter.com/danfisher_dev" class="social-links__link"
+                                                        target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
+                                                </li>
+        
+                                                <li class="social-links__item">
+                                                    <a href="https://www.facebook.com/danfisher.dev/" class="social-links__link"
+                                                        target="_blank"><i class="fa fa-twitter"></i> Twitter</a>
+                                                </li>
+        
+                                                <li class="social-links__item">
+                                                    <a href="#" class="social-links__link" target="_blank"><i
+                                                            class="fa fa-google-plus"></i>
+                                                        Google+</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+        </div>
 
     
-  </div>
-  <!-- Footer Widgets / End -->
+    </div>
+    <!-- Footer Widgets / End -->
 
 </footer>
 <!-- Footer / End -->

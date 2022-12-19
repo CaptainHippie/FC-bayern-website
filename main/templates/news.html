@@ -34,9 +34,11 @@
                             </div>
                             <div class="meta__item meta__item--views js-meta__item--views-count">{{post.views}}</div>
                             <div class="meta__item meta__item--likes ">
-                                <a href="" class="sl-button sl-button-87" title="Like">
-                                    <span class="sl-icon"><i class="meta-like icon-heart"></i></span>
-                                    <span class="sl-count">96</span>
+                                <a {% if logged_user %}href="{% url 'like' logged_user.id post.id %}"{% endif %} class="sl-button sl-button-87" title="Like">
+                                    <span class="sl-icon">
+                                        <i class="{% if logged_user and logged_user in post.liked.all %}fas{% else %}far{% endif %} fa-thumbs-up" style="font-size: 13px"></i>
+                                    </span>
+                                    <span class="sl-count">&nbsp;{{post.num_likes}}</span>
                                 </a>
                                 <span class="sl-loader"></span>
                             </div>
@@ -49,8 +51,15 @@
 
                         {{post.post_content|safe}}
                     </div>
-
+                    
                 </div>
+                {% if post.video_url %}
+                    <div class="card__content text-center">
+                        <div class="alc-embeded-player alc-embeded-player--container">
+                            <iframe width="640" height="360" src="{{post.video_url}}" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                {% endif %}
             </article>
 
             <div class="post-sharing">

@@ -16,10 +16,12 @@ def bayern_data(request):
 	logged_user_id = request.user.id if request.user.is_authenticated else None
 
 	logged_user = CustomUser.objects.filter(id=logged_user_id).first() if logged_user_id else None
+	partners_footer = Sponsor.objects.filter(kind__in=('main','platinum'))
 
 	context = {
 			'bayern' : club_data,
 			'logged_user' : logged_user,
-            'banner_news' : banner_news
+            'banner_news' : banner_news,
+			'partners_footer' : partners_footer
     }
 	return context

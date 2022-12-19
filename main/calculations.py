@@ -1,5 +1,6 @@
 from django.db.models.query import QuerySet
 from . models import Player_Stats
+from django.utils.text import slugify
 
 def get_normal_avg(input, output):
     seasons = len(input) or 1
@@ -118,3 +119,7 @@ def round_min_max_price(min, max):
     max_round = (max_round + 10) if (max_round < max) else max_round
 
     return min_round, max_round
+
+def slugify_email(email):
+    no_domain = email.split("@")[0]
+    return slugify(no_domain)

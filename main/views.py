@@ -159,6 +159,9 @@ def CLUB_HISTORY(request):
     honourary_members = Mini_Articles.objects.filter(category="past_mem")
     milestones = Mini_Articles.objects.filter(category="milestone")
     hall_of_famers = Mini_Articles.objects.filter(category="hof")
+    partners = Sponsor.objects.all()
+
+    all_partner_types = PARTNER_TYPE
     context = {
             'membership_articles' : membership_articles,
             'venues' : venues,
@@ -169,7 +172,9 @@ def CLUB_HISTORY(request):
             'all_trophies' : trophies,
             'honourary_members' : honourary_members,
             'milestones' : milestones,
-            'hall_of_famers' : hall_of_famers
+            'hall_of_famers' : hall_of_famers,
+            'all_partner_types' : all_partner_types,
+            'partners' : partners
     }
     return render(request, 'club.html', context)
 
@@ -318,7 +323,7 @@ def REG_LOGIN(request):
         user.username = email
         user.email = email
         user.name_display = email
-        user.slug = email
+        user.slug = calculations.slugify_email(email)
         user.set_password(password)
         user.save()
         messages.success(request,"user registered successfully")
@@ -537,8 +542,7 @@ news_sort={ 'inj':3,'league':2,'team':1,
 
 def ALL_NEWS(request):
     all_news = News_article.objects.all()
-    all_authors = CustomUser.objects.annotate(num_articles=Count('news_article')).filter(num_articles__gt = 0)
-
+    all_authors = CustomUser.objects.annotate(num_articles=Count('author')).filter(num_articles__gt = 0)
     categories = request.GET['cat'] if ('cat' in request.GET) else None
     sort = request.GET['sort'] if ('sort' in request.GET) else None
     order = request.GET['order'] if ('order' in request.GET) else None
@@ -565,3 +569,18 @@ def ALL_NEWS(request):
 
 def CONTACT_US(request):
     return render(request, 'contact_us.html')
+
+def Like_Unlike_Btn(request, uid, pid):
+    user = CustomUser.objects.filter(id=uid).first()
+    post = News_article.objects.filter(id=pid).first()
+    like, created = Likes.objects.get_or_create(user=user, post_id=pid)
+
+    if user in post.liked.all():
+        post.liked.remove(user)
+        like.value = False if like else None
+    else:
+        post.liked.add(user)
+        like.value = True if like else None
+    like.save()
+    return redirect(request.META['HTTP_REFERER'])
+    

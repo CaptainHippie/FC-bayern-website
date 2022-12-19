@@ -28,9 +28,9 @@ class CustomUser(User):
 class News_article(models.Model):
     title = models.CharField(max_length=100)
     news_type = models.ForeignKey(article_type, on_delete=models.CASCADE)
-    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, blank=True, null=True)
+    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, blank=True, null=True, related_name='author')
     image = models.ImageField(upload_to='uploads', null=True, blank=True)
-    image_url = models.CharField(max_length=600, null=True)
+    image_url = models.CharField(max_length=600, null=True, blank=True)
     post_content = RichTextField()
     added = models.DateTimeField(default=timezone.now, null=True)
     updated = models.DateTimeField(auto_now=True, null=True)
@@ -38,6 +38,8 @@ class News_article(models.Model):
     views = models.IntegerField(default=0, null=True, blank=True)
     excerpt = models.TextField(null=True)
     featured = models.BooleanField(default=False)
+    liked = models.ManyToManyField(CustomUser, default=None, blank=True, related_name='liked')
+    video_url = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self):
         return self.title
@@ -45,13 +47,24 @@ class News_article(models.Model):
     def get_absolute_url(self):
         return reverse("newspage", kwargs={'slug': self.slug})
 
+    @property
+    def num_likes(self):
+        return self.liked.all().count()
+
+class Likes(models.Model):
+    post = models.ForeignKey(News_article, on_delete=models.CASCADE, blank=True, null=True)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, blank=True, null=True)
+    value = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.post.slug + "-" + self.user.username
+
 
 def return_slug(slug, qs, instance):
     exists = qs.exists()
     if exists:
         new_slug = "%s-%s" % (slug, qs.first().id)
         return create_slug(instance, new_slug=new_slug)
-
 
 def create_slug(instance, new_slug=None):
     slug = slugify(instance.title)
@@ -61,13 +74,12 @@ def create_slug(instance, new_slug=None):
     return_slug(slug, qs, instance)
     return slug
 
-
 def pre_save_post_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
         instance.slug = create_slug(instance)
 
-
 pre_save.connect(pre_save_post_receiver, News_article)
+
 
 class Competition(models.Model):
     name = models.CharField(max_length=100)
@@ -127,7 +139,7 @@ class Match(Scheduled_Match):
     scored = models.IntegerField(null=True)
     conceded = models.IntegerField(null=True)
 
-    video_url = models.CharField(max_length=100, null=True)
+    video_url = models.CharField(max_length=100, null=True, blank=True)
 
     pass_acc = models.DecimalField(decimal_places=1, max_digits=3, null=True, default=0)
     shot_acc = models.DecimalField(decimal_places=1, max_digits=3, null=True, default=0)
@@ -250,13 +262,17 @@ def pre_save_post_receiver_player(sender, instance, *args, **kwargs):
 
 pre_save.connect(pre_save_post_receiver_player, Player)
 
-
+PARTNER_TYPE = (("main", "Main Partner & Shareholder"),
+                ("platinum", "Platinum Partner"),
+                ("gold", "Gold Partner"),
+                ("official", "Official Partner"),
+                ("regional", "Regional Partner"))
 class Sponsor(models.Model):
     name = models.CharField(max_length=100, null=True)
+    kind = models.CharField(max_length=30, choices=PARTNER_TYPE, default='official')
     url = models.CharField(max_length=100, null=True)
-    logo = models.ImageField(
-        default='logos/sponsor_default.png', upload_to='logos', null=True)
-
+    logo_white = models.ImageField(default='logos/sponsor_default_white.png', upload_to='logos', null=True)
+    logo = models.ImageField(default='logos/sponsor_default.png', upload_to='logos', null=True)
     def __str__(self):
         return self.name
 
@@ -340,7 +356,7 @@ class Address(models.Model):
 
     def __str__(self):
         return str(self.user.username) + "-" + str(self.address_type)
-    
+
 class Merchandise_Type(models.Model):
     name = models.CharField(max_length=100, null=True)
     size_option = models.BooleanField(default=False, null=True)
@@ -348,7 +364,7 @@ class Merchandise_Type(models.Model):
 
     def __str__(self):
         return self.name
-    
+
 class Merchandise(models.Model):
     name = models.CharField(max_length=100, null=True)
     category = models.ForeignKey(Merchandise_Type, on_delete=models.CASCADE, null=True)
@@ -362,7 +378,7 @@ class Merchandise(models.Model):
 
     def __str__(self):
         return self.name
-    
+
 class Merchandise_Image(models.Model):
     product = models.ForeignKey(Merchandise, on_delete=models.CASCADE)
     image_url = models.ImageField(default='shop/product_default.jpg', upload_to='shop', null=True)
@@ -372,14 +388,14 @@ class Merchandise_Size(models.Model):
     size = models.CharField(max_length=100, null=True)
     def __str__(self):
         return self.size
-    
+
 
 class Merchandise_Information(models.Model):
     product = models.ForeignKey(Merchandise, on_delete=models.CASCADE)
     specification = models.CharField(max_length=100)
     detail = models.CharField(max_length=100)
 
-    
+
 class Order(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
     first_name = models.CharField(max_length=100, null=True)
@@ -426,7 +442,7 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.from_user.username + "_" + self.parent_news.title
-    
+
 BOARD_TYPE = (("ag", "AG"),
                 ("ev", "eV"))
 class Board_Member(models.Model):

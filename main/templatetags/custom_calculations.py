@@ -54,3 +54,7 @@ def discounted_price(price, discount):
     sellprice = price
     sellprice = price - (price * discount/100)
     return round(sellprice, 2)
+
+@register.filter()
+def partner_filter(partners, attr):
+    return partners.filter(kind=attr)

@@ -106,9 +106,11 @@
                                     <div class="post__meta meta">
                                         <div class="meta__item meta__item--views">{{news.views}}</div>
                                         <div class="meta__item meta__item--likes ">
-                                            <a class="sl-button" title="Like">
-                                                <span class="sl-icon"><i class="meta-like icon-heart"></i></span>
-                                                <span class="sl-count">71</span>
+                                            <a {% if logged_user %}href="{% url 'like' logged_user.id news.id %}"{% endif %} class="sl-button" title="Like">
+                                                <span class="sl-icon">
+                                                    <i class="{% if logged_user and logged_user in news.liked.all %}fas{% else %}far{% endif %} fa-thumbs-up" style="font-size: 13px"></i>
+                                                </span>
+                                                <span class="sl-count">&nbsp;{{news.num_likes}}</span>
                                             </a>
                                             <span class="sl-loader"></span>
                                         </div>

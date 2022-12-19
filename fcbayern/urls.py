@@ -52,6 +52,8 @@ urlpatterns = [
     path('cart/item_decrement/<int:id>/<int:quantity>/', views.item_decrement, name='item_decrement'),
     path('cart/cart_clear/', views.cart_clear, name='cart_clear'),
 
-    path('contact_us/', views.CONTACT_US, name='contact')
+    path('like/<int:uid>/<int:pid>', views.Like_Unlike_Btn, name='like'),
+
+    path('contact_us/', views.CONTACT_US, name='contact'),
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT )
