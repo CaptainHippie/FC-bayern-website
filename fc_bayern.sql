@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 20, 2022 at 01:26 AM
+-- Generation Time: Dec 20, 2022 at 11:42 AM
 -- Server version: 10.6.11-MariaDB-0ubuntu0.22.04.1
 -- PHP Version: 8.1.2-1ubuntu2.9
 
@@ -494,25 +494,8 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (17, 'auth', '0012_alter_user_first_name_max_length', '2022-12-16 09:00:38.891296'),
 (18, 'auth', '0013_user_slug', '2022-12-16 09:00:38.910137'),
 (19, 'auth', '0014_remove_user_slug', '2022-12-16 09:00:38.928541'),
-(20, 'main', '0001_initial', '2022-12-16 09:00:40.111453'),
 (21, 'sessions', '0001_initial', '2022-12-16 09:00:40.128326'),
-(22, 'main', '0002_news_article_image_url_alter_customuser_profile_pic_and_more', '2022-12-17 01:47:35.575276'),
-(23, 'main', '0003_alter_news_article_image_url', '2022-12-17 01:55:47.254110'),
-(24, 'main', '0004_alter_news_article_added', '2022-12-17 02:05:23.797584'),
-(25, 'main', '0005_delete_bayern_delete_nationality_and_more', '2022-12-17 02:22:24.263354'),
-(26, 'main', '0006_alter_player_profile_banner', '2022-12-17 06:00:33.546439'),
-(27, 'main', '0007_rename_homeside_match_timeline_is_bayern_player', '2022-12-17 07:16:31.148497'),
-(28, 'main', '0008_board_member_alter_staff_profile_pic', '2022-12-17 07:57:40.518190'),
-(29, 'main', '0009_alter_board_member_profile_pic', '2022-12-17 08:01:11.820957'),
-(30, 'main', '0010_board_member_board_type', '2022-12-17 08:05:49.677775'),
-(31, 'main', '0011_trophies', '2022-12-17 09:56:43.840876'),
-(32, 'main', '0012_mini_articles_alter_board_member_profile_pic_and_more', '2022-12-17 20:57:35.634361'),
-(33, 'main', '0013_rename_board_type_mini_articles_category', '2022-12-17 21:04:49.935424'),
-(34, 'main', '0014_news_article_liked_alter_news_article_author_likes', '2022-12-18 19:27:35.700390'),
-(35, 'main', '0015_news_article_video_url', '2022-12-18 20:41:27.250787'),
-(36, 'main', '0016_alter_match_video_url_alter_news_article_video_url', '2022-12-18 20:42:31.760085'),
-(37, 'main', '0017_alter_news_article_image_url', '2022-12-19 15:22:15.691981'),
-(38, 'main', '0018_sponsor_kind_sponsor_logo_white', '2022-12-19 16:10:01.613429');
+(39, 'main', '0001_initial', '2022-12-20 06:10:46.201880');
 
 -- --------------------------------------------------------
 
@@ -533,7 +516,7 @@ CREATE TABLE `django_session` (
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
 ('1ug6m4u0exvsj2bp2s51iqnwz6gqbwt8', 'eyJpbnN0YS1mb2xsb3dlcnMiOiIzNS41TSJ9:1p6QXH:GqJSkYBb-aOjP2t7HFni5THY80bwrxG8rVj_4wZZB4I', '2022-12-31 06:19:03.154007'),
 ('6ptim8ys298c0ul1x4293u1rjr1wb8xi', 'e30:1p66kV:cb3rUeqJqBqMcmDMeEei7fjG_qYo3RTcpC843xL0xTQ', '2022-12-30 09:11:23.903579'),
-('ax2srpq51cf9jrmjygujlxlb0aimapqm', '.eJxVjEEOgyAUBe_C2hJBQOiye89gPvCptgYSwHRhvHs1cdFu38ybjYyw1mlcC-Zx9uROOGl-NwvujfEE_gXxmahLsebZ0lOhFy10SB6Xx-X-BSYo0_G2UoOTjmsLzBqrei19Z3qQSjthAxetxcCYE-ADGoNMBhUYtoKjEq7tj6iDXMl92xsyx1LhFtKypA_mcuQ7SeVA9i_ClEPj:1p7MEE:p9e-ItWhporFimHot0FgfyIpMUf0Y9Kt_ew7qtPU4Ww', '2023-01-02 19:55:14.114044'),
+('ax2srpq51cf9jrmjygujlxlb0aimapqm', '.eJxVjEEOgyAUBe_C2hJBQOiye89gPvCptgYSwHRhvHs1cdFu38ybjYyw1mlcC-Zx9uROOGl-NwvujfEE_gXxmahLsebZ0lOhFy10SB6Xx-X-BSYo0_G2UoOTjmsLzBqrei19Z3qQSjthAxetxcCYE-ADGoNMBhUYtoKjEq7tj6iDXMl92xsyx1LhFtKypA_mcuQ7SeVA9i_ClEPj:1p7Vqs:qaqmhIe7ogadwWM-nZwT2y756OgbInlLGP-rRBMGEGQ', '2023-01-03 06:11:46.820165'),
 ('b9bi7vxs7p9aatr7wb9zwxl7es3vzy5v', 'e30:1p6zNC:AvflqbDrX70MA-5s5NZFqkLvWLkqgF2dHXDZdA-MdLI', '2023-01-01 19:30:58.275569'),
 ('u7co98bhy5sqcrap4dbhvf03ur1680n5', 'eyJpbnN0YS1mb2xsb3dlcnMiOiIzNS41TSJ9:1p70FI:Ye5utLdiH572ZqbLGOqIiQAq0gGhssO-u0ATYGNoA2s', '2023-01-01 20:26:52.449094');
 
@@ -1829,7 +1812,7 @@ ALTER TABLE `django_content_type`
 -- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `main_address`

@@ -1,4 +1,4 @@
-#!/home/neeraj/Desktop/Workspace/FC-bayern-website/venv/bin/python3
+#!"/home/neeraj/Desktop/Workspace/Virtualenv test/FC-bayern-website/venv/bin/python"
 # EASY-INSTALL-ENTRY-SCRIPT: 'instaloader==4.9.5','console_scripts','instaloader'
 import re
 import sys

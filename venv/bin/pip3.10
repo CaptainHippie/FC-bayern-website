@@ -1,4 +1,6 @@
-#!/home/neeraj/Desktop/Workspace/FC-bayern-website/venv/bin/python3
+#!/usr/bin/env python
+'''exec' "/home/neeraj/Desktop/Workspace/Virtualenv test/FC-bayern-website/venv/bin/python3" "$0" "$@"
+' '''
 # -*- coding: utf-8 -*-
 import re
 import sys

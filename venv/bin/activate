@@ -38,9 +38,9 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/neeraj/Desktop/Workspace/FC-bayern-website/venv"
+VIRTUAL_ENV="/home/neeraj/Desktop/Workspace/Virtualenv test/FC-bayern-website/venv"
 export VIRTUAL_ENV
-
+VIRTUAL_ENV="$(cd "$(dirname "$(dirname "${BASH_SOURCE[0]}" )")" && pwd)"
 _OLD_VIRTUAL_PATH="$PATH"
 PATH="$VIRTUAL_ENV/bin:$PATH"
 export PATH

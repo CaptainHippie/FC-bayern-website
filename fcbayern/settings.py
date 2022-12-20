@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'django_countries',
     'cart',
-    'active_link'
+    'active_link',
+    'reset_migrations'
 
 ]
 
