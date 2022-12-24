@@ -50,6 +50,10 @@ class News_article(models.Model):
     @property
     def num_likes(self):
         return self.liked.all().count()
+    
+    '''@property
+    def comment_count(self):
+        return self.comment_set().count()'''
 
 class Likes(models.Model):
     post = models.ForeignKey(News_article, on_delete=models.CASCADE, blank=True, null=True)

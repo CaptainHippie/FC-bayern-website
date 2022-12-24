@@ -108,9 +108,9 @@
                                         <div class="meta__item meta__item--likes ">
                                             <a {% if logged_user %}href="{% url 'like' logged_user.id news.id %}"{% endif %} class="sl-button" title="Like">
                                                 <span class="sl-icon">
-                                                    <i class="{% if logged_user and logged_user in news.liked.all %}fas{% else %}far{% endif %} fa-thumbs-up" style="font-size: 13px"></i>
+                                                    <i class="meta-like icon-heart" {% if logged_user and logged_user in news.liked.all %}style="color: red"{% endif %}></i>
                                                 </span>
-                                                <span class="sl-count">&nbsp;{{news.num_likes}}</span>
+                                                <span class="sl-count">{{news.num_likes}}</span>
                                             </a>
                                             <span class="sl-loader"></span>
                                         </div>
@@ -129,7 +129,7 @@
                             <li class='active' id="snk-page-no-1"><span>1</span></li>
                             {% if pages_count > 0 %}
                                 {% for item in "x"|ljust:pages_count %}
-                                    <li id="snk-page-no-{{forloop.counter|add:1}}"><a href="">{{forloop.counter|add:1}}</a></li>
+                                    <li id="snk-page-no-{{forloop.counter|add:1}}"><a>{{forloop.counter|add:1}}</a></li>
                                 {% endfor %}
                                 <li><a href="">
                                     <i class="fa fa-angle-right"></i>
@@ -146,5 +146,9 @@
         </div>
     </div>
 </div>
-5
+<script>
+    
+    
+</script>
+
 {% endblock %}

@@ -37,17 +37,14 @@ def HOME(request):
     return render(request, 'home.html', context)
 
 def NEWS(request, slug):
-    post = News_article.objects.filter(slug=slug)
+    post = News_article.objects.filter(slug=slug).first()
     popular_news = News_article.objects.all().order_by('-views')[0:4]
     newest_news = News_article.objects.all().order_by('-added')[0:4]
     favourite_news = News_article.objects.all().order_by('-added')[0:4]
     
-    if post.exists():
-        post = News_article.objects.get(slug=slug)
-    else:
-        return redirect('home')
-    post.views = post.views + 1
-    post.save()
+    if post:
+        post.views = post.views + 1
+        post.save()
     
     comments = Comment.objects.filter(parent_comment=None, parent_news=post).order_by('-added')
     comment_count = Comment.objects.filter(parent_news=post).count()
@@ -559,7 +556,7 @@ def ALL_NEWS(request):
 
     news_count = all_news.count()
     #news_count = 43
-    extra_pages_count = (int(news_count/10) - 1) if (news_count>10) else 0
+    extra_pages_count = (int(news_count/2) - 1) if (news_count>2) else 0
     context = {
         'all_news' : all_news,
         'all_authors' : all_authors,

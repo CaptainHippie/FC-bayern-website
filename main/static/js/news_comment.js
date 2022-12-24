@@ -1,5 +1,5 @@
-"use strict";
 
+"use strict";
 var snk_toggled_element_id = "";
 
 function reply_mode_on(cmt_id) {
@@ -26,7 +26,7 @@ function reply_mode_off() {
 }
 
 (function () {
-    
+
     var comment_forms = document.getElementsByClassName("comment-respond");
     for (let i = 0; i < comment_forms.length; i++) {
         comment_forms[i].style.display = "none";

@@ -343,7 +343,7 @@
                         {% for partner in partners|partner_filter:cat %}
                     
                         <div class="{% if cat == 'main' %}custom-sponsor-item{% else %}custom-sponsor-item-small{% endif %}">
-                            <a href="{{partner.url}}">
+                            <a href="{{partner.url}}" title="{{partner.name}}">
                                 <img src="/media/{{partner.logo}}">
                             </a>
                         </div>

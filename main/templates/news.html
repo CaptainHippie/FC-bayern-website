@@ -34,15 +34,15 @@
                             </div>
                             <div class="meta__item meta__item--views js-meta__item--views-count">{{post.views}}</div>
                             <div class="meta__item meta__item--likes ">
-                                <a {% if logged_user %}href="{% url 'like' logged_user.id post.id %}"{% endif %} class="sl-button sl-button-87" title="Like">
+                                <a {% if logged_user %}href="{% url 'like' logged_user.id post.id %}"{% endif %} class="sl-button" title="Like">
                                     <span class="sl-icon">
-                                        <i class="{% if logged_user and logged_user in post.liked.all %}fas{% else %}far{% endif %} fa-thumbs-up" style="font-size: 13px"></i>
+                                        <i class="meta-like icon-heart" {% if logged_user and logged_user in post.liked.all %}style="color: red"{% endif %}></i>
                                     </span>
-                                    <span class="sl-count">&nbsp;{{post.num_likes}}</span>
+                                    <span class="sl-count">{{post.num_likes}}</span>
                                 </a>
                                 <span class="sl-loader"></span>
                             </div>
-                            <div class="meta__item meta__item--comments"><a href="">{{comment_count}}</a>
+                            <div class="meta__item meta__item--comments"><a href="">{{post.comment_set.count}}</a>
                             </div>
                         </div>
                     </header>
@@ -110,7 +110,7 @@
             <div id="comments" class="post-comments card card--lg">
 
                 <header class="post-commments__header card__header">
-                    <h4>Comments ({{comment_count}})</h4>
+                    <h4>Comments ({{post.comment_set.count}})</h4>
                 </header><!-- .post-commments__header -->
 
                 <div class="post-comments__content card__content pb-0">

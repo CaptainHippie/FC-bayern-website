@@ -3390,3 +3390,10 @@ body {
     padding: 12px 2px 12px 2px;
     margin: auto;
 }
+.custom-social-footer-item {
+  flex-basis: 14%;
+  max-width: 14%;
+  position: relative;
+  float: left;
+  margin: auto;
+}
