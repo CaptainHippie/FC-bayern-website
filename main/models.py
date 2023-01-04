@@ -40,6 +40,7 @@ class News_article(models.Model):
     featured = models.BooleanField(default=False)
     liked = models.ManyToManyField(CustomUser, default=None, blank=True, related_name='liked')
     video_url = models.CharField(max_length=200, null=True, blank=True)
+    related_news = models.ManyToManyField('self', default=None, blank=True)
 
     def __str__(self):
         return self.title
@@ -50,10 +51,7 @@ class News_article(models.Model):
     @property
     def num_likes(self):
         return self.liked.all().count()
-    
-    '''@property
-    def comment_count(self):
-        return self.comment_set().count()'''
+
 
 class Likes(models.Model):
     post = models.ForeignKey(News_article, on_delete=models.CASCADE, blank=True, null=True)
@@ -93,6 +91,7 @@ class Competition(models.Model):
 
 class Team(models.Model):
     name = models.CharField(max_length=100)
+    short_name = models.CharField(max_length=3, null=True, blank=True)
     logo = models.ImageField(
         default='logos/default_logo.png', upload_to='logos', null=True)
     color = models.CharField(max_length=50, null=True)
@@ -372,13 +371,13 @@ class Merchandise_Type(models.Model):
 class Merchandise(models.Model):
     name = models.CharField(max_length=100, null=True)
     category = models.ForeignKey(Merchandise_Type, on_delete=models.CASCADE, null=True)
-
     featured_image = models.ImageField(default='shop/product_default.jpg', upload_to='shop', null=True)
     price = models.DecimalField(decimal_places=2, max_digits=10, null=True)
     discount = models.IntegerField()
     description = models.TextField(null=True)
     product_information = RichTextField(null=True)
     slug = models.SlugField(default='', max_length=500, null=True, blank=True)
+    related_products = models.ManyToManyField('self', default=None, blank=True)
 
     def __str__(self):
         return self.name
@@ -392,7 +391,6 @@ class Merchandise_Size(models.Model):
     size = models.CharField(max_length=100, null=True)
     def __str__(self):
         return self.size
-
 
 class Merchandise_Information(models.Model):
     product = models.ForeignKey(Merchandise, on_delete=models.CASCADE)
@@ -421,6 +419,7 @@ class Order(models.Model):
     total_amount = models.DecimalField(decimal_places=2, max_digits=10, null=True)
     payment_method = models.CharField(max_length=100)
     dispatched = models.BooleanField(default=False)
+    delivered = models.BooleanField(default=False)
     order_date = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):

@@ -11,22 +11,16 @@ from . import calculations
 
 # Create your views here.
 def HOME(request):
-    popular_news = News_article.objects.all().order_by('-views')[0:4]
-    newest_news = News_article.objects.all().order_by('-added')[0:4]
-    favourite_news = News_article.objects.all().order_by('-comment')[0:4]
     featured_news = News_article.objects.filter(featured=True)
     last_match = Match.objects.all().order_by('-time').first()
     events = Match_timeline.objects.filter(match=last_match).order_by('minute')
-    league_stats_widget = Club_season_stats.objects.filter(competition__name="BundesLiga").order_by('-points','-goal_diff','-scored')[0:8]
+    league_stats_widget = Club_season_stats.objects.filter(competition__name="BundesLiga").order_by('-points','-goal_diff','-scored')
 
     current_time = timezone.now()
     upcoming_match = Scheduled_Match.objects.filter(time__gte = current_time).order_by('time').first()
     time_left = calculations.get_time_difference(upcoming_match.time - current_time) if upcoming_match else None
 
     context = {
-            'popular_news': popular_news,
-            'newest_news' : newest_news,
-            'favourite_news' : favourite_news,
             'featured_news' : featured_news,
             'last_match' : last_match,
             'events' : events,
@@ -38,31 +32,23 @@ def HOME(request):
 
 def NEWS(request, slug):
     post = News_article.objects.filter(slug=slug).first()
-    popular_news = News_article.objects.all().order_by('-views')[0:4]
-    newest_news = News_article.objects.all().order_by('-added')[0:4]
-    favourite_news = News_article.objects.all().order_by('-added')[0:4]
-    
+
     if post:
         post.views = post.views + 1
         post.save()
     
     comments = Comment.objects.filter(parent_comment=None, parent_news=post).order_by('-added')
     comment_count = Comment.objects.filter(parent_news=post).count()
-
+    
     context = {
             'post': post,
-            'popular_news': popular_news,
-            'newest_news' : newest_news,
-            'favourite_news' : favourite_news,
             'comments':comments,
             'comment_count': comment_count
     }
     return render(request, 'news.html', context)
 
 def MATCH_DETAIL(request, type, slug_name):
-    popular_news = News_article.objects.all().order_by('-views')[0:4]
-    newest_news = News_article.objects.all().order_by('-added')[0:4]
-    favourite_news = News_article.objects.all().order_by('-added')[0:4]
+
     match = Match.objects.get(slug=slug_name) if (type=='result') else Scheduled_Match.objects.get(slug=slug_name)
     match_status = 'result' if (type=='result') else 'fixture'
     events = Match_timeline.objects.filter(match=match).order_by('minute')
@@ -71,9 +57,6 @@ def MATCH_DETAIL(request, type, slug_name):
             'match': match,
             'match_status': match_status,
             'events': events,
-            'popular_news': popular_news,
-            'newest_news' : newest_news,
-            'favourite_news' : favourite_news
     }
     return render(request, 'match_details.html', context)
 
@@ -372,6 +355,23 @@ def SHOP(request):
     }
     return render(request, 'shop.html', context)
 
+def SHOP_CATEGORY(request, cat):
+    all_products = Merchandise.objects.filter(category__name=cat)
+    all_categories = Merchandise_Type.objects.all()
+    min_price = Merchandise.objects.filter(category__name=cat).aggregate(Min('price'))
+    max_price = Merchandise.objects.filter(category__name=cat).aggregate(Max('price'))
+
+   
+    min_rounded, max_rounded = calculations.round_min_max_price(min_price['price__min'], max_price['price__max'])
+
+    context = {
+            'all_products' : all_products,
+            'all_categories' : all_categories,
+            'min_rounded' : min_rounded,
+            'max_rounded' : max_rounded,
+            'active_category': cat
+    }
+    return render(request, 'shop.html', context)
 
 def PRODUCT(request, slug_name):
     product = Merchandise.objects.get(slug=slug_name)
@@ -533,7 +533,7 @@ def save_comment(request, user_id):
     return redirect('newspage', slug=current_news.slug)
 
 news_sort={ 'inj':3,'league':2,'team':1,
-        'time':'added','title':'title','views':'views','likes':'views',
+        'time':'added','title':'title','views':'views','likes':'liked','comments':'comment',
         'asc':'','desc':'-'
     }
 
@@ -551,12 +551,19 @@ def ALL_NEWS(request):
         if (author != None) and (author != ""):
             all_news = all_news.filter(author__id=author)
         if (sort != None):
-            filter_cmd = news_sort[order] + news_sort[sort]
-            all_news = all_news.order_by(filter_cmd)
+            if sort == "likes":
+                like_query = news_sort[order] + "like_count"
+                all_news = all_news.annotate(like_count=Count(news_sort[sort])).order_by(like_query)
+            elif sort == "comments":
+                cmt_query = news_sort[order] + "cmt_count"
+                all_news = all_news.annotate(cmt_count=Count(news_sort[sort])).order_by(cmt_query)
+            else:
+                filter_cmd = news_sort[order] + news_sort[sort]
+                all_news = all_news.order_by(filter_cmd)
 
     news_count = all_news.count()
-    #news_count = 43
-    extra_pages_count = (int(news_count/2) - 1) if (news_count>2) else 0
+    news_per_page = 10
+    extra_pages_count = ((int(news_count/news_per_page)-1) if ((news_count%news_per_page)==0) else int(news_count/news_per_page)) if (news_count>news_per_page) else 0
     context = {
         'all_news' : all_news,
         'all_authors' : all_authors,

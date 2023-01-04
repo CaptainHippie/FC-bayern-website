@@ -4315,7 +4315,7 @@ ul.product_list_widget {
   }
 }
 .list.products--list-lg .product__slider .product__slide {
-  height: 360px;
+  height: 460px;
 }
 @media (min-width: 992px) {
   .list.products--list-lg .product__slider .product__slide {

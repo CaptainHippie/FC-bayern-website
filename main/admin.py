@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.contrib.admin.views.main import ChangeList
+from . forms import Related_News_Form
 from . models import *
 
 class Goalscorers_Admin(admin.TabularInline):
@@ -27,8 +29,13 @@ class News_tag_Player_Admin(admin.TabularInline):
 class News_tag_Staff_Admin(admin.TabularInline):
     model = News_Tag_Staff
 
+
 class News_article_Admin(admin.ModelAdmin):
     inlines = [News_tag_Player_Admin, News_tag_Staff_Admin]
+
+    filter_horizontal = ['related_news', 'liked']
+
+
 
 class Club_season_stats_Admin(admin.TabularInline):
     model = Club_season_stats
@@ -56,7 +63,7 @@ class Merchandise_Admin(admin.ModelAdmin):
     inlines = (Merchandise_Image_Admin, Merchandise_Information_Admin)
     list_display = ('name','category','price','discount')
     list_editable = ('price','discount')
-
+    filter_horizontal = ['related_products']
 
 class Order_Item_Admin(admin.TabularInline):
     model = Order_Item

@@ -3,7 +3,9 @@
 {% load static %}
 {% load custom_calculations %}
 
-
+<title>{{match.competition}}, {{match.match_title}} - 
+    {% if match.at_home == True %}{{bayern.short_name}} vs {{match.opponent.short_name}}
+    {%else%}{{match.opponent.short_name}} vs {{bayern.short_name}}{%endif%}</title>
 <!-- Page Heading
 ================================================== -->
 <div class="page-heading 1" style="background-image: url(/media/{{match.banner}});">
@@ -659,46 +661,9 @@
                 
                 {% include 'includes/widgets/popular_news.html' %}
 
-
-                <div id="tag_cloud-1" class="widget widget--sidebar card widget_tag_cloud">
-                    <div class="widget__content card__content"></div>
-                    <div class="widget__title card__header">
-                        <h4>Tag Cloud</h4>
-                    </div>
-                    <div class="widget__content card__content">
-                        <div class="tagcloud"><a href="../../tag/alchemists/index.html"
-                                class="tag-cloud-link tag-link-19 btn btn-primary btn-xs btn-outline btn-sm  tag-link-position-1"
-                                aria-label="Alchemists (10 items)">Alchemists</a>
-                            <a href="../../tag/awards/index.html"
-                                class="tag-cloud-link tag-link-21 btn btn-primary btn-xs btn-outline btn-sm  tag-link-position-2"
-                                aria-label="awards (2 items)">awards</a>
-                            <a href="../../tag/coach/index.html"
-                                class="tag-cloud-link tag-link-23 btn btn-primary btn-xs btn-outline btn-sm  tag-link-position-3"
-                                aria-label="Coach (2 items)">Coach</a>
-                            <a href="../../tag/injuries/index.html"
-                                class="tag-cloud-link tag-link-26 btn btn-primary btn-xs btn-outline btn-sm  tag-link-position-4"
-                                aria-label="Injuries (3 items)">Injuries</a>
-                            <a href="../../tag/playoffs/index.html"
-                                class="tag-cloud-link tag-link-29 btn btn-primary btn-xs btn-outline btn-sm  tag-link-position-5"
-                                aria-label="Playoffs (5 items)">Playoffs</a>
-                            <a href="../../tag/stadium/index.html"
-                                class="tag-cloud-link tag-link-30 btn btn-primary btn-xs btn-outline btn-sm  tag-link-position-6"
-                                aria-label="stadium (6 items)">stadium</a>
-                        </div>
-                    </div>
-                </div>
-                <div id="media_image-1" class="widget widget--sidebar card widget_media_image">
-                    <div class="widget__content card__content"></div>
-                    <div class="widget__title card__header">
-                        <h4>Advertisement</h4>
-                    </div>
-                    <div class="widget__content card__content"><a href="http://bit.ly/2y4ZKHd"><img width="300"
-                                height="250" src="../../wp-content/uploads/2018/04/banner.jpg"
-                                class="image wp-image-1264  attachment-medium size-medium" alt="" loading="lazy"
-                                style="max-width: 100%; height: auto;"
-                                srcset="https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2018/04/banner.jpg 300w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2018/04/banner-128x107.jpg 128w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2018/04/banner-32x27.jpg 32w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2018/04/banner-70x58.jpg 70w, https://soccer-dark-alc.dan-fisher.dev/wp-content/uploads/2018/04/banner-100x83.jpg 100w"
-                                sizes="(max-width: 300px) 100vw, 300px" /></a></div>
-                </div>
+                {% include 'includes/widgets/tag_cloud.html' %}
+                
+                {% include 'includes/widgets/single_advert.html' %}
                 
                 {% include 'includes/widgets/tabbed_news.html' %}
 

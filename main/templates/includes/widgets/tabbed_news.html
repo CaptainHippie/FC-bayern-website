@@ -27,10 +27,10 @@
             <ul class="posts posts--simple-list">
 
             {% for news in newest_news %}
-            <li class="posts__item posts__item--category-1">
+            <li class="posts__item posts__item--category-{{news.news_type.category}}">
               <div class="posts__inner">
                 <div class="posts__cat">
-                  <span class="label posts__cat-label posts__cat-label--category-1 category-{{news.news_type.css_name}}">{{news.news_type}}</span>
+                  <span class="label posts__cat-label posts__cat-label--category-{{news.news_type.category}} category-{{news.news_type.css_name}}">{{news.news_type}}</span>
                 </div>
                 <h6 class="posts__title" title="{{news.title}}">
                     <a href="{{news.get_absolute_url}}">{{news.title}}</a>
@@ -49,11 +49,11 @@
         <div role="tabpanel" class="tab-pane fade" id="widget-tabbed-sm-commented-9693">
           <ul class="posts posts--simple-list">
 
-            {% for news in favourite_news %}
-            <li class="posts__item posts__item--category-1">
+            {% for news in most_commented_news %}
+            <li class="posts__item posts__item--category-{{news.news_type.category}}">
               <div class="posts__inner">
                 <div class="posts__cat">
-                  <span class="label posts__cat-label posts__cat-label--category-1 category-{{news.news_type.css_name}}">{{news.news_type}}</span>
+                  <span class="label posts__cat-label posts__cat-label--category-{{news.news_type.category}} category-{{news.news_type.css_name}}">{{news.news_type}}</span>
                 </div>
                 <h6 class="posts__title" title="{{news.title}}">
                     <a href="{{news.get_absolute_url}}">{{news.title}}</a>
@@ -75,10 +75,10 @@
           <ul class="posts posts--simple-list">
 
             {% for news in popular_news %}
-            <li class="posts__item posts__item--category-1">
+            <li class="posts__item posts__item--category-{{news.news_type.category}}">
               <div class="posts__inner">
                 <div class="posts__cat">
-                  <span class="label posts__cat-label posts__cat-label--category-1 category-{{news.news_type.css_name}}">{{news.news_type}}</span>
+                  <span class="label posts__cat-label posts__cat-label--category-{{news.news_type.category}} category-{{news.news_type.css_name}}">{{news.news_type}}</span>
                 </div>
                 <h6 class="posts__title" title="{{news.title}}">
                     <a href="{{news.get_absolute_url}}">{{news.title}}</a>
