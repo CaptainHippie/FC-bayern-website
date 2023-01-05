@@ -14,17 +14,17 @@
                             <div class="match-preview__content">
                                 <div class="match-preview__team match-preview__team--odd">
                                     <figure class="match-preview__team-logo">
-                                        <img width="100" height="84" src="/media/{{upcoming_match.opponent.logo}}"
+                                        <img width="100" height="84" src="/media/{% if upcoming_match.at_home == True %}{{bayern.logo}}{% else %}{{upcoming_match.opponent.logo}}{% endif %}"
                                             class="attachment-alchemists_team-logo-fit size-alchemists_team-logo-fit wp-post-image">
                                     </figure>
-                                    <h5 class="match-preview__team-name">{{upcoming_match.opponent.name}}</h5>
+                                    <h5 class="match-preview__team-name">{% if upcoming_match.at_home == True %}{{bayern.full_name}}{% else %}{{upcoming_match.opponent.name}}{% endif %}</h5>
                                 </div>
                                 <div class="match-preview__team match-preview__team--even">
                                     <figure class="match-preview__team-logo">
-                                        <img width="87" height="100" src="/media/{{bayern.logo}}"
+                                        <img width="87" height="100" src="/media/{% if upcoming_match.at_home == True %}{{upcoming_match.opponent.logo}}{% else %}{{bayern.logo}}{% endif %}"
                                             class="attachment-alchemists_team-logo-fit size-alchemists_team-logo-fit wp-post-image">
                                     </figure>
-                                    <h5 class="match-preview__team-name">{{bayern.full_name}}</h5>
+                                    <h5 class="match-preview__team-name">{% if upcoming_match.at_home == True %}{{upcoming_match.opponent.name}}{% else %}{{bayern.full_name}}{% endif %}</h5>
                                 </div>
 
                                 <div class="match-preview__vs">

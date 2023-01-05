@@ -319,8 +319,8 @@ class News_Tag_Staff(models.Model):
 
 class Club_Album(models.Model):
     title = models.CharField(max_length=100, null=True)
-    featured_image = models.ImageField(
-        default='album/default.jpg', upload_to='album', null=True)
+    featured_image = models.ImageField(upload_to='album', null=True, blank=True)
+    featured_image_url = models.CharField(max_length=600, null=True, blank=True)
     date = models.DateField(null=True)
     slug = models.SlugField(default='', max_length=500, null=True, blank=True)
 
@@ -329,12 +329,11 @@ class Club_Album(models.Model):
 
 
 class Album_Image(models.Model):
-    parent_album = models.ForeignKey(
-        Club_Album, on_delete=models.CASCADE, null=True)
-    image = models.ImageField(
-        default='album/default.jpg', upload_to='album', null=True)
-    description = models.CharField(max_length=100, null=True)
-    date = models.DateField(null=True)
+    parent_album = models.ForeignKey(Club_Album, on_delete=models.CASCADE, null=True)
+    image = models.ImageField(upload_to='album', null=True, blank=True)
+    image_url = models.CharField(max_length=600, null=True, blank=True)
+    description = models.CharField(max_length=100, null=True, blank=True)
+    date = models.DateField(null=True, blank=True)
 
 
 ADDRESS_TYPE = (("billing", "Billing Address"),
@@ -378,6 +377,7 @@ class Merchandise(models.Model):
     product_information = RichTextField(null=True)
     slug = models.SlugField(default='', max_length=500, null=True, blank=True)
     related_products = models.ManyToManyField('self', default=None, blank=True)
+    added = models.DateTimeField(default=timezone.now, null=True)
 
     def __str__(self):
         return self.name

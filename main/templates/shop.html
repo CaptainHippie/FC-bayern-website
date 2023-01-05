@@ -88,11 +88,19 @@ input[type="range"]::-moz-range-thumb{
                                     <li class="shop-filter__control">
                                         <form class="woocommerce-ordering" method="get">
                                             <select name="orderby" class="orderby" aria-label="Shop order">
-                                                <option value="popularity" style="color:black">Sort by popularity</option>
-                                                <option value="date" selected='selected' style="color:black">Sort by latest</option>
-                                                <option value="price" style="color:black">Sort by price: low to high</option>
-                                                <option value="price-desc" style="color:black">Sort by price: high to low</option>
+                                                <option value="popularity" {% if request.GET.orderby == 'popularity' %}selected{% endif %} style="color:black">Sort by popularity</option>
+                                                <option value="date" {% if request.GET.orderby == 'date'  or request.GET.orderby == None %}selected{% endif %} style="color:black">Sort by latest</option>
+                                                <option value="price" {% if request.GET.orderby == 'price' %}selected{% endif %} style="color:black">Sort by price: low to high</option>
+                                                <option value="price_desc" {% if request.GET.orderby == 'price_desc' %}selected{% endif %} style="color:black">Sort by price: high to low</option>
                                             </select>
+                                            <select name="min_price" style="display:none">
+                                                <option value="{{request.GET.min_price}}" selected='selected'>Min Price</option>
+                                            </select>
+                                            <select name="max_price" style="display:none">
+                                                <option value="{{request.GET.max_price}}" selected='selected'>Max Price</option>
+                                            </select>
+                                            <input type="hidden" value="{% if request.GET.min_price %}{{request.GET.min_price}}{% endif %}" >
+                                            <input type="hidden" value="{% if request.GET.max_price %}{{request.GET.max_price}}{% endif %}" >
                                         </form>
                                     </li>
                                 </ul>
@@ -219,7 +227,7 @@ input[type="range"]::-moz-range-thumb{
                         <h4>Filter by price</h4>
                     </div>
                     <div class="widget__content card__content">
-                        <form method="get" action="">
+                        <form method="get">
                             <div class="price_slider_wrapper">
                                 
                                 <div class="sk-slider">
@@ -228,6 +236,9 @@ input[type="range"]::-moz-range-thumb{
                                 <div class="sk-range-input">
                                     <input type="range" name="min_price" class="sk-range-min" min="{{min_rounded}}" max="{{max_rounded}}" value="{% if request.GET.min_price %}{{request.GET.min_price}}{%else%}{{min_rounded}}{% endif %}" step="10">
                                     <input type="range" name="max_price" class="sk-range-max" min="{{min_rounded}}" max="{{max_rounded}}" value="{% if request.GET.max_price %}{{request.GET.max_price}}{%else%}{{max_rounded}}{% endif %}" step="10">
+                                    <select name="orderby" style="display:none">
+                                        <option value="{{request.GET.orderby}}" selected='selected'>OrderBy</option>
+                                    </select>
                                 </div>
                                     <div style="margin-top:20px">
                                         <button type="submit" class="button" style="padding: 5px 13px;font-size: 9px">Filter</button>
@@ -301,7 +312,7 @@ input[type="range"]::-moz-range-thumb{
 <script>
 const rangeInput = document.querySelectorAll(".sk-range-input input");
 const range = document.querySelector(".sk-slider .sk-progress");
-let priceGap = 5;
+let priceGap = 10;
 const min = parseInt(rangeInput[0].min);
 const max = parseInt(rangeInput[1].max);
 

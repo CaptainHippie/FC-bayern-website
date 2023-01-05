@@ -338,31 +338,35 @@ def LOGOUT(request):
     logout(request)
     return redirect('login')
 
-def SHOP(request):
-    all_products = Merchandise.objects.all()
-    all_categories = Merchandise_Type.objects.all()
-    min_price = Merchandise.objects.all().aggregate(Min('price'))
-    max_price = Merchandise.objects.all().aggregate(Max('price'))
 
-   
+
+
+def SHOP(request, cat=None):
+    all_products = Merchandise.objects.filter(category__name=cat) if cat else Merchandise.objects.all()
+    all_categories = Merchandise_Type.objects.all()
+    min_price = all_products.aggregate(Min('price'))
+    max_price = all_products.aggregate(Max('price'))
+
     min_rounded, max_rounded = calculations.round_min_max_price(min_price['price__min'], max_price['price__max'])
 
-    context = {
-            'all_products' : all_products,
-            'all_categories' : all_categories,
-            'min_rounded' : min_rounded,
-            'max_rounded' : max_rounded
-    }
-    return render(request, 'shop.html', context)
+    sort = request.GET['orderby'] if ('orderby' in request.GET) else None
+    price_min = (int(request.GET['min_price']) if (request.GET['min_price'] != "") else None) if ('min_price' in request.GET) else None
+    price_max = (int(request.GET['max_price']) if (request.GET['max_price'] != "") else None) if ('max_price' in request.GET) else None
 
-def SHOP_CATEGORY(request, cat):
-    all_products = Merchandise.objects.filter(category__name=cat)
-    all_categories = Merchandise_Type.objects.all()
-    min_price = Merchandise.objects.filter(category__name=cat).aggregate(Min('price'))
-    max_price = Merchandise.objects.filter(category__name=cat).aggregate(Max('price'))
-
-   
-    min_rounded, max_rounded = calculations.round_min_max_price(min_price['price__min'], max_price['price__max'])
+    if all_products.exists():
+        if (price_min != None) and (price_min != ""):
+            all_products = all_products.filter(price__gte=price_min)
+        if (price_max != None) and (price_max != ""):
+            all_products = all_products.filter(price__lte=price_max)
+        if (sort != None):
+            if sort == "date":
+                all_products = all_products.order_by('-added')
+            elif sort == "price":
+                all_products = all_products.order_by('price','-discount')
+            elif sort == "price_desc":
+                all_products = all_products.order_by('-price','discount')
+            elif sort == "popularity":
+                all_products = calculations.sort_by_popularity()
 
     context = {
             'all_products' : all_products,

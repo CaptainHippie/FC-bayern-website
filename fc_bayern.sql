@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 05, 2023 at 01:28 AM
+-- Generation Time: Jan 06, 2023 at 01:43 AM
 -- Server version: 10.6.11-MariaDB-0ubuntu0.22.04.1
 -- PHP Version: 8.1.2-1ubuntu2.9
 
@@ -459,7 +459,42 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 (146, '2023-01-04 17:16:56.264761', '6', 'FC Bayern Triple Winners 2020 Cap - Black', 2, '[{\"changed\": {\"fields\": [\"Discount\"]}}, {\"deleted\": {\"name\": \"merchandise_ image\", \"object\": \"Merchandise_Image object (None)\"}}, {\"deleted\": {\"name\": \"merchandise_ image\", \"object\": \"Merchandise_Image object (None)\"}}]', 13, 2),
 (147, '2023-01-04 17:17:28.527722', '6', 'FC Bayern Triple Winners 2020 Cap - Black', 2, '[{\"added\": {\"name\": \"merchandise_ image\", \"object\": \"Merchandise_Image object (17)\"}}, {\"added\": {\"name\": \"merchandise_ image\", \"object\": \"Merchandise_Image object (18)\"}}]', 13, 2),
 (148, '2023-01-04 17:17:45.118497', '6', 'FC Bayern Triple Winners 2020 Cap - Black', 2, '[{\"changed\": {\"fields\": [\"Discount\"]}}]', 13, 2),
-(149, '2023-01-04 17:18:22.439342', '6', 'FC Bayern Triple Winners 2020 Cap - Black', 2, '[{\"changed\": {\"fields\": [\"Product information\"]}}]', 13, 2);
+(149, '2023-01-04 17:18:22.439342', '6', 'FC Bayern Triple Winners 2020 Cap - Black', 2, '[{\"changed\": {\"fields\": [\"Product information\"]}}]', 13, 2),
+(150, '2023-01-05 08:53:02.028798', '6', 'FC Bayern Triple Winners 2020 Cap - Black', 2, '[{\"changed\": {\"fields\": [\"Added\"]}}]', 13, 2),
+(151, '2023-01-05 08:57:02.068056', '5', 'FC Bayern 10th Consecutive Championship Cap - Red - Unisex', 2, '[{\"changed\": {\"fields\": [\"Added\"]}}]', 13, 2),
+(152, '2023-01-05 08:57:24.355322', '1', 'FC Bayern ZX Modern Boost Trainers - White', 2, '[{\"changed\": {\"fields\": [\"Added\"]}}]', 13, 2),
+(153, '2023-01-05 08:57:41.773177', '2', 'FC Bayern Third Shirt 2022-23', 2, '[{\"changed\": {\"fields\": [\"Added\"]}}]', 13, 2),
+(154, '2023-01-05 08:58:13.583100', '4', 'FC Bayern 50th Anniversary Shirt', 2, '[{\"changed\": {\"fields\": [\"Added\"]}}]', 13, 2),
+(155, '2023-01-05 08:58:13.621653', '4', 'FC Bayern 50th Anniversary Shirt', 2, '[{\"changed\": {\"fields\": [\"Added\"]}}]', 13, 2),
+(156, '2023-01-05 09:16:55.090637', '2', 'Neeraj Vibez-194.36', 2, '[{\"changed\": {\"fields\": [\"Order notes\"]}}, {\"changed\": {\"name\": \"order_ item\", \"object\": \"NeerajvibezFC Bayern 10th Consecutive Championship Cap - Red - Unisex4\", \"fields\": [\"Quantity\"]}}]', 18, 2),
+(157, '2023-01-05 17:30:56.799495', '2', 'Neeraj Vibez-194.36', 2, '[{\"changed\": {\"name\": \"order_ item\", \"object\": \"NeerajvibezFC Bayern ZX Modern Boost Trainers - White6\", \"fields\": [\"Quantity\"]}}]', 18, 2),
+(158, '2023-01-05 17:31:20.506157', '2', 'Neeraj Vibez-194.36', 2, '[{\"changed\": {\"name\": \"order_ item\", \"object\": \"NeerajvibezFC Bayern 10th Consecutive Championship Cap - Red - Unisex1\", \"fields\": [\"Quantity\"]}}, {\"changed\": {\"name\": \"order_ item\", \"object\": \"NeerajvibezFC Bayern ZX Modern Boost Trainers - White1\", \"fields\": [\"Quantity\"]}}]', 18, 2),
+(159, '2023-01-05 17:31:45.408450', '2', 'Neeraj Vibez-194.36', 2, '[{\"changed\": {\"name\": \"order_ item\", \"object\": \"NeerajvibezFC Bayern ZX Modern Boost Trainers - White5\", \"fields\": [\"Quantity\"]}}]', 18, 2),
+(160, '2023-01-05 17:32:38.107260', '3', 'NeerajvibezFC Bayern ZX Modern Boost Trainers - White3', 2, '[{\"changed\": {\"fields\": [\"Quantity\"]}}]', 29, 2),
+(161, '2023-01-05 18:43:21.152099', '7', 'Nagelsmann welcomes training group before leaving for Doha', 1, '[{\"added\": {}}]', 17, 2),
+(162, '2023-01-05 18:45:52.392498', '7', 'Nagelsmann welcomes training group before leaving for Doha', 2, '[{\"changed\": {\"fields\": [\"Post content\"]}}]', 17, 2),
+(163, '2023-01-05 18:47:50.422905', '7', 'Nagelsmann welcomes training group before leaving for Doha', 2, '[{\"changed\": {\"fields\": [\"Post content\"]}}]', 17, 2),
+(164, '2023-01-05 18:50:15.325810', '7', 'Nagelsmann welcomes training group before leaving for Doha', 2, '[{\"changed\": {\"fields\": [\"Post content\"]}}]', 17, 2),
+(165, '2023-01-05 18:51:30.079172', '7', 'Nagelsmann welcomes training group before leaving for Doha', 2, '[{\"changed\": {\"fields\": [\"Post content\"]}}]', 17, 2),
+(166, '2023-01-05 18:58:44.667571', '7', 'Nagelsmann welcomes training group before leaving for Doha', 2, '[{\"changed\": {\"fields\": [\"Post content\"]}}]', 17, 2),
+(167, '2023-01-05 19:07:04.091823', '1', 'Photos from Bayern’s first open training of 2023', 1, '[{\"added\": {}}, {\"added\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (1)\"}}]', 9, 2),
+(168, '2023-01-05 19:14:40.327169', '1', 'Photos from Bayern’s first open training of 2023', 2, '[{\"added\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (2)\"}}]', 9, 2),
+(169, '2023-01-05 19:18:00.565514', '1', 'Photos from Bayern’s first open training of 2023', 2, '[{\"added\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (3)\"}}, {\"added\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (4)\"}}, {\"added\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (5)\"}}, {\"added\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (6)\"}}, {\"added\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (7)\"}}, {\"added\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (8)\"}}, {\"added\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (9)\"}}, {\"added\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (10)\"}}, {\"added\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (11)\"}}, {\"added\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (12)\"}}]', 9, 2),
+(170, '2023-01-05 19:18:40.337966', '1', 'Photos from Bayern’s first open training of 2023', 2, '[{\"added\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (13)\"}}, {\"added\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (14)\"}}, {\"added\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (15)\"}}, {\"changed\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (2)\", \"fields\": [\"Date\"]}}, {\"changed\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (3)\", \"fields\": [\"Date\"]}}, {\"changed\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (4)\", \"fields\": [\"Date\"]}}, {\"changed\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (5)\", \"fields\": [\"Date\"]}}, {\"changed\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (6)\", \"fields\": [\"Date\"]}}, {\"changed\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (7)\", \"fields\": [\"Date\"]}}, {\"changed\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (8)\", \"fields\": [\"Date\"]}}, {\"changed\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (9)\", \"fields\": [\"Date\"]}}, {\"changed\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (10)\", \"fields\": [\"Date\"]}}, {\"changed\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (11)\", \"fields\": [\"Date\"]}}, {\"changed\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (12)\", \"fields\": [\"Date\"]}}]', 9, 2),
+(171, '2023-01-05 19:20:47.445491', '1', 'Photos from Bayern’s first open training of 2023', 2, '[{\"deleted\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (None)\"}}, {\"deleted\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (None)\"}}, {\"deleted\": {\"name\": \"album_ image\", \"object\": \"Album_Image object (None)\"}}]', 9, 2),
+(172, '2023-01-05 19:31:08.522328', '4', 'Face Coverings', 1, '[{\"added\": {}}]', 15, 2),
+(173, '2023-01-05 19:42:33.081474', '7', 'FC Bayern adidas 3 Pack Face Covering - Black - M/L', 1, '[{\"added\": {}}, {\"added\": {\"name\": \"merchandise_ information\", \"object\": \"Merchandise_Information object (12)\"}}, {\"added\": {\"name\": \"merchandise_ information\", \"object\": \"Merchandise_Information object (13)\"}}, {\"added\": {\"name\": \"merchandise_ information\", \"object\": \"Merchandise_Information object (14)\"}}]', 13, 2),
+(174, '2023-01-05 19:43:00.365136', '7', 'FC Bayern adidas 3 Pack Face Covering - Black - M/L', 2, '[{\"changed\": {\"fields\": [\"Discount\"]}}]', 13, 2),
+(175, '2023-01-05 19:44:06.617184', '7', 'FC Bayern adidas 3 Pack Face Covering - Black - M/L', 2, '[{\"added\": {\"name\": \"merchandise_ image\", \"object\": \"Merchandise_Image object (19)\"}}, {\"added\": {\"name\": \"merchandise_ image\", \"object\": \"Merchandise_Image object (20)\"}}, {\"added\": {\"name\": \"merchandise_ image\", \"object\": \"Merchandise_Image object (21)\"}}, {\"added\": {\"name\": \"merchandise_ image\", \"object\": \"Merchandise_Image object (22)\"}}]', 13, 2),
+(176, '2023-01-05 19:50:28.104500', '4', 'Friendly', 1, '[{\"added\": {}}]', 10, 2),
+(177, '2023-01-05 19:52:54.773010', '11', 'FC Red Bull Salzburg', 1, '[{\"added\": {}}]', 25, 2),
+(178, '2023-01-05 19:54:25.466186', '7', 'FC Red Bull Salzburg_7', 1, '[{\"added\": {}}]', 21, 2),
+(179, '2023-01-05 19:57:03.241766', '11', 'FC Red Bull Salzburg', 2, '[{\"changed\": {\"fields\": [\"Logo\"]}}]', 25, 2),
+(180, '2023-01-05 20:02:12.639627', '7', 'FC Red Bull Salzburg_7', 2, '[{\"changed\": {\"fields\": [\"At home\"]}}]', 21, 2),
+(181, '2023-01-05 20:02:29.471573', '7', 'FC Red Bull Salzburg_7', 2, '[{\"changed\": {\"fields\": [\"At home\"]}}]', 21, 2),
+(182, '2023-01-05 20:06:14.154874', '7', 'FC Red Bull Salzburg_7', 2, '[{\"changed\": {\"fields\": [\"At home\"]}}]', 21, 2),
+(183, '2023-01-05 20:06:24.194076', '7', 'FC Red Bull Salzburg_7', 2, '[{\"changed\": {\"fields\": [\"At home\"]}}]', 21, 2),
+(184, '2023-01-05 20:10:20.364548', '8', 'Friendly against FC Red Bull Salzburg on 13 January', 1, '[{\"added\": {}}]', 17, 2);
 
 -- --------------------------------------------------------
 
@@ -566,7 +601,11 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (41, 'main', '0003_remove_news_article_related_news_and_more', '2022-12-26 20:28:41.388976'),
 (42, 'main', '0004_team_short_name', '2022-12-29 06:48:14.217350'),
 (43, 'main', '0005_merchandise_related_products', '2023-01-04 10:06:10.565593'),
-(44, 'main', '0006_order_delivered', '2023-01-04 16:18:46.398488');
+(44, 'main', '0006_order_delivered', '2023-01-04 16:18:46.398488'),
+(45, 'main', '0007_merchandise_added', '2023-01-05 08:49:44.594571'),
+(46, 'main', '0008_album_image_image_url_club_album_featured_image_url_and_more', '2023-01-05 19:03:10.939925'),
+(47, 'main', '0009_alter_album_image_image_and_more', '2023-01-05 19:05:34.248570'),
+(48, 'main', '0010_alter_album_image_date_alter_album_image_description', '2023-01-05 19:06:39.313110');
 
 -- --------------------------------------------------------
 
@@ -586,7 +625,7 @@ CREATE TABLE `django_session` (
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
 ('1ug6m4u0exvsj2bp2s51iqnwz6gqbwt8', 'eyJpbnN0YS1mb2xsb3dlcnMiOiIzNS41TSJ9:1p6QXH:GqJSkYBb-aOjP2t7HFni5THY80bwrxG8rVj_4wZZB4I', '2022-12-31 06:19:03.154007'),
-('6g4f6go0qo8gc84e5ewmzkqznbf4fspw', '.eJxVjMsOgyAUBf-FdUsEebrs3m8wF7hUWyMJYLow_ns1ceN2Zs7ZyLSUCs-Y5jn9MBfSkVZS3ZMHGWCt47AWzMMUDs7vzIH_4nKK8IHlnahPS82To2dCL1tonwLOr6u9HYxQxmPtpAEvPTcOmLNOaSNDazVIZbxwkYvGYWTMCwgRrUUmo4oMG8FRCd_o49RDrqTb9v0PiZpD5Q:1pD7PE:o32mOuQHLTIgI5W0gVcZ-BloaUCjc-FH398v-QrDs00', '2023-01-18 17:18:24.185419'),
+('6g4f6go0qo8gc84e5ewmzkqznbf4fspw', '.eJxVjMsOgyAUBf-FdUsEebrs3m8wF7hUWyMJYLow_ns1ceN2Zs7ZyLSUCs-Y5jn9MBfSkVZS3ZMHGWCt47AWzMMUDs7vzIH_4nKK8IHlnahPS82To2dCL1tonwLOr6u9HYxQxmPtpAEvPTcOmLNOaSNDazVIZbxwkYvGYWTMCwgRrUUmo4oMG8FRCd_o49RDrqTb9v0PiZpD5Q:1pDWc0:7XeBrgsvoHKZG0NR6NCRAvQWvpD7Oang-JAMMtPaA4E', '2023-01-19 20:13:16.676413'),
 ('6ptim8ys298c0ul1x4293u1rjr1wb8xi', 'e30:1p66kV:cb3rUeqJqBqMcmDMeEei7fjG_qYo3RTcpC843xL0xTQ', '2022-12-30 09:11:23.903579'),
 ('b9bi7vxs7p9aatr7wb9zwxl7es3vzy5v', 'e30:1p6zNC:AvflqbDrX70MA-5s5NZFqkLvWLkqgF2dHXDZdA-MdLI', '2023-01-01 19:30:58.275569'),
 ('gv35g17t2ipl0vcqu7z8f0a5k70kwq35', '.eJxVjkEOgyAURO_C2hIt_Qgu3XsG84FPtTWQAKYL492riYt2O-_NZDY24lqmcc2UxtmxjklW_WYG7ZvCCdwLwzNyG0NJs-Gnwi-a-RAdLf3l_g1MmKejTVJrYbBB5VTttTUAQEqCIU_ePKRwqm0VNIAkjLZ3h3iIytceG2jd-cpiKqzb9orNIRe8-bgs8UMpH_MCuBzY_gXTVEQt:1p9sQG:uS2Vy-UvffbYwIWrPEElEmRfL1uZY6eIDTdf2RCJlRs', '2023-01-09 18:42:04.679418'),
@@ -634,8 +673,27 @@ CREATE TABLE `main_album_image` (
   `image` varchar(100) DEFAULT NULL,
   `description` varchar(100) DEFAULT NULL,
   `date` date DEFAULT NULL,
-  `parent_album_id` bigint(20) DEFAULT NULL
+  `parent_album_id` bigint(20) DEFAULT NULL,
+  `image_url` varchar(600) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `main_album_image`
+--
+
+INSERT INTO `main_album_image` (`id`, `image`, `description`, `date`, `parent_album_id`, `image_url`) VALUES
+(1, '', 'Sane signing autographs', '2023-01-05', 1, 'https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/01-oeffentliches-training-230105-fcbayern-mel.jpg'),
+(2, '', NULL, '2023-01-05', 1, 'https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/02-oeffentliches-training-230105-fcbayern-mel.jpg'),
+(3, '', NULL, '2023-01-05', 1, 'https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/03-oeffentliches-training-230105-fcbayern-mel.jpg'),
+(4, '', NULL, '2023-01-05', 1, 'https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/04-oeffentliches-training-230105-fcbayern-mel.jpg'),
+(5, '', NULL, '2023-01-05', 1, 'https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/05-oeffentliches-training-230105-fcbayern-mel.jpg'),
+(6, '', NULL, '2023-01-05', 1, 'https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/06-oeffentliches-training-230105-fcbayern-mel.jpg'),
+(7, '', NULL, '2023-01-05', 1, 'https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/07-oeffentliches-training-230105-fcbayern-mel.jpg'),
+(8, '', NULL, '2023-01-05', 1, 'https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/08-oeffentliches-training-230105-fcbayern-mel.jpg'),
+(9, '', NULL, '2023-01-05', 1, 'https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/09-oeffentliches-training-230105-fcbayern-mel.jpg'),
+(10, '', NULL, '2023-01-05', 1, 'https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/10-oeffentliches-training-230105-fcbayern-mel.jpg'),
+(11, '', NULL, '2023-01-05', 1, 'https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/11-oeffentliches-training-230105-fcbayern-mel.jpg'),
+(12, '', NULL, '2023-01-05', 1, 'https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/12-oeffentliches-training-230105-fcbayern-mel.jpg');
 
 -- --------------------------------------------------------
 
@@ -697,8 +755,16 @@ CREATE TABLE `main_club_album` (
   `title` varchar(100) DEFAULT NULL,
   `featured_image` varchar(100) DEFAULT NULL,
   `date` date DEFAULT NULL,
-  `slug` varchar(500) DEFAULT NULL
+  `slug` varchar(500) DEFAULT NULL,
+  `featured_image_url` varchar(600) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `main_club_album`
+--
+
+INSERT INTO `main_club_album` (`id`, `title`, `featured_image`, `date`, `slug`, `featured_image_url`) VALUES
+(1, 'Photos from Bayern’s first open training of 2023', '', '2023-01-05', 'bayerns-first-open-training-of-2023', 'https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/01-oeffentliches-training-230105-fcbayern-mel.jpg');
 
 -- --------------------------------------------------------
 
@@ -778,7 +844,8 @@ CREATE TABLE `main_competition` (
 INSERT INTO `main_competition` (`id`, `name`) VALUES
 (1, 'BundesLiga'),
 (2, 'UEFA Champions League'),
-(3, 'DFB Pokal');
+(3, 'DFB Pokal'),
+(4, 'Friendly');
 
 -- --------------------------------------------------------
 
@@ -963,19 +1030,21 @@ CREATE TABLE `main_merchandise` (
   `description` longtext DEFAULT NULL,
   `product_information` longtext DEFAULT NULL,
   `slug` varchar(500) DEFAULT NULL,
-  `category_id` bigint(20) DEFAULT NULL
+  `category_id` bigint(20) DEFAULT NULL,
+  `added` datetime(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `main_merchandise`
 --
 
-INSERT INTO `main_merchandise` (`id`, `name`, `featured_image`, `price`, `discount`, `description`, `product_information`, `slug`, `category_id`) VALUES
-(1, 'FC Bayern ZX Modern Boost Trainers - White', 'shop/fc-bayern-zx-modern-boost-trainers-white_ss4_p-12082296.png', '180.50', 4, 'Maintain a stylish presence. The trainers are more than suitable for a day out watching your team, or when spending time with friends.', '<p>With over 290,000 club members, FC Bayern M&uuml;nchen eV is the sports club boasting the largest number of members in the world. Through their membership, our supporters not only document their identification with the club, but are also part of the large FC Bayern family.</p>\r\n\r\n<p>Your heart also beats for FC Bayern Munich and you would like to be part of the red and white club family? Then apply for&nbsp;<a href=\"https://online.fcbayern.com/ev-mitglied-werden/en#/\">membership</a>&nbsp;now - we look forward to welcoming you!</p>\r\n\r\n<p>You can find all the important information about membership here on this page.</p>\r\n\r\n<p><br />\r\n<strong>Oh, and by the way:</strong></p>\r\n\r\n<p>100% of the income generated by memberships benefits FC Bayern M&uuml;nchen eV, which primarily supports our youth work and our grassroots sports departments.</p>', 'fc-bayern-zx-modern-boost-trainers-white', 2),
-(2, 'FC Bayern Third Shirt 2022-23', 'shop/fc-bayern-third-shirt-2022-23_ss4_p-13313171.png', '78.00', 5, 'FC Bayern Munich always have the upper hand and supporters will to with this third shirt from adidas. With subtle and tonal details inspired by the classic Bavarian card game, Schafkopf, and the symbols associated with it, the shirt is a replica of the one worn by the Bayern players during selected matchdays in the Bundesliga and Champions League away from the Allianz Arena. It possesses the patented AEROREADY technology which allows fans to get a cool and dry feel whenever they wear it.', '<p>FC Bayern Munich always have the upper hand and supporters will to with this third shirt from adidas. With subtle and tonal details inspired by the classic Bavarian card game, Schafkopf, and the symbols associated with it, the shirt is a replica of the one worn by the Bayern players during selected matchdays in the Bundesliga and Champions League away from the Allianz Arena. It possesses the patented AEROREADY technology which allows fans to get a cool and dry feel whenever they wear it.</p>\r\n\r\n<h4>&nbsp;</h4>', 'fc-bayern-third-shirt-2022-23', 1),
-(4, 'FC Bayern 50th Anniversary Shirt', 'shop/fc-bayern-50th-anniversary-shirt_ss4.png', '120.00', 37, 'Built to mark 50 years of the Olympiastadion. This vibrant adidas FC Bayern jersey celebrates a special landmark for the stadium the Bavarian club called home for 33 years. Capturing the colours of the competition the iconic arena was constructed to host and a subtle design inspired by its roof, it really catches the eye. Created to keep fans comfortable, it\'s made with breathable mesh panels and moisture absorbing AEROREADY. An embroidered club crest puts your football pride on display. Made with 100% recycled materials, this product represents just one of our solutions to help end plastic waste.', '<p>Built to mark 50 years of the Olympiastadion. This vibrant adidas FC Bayern jersey celebrates a special landmark for the stadium the Bavarian club called home for 33 years. Capturing the colours of the competition the iconic arena was constructed to host and a subtle design inspired by its roof, it really catches the eye. Created to keep fans comfortable, it&#39;s made with breathable mesh panels and moisture absorbing AEROREADY. An embroidered club crest puts your football pride on display. Made with 100% recycled materials, this product represents just one of our solutions to help end plastic waste.</p>', 'fc-bayern-50th-anniversary-shirt', 1),
-(5, 'FC Bayern 10th Consecutive Championship Cap - Red - Unisex', 'shop/fc-bayern-10th-consecutive-championship-cap-red-unisex_ss4_p-13331477.png', '36.00', 47, 'Get a stylish look, and hold your head up high. A must-have for supporters, this cap is available in club colours.', '<p>Get a stylish look, and hold your head up high. A must-have for supporters, this cap is available in club colours.</p>', 'fc-bayern-10th-consecutive-championship-cap-red-unisex', 3),
-(6, 'FC Bayern Triple Winners 2020 Cap - Black', 'shop/fc-bayern-triple-winners-2020-cap-black_ss4_p-12041373.png', '36.00', 12, 'Display your love and devotion for your club. An essential item for fans to wear on matchdays and beyond, the cap is available in club colours.', '<p>Display your love and devotion for your club. An essential item for fans to wear on matchdays and beyond, the cap is available in club colours</p>\r\n\r\n<p>THIS IS A PRE-ORDER ITEM. THIS ITEM SHIPS ON OR BEFORE Thursday, 5 January 2023.</p>', 'fc-bayern-triple-winners-2020-cap-black', 3);
+INSERT INTO `main_merchandise` (`id`, `name`, `featured_image`, `price`, `discount`, `description`, `product_information`, `slug`, `category_id`, `added`) VALUES
+(1, 'FC Bayern ZX Modern Boost Trainers - White', 'shop/fc-bayern-zx-modern-boost-trainers-white_ss4_p-12082296.png', '180.50', 4, 'Maintain a stylish presence. The trainers are more than suitable for a day out watching your team, or when spending time with friends.', '<p>With over 290,000 club members, FC Bayern M&uuml;nchen eV is the sports club boasting the largest number of members in the world. Through their membership, our supporters not only document their identification with the club, but are also part of the large FC Bayern family.</p>\r\n\r\n<p>Your heart also beats for FC Bayern Munich and you would like to be part of the red and white club family? Then apply for&nbsp;<a href=\"https://online.fcbayern.com/ev-mitglied-werden/en#/\">membership</a>&nbsp;now - we look forward to welcoming you!</p>\r\n\r\n<p>You can find all the important information about membership here on this page.</p>\r\n\r\n<p><br />\r\n<strong>Oh, and by the way:</strong></p>\r\n\r\n<p>100% of the income generated by memberships benefits FC Bayern M&uuml;nchen eV, which primarily supports our youth work and our grassroots sports departments.</p>', 'fc-bayern-zx-modern-boost-trainers-white', 2, '2021-01-05 00:00:00.000000'),
+(2, 'FC Bayern Third Shirt 2022-23', 'shop/fc-bayern-third-shirt-2022-23_ss4_p-13313171.png', '78.00', 5, 'FC Bayern Munich always have the upper hand and supporters will to with this third shirt from adidas. With subtle and tonal details inspired by the classic Bavarian card game, Schafkopf, and the symbols associated with it, the shirt is a replica of the one worn by the Bayern players during selected matchdays in the Bundesliga and Champions League away from the Allianz Arena. It possesses the patented AEROREADY technology which allows fans to get a cool and dry feel whenever they wear it.', '<p>FC Bayern Munich always have the upper hand and supporters will to with this third shirt from adidas. With subtle and tonal details inspired by the classic Bavarian card game, Schafkopf, and the symbols associated with it, the shirt is a replica of the one worn by the Bayern players during selected matchdays in the Bundesliga and Champions League away from the Allianz Arena. It possesses the patented AEROREADY technology which allows fans to get a cool and dry feel whenever they wear it.</p>\r\n\r\n<h4>&nbsp;</h4>', 'fc-bayern-third-shirt-2022-23', 1, '2022-08-08 00:00:00.000000'),
+(4, 'FC Bayern 50th Anniversary Shirt', 'shop/fc-bayern-50th-anniversary-shirt_ss4.png', '120.00', 37, 'Built to mark 50 years of the Olympiastadion. This vibrant adidas FC Bayern jersey celebrates a special landmark for the stadium the Bavarian club called home for 33 years. Capturing the colours of the competition the iconic arena was constructed to host and a subtle design inspired by its roof, it really catches the eye. Created to keep fans comfortable, it\'s made with breathable mesh panels and moisture absorbing AEROREADY. An embroidered club crest puts your football pride on display. Made with 100% recycled materials, this product represents just one of our solutions to help end plastic waste.', '<p>Built to mark 50 years of the Olympiastadion. This vibrant adidas FC Bayern jersey celebrates a special landmark for the stadium the Bavarian club called home for 33 years. Capturing the colours of the competition the iconic arena was constructed to host and a subtle design inspired by its roof, it really catches the eye. Created to keep fans comfortable, it&#39;s made with breathable mesh panels and moisture absorbing AEROREADY. An embroidered club crest puts your football pride on display. Made with 100% recycled materials, this product represents just one of our solutions to help end plastic waste.</p>', 'fc-bayern-50th-anniversary-shirt', 1, '2022-11-07 00:00:00.000000'),
+(5, 'FC Bayern 10th Consecutive Championship Cap - Red - Unisex', 'shop/fc-bayern-10th-consecutive-championship-cap-red-unisex_ss4_p-13331477.png', '36.00', 47, 'Get a stylish look, and hold your head up high. A must-have for supporters, this cap is available in club colours.', '<p>Get a stylish look, and hold your head up high. A must-have for supporters, this cap is available in club colours.</p>', 'fc-bayern-10th-consecutive-championship-cap-red-unisex', 3, '2022-07-12 00:00:00.000000'),
+(6, 'FC Bayern Triple Winners 2020 Cap - Black', 'shop/fc-bayern-triple-winners-2020-cap-black_ss4_p-12041373.png', '36.00', 12, 'Display your love and devotion for your club. An essential item for fans to wear on matchdays and beyond, the cap is available in club colours.', '<p>Display your love and devotion for your club. An essential item for fans to wear on matchdays and beyond, the cap is available in club colours</p>\r\n\r\n<p>THIS IS A PRE-ORDER ITEM. THIS ITEM SHIPS ON OR BEFORE Thursday, 5 January 2023.</p>', 'fc-bayern-triple-winners-2020-cap-black', 3, '2021-08-10 00:00:00.000000'),
+(7, 'FC Bayern adidas 3 Pack Face Covering - Black - M/L', 'shop/l_ss4_p-12039810.png', '30.00', 52, 'Show off your love for the Red Devils, with the Bayern Munich adidas 3 Pack Face Coverings - Black – M/L. Available in club colours, while featuring the FC Bayern crest and or wordmark, the face coverings use soft, breathable fabric to offer a comfortable and tight fit, while they’re also washable and reusable meaning you can show off your pride and passion for the der FCB every day.', '<p>Show off your love for the Red Devils, with the Bayern Munich adidas 3 Pack Face Coverings - Black &ndash; M/L. Available in club colours, while featuring the FC Bayern crest and or wordmark, the face coverings use soft, breathable fabric to offer a comfortable and tight fit, while they&rsquo;re also washable and reusable meaning you can show off your pride and passion for the der FCB every day.</p>', 'fc-bayern-adidas-3-pack-face-covering-black-m-l', 4, '2022-03-07 00:00:00.000000');
 
 -- --------------------------------------------------------
 
@@ -1009,7 +1078,11 @@ INSERT INTO `main_merchandise_image` (`id`, `image_url`, `product_id`) VALUES
 (13, 'shop/fc-bayern-zx-modern-boost-trainers-white_ss4_p-12082296-5.png', 1),
 (14, 'shop/fc-bayern-zx-modern-boost-trainers-white_ss4_p-12082296-6.png', 1),
 (17, 'shop/fc-bayern-triple-winners-2020-cap-black_ss4_p-12041373.png', 6),
-(18, 'shop/fc-bayern-triple-winners-2020-cap-black_ss4_p-12041373-2.png', 6);
+(18, 'shop/fc-bayern-triple-winners-2020-cap-black_ss4_p-12041373-2.png', 6),
+(19, 'shop/l_ss4_p-12039810.png', 7),
+(20, 'shop/l_ss4_p-12039810-2.png', 7),
+(21, 'shop/l_ss4_p-12039810-3.png', 7),
+(22, 'shop/l_ss4_p-12039810-4.png', 7);
 
 -- --------------------------------------------------------
 
@@ -1039,7 +1112,10 @@ INSERT INTO `main_merchandise_information` (`id`, `specification`, `detail`, `pr
 (8, 'Back', 'Adjustable closure', 5),
 (9, 'Country of origin', 'China', 5),
 (10, 'Product ID', '12041373', 6),
-(11, 'Material', '100% cotton', 6);
+(11, 'Material', '100% cotton', 6),
+(12, 'Product ID', 'P12039810', 7),
+(13, 'Material', '93% recycled polyester, 7% Elastane', 7),
+(14, 'Fit', 'Tight fit, Soft and breathable & Stretches around the ears', 7);
 
 -- --------------------------------------------------------
 
@@ -1114,7 +1190,8 @@ CREATE TABLE `main_merchandise_type` (
 INSERT INTO `main_merchandise_type` (`id`, `name`, `size_option`, `unique_player`) VALUES
 (1, 'jerseys', 1, 1),
 (2, 'shoes', 1, 0),
-(3, 'caps', 0, 0);
+(3, 'caps', 0, 0),
+(4, 'Face Coverings', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1179,7 +1256,9 @@ INSERT INTO `main_news_article` (`id`, `title`, `image`, `post_content`, `added`
 (3, 'Bundesliga 2023/24 outline schedule confirmed', '', '<p>The German Football Association (DFB) executive committee revealed the&nbsp;<a href=\"https://www.dfl.de/en/news/calendar-for-the-2023-24-season/\">outline schedule for the 2023/24 Bundesliga season</a>&nbsp;on Friday. The next Bundesliga campaign begins with the opening match on 18 August 2023, and ends with the final matchday on Saturday 18 May 2024.</p>\r\n\r\n<h2>Only one midweek round</h2>\r\n\r\n<p>The Bundesliga winter break starts after Matchday 16 (19/20 December 2023), which is also the only midweek matchday of the season. The action will recommence in Germany&#39;s top flight on 12 January 2024.</p>\r\n\r\n<p><img alt=\"FC Bayern DFL-Supercup winners 2022\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1670589939/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Spiele/Supercup-Leipzig-FCB/33-supercup-rbl-fcb-220730-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"Bayern won the 2022 DFL-Supercup against Leipzig - Julian Nagelsmann’s side still need to qualify for the next edition on 12 August 2023.\" /></p>\r\n\r\n<p>Bayern won the 2022 DFL-Supercup against Leipzig - Julian Nagelsmann&rsquo;s side still need to qualify for the next edition on 12 August 2023.</p>\r\n\r\n<p>A week before the league season starts, the Supercup between the Bundesliga champions and DFB Cup winners takes place on Saturday 12 August 2023. The DFB Cup begins on the same weekend (11-14 August) with the first round. The cup ties involving the Supercup participants have therefore been arranged for 26 and 27 September. The DFB Cup final is set to be played one week after the conclusion of the Bundesliga season, on Saturday 25 May 2024 at Berlin&#39;s Olympiastadion.</p>', '2022-12-09 19:21:00.000000', '2022-12-28 13:47:55.960773', 'bundesliga-202324-outline-schedule-confirmed', 5, 'The German Football Association (DFB) executive committee revealed the outline schedule for the 2023/24 Bundesliga season on Friday. The next Bundesliga campaign begins with the opening match on 18 August 2023, and ends with the final matchday on Saturday 18 May 2024.', 1, 2, 1, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1670590369/cms/public/images/fcbayern-com/homepage/platzhalter/pokale/220730-meisterschale-dfb-pokal-supercup-ima.jpg', NULL),
 (4, 'Upamecano and Co reach World Cup final with France', '', '<p>Three Bayern players with France are just one step away from reaching football&#39;s summit - but for&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/noussair-mazraoui\">Noussair Mazraoui</a>, the dream of the World Cup final is over. On Wednesday evening, Les Bleus beat Morocco 2-0 in the semi-finals and now have the chance to become the first team since Brazil in 1962 to defend the world title.</p>\r\n\r\n<p><img alt=\"Noussair Mazraoui Morocco\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1671049330/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Nationalspieler/221214-mazraoui-marokko-frankreich-get.jpg\" style=\"height:2160px; width:3840px\" title=\"Noussair Mazraoui started for Morocco and was subbed at half-time.\" /></p>\r\n\r\n<p>Noussair Mazraoui started for Morocco and was subbed at half-time.</p>\r\n\r\n<p>While Mazraoui came off at half-time for the North Africans,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/kingsley-coman\">Kingsley Coman</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/dayot-upamecano\">Dayot Upamecano</a>&nbsp;and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/benjamin-pavard\">Benjamin Pavard</a>&nbsp;did not feature for the reigning champions. The two teams produced a high-quality encounter with numerous chances at both ends. After Theo Hern&aacute;ndez, brother of&nbsp;<a href=\"https://fcbayern.com/en/news/2022/11/lucas-hernandez-successfully-operated-on\">injured FCB defender</a><a href=\"https://fcbayern.com/de/teams/profis/lucas-hernandez\">Lucas Hern&aacute;ndez</a>, gave France an early lead in the fifth minute, it wasn&#39;t until the 79th minute that the net rippled again through Frankfurt striker Randal Kolo Muani, who had only just come on.</p>\r\n\r\n<h2>Fighting for a third star</h2>\r\n\r\n<p>Didier Deschamps&#39; men now face Argentina in the final at the Lusail Iconic Stadium on Sunday afternoon (16:00 CET). Both teams have been world champions on two occassions and are bidding to get a third star on their shirt. On Saturday (16:00 CET), Mazraoui will go up against Bayern teammate Josip&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/josip-stani%C5%A1i%C4%87\">Stani&scaron;ić</a>&nbsp;and Croatia in the third place playoff.</p>', '2022-12-15 15:11:00.000000', '2022-12-28 12:53:38.305919', 'upamecano-and-co-reach-world-cup-final-with-france', 2, 'Three Bayern players with France are just one step away from reaching football\'s summit - but for Noussair Mazraoui, the dream of the World Cup final is over. On Wednesday evening, Les Bleus beat Morocco 2-0 in the semi-finals and now have the chance to become the first team since Brazil in 1962 to defend the world title.', 1, 2, 2, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1671051371/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Nationalspieler/221214-juebl-upamecano-frankreich-get.jpg', NULL),
 (5, 'Stanišić misses out on World Cup final with Croatia', '', '<p>Such a shame, Josip! On Tuesday evening, the Croatian national team featuring Bayern player Josip Stani&scaron;ić missed out on a place in the final of the World Cup in Qatar. In the 3-0 (2-0) semi-final loss to Argentina, the 22-year-old full-back once again watched the game from the bench. The South Americans dominated the first half and deservedly took the lead through Lionel Messi (34&#39;/pen) and Juli&aacute;n &Aacute;lvarez (39&#39;). After the break, the Croatians tried everything they could to turn the game around, but ultimately had no luck. Instead, &Aacute;lvarez (69&#39;) bagged his second goal of the evening with around 20 minutes to go.</p>\r\n\r\n<h2>Regroup and focus on the third place play-off</h2>\r\n\r\n<p>Stani&scaron;ić and Co. now need to prepare for the third place play-off on Saturday (16:00 CET), where Zlatko Dalić&#39;s side will meet the losers of the second semi-final between Morocco and France (Wednesday, 20:00 CET). After finishing in third place at the 1998 World Cup and reaching the final in 2018, the Croats now have a third chance to end a World Cup tournament with a medal.</p>', '2022-12-14 15:05:00.000000', '2022-12-28 13:52:29.413107', 'stanisic-misses-out-on-world-cup-final-with-croatia', 49, 'On Tuesday evening, the Croatian national team featuring Bayern player Josip Stanišić missed out on a place in the final of the World Cup in Qatar. In the 3-0 (2-0) semi-final loss to Argentina, the 22-year-old full-back once again watched the game from the bench.', 1, 3, 2, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1670962050/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Nationalspieler/221213-stanisic-kroatien-ima.jpg', NULL),
-(6, 'Straight into the top corner – Fans honour Eric Maxim Choupo-Moting', 'uploads/chupo-goal-of-the-month-nov.jpg', '<p>Head up and into the top corner - that&#39;s how to do it! In FC Bayern&#39;s final Champions League group game against Inter Milan at the start of November,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/eric-maxim-choupo-moting\">Eric Maxim Choupo-Moting</a>&nbsp;went for goal with around a quarter of an hour left and lashed the ball into the top left corner from a good 20 metres out. The strike didn&#39;t just wrap up the&nbsp;<a href=\"https://fcbayern.com/en/matches/profis/champions-league/2022-2023/fc-bayern-muenchen-inter-mailand-01-11-2022/report\">2-0 final scoreline</a>&nbsp;and a&nbsp;<a href=\"https://fcbayern.com/en/news/2022/11/record-breaking-fc-bayern-complete-third-perfect-champions-league-group-stage\">sixth win in six games</a>&nbsp;in this UCL season, but also sent a ripple around the&nbsp;<a href=\"https://allianz-arena.com/en\">Allianz Arena</a>. It&#39;s not every day that you see such a brilliant goal, even at FCB&#39;s home stadium.</p>\r\n\r\n<h2>Choupo earns over a third of the votes</h2>\r\n\r\n<p><img alt=\"Choupo-Moting FC Bayern\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1671121333/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Spiele/FCB-Inter/19-fcb-inter-011122-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"Choupo-Moting instinctively drilled the ball into the top corner in the 72nd minute of the final Champions League group game.\" /></p>\r\n\r\n<p>Choupo-Moting instinctively drilled the ball into the top corner in the 72nd minute of the final Champions League group game.</p>\r\n\r\n<p>Fans of the German record champions agreed and voted Choupo-Moting&#39;s effort as the FC Bayern Goal of the Month for November, with the Cameroon international receiving 38% of the votes. Second place went to&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/jamal-musiala\">Jamal Musiala</a>&nbsp;(26%) for his skilful opening goal in the&nbsp;<a href=\"https://fcbayern.com/en/matches/profis/bundesliga/2022-2023/fc-bayern-muenchen-sv-werder-bremen-08-11-2022/report\">6-1 win</a>&nbsp;over Werder Bremen, while Carolin Simon&#39;s wonderful free-kick in the 7-0 DFB Cup win at MSV Duisburg came third (17%).</p>', '2022-12-17 19:11:00.000000', '2022-12-29 06:20:31.092620', 'straight-into-the-top-corner-fans-honour-eric-maxim-choupo-moting', 20, 'Head up and into the top corner - that\'s how to do it! In FC Bayern\'s final Champions League group game against Inter Milan at the start of November, Eric Maxim Choupo-Moting went for goal with around a quarter of an hour left and lashed the ball into the top left corner from a good 20 metres out. The strike didn\'t just wrap up the 2-0 final scoreline and a sixth win in six games in this UCL season, but also sent a ripple around the Allianz Arena. It\'s not every day that you see such a brilliant goal, even at FCB\'s home stadium.', 0, 3, 2, NULL, NULL);
+(6, 'Straight into the top corner – Fans honour Eric Maxim Choupo-Moting', 'uploads/chupo-goal-of-the-month-nov.jpg', '<p>Head up and into the top corner - that&#39;s how to do it! In FC Bayern&#39;s final Champions League group game against Inter Milan at the start of November,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/eric-maxim-choupo-moting\">Eric Maxim Choupo-Moting</a>&nbsp;went for goal with around a quarter of an hour left and lashed the ball into the top left corner from a good 20 metres out. The strike didn&#39;t just wrap up the&nbsp;<a href=\"https://fcbayern.com/en/matches/profis/champions-league/2022-2023/fc-bayern-muenchen-inter-mailand-01-11-2022/report\">2-0 final scoreline</a>&nbsp;and a&nbsp;<a href=\"https://fcbayern.com/en/news/2022/11/record-breaking-fc-bayern-complete-third-perfect-champions-league-group-stage\">sixth win in six games</a>&nbsp;in this UCL season, but also sent a ripple around the&nbsp;<a href=\"https://allianz-arena.com/en\">Allianz Arena</a>. It&#39;s not every day that you see such a brilliant goal, even at FCB&#39;s home stadium.</p>\r\n\r\n<h2>Choupo earns over a third of the votes</h2>\r\n\r\n<p><img alt=\"Choupo-Moting FC Bayern\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1671121333/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Spiele/FCB-Inter/19-fcb-inter-011122-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"Choupo-Moting instinctively drilled the ball into the top corner in the 72nd minute of the final Champions League group game.\" /></p>\r\n\r\n<p>Choupo-Moting instinctively drilled the ball into the top corner in the 72nd minute of the final Champions League group game.</p>\r\n\r\n<p>Fans of the German record champions agreed and voted Choupo-Moting&#39;s effort as the FC Bayern Goal of the Month for November, with the Cameroon international receiving 38% of the votes. Second place went to&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/jamal-musiala\">Jamal Musiala</a>&nbsp;(26%) for his skilful opening goal in the&nbsp;<a href=\"https://fcbayern.com/en/matches/profis/bundesliga/2022-2023/fc-bayern-muenchen-sv-werder-bremen-08-11-2022/report\">6-1 win</a>&nbsp;over Werder Bremen, while Carolin Simon&#39;s wonderful free-kick in the 7-0 DFB Cup win at MSV Duisburg came third (17%).</p>', '2022-12-17 19:11:00.000000', '2022-12-29 06:20:31.092620', 'straight-into-the-top-corner-fans-honour-eric-maxim-choupo-moting', 20, 'Head up and into the top corner - that\'s how to do it! In FC Bayern\'s final Champions League group game against Inter Milan at the start of November, Eric Maxim Choupo-Moting went for goal with around a quarter of an hour left and lashed the ball into the top left corner from a good 20 metres out. The strike didn\'t just wrap up the 2-0 final scoreline and a sixth win in six games in this UCL season, but also sent a ripple around the Allianz Arena. It\'s not every day that you see such a brilliant goal, even at FCB\'s home stadium.', 0, 3, 2, NULL, NULL),
+(7, 'Nagelsmann welcomes training group before leaving for Doha', '', '<p>Bayern had their final two training sessions in Munich on Thursday before they head off to Doha and the Aspire Academy for their winter training camp on Friday. However, coach&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/coaches-and-staff/julian-nagelsmann\">Julian Nagelsmann</a>&nbsp;was still without a few players at S&auml;bener Stra&szlig;e.</p>\r\n\r\n<p><img alt=\"Joshua Kimmich FC Bayern Training\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672921075/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Kimmich/230105-kimmich-training-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"Joshua Kimmich and his teammates were hard at work in the morning session.\" /></p>\r\n\r\n<p>Joshua Kimmich and his teammates were hard at work in the morning session.</p>\r\n\r\n<h2>French players to travel directly</h2>\r\n\r\n<p>Among the players absent in Munich were French trio&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/dayot-upamecano\">Dayot Upamecano</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/benjamin-pavard\">Benjamin Pavard</a>&nbsp;and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/kingsley-coman\">Kingsley Coman</a>&nbsp;after they were given some extra time off following France&rsquo;s World Cup final loss to Argentina. They will travel directly to Doha on Friday.&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/marcel-sabitzer\">Marcel Sabitzer</a>&nbsp;and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/noussair-mazraoui\">Noussair Mazraoui</a>&nbsp;didn&rsquo;t take part either. Long-term injury absentees&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/manuel-neuer\">Manuel Neuer</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/sadio-mane\">Sadio Mane</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/lucas-hernandez\">Lucas Hernandez</a>&nbsp;and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/bouna-sarr\">Bouna Sarr</a>&nbsp;were also missing and will continue their respective recovery programmes in Munich. They won&rsquo;t be traveling to the training camp.</p>\r\n\r\n<h2>First open session of the year</h2>\r\n\r\n<p>After the day&rsquo;s first session in the morning,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/thomas-mueller\">Thomas M&uuml;ller</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/jamal-musiala\">Jamal Musiala</a>&nbsp;and their teammates welcomed fans to S&auml;bener Stra&szlig;e for the afternoon. It was the first open training session of the year as the players and coaches took time to sign autographs and take selfies with those in attendance.</p>\r\n\r\n<p><em>Check out the photos from the open session at S&auml;bener Stra&szlig;e:</em></p>\r\n\r\n<p><img alt=\"01-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/01-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"02-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/02-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"03-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/03-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"04-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/04-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"05-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/05-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"06-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/06-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"07-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/07-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"08-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/08-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"09-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/09-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"10-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/10-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"11-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/11-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"12-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/12-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>', '2023-01-05 22:30:00.000000', '2023-01-05 20:11:12.533919', 'nagelsmann-welcomes-training-group-before-leaving-for-doha', 7, 'Bayern had their final two training sessions in Munich on Thursday before they head off to Doha and the Aspire Academy for their winter training camp on Friday. However, coach Julian Nagelsmann was still without a few players at Säbener Straße.', 0, 6, 2, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1672920797/cms/public/images/fcbayern-com/homepage/Saison-22-23/Trainer/Nagelsmann/230105-nagelsmann-training-mel.jpg', NULL),
+(8, 'Friendly against FC Red Bull Salzburg on 13 January', '', '<p>FC Bayern will play a friendly against FC Red Bull&nbsp;Salzburg on 13 January 2023. The match will take place at the FC Bayern Campus, kicking off at 18:00 CET. A week later, on 20 January,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/coaches-and-staff/julian-nagelsmann\">Julian Nagelsmann</a>&#39;s side begin the second half of the season with the Bundesliga away match at RB Leipzig.</p>\r\n\r\n<p>Tickets for the friendly against Salzburg can be requested from today up until 18 December via the&nbsp;<a href=\"http://tickets.fcbayern.com/internetverkaufanfragen/EventList.aspx\">Online Shop</a>.</p>\r\n\r\n<p><img alt=\"champions league last 16 fc bayern salzburg\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1670504083/cms/public/images/fcbayern-com/homepage/saison-21-22/Galerien/Spiele/FCB-Salzburg/12_FCBSAL_220308_DON.jpg\" style=\"height:2160px; width:3840px\" title=\"Bayern and Salzburg last met in the last 16 of the 2021/22 Champions League campaign, with the German record champions coming out on top.\" /></p>\r\n\r\n<p>Bayern and Salzburg last met in the last 16 of the 2021/22 Champions League campaign, with the German record champions coming out on top.</p>\r\n\r\n<h2>Start of preparations on 3 January</h2>\r\n\r\n<p>Bayern begin their preparations for the rest of the season on 3 January, before heading off to Doha for a six-day training camp on 6 January. The friendly against the Austrian champions follows their return.</p>', '2023-01-02 06:00:00.000000', '2023-01-05 20:10:55.044102', 'friendly-against-fc-red-bull-salzburg-on-13-january', 2, 'FC Bayern will play a friendly against FC Red Bull Salzburg on 13 January 2023. The match will take place at the FC Bayern Campus, kicking off at 18:00 CET. A week later, on 20 January, Julian Nagelsmann\'s side begin the second half of the season with the Bundesliga away match at RB Leipzig.', 1, 2, 2, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1670511127/cms/public/images/fcbayern-com/homepage/stadien/fcbayern-campus-190327-get.jpg', NULL);
 
 -- --------------------------------------------------------
 
@@ -1228,7 +1307,9 @@ INSERT INTO `main_news_article_related_news` (`id`, `from_news_article_id`, `to_
 (19, 5, 1),
 (20, 5, 2),
 (15, 5, 3),
-(16, 5, 5);
+(16, 5, 5),
+(24, 7, 8),
+(23, 8, 7);
 
 -- --------------------------------------------------------
 
@@ -1311,7 +1392,7 @@ CREATE TABLE `main_order` (
 
 INSERT INTO `main_order` (`id`, `first_name`, `last_name`, `company`, `country`, `address_1`, `address_2`, `postcode`, `city`, `state`, `phone_number`, `email`, `order_notes`, `subtotal`, `tax`, `packaging`, `total_amount`, `payment_method`, `dispatched`, `order_date`, `user_id`, `delivered`) VALUES
 (1, 'Neeraj', 'V B', 'CCSIT', 'IN', 'Vennikkal House', 'P.O. Valapad', 680567, 'Thrissur', 'Kerala', '+917558882214', 'neerajvb@gmail.com', '                                                                    ', '173.28', '0.00', '2.00', '175.28', 'Cash on Delivery', 0, '2022-12-16 10:11:14.195134', 2, 0),
-(2, 'Neeraj', 'V B', 'CCSIT', 'IN', 'Vennikkal House', 'P.O. Valapad', 680567, 'Thrissur', 'Kerala', '+917558882214', 'neerajvb@gmail.com', '                                                                    ', '192.36', '0.00', '2.00', '194.36', 'Cash on Delivery', 0, '2023-01-04 16:18:49.854178', 2, 0);
+(2, 'Neeraj', 'V B', 'CCSIT', 'IN', 'Vennikkal House', 'P.O. Valapad', 680567, 'Thrissur', 'Kerala', '+917558882214', 'neerajvb@gmail.com', '-', '192.36', '0.00', '2.00', '194.36', 'Cash on Delivery', 0, '2023-01-04 16:18:49.854178', 2, 0);
 
 -- --------------------------------------------------------
 
@@ -1336,7 +1417,7 @@ CREATE TABLE `main_order_item` (
 INSERT INTO `main_order_item` (`id`, `quantity`, `price`, `parent_order_id`, `player_id`, `product_id`, `size_id`) VALUES
 (1, 1, '173.28', 1, NULL, 1, 2),
 (2, 1, '19.08', 2, NULL, 5, NULL),
-(3, 1, '173.28', 2, NULL, 1, 3);
+(3, 3, '173.28', 2, NULL, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -1462,7 +1543,8 @@ INSERT INTO `main_scheduled_match` (`id`, `match_title`, `venue`, `at_home`, `sl
 (3, 'Matchday 15', 'VELTINS-Arena', 0, 'bundesliga-matchday-15', '2022-11-12 22:00:00.000000', 'Bayern Munich ease into their World Cup break with a win, defeating Schalke 2-0 thanks to goals either side of the interval from Gnabry and Choupo-Moting. The hosts were organised and looked to cling onto a 0-0 headed into the half, but a first-time finish from the Germany international would break the resistance and put Reis’ side in an uncomfortable position. Offering little going forward, Schalke often found it difficult to win back the ball and once again succumbed to the pressure eight minutes shy of the hour, when Choupo-Moting popped up to score against his former side. The two-goal deficit was too much to overcome, as the hosts stay bottom of the table while Bayern Munich temporarily go six points up at the top.', 'banners/Allianz_Arena_wide.jpg', 1, 6),
 (4, 'Matchday 14', 'Allianz Arena', 1, 'bundesliga-matchday-14', '2022-11-09 21:00:00.000000', 'The first half was eventful to say the least as there were five goals and a missed penalty. Musiala put Bayern ahead in the sixth minute with a composed finish before Jung equalised for Bremen four minutes later. Gnabry won a penalty soon after but Choupo-Moting’s spot-kick was saved well by Pavlenka. Gnabry then scored himself with an outstanding curling effort toward the far post which sparked a flurry of goals as Bayern found the net three times in seven minutes. Goretzka scored Bayern’s third before Gnabry got his second of the game to make it 4-1 before the break. The second period was fairly quiet for the most part but Gnabry completed his hat-trick in the 82nd minute with a cool finish before Tel scored two minutes later with a thunderbolt to end the game 6-1.', 'banners/Allianz_Arena_wide.jpg', 1, 8),
 (5, 'Matchday 17', 'Allianz Arena', 1, 'bundesliga-matchday-17', '2023-01-25 01:00:00.000000', 'Bundesliga Matchday 17', 'banners/Allianz_Arena_wide.jpg', 1, 2),
-(6, 'Round of 16 - Leg 1 of 2', 'Le Parc des Princes', 0, 'ucl-r16-leg1', '2023-02-15 01:30:00.000000', 'Bayern faces PSG', 'banners/Allianz_Arena_wide.jpg', 2, 10);
+(6, 'Round of 16 - Leg 1 of 2', 'Le Parc des Princes', 0, 'ucl-r16-leg1', '2023-02-15 01:30:00.000000', 'Bayern faces PSG', 'banners/Allianz_Arena_wide.jpg', 2, 10),
+(7, 'Friendly', 'Allianz Arena', 1, 'friendly-redbull-salzburg', '2023-01-13 22:30:00.000000', 'FC Bayern will play a friendly against FC Red Bull Salzburg on 13 January 2023. The match will take place at the FC Bayern Campus, kicking off at 18:00 CET. A week later, on 20 January, Julian Nagelsmann\'s side begin the second half of the season with the Bundesliga away match at RB Leipzig.', 'banners/Allianz_Arena_wide.jpg', 4, 11);
 
 -- --------------------------------------------------------
 
@@ -1569,7 +1651,8 @@ INSERT INTO `main_team` (`id`, `name`, `logo`, `color`, `alt_color`, `manager`, 
 (7, 'Eintracht Frankfurt', 'logos/1200px-Eintracht_Frankfurt_Logo.png', 'black', 'red', 'Oliver Glasner', 1, 0, 0, 'SGE'),
 (8, 'SV Werder Bremen', 'logos/SV-Werder-Bremen-Logo.png', '#136d2b', 'white', 'Ole Werner', 1, 0, 0, 'SVW'),
 (9, '1. FC Köln', 'logos/FC_Cologne_logo.png', 'white', 'red', 'Steffen Baumgart', 1, 0, 0, 'KOE'),
-(10, 'Paris Saint Germain', 'logos/Paris_Saint-Germain.png', '#10305d', 'white', 'Christophe Galtier', 0, 1, 0, 'PSG');
+(10, 'Paris Saint Germain', 'logos/Paris_Saint-Germain.png', '#10305d', 'white', 'Christophe Galtier', 0, 1, 0, 'PSG'),
+(11, 'FC Red Bull Salzburg', 'logos/FC_Red_Bull_Salzburg_logo.png', 'white', 'red', 'Matthias Jaissle', 0, 0, 0, 'RBS');
 
 -- --------------------------------------------------------
 
@@ -1998,7 +2081,7 @@ ALTER TABLE `auth_user_user_permissions`
 -- AUTO_INCREMENT for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
 
 --
 -- AUTO_INCREMENT for table `django_content_type`
@@ -2010,7 +2093,7 @@ ALTER TABLE `django_content_type`
 -- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `main_address`
@@ -2022,7 +2105,7 @@ ALTER TABLE `main_address`
 -- AUTO_INCREMENT for table `main_album_image`
 --
 ALTER TABLE `main_album_image`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `main_article_type`
@@ -2040,7 +2123,7 @@ ALTER TABLE `main_board_member`
 -- AUTO_INCREMENT for table `main_club_album`
 --
 ALTER TABLE `main_club_album`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `main_club_season_stats`
@@ -2058,7 +2141,7 @@ ALTER TABLE `main_comment`
 -- AUTO_INCREMENT for table `main_competition`
 --
 ALTER TABLE `main_competition`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `main_goalscorers`
@@ -2088,19 +2171,19 @@ ALTER TABLE `main_match_timeline`
 -- AUTO_INCREMENT for table `main_merchandise`
 --
 ALTER TABLE `main_merchandise`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `main_merchandise_image`
 --
 ALTER TABLE `main_merchandise_image`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `main_merchandise_information`
 --
 ALTER TABLE `main_merchandise_information`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `main_merchandise_related_products`
@@ -2118,7 +2201,7 @@ ALTER TABLE `main_merchandise_size`
 -- AUTO_INCREMENT for table `main_merchandise_type`
 --
 ALTER TABLE `main_merchandise_type`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `main_mini_articles`
@@ -2130,7 +2213,7 @@ ALTER TABLE `main_mini_articles`
 -- AUTO_INCREMENT for table `main_news_article`
 --
 ALTER TABLE `main_news_article`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `main_news_article_liked`
@@ -2142,7 +2225,7 @@ ALTER TABLE `main_news_article_liked`
 -- AUTO_INCREMENT for table `main_news_article_related_news`
 --
 ALTER TABLE `main_news_article_related_news`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `main_news_tag_player`
@@ -2202,7 +2285,7 @@ ALTER TABLE `main_position`
 -- AUTO_INCREMENT for table `main_scheduled_match`
 --
 ALTER TABLE `main_scheduled_match`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `main_season`
@@ -2226,7 +2309,7 @@ ALTER TABLE `main_staff`
 -- AUTO_INCREMENT for table `main_team`
 --
 ALTER TABLE `main_team`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `main_trophies`

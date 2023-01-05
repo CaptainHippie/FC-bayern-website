@@ -32,10 +32,10 @@
                     <div class="album__item col-6 col-sm-4">
                         <div class="album__item-holder">
                             <figure class="album__thumb">
-                                <img src="/media/{{cur_image.image}}" alt="">
+                                <img src="{% if cur_image.image %}/media/{{cur_image.image}}{% else %}{{cur_image.image_url}}{% endif %}">
                             </figure>
                             <div class="album__item-desc">
-                                <h4 class="album__item-title">{{cur_image.description}}</h4>
+                                {% if cur_image.description %}<h4 class="album__item-title">{{cur_image.description}}</h4>{% endif %}
                                 <div class="album__item-date">{{cur_image.date|date:"F j, Y"}}</div>
                             </div>
                         </div>

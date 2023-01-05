@@ -1,5 +1,5 @@
 from django.db.models.query import QuerySet
-from . models import Player_Stats
+from . models import Player_Stats, Merchandise, Order_Item
 from django.utils.text import slugify
 
 def get_normal_avg(input, output):
@@ -123,3 +123,23 @@ def round_min_max_price(min, max):
 def slugify_email(email):
     no_domain = email.split("@")[0]
     return slugify(no_domain)
+
+def sort_by_popularity():
+    all_orders = Order_Item.objects.all()
+    order_dict = {}
+    for order in all_orders:
+        product = order.product.name
+        if product in order_dict.keys():
+            order_dict[product] += order.quantity
+        else:
+            order_dict[product] = order.quantity
+    sorted_dict = sorted(order_dict.items(), key=lambda x:x[1], reverse=True)
+    converted_dict = dict(sorted_dict)
+
+    product_list = []
+    for key in converted_dict:
+        product_list.append(Merchandise.objects.get(name=key))
+    rest_of_products = Merchandise.objects.exclude(order_item__gt=0)
+    for prod in rest_of_products:
+        product_list.append(prod)
+    return product_list

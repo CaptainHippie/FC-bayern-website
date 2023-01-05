@@ -597,9 +597,9 @@
 
                         {% for cur_album in all_albums %}
                         <div class="gallery__item col-6 col-sm-4">
-                            <a href="{% url 'album' cur_album.slug %}" class="gallery__item-inner card">
+                            <a href="{% url 'album' cur_album.slug %}" class="gallery__item-inner card" title="{{cur_album.title}}">
                                 <figure class="gallery__thumb">
-                                    <img width="380" height="270" src="/media/{{cur_album.featured_image}}"
+                                    <img width="380" height="270" src="{% if cur_album.featured_image %}/media/{{cur_album.featured_image}}{% else %}{{cur_album.featured_image_url}}{% endif %}"
                                         class="attachment-alchemists_thumbnail size-alchemists_thumbnail wp-post-image"> 
                                 </figure>
                                 <div class="gallery__content card__content">
