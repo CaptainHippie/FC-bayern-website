@@ -101,7 +101,7 @@
                 <a class="menu-item-link" href="{% url 'club' %}">Club</a>
               </li>
               
-              <li class="menu-item menu-item-type-post menu-item-object-page {% active_link 'news_all' 'current-menu-item' strict=True %}">
+              <li class="menu-item menu-item-type-post menu-item-object-page {% active_link 'news_all||newspage' 'current-menu-item' %}">
                 <a class="menu-item-link" href="{% url 'news_all' %}">News</a>
               </li>
               <li class="menu-item menu-item-type-post menu-item-object-page {% active_link 'shop||shop_category||product||cart' 'current-menu-item' %}">

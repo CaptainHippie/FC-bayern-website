@@ -22,7 +22,7 @@ from main import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.HOME, name='home'),
-    path('all_news/', views.ALL_NEWS, name='news_all'),
+    path('news/', views.ALL_NEWS, name='news_all'),
     path('news/<slug:slug>/', views.NEWS, name='newspage'),
     path('add_comment/<int:user_id>/', views.save_comment, name='save_comment'),
 
@@ -41,9 +41,9 @@ urlpatterns = [
     path('login/', views.REG_LOGIN, name='login'),
     path('shop/', views.SHOP, name='shop'),
     path('shop/category/<str:cat>/', views.SHOP, name='shop_category'),
-    path('product/<slug:slug_name>/', views.PRODUCT, name='product'),
-    path('cart/', views.CART, name='cart'),
-    path('checkout/', views.CHECKOUT, name='checkout'),
+    path('shop/product/<slug:slug_name>/', views.PRODUCT, name='product'),
+    path('shop/cart/', views.CART, name='cart'),
+    path('shop/checkout/', views.CHECKOUT, name='checkout'),
     path('test/', views.TEST, name='test'),
 
     #cart

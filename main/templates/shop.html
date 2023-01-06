@@ -82,7 +82,7 @@ input[type="range"]::-moz-range-thumb{
                         <header class="card__header card__header--shop-filter">
                             <div class="shop-filter">
                                 <p class="woocommerce-result-count">
-                                    Showing 1&ndash;{{all_products.count}} of {{all_products.count}} results</p>
+                                    Showing <span id="snk-lower">1</span>&ndash;<span id="snk-upper">{{all_products_count}}</span> of {{all_products_count}} results</p>
                                 <ul class="shop-filter__params">
                                     
                                     <li class="shop-filter__control">
@@ -126,8 +126,8 @@ input[type="range"]::-moz-range-thumb{
                             <ul class="products columns-4">
 
                                 {% for product in all_products %}
-                                <li
-                                    class="product__item card product type-product post-942 status-publish instock product_cat-sneakers has-post-thumbnail sale shipping-taxable purchasable product-type-simple woocommerce">
+                                <li class="product__item card product type-product post-942 status-publish instock product_cat-sneakers has-post-thumbnail sale shipping-taxable purchasable product-type-simple woocommerce"
+                                        id="snk-product-{{forloop.counter}}">
 
                                     {% if product.discount > 0 %}
                                     <span class="onsale"><span class="onsale__inner">&nbsp;-{{product.discount}}% </span></span>
@@ -189,17 +189,19 @@ input[type="range"]::-moz-range-thumb{
 
                             </ul>
 
-                            <nav class="woocommerce-pagination">
-                                <ul class='page-numbers'>
-                                    <li><span aria-current="page" class="page-numbers current">1</span></li>
-                                    <li><a class="page-numbers"
-                                            href="http://alchemists-wp.dan-fisher.com/soccer-dark/shop/page/2/">2</a>
-                                    </li>
-                                    <li><a class="next page-numbers"
-                                            href="http://alchemists-wp.dan-fisher.com/soccer-dark/shop/page/2/">&rarr;</a>
-                                    </li>
+                            <nav class="post-pagination" style="float:right">
+                                <ul class="pagination justify-content-center pagination--condensed pagination--lg">
+                                    <li class="snk-prev-page" style="display:none"><a><i class="fa fa-angle-left"></i></a></li>
+                                    <li class="pagination-toggle active" id="snk-page-no-1"><a>1</a></li>
+                                    {% if pages_count > 0 %}
+                                        {% for item in "x"|ljust:pages_count %}
+                                            <li class="pagination-toggle " id="snk-page-no-{{forloop.counter|add:1}}"><a>{{forloop.counter|add:1}}</a></li>
+                                        {% endfor %}
+                                        <li class="snk-next-page"><a><i class="fa fa-angle-right"></i></a></li>
+                                    {% endif %}
                                 </ul>
                             </nav>
+
                         </div>
                     </div>
 
@@ -260,6 +262,9 @@ input[type="range"]::-moz-range-thumb{
 
                 </div>
                 
+                <div class="btn-container btn-container--align-inline">
+                    <a class="btn btn-primary-inverse btn-fill btn-sm" href="{% url 'shop' %}" title="Button Title">Clear Filters</a>
+                </div>
             </aside><!-- #secondary -->
 
         </div>
@@ -307,6 +312,7 @@ input[type="range"]::-moz-range-thumb{
 
 
 
+<script src="{% static 'js/shop_page_pagination.js' %}" id="shop_pagination-js" defer></script>
 
 
 <script>

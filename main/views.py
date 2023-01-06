@@ -339,8 +339,6 @@ def LOGOUT(request):
     return redirect('login')
 
 
-
-
 def SHOP(request, cat=None):
     all_products = Merchandise.objects.filter(category__name=cat) if cat else Merchandise.objects.all()
     all_categories = Merchandise_Type.objects.all()
@@ -354,11 +352,11 @@ def SHOP(request, cat=None):
     price_max = (int(request.GET['max_price']) if (request.GET['max_price'] != "") else None) if ('max_price' in request.GET) else None
 
     if all_products.exists():
-        if (price_min != None) and (price_min != ""):
+        if price_min != None:
             all_products = all_products.filter(price__gte=price_min)
-        if (price_max != None) and (price_max != ""):
+        if price_max != None:
             all_products = all_products.filter(price__lte=price_max)
-        if (sort != None):
+        if sort != None:
             if sort == "date":
                 all_products = all_products.order_by('-added')
             elif sort == "price":
@@ -367,13 +365,19 @@ def SHOP(request, cat=None):
                 all_products = all_products.order_by('-price','discount')
             elif sort == "popularity":
                 all_products = calculations.sort_by_popularity()
+    
+    product_count = len(all_products) if isinstance(all_products, list) else all_products.count()
+    product_per_page = 12
+    extra_pages_count = ((int(product_count/product_per_page)-1) if ((product_count%product_per_page)==0) else int(product_count/product_per_page)) if (product_count>product_per_page) else 0
 
     context = {
             'all_products' : all_products,
             'all_categories' : all_categories,
             'min_rounded' : min_rounded,
             'max_rounded' : max_rounded,
-            'active_category': cat
+            'active_category': cat,
+            'pages_count' : extra_pages_count,
+            'all_products_count' : product_count
     }
     return render(request, 'shop.html', context)
 
