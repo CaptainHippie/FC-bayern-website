@@ -96,6 +96,7 @@
                                         <!-- Game Score -->
                                         <div class="game-result__score-wrap">
                                             <div class="game-result__score game-result__score--lg">
+                                            {% if match.finished == True %}
                                                 {% if match.at_home == True %}
                                                     {% if match.scored > match.conceded %}
                                                         <span class="game-result__score-result game-result__score-result--winner">{{match.scored}}</span>
@@ -125,6 +126,9 @@
                                                         <span class="game-result__score-result game-result__score-result--loser">{{match.scored}}</span>
                                                     {% endif %}
                                                 {% endif %}
+                                            {% else %}
+                                                <span class="game-result__score-dash">-</span>
+                                            {% endif %}
                                             </div>
                                         </div>
                                         <!-- Game Score / End -->
@@ -133,7 +137,7 @@
                                     <!-- Team Logos + Game Result / End -->
                                 </section>
 
-                                {% if match_status == 'result' %}
+                                {% if match.finished == True %}
                                 <div class="spacer"></div>
                                 <section class="game-result__section">
 

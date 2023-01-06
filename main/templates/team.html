@@ -330,7 +330,7 @@
                                                                             <thead> <tr> <th></th> </tr> </thead>
                                                                             <tbody>
 
-                                                                                {% for cur_match in all_matches %}
+                                                                                {% for cur_match in finished_matches %}
                                                                                 <tr class="sp-row sp-post alternate">
                                                                                     <td>
                                                                                         <div class="widget-game-result__item widget-game-result__item--ok">
@@ -367,9 +367,14 @@
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="widget-game-result__score-wrap">
-                                                                                                    <a href="{% url 'match' 'result' cur_match.slug %}" class="widget-game-result__score">
+                                                                                                    <a href="{% url 'match' cur_match.slug %}" class="widget-game-result__score">
+                                                                                                    {% if cur_match.finished == True %}
                                                                                                         {% if cur_match.scored > cur_match.conceded %}
                                                                                                         <span class="widget-game-result__score-result widget-game-result__score-result--winner">{{cur_match.scored}}</span>
+                                                                                                        <span class="widget-game-result__score-dash">-</span>
+                                                                                                        <span class="widget-game-result__score-result widget-game-result__score-result--loser">{{cur_match.conceded}}</span>
+                                                                                                        {% elif cur_match.scored == cur_match.conceded %}
+                                                                                                        <span class="widget-game-result__score-result widget-game-result__score-result--loser">{{cur_match.scored}}</span>
                                                                                                         <span class="widget-game-result__score-dash">-</span>
                                                                                                         <span class="widget-game-result__score-result widget-game-result__score-result--loser">{{cur_match.conceded}}</span>
                                                                                                         {% else %}
@@ -377,6 +382,9 @@
                                                                                                         <span class="widget-game-result__score-dash">-</span>
                                                                                                         <span class="widget-game-result__score-result widget-game-result__score-result--winner">{{cur_match.conceded}}</span>
                                                                                                         {% endif %}
+                                                                                                    {% else %}
+                                                                                                        <span class="widget-game-result__score-dash">-</span>
+                                                                                                    {% endif %}
                                                                                                     </a>
                                                                                                     <div class="widget-game-result__score-label">{{cur_match.venue}}</div>
                                                                                                 </div>
@@ -404,9 +412,14 @@
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="widget-game-result__score-wrap">
-                                                                                                    <a href="{% url 'match' 'result' cur_match.slug %}" class="widget-game-result__score">
+                                                                                                    <a href="{% url 'match' cur_match.slug %}" class="widget-game-result__score">
+                                                                                                    {% if cur_match.finished == True %}
                                                                                                         {% if cur_match.scored < cur_match.conceded %}
                                                                                                         <span class="widget-game-result__score-result widget-game-result__score-result--winner">{{cur_match.conceded}}</span>
+                                                                                                        <span class="widget-game-result__score-dash">-</span>
+                                                                                                        <span class="widget-game-result__score-result widget-game-result__score-result--loser">{{cur_match.scored}}</span>
+                                                                                                        {% elif cur_match.scored == cur_match.conceded %}
+                                                                                                        <span class="widget-game-result__score-result widget-game-result__score-result--loser">{{cur_match.conceded}}</span>
                                                                                                         <span class="widget-game-result__score-dash">-</span>
                                                                                                         <span class="widget-game-result__score-result widget-game-result__score-result--loser">{{cur_match.scored}}</span>
                                                                                                         {% else %}
@@ -414,6 +427,9 @@
                                                                                                         <span class="widget-game-result__score-dash">-</span>
                                                                                                         <span class="widget-game-result__score-result widget-game-result__score-result--winner">{{cur_match.scored}}</span>
                                                                                                         {% endif %}
+                                                                                                    {% else %}
+                                                                                                        <span class="widget-game-result__score-dash">-</span>
+                                                                                                    {% endif %}
                                                                                                     </a>
                                                                                                     <div class="widget-game-result__score-label">{{cur_match.venue}}</div>
                                                                                                 </div>
@@ -517,10 +533,8 @@
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="widget-game-result__score-wrap">
-                                                                                                    <a href="{% url 'match' 'fixture' cur_match.slug %}" class="widget-game-result__score">
-                                                                                                        <span class="widget-game-result__score-result widget-game-result__score-result--loser">{{cur_match.scored}}</span>
+                                                                                                    <a href="{% url 'match' cur_match.slug %}" class="widget-game-result__score">
                                                                                                         <span class="widget-game-result__score-dash">-</span>
-                                                                                                        <span class="widget-game-result__score-result widget-game-result__score-result--loser">{{cur_match.conceded}}</span>
                                                                                                     </a>
                                                                                                     <div class="widget-game-result__score-label">{{cur_match.venue}}</div>
                                                                                                 </div>
@@ -548,10 +562,8 @@
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="widget-game-result__score-wrap">
-                                                                                                    <a href="{% url 'match' 'fixture' cur_match.slug %}" class="widget-game-result__score">
-                                                                                                        <span class="widget-game-result__score-result widget-game-result__score-result--loser">{{cur_match.conceded}}</span>
+                                                                                                    <a href="{% url 'match' cur_match.slug %}" class="widget-game-result__score">
                                                                                                         <span class="widget-game-result__score-dash">-</span>
-                                                                                                        <span class="widget-game-result__score-result widget-game-result__score-result--loser">{{cur_match.scored}}</span>
                                                                                                     </a>
                                                                                                     <div class="widget-game-result__score-label">{{cur_match.venue}}</div>
                                                                                                 </div>

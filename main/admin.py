@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.contrib.admin.views.main import ChangeList
-from . forms import Related_News_Form
 from . models import *
 
 class Goalscorers_Admin(admin.TabularInline):
@@ -77,7 +76,6 @@ admin.site.register(Competition)
 admin.site.register(Team, Team_admin)
 admin.site.register(Player, Player_Admin)
 
-admin.site.register(Scheduled_Match)
 admin.site.register(Match_event)
 admin.site.register(Season)
 admin.site.register(Player_Stats, Player_Stats_Admin)
@@ -103,4 +101,3 @@ admin.site.register(Board_Member)
 admin.site.register(Trophies)
 admin.site.register(Mini_Articles)
 admin.site.register(Likes)
-admin.site.register(Order_Item)

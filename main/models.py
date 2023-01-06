@@ -120,7 +120,7 @@ class Club_season_stats(models.Model):
     def __str__(self):
         return str(self.club) + str(self.competition)
 
-class Scheduled_Match(models.Model):
+'''class Scheduled_Match(models.Model):
     competition = models.ForeignKey(Competition, on_delete=models.CASCADE)
     match_title = models.CharField(max_length=100, null=True, blank=True)
     venue = models.CharField(max_length=100, null=True)
@@ -135,38 +135,52 @@ class Scheduled_Match(models.Model):
         default='banners/Allianz_Arena_wide.jpg', upload_to='banners', null=True)
 
     def __str__(self):
-        return str(self.opponent) + "_" + str(self.id)
+        return str(self.opponent) + "_" + str(self.id)'''
 
-class Match(Scheduled_Match):
+class Match(models.Model):
+    competition = models.ForeignKey(Competition, on_delete=models.CASCADE)
+    match_title = models.CharField(max_length=50)
+    venue = models.CharField(max_length=50, null=True, blank=True)
+    opponent = models.ForeignKey(Team, on_delete=models.CASCADE)
 
-    scored = models.IntegerField(null=True)
-    conceded = models.IntegerField(null=True)
+    at_home = models.BooleanField(default=True)
+    finished = models.BooleanField(default=False)
+    slug = models.SlugField(max_length=50)
+    time = models.DateTimeField(null=True)
 
-    video_url = models.CharField(max_length=100, null=True, blank=True)
+    summary = models.TextField(null=True, blank=True)
+    banner = models.ImageField(default='banners/Allianz_Arena_wide.jpg', upload_to='banners', null=True)
 
-    pass_acc = models.DecimalField(decimal_places=1, max_digits=3, null=True, default=0)
-    shot_acc = models.DecimalField(decimal_places=1, max_digits=3, null=True, default=0)
-    offsides = models.IntegerField(null=True, default=0)
-    fouls = models.IntegerField(null=True, default=0)
-    shots = models.IntegerField(null=True, default=0)
-    shots_target = models.IntegerField(null=True, default=0)
-    yellows = models.IntegerField(null=True, default=0)
-    reds = models.IntegerField(null=True, default=0)
-    corners = models.IntegerField(null=True, default=0)
-    saves = models.IntegerField(null=True, default=0)
-    possession = models.DecimalField(decimal_places=1, max_digits=3, null=True)
+    scored = models.PositiveSmallIntegerField(default=0)
+    conceded = models.PositiveSmallIntegerField(default=0)
 
-    pass_acc_opp = models.DecimalField(decimal_places=1, max_digits=3, null=True, default=0)
-    shot_acc_opp = models.DecimalField(decimal_places=1, max_digits=3, null=True, default=0)
-    offsides_opp = models.IntegerField(null=True, default=0)
-    fouls_opp = models.IntegerField(null=True, default=0)
-    shots_opp = models.IntegerField(null=True, default=0)
-    shots_target_opp = models.IntegerField(null=True, default=0)
-    yellows_opp = models.IntegerField(null=True, default=0)
-    reds_opp = models.IntegerField(null=True, default=0)
-    corners_opp = models.IntegerField(null=True, default=0)
-    saves_opp = models.IntegerField(null=True, default=0)
+    video_url = models.CharField(max_length=200, null=True, blank=True)
 
+    pass_acc = models.DecimalField(decimal_places=1, max_digits=3, default=0)
+    shot_acc = models.DecimalField(decimal_places=1, max_digits=3, default=0)
+    offsides = models.PositiveSmallIntegerField(default=0)
+    fouls = models.PositiveSmallIntegerField(default=0)
+    shots = models.PositiveSmallIntegerField(default=0)
+    shots_target = models.PositiveSmallIntegerField(default=0)
+    yellows = models.PositiveSmallIntegerField(default=0)
+    reds = models.PositiveSmallIntegerField(default=0)
+    corners = models.PositiveSmallIntegerField(default=0)
+    saves = models.PositiveSmallIntegerField(default=0)
+    possession = models.DecimalField(decimal_places=1, max_digits=3, default=50)
+
+    pass_acc_opp = models.DecimalField(decimal_places=1, max_digits=3, default=0)
+    shot_acc_opp = models.DecimalField(decimal_places=1, max_digits=3, default=0)
+    offsides_opp = models.PositiveSmallIntegerField(default=0)
+    fouls_opp = models.PositiveSmallIntegerField(default=0)
+    shots_opp = models.PositiveSmallIntegerField(default=0)
+    shots_target_opp = models.PositiveSmallIntegerField(default=0)
+    yellows_opp = models.PositiveSmallIntegerField(default=0)
+    reds_opp = models.PositiveSmallIntegerField(default=0)
+    corners_opp = models.PositiveSmallIntegerField(default=0)
+    saves_opp = models.PositiveSmallIntegerField(default=0)
+
+    def __str__(self):
+        return self.competition.name + "-" + self.match_title + "-" + self.opponent.name
 
 class Position(models.Model):
     name = models.CharField(max_length=100)
@@ -198,17 +212,17 @@ class Player(models.Model):
         return self.name
 
 class Goalscorers(models.Model):
-    name = models.ForeignKey(Player, on_delete=models.CASCADE)
+    name = models.ForeignKey(Player, on_delete=models.SET_NULL, null=True)
     match = models.ForeignKey(Match, on_delete=models.CASCADE)
-    minute = models.IntegerField(null=True)
+    minute = models.PositiveSmallIntegerField(null=True)
 
 class Opponent_Goalscorers(models.Model):
     name = models.CharField(max_length=100, null=True)
     match = models.ForeignKey(Match, on_delete=models.CASCADE)
-    minute = models.IntegerField(null=True)
+    minute = models.PositiveSmallIntegerField(null=True)
 
 class Match_event(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=20)
 
     def __str__(self):
         return self.name
@@ -217,7 +231,7 @@ class Match_timeline(models.Model):
     name = models.ForeignKey(Match_event, on_delete=models.CASCADE)
     match = models.ForeignKey(Match, on_delete=models.CASCADE)
     is_bayern_player = models.BooleanField(default=True)
-    minute = models.IntegerField(null=True)
+    minute = models.PositiveSmallIntegerField(null=True)
     who = models.CharField(max_length=100, null=True, blank=True)
 
 class Season(models.Model):

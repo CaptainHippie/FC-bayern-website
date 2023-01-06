@@ -26,14 +26,16 @@ urlpatterns = [
     path('news/<slug:slug>/', views.NEWS, name='newspage'),
     path('add_comment/<int:user_id>/', views.save_comment, name='save_comment'),
 
-    path('match/<str:type>/<slug:slug_name>/', views.MATCH_DETAIL, name='match'),
-    path('player/<slug:slug_name>/', views.PLAYER_DETAIL, name='player'),
     path('team/', views.TEAM_DATA, name='team'),
+    path('team/match/<slug:slug_name>/', views.MATCH_DETAIL, name='match'),
+    path('team/player/<slug:slug_name>/', views.PLAYER_DETAIL, name='player'),
+    path('team/staff/<slug:slug_name>/', views.STAFF, name='staff'),
+    path('team/album/<slug:slug_name>/', views.ALBUM, name='album'),
+
     path('club/', views.CLUB_HISTORY, name='club'),
-    path('staff/<slug:slug_name>/', views.STAFF, name='staff'),
     path('officer/<slug:slug_name>/', views.BOARD_MEMBER, name='officer'),
     path('article/<slug:slug_name>/', views.MINI_ARTICLE, name='article'),
-    path('album/<slug:slug_name>/', views.ALBUM, name='album'),
+    
     path('account/<slug:slug_name>/', views.ACCOUNT, name='account'),
     path('account/<slug:slug_name>/<str:addr_type>/', views.ADDRESS, name='address'),
     path('account/<slug:slug_name>/order/<int:order_id>/', views.ORDER, name='order'),

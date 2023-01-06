@@ -9,15 +9,14 @@ from django.db.models import Count, Max, Min
 from . models import *
 from . import calculations
 
-# Create your views here.
 def HOME(request):
     featured_news = News_article.objects.filter(featured=True)
-    last_match = Match.objects.all().order_by('-time').first()
+    last_match = Match.objects.filter(finished=True).order_by('-time').first()
     events = Match_timeline.objects.filter(match=last_match).order_by('minute')
     league_stats_widget = Club_season_stats.objects.filter(competition__name="BundesLiga").order_by('-points','-goal_diff','-scored')
 
     current_time = timezone.now()
-    upcoming_match = Scheduled_Match.objects.filter(time__gte = current_time).order_by('time').first()
+    upcoming_match = Match.objects.filter(time__gte = current_time).order_by('time').first()
     time_left = calculations.get_time_difference(upcoming_match.time - current_time) if upcoming_match else None
 
     context = {
@@ -34,7 +33,7 @@ def NEWS(request, slug):
     post = News_article.objects.filter(slug=slug).first()
 
     if post:
-        post.views = post.views + 1
+        post.views += 1
         post.save()
     
     comments = Comment.objects.filter(parent_comment=None, parent_news=post).order_by('-added')
@@ -47,22 +46,17 @@ def NEWS(request, slug):
     }
     return render(request, 'news.html', context)
 
-def MATCH_DETAIL(request, type, slug_name):
-
-    match = Match.objects.get(slug=slug_name) if (type=='result') else Scheduled_Match.objects.get(slug=slug_name)
-    match_status = 'result' if (type=='result') else 'fixture'
+def MATCH_DETAIL(request, slug_name):
+    match = Match.objects.get(slug=slug_name)
     events = Match_timeline.objects.filter(match=match).order_by('minute')
 
     context = {
             'match': match,
-            'match_status': match_status,
             'events': events,
     }
     return render(request, 'match_details.html', context)
 
 def PLAYER_DETAIL(request, slug_name):
-    all_sponsors = Sponsor.objects.all()
-
     player = Player.objects.get(slug=slug_name)
     all_league_stats = Player_Stats.objects.filter(player__slug=slug_name, competition__name="BundesLiga").order_by('-season__start_year')
     ucl_stats = Player_Stats.objects.filter(player__slug=slug_name, competition__name="UEFA Champions League").order_by('-season__start_year')
@@ -91,7 +85,6 @@ def PLAYER_DETAIL(request, slug_name):
             'pokal_total' : total_pokal_stats,
             'season_models' : season_models,
             'grand_total' : grand_total,
-            'sponsors' : all_sponsors,
             'gallery_images' : gallery_images,
             'player_news' : player_news_models
     }
@@ -106,10 +99,10 @@ def TEAM_DATA(request):
     club_pokal_stats = Club_season_stats.objects.filter(competition__name="DFB Pokal").order_by('-points','-goal_diff','-scored')
     all_albums = Club_Album.objects.all()
 
-    all_matches = Match.objects.all().order_by('-time')[0:10]
+    finished_matches = Match.objects.filter(finished=True).order_by('-time')[0:10]
 
     current_time = timezone.now()
-    scheduled_matches = Scheduled_Match.objects.filter(time__gte = current_time).order_by('time')[0:10]
+    scheduled_matches = Match.objects.filter(time__gte = current_time).order_by('time')[0:10]
 
     context = {
             'all_positions': all_positions,
@@ -118,7 +111,7 @@ def TEAM_DATA(request):
             'club_league_stats': club_league_stats,
             'club_ucl_stats': club_ucl_stats,
             'club_pokal_stats': club_pokal_stats,
-            'all_matches' : all_matches,
+            'finished_matches' : finished_matches,
             'scheduled_matches': scheduled_matches,
             'all_albums': all_albums
     }
@@ -546,7 +539,7 @@ news_sort={ 'inj':3,'league':2,'team':1,
     }
 
 def ALL_NEWS(request):
-    all_news = News_article.objects.all()
+    all_news = News_article.objects.all().order_by('-added')
     all_authors = CustomUser.objects.annotate(num_articles=Count('author')).filter(num_articles__gt = 0)
     categories = request.GET['cat'] if ('cat' in request.GET) else None
     sort = request.GET['sort'] if ('sort' in request.GET) else None

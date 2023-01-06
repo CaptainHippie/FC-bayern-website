@@ -9,7 +9,7 @@
                 <!-- Game Score -->
                 <div class="widget-game-result__section">
                     <div class="widget-game-result__section-inner">
-                        <a href="{% url 'match' 'result' last_match.slug %}" class="widget-game-result__item">
+                        <a href="{% url 'match' last_match.slug %}" class="widget-game-result__item">
                             <header class="widget-game-result__header">
                                 <h3 class="widget-game-result__title">{{last_match.competition}}</h3>
                                 <time class="widget-game-result__date" style="text-align:center">{{last_match.time|date:"F j, Y - g:i A"}}</time>
