@@ -1,0 +1,55 @@
+<header class="post-comment-form__header card__header"><h4>Related News</h4></header>
+                    
+<div class="posts posts--cards post-grid post-grid--masonry row" style="width: 100%; margin: auto;">
+    {% for rel_news in post.related_news.all %}
+
+    <div class="post-grid__item">
+        <article class="posts__item posts__item--card card posts__item--category-{{rel_news.news_type.category}} post type-post status-publish format-standard has-post-thumbnail hentry category-{{rel_news.news_type.css_name}}">
+            <figure class="posts__thumb">
+                <div class="posts__cat">
+                    <span class="label posts__cat-label posts__cat-label--category-{{rel_news.news_type.category}} category-{{rel_news.news_type.css_name}}">{{rel_news.news_type}}</span>
+                </div>
+                <a href="{{rel_news.get_absolute_url}}">
+                    <img src="{% if rel_news.image %}/media/{{rel_news.image}}{% else %}{{rel_news.image_url}}{% endif %}"
+                        class="attachment-alchemists_thumbnail size-alchemists_thumbnail wp-post-image">
+                </a>
+            </figure>
+
+            <div class="posts__inner card__content">
+                <time class="posts__date">{{rel_news.added|date:"F j, Y"}}</time>
+                <h2 class="posts__title">
+                    <a href="{{rel_news.get_absolute_url}}" rel="bookmark" style="font-size: 16px">{{rel_news.title|truncatechars:50}}</a>
+                </h2>
+            </div>
+
+            <footer class="posts__footer card__footer">
+                <div class="post-author">
+                    <figure class="post-author__avatar">
+                        <img src="/media/{{rel_news.author.profile_pic}}" class='avatar photo'>
+                    </figure>
+                    <div class="post-author__info">
+                        <h4 class="post-author__name">{{rel_news.author.name_display}}</h4>
+                    </div>
+                </div>
+                <div class="post__meta meta">
+                    <div class="meta__item meta__item--views">{{rel_news.views}}</div>
+                    <div class="meta__item meta__item--likes ">
+                        <a {% if logged_user %}href="{% url 'like' logged_user.id rel_news.id %}"{% endif %} class="sl-button" title="Like">
+                            <span class="sl-icon">
+                                <i class="meta-like icon-heart" {% if logged_user and logged_user in rel_news.liked.all %}style="color: red"{% endif %}></i>
+                            </span>
+                            <span class="sl-count">{{rel_news.num_likes}}</span>
+                        </a>
+                        <span class="sl-loader"></span>
+                    </div>
+                    <div class="meta__item meta__item--comments">
+                        <a href="">{{rel_news.comment_set.count}}</a>
+                    </div>
+                </div>
+            </footer>
+
+        </article><!-- #post-## -->
+    </div>
+    {% endfor %}
+
+</div>

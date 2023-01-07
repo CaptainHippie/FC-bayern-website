@@ -2,12 +2,12 @@
 {% block content %}
 {% load static %}
 
-<title>News - FC Bayern</title>
+<title>News Tag-{{tag.display}} - FC Bayern</title>
 <div class="page-heading page-heading--has-bg">
     <div class="container">
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
-                <h2 style="text-shadow: 2px 2px 2px black;font-size: 28px">News: <span style="color:#C2FF1F">Tag: </span><span style="color:rgb(198, 4, 40)">World Cup</span></h2>
+                <h2 style="text-shadow: 2px 2px 2px black;font-size: 28px">News: <span style="color:#C2FF1F">Tag: </span><span style="color:rgb(198, 4, 40)">{{tag.display}}</span></h2>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
 
                             <figure class="posts__thumb">
                                 <a href="{{news.get_absolute_url}}">
-                                    <img style="width:100%;height:342px;object-fit:cover;"
+                                    <img style="width:100%;height:350px;object-fit:cover;"
                                         src="{% if news.image %}/media/{{news.image}}{% else %}{{news.image_url}}{% endif %}"
                                         class="attachment-post-thumbnail size-post-thumbnail wp-post-image"> 
                                 </a>
@@ -37,7 +37,7 @@
 
                             <div class="posts__inner">
 
-                                <div class="card__content" style="height: 273px">
+                                <div class="card__content" style="height: 281px;padding: 14px 22px;">
                                     <div class="posts__cat">
                                         <span class="label posts__cat-label posts__cat-label--category-{{news.news_type.category}} category-{{news.news_type.css_name}}">{{news.news_type}}</span>
                                     </div>
@@ -77,8 +77,17 @@
                         </article><!-- #post-## -->
                         {% endfor %}
 
+                        {% if all_news.count == 0 %}
+                            <div class="alert alert-warning alert-dismissible">
+
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        
+                        <p>No article was found matching the tag</p>
+                    </div>
+                        {% endif %}
                     </div><!-- .posts -->
 
+                    {% if all_news.count > 0 %}
                     <nav class="post-pagination">
                         <ul class="pagination justify-content-center pagination--condensed pagination--lg">
                             <li class="snk-prev-page" style="display:none"><a><i class="fa fa-angle-left"></i></a></li>
@@ -93,10 +102,20 @@
                             
                         </ul>
                     </nav>
+                    {% endif %}
 
                 </main><!-- #main -->
             </div><!-- #primary -->
 
+            <aside id="secondary" class="sidebar widget-area col-lg-4">
+
+                {% include 'includes/widgets/tag_cloud.html' %}
+                
+                {% include 'includes/widgets/tabbed_news.html' %}
+
+                {% include 'includes/widgets/single_advert.html' %}
+    
+            </aside>
 
         </div>
     </div>

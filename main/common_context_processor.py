@@ -23,7 +23,7 @@ club_socials_list = (("Facebook", "https://www.facebook.com/FCBayernEN", "fb_ico
 
 
 def bayern_data(request):
-	banner_news = News_article.objects.filter(featured=True).order_by('-added')[0:4]
+	banner_news = News_article.objects.filter(home_banner=True).order_by('-added')[0:4]
 	logged_user_id = request.user.id if request.user.is_authenticated else None
 
 	logged_user = CustomUser.objects.filter(id=logged_user_id).first() if logged_user_id else None
@@ -33,6 +33,7 @@ def bayern_data(request):
 	newest_news = News_article.objects.all().order_by('-added')[0:4]
 	favourite_news = News_article.objects.annotate(like_count=Count('liked')).order_by('-like_count')[0:4]
 	most_commented_news = News_article.objects.annotate(comment_count=Count('comment')).order_by('-comment_count')[0:4]
+	popular_tags = News_Tag.objects.annotate(news_count=Count('news_article')+Count('match')).order_by('-news_count','name')
 
 	context = {
 			'bayern' : club_data,
@@ -43,6 +44,7 @@ def bayern_data(request):
 			'popular_news': popular_news,
             'newest_news' : newest_news,
             'favourite_news' : favourite_news,
-			'most_commented_news' : most_commented_news
+			'most_commented_news' : most_commented_news,
+			'popular_tags': popular_tags
     }
 	return context

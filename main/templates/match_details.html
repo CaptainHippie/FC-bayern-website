@@ -660,16 +660,16 @@
 
 
             <aside id="secondary" class="sidebar widget-area col-lg-4">
-
-                {% include 'includes/widgets/social_media.html' %}
                 
-                {% include 'includes/widgets/popular_news.html' %}
+                {% if related_news.count > 0 %}
+                    {% include 'includes/widgets/related_news.html' %}
+                {% endif %}
 
-                {% include 'includes/widgets/tag_cloud.html' %}
-                
+                {% if all_tags.count > 0 %}
+                    {% include 'includes/widgets/tag_cloud.html' %}
+                {% endif %}
+
                 {% include 'includes/widgets/single_advert.html' %}
-                
-                {% include 'includes/widgets/tabbed_news.html' %}
 
             </aside><!-- #secondary -->
 

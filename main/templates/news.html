@@ -61,207 +61,165 @@
                     </div>
                 {% endif %}
             </article>
-
-            <!-- Post Author -->
-            <div class="post-author card card--lg">
-                <div class="card__content">
-
-                    <header class="post-author__header">
-                        <figure class="post-author__avatar">
-                            <img src="/media/{{post.author.profile_pic}}" class='avatar avatar-60 photo' height='60' width='60' loading='lazy' />
-                        </figure>
-
-                        <div class="post-author__info">
-                            <h4 class="post-author__name">{{post.author.name_display}}</h4>
-                            {% if post.author.is_staff == True %}<span class="post-author__slogan">admin</span>{% endif %}
-                        </div>
-                        <ul class="post-author__social-links social-links social-links--btn">
-                            <li class="social-links__item">
-                                <a href="{{post.author.social_link}}" class="social-links__link social-links__link--mail"><i class="fa fa-envelope"></i></a>
-                            </li>
-                        </ul>
-                    </header>
-                </div>
-            </div>
-            <!-- Post Author / End -->
-
-            {% if post.related_news.count > 0 %}
-            <header class="post-comment-form__header card__header"><h4>Related News</h4></header>
-            <div class="posts posts--cards post-grid post-grid--masonry row">
-                
-                {% for rel_news in post.related_news.all %}
-                <div class="post-grid__item col-sm-6 col-lg-4">
-                    <article class="posts__item posts__item--card card posts__item--category-{{rel_news.news_type.category}} post type-post status-publish format-standard has-post-thumbnail hentry category-{{rel_news.news_type.css_name}}">
-                        <figure class="posts__thumb">
-                            <div class="posts__cat">
-                                <span class="label posts__cat-label posts__cat-label--category-{{rel_news.news_type.category}} category-{{rel_news.news_type.css_name}}">{{rel_news.news_type}}</span>
-                            </div>
-                            <a href="{{rel_news.get_absolute_url}}">
-                                <img src="{% if rel_news.image %}/media/{{rel_news.image}}{% else %}{{rel_news.image_url}}{% endif %}"
-                                    class="attachment-alchemists_thumbnail size-alchemists_thumbnail wp-post-image">
-                            </a>
-                        </figure>
-
-                        <div class="posts__inner card__content">
-                            <time class="posts__date">{{rel_news.added|date:"F j, Y"}}</time>
-                            <h2 class="posts__title">
-                                <a href="{{rel_news.get_absolute_url}}" rel="bookmark" style="font-size: 16px">{{rel_news.title|truncatechars:50}}</a>
-                            </h2>
-                        </div>
-
-                        <footer class="posts__footer card__footer">
-                            <div class="post-author">
-                                <figure class="post-author__avatar">
-                                    <img src="/media/{{rel_news.author.profile_pic}}" class='avatar photo'>
-                                </figure>
-                                <div class="post-author__info">
-                                    <h4 class="post-author__name">{{rel_news.author.name_display}}</h4>
-                                </div>
-                            </div>
-                            <div class="post__meta meta">
-                                <div class="meta__item meta__item--views">{{rel_news.views}}</div>
-                                <div class="meta__item meta__item--likes ">
-                                    <a {% if logged_user %}href="{% url 'like' logged_user.id rel_news.id %}"{% endif %} class="sl-button" title="Like">
-                                        <span class="sl-icon">
-                                            <i class="meta-like icon-heart" {% if logged_user and logged_user in rel_news.liked.all %}style="color: red"{% endif %}></i>
-                                        </span>
-                                        <span class="sl-count">{{rel_news.num_likes}}</span>
-                                    </a>
-                                    <span class="sl-loader"></span>
-                                </div>
-                                <div class="meta__item meta__item--comments"><a href="">{{rel_news.comment_set.count}}</a>
-                                </div>
-
-
-                            </div>
-                        </footer>
-
-                    </article><!-- #post-## -->
-                </div>
-                {% endfor %}
-            </div>
-            {% endif %}
-
-            <div id="comments" class="post-comments card card--lg">
-
-                <header class="post-commments__header card__header">
-                    <h4>Comments ({{post.comment_set.count}})</h4>
-                </header><!-- .post-commments__header -->
-
-                <div class="post-comments__content card__content pb-0">
-
-                    <ol class="comments">
-                        
-                        {% for comment in comments %}
-                        <li class="comment byuser comment-author-admin bypostauthor {% cycle 'even' 'odd' %} thread-{% cycle 'even' 'odd' %} depth-1 parent" id="comment-{{forloop.counter}}">
-                            <div id="comments__inner-{{forloop.counter}}" class="comments__inner">
-                                <header class="comment__header">
-                                    <div class="comment__author">
-                                        <figure class="comment__author-avatar">
-                                            <img src="/media/{{comment.from_user.profile_pic}}" class='avatar photo' height='60' width='60'>
-                                        </figure>
-
-                                        <div class="comment__author-info">
-                                            <h5 class="comment__author-name" 
-                                            {% if comment.from_user.name_display == post.author.name_display %} style="color:rgb(220, 5, 45)"{% endif %}>
-                                            {{comment.from_user.name_display}}</h5>
-                                            <div class="comment__post-date">{{comment.added|date:"g:i A, M j, Y"}}</div>
-                                        </div>
-                                    </div>
-                                    {% if logged_user %}
-                                    <div class="comment__reply" onclick="reply_mode_on({{forloop.counter}})">
-                                        <span class="comment__reply-link btn btn-link btn-xs" style="color: rgb(203 217 228 / 78%)">Reply</span>
-                                    </div>
-                                    {% endif %}
-                                </header>
-
-                                <div class="comment__body">
-                                    <p>{{comment.text}}</p>
-                                </div>
-                            </div>
-                            {% for reply in comment.comment_set.all %}
-                            <ul class="children">
-                                <li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-4">
+        
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Post Author -->
+                    <div class="post-author card card--lg">
+                        <div class="card__content">
     
-                                    <div id="comments__inner-4" class="comments__inner">
+                            <header class="post-author__header">
+                                <figure class="post-author__avatar">
+                                    <img src="/media/{{post.author.profile_pic}}" class='avatar avatar-60 photo' height='60' width='60' loading='lazy' />
+                                </figure>
+    
+                                <div class="post-author__info">
+                                    <h4 class="post-author__name">{{post.author.name_display}}</h4>
+                                    {% if post.author.is_staff == True %}<span class="post-author__slogan">admin</span>{% endif %}
+                                </div>
+                                <ul class="post-author__social-links social-links social-links--btn">
+                                    <li class="social-links__item">
+                                        <a href="{{post.author.social_link}}" class="social-links__link social-links__link--mail"><i class="fa fa-envelope"></i></a>
+                                    </li>
+                                </ul>
+                            </header>
+                        </div>
+                    </div>
+                    <!-- Post Author / End --> 
+
+                    <!-- comments -->
+                    <div id="comments" class="post-comments card card--lg">
+
+                        <header class="post-commments__header card__header">
+                            <h4>Comments ({{post.comment_set.count}})</h4>
+                        </header>
+
+                        <div class="post-comments__content card__content pb-0">
+                            <ol class="comments">
+                        
+                            {% for comment in comments %}
+                                <li class="comment byuser comment-author-admin bypostauthor {% cycle 'even' 'odd' %} thread-{% cycle 'even' 'odd' %} depth-1 parent" id="comment-{{forloop.counter}}">
+                                    <div id="comments__inner-{{forloop.counter}}" class="comments__inner">
                                         <header class="comment__header">
                                             <div class="comment__author">
                                                 <figure class="comment__author-avatar">
-                                                    <img src='/media/{{reply.from_user.profile_pic}}' class='avatar avatar-60 photo' height='60' width='60'>
+                                                    <img src="/media/{{comment.from_user.profile_pic}}" class='avatar photo' height='60' width='60'>
                                                 </figure>
+
                                                 <div class="comment__author-info">
-                                                    <h5 class="comment__author-name" {% if reply.from_user.name_display == post.author.name_display %} style="color:rgb(220, 5, 45)"{% endif %}>{{reply.from_user.name_display}}</h5>
-                                                    <div class="comment__post-date">{{reply.added|date:"g:i A, M j, Y"}}</div>
+                                                    <h5 class="comment__author-name" 
+                                                    {% if comment.from_user.name_display == post.author.name_display %} style="color:rgb(220, 5, 45)"{% endif %}>
+                                                    {{comment.from_user.name_display}}</h5>
+                                                    <div class="comment__post-date">{{comment.added|date:"g:i A, M j, Y"}}</div>
                                                 </div>
                                             </div>
+                                            {% if logged_user %}
+                                            <div class="comment__reply" onclick="reply_mode_on({{forloop.counter}})">
+                                                <span class="comment__reply-link btn btn-link btn-xs" style="color: rgb(203 217 228 / 78%)">Reply</span>
+                                            </div>
+                                            {% endif %}
                                         </header>
-                                        <div class="comment__body">
-                                            <p>{{reply.text}}</p>
-                                        </div>    
-                                    </div>
-                                </li>
-                                
-                            </ul>
-                            {% endfor %}
-                        </li>
 
-                        {% if logged_user %}
-                        <div id="respond-{{forloop.counter}}" class="comment-respond">
-                            <header class="post-comment-form__header">
-                                <h4>Leave a Reply <small>
-                                    <a rel="nofollow" id="cancel-comment-reply-link" onclick="reply_mode_off()" style="cursor:pointer">Cancel Reply</a>
-                                </small>
-                                </h4>
-                            </header>
+                                        <div class="comment__body">
+                                            <p>{{comment.text}}</p>
+                                        </div>
+                                    </div>
+                                    {% for reply in comment.comment_set.all %}
+                                    <ul class="children">
+                                        <li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-4">
+    
+                                            <div id="comments__inner-4" class="comments__inner">
+                                                <header class="comment__header">
+                                                    <div class="comment__author">
+                                                        <figure class="comment__author-avatar">
+                                                            <img src='/media/{{reply.from_user.profile_pic}}' class='avatar avatar-60 photo' height='60' width='60'>
+                                                        </figure>
+                                                        <div class="comment__author-info">
+                                                            <h5 class="comment__author-name" {% if reply.from_user.name_display == post.author.name_display %} style="color:rgb(220, 5, 45)"{% endif %}>{{reply.from_user.name_display}}</h5>
+                                                            <div class="comment__post-date">{{reply.added|date:"g:i A, M j, Y"}}</div>
+                                                        </div>
+                                                    </div>
+                                                </header>
+                                                <div class="comment__body">
+                                                    <p>{{reply.text}}</p>
+                                                </div>    
+                                            </div>
+                                        </li>
+                                
+                                    </ul>
+                                    {% endfor %}
+                                </li>
+
+                                {% if logged_user %}
+                                <div id="respond-{{forloop.counter}}" class="comment-respond">
+                                    <header class="post-comment-form__header">
+                                        <h4>Leave a Reply <small>
+                                            <a rel="nofollow" id="cancel-comment-reply-link" onclick="reply_mode_off()" style="cursor:pointer">Cancel Reply</a>
+                                        </small>
+                                        </h4>
+                                    </header>
                             
-                            <form action="{% url 'save_comment' logged_user.id %}" method="post" id="commentform-{{ forloop.counter }}" class="post-comment-form__content card__content" novalidate="">
+                                    <form action="{% url 'save_comment' logged_user.id %}" method="post" id="commentform-{{ forloop.counter }}" class="post-comment-form__content card__content" novalidate="">
+                                        {% csrf_token %}
+                                        <p class="logged-in-as">
+                                            Logged in as {{ logged_user.username }}. <a href="">Log out?</a>
+                                        </p>
+                                        <div class="comment-form-message form-group">
+                                            <label class="control-label hidden" for="comment">Your Reply</label>
+                                            <textarea id="comment" name="comment_text" cols="30" rows="7" class="form-control" aria-required="true"></textarea>
+                                        </div>
+                                        <p class="form-submit">
+                                            <input name="submit" type="submit" id="submit" class="btn btn-block btn-lg btn-default" value="Post Your Comment">
+                                            <input type="hidden" name="comment_post_ID" value="{{post.id}}" id="comment_post_ID">
+                                            <input type="hidden" name="comment_parent" id="comment_parent" value="{{comment.id}}">
+                                        </p>
+                                    </form>
+                                </div>
+                                {% endif %}
+                        
+                            {% endfor %}
+                        
+                            </ol><!-- .comments -->
+
+                        </div>
+
+                    </div><!-- #comments -->
+
+                    {% if logged_user %}
+                    <!-- Comment Form -->
+                    <div class="post-comment-form card card--lg">
+                        <div id="respond" class="comment-respond-main">
+                            <header class="post-comment-form__header card__header"><h4>Leave a Comment</h4></header>
+                            <form action="{% url 'save_comment' logged_user.id %}" method="post" id="main-commentform" class="post-comment-form__content card__content">
                                 {% csrf_token %}
-                                <p class="logged-in-as">
-                                    Logged in as {{ logged_user.username }}. <a href="">Log out?</a>
-                                </p>
+                                <p class="logged-in-as">Logged in as {{ logged_user.username }}. <a href="">Log out?</a></p>
                                 <div class="comment-form-message form-group">
-                                    <label class="control-label hidden" for="comment">Your Reply</label>
+                                    <label class="control-label" for="comment">Your Comment</label>
                                     <textarea id="comment" name="comment_text" cols="30" rows="7" class="form-control" aria-required="true"></textarea>
                                 </div>
                                 <p class="form-submit">
-                                    <input name="submit" type="submit" id="submit" class="btn btn-block btn-lg btn-default" value="Post Your Comment">
-                                    <input type="hidden" name="comment_post_ID" value="{{post.id}}" id="comment_post_ID">
-                                    <input type="hidden" name="comment_parent" id="comment_parent" value="{{comment.id}}">
+                                    <input name="submit" type="submit" id="submit" class="btn btn-block btn-lg btn-default" value="Post Your Comment"> 
+                                    <input type='hidden' name='comment_post_ID' value="{{post.id}}" id='comment_post_ID'>
                                 </p>
                             </form>
-                        </div>
-                        {% endif %}
-                        
-                        {% endfor %}
-                        
-                    </ol><!-- .comments -->
-
+                        </div><!-- #respond -->
+                    </div>
+                    <!-- Comment Form / End -->
+                    {% endif %}
                 </div>
 
-            </div><!-- #comments -->
+                <aside id="secondary" class="sidebar widget-area col-lg-4">
 
-            {% if logged_user %}
-            <!-- Comment Form -->
-            <div class="post-comment-form card card--lg">
-                <div id="respond" class="comment-respond-main">
-                    <header class="post-comment-form__header card__header"><h4>Leave a Comment</h4></header>
-                    <form action="{% url 'save_comment' logged_user.id %}" method="post" id="main-commentform" class="post-comment-form__content card__content">
-                        {% csrf_token %}
-                        <p class="logged-in-as">Logged in as {{ logged_user.username }}. <a href="">Log out?</a></p>
-                        <div class="comment-form-message form-group">
-                            <label class="control-label" for="comment">Your Comment</label>
-                            <textarea id="comment" name="comment_text" cols="30" rows="7" class="form-control" aria-required="true"></textarea>
-                        </div>
-                        <p class="form-submit">
-                            <input name="submit" type="submit" id="submit" class="btn btn-block btn-lg btn-default" value="Post Your Comment"> 
-                            <input type='hidden' name='comment_post_ID' value="{{post.id}}" id='comment_post_ID'>
-                        </p>
-                    </form>
-                </div><!-- #respond -->
+                    {% if all_tags.count > 0 %}
+                        {% include 'includes/widgets/tag_cloud.html' %}
+                    {% endif %}
+                    
+                    {% if related_news.count > 0 %}
+                        {% include 'includes/widgets/related_news.html' %}
+                    {% endif %}
+
+                </aside>
             </div>
-            <!-- Comment Form / End -->
-            {% endif %}
-
         </div><!-- #primary -->
 
     </div>

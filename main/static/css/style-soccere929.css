@@ -11244,7 +11244,7 @@ ul.posts:not(.post-grid) {
 }
 @media (min-width: 992px) {
   .posts__item--card .posts__excerpt {
-    padding: 23px 0 8px 0;
+    padding: 15px 0 8px 0;
   }
 }
 .posts__item--card .posts__excerpt > p:last-child {

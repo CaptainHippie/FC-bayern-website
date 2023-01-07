@@ -25,6 +25,13 @@ class CustomUser(User):
     def __str__(self):
         return self.name_display
 
+class News_Tag(models.Model):
+    name = models.CharField(max_length=40)
+    display = models.CharField(max_length=40)
+
+    def __str__(self):
+        return self.display
+
 class News_article(models.Model):
     title = models.CharField(max_length=100)
     news_type = models.ForeignKey(article_type, on_delete=models.CASCADE)
@@ -34,13 +41,15 @@ class News_article(models.Model):
     post_content = RichTextField()
     added = models.DateTimeField(default=timezone.now, null=True)
     updated = models.DateTimeField(auto_now=True, null=True)
-    slug = models.SlugField(default='', max_length=500, null=True, blank=True)
-    views = models.IntegerField(default=0, null=True, blank=True)
-    excerpt = models.TextField(null=True)
+    slug = models.SlugField(default='', max_length=100, null=True, blank=True)
+    views = models.IntegerField(default=0)
+    excerpt = models.TextField(null=True, blank=True)
     featured = models.BooleanField(default=False)
+    home_banner = models.BooleanField(default=False)
     liked = models.ManyToManyField(CustomUser, default=None, blank=True, related_name='liked')
     video_url = models.CharField(max_length=200, null=True, blank=True)
     related_news = models.ManyToManyField('self', default=None, blank=True)
+    tags = models.ManyToManyField(News_Tag, default=None, blank=True)
 
     def __str__(self):
         return self.title
@@ -161,6 +170,9 @@ class Match(models.Model):
     reds_opp = models.PositiveSmallIntegerField(default=0)
     corners_opp = models.PositiveSmallIntegerField(default=0)
     saves_opp = models.PositiveSmallIntegerField(default=0)
+
+    tags = models.ManyToManyField(News_Tag, default=None, blank=True)
+    news_tags = models.ManyToManyField(News_article, default=None, blank=True)
 
     def __str__(self):
         return self.competition.name + "-" + self.match_title + "-" + self.opponent.name
@@ -479,3 +491,4 @@ class Mini_Articles(models.Model):
 
     def __str__(self):
         return self.name
+

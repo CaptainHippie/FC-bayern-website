@@ -8,6 +8,7 @@ from django.utils import timezone
 from django.db.models import Count, Max, Min
 from . models import *
 from . import calculations
+from . forms import News_Article_Form
 
 def HOME(request):
     featured_news = News_article.objects.filter(featured=True)
@@ -39,20 +40,29 @@ def NEWS(request, slug):
     comments = Comment.objects.filter(parent_comment=None, parent_news=post).order_by('-added')
     comment_count = Comment.objects.filter(parent_news=post).count()
     
+    tags = News_Tag.objects.filter(news_article=post.id)
+    related_news = News_article.objects.filter(related_news=post.id)
+
     context = {
             'post': post,
             'comments':comments,
-            'comment_count': comment_count
+            'comment_count': comment_count,
+            'all_tags': tags,
+            'related_news': related_news
     }
     return render(request, 'news.html', context)
 
 def MATCH_DETAIL(request, slug_name):
     match = Match.objects.get(slug=slug_name)
     events = Match_timeline.objects.filter(match=match).order_by('minute')
+    related_tags = News_Tag.objects.filter(match=match.id)
+    related_news = News_article.objects.filter(match=match.id)
 
     context = {
             'match': match,
             'events': events,
+            'all_tags': related_tags,
+            'related_news': related_news
     }
     return render(request, 'match_details.html', context)
 
@@ -395,10 +405,15 @@ def PRODUCT(request, slug_name):
 
 
 def TEST(request):
-    return render(request, 'test.html')
-
-
-
+    form = News_Article_Form()
+    form_post = News_Article_Form(request.POST)
+    if form_post.is_valid():
+        form_post.save()
+        return redirect('test')
+    context = {
+            'article_form' : form
+    }
+    return render(request, 'test.html', context)
 
 
 def cart_add(request, size, player, id):
@@ -572,15 +587,19 @@ def ALL_NEWS(request):
     }
     return render(request, 'all_news.html', context)
 
-def NEWS_BY_TAGS(request):
-    all_news = News_article.objects.all().order_by('-added')
+def NEWS_BY_TAGS(request, tag_name):
+    all_tags = News_Tag.objects.annotate(news_count=Count('news_article')).order_by('-news_count','name')
+    tag = News_Tag.objects.get(name=tag_name)
+    all_news = News_article.objects.filter(tags=tag.id).order_by('-added')
 
     news_count = all_news.count()
     news_per_page = 10
     extra_pages_count = ((int(news_count/news_per_page)-1) if ((news_count%news_per_page)==0) else int(news_count/news_per_page)) if (news_count>news_per_page) else 0
     context = {
-        'all_news' : all_news,
-        'pages_count' : extra_pages_count
+        'all_news': all_news,
+        'pages_count': extra_pages_count,
+        'all_tags': all_tags,
+        'tag': tag
     }
     return render(request, 'news_by_tags.html', context)
 

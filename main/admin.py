@@ -13,6 +13,7 @@ class Match_timeline_Admin(admin.TabularInline):
 
 class Match_Admin(admin.ModelAdmin):
     inlines = (Goalscorers_Admin, Opponent_Goalscorers_Admin, Match_timeline_Admin)
+    filter_horizontal = ['tags','news_tags']
 
 class Player_Stats_Admin(admin.ModelAdmin):
     list_display = ('player', 'season', 'competition')
@@ -23,6 +24,7 @@ class Player_Images_Admin(admin.TabularInline):
 class Player_Admin(admin.ModelAdmin):
     inlines = [Player_Images_Admin]
 
+
 class News_tag_Player_Admin(admin.TabularInline):
     model = News_Tag_Player
 class News_tag_Staff_Admin(admin.TabularInline):
@@ -32,7 +34,7 @@ class News_tag_Staff_Admin(admin.TabularInline):
 class News_article_Admin(admin.ModelAdmin):
     inlines = [News_tag_Player_Admin, News_tag_Staff_Admin]
 
-    filter_horizontal = ['related_news', 'liked']
+    filter_horizontal = ['related_news', 'liked', 'tags']
 
 
 
@@ -101,3 +103,4 @@ admin.site.register(Board_Member)
 admin.site.register(Trophies)
 admin.site.register(Mini_Articles)
 admin.site.register(Likes)
+admin.site.register(News_Tag)

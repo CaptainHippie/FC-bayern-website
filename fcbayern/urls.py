@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.HOME, name='home'),
     path('news/', views.ALL_NEWS, name='news_all'),
-    path('news/tag/name/', views.NEWS_BY_TAGS, name='news_by_tag'),
+    path('news/tag/<str:tag_name>/', views.NEWS_BY_TAGS, name='news_by_tag'),
     path('news/<slug:slug>/', views.NEWS, name='newspage'),
     path('add_comment/<int:user_id>/', views.save_comment, name='save_comment'),
 
