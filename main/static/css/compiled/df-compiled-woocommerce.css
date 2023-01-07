@@ -345,7 +345,7 @@ fieldset[disabled] .woocommerce #review_form #respond .form-submit input[type="s
 
 .header-cart-dropdown {
     width: 360px;
-    background-color: #292c31;
+    background-color: rgb(18 31 56);
     border-left: 1px solid #34373c;
     border-right: 1px solid #34373c
 }

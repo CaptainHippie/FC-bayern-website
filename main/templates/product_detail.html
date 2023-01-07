@@ -178,7 +178,7 @@
 
                     </div>
 
-
+                    {% if product.related_products.count > 0 %}
                     <section class="related products">
 
                         <div class="card card--clean">
@@ -190,266 +190,58 @@
 
                                 <ul class="products grid products--grid-4">
 
-                                    <li
-                                        class="product__item card product type-product post-648 status-publish first instock product_cat-alchemists product_cat-sneakers has-post-thumbnail virtual purchasable product-type-simple">
+                                    {% for rel_product in product.related_products.all %}
+                                    <li class="product__item card product type-product status-publish has-post-thumbnail shipping-taxable product-type-simple woocommerce">
 
-                                        <div class="product__img">
+                                        {% if rel_product.discount > 0 %}
+                                        <span class="onsale"><span class="onsale__inner">&nbsp;-{{rel_product.discount}}% </span></span>
+                                        {% endif %}
 
+                                        <div class="product__img" style="padding-top: 0">
 
-                                            <div class="product__img-holder">
+                                            <div class="product__img-holder" style="display: flex;align-items: center;height: 300px">
 
-                                                <a href="http://alchemists-wp.dan-fisher.com/soccer-dark/product/atlantic-sneakers/"
-                                                    class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img
-                                                        width="280" height="280"
-                                                        src="http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img2-280x280.png"
-                                                        class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                                                        alt="" loading="lazy"
-                                                        srcset="http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img2-280x280.png 280w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img2-150x150.png 150w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img2-300x300.png 300w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img2-128x128.png 128w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img2-32x32.png 32w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img2-400x400.png 400w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img2-80x80.png 80w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img2-356x356.png 356w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img2-470x470.png 470w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img2-70x70.png 70w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img2-100x100.png 100w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img2-40x40.png 40w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img2-424x424.png 424w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img2.png 540w"
-                                                        sizes="(max-width: 280px) 100vw, 280px" /></a>
+                                            <a href="{% url 'product' rel_product.slug %}"
+                                                class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+                                                <img style="margin: auto;display: block;width: 100%;padding: 1% 1% 1% 4%;max-height: 300px;"
+                                                    src="/media/{{rel_product.featured_image}}"
+                                                    class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"></a>
                                             </div>
                                         </div>
 
                                         <div class="product__content card__content">
 
-                                            <header class="product__header">
-                                                <div class="product__header-inner">
-                                                    <span class="product__category"><a
-                                                            href="http://alchemists-wp.dan-fisher.com/soccer-dark/product-category/sneakers/alchemists/"
-                                                            rel="tag">Alchemists</a>, <a
-                                                            href="http://alchemists-wp.dan-fisher.com/soccer-dark/product-category/sneakers/"
-                                                            rel="tag">Sneakers</a></span>
-                                                    <h2 class="product__title"><a
-                                                            href="http://alchemists-wp.dan-fisher.com/soccer-dark/product/atlantic-sneakers/">Atlantic
-                                                            Sneakers</a></h2>
-                                                    <div class="product__ratings"></div>
-                                                </div>
-
-
-                                                <div class="product__price"><span
-                                                        class="woocommerce-Price-amount amount"><span
-                                                            class="woocommerce-Price-currencySymbol">&#036;</span>30.00</span>
-                                                </div>
-                                            </header>
-
-                                            <div class="product__excerpt">
-                                                <h6>Description</h6>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisi nel elit, sed
-                                                    do eiusmod tempor incididunt ut labore et dolore magna
-                                                    aliqua. Ut enim ad mini veniam, quis nostrud en derum sum
-                                                    laborem.</p>
+                                        <header class="product__header">
+                                            <footer>
+                                            <div class="product__header-inner">
+                                                <span class="product__category">{{rel_product.category.name}}</span>
+                                                <h2 class="product__title">
+                                                    <a href="{% url 'product' rel_product.slug %}">{{rel_product.name|truncatechars:35}}</a></h2>
                                             </div>
-                                            <footer class="product__footer"><a href="?add-to-cart=648"
-                                                    data-quantity="1"
-                                                    class="btn product_type_simple add_to_cart_button ajax_add_to_cart btn-primary-inverse"
-                                                    data-product_id="648" data-product_sku=""
-                                                    aria-label="Add &ldquo;Atlantic Sneakers&rdquo; to your cart"
-                                                    rel="nofollow">Add to cart</a><a
-                                                    href="http://alchemists-wp.dan-fisher.com/soccer-dark/product/atlantic-sneakers/"
-                                                    class="btn product__view btn-default btn-inverse btn-single-icon"><i
-                                                        class="icon-eye"></i></a></footer>
+
+                                            <div class="product__price">
+                                                {% if rel_product.discount > 0 %}
+                                                <del aria-hidden="true">
+                                                <span class="woocommerce-Price-amount amount">
+                                                    <span class="woocommerce-Price-currencySymbol">&euro;</span>
+                                                    {{rel_product.price}}
+                                                </span></del>
+                                                {% endif %}
+                                                <ins>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <span class="woocommerce-Price-currencySymbol">&euro;</span>
+                                                        {% discounted_price rel_product.price rel_product.discount %}
+                                                    </span>
+                                                </ins>
+                                            </div>
+                                            </footer>
+                                        </header>
+
+
                                         </div>
                                     </li>
+                                    {% endfor %}
 
-
-                                    <li
-                                        class="product__item card product type-product post-1052 status-publish instock product_cat-sneakers has-post-thumbnail shipping-taxable purchasable product-type-simple">
-
-                                        <div class="product__img">
-
-
-                                            <div class="product__img-holder">
-
-                                                <a href="http://alchemists-wp.dan-fisher.com/soccer-dark/product/sundown-sneakers-2/"
-                                                    class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img
-                                                        width="280" height="280"
-                                                        src="http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img1-280x280.png"
-                                                        class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                                                        alt="" loading="lazy"
-                                                        srcset="http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img1-280x280.png 280w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img1-150x150.png 150w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img1-300x300.png 300w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img1-128x128.png 128w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img1-32x32.png 32w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img1-400x400.png 400w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img1-80x80.png 80w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img1-356x356.png 356w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img1-470x470.png 470w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img1-70x70.png 70w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img1-100x100.png 100w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img1-40x40.png 40w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img1-424x424.png 424w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img1.png 540w"
-                                                        sizes="(max-width: 280px) 100vw, 280px" /></a>
-                                            </div>
-                                        </div>
-
-                                        <div class="product__content card__content">
-
-                                            <header class="product__header">
-                                                <div class="product__header-inner">
-                                                    <span class="product__category"><a
-                                                            href="http://alchemists-wp.dan-fisher.com/soccer-dark/product-category/sneakers/"
-                                                            rel="tag">Sneakers</a></span>
-                                                    <h2 class="product__title"><a
-                                                            href="http://alchemists-wp.dan-fisher.com/soccer-dark/product/sundown-sneakers-2/">Sundown
-                                                            Sneakers</a></h2>
-                                                    <div class="product__ratings">
-                                                        <div class="star-rating" role="img"
-                                                            aria-label="Rated 4.00 out of 5"><span
-                                                                style="width:80%">Rated <strong
-                                                                    class="rating">4.00</strong> out of 5</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="product__price"><span
-                                                        class="woocommerce-Price-amount amount"><span
-                                                            class="woocommerce-Price-currencySymbol">&#036;</span>28.00</span>
-                                                </div>
-                                            </header>
-
-                                            <div class="product__excerpt">
-                                                <h6>Description</h6>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                                                    do eiusmod tempor ididunt ut labore et dolore magna aliqua.
-                                                    Duis aute irure dolor in reprehenderit in voluptate velit
-                                                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                                                    occaecat cupidatat non proident, sunt in culpa qui officia
-                                                    deserunt mollit anim id est laborum.</p>
-                                            </div>
-                                            <footer class="product__footer"><a href="?add-to-cart=1052"
-                                                    data-quantity="1"
-                                                    class="btn product_type_simple add_to_cart_button ajax_add_to_cart btn-primary-inverse"
-                                                    data-product_id="1052" data-product_sku=""
-                                                    aria-label="Add &ldquo;Sundown Sneakers&rdquo; to your cart"
-                                                    rel="nofollow">Add to cart</a><a
-                                                    href="http://alchemists-wp.dan-fisher.com/soccer-dark/product/sundown-sneakers-2/"
-                                                    class="btn product__view btn-default btn-inverse btn-single-icon"><i
-                                                        class="icon-eye"></i></a></footer>
-                                        </div>
-                                    </li>
-
-
-                                    <li
-                                        class="product__item card product type-product post-942 status-publish instock product_cat-sneakers has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
-
-                                        <span class="onsale"><span class="onsale__inner">Sale!</span></span>
-
-                                        <div class="product__img">
-
-
-                                            <div class="product__img-holder">
-
-                                                <a href="http://alchemists-wp.dan-fisher.com/soccer-dark/product/aquarium-sneakers/"
-                                                    class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img
-                                                        width="280" height="280"
-                                                        src="http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img3-280x280.png"
-                                                        class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                                                        alt="" loading="lazy"
-                                                        srcset="http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img3-280x280.png 280w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img3-150x150.png 150w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img3-300x300.png 300w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img3-128x128.png 128w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img3-32x32.png 32w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img3-400x400.png 400w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img3-80x80.png 80w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img3-356x356.png 356w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img3-470x470.png 470w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img3-70x70.png 70w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img3-100x100.png 100w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img3-40x40.png 40w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img3-424x424.png 424w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img3.png 540w"
-                                                        sizes="(max-width: 280px) 100vw, 280px" /></a>
-                                            </div>
-                                        </div>
-
-                                        <div class="product__content card__content">
-
-                                            <header class="product__header">
-                                                <div class="product__header-inner">
-                                                    <span class="product__category"><a
-                                                            href="http://alchemists-wp.dan-fisher.com/soccer-dark/product-category/sneakers/"
-                                                            rel="tag">Sneakers</a></span>
-                                                    <h2 class="product__title"><a
-                                                            href="http://alchemists-wp.dan-fisher.com/soccer-dark/product/aquarium-sneakers/">Aquarium
-                                                            Sneakers</a></h2>
-                                                    <div class="product__ratings">
-                                                        <div class="star-rating" role="img"
-                                                            aria-label="Rated 3.00 out of 5"><span
-                                                                style="width:60%">Rated <strong
-                                                                    class="rating">3.00</strong> out of 5</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="product__price"><del aria-hidden="true"><span
-                                                            class="woocommerce-Price-amount amount"><span
-                                                                class="woocommerce-Price-currencySymbol">&#036;</span>26.00</span></del>
-                                                    <ins><span class="woocommerce-Price-amount amount"><span
-                                                                class="woocommerce-Price-currencySymbol">&#036;</span>22.00</span></ins>
-                                                </div>
-                                            </header>
-
-                                            <div class="product__excerpt">
-                                                <h6>Description</h6>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                                                    do eiusmod tempor ididunt ut labore et dolore magna aliqua.
-                                                    Duis aute irure dolor in reprehenderit in voluptate velit
-                                                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                                                    occaecat cupidatat non proident, sunt in culpa qui officia
-                                                    deserunt mollit anim id est laborum.</p>
-                                            </div>
-                                            <footer class="product__footer"><a href="?add-to-cart=942"
-                                                    data-quantity="1"
-                                                    class="btn product_type_simple add_to_cart_button ajax_add_to_cart btn-primary-inverse"
-                                                    data-product_id="942" data-product_sku=""
-                                                    aria-label="Add &ldquo;Aquarium Sneakers&rdquo; to your cart"
-                                                    rel="nofollow">Add to cart</a><a
-                                                    href="http://alchemists-wp.dan-fisher.com/soccer-dark/product/aquarium-sneakers/"
-                                                    class="btn product__view btn-default btn-inverse btn-single-icon"><i
-                                                        class="icon-eye"></i></a></footer>
-                                        </div>
-                                    </li>
-
-
-                                    <li
-                                        class="product__item card product type-product post-1063 status-publish last instock product_cat-james-girobili-collection product_cat-sneakers has-post-thumbnail shipping-taxable purchasable product-type-simple">
-
-                                        <div class="product__img">
-
-
-                                            <div class="product__img-holder">
-
-                                                <a href="http://alchemists-wp.dan-fisher.com/soccer-dark/product/jumper-sneakers-extended/"
-                                                    class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img
-                                                        width="280" height="280"
-                                                        src="http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img6-280x280.png"
-                                                        class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                                                        alt="" loading="lazy"
-                                                        srcset="http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img6-280x280.png 280w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img6-150x150.png 150w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img6-300x300.png 300w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img6-128x128.png 128w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img6-32x32.png 32w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img6-400x400.png 400w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img6-80x80.png 80w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img6-356x356.png 356w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img6-470x470.png 470w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img6-70x70.png 70w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img6-100x100.png 100w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img6-40x40.png 40w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img6-424x424.png 424w, http://alchemists-wp.dan-fisher.com/soccer-dark/wp-content/uploads/2017/06/product-img6.png 540w"
-                                                        sizes="(max-width: 280px) 100vw, 280px" /></a>
-                                            </div>
-                                        </div>
-
-                                        <div class="product__content card__content">
-
-                                            <header class="product__header">
-                                                <div class="product__header-inner">
-                                                    <span class="product__category"><a
-                                                            href="http://alchemists-wp.dan-fisher.com/soccer-dark/product-category/sneakers/james-girobili-collection/"
-                                                            rel="tag">James Girobili</a>, <a
-                                                            href="http://alchemists-wp.dan-fisher.com/soccer-dark/product-category/sneakers/"
-                                                            rel="tag">Sneakers</a></span>
-                                                    <h2 class="product__title"><a
-                                                            href="http://alchemists-wp.dan-fisher.com/soccer-dark/product/jumper-sneakers-extended/">Jumper
-                                                            Sneakers 3</a></h2>
-                                                    <div class="product__ratings"></div>
-                                                </div>
-
-
-                                                <div class="product__price"><span
-                                                        class="woocommerce-Price-amount amount"><span
-                                                            class="woocommerce-Price-currencySymbol">&#036;</span>30.00</span>
-                                                </div>
-                                            </header>
-
-                                            <div class="product__excerpt">
-                                                <h6>Description</h6>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                                                    do eiusmod tempor ididunt ut labore et dolore magna aliqua.
-                                                    Duis aute irure dolor in reprehenderit in voluptate velit
-                                                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                                                    occaecat cupidatat non proident, sunt in culpa qui officia
-                                                    deserunt mollit anim id est laborum.</p>
-                                            </div>
-                                            <footer class="product__footer"><a href="?add-to-cart=1063"
-                                                    data-quantity="1"
-                                                    class="btn product_type_simple add_to_cart_button ajax_add_to_cart btn-primary-inverse"
-                                                    data-product_id="1063" data-product_sku=""
-                                                    aria-label="Add &ldquo;Jumper Sneakers 3&rdquo; to your cart"
-                                                    rel="nofollow">Add to cart</a><a
-                                                    href="http://alchemists-wp.dan-fisher.com/soccer-dark/product/jumper-sneakers-extended/"
-                                                    class="btn product__view btn-default btn-inverse btn-single-icon"><i
-                                                        class="icon-eye"></i></a></footer>
-                                        </div>
-                                    </li>
 
 
                                 </ul>
@@ -458,7 +250,8 @@
                         </div>
 
                     </section>
-
+                    {% endif %}
+                    
                 </main><!-- #main -->
             </div><!-- #primary -->
 

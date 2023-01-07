@@ -1,16 +1,13 @@
 {% load static %}
 {% load active_link_tags %}
+{% load cart_tag %}
 
 <div class="header-mobile clearfix" id="header-mobile">
     <div class="header-mobile__logo">
-        <a href="{% url 'home' %}" rel="home">
-            <img src="/media/{{bayern.logo}}" class="header-mobile__logo-img">
-        </a>
+        <a href="{% url 'home' %}" rel="home"><img src="/media/{{bayern.logo}}" class="header-mobile__logo-img"></a>
     </div>
     <div class="header-mobile__inner">
-        <a id="header-mobile__toggle" class="burger-menu-icon" href="#">
-            <span class="burger-menu-icon__line"></span>
-        </a>
+        <a id="header-mobile__toggle" class="burger-menu-icon" href="#"><span class="burger-menu-icon__line"></span></a>
         <div class="header-mobile__secondary">
             <span class="header-mobile__search-icon" id="header-mobile__search-icon"></span>
             <span class="header-mobile-pushy-panel__toggle"><i class="fas fa-ellipsis-v"></i></span>
@@ -39,102 +36,152 @@
     <div class="header__secondary">
         <div class="container">
             <div class="header__secondary-inner">
+                
                 <ul class="info-block info-block--header">
+                    
                     <li class="info-block__item info-block__item--shopping-cart has-children js-info-block__item--onhover">
+
                         <a href="{% url 'cart' %}" class="info-block__link-wrapper" title="View your shopping cart">
                             <div class="df-icon-stack df-icon-stack--bag">
                                 <svg role="img" class="df-icon df-icon--bag">
-                                    <use xlink:href="{% static 'images/icons-basket.svg' %}">
+                                    <use xlink:href="{% static 'images/icons-basket.svg' %}#bag">
                                 </svg>
                                 <svg role="img" class="df-icon df-icon--bag-handle">
-                                    <use xlink:href="{% static 'images/icons-basket.svg' %}">
+                                    <use xlink:href="{% static 'images/icons-basket.svg' %}#bag-handle">
                                 </svg>
                             </div>
 
-                            <h6 class="info-block__heading">Your Bag (0 items)</h6>
+                            <h6 class="info-block__heading">Your Cart ({{request.session.cart|length}} items)</h6>
                             <span class="info-block__cart-sum">
                                 <span class="woocommerce-Price-amount amount">
-                                <bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>0.00</bdi>
+                                <bdi><span class="woocommerce-Price-currencySymbol">&euro;</span>{{cart_total_amount}}</bdi>
                                 </span>
                             </span>
                         </a>
 
                         <div class="header-cart-dropdown">
-                            <div class="widget_shopping_cart_content"></div>
+                            <div class="widget_shopping_cart_content">
+                                {% if request.session.cart %}
+                                <ul class="cart_list product_list_widget ">
+                                    {% for key,value in request.session.cart.items %}
+                                    <li class="products-list__item">
+                                        <a href="{% url 'item_clear' key %}" class="remove remove_from_cart_button" aria-label="Remove this item">×</a>
+                                        <figure class="products-list__product-thumb">
+                                            <a href="{% url 'product' value.link %}">
+                                                <img width="280" height="280" src="/media/{{value.image}}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" loading="lazy">
+                                            </a>
+                                        </figure>
+                    
+                                        <div class="products-list__inner">
+                                            <span class="products-list__product-cat">{{value.category}}</span>
+                                            <h5 class="products-list__product-title">
+                                                <a href="{% url 'product' value.link %}">{{value.name}}</a>
+                                            </h5>
+                                            <div class="products-list__product-amount">
+                                                <span class="woocommerce-Price-amount amount">
+                                                <bdi><span class="woocommerce-Price-currencySymbol">&euro;</span>{{value.price}}</bdi>
+                                                </span> × {{value.quantity}}
+                                            </div>						
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul><!-- end product list -->
+                                
+                                <div class="total">
+                                    <div class="total__label">Subtotal:</div>
+                                    <div class="total__amount">
+                                        <span class="woocommerce-Price-amount amount">
+                                            <bdi><span class="woocommerce-Price-currencySymbol">&euro;</span>{{cart_total_amount}}</bdi>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="buttons">
+                                    <a href="{% url 'cart' %}" class="btn btn-default wc-forward">View cart</a>
+                                    <a href="{% url 'checkout' %}" class="btn btn-primary-inverse checkout wc-forward">Checkout</a>	
+                                </div>
+                                {% else %}
+                                <ul class="cart_list product_list_widget ">
+                                    <li class="empty">No products in the cart.</li>
+                                </ul>
+                                {% endif %}
+
+                            </div>
                         </div>
+                        
                     </li>
+                    
                 </ul>
             </div>
         </div>
     </div>
 
     <div class="header__primary">
-      <!-- Header Logo -->
-      <div class="header-logo">
-        <a href="{% url 'home' %}" rel="home">
-          <img src="/media/{{bayern.logo}}" class="header-logo__img">
-          <header class="club-title">{{bayern.full_name}}</header>
-        </a>
-      </div>
-      <!-- Header Logo / End -->
-      <div class="container">
-        <div class="header__primary-inner">
-          <!-- Header Logo -->
-          <div class="header-logo">
+        <!-- Header Logo -->
+        <div class="header-logo">
             <a href="{% url 'home' %}" rel="home">
-              <img src="/media/{{bayern.logo}}" class="header-logo__img">
-              <header class="club-title">{{bayern.full_name}}</header>
+                <img src="/media/{{bayern.logo}}" class="header-logo__img">
+                <header class="club-title">{{bayern.full_name}}</header>
             </a>
-          </div>
-          <!-- Header Logo / End -->
-
-          <!-- Main Navigation -->
-          <nav class="main-nav" style="background-color: rgb(198, 4, 40)">
-            <ul id="menu-primary-menu" class="main-nav__list">
-              <li class="menu-item menu-item-type-post menu-item-object-page menu-item-home {% active_link 'home' 'current-menu-item' strict=True %}">
-                <a class="menu-item-link" href="{% url 'home' %}">Home</a>
-              </li>
-              <li class="menu-item menu-item-type-post menu-item-object-page {% active_link 'team||match||player||staff||album' 'current-menu-item' %}">
-                <a class="menu-item-link" href="{% url 'team' %}">Team</a>
-              </li>
-              <li class="menu-item menu-item-type-post menu-item-object-page {% active_link 'club' 'current-menu-item' strict=True %}">
-                <a class="menu-item-link" href="{% url 'club' %}">Club</a>
-              </li>
-              
-              <li class="menu-item menu-item-type-post menu-item-object-page {% active_link 'news_all||newspage' 'current-menu-item' %}">
-                <a class="menu-item-link" href="{% url 'news_all' %}">News</a>
-              </li>
-              <li class="menu-item menu-item-type-post menu-item-object-page {% active_link 'shop||shop_category||product||cart' 'current-menu-item' %}">
-                <a class="menu-item-link" href="{% url 'shop' %}">Shop</a>
-              </li>
-              <li class="menu-item menu-item-type-post menu-item-object-page {% active_link 'contact' 'current-menu-item' strict=True %}">
-                <a class="menu-item-link" href="{% url 'contact' %}">Contact Us</a>
-              </li>
-            </ul>
-
-            <!-- Social Links -->
-            <ul class="social-links social-links--inline social-links--main-nav">
-              <li class="social-links__item">
-                <a href="{{bayern.fb_link}}" class="social-links__link" title="Facebook" target="_blank"><i class="fab fa-facebook"></i></a>
-              </li>
-              <li class="social-links__item">
-                <a href="{{bayern.twitter_link}}" class="social-links__link" title="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-              </li>
-              <li class="social-links__item">
-                <a href="{{bayern.insta_link}}" class="social-links__link" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-              </li>
-            </ul>
-            <!-- Social Links / End -->
-
-            <!-- Pushy Panel Toggle -->
-            <a href="#" class="pushy-panel__toggle">
-              <span class="pushy-panel__line"></span>
-            </a>
-            <!-- Pushy Panel Toggle / Eng -->
-          </nav>
-          <!-- Main Navigation / End -->
         </div>
-      </div>
+        <!-- Header Logo / End -->
+        <div class="container">
+            <div class="header__primary-inner">
+                <!-- Header Logo -->
+                <div class="header-logo">
+                    <a href="{% url 'home' %}" rel="home">
+                        <img src="/media/{{bayern.logo}}" class="header-logo__img">
+                        <header class="club-title">{{bayern.full_name}}</header>
+                    </a>
+                </div>
+                <!-- Header Logo / End -->
+
+                <!-- Main Navigation -->
+                <nav class="main-nav" style="background-color: rgb(198, 4, 40)">
+                    <ul id="menu-primary-menu" class="main-nav__list">
+                        <li class="menu-item menu-item-type-post menu-item-object-page menu-item-home {% active_link 'home' 'current-menu-item' strict=True %}">
+                            <a class="menu-item-link" href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="menu-item menu-item-type-post menu-item-object-page {% active_link 'team||match||player||staff||album' 'current-menu-item' %}">
+                            <a class="menu-item-link" href="{% url 'team' %}">Team</a>
+                        </li>
+                        <li class="menu-item menu-item-type-post menu-item-object-page {% active_link 'club' 'current-menu-item' strict=True %}">
+                            <a class="menu-item-link" href="{% url 'club' %}">Club</a>
+                        </li>
+              
+                        <li class="menu-item menu-item-type-post menu-item-object-page {% active_link 'news_all||newspage' 'current-menu-item' %}">
+                            <a class="menu-item-link" href="{% url 'news_all' %}">News</a>
+                        </li>
+                        <li class="menu-item menu-item-type-post menu-item-object-page {% active_link 'shop||shop_category||product||cart' 'current-menu-item' %}">
+                            <a class="menu-item-link" href="{% url 'shop' %}">Shop</a>
+                        </li>
+                        <li class="menu-item menu-item-type-post menu-item-object-page {% active_link 'contact' 'current-menu-item' strict=True %}">
+                            <a class="menu-item-link" href="{% url 'contact' %}">Contact Us</a>
+                        </li>
+                    </ul>
+
+                    <!-- Social Links -->
+                    <ul class="social-links social-links--inline social-links--main-nav">
+                        <li class="social-links__item">
+                            <a href="{{bayern.fb_link}}" class="social-links__link" title="Facebook" target="_blank"><i class="fab fa-facebook"></i></a>
+                        </li>
+                        <li class="social-links__item">
+                            <a href="{{bayern.twitter_link}}" class="social-links__link" title="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li class="social-links__item">
+                            <a href="{{bayern.insta_link}}" class="social-links__link" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </li>
+                    </ul>
+                    <!-- Social Links / End -->
+
+                    <!-- Pushy Panel Toggle -->
+                    <a href="#" class="pushy-panel__toggle">
+                        <span class="pushy-panel__line"></span>
+                    </a>
+                    <!-- Pushy Panel Toggle / Eng -->
+                </nav>
+                <!-- Main Navigation / End -->
+            </div>
+        </div>
     </div>
-  </header>
-  <!-- Header / End -->
+</header>
+<!-- Header / End -->

@@ -120,23 +120,6 @@ class Club_season_stats(models.Model):
     def __str__(self):
         return str(self.club) + str(self.competition)
 
-'''class Scheduled_Match(models.Model):
-    competition = models.ForeignKey(Competition, on_delete=models.CASCADE)
-    match_title = models.CharField(max_length=100, null=True, blank=True)
-    venue = models.CharField(max_length=100, null=True)
-    opponent = models.ForeignKey(Team, on_delete=models.CASCADE)
-
-    at_home = models.BooleanField(default=True)
-    slug = models.SlugField(default='', max_length=500, null=True, blank=True)
-    time = models.DateTimeField(null=True)
-
-    summary = models.TextField(null=True)
-    banner = models.ImageField(
-        default='banners/Allianz_Arena_wide.jpg', upload_to='banners', null=True)
-
-    def __str__(self):
-        return str(self.opponent) + "_" + str(self.id)'''
-
 class Match(models.Model):
     competition = models.ForeignKey(Competition, on_delete=models.CASCADE)
     match_title = models.CharField(max_length=50)

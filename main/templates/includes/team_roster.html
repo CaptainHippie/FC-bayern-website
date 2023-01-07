@@ -1,0 +1,121 @@
+<main id="main" class="site-main">
+    <div id="post-1166" class="post-1166 page type-page status-publish hentry">
+
+        <div class="entry-content">
+            <div class="vc_row wpb_row vc_row-fluid">
+                <div class="wpb_column vc_column_container vc_col-sm-12">
+                    <div class="vc_column-inner">
+                        <div class="wpb_wrapper">
+
+                            <div class="wpb_text_column wpb_content_element ">
+                                <div class="wpb_wrapper">
+                                    <div class="sportspress sp-widget-align-none">
+                                        <div id='sp-player-gallery-57' class='gallery galleryid-57 gallery-columns-3 gallery-size-sportspress-crop-medium'>
+                                            <div class="sp-template sp-template-player-gallery sp-template-gallery">
+
+                                                <div class="vc_empty_space" style="height: 25px"></div>
+
+                                                {% for position in all_positions %}
+                                                <h3>{{position.name}}s</h3>
+                                                        
+                                                <div class="team-roster team-roster--grid team-roster--grid-col-3 sp-player-gallery-wrapper sp-gallery-wrapper">                                                       
+                                                    {% for player in position.player_set.all|dictsort:"kit_no" %}
+                                                    <div class='team-roster__item'>
+                                                        <div class='team-roster__holder'>
+                                                            <figure class='team-roster__img'>
+                                                            <a href="{% url 'player' player.slug %}">
+                                                                <img src="/media/{{player.profile_pic}}"  alt="">
+                                                            </a>
+                                                            </figure>
+                                                            <div class='team-roster__content'>
+                                                                <div class='team-roster__content-inner'>
+                                                                <div class='team-roster__member-number'>{{player.kit_no}}</div>
+                                                                    <div class='team-roster__member-info'>
+                                                                    <h2 class='team-roster__member-name team-roster__member-name--has-link'>
+                                                                        <a href="{% url 'player' player.slug %}">{{player.name}}</a>
+                                                                    </h2>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor%}
+                                                </div>
+                                                <div class="vc_empty_space" style="height: 32px"></div>
+                                                {% endfor %}
+
+                                                <h3>Coaches</h3>
+                                                        
+                                                <div class="team-roster team-roster--grid team-roster--grid-col-3 sp-player-gallery-wrapper sp-gallery-wrapper">                                                       
+                                                    {% for coach in all_staff %}
+                                                    <div class='team-roster__item'>
+                                                        <div class='team-roster__holder'>
+                                                            <figure class='team-roster__img'>
+                                                            <a href="{% url 'staff' coach.slug %}">
+                                                                <img src="/media/{{coach.profile_pic}}"  alt="">
+                                                            </a>
+                                                            </figure>
+                                                            <div class='team-roster__content'>
+                                                                <div class='team-roster__content-inner'>
+                                                                <div class='team-roster__member-number'>{{coach.short_name}}</div>
+                                                                    <div class='team-roster__member-info'>
+                                                                    <h2 class='team-roster__member-name team-roster__member-name--has-link'>
+                                                                        <a href="{% url 'staff' coach.slug %}">{{coach.name}}</a>
+                                                                    </h2>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor%}
+                                                </div>
+
+                                                <div class="vc_empty_space" style="height: 32px"></div>
+
+                                                
+                                                <h3>Executive Board Member</h3>
+                                                
+                                                {% if director %}
+                                                <div class="team-roster team-roster--grid team-roster--grid-col-3 sp-player-gallery-wrapper sp-gallery-wrapper">                                                       
+                                                    <div class='team-roster__item'>
+                                                        <div class='team-roster__holder'>
+                                                            <figure class='team-roster__img'>
+                                                            <a href="{% url 'staff' director.slug %}">
+                                                                <img src="/media/{{director.profile_pic}}"  alt="">
+                                                            </a>
+                                                            </figure>
+                                                            <div class='team-roster__content'>
+                                                                <div class='team-roster__content-inner'>
+                                                                <div class='team-roster__member-number'>{{director.short_name}}</div>
+                                                                    <div class='team-roster__member-info'>
+                                                                    <h2 class='team-roster__member-name team-roster__member-name--has-link'>
+                                                                        <a href="{% url 'staff' director.slug %}">{{director.name}}</a>
+                                                                    </h2>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="vc_empty_space" style="height: 20px"></div>
+                                                {% endif %}
+
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- .entry-content -->
+    </div><!-- #post-## -->
+
+</main>

@@ -2,6 +2,7 @@
 {% block content %}
 {% load static %}
 {% load cart_tag %}
+{% load custom_calculations %}
 
 <title>Cart - FC Bayern</title>
 <div class="page-heading page-heading--has-bg">
@@ -60,7 +61,7 @@
 
                                                         <td class="product__photo">
                                                             <a href="{% url 'product' value.link %}">
-                                                                <figure class="product__thumb" style="background-image: linear-gradient(to left top, #ffffff, #ffffff);">
+                                                                <figure class="product__thumb">
                                                                     <img width="280" height="280" src="/media/{{value.image}}"
                                                                         class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail">
                                                                 </figure>
@@ -85,7 +86,7 @@
 
                                                         <td class="product__total" data-title="Subtotal">
                                                             <span class="woocommerce-Price-amount amount">
-                                                                <bdi><span class="woocommerce-Price-currencySymbol">&euro;</span>{{ value.price|multiply:value.quantity }}</bdi>
+                                                                <bdi><span class="woocommerce-Price-currencySymbol">&euro;</span>{% calc_rnd_price value.price value.quantity %}</bdi>
                                                             </span>
                                                         </td>
 
@@ -117,6 +118,10 @@
                                     </div>
                                 </form>
 
+                                <div class="btn-container btn-container--align-inline">
+                                    <a class="btn btn-primary-inverse btn-fill btn-lg" href="{% url 'cart_clear' %}" title="Button Title">Clear Cart</a>
+                                </div>
+                                <div class="vc_empty_space" style="height: 15px"></div>
 
                                 <div class="cart-collaterals">
                                     <div class="cart_totals ">
@@ -142,7 +147,7 @@
                                                                                 <span class="amount">
                                                                                     <span class="woocommerce-Price-amount amount">
                                                                                         <bdi>
-                                                                                            <span class="woocommerce-Price-currencySymbol">&#36;</span>
+                                                                                            <span class="woocommerce-Price-currencySymbol">&euro;</span>
                                                                                             {{cart_total_amount}}
                                                                                         </bdi>
                                                                                     </span>
@@ -155,7 +160,7 @@
                                                                             <th>Total</th>
                                                                             <td data-title="Total"><strong><span
                                                                                         class="woocommerce-Price-amount amount"><bdi><span
-                                                                                                class="woocommerce-Price-currencySymbol">&#36;</span>{{cart_total_amount}}</bdi></span></strong>
+                                                                                                class="woocommerce-Price-currencySymbol">&euro;</span>{{cart_total_amount}}</bdi></span></strong>
                                                                             </td>
                                                                         </tr>
 

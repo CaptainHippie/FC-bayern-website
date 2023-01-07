@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 06, 2023 at 10:00 PM
+-- Generation Time: Jan 07, 2023 at 10:59 PM
 -- Server version: 10.6.11-MariaDB-0ubuntu0.22.04.1
 -- PHP Version: 8.1.2-1ubuntu2.9
 
@@ -523,7 +523,19 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 (210, '2023-01-06 16:11:57.579619', '1', 'Hasan Salihamidžić', 1, '[{\"added\": {}}]', 24, 2),
 (211, '2023-01-06 16:12:25.951190', '1', 'Hasan Salihamidžić', 2, '[]', 24, 2),
 (212, '2023-01-06 16:12:39.499463', '1', 'Hasan Salihamidžić', 2, '[{\"changed\": {\"fields\": [\"Profile pic\"]}}]', 24, 2),
-(213, '2023-01-06 16:24:16.766041', '6', 'Ihsan K', 2, '[{\"changed\": {\"fields\": [\"Profile pic\"]}}]', 11, 2);
+(213, '2023-01-06 16:24:16.766041', '6', 'Ihsan K', 2, '[{\"changed\": {\"fields\": [\"Profile pic\"]}}]', 11, 2),
+(214, '2023-01-07 07:59:35.713665', '2', 'Neeraj Vibez-194.36', 2, '[{\"changed\": {\"name\": \"order_ item\", \"object\": \"NeerajvibezFC Bayern 10th Consecutive Championship Cap - Red - Unisex5\", \"fields\": [\"Quantity\"]}}]', 18, 2),
+(215, '2023-01-07 08:05:47.408956', '2', 'Neeraj Vibez-194.36', 2, '[{\"changed\": {\"name\": \"order_ item\", \"object\": \"NeerajvibezFC Bayern 10th Consecutive Championship Cap - Red - Unisex1\", \"fields\": [\"Quantity\"]}}]', 18, 2),
+(216, '2023-01-07 08:10:16.756988', '5', 'FC Bayern 10th Consecutive Championship Cap - Red - Unisex', 2, '[{\"changed\": {\"fields\": [\"Related products\"]}}]', 13, 2),
+(217, '2023-01-07 08:21:27.343179', '5', 'FC Bayern 10th Consecutive Championship Cap - Red - Unisex', 2, '[{\"changed\": {\"fields\": [\"Related products\"]}}]', 13, 2),
+(218, '2023-01-07 08:22:27.811037', '4', 'FC Bayern 50th Anniversary Shirt', 2, '[{\"changed\": {\"fields\": [\"Related products\"]}}]', 13, 2),
+(219, '2023-01-07 08:22:46.784105', '2', 'FC Bayern Third Shirt 2022-23', 2, '[{\"changed\": {\"fields\": [\"Related products\"]}}]', 13, 2),
+(220, '2023-01-07 08:23:28.421503', '4', 'FC Bayern 50th Anniversary Shirt', 2, '[{\"changed\": {\"fields\": [\"Related products\"]}}]', 13, 2),
+(221, '2023-01-07 12:11:56.474259', '12', 'Inter Milan', 1, '[{\"added\": {}}, {\"added\": {\"name\": \"club_season_stats\", \"object\": \"Inter MilanUEFA Champions League\"}}]', 25, 2),
+(222, '2023-01-07 12:13:29.964730', '1', 'FC Bayern München', 2, '[{\"added\": {\"name\": \"club_season_stats\", \"object\": \"FC Bayern M\\u00fcnchenUEFA Champions League\"}}]', 25, 2),
+(223, '2023-01-07 12:19:11.384572', '13', 'FC Barcelona', 1, '[{\"added\": {}}, {\"added\": {\"name\": \"club_season_stats\", \"object\": \"FC BarcelonaUEFA Champions League\"}}]', 25, 2),
+(224, '2023-01-07 12:24:08.236947', '14', 'FC Viktoria Plzeň', 1, '[{\"added\": {}}, {\"added\": {\"name\": \"club_season_stats\", \"object\": \"FC Viktoria Plze\\u0148UEFA Champions League\"}}]', 25, 2),
+(225, '2023-01-07 12:24:27.947054', '14', 'FC Viktoria Plzeň', 2, '[{\"changed\": {\"fields\": [\"Logo\"]}}]', 25, 2);
 
 -- --------------------------------------------------------
 
@@ -664,7 +676,7 @@ INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALU
 ('9fhja718b3wjdsht81g7xm4fg82caek3', 'eyJpbnN0YS1mb2xsb3dlcnMiOiIzNk0ifQ:1pDnrA:R8t6PPtNrQSb4IIK3dpEXu3dbrhOOkH5Zy2NuywwTCM', '2023-01-20 14:38:04.611842'),
 ('b9bi7vxs7p9aatr7wb9zwxl7es3vzy5v', 'e30:1p6zNC:AvflqbDrX70MA-5s5NZFqkLvWLkqgF2dHXDZdA-MdLI', '2023-01-01 19:30:58.275569'),
 ('gv35g17t2ipl0vcqu7z8f0a5k70kwq35', '.eJxVjkEOgyAURO_C2hIt_Qgu3XsG84FPtTWQAKYL492riYt2O-_NZDY24lqmcc2UxtmxjklW_WYG7ZvCCdwLwzNyG0NJs-Gnwi-a-RAdLf3l_g1MmKejTVJrYbBB5VTttTUAQEqCIU_ePKRwqm0VNIAkjLZ3h3iIytceG2jd-cpiKqzb9orNIRe8-bgs8UMpH_MCuBzY_gXTVEQt:1p9sQG:uS2Vy-UvffbYwIWrPEElEmRfL1uZY6eIDTdf2RCJlRs', '2023-01-09 18:42:04.679418'),
-('mh3pbpy918rp48o0isoy9836i3q6kk0y', '.eJxVjEEOgyAUBe_CuiWCgOCye89gPvCptgYSwHRhvHs1ceN2Zt7byBxLhWdIy5J-mAvpSasG8iAjrHUa14J5nP1B-Z1ZcF-Mp_AfiO9EXYo1z5aeCb1soUPyuLyu9nYwQZmOtZUanHRcW2DWWNVp6VvTgVTaCRu4aCwGxpwAH9AYZDKowLARHJVwTXecOsiV9Nu-_wEyMkOB:1pDpXc:Z8IQX38myM29wVONTEA1i1d_1EYMhJQJQ5noBmG7ODo', '2023-01-20 16:26:00.044032'),
+('mh3pbpy918rp48o0isoy9836i3q6kk0y', '.eJxVjEEOgyAUBe_CuiWCgOCye89gPvCptgYSwHRhvHs1ceN2Zt7byBxLhWdIy5J-mAvpSasG8iAjrHUa14J5nP1B-Z1ZcF-Mp_AfiO9EXYo1z5aeCb1soUPyuLyu9nYwQZmOtZUanHRcW2DWWNVp6VvTgVTaCRu4aCwGxpwAH9AYZDKowLARHJVwTXecOsiV9Nu-_wEyMkOB:1pE8kD:fGj2dhMQJ5bjYI8MiwB0Yqh0HuB8HxRbGgIdWNeC_Yc', '2023-01-21 12:56:17.267550'),
 ('u7co98bhy5sqcrap4dbhvf03ur1680n5', 'eyJpbnN0YS1mb2xsb3dlcnMiOiIzNS41TSJ9:1p70FI:Ye5utLdiH572ZqbLGOqIiQAq0gGhssO-u0ATYGNoA2s', '2023-01-01 20:26:52.449094');
 
 -- --------------------------------------------------------
@@ -835,7 +847,11 @@ INSERT INTO `main_club_season_stats` (`id`, `played`, `wins`, `loss`, `draw`, `s
 (7, 15, 8, 4, 3, 32, 24, 8, 27, 7, 1),
 (8, 15, 2, 10, 3, 13, 32, -19, 9, 6, 1),
 (9, 15, 6, 6, 3, 24, 20, 3, 23, 8, 1),
-(10, 15, 4, 6, 5, 21, 29, -8, 17, 9, 1);
+(10, 15, 4, 6, 5, 21, 29, -8, 17, 9, 1),
+(11, 6, 3, 2, 1, 10, 7, 3, 10, 12, 2),
+(12, 6, 6, 0, 0, 18, 2, 16, 18, 1, 2),
+(13, 6, 2, 3, 1, 12, 12, 0, 7, 13, 2),
+(14, 6, 0, 6, 0, 5, 24, -19, 0, 14, 2);
 
 -- --------------------------------------------------------
 
@@ -1197,11 +1213,15 @@ CREATE TABLE `main_merchandise_related_products` (
 
 INSERT INTO `main_merchandise_related_products` (`id`, `from_merchandise_id`, `to_merchandise_id`) VALUES
 (4, 1, 2),
+(10, 1, 5),
 (3, 2, 1),
-(2, 2, 4),
-(1, 4, 2),
+(11, 2, 5),
+(7, 5, 1),
+(8, 5, 2),
 (6, 5, 6),
-(5, 6, 5);
+(13, 5, 7),
+(5, 6, 5),
+(14, 7, 5);
 
 -- --------------------------------------------------------
 
@@ -1706,7 +1726,10 @@ INSERT INTO `main_team` (`id`, `name`, `logo`, `color`, `alt_color`, `manager`, 
 (8, 'SV Werder Bremen', 'logos/SV-Werder-Bremen-Logo.png', '#136d2b', 'white', 'Ole Werner', 1, 0, 0, 'SVW'),
 (9, '1. FC Köln', 'logos/FC_Cologne_logo.png', 'white', 'red', 'Steffen Baumgart', 1, 0, 0, 'KOE'),
 (10, 'Paris Saint Germain', 'logos/Paris_Saint-Germain.png', '#10305d', 'white', 'Christophe Galtier', 0, 1, 0, 'PSG'),
-(11, 'FC Red Bull Salzburg', 'logos/FC_Red_Bull_Salzburg_logo.png', 'white', 'red', 'Matthias Jaissle', 0, 0, 0, 'RBS');
+(11, 'FC Red Bull Salzburg', 'logos/FC_Red_Bull_Salzburg_logo.png', 'white', 'red', 'Matthias Jaissle', 0, 0, 0, 'RBS'),
+(12, 'Inter Milan', 'logos/FC_Internazionale_Milano_2021.png', '#0202a4', 'black', 'Simone Inzaghi', 0, 1, 0, 'INT'),
+(13, 'FC Barcelona', 'logos/FC_Barcelona.png', '#09397c', '#8c003a', 'Xavi', 0, 1, 0, 'FCB'),
+(14, 'FC Viktoria Plzeň', 'logos/Viktoria_Plzen_logo.png', '#9f1919', '#052c89', 'Michal Bílek', 0, 1, 0, 'PLZ');
 
 -- --------------------------------------------------------
 
@@ -2129,7 +2152,7 @@ ALTER TABLE `auth_user_user_permissions`
 -- AUTO_INCREMENT for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=214;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=226;
 
 --
 -- AUTO_INCREMENT for table `django_content_type`
@@ -2177,7 +2200,7 @@ ALTER TABLE `main_club_album`
 -- AUTO_INCREMENT for table `main_club_season_stats`
 --
 ALTER TABLE `main_club_season_stats`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `main_comment`
@@ -2243,7 +2266,7 @@ ALTER TABLE `main_merchandise_information`
 -- AUTO_INCREMENT for table `main_merchandise_related_products`
 --
 ALTER TABLE `main_merchandise_related_products`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `main_merchandise_size`
@@ -2357,7 +2380,7 @@ ALTER TABLE `main_staff`
 -- AUTO_INCREMENT for table `main_team`
 --
 ALTER TABLE `main_team`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `main_trophies`

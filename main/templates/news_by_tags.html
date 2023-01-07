@@ -6,66 +6,19 @@
 <div class="page-heading page-heading--has-bg">
     <div class="container">
         <div class="row">
-            <div class="col-lg-10 offset-lg-1"><h1 class="page-heading__title">News</h1></div>
+            <div class="col-lg-10 offset-lg-1">
+                <h2 style="text-shadow: 2px 2px 2px black;font-size: 28px">News: <span style="color:#C2FF1F">Tag: </span><span style="color:rgb(198, 4, 40)">World Cup</span></h2>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- Post Filter -->
-<div class="post-filter">
-    <div class="container">
-
-        <form action="" class="post-filter__form clearfix" method="get">
-
-            <div class="post-filter__select">
-                <label class="post-filter__label">Category</label>
-                <select class="cs-select cs-skin-border" name="cat">
-                    <option value="">All Articles</option>
-
-                    <option value="inj" {% if request.GET.cat == 'inj' %}selected{% endif %}>Injuries</option>
-                    <option value="league" {% if request.GET.cat == 'league' %}selected{% endif %}>Competitions</option>
-                    <option value="team" {% if request.GET.cat == 'team' %}selected{% endif %}>Team News</option>
-                </select>
-            </div>
-            <div class="post-filter__select">
-                <label class="post-filter__label">Order By</label>
-                <select class="cs-select cs-skin-border" name="sort">
-                    <option value="time" {% if request.GET.sort == 'time'  or request.GET.sort == None %}selected{% endif %}>Date Posted</option>
-                    <option value="title" {% if request.GET.sort == 'title' %}selected{% endif %}>Title</option>
-                    <option value="views" {% if request.GET.sort == 'views' %}selected{% endif %}>Popular</option>
-                    <option value="likes" {% if request.GET.sort == 'likes' %}selected{% endif %}>Most liked</option>
-                    <option value="comments" {% if request.GET.sort == 'comments' %}selected{% endif %}>Most Commented</option>
-                </select>
-            </div>
-            <div class="post-filter__select">
-                <select class="cs-select cs-skin-border" name="order">
-                    <option value="desc" {% if request.GET.order != 'asc' or request.GET.order == None %}selected{% endif %}>Descending</option>
-                    <option value="asc" {% if request.GET.order == 'asc' %}selected{% endif %}>Ascending</option>
-                </select>
-            </div>
-            <div class="post-filter__select">
-                <label class="post-filter__label">Author</label>
-                <select class="cs-select cs-skin-border" name="author">
-                    <option value="">All Authors</option>
-                    {% for user in all_authors %}
-                    <option value="{{user.id}}">{{user.name_display}}</option>
-                    {% endfor %}
-                </select>
-            </div>
-
-            <div class="post-filter__submit">
-                <button type="submit" class="btn btn-block btn-lg btn-primary-inverse">Filter News</button>
-            </div>
-        </form>
-    </div>
-</div>
-<!-- Post Filter / End -->
 
 <div class="site-content" id="content">
     <div class="container">
         <div class="row">
 
-            <div id="primary" class="content-area col-lg-12">
+            <div id="primary" class="content-area col-lg-8">
                 <main id="main" class="site-main">
 
                     <div class="posts posts--cards posts--cards-thumb-left post-list">
@@ -88,11 +41,11 @@
                                     <div class="posts__cat">
                                         <span class="label posts__cat-label posts__cat-label--category-{{news.news_type.category}} category-{{news.news_type.css_name}}">{{news.news_type}}</span>
                                     </div>
-                                    <h2 class="posts__title">
+                                    <h4 class="posts__title">
                                         <a href="{{news.get_absolute_url}}" rel="bookmark">{{news.title}}</a>
-                                    </h2>
+                                    </h4>
                                     <time class="posts__date">{{news.added|date:"F j, Y"}}</time>
-                                    <div class="posts__excerpt">{{news.excerpt|truncatechars:300}}
+                                    <div class="posts__excerpt">{{news.excerpt|truncatechars:150}}
                                     </div>
                                 </div>
 

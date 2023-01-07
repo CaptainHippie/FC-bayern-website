@@ -1,0 +1,29 @@
+<main id="main" class="site-main">
+
+    <!-- Team Gallery -->
+    <div class="gallery row">
+
+        {% for cur_album in all_albums %}
+        <div class="gallery__item col-6 col-sm-4">
+            <a href="{% url 'album' cur_album.slug %}" class="gallery__item-inner card" title="{{cur_album.title}}">
+                <figure class="gallery__thumb">
+                    <img width="380" height="270" src="{% if cur_album.featured_image %}/media/{{cur_album.featured_image}}{% else %}{{cur_album.featured_image_url}}{% endif %}"
+                        class="attachment-alchemists_thumbnail size-alchemists_thumbnail wp-post-image"> 
+                </figure>
+                <div class="gallery__content card__content">
+                    <span class="gallery__icon">
+                        <span class="icon-camera"></span>
+                    </span>
+                    <div class="gallery__details">
+                        <h4 class="gallery__name">{{cur_album.title}}</h4>
+                        <div class="gallery__date">{{cur_album.date|date:"F j, Y"}}</div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+
+    </div>
+    <!-- Team Gallery / End -->
+
+</main>

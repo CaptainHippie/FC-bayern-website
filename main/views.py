@@ -572,6 +572,18 @@ def ALL_NEWS(request):
     }
     return render(request, 'all_news.html', context)
 
+def NEWS_BY_TAGS(request):
+    all_news = News_article.objects.all().order_by('-added')
+
+    news_count = all_news.count()
+    news_per_page = 10
+    extra_pages_count = ((int(news_count/news_per_page)-1) if ((news_count%news_per_page)==0) else int(news_count/news_per_page)) if (news_count>news_per_page) else 0
+    context = {
+        'all_news' : all_news,
+        'pages_count' : extra_pages_count
+    }
+    return render(request, 'news_by_tags.html', context)
+
 def CONTACT_US(request):
     return render(request, 'contact_us.html')
 

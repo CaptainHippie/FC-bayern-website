@@ -1,0 +1,131 @@
+<main id="main" class="site-main">
+
+
+    <div id="post-1160" class="post-1160 page type-page status-publish hentry">
+
+        <div class="entry-content">
+
+            <div class="vc_row wpb_row vc_row-fluid">
+                <div class="wpb_column vc_column_container vc_col-sm-12">
+                    <div class="vc_column-inner">
+                        <div class="wpb_wrapper">
+                            <div class="wpb_text_column wpb_content_element ">
+                                <div class="wpb_wrapper">
+                                    <div class="sportspress sp-widget-align-none">
+
+                                        <div class="card card--no-paddings">
+
+                                            <header class="card__header">
+                                                <h4 class="sp-table-caption">Match Fixtures</h4>
+                                            </header>
+                                            <div class="card__content">
+                                                <div class="widget-game-result__section">
+                                                    <div class="widget-game-result__section-inner">
+
+                                                        <table class="alc-event-blocks table--no-border table--no-paddings sp-data-table sp-paginated-table" data-sp-rows="5">
+                                                            <thead> <tr> <th></th> </tr> </thead>
+                                                            <tbody>
+
+                                                                {% for cur_match in scheduled_matches %}
+                                                                <tr class="sp-row sp-post alternate">
+                                                                    <td>
+                                                                        <div class="widget-game-result__item widget-game-result__item--ok">
+                                                                            <header class="widget-game-result__header">
+                                                                                <time class="widget-game-result__date">
+                                                                                    {{cur_match.time|date:"F j, Y"}}<span class="event-time-status event-time-status--has-divider">{{cur_match.time|date:"g:i A"}}</span>
+                                                                                    <span class="widget-game-competition-info">{{cur_match.competition}}, {{cur_match.match_title}}</span>
+                                                                                </time>
+                                                                            </header>
+
+                                                                            <div class="widget-game-result__main">
+
+                                                                                {% if cur_match.at_home == True %}
+                                                                                <div class="widget-game-result__team widget-game-result__team--odd" style="text-align:left">
+                                                                                    <figure class="widget-game-result__team-logo">
+                                                                                        <span class="team-logo logo-odd" title="FC Bayern Munich">
+                                                                                            <img width="40px" height="40px" src="/media/{{bayern.logo}}"
+                                                                                                class="attachment-alchemists_team-logo-sm-fit size-alchemists_team-logo-sm-fit wp-post-image" style="float:right">
+                                                                                        </span>
+                                                                                    </figure>
+                                                                                    <div class="widget-game-result__team-info">
+                                                                                        <h5 class="widget-game-result__team-name">FC Bayern Munich</h5>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="widget-game-result__team widget-game-result__team--even" style="text-align:right">
+                                                                                    <figure class="widget-game-result__team-logo-right">
+                                                                                        <span class="team-logo logo-even" title="{{cur_match.opponent}}">
+                                                                                            <img width="40px" height="40px" src="/media/{{cur_match.opponent.logo}}"
+                                                                                                class="attachment-alchemists_team-logo-sm-fit size-alchemists_team-logo-sm-fit wp-post-image" style="float:left">
+                                                                                        </span>
+                                                                                    </figure>
+                                                                                    <div class="widget-game-result__team-info">
+                                                                                        <h5 class="widget-game-result__team-name">{{cur_match.opponent}}</h5>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="widget-game-result__score-wrap">
+                                                                                    <a href="{% url 'match' cur_match.slug %}" class="widget-game-result__score">
+                                                                                        <span class="widget-game-result__score-dash">-</span>
+                                                                                    </a>
+                                                                                    <div class="widget-game-result__score-label">{{cur_match.venue}}</div>
+                                                                                </div>
+                                                                                {% else %}
+                                                                                <div class="widget-game-result__team widget-game-result__team--odd" style="text-align:left">
+                                                                                    <figure class="widget-game-result__team-logo">
+                                                                                        <span class="team-logo logo-odd" title="{{cur_match.opponent}}">
+                                                                                            <img width="40px" height="40px" src="/media/{{cur_match.opponent.logo}}"
+                                                                                                class="attachment-alchemists_team-logo-sm-fit size-alchemists_team-logo-sm-fit wp-post-image" style="float:right">
+                                                                                        </span>
+                                                                                    </figure>
+                                                                                    <div class="widget-game-result__team-info">
+                                                                                        <h5 class="widget-game-result__team-name">{{cur_match.opponent}}</h5>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="widget-game-result__team widget-game-result__team--even" style="text-align:right">
+                                                                                    <figure class="widget-game-result__team-logo-right">
+                                                                                        <span class="team-logo logo-even" title="FC Bayern Munich">
+                                                                                            <img width="40px" height="40px" src="/media/{{bayern.logo}}"
+                                                                                                class="attachment-alchemists_team-logo-sm-fit size-alchemists_team-logo-sm-fit wp-post-image" style="float:left">
+                                                                                        </span>
+                                                                                    </figure>
+                                                                                    <div class="widget-game-result__team-info">
+                                                                                        <h5 class="widget-game-result__team-name">FC Bayern Munich</h5>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="widget-game-result__score-wrap">
+                                                                                    <a href="{% url 'match' cur_match.slug %}" class="widget-game-result__score">
+                                                                                        <span class="widget-game-result__score-dash">-</span>
+                                                                                    </a>
+                                                                                    <div class="widget-game-result__score-label">{{cur_match.venue}}</div>
+                                                                                </div>
+
+                                                                                {% endif %}
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <hr style="background-color:#9a9da2">
+                                                                        <!-- .widget-game-result__item -->
+                                                                    </td>
+                                                                </tr>
+                                                                {% endfor %}
+
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- .entry-content -->
+    </div><!-- #post-## -->
+
+</main>

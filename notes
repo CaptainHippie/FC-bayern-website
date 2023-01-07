@@ -15,20 +15,21 @@ password = hello
 
 
 Things left to do:
-Main Newspage with sorting functions(done)
-Build JS posts-per-logic in shop and news - done(news shop will be done soon)
+Main Newspage with sorting functions - done
+Build JS posts-per-logic in shop and news - done
 Fix most commented news selection bug - done
 Razorpay implementation(not mandatory)
 Scheduled matches - done
-Next match countdown - done(recheck if its latest match)
+Next match countdown - done
 Club history, honours, trophies pages - done
 fix the footer - done
-cleanup headers
-refine shop with filters
+cleanup headers - done
+refine shop with filters - done(price filter can be improved)
 fix roster page toggle tab missing in mobile - done
 middlewares
 rework login system with builtin tools - almost done
 implement news likes- done
 revamp contact us page
 proper error/info message tags
-search by tags
+search and tag search
+improve news category colours and add one for champions league & youth

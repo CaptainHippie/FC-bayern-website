@@ -1,0 +1,138 @@
+<main id="main" class="site-main">
+    <div class="sp-template sp-template-league-table">
+        <div class="card card--has-table">
+            <header class="card__header"><h4 class="sp-table-caption">Bundesliga</h4></header>
+            <div class="card__content">
+                <div class="table-responsive sp-table-wrapper">
+                    <table class="table table-hover table-standings sp-league-table sp-data-table sp-sortable-table sp-scrollable-table sp-paginated-table" data-sp-rows="10">
+                        <thead>
+                            <tr>
+                                <th class="data-rank">Pos</th>
+                                <th class="data-name" style="width:50%">Club</th>
+                                <th class="data-p" style="width:6%">GP</th>
+                                <th class="data-w" style="width:6%">W</th>
+                                <th class="data-d" style="width:6%">D</th>
+                                <th class="data-l" style="width:6%">L</th>
+                                <th class="data-f" style="width:10%">Score</th>
+                                <th class="data-gd" style="width:6%">SD</th>
+                                <th class="data-pts" style="width:6%">Pts</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for cur_club in club_league_stats %}
+                            <tr class="{% cycle 'odd' 'even' %} {% if cur_club.club.name == bayern.full_name %}highlighted{% endif %} sp-row-no-{{ forloop.counter0 }}"
+                            {% if forloop.counter == 4 %} style="border-bottom:2px solid white"{% endif %}>
+                                <td class="data-rank{% if cur_club.club.name == bayern.full_name %} sp-highlight{% endif %}" data-label="Pos">{{ forloop.counter }}</td>
+                                <td class="data-name has-logo{% if cur_club.club.name == bayern.full_name %} sp-highlight{% endif %}" data-label="Club">
+                                    <span lass="team-logo">
+                                        <img width="30" height="30" class="attachment-sportspress-fit-icon size-sportspress-fit-icon wp-post-image" src="/media/{{cur_club.club.logo}}">
+                                    </span>&nbsp;{{cur_club.club}}</td>
+                                <td class="data-p {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="P">{{cur_club.played}}</td>
+                                <td class="data-w {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="W">{{cur_club.wins}}</td>
+                                <td class="data-d {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="D">{{cur_club.draw}}</td>
+                                <td class="data-l {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="L">{{cur_club.loss}}</td>
+                                <td class="data-f {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="F">{{cur_club.scored}} : {{cur_club.conceded}}</td>
+                                <td class="data-gd {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="GD">{{cur_club.goal_diff}}</td>
+                                <td class="data-pts {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="Pts">{{cur_club.points}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="vc_empty_space" style="height: 30px"></div>
+
+        <div class="card card--has-table">
+            <header class="card__header">
+                <h4 class="sp-table-caption">UEFA Champions League</h4>
+            </header>
+            <div class="card__content">
+                <div class="table-responsive sp-table-wrapper">
+                    <table class="table table-hover table-standings sp-league-table sp-data-table sp-sortable-table sp-scrollable-table sp-paginated-table" data-sp-rows="10">
+                        <thead>
+                            <tr>
+                                <th class="data-rank">Pos</th>
+                                <th class="data-name" style="width:50%">Club</th>
+                                <th class="data-p" style="width:6%">GP</th>
+                                <th class="data-w" style="width:6%">W</th>
+                                <th class="data-d" style="width:6%">D</th>
+                                <th class="data-l" style="width:6%">L</th>
+                                <th class="data-f" style="width:10%">Score</th>
+                                <th class="data-gd" style="width:6%">SD</th>
+                                <th class="data-pts" style="width:6%">Pts</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for cur_club in club_ucl_stats %}
+                            <tr class="{% cycle 'odd' 'even' %} {% if cur_club.club.name == bayern.full_name %}highlighted{% endif %} sp-row-no-{{ forloop.counter0 }}"
+                            {% if forloop.counter == 4 %} style="border-bottom:2px solid white"{% endif %}>
+                                <td class="data-rank {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="Pos">{{ forloop.counter }}</td>
+                                <td class="data-name has-logo {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="Club">
+                                    <span lass="team-logo">
+                                        <img width="30" height="30" class="attachment-sportspress-fit-icon size-sportspress-fit-icon wp-post-image" src="/media/{{cur_club.club.logo}}">
+                                    </span>&nbsp;{{cur_club.club}}</td>
+                                <td class="data-p {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="P">{{cur_club.played}}</td>
+                                <td class="data-w {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="W">{{cur_club.wins}}</td>
+                                <td class="data-d {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="D">{{cur_club.draw}}</td>
+                                <td class="data-l {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="L">{{cur_club.loss}}</td>
+                                <td class="data-f {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="F">{{cur_club.scored}} : {{cur_club.conceded}}</td>
+                                <td class="data-gd {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="GD">{{cur_club.goal_diff}}</td>
+                                <td class="data-pts {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="Pts">{{cur_club.points}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="vc_empty_space" style="height: 30px"></div>
+
+        <div class="card card--has-table">
+            <header class="card__header">
+                <h4 class="sp-table-caption">DFB-Pokal</h4>
+            </header>
+            <div class="card__content">
+                <div class="table-responsive sp-table-wrapper">
+                    <table class="table table-hover table-standings sp-league-table sp-data-table sp-sortable-table sp-scrollable-table sp-paginated-table" data-sp-rows="10">
+                        <thead>
+                            <tr>
+                                <th class="data-rank">Pos</th>
+                                <th class="data-name" style="width:50%">Club</th>
+                                <th class="data-p" style="width:6%">GP</th>
+                                <th class="data-w" style="width:6%">W</th>
+                                <th class="data-d" style="width:6%">D</th>
+                                <th class="data-l" style="width:6%">L</th>
+                                <th class="data-f" style="width:10%">Score</th>
+                                <th class="data-gd" style="width:6%">SD</th>
+                                <th class="data-pts" style="width:6%">Pts</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for cur_club in club_pokal_stats %}
+                            <tr class="{% cycle 'odd' 'even' %} {% if cur_club.club.name == bayern.full_name %}highlighted{% endif %} sp-row-no-{{ forloop.counter0 }}"
+                            {% if forloop.counter == 4 %} style="border-bottom:2px solid white"{% endif %}>
+                                <td class="data-rank {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="Pos">{{ forloop.counter }}</td>
+                                <td class="data-name has-logo {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="Club">
+                                    <span lass="team-logo">
+                                        <img width="30" height="30" class="attachment-sportspress-fit-icon size-sportspress-fit-icon wp-post-image" src="/media/{{cur_club.club.logo}}">
+                                    </span>&nbsp;{{cur_club.club}}</td>
+                                <td class="data-p {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="P">{{cur_club.played}}</td>
+                                <td class="data-w {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="W">{{cur_club.wins}}</td>
+                                <td class="data-d {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="D">{{cur_club.draw}}</td>
+                                <td class="data-l {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="L">{{cur_club.loss}}</td>
+                                <td class="data-f {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="F">{{cur_club.scored}} : {{cur_club.conceded}}</td>
+                                <td class="data-gd {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="GD">{{cur_club.goal_diff}}</td>
+                                <td class="data-pts {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="Pts">{{cur_club.points}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
