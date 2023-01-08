@@ -70,7 +70,6 @@ admin.site.register(Player, Player_Admin)
 admin.site.register(Match_event)
 admin.site.register(Season)
 admin.site.register(Player_Stats, Player_Stats_Admin)
-admin.site.register(Position)
 
 admin.site.register(Match, Match_Admin)
 admin.site.register(Sponsor)

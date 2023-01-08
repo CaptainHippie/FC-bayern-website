@@ -54,7 +54,7 @@
                     </div>
                     <div class="player-info-details__item player-info-details__item--position">
                         <h6 class="player-info-details__title">Position</h6>
-                        <div class="player-info-details__value">{{player.position}}</div>
+                        <div class="player-info-details__value">{{player.get_position_display}}</div>
                     </div>
                 </div>
 
@@ -367,7 +367,7 @@
                     {% endif %}
                         
                     <div class="posts posts--cards post-grid row">
-                        
+
                         {% for news in player_news %}
                         <article
                             class="post-grid__item col-sm-6 col-lg-4 posts__item--category-{{news.news_type.category}} post type-post status-publish format-standard has-post-thumbnail hentry category-{{news.news_type.css_name}}">

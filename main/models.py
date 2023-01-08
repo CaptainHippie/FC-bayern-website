@@ -25,11 +25,10 @@ class CustomUser(User):
     def __str__(self):
         return self.name_display
 
-class Position(models.Model):
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
+POSITIONS = (("goalkeeper", "Goalkeeper"),
+                ("defender", "Defender"),
+                ("midfielder", "Midfielder"),
+                ("forward", "Forward"))
 
 class Player(models.Model):
     name = models.CharField(max_length=100)
@@ -43,7 +42,7 @@ class Player(models.Model):
     weight = models.IntegerField(null=True)
     age = models.IntegerField(null=True)
     past_club = models.CharField(max_length=100, null=True)
-    position = models.ForeignKey(Position, on_delete=models.CASCADE, null=True)
+    position = models.CharField(max_length=10, choices=POSITIONS, default='midfielder')
     born = models.DateField(null=True)
     contract_end = models.DateField(null=True)
     rating = models.DecimalField(decimal_places=1, max_digits=3, null=True)
@@ -307,24 +306,12 @@ class Sponsor(models.Model):
     def __str__(self):
         return self.name
 
-
 class Player_Image(models.Model):
     player = models.ForeignKey(Player, on_delete=models.CASCADE)
     image = models.ImageField(
         default='gallery/player/default.png', upload_to='gallery/player', null=True)
     date = models.DateField(null=True)
     description = models.CharField(max_length=300, null=True)
-
-
-'''class News_Tag_Player(models.Model):
-    news = models.ForeignKey(News_article, on_delete=models.CASCADE)
-    player_tag = models.ForeignKey(Player, on_delete=models.CASCADE, null=True)'''
-
-
-'''class News_Tag_Staff(models.Model):
-    news = models.ForeignKey(News_article, on_delete=models.CASCADE)
-    staff_tag = models.ForeignKey(Staff, on_delete=models.CASCADE, null=True)'''
-
 
 class Club_Album(models.Model):
     title = models.CharField(max_length=100, null=True)
@@ -335,7 +322,6 @@ class Club_Album(models.Model):
 
     def __str__(self):
         return self.title
-
 
 class Album_Image(models.Model):
     parent_album = models.ForeignKey(Club_Album, on_delete=models.CASCADE, null=True)

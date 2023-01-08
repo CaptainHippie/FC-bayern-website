@@ -1,5 +1,6 @@
 from django import template
 from django.contrib.auth.models import Group
+from main.models import Player
 
 register = template.Library()
 
@@ -77,7 +78,10 @@ def calc_rnd_price(price, qty):
 
 @register.filter(name='has_group')
 def has_group(user, group_name):
-    print(user)
     group = Group.objects.get(name=group_name)
-    print(group)
     return True if group in user.groups.all() else False
+
+@register.filter(name='get_players')
+def get_players(pos):
+    players = Player.objects.filter(position=pos).order_by('kit_no')
+    return players

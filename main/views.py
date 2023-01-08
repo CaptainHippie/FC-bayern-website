@@ -101,7 +101,7 @@ def PLAYER_DETAIL(request, slug_name):
     return render(request, 'player.html', context)
 
 def TEAM_DATA(request):
-    all_positions = Position.objects.all()
+    all_positions = POSITIONS
     all_staff = Staff.objects.exclude(designation="Executive Sporting Director")
     director = Staff.objects.filter(designation="Executive Sporting Director").first() or None
     club_league_stats = Club_season_stats.objects.filter(competition__name="BundesLiga").order_by('-points','-goal_diff','-scored')[0:20]
@@ -164,9 +164,6 @@ def CLUB_HISTORY(request):
 
 def STAFF(request, slug_name):
     staff = Staff.objects.get(slug=slug_name)
-
-    #staff_news = News_article.objects.order_by('-added')
-    #staff_news_models = calculations.get_staff_news_models(staff_news, str(slug_name))
     staff_news_models = News_article.objects.filter(staff_tags=staff)
     related_timelines = Timeline.objects.filter(staff=staff).order_by('-date')
 

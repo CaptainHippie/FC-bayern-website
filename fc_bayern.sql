@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 09, 2023 at 12:15 AM
+-- Generation Time: Jan 09, 2023 at 12:48 AM
 -- Server version: 10.6.11-MariaDB-0ubuntu0.22.04.1
 -- PHP Version: 8.1.2-1ubuntu2.9
 
@@ -643,7 +643,9 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 (269, '2023-01-08 18:05:08.307066', '8', 'Awards', 1, '[{\"added\": {}}]', 7, 2),
 (270, '2023-01-08 18:06:03.339116', '1', 'Jamal Musiala is the FC Bayern Player of the Month for November 2022', 2, '[{\"changed\": {\"fields\": [\"News type\"]}}]', 17, 2),
 (271, '2023-01-08 18:27:25.467290', '6', 'The Club', 2, '[{\"changed\": {\"fields\": [\"Name\"]}}]', 7, 2),
-(272, '2023-01-08 18:43:12.274667', '9', 'Tour', 1, '[{\"added\": {}}]', 45, 2);
+(272, '2023-01-08 18:43:12.274667', '9', 'Tour', 1, '[{\"added\": {}}]', 45, 2),
+(273, '2023-01-08 18:52:22.812988', '3', 'Serge Gnabry', 2, '[{\"changed\": {\"fields\": [\"Position\"]}}]', 19, 2),
+(274, '2023-01-08 18:52:31.572328', '2', 'Eric Maxim Choupo-Moting', 2, '[{\"changed\": {\"fields\": [\"Position\"]}}]', 19, 2);
 
 -- --------------------------------------------------------
 
@@ -772,7 +774,10 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (60, 'main', '0022_alter_timeline_player_alter_timeline_staff', '2023-01-08 09:23:24.252980'),
 (61, 'main', '0023_social_media_links', '2023-01-08 15:49:03.029264'),
 (62, 'main', '0024_remove_news_tag_staff_news_and_more', '2023-01-08 16:10:53.446419'),
-(63, 'main', '0025_news_article_player_tags_news_article_staff_tags', '2023-01-08 16:14:35.224052');
+(63, 'main', '0025_news_article_player_tags_news_article_staff_tags', '2023-01-08 16:14:35.224052'),
+(64, 'main', '0026_remove_player_position', '2023-01-08 18:47:21.845585'),
+(65, 'main', '0027_player_position', '2023-01-08 18:51:00.521589'),
+(66, 'main', '0028_delete_position', '2023-01-08 18:52:06.615106');
 
 -- --------------------------------------------------------
 
@@ -797,7 +802,7 @@ INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALU
 ('9fhja718b3wjdsht81g7xm4fg82caek3', 'eyJpbnN0YS1mb2xsb3dlcnMiOiIzNk0ifQ:1pDnrA:R8t6PPtNrQSb4IIK3dpEXu3dbrhOOkH5Zy2NuywwTCM', '2023-01-20 14:38:04.611842'),
 ('b9bi7vxs7p9aatr7wb9zwxl7es3vzy5v', 'e30:1p6zNC:AvflqbDrX70MA-5s5NZFqkLvWLkqgF2dHXDZdA-MdLI', '2023-01-01 19:30:58.275569'),
 ('gv35g17t2ipl0vcqu7z8f0a5k70kwq35', '.eJxVjkEOgyAURO_C2hIt_Qgu3XsG84FPtTWQAKYL492riYt2O-_NZDY24lqmcc2UxtmxjklW_WYG7ZvCCdwLwzNyG0NJs-Gnwi-a-RAdLf3l_g1MmKejTVJrYbBB5VTttTUAQEqCIU_ePKRwqm0VNIAkjLZ3h3iIytceG2jd-cpiKqzb9orNIRe8-bgs8UMpH_MCuBzY_gXTVEQt:1p9sQG:uS2Vy-UvffbYwIWrPEElEmRfL1uZY6eIDTdf2RCJlRs', '2023-01-09 18:42:04.679418'),
-('mh3pbpy918rp48o0isoy9836i3q6kk0y', '.eJxVjEEOgyAUBe_CuiWCgOCye89gPvCptgYSwHRhvHs1ceN2Zt7byBxLhWdIy5J-mAvpSasG8iAjrHUa14J5nP1B-Z1ZcF-Mp_AfiO9EXYo1z5aeCb1soUPyuLyu9nYwQZmOtZUanHRcW2DWWNVp6VvTgVTaCRu4aCwGxpwAH9AYZDKowLARHJVwTXecOsiV9Nu-_wEyMkOB:1pEae5:UC1MepKBAvMYFbbJxoD1UbqYfuyeaeMxZ5N2-Dzvwck', '2023-01-22 18:43:49.904171'),
+('mh3pbpy918rp48o0isoy9836i3q6kk0y', '.eJxVjEEOgyAUBe_CuiWCgOCye89gPvCptgYSwHRhvHs1ceN2Zt7byBxLhWdIy5J-mAvpSasG8iAjrHUa14J5nP1B-Z1ZcF-Mp_AfiO9EXYo1z5aeCb1soUPyuLyu9nYwQZmOtZUanHRcW2DWWNVp6VvTgVTaCRu4aCwGxpwAH9AYZDKowLARHJVwTXecOsiV9Nu-_wEyMkOB:1pEbB3:Mrj-f7q-kObkJSrrSZ13U9KemUYGT6IhBsW80Y3DT1c', '2023-01-22 19:17:53.103233'),
 ('u7co98bhy5sqcrap4dbhvf03ur1680n5', 'eyJpbnN0YS1mb2xsb3dlcnMiOiIzNS41TSJ9:1p70FI:Ye5utLdiH572ZqbLGOqIiQAq0gGhssO-u0ATYGNoA2s', '2023-01-01 20:26:52.449094');
 
 -- --------------------------------------------------------
@@ -1763,16 +1768,16 @@ CREATE TABLE `main_player` (
   `profile_banner` varchar(100) DEFAULT NULL,
   `biography` longtext DEFAULT NULL,
   `slug` varchar(500) DEFAULT NULL,
-  `position_id` bigint(20) DEFAULT NULL
+  `position` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `main_player`
 --
 
-INSERT INTO `main_player` (`id`, `name`, `first_name`, `second_name`, `kit_no`, `nationality`, `profile_pic`, `height`, `weight`, `age`, `past_club`, `born`, `contract_end`, `rating`, `profile_banner`, `biography`, `slug`, `position_id`) VALUES
-(2, 'Eric Maxim Choupo-Moting', 'Eric Maxim', 'Choupo-Moting', 13, 'CM', 'players/choupo_moting.png', '1.91', 90, 33, 'Paris Saint Germain', '1989-03-23', '2023-06-30', '7.5', '', '<p>Eric Maxim Choupo-Moting is a Cameroon international who joined FC Bayern in autumn 2020. The striker came to the German record champions from Paris Saint-Germain, but his football beginnings can be traced back to his home city of Hamburg. There he played for Altona 93, FC St. Pauli and Hamburger SV among others. That was followed by spells at Mainz, Schalke and Stoke City in England. He is particularly strong in the duels and in the air. In his very first year at Bayern, he won the Bundesliga as well as the FIFA Club World Cup.</p>\r\n\r\n<p><strong><span style=\"font-size:20px\">Honours:</span><br />\r\nFIFA Club World Cup</strong>&nbsp;2020&nbsp;<strong>UEFA Champions League</strong>&nbsp;finalist 2020&nbsp;<strong>Bundesliga&nbsp;</strong>2021, 2022&nbsp;<strong>DFL Supercup&nbsp;</strong>2021&nbsp;<strong>Ligue 1</strong>&nbsp;2019, 2020&nbsp;<strong>Coupe de France</strong>&nbsp;2020&nbsp;<strong>Troph&eacute;e des Champions</strong>&nbsp;2020&nbsp;<strong>Coupe de la Ligue&nbsp;</strong>2020</p>', 'eric-maxim-choupo-moting', 5),
-(3, 'Serge Gnabry', 'Serge', 'Gnabry', 7, 'DE', 'players/serge_gnabry.png', '1.76', 77, 27, 'Arsenal', '1995-07-14', '2023-06-30', '7.1', 'players/gnabry-banner.jpg', '<p>Serge Gnabry joined FC Bayern from Werder Bremen in 2017 and was loaned out to TSG 1899 Hoffenheim for his first year. Since 2018 he&#39;s been an established member of the record champions&#39; squad. He left his home of Stuttgart in 2011 to move to England and Arsenal, where he developed into a professional and also had a loan spell at West Bromwich Albion. He won the sextuple with Bayern in 2020. Gnabry was voted FCB Player of the Season in his first season in 2018/19.</p>\r\n\r\n<p><span style=\"font-size:20px\"><strong>Honours:</strong></span><br />\r\n<strong>Bundesliga&nbsp;</strong>2019, 2020, 2021, 2022&nbsp;<strong>DFB Cup&nbsp;</strong>2019, 2020&nbsp;<strong>UEFA Champions League&nbsp;</strong>2020&nbsp;<strong>UEFA Super Cup&nbsp;</strong>2020&nbsp;<strong>FIFA Club World Cup</strong>&nbsp;2020&nbsp;<strong>DFL Supercup&nbsp;</strong>2018, 2020, 2021&nbsp;<strong>UEFA European Under-21 Championship</strong>&nbsp;2017&nbsp;<strong>Olympic Games&nbsp;</strong>silver medal (2016)&nbsp;<strong>Olympic Games&nbsp;</strong>top scorer (2016)&nbsp;<strong>FA Cup&nbsp;</strong>2014, 2015&nbsp;<strong>Community Shield</strong>&nbsp;2014, 2015</p>', 'serge-gnabry', 5);
+INSERT INTO `main_player` (`id`, `name`, `first_name`, `second_name`, `kit_no`, `nationality`, `profile_pic`, `height`, `weight`, `age`, `past_club`, `born`, `contract_end`, `rating`, `profile_banner`, `biography`, `slug`, `position`) VALUES
+(2, 'Eric Maxim Choupo-Moting', 'Eric Maxim', 'Choupo-Moting', 13, 'CM', 'players/choupo_moting.png', '1.91', 90, 33, 'Paris Saint Germain', '1989-03-23', '2023-06-30', '7.5', '', '<p>Eric Maxim Choupo-Moting is a Cameroon international who joined FC Bayern in autumn 2020. The striker came to the German record champions from Paris Saint-Germain, but his football beginnings can be traced back to his home city of Hamburg. There he played for Altona 93, FC St. Pauli and Hamburger SV among others. That was followed by spells at Mainz, Schalke and Stoke City in England. He is particularly strong in the duels and in the air. In his very first year at Bayern, he won the Bundesliga as well as the FIFA Club World Cup.</p>\r\n\r\n<p><strong><span style=\"font-size:20px\">Honours:</span><br />\r\nFIFA Club World Cup</strong>&nbsp;2020&nbsp;<strong>UEFA Champions League</strong>&nbsp;finalist 2020&nbsp;<strong>Bundesliga&nbsp;</strong>2021, 2022&nbsp;<strong>DFL Supercup&nbsp;</strong>2021&nbsp;<strong>Ligue 1</strong>&nbsp;2019, 2020&nbsp;<strong>Coupe de France</strong>&nbsp;2020&nbsp;<strong>Troph&eacute;e des Champions</strong>&nbsp;2020&nbsp;<strong>Coupe de la Ligue&nbsp;</strong>2020</p>', 'eric-maxim-choupo-moting', 'forward'),
+(3, 'Serge Gnabry', 'Serge', 'Gnabry', 7, 'DE', 'players/serge_gnabry.png', '1.76', 77, 27, 'Arsenal', '1995-07-14', '2023-06-30', '7.1', 'players/gnabry-banner.jpg', '<p>Serge Gnabry joined FC Bayern from Werder Bremen in 2017 and was loaned out to TSG 1899 Hoffenheim for his first year. Since 2018 he&#39;s been an established member of the record champions&#39; squad. He left his home of Stuttgart in 2011 to move to England and Arsenal, where he developed into a professional and also had a loan spell at West Bromwich Albion. He won the sextuple with Bayern in 2020. Gnabry was voted FCB Player of the Season in his first season in 2018/19.</p>\r\n\r\n<p><span style=\"font-size:20px\"><strong>Honours:</strong></span><br />\r\n<strong>Bundesliga&nbsp;</strong>2019, 2020, 2021, 2022&nbsp;<strong>DFB Cup&nbsp;</strong>2019, 2020&nbsp;<strong>UEFA Champions League&nbsp;</strong>2020&nbsp;<strong>UEFA Super Cup&nbsp;</strong>2020&nbsp;<strong>FIFA Club World Cup</strong>&nbsp;2020&nbsp;<strong>DFL Supercup&nbsp;</strong>2018, 2020, 2021&nbsp;<strong>UEFA European Under-21 Championship</strong>&nbsp;2017&nbsp;<strong>Olympic Games&nbsp;</strong>silver medal (2016)&nbsp;<strong>Olympic Games&nbsp;</strong>top scorer (2016)&nbsp;<strong>FA Cup&nbsp;</strong>2014, 2015&nbsp;<strong>Community Shield</strong>&nbsp;2014, 2015</p>', 'serge-gnabry', 'forward');
 
 -- --------------------------------------------------------
 
@@ -1813,27 +1818,6 @@ CREATE TABLE `main_player_stats` (
   `player_id` bigint(20) NOT NULL,
   `season_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `main_position`
---
-
-CREATE TABLE `main_position` (
-  `id` bigint(20) NOT NULL,
-  `name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `main_position`
---
-
-INSERT INTO `main_position` (`id`, `name`) VALUES
-(1, 'Goalkeeper'),
-(3, 'Defender'),
-(4, 'Midfielder'),
-(5, 'Forward');
 
 -- --------------------------------------------------------
 
@@ -2350,7 +2334,6 @@ ALTER TABLE `main_order_item`
 --
 ALTER TABLE `main_player`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `main_player_position_id_eb22868e_fk_main_position_id` (`position_id`),
   ADD KEY `main_player_slug_9fa08b26` (`slug`);
 
 --
@@ -2368,12 +2351,6 @@ ALTER TABLE `main_player_stats`
   ADD KEY `main_player_stats_competition_id_d2329dbe_fk_main_competition_id` (`competition_id`),
   ADD KEY `main_player_stats_player_id_b6811abd_fk_main_player_id` (`player_id`),
   ADD KEY `main_player_stats_season_id_b47c767f_fk_main_season_id` (`season_id`);
-
---
--- Indexes for table `main_position`
---
-ALTER TABLE `main_position`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `main_season`
@@ -2466,7 +2443,7 @@ ALTER TABLE `auth_user_user_permissions`
 -- AUTO_INCREMENT for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=273;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=275;
 
 --
 -- AUTO_INCREMENT for table `django_content_type`
@@ -2478,7 +2455,7 @@ ALTER TABLE `django_content_type`
 -- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `main_address`
@@ -2689,12 +2666,6 @@ ALTER TABLE `main_player_image`
 --
 ALTER TABLE `main_player_stats`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `main_position`
---
-ALTER TABLE `main_position`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `main_season`
@@ -2944,12 +2915,6 @@ ALTER TABLE `main_order_item`
   ADD CONSTRAINT `main_order_item_player_id_b1bf200d_fk_main_player_id` FOREIGN KEY (`player_id`) REFERENCES `main_player` (`id`),
   ADD CONSTRAINT `main_order_item_product_id_f6126a2d_fk_main_merchandise_id` FOREIGN KEY (`product_id`) REFERENCES `main_merchandise` (`id`),
   ADD CONSTRAINT `main_order_item_size_id_1ee9b6c1_fk_main_merchandise_size_id` FOREIGN KEY (`size_id`) REFERENCES `main_merchandise_size` (`id`);
-
---
--- Constraints for table `main_player`
---
-ALTER TABLE `main_player`
-  ADD CONSTRAINT `main_player_position_id_eb22868e_fk_main_position_id` FOREIGN KEY (`position_id`) REFERENCES `main_position` (`id`);
 
 --
 -- Constraints for table `main_player_image`
