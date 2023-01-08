@@ -80,23 +80,23 @@ def PLAYER_DETAIL(request, slug_name):
     season_models = calculations.get_season_models(all_seasons, str(slug_name))
     grand_total = calculations.get_stats_sum(season_models, Player_Stats())
 
-    player_news = News_article.objects.order_by('-added')
-    player_news_models = calculations.get_player_news_models(player_news, str(slug_name))
-
+    player_news_models = News_article.objects.filter(player_tags=player)
     gallery_images = Player_Image.objects.filter(player__slug=slug_name)
-   
+    related_timelines = Timeline.objects.filter(player=player).order_by('-date')
+
     context = {
-            'player' : player,
-            'all_league_stats' : all_league_stats,
-            'ucl_stats' : ucl_stats,
-            'pokal_stats' : pokal_stats,
-            'league_total' : total_league_stats,
-            'ucl_total' : total_ucl_stats,
-            'pokal_total' : total_pokal_stats,
-            'season_models' : season_models,
-            'grand_total' : grand_total,
-            'gallery_images' : gallery_images,
-            'player_news' : player_news_models
+            'player': player,
+            'all_league_stats': all_league_stats,
+            'ucl_stats': ucl_stats,
+            'pokal_stats': pokal_stats,
+            'league_total': total_league_stats,
+            'ucl_total': total_ucl_stats,
+            'pokal_total': total_pokal_stats,
+            'season_models': season_models,
+            'grand_total': grand_total,
+            'gallery_images': gallery_images,
+            'player_news': player_news_models,
+            'all_timelines': related_timelines
     }
     return render(request, 'player.html', context)
 
@@ -164,12 +164,16 @@ def CLUB_HISTORY(request):
 
 def STAFF(request, slug_name):
     staff = Staff.objects.get(slug=slug_name)
-    staff_news = News_article.objects.order_by('-added')
-    staff_news_models = calculations.get_staff_news_models(staff_news, str(slug_name))
+
+    #staff_news = News_article.objects.order_by('-added')
+    #staff_news_models = calculations.get_staff_news_models(staff_news, str(slug_name))
+    staff_news_models = News_article.objects.filter(staff_tags=staff)
+    related_timelines = Timeline.objects.filter(staff=staff).order_by('-date')
 
     context = {
             'staff' : staff,
-            'staff_news_models': staff_news_models
+            'staff_news_models': staff_news_models,
+            'all_timelines': related_timelines
     }
     return render(request, 'staff.html', context)
 

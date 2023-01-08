@@ -123,10 +123,39 @@
             <!-- Player Sidebar -->
             <div class="sidebar sidebar--player col-lg-4">
 
-                <!-- Widget: Player Newslog -->
-                {% include 'includes/widgets/player_newslog.html' %}
-                <!-- Widget: Player Newslog / End -->
-
+                {% if player.social_media_links_set.first.fb_link or player.social_media_links_set.first.insta_link or player.social_media_links_set.first.twitter_link %}
+                <!-- Widget: Social Buttons -->
+                <div class="widget widget--sidebar widget-social ">
+                    {% if player.social_media_links_set.first.fb_link %}
+                    <a href="{{player.social_media_links_set.first.fb_link}}" class="btn-social-counter btn-social-counter--fb" target="_blank">
+                        <div class="btn-social-counter__icon"><i class="fab fa-facebook"></i></div>
+                        <h6 class="btn-social-counter__title">Follow on Facebook</h6>
+                        <span class="btn-social-counter__add-icon"></span>
+                    </a>
+                    {% endif %}
+                    {% if player.social_media_links_set.first.insta_link %}
+                    <a href="{{player.social_media_links_set.first.insta_link}}" class="btn-social-counter btn-social-counter--instagram" target="_blank">
+                        <div class="btn-social-counter__icon"><i class="fab fa-instagram"></i></div>
+                        <h6 class="btn-social-counter__title">Follow on Facebook</h6>
+                        <span class="btn-social-counter__add-icon"></span>
+                    </a>
+                    {% endif %}
+                    {% if player.social_media_links_set.first.twitter_link %}
+                    <a href="{{player.social_media_links_set.first.twitter_link}}" class="btn-social-counter btn-social-counter--twitter" target="_blank">
+                        <div class="btn-social-counter__icon"><i class="fab fa-twitter"></i></div>
+                        <h6 class="btn-social-counter__title">Follow on Twitter</h6>
+                        <span class="btn-social-counter__add-icon"></span>
+                    </a>
+                    {% endif %}
+                </div>
+                <!-- Widget: Social Buttons / End -->
+                {% endif %}
+                
+                {% if all_timelines.count > 0 %}
+                    <!-- Widget: Player Newslog -->
+                    {% include 'includes/widgets/player_newslog.html' %}
+                    <!-- Widget: Player Newslog / End -->
+                {% endif %}
             </div>
             <!-- Player Sidebar / End -->
 
@@ -329,12 +358,20 @@
         <div class="row">
             <div id="primary" class="content-area col-lg-12">
                 <main id="main" class="site-main">
-                    <div class="posts posts--cards post-grid row">
 
+                    {% if player_news.count == 0 %}
+                    <div class="alert alert-warning alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <p>No related news found</p>
+                    </div>
+                    {% endif %}
+                        
+                    <div class="posts posts--cards post-grid row">
+                        
                         {% for news in player_news %}
                         <article
                             class="post-grid__item col-sm-6 col-lg-4 posts__item--category-{{news.news_type.category}} post type-post status-publish format-standard has-post-thumbnail hentry category-{{news.news_type.css_name}}">
-                            <div class="posts__item posts__item--card posts__item--category-1 card">
+                            <div class="posts__item posts__item--card posts__item--category-{{news.news_type.category}} card">
 
                                 <figure class="posts__thumb">
                                     <div class="posts__cat">
@@ -345,7 +382,7 @@
                                     </a>
                                 </figure>
                                 <div class="posts__inner card__content">
-                                    <time class="posts__date">{{news.born|date:"F j, Y"}}</time>
+                                    <time class="posts__date">{{news.added|date:"F j, Y"}}</time>
                                     <h2 class="posts__title">
                                         <a href="{{news.get_absolute_url}}" rel="bookmark">{{news.title}}</a>
                                     </h2>
@@ -354,8 +391,7 @@
                                 <footer class="posts__footer card__footer">
                                     <div class="post-author">
                                         <figure class="post-author__avatar">
-                                            <img src='/media/{{news.author.profile_pic}}'
-                                                class='avatar avatar-24 photo' height='24' width='24' loading='lazy'>
+                                            <img src="/media/{{news.author.profile_pic}}" class='avatar photo' height='24' width='24' loading='lazy'>
                                         </figure>
                                         <div class="post-author__info">
                                             <h4 class="post-author__name">{{news.author.name_display}}</h4>

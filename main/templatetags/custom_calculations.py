@@ -1,4 +1,5 @@
 from django import template
+from django.contrib.auth.models import Group
 
 register = template.Library()
 
@@ -73,3 +74,10 @@ def partner_filter(partners, attr):
 def calc_rnd_price(price, qty):
     total = float(price) * qty
     return round_decimals_to_two(total)
+
+@register.filter(name='has_group')
+def has_group(user, group_name):
+    print(user)
+    group = Group.objects.get(name=group_name)
+    print(group)
+    return True if group in user.groups.all() else False

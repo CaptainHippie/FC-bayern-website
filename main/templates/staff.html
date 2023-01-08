@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-{% load static %}
 
 <title>{{staff.name}} - FC Bayern</title>
 <div class="site-content" id="content">
@@ -63,30 +62,31 @@
                             </div>
                         </div>
 
+                        {% if staff_news_models.count > 0 %}
                         <!-- Post Loop -->
                         <div class="card card--clean mb-0">
 
                             <div class="card__header">
                                 <h4 class="">Related News</h4>
-                                <a class="btn btn-xs btn-default card-header__button btn-outline" href="#" title="See All News">See All News</a>
+                                <a class="btn btn-xs btn-default card-header__button btn-outline" href="{% url 'news_all' %}" title="See All News">See All News</a>
                             </div>
 
                             <div class="card__content">
                                 <div class="posts posts--cards post-grid post-grid--2cols row">
 
                                     {% for article in staff_news_models %}
-                                    <article class="post-grid__item col-sm-6 posts__item--category-1 post-91 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-alchemists tag-awards tag-coach tag-stadium">
+                                    <article class="post-grid__item col-sm-6 posts__item--category-{{article.news_type.category}} post type-post status-publish format-standard has-post-thumbnail hentry category-{{article.news_type.css_name}}">
                                         <div class="posts__item posts__item--card card">
                                             <figure class="posts__thumb">
                                                 <div class="posts__cat">
-                                                    <span class="label posts__cat-label posts__cat-label--category-1 category-the-team">{{article.news_type}}</span>
+                                                    <span class="label posts__cat-label posts__cat-label--category-{{article.news_type.category}} category-{{article.news_type.css_name}}">{{article.news_type}}</span>
                                                 </div>
                                                     <a href="{{article.get_absolute_url}}">
                                                         <img width="380" height="270" src="{% if article.image %}/media/{{article.image}}{% else %}{{article.image_url}}{% endif %}">
                                                     </a>
                                             </figure>
                                             <div class="posts__inner card__content">
-                                                <time datetime="2017-04-05T12:23:52+00:00" class="posts__date">{{article.added}}</time>
+                                                <time class="posts__date">{{article.added|date:"F j, Y"}}</time>
                                                 <h2 class="posts__title">
                                                     <a href="{{article.get_absolute_url}}" rel="bookmark">{{article.title}}</a>
                                                 </h2>
@@ -95,26 +95,24 @@
                                             <footer class="posts__footer card__footer">
                                                 <div class="post-author">
                                                     <figure class="post-author__avatar">
-                                                        <img src='http://0.gravatar.com/avatar/c4a4bfa7304c328ed1ba7cd74c25c87f?s=24&#038;d=mm&#038;r=g' height='24' width='24'>
+                                                        <img src="/media/{{article.author.profile_pic}}" height='24' width='24'>
                                                     </figure>
                                                     <div class="post-author__info">
-                                                        <h4 class="post-author__name">{{article.author}}</h4>
+                                                        <h4 class="post-author__name">{{article.author.name_display}}</h4>
                                                     </div>
                                                 </div>
                                                 <div class="post__meta meta">
                                                     <div class="meta__item meta__item--views">{{article.views}}</div>
                                                     <div class="meta__item meta__item--likes ">
-                                                        <a {% if logged_user %}href="{% url 'like' logged_user.id news.id %}"{% endif %} class="sl-button" title="Like">
+                                                        <a {% if logged_user %}href="{% url 'like' logged_user.id article.id %}"{% endif %} class="sl-button" title="Like">
                                                             <span class="sl-icon">
-                                                                <i class="meta-like icon-heart" {% if logged_user and logged_user in news.liked.all %}style="color: red"{% endif %}></i>
+                                                                <i class="meta-like icon-heart" {% if logged_user and logged_user in article.liked.all %}style="color: red"{% endif %}></i>
                                                             </span>
-                                                            <span class="sl-count">{{news.num_likes}}</span>
+                                                            <span class="sl-count">{{article.num_likes}}</span>
                                                         </a>
                                                         <span class="sl-loader"></span>
                                                     </div>
-                                                    <div class="meta__item meta__item--comments">
-                                                        <a href="">0</a>
-                                                    </div>
+                                                    <div class="meta__item meta__item--comments"><a>{{article.comment_set.count}}</a></div>
                                                 </div>
                                             </footer>
                                         </div>
@@ -125,126 +123,49 @@
                             </div>
                         </div>
                         <!-- Post Loop / End -->
-
+                        {% endif %}
+                        
                     </div>
                 </div>
             </div>
             <div class="wpb_column vc_column_container vc_col-sm-4">
                 <div class="vc_column-inner">
                     <div class="wpb_wrapper">
+
+                        {% if staff.social_media_links_set.first.fb_link or staff.social_media_links_set.first.insta_link or staff.social_media_links_set.first.twitter_link %}
                         <!-- Widget: Social Buttons -->
                         <div class="widget widget--sidebar widget-social ">
-
-
-
-                            <a href="https://www.facebook.com/danfisher.dev/"
-                                class="btn-social-counter btn-social-counter--fb" target="_blank">
-                                <div class="btn-social-counter__icon">
-                                    <i class="fab fa-facebook"></i>
-                                </div>
-                                <h6 class="btn-social-counter__title">Facebook Page</h6>
-                                <span class="btn-social-counter__count">Follow Me</span>
+                            {% if staff.social_media_links_set.first.fb_link %}
+                            <a href="{{staff.social_media_links_set.first.fb_link}}" class="btn-social-counter btn-social-counter--fb" target="_blank">
+                                <div class="btn-social-counter__icon"><i class="fab fa-facebook"></i></div>
+                                <h6 class="btn-social-counter__title">Follow on Facebook</h6>
                                 <span class="btn-social-counter__add-icon"></span>
                             </a>
-
-
-
-                            <a href="https://twitter.com/danfisher_dev"
-                                class="btn-social-counter btn-social-counter--twitter" target="_blank">
-                                <div class="btn-social-counter__icon">
-                                    <i class="fab fa-twitter"></i>
-                                </div>
-                                <h6 class="btn-social-counter__title">Twitter Account</h6>
-                                <span class="btn-social-counter__count">Follow Me</span>
+                            {% endif %}
+                            {% if staff.social_media_links_set.first.insta_link %}
+                            <a href="{{staff.social_media_links_set.first.insta_link}}" class="btn-social-counter btn-social-counter--instagram" target="_blank">
+                                <div class="btn-social-counter__icon"><i class="fab fa-instagram"></i></div>
+                                <h6 class="btn-social-counter__title">Follow on Facebook</h6>
                                 <span class="btn-social-counter__add-icon"></span>
                             </a>
-
+                            {% endif %}
+                            {% if staff.social_media_links_set.first.twitter_link %}
+                            <a href="{{staff.social_media_links_set.first.twitter_link}}" class="btn-social-counter btn-social-counter--twitter" target="_blank">
+                                <div class="btn-social-counter__icon"><i class="fab fa-twitter"></i></div>
+                                <h6 class="btn-social-counter__title">Follow on Twitter</h6>
+                                <span class="btn-social-counter__add-icon"></span>
+                            </a>
+                            {% endif %}
                         </div>
                         <!-- Widget: Social Buttons / End -->
+                        {% endif %}
 
-                        <!-- Widget: Team Newslog -->
-                        <div class="widget card widget-newslog">
-                            <div class="widget__title card__header">
-                                <h4 class="">Staff Newslog</h4>
-                            </div>
-                            <div class="widget__content card__content">
-                                <ul class="newslog">
+                        {% if all_timelines.count > 0 %}
+                            <!-- Widget: Staff Newslog -->
+                            {% include 'includes/widgets/player_newslog.html' %}
+                            <!-- Widget: Staff Newslog / End -->
+                        {% endif %}
 
-                                    <li class="newslog__item newslog__item--join">
-                                        <div class="newslog__item-inner">
-                                            <div class="newslog__content"><strong>Jenny Thomps</strong> is now
-                                                the new <strong>Team Recruiter</strong> for the East Coast
-                                                Colleges.</div>
-                                            <div class="newslog__date">December 19, 2015</div>
-                                        </div>
-                                    </li>
-
-                                    <li class="newslog__item newslog__item--injury">
-                                        <div class="newslog__item-inner">
-                                            <div class="newslog__content"><strong>Robert Frankson</strong> will
-                                                have a surgery and will be out for a month. Interim coach will
-                                                be <strong>Frank Roberts</strong>.</div>
-                                            <div class="newslog__date">September 26, 2014</div>
-                                        </div>
-                                    </li>
-
-                                    <li class="newslog__item newslog__item--join">
-                                        <div class="newslog__item-inner">
-                                            <div class="newslog__content"><strong>Max Stevens</strong> is now
-                                                the <strong>2nd Team Doctor</strong> after a succesfull run in
-                                                the Sharks.</div>
-                                            <div class="newslog__date">September 26, 2014</div>
-                                        </div>
-                                    </li>
-
-                                    <li class="newslog__item newslog__item--exit">
-                                        <div class="newslog__item-inner">
-                                            <div class="newslog__content"><strong>Tommy Flankers</strong> left
-                                                the team after 2 years as the <strong>2nd Team Doctor</strong>.
-                                            </div>
-                                            <div class="newslog__date">August 12, 2014</div>
-                                        </div>
-                                    </li>
-
-                                    <li class="newslog__item newslog__item--join">
-                                        <div class="newslog__item-inner">
-                                            <div class="newslog__content"><strong>Patrick Storm</strong> is now
-                                                the new <strong>Team Recruiter</strong> for the West Coast
-                                                Colleges.</div>
-                                            <div class="newslog__date">April 19, 2014</div>
-                                        </div>
-                                    </li>
-
-                                    <li class="newslog__item newslog__item--join">
-                                        <div class="newslog__item-inner">
-                                            <div class="newslog__content"><strong>Alexa Polson</strong> is now
-                                                the new <strong>Athletic Trainer</strong> after a succesfull run
-                                                in the Pirates.</div>
-                                            <div class="newslog__date">November 27, 2013</div>
-                                        </div>
-                                    </li>
-
-                                    <li class="newslog__item newslog__item--join">
-                                        <div class="newslog__item-inner">
-                                            <div class="newslog__content"><strong>Savannah Lavender</strong> is
-                                                the new <strong>Team Nutritionist</strong> with more than
-                                                500.000 followers.</div>
-                                            <div class="newslog__date">February 15, 2012</div>
-                                        </div>
-                                    </li>
-
-                                    <li class="newslog__item newslog__item--join">
-                                        <div class="newslog__item-inner">
-                                            <div class="newslog__content"><strong>Robert Frankson</strong> is
-                                                now the new <strong>Alchemist Coach</strong> after a succesfull
-                                                run in the Lucky Clovers.</div>
-                                            <div class="newslog__date">March 22, 2008</div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- Widget: Team Newslog / End -->
                     </div>
                 </div>
             </div>

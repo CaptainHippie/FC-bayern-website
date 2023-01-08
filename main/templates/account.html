@@ -3,6 +3,7 @@
 {% load static %}
 {% load countries %}
 {% get_countries as countries %}
+{% load custom_calculations %}
 
 <title>Account - FC Bayern</title>
 <div class="page-heading page-heading--has-bg">
@@ -55,22 +56,55 @@
                                         <div class="card card--lg" id="account-dashboard">
                                             <header class="card__header"><h4>My account</h4></header>
                                             <div class="card__content">
-                                                <div class="woocommerce-notices-wrapper"></div>
-                                                <p>
-                                                    Hello <strong>{{logged_user.username}}</strong>
-                                                    (not <strong>{{logged_user.username}}</strong>?
-                                                    <a href="http://alchemists-wp.dan-fisher.com/soccer-dark/my-account/customer-logout/?_wpnonce=6d96a84e85">
-                                                        Log out</a>)
-                                                </p>
-                                                <p>
-                                                    From your account dashboard you can view your 
-                                                    <a href="http://alchemists-wp.dan-fisher.com/soccer-dark/my-account/orders/">
-                                                        recent orders</a>, manage your 
-                                                    <a href="http://alchemists-wp.dan-fisher.com/soccer-dark/my-account/edit-address/">
-                                                        shipping and billing addresses</a>, and 
-                                                    <a href="http://alchemists-wp.dan-fisher.com/soccer-dark/my-account/edit-account/">
-                                                        edit your password and account details</a>.
-                                                </p>
+                                                <div class="woocommerce-notices-wrapper">
+
+                                                    {% if messages %}
+                                                        {% for message in messages %}
+                                                            {% if message.tags == 'success' %}
+                                                                <ul class="woocommerce-message" role="alert">
+                                                                    <li>{{message}}</li>
+                                                                </ul>
+                                                            {% elif message.tags == 'error' %}
+                                                                <div class="woocommerce-error" role="alert">
+                                                                    {{message}}
+                                                                </div>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+
+                                                </div>
+                                                <div class="player-info__item player-info__item--photo">
+                                                    <figure class="player-info__photo"><img src="/media/{{logged_user.profile_pic}}" width="222px"></figure>
+                                                </div>
+                                                <div class="spacer"></div>
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Display Name</th><td style="color: rgb(220, 5, 45);font-size: 15px;font-weight: bold">{{logged_user.name_display}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>First Name</th><td>{{logged_user.first_name}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Last Name</th><td>{{logged_user.last_name}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Username</th><td>{{logged_user.username}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Email Address</th><td>{{logged_user.email}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Social Link</th><td><a href="{{logged_user.social_link}}">{{logged_user.social_link}}</a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Date Joined</th><td>{{logged_user.date_joined|date:"F j, Y - g:i A"}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Status</th><td>{% if logged_user.is_staff == True %}Admin{% endif %} {% if logged_user|has_group:"Content Creators" %}Content Creator{% endif %} </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
 

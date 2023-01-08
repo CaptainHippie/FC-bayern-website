@@ -65,24 +65,6 @@ def get_season_models(all_seasons_queryset, slug_name):
         season_models.append(season_stat_after_calculation)
     return season_models
 
-def get_player_news_models(all_news_queryset, slug_name):
-    player_news_models = []
-    for news in all_news_queryset:
-        tag_set = news.news_tag_player_set.all()
-        for tag in tag_set:
-            if tag.player_tag.slug == slug_name:
-                player_news_models.append(news)
-    return player_news_models
-
-def get_staff_news_models(all_news_queryset, slug_name):
-    staff_news_models = []
-    for news in all_news_queryset:
-        tag_set = news.news_tag_staff_set.all()
-        for tag in tag_set:
-            if tag.staff_tag.slug == slug_name:
-                staff_news_models.append(news)
-    return staff_news_models
-
 class Time_Diff:
 
     def __init__(self, days, hours, minutes, seconds):

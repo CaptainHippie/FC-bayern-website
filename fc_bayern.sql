@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 08, 2023 at 03:21 AM
+-- Generation Time: Jan 09, 2023 at 12:15 AM
 -- Server version: 10.6.11-MariaDB-0ubuntu0.22.04.1
 -- PHP Version: 8.1.2-1ubuntu2.9
 
@@ -282,7 +282,15 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (177, 'Can add news_ tag', 45, 'add_news_tag'),
 (178, 'Can change news_ tag', 45, 'change_news_tag'),
 (179, 'Can delete news_ tag', 45, 'delete_news_tag'),
-(180, 'Can view news_ tag', 45, 'view_news_tag');
+(180, 'Can view news_ tag', 45, 'view_news_tag'),
+(181, 'Can add timeline', 46, 'add_timeline'),
+(182, 'Can change timeline', 46, 'change_timeline'),
+(183, 'Can delete timeline', 46, 'delete_timeline'),
+(184, 'Can view timeline', 46, 'view_timeline'),
+(185, 'Can add social_ media_ links', 47, 'add_social_media_links'),
+(186, 'Can change social_ media_ links', 47, 'change_social_media_links'),
+(187, 'Can delete social_ media_ links', 47, 'delete_social_media_links'),
+(188, 'Can view social_ media_ links', 47, 'view_social_media_links');
 
 -- --------------------------------------------------------
 
@@ -309,7 +317,7 @@ CREATE TABLE `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(2, 'pbkdf2_sha256$390000$hU9yZogGfHRoBaXPNbTJtU$WiPUwhQC8Hvl/y6NUnkBBDVjhPKTgD7ltn3R9PfN5ZE=', '2023-01-06 16:24:01.086755', 1, 'Neerajvibez', 'Neeraj', 'V B', 'neerajvb@gmail.com', 1, 1, '2022-12-16 09:09:59.000000'),
+(2, 'pbkdf2_sha256$390000$hU9yZogGfHRoBaXPNbTJtU$WiPUwhQC8Hvl/y6NUnkBBDVjhPKTgD7ltn3R9PfN5ZE=', '2023-01-06 16:24:01.000000', 1, 'Neerajvibez', 'Neeraj', 'V B', 'neerajvb@gmail.com', 1, 1, '2022-12-16 09:09:59.000000'),
 (3, 'pbkdf2_sha256$390000$cPkRaIlss4jDv2JHgZi2Wx$BCAllESlQvH7MWVbVtx0RpGeiMMlzl+dW1D8+XWVzKE=', '2022-12-18 19:32:17.000000', 0, 'NeerajVB3', '', '', 'neerajvb3@gmail.com', 0, 1, '2022-12-18 19:30:49.000000'),
 (6, 'pbkdf2_sha256$390000$XAsXIGfD1IRTzfdWS3inb7$VrNg/esjbXY4BW49mJJ2yi/8zb9X+Qoin7IDqiJivHg=', '2022-12-20 18:09:23.000000', 0, 'ihsan_pandikkad', '', '', 'ihsankpkd@gmail.com', 0, 1, '2022-12-19 14:55:47.000000');
 
@@ -330,6 +338,7 @@ CREATE TABLE `auth_user_groups` (
 --
 
 INSERT INTO `auth_user_groups` (`id`, `user_id`, `group_id`) VALUES
+(2, 2, 1),
 (1, 3, 1);
 
 -- --------------------------------------------------------
@@ -609,7 +618,32 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 (244, '2023-01-07 21:05:36.081217', '9', 'FC Bayern sign Daley Blind', 2, '[{\"changed\": {\"fields\": [\"Home banner\"]}}]', 17, 2),
 (245, '2023-01-07 21:25:44.040551', '8', 'Friendly against FC Red Bull Salzburg on 13 January', 2, '[{\"changed\": {\"fields\": [\"Home banner\"]}}]', 17, 2),
 (246, '2023-01-07 21:38:50.318761', '10', 'Pavard and Coman return, Blind unveiling and triple training', 1, '[{\"added\": {}}]', 17, 2),
-(247, '2023-01-07 21:42:52.280467', '10', 'Pavard and Coman return, Blind unveiling and triple training', 2, '[{\"changed\": {\"fields\": [\"Excerpt\"]}}]', 17, 2);
+(247, '2023-01-07 21:42:52.280467', '10', 'Pavard and Coman return, Blind unveiling and triple training', 2, '[{\"changed\": {\"fields\": [\"Excerpt\"]}}]', 17, 2),
+(248, '2023-01-08 08:33:12.229959', '2', 'Neeraj Vibez', 2, '[{\"changed\": {\"fields\": [\"Social link\"]}}]', 11, 2),
+(249, '2023-01-08 08:51:56.792373', '2', 'Neeraj Vibez', 2, '[{\"changed\": {\"fields\": [\"Groups\"]}}]', 11, 2),
+(250, '2023-01-08 09:23:31.594983', '1', 'Timeline object (1)', 1, '[{\"added\": {}}]', 46, 2),
+(251, '2023-01-08 09:29:45.031893', '2', 'Serge Gnabry-2020-06-07', 1, '[{\"added\": {}}]', 46, 2),
+(252, '2023-01-08 15:48:38.914070', '3', 'Hasan Salihamidžić-2021-05-05', 1, '[{\"added\": {}}]', 46, 2),
+(253, '2023-01-08 15:52:22.647128', '1', 'Social_Media_Links object (1)', 1, '[{\"added\": {}}]', 47, 2),
+(254, '2023-01-08 16:02:57.011380', '1', 'Eric Maxim Choupo-Moting', 2, '[{\"changed\": {\"fields\": [\"Player\"]}}]', 47, 2),
+(255, '2023-01-08 16:03:14.356276', '1', 'Serge Gnabry', 2, '[{\"changed\": {\"fields\": [\"Player\"]}}]', 47, 2),
+(256, '2023-01-08 16:05:34.473186', '1', 'Hasan Salihamidžić', 2, '[{\"changed\": {\"fields\": [\"Staff\"]}}]', 47, 2),
+(257, '2023-01-08 16:21:57.952559', '10', 'Pavard and Coman return, Blind unveiling and triple training', 2, '[{\"changed\": {\"fields\": [\"Player tags\", \"Staff tags\"]}}]', 17, 2),
+(258, '2023-01-08 16:25:49.436395', '5', 'Stanišić misses out on World Cup final with Croatia', 2, '[{\"changed\": {\"fields\": [\"Player tags\", \"Staff tags\"]}}]', 17, 2),
+(259, '2023-01-08 17:09:05.096098', '5', 'Stanišić misses out on World Cup final with Croatia', 2, '[{\"changed\": {\"fields\": [\"Staff tags\"]}}]', 17, 2),
+(260, '2023-01-08 17:09:19.378910', '10', 'Pavard and Coman return, Blind unveiling and triple training', 2, '[{\"changed\": {\"fields\": [\"Staff tags\"]}}]', 17, 2),
+(261, '2023-01-08 17:24:15.160017', '4', 'Youth', 1, '[{\"added\": {}}]', 7, 2),
+(262, '2023-01-08 17:24:35.298717', '5', 'Champions League', 1, '[{\"added\": {}}]', 7, 2),
+(263, '2023-01-08 17:27:47.309248', '5', 'Stanišić misses out on World Cup final with Croatia', 2, '[{\"changed\": {\"fields\": [\"News type\"]}}]', 17, 2),
+(264, '2023-01-08 17:35:15.003239', '6', 'Club', 1, '[{\"added\": {}}]', 7, 2),
+(265, '2023-01-08 17:35:42.545372', '7', 'Transfers', 1, '[{\"added\": {}}]', 7, 2),
+(266, '2023-01-08 17:36:29.446512', '9', 'FC Bayern sign Daley Blind', 2, '[{\"changed\": {\"fields\": [\"News type\"]}}]', 17, 2),
+(267, '2023-01-08 17:44:13.461099', '7', 'Nagelsmann welcomes training group before leaving for Doha', 2, '[{\"changed\": {\"fields\": [\"News type\"]}}]', 17, 2),
+(268, '2023-01-08 17:56:20.621424', '8', 'Friendly against FC Red Bull Salzburg on 13 January', 2, '[{\"changed\": {\"fields\": [\"News type\"]}}]', 17, 2),
+(269, '2023-01-08 18:05:08.307066', '8', 'Awards', 1, '[{\"added\": {}}]', 7, 2),
+(270, '2023-01-08 18:06:03.339116', '1', 'Jamal Musiala is the FC Bayern Player of the Month for November 2022', 2, '[{\"changed\": {\"fields\": [\"News type\"]}}]', 17, 2),
+(271, '2023-01-08 18:27:25.467290', '6', 'The Club', 2, '[{\"changed\": {\"fields\": [\"Name\"]}}]', 7, 2),
+(272, '2023-01-08 18:43:12.274667', '9', 'Tour', 1, '[{\"added\": {}}]', 45, 2);
 
 -- --------------------------------------------------------
 
@@ -668,9 +702,11 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (20, 'main', 'position'),
 (21, 'main', 'scheduled_match'),
 (22, 'main', 'season'),
+(47, 'main', 'social_media_links'),
 (23, 'main', 'sponsor'),
 (24, 'main', 'staff'),
 (25, 'main', 'team'),
+(46, 'main', 'timeline'),
 (42, 'main', 'trophies'),
 (6, 'sessions', 'session');
 
@@ -731,7 +767,12 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (55, 'main', '0017_match_tags_alter_news_article_tags', '2023-01-07 19:41:32.868970'),
 (56, 'main', '0018_remove_match_tags_match_news_tags', '2023-01-07 20:21:44.234853'),
 (57, 'main', '0019_news_article_home_banner', '2023-01-07 20:54:08.028795'),
-(58, 'main', '0020_match_tags', '2023-01-07 20:56:40.534701');
+(58, 'main', '0020_match_tags', '2023-01-07 20:56:40.534701'),
+(59, 'main', '0021_timeline', '2023-01-08 09:19:41.535038'),
+(60, 'main', '0022_alter_timeline_player_alter_timeline_staff', '2023-01-08 09:23:24.252980'),
+(61, 'main', '0023_social_media_links', '2023-01-08 15:49:03.029264'),
+(62, 'main', '0024_remove_news_tag_staff_news_and_more', '2023-01-08 16:10:53.446419'),
+(63, 'main', '0025_news_article_player_tags_news_article_staff_tags', '2023-01-08 16:14:35.224052');
 
 -- --------------------------------------------------------
 
@@ -756,7 +797,7 @@ INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALU
 ('9fhja718b3wjdsht81g7xm4fg82caek3', 'eyJpbnN0YS1mb2xsb3dlcnMiOiIzNk0ifQ:1pDnrA:R8t6PPtNrQSb4IIK3dpEXu3dbrhOOkH5Zy2NuywwTCM', '2023-01-20 14:38:04.611842'),
 ('b9bi7vxs7p9aatr7wb9zwxl7es3vzy5v', 'e30:1p6zNC:AvflqbDrX70MA-5s5NZFqkLvWLkqgF2dHXDZdA-MdLI', '2023-01-01 19:30:58.275569'),
 ('gv35g17t2ipl0vcqu7z8f0a5k70kwq35', '.eJxVjkEOgyAURO_C2hIt_Qgu3XsG84FPtTWQAKYL492riYt2O-_NZDY24lqmcc2UxtmxjklW_WYG7ZvCCdwLwzNyG0NJs-Gnwi-a-RAdLf3l_g1MmKejTVJrYbBB5VTttTUAQEqCIU_ePKRwqm0VNIAkjLZ3h3iIytceG2jd-cpiKqzb9orNIRe8-bgs8UMpH_MCuBzY_gXTVEQt:1p9sQG:uS2Vy-UvffbYwIWrPEElEmRfL1uZY6eIDTdf2RCJlRs', '2023-01-09 18:42:04.679418'),
-('mh3pbpy918rp48o0isoy9836i3q6kk0y', '.eJxVjEEOgyAUBe_CuiWCgOCye89gPvCptgYSwHRhvHs1ceN2Zt7byBxLhWdIy5J-mAvpSasG8iAjrHUa14J5nP1B-Z1ZcF-Mp_AfiO9EXYo1z5aeCb1soUPyuLyu9nYwQZmOtZUanHRcW2DWWNVp6VvTgVTaCRu4aCwGxpwAH9AYZDKowLARHJVwTXecOsiV9Nu-_wEyMkOB:1pEH4Y:9A1zOTPhe5eYpoMXNFRyxE_U1FNZClaPRqMgYKb788A', '2023-01-21 21:49:50.772020'),
+('mh3pbpy918rp48o0isoy9836i3q6kk0y', '.eJxVjEEOgyAUBe_CuiWCgOCye89gPvCptgYSwHRhvHs1ceN2Zt7byBxLhWdIy5J-mAvpSasG8iAjrHUa14J5nP1B-Z1ZcF-Mp_AfiO9EXYo1z5aeCb1soUPyuLyu9nYwQZmOtZUanHRcW2DWWNVp6VvTgVTaCRu4aCwGxpwAH9AYZDKowLARHJVwTXecOsiV9Nu-_wEyMkOB:1pEae5:UC1MepKBAvMYFbbJxoD1UbqYfuyeaeMxZ5N2-Dzvwck', '2023-01-22 18:43:49.904171'),
 ('u7co98bhy5sqcrap4dbhvf03ur1680n5', 'eyJpbnN0YS1mb2xsb3dlcnMiOiIzNS41TSJ9:1p70FI:Ye5utLdiH572ZqbLGOqIiQAq0gGhssO-u0ATYGNoA2s', '2023-01-01 20:26:52.449094');
 
 -- --------------------------------------------------------
@@ -843,7 +884,12 @@ CREATE TABLE `main_article_type` (
 INSERT INTO `main_article_type` (`id`, `name`, `css_name`, `category`) VALUES
 (1, 'BundesLiga', 'the-league', 2),
 (2, 'The Team', 'the-team', 1),
-(3, 'Injuries', 'injuries', 3);
+(3, 'Injuries', 'injuries', 3),
+(4, 'Youth', 'youth', 5),
+(5, 'Champions League', 'ucl', 4),
+(6, 'The Club', 'club', 6),
+(7, 'Transfers', 'transfer', 7),
+(8, 'Awards', 'award', 8);
 
 -- --------------------------------------------------------
 
@@ -999,7 +1045,7 @@ CREATE TABLE `main_customuser` (
 --
 
 INSERT INTO `main_customuser` (`user_ptr_id`, `name_display`, `profile_pic`, `content_creator`, `slug`, `social_link`) VALUES
-(2, 'Neeraj Vibez', 'user_pfps/neeraj_pfp_sqr.png', 0, 'neerajvibez', NULL),
+(2, 'Neeraj Vibez', 'user_pfps/neeraj_pfp_sqr.png', 0, 'neerajvibez', 'www.linkedin.com/in/neeraj-v-b-a23a1344'),
 (3, 'Neeraj V B New', 'user_pfps/default.jpg', 0, 'neerajvb3', NULL),
 (6, 'Ihsan K', 'user_pfps/lagesh.jpg', 0, 'ihsankpkd', NULL);
 
@@ -1052,7 +1098,8 @@ INSERT INTO `main_likes` (`id`, `value`, `post_id`, `user_id`) VALUES
 (9, 1, 6, 6),
 (10, 1, 1, 3),
 (11, 1, 2, 3),
-(12, 1, 2, 6);
+(12, 1, 2, 6),
+(13, 0, 10, 2);
 
 -- --------------------------------------------------------
 
@@ -1461,16 +1508,16 @@ CREATE TABLE `main_news_article` (
 --
 
 INSERT INTO `main_news_article` (`id`, `title`, `image`, `post_content`, `added`, `updated`, `slug`, `views`, `excerpt`, `featured`, `author_id`, `news_type_id`, `image_url`, `video_url`, `home_banner`) VALUES
-(1, 'Jamal Musiala is the FC Bayern Player of the Month for November 2022', '', '<p>As FC Bayern&#39;s year of competitive matches slowly came to an end, one whirlwind of a player really turned up the heat again: In November,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/jamal-musiala\">Jamal Musiala</a>&nbsp;thrilled the fans of the German record champions once again and secured the award for FC Bayern Player of the Month one more time. The 19-year-old received almost 50 per cent of the vote (49.6%), ahead of&nbsp;<a href=\"/player/eric-maxim-choupo-moting/\">Eric Maxim Choupo-Moting</a>&nbsp;(34.9%) and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/serge-gnabry\">Serge Gnabry</a>&nbsp;(5.8%). It&#39;s already the fourth time Musialy has won the award this season - the only time he didn&#39;t get it was in October, when Choupo-Moting managed to edge the fleet-footed sensation into second place.</p>\r\n\r\n<h2>Youngest player to make 100 competitive appearances for Bayern</h2>\r\n\r\n<p><img alt=\"Celebration Jamal Musiala FC Bayern\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1671119065/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Musiala/201108-musiala-jubel-ima.jpg\" style=\"height:2160px; width:3840px\" title=\"An indispensable part of the Bayern team this season: Jamal Musiala celebrates with his teammates.\" /></p>\r\n\r\n<p>An indispensable part of the Bayern team this season: Jamal Musiala celebrates with his teammates.</p>\r\n\r\n<p>The statistics once again spoke clearly in favour of the Germany international: In four competitive games last month, Musiala was directly involved in four goals (two goals, two assists). In the last match of the year&nbsp;<a href=\"https://fcbayern.com/en/matches/profis/bundesliga/2022-2023/fc-schalke-04-fc-bayern-muenchen-12-11-2022/report\">at Schalke (2-0)</a>, the artistic dribbler made his 100th competitive appearance for Bayern - and that at the tender age of just 19 years and 259 days. No other player ever managed to reach this milestone in professional football at such a young age for the German record champions. And anyone who has watched the youngster play can hardly wait for match number 101 in January.</p>', '2022-12-16 22:47:00.000000', '2023-01-07 20:42:12.810889', 'jamal-musiala-is-the-fc-bayern-player-of-the-month-for-november-2022', 64, 'As FC Bayern\'s year of competitive matches slowly came to an end, one whirlwind of a player really turned up the heat again: In November, Jamal Musiala thrilled the fans of the German record champions once again and secured the award for FC Bayern Player of the Month one more time. The 19-year-old received almost 50 per cent of the vote (49.6%), ahead of Eric Maxim Choupo-Moting (34.9%) and Serge Gnabry (5.8%).', 1, 2, 2, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1671118950/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Musiala/201108-musiala-gnabry-jubel-mel.jpg', 'https://www.youtube.com/embed/G7HBU9jkb9k', 0),
+(1, 'Jamal Musiala is the FC Bayern Player of the Month for November 2022', '', '<p>As FC Bayern&#39;s year of competitive matches slowly came to an end, one whirlwind of a player really turned up the heat again: In November,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/jamal-musiala\">Jamal Musiala</a>&nbsp;thrilled the fans of the German record champions once again and secured the award for FC Bayern Player of the Month one more time. The 19-year-old received almost 50 per cent of the vote (49.6%), ahead of&nbsp;<a href=\"/player/eric-maxim-choupo-moting/\">Eric Maxim Choupo-Moting</a>&nbsp;(34.9%) and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/serge-gnabry\">Serge Gnabry</a>&nbsp;(5.8%). It&#39;s already the fourth time Musialy has won the award this season - the only time he didn&#39;t get it was in October, when Choupo-Moting managed to edge the fleet-footed sensation into second place.</p>\r\n\r\n<h2>Youngest player to make 100 competitive appearances for Bayern</h2>\r\n\r\n<p><img alt=\"Celebration Jamal Musiala FC Bayern\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1671119065/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Musiala/201108-musiala-jubel-ima.jpg\" style=\"height:2160px; width:3840px\" title=\"An indispensable part of the Bayern team this season: Jamal Musiala celebrates with his teammates.\" /></p>\r\n\r\n<p>An indispensable part of the Bayern team this season: Jamal Musiala celebrates with his teammates.</p>\r\n\r\n<p>The statistics once again spoke clearly in favour of the Germany international: In four competitive games last month, Musiala was directly involved in four goals (two goals, two assists). In the last match of the year&nbsp;<a href=\"https://fcbayern.com/en/matches/profis/bundesliga/2022-2023/fc-schalke-04-fc-bayern-muenchen-12-11-2022/report\">at Schalke (2-0)</a>, the artistic dribbler made his 100th competitive appearance for Bayern - and that at the tender age of just 19 years and 259 days. No other player ever managed to reach this milestone in professional football at such a young age for the German record champions. And anyone who has watched the youngster play can hardly wait for match number 101 in January.</p>', '2022-12-16 22:47:00.000000', '2023-01-08 18:06:03.326903', 'jamal-musiala-is-the-fc-bayern-player-of-the-month-for-november-2022', 65, 'As FC Bayern\'s year of competitive matches slowly came to an end, one whirlwind of a player really turned up the heat again: In November, Jamal Musiala thrilled the fans of the German record champions once again and secured the award for FC Bayern Player of the Month one more time. The 19-year-old received almost 50 per cent of the vote (49.6%), ahead of Eric Maxim Choupo-Moting (34.9%) and Serge Gnabry (5.8%).', 1, 2, 8, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1671118950/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Musiala/201108-musiala-gnabry-jubel-mel.jpg', 'https://www.youtube.com/embed/G7HBU9jkb9k', 0),
 (2, 'Manuel Neuer undergoes successful surgery', '', '<p><a href=\"https://fcbayern.com/de/teams/profis/manuel-neuer\">Manuel Neuer</a>, 36, will not be available to FC Bayern Munich for the rest of the season. The FC Bayern captain suffered a fracture of his lower right leg in a fall while skiing this Friday. He has already undergone successful surgery.</p>\r\n\r\n<p>CEO&nbsp;<a href=\"https://fcbayern.com/de/club/fcb-ag/oliver-kahn\">Oliver Kahn</a>: &quot;The news of Manuel&#39;s injury shocked us all. We will stand by him and support him on his way to his comeback. He will overcome this serious injury and return to the pitch as strong as before.&quot;</p>\r\n\r\n<p>Board Member for Sport:&nbsp;<a href=\"https://fcbayern.com/de/club/fcb-ag/hasan-salihamidzic\">Hasan Salihamidžić</a>: &quot;The fact Manuel had such an accident is terrible. And, of course, all our thoughts are with him. I spoke to him yesterday and today, and the surgery went as well as possible. Manuel will receive all the support he needs. He is a strong personality and he will be back. I wish him all the best, he can rely on FC Bayern!&quot;</p>', '2022-12-10 17:41:00.000000', '2023-01-07 19:12:43.207202', 'manuel-neuer-undergoes-successful-surgery', 8, 'Manuel Neuer, 36, will not be available to FC Bayern Munich for the rest of the season. The FC Bayern captain suffered a fracture of his lower right leg in a fall while skiing this Friday. He has already undergone successful surgery.', 1, 2, 3, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1670670343/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Neuer/220827-neuer-mel.jpg', NULL, 0),
 (3, 'Bundesliga 2023/24 outline schedule confirmed', '', '<p>The German Football Association (DFB) executive committee revealed the&nbsp;<a href=\"https://www.dfl.de/en/news/calendar-for-the-2023-24-season/\">outline schedule for the 2023/24 Bundesliga season</a>&nbsp;on Friday. The next Bundesliga campaign begins with the opening match on 18 August 2023, and ends with the final matchday on Saturday 18 May 2024.</p>\r\n\r\n<h2>Only one midweek round</h2>\r\n\r\n<p>The Bundesliga winter break starts after Matchday 16 (19/20 December 2023), which is also the only midweek matchday of the season. The action will recommence in Germany&#39;s top flight on 12 January 2024.</p>\r\n\r\n<p><img alt=\"FC Bayern DFL-Supercup winners 2022\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1670589939/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Spiele/Supercup-Leipzig-FCB/33-supercup-rbl-fcb-220730-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"Bayern won the 2022 DFL-Supercup against Leipzig - Julian Nagelsmann’s side still need to qualify for the next edition on 12 August 2023.\" /></p>\r\n\r\n<p>Bayern won the 2022 DFL-Supercup against Leipzig - Julian Nagelsmann&rsquo;s side still need to qualify for the next edition on 12 August 2023.</p>\r\n\r\n<p>A week before the league season starts, the Supercup between the Bundesliga champions and DFB Cup winners takes place on Saturday 12 August 2023. The DFB Cup begins on the same weekend (11-14 August) with the first round. The cup ties involving the Supercup participants have therefore been arranged for 26 and 27 September. The DFB Cup final is set to be played one week after the conclusion of the Bundesliga season, on Saturday 25 May 2024 at Berlin&#39;s Olympiastadion.</p>', '2022-12-09 19:21:00.000000', '2023-01-07 19:12:49.440727', 'bundesliga-202324-outline-schedule-confirmed', 6, 'The German Football Association (DFB) executive committee revealed the outline schedule for the 2023/24 Bundesliga season on Friday. The next Bundesliga campaign begins with the opening match on 18 August 2023, and ends with the final matchday on Saturday 18 May 2024.', 1, 2, 1, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1670590369/cms/public/images/fcbayern-com/homepage/platzhalter/pokale/220730-meisterschale-dfb-pokal-supercup-ima.jpg', NULL, 0),
 (4, 'Upamecano and Co reach World Cup final with France', '', '<p>Three Bayern players with France are just one step away from reaching football&#39;s summit - but for&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/noussair-mazraoui\">Noussair Mazraoui</a>, the dream of the World Cup final is over. On Wednesday evening, Les Bleus beat Morocco 2-0 in the semi-finals and now have the chance to become the first team since Brazil in 1962 to defend the world title.</p>\r\n\r\n<p><img alt=\"Noussair Mazraoui Morocco\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1671049330/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Nationalspieler/221214-mazraoui-marokko-frankreich-get.jpg\" style=\"height:2160px; width:3840px\" title=\"Noussair Mazraoui started for Morocco and was subbed at half-time.\" /></p>\r\n\r\n<p>Noussair Mazraoui started for Morocco and was subbed at half-time.</p>\r\n\r\n<p>While Mazraoui came off at half-time for the North Africans,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/kingsley-coman\">Kingsley Coman</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/dayot-upamecano\">Dayot Upamecano</a>&nbsp;and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/benjamin-pavard\">Benjamin Pavard</a>&nbsp;did not feature for the reigning champions. The two teams produced a high-quality encounter with numerous chances at both ends. After Theo Hern&aacute;ndez, brother of&nbsp;<a href=\"https://fcbayern.com/en/news/2022/11/lucas-hernandez-successfully-operated-on\">injured FCB defender</a><a href=\"https://fcbayern.com/de/teams/profis/lucas-hernandez\">Lucas Hern&aacute;ndez</a>, gave France an early lead in the fifth minute, it wasn&#39;t until the 79th minute that the net rippled again through Frankfurt striker Randal Kolo Muani, who had only just come on.</p>\r\n\r\n<h2>Fighting for a third star</h2>\r\n\r\n<p>Didier Deschamps&#39; men now face Argentina in the final at the Lusail Iconic Stadium on Sunday afternoon (16:00 CET). Both teams have been world champions on two occassions and are bidding to get a third star on their shirt. On Saturday (16:00 CET), Mazraoui will go up against Bayern teammate Josip&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/josip-stani%C5%A1i%C4%87\">Stani&scaron;ić</a>&nbsp;and Croatia in the third place playoff.</p>', '2022-12-15 15:11:00.000000', '2023-01-07 19:12:35.054167', 'upamecano-and-co-reach-world-cup-final-with-france', 3, 'Three Bayern players with France are just one step away from reaching football\'s summit - but for Noussair Mazraoui, the dream of the World Cup final is over. On Wednesday evening, Les Bleus beat Morocco 2-0 in the semi-finals and now have the chance to become the first team since Brazil in 1962 to defend the world title.', 1, 2, 2, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1671051371/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Nationalspieler/221214-juebl-upamecano-frankreich-get.jpg', NULL, 0),
-(5, 'Stanišić misses out on World Cup final with Croatia', '', '<p>Such a shame, Josip! On Tuesday evening, the Croatian national team featuring Bayern player Josip Stani&scaron;ić missed out on a place in the final of the World Cup in Qatar. In the 3-0 (2-0) semi-final loss to Argentina, the 22-year-old full-back once again watched the game from the bench. The South Americans dominated the first half and deservedly took the lead through Lionel Messi (34&#39;/pen) and Juli&aacute;n &Aacute;lvarez (39&#39;). After the break, the Croatians tried everything they could to turn the game around, but ultimately had no luck. Instead, &Aacute;lvarez (69&#39;) bagged his second goal of the evening with around 20 minutes to go.</p>\r\n\r\n<h2>Regroup and focus on the third place play-off</h2>\r\n\r\n<p>Stani&scaron;ić and Co. now need to prepare for the third place play-off on Saturday (16:00 CET), where Zlatko Dalić&#39;s side will meet the losers of the second semi-final between Morocco and France (Wednesday, 20:00 CET). After finishing in third place at the 1998 World Cup and reaching the final in 2018, the Croats now have a third chance to end a World Cup tournament with a medal.</p>', '2022-12-14 15:05:00.000000', '2023-01-07 21:41:12.851049', 'stanisic-misses-out-on-world-cup-final-with-croatia', 51, 'On Tuesday evening, the Croatian national team featuring Bayern player Josip Stanišić missed out on a place in the final of the World Cup in Qatar. In the 3-0 (2-0) semi-final loss to Argentina, the 22-year-old full-back once again watched the game from the bench.', 1, 3, 2, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1670962050/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Nationalspieler/221213-stanisic-kroatien-ima.jpg', NULL, 0),
+(5, 'Stanišić misses out on World Cup final with Croatia', '', '<p>Such a shame, Josip! On Tuesday evening, the Croatian national team featuring Bayern player Josip Stani&scaron;ić missed out on a place in the final of the World Cup in Qatar. In the 3-0 (2-0) semi-final loss to Argentina, the 22-year-old full-back once again watched the game from the bench. The South Americans dominated the first half and deservedly took the lead through Lionel Messi (34&#39;/pen) and Juli&aacute;n &Aacute;lvarez (39&#39;). After the break, the Croatians tried everything they could to turn the game around, but ultimately had no luck. Instead, &Aacute;lvarez (69&#39;) bagged his second goal of the evening with around 20 minutes to go.</p>\r\n\r\n<h2>Regroup and focus on the third place play-off</h2>\r\n\r\n<p>Stani&scaron;ić and Co. now need to prepare for the third place play-off on Saturday (16:00 CET), where Zlatko Dalić&#39;s side will meet the losers of the second semi-final between Morocco and France (Wednesday, 20:00 CET). After finishing in third place at the 1998 World Cup and reaching the final in 2018, the Croats now have a third chance to end a World Cup tournament with a medal.</p>', '2022-12-14 15:05:00.000000', '2023-01-08 17:27:47.294674', 'stanisic-misses-out-on-world-cup-final-with-croatia', 51, 'On Tuesday evening, the Croatian national team featuring Bayern player Josip Stanišić missed out on a place in the final of the World Cup in Qatar. In the 3-0 (2-0) semi-final loss to Argentina, the 22-year-old full-back once again watched the game from the bench.', 1, 3, 5, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1670962050/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Nationalspieler/221213-stanisic-kroatien-ima.jpg', NULL, 0),
 (6, 'Straight into the top corner – Fans honour Eric Maxim Choupo-Moting', 'uploads/chupo-goal-of-the-month-nov.jpg', '<p>Head up and into the top corner - that&#39;s how to do it! In FC Bayern&#39;s final Champions League group game against Inter Milan at the start of November,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/eric-maxim-choupo-moting\">Eric Maxim Choupo-Moting</a>&nbsp;went for goal with around a quarter of an hour left and lashed the ball into the top left corner from a good 20 metres out. The strike didn&#39;t just wrap up the&nbsp;<a href=\"https://fcbayern.com/en/matches/profis/champions-league/2022-2023/fc-bayern-muenchen-inter-mailand-01-11-2022/report\">2-0 final scoreline</a>&nbsp;and a&nbsp;<a href=\"https://fcbayern.com/en/news/2022/11/record-breaking-fc-bayern-complete-third-perfect-champions-league-group-stage\">sixth win in six games</a>&nbsp;in this UCL season, but also sent a ripple around the&nbsp;<a href=\"https://allianz-arena.com/en\">Allianz Arena</a>. It&#39;s not every day that you see such a brilliant goal, even at FCB&#39;s home stadium.</p>\r\n\r\n<h2>Choupo earns over a third of the votes</h2>\r\n\r\n<p><img alt=\"Choupo-Moting FC Bayern\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1671121333/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Spiele/FCB-Inter/19-fcb-inter-011122-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"Choupo-Moting instinctively drilled the ball into the top corner in the 72nd minute of the final Champions League group game.\" /></p>\r\n\r\n<p>Choupo-Moting instinctively drilled the ball into the top corner in the 72nd minute of the final Champions League group game.</p>\r\n\r\n<p>Fans of the German record champions agreed and voted Choupo-Moting&#39;s effort as the FC Bayern Goal of the Month for November, with the Cameroon international receiving 38% of the votes. Second place went to&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/jamal-musiala\">Jamal Musiala</a>&nbsp;(26%) for his skilful opening goal in the&nbsp;<a href=\"https://fcbayern.com/en/matches/profis/bundesliga/2022-2023/fc-bayern-muenchen-sv-werder-bremen-08-11-2022/report\">6-1 win</a>&nbsp;over Werder Bremen, while Carolin Simon&#39;s wonderful free-kick in the 7-0 DFB Cup win at MSV Duisburg came third (17%).</p>', '2022-12-17 19:11:00.000000', '2023-01-07 19:13:59.949680', 'straight-into-the-top-corner-fans-honour-eric-maxim-choupo-moting', 22, 'Head up and into the top corner - that\'s how to do it! In FC Bayern\'s final Champions League group game against Inter Milan at the start of November, Eric Maxim Choupo-Moting went for goal with around a quarter of an hour left and lashed the ball into the top left corner from a good 20 metres out. The strike didn\'t just wrap up the 2-0 final scoreline and a sixth win in six games in this UCL season, but also sent a ripple around the Allianz Arena. It\'s not every day that you see such a brilliant goal, even at FCB\'s home stadium.', 0, 3, 2, NULL, NULL, 0),
-(7, 'Nagelsmann welcomes training group before leaving for Doha', '', '<p>Bayern had their final two training sessions in Munich on Thursday before they head off to Doha and the Aspire Academy for their winter training camp on Friday. However, coach&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/coaches-and-staff/julian-nagelsmann\">Julian Nagelsmann</a>&nbsp;was still without a few players at S&auml;bener Stra&szlig;e.</p>\r\n\r\n<p><img alt=\"Joshua Kimmich FC Bayern Training\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672921075/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Kimmich/230105-kimmich-training-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"Joshua Kimmich and his teammates were hard at work in the morning session.\" /></p>\r\n\r\n<p>Joshua Kimmich and his teammates were hard at work in the morning session.</p>\r\n\r\n<h2>French players to travel directly</h2>\r\n\r\n<p>Among the players absent in Munich were French trio&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/dayot-upamecano\">Dayot Upamecano</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/benjamin-pavard\">Benjamin Pavard</a>&nbsp;and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/kingsley-coman\">Kingsley Coman</a>&nbsp;after they were given some extra time off following France&rsquo;s World Cup final loss to Argentina. They will travel directly to Doha on Friday.&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/marcel-sabitzer\">Marcel Sabitzer</a>&nbsp;and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/noussair-mazraoui\">Noussair Mazraoui</a>&nbsp;didn&rsquo;t take part either. Long-term injury absentees&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/manuel-neuer\">Manuel Neuer</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/sadio-mane\">Sadio Mane</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/lucas-hernandez\">Lucas Hernandez</a>&nbsp;and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/bouna-sarr\">Bouna Sarr</a>&nbsp;were also missing and will continue their respective recovery programmes in Munich. They won&rsquo;t be traveling to the training camp.</p>\r\n\r\n<h2>First open session of the year</h2>\r\n\r\n<p>After the day&rsquo;s first session in the morning,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/thomas-mueller\">Thomas M&uuml;ller</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/jamal-musiala\">Jamal Musiala</a>&nbsp;and their teammates welcomed fans to S&auml;bener Stra&szlig;e for the afternoon. It was the first open training session of the year as the players and coaches took time to sign autographs and take selfies with those in attendance.</p>\r\n\r\n<p><em>Check out the photos from the open session at S&auml;bener Stra&szlig;e:</em></p>\r\n\r\n<p><img alt=\"01-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/01-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"02-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/02-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"03-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/03-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"04-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/04-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"05-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/05-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"06-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/06-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"07-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/07-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"08-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/08-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"09-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/09-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"10-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/10-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"11-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/11-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"12-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/12-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>', '2023-01-05 22:30:00.000000', '2023-01-06 15:53:24.917689', 'nagelsmann-welcomes-training-group-before-leaving-for-doha', 8, 'Bayern had their final two training sessions in Munich on Thursday before they head off to Doha and the Aspire Academy for their winter training camp on Friday. However, coach Julian Nagelsmann was still without a few players at Säbener Straße.', 0, 6, 2, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1672920797/cms/public/images/fcbayern-com/homepage/Saison-22-23/Trainer/Nagelsmann/230105-nagelsmann-training-mel.jpg', NULL, 0),
-(8, 'Friendly against FC Red Bull Salzburg on 13 January', '', '<p>FC Bayern will play a friendly against FC Red Bull&nbsp;Salzburg on 13 January 2023. The match will take place at the FC Bayern Campus, kicking off at 18:00 CET. A week later, on 20 January,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/coaches-and-staff/julian-nagelsmann\">Julian Nagelsmann</a>&#39;s side begin the second half of the season with the Bundesliga away match at RB Leipzig.</p>\r\n\r\n<p>Tickets for the friendly against Salzburg can be requested from today up until 18 December via the&nbsp;<a href=\"http://tickets.fcbayern.com/internetverkaufanfragen/EventList.aspx\">Online Shop</a>.</p>\r\n\r\n<p><img alt=\"champions league last 16 fc bayern salzburg\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1670504083/cms/public/images/fcbayern-com/homepage/saison-21-22/Galerien/Spiele/FCB-Salzburg/12_FCBSAL_220308_DON.jpg\" style=\"height:2160px; width:3840px\" title=\"Bayern and Salzburg last met in the last 16 of the 2021/22 Champions League campaign, with the German record champions coming out on top.\" /></p>\r\n\r\n<p>Bayern and Salzburg last met in the last 16 of the 2021/22 Champions League campaign, with the German record champions coming out on top.</p>\r\n\r\n<h2>Start of preparations on 3 January</h2>\r\n\r\n<p>Bayern begin their preparations for the rest of the season on 3 January, before heading off to Doha for a six-day training camp on 6 January. The friendly against the Austrian champions follows their return.</p>', '2023-01-02 06:00:00.000000', '2023-01-07 21:40:59.728030', 'friendly-against-fc-red-bull-salzburg-on-13-january', 3, 'FC Bayern will play a friendly against FC Red Bull Salzburg on 13 January 2023. The match will take place at the FC Bayern Campus, kicking off at 18:00 CET. A week later, on 20 January, Julian Nagelsmann\'s side begin the second half of the season with the Bundesliga away match at RB Leipzig.', 1, 2, 2, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1670511127/cms/public/images/fcbayern-com/homepage/stadien/fcbayern-campus-190327-get.jpg', NULL, 1),
-(9, 'FC Bayern sign Daley Blind', '', '<p>Bayern Munich have signed defender Daley Blind on a deal till the end of the season. The 32-year-old Netherlands international came through the youth system at Ajax, which was also his most recent club. He also played for Manchester United between 2014 and 2018.</p>\r\n\r\n<p><a href=\"https://fcbayern.com/en/club/company/hasan-salihamid%C5%BEi%C4%87\">Hasan Salihamidzic</a>: &ldquo;We&rsquo;re delighted that Daley is joining our team. Daley is a versatile defender, capable of playing on the left or in the centre. He has great international experience and leadership qualities. I&rsquo;m sure he&rsquo;ll help us.&rdquo;</p>\r\n\r\n<p><img alt=\"06-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948377/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/06-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>Daley Blind: &ldquo;I can hardly wait to play here. We&rsquo;ve got the most important part of the season coming up, where it&rsquo;s about titles &ndash; and a club like Bayern can win every trophy. The hunger for titles here at the club was key in my decision. I hope I can bring my experience to help the team. I&rsquo;ll give everything for Bayern Munich.&rdquo;</p>\r\n\r\n<p><em>Check out the photos from Blind&#39;s arrival:</em></p>\r\n\r\n<p><img alt=\"01-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948228/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/01-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"02-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948228/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/02-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"03-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948228/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/03-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"04-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948228/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/04-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"05-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948228/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/05-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"06-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948228/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/06-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"07-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948228/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/07-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"08-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948228/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/08-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>Blind will fly with the team to their training camp in Doha in Friday. He completed his medical in Munich on Thursday.</p>\r\n\r\n<p>Blind has won the Dutch Eredivisie seven times with Ajax, as well as the domestic cup twice. He also won the 2017 Europa League with Manchester United. The defender has 99 caps (three goals) for the Netherlands national team, having also played in every game for the Dutch as they reached the quarter-finals at the World Cup in Qatar.</p>', '2023-01-06 01:30:00.000000', '2023-01-07 21:05:36.076321', 'fc-bayern-sign-daley-blind', 7, 'Bayern Munich have signed defender Daley Blind on a deal till the end of the season. The 32-year-old Netherlands international came through the youth system at Ajax, which was also his most recent club. He also played for Manchester United between 2014 and 2018.', 1, 2, 2, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1672938216/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/03-daley-blind-unterschrift-230105-mel.jpg', NULL, 1),
-(10, 'Pavard and Coman return, Blind unveiling and triple training', '', '<p>It&#39;s been clear from the start that FC Bayern are fully commited to laying the foundation for a successful second half of the season at their winter training camp. On day two in Doha,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/coaches-and-staff/julian-nagelsmann\">Julian Nagelsmann</a>&nbsp;and his team were out at 7:30 for the first session, which consisted of running in the pouring rain. Three hours later, it was onto the pitch at the Aspire Academy. That wasn&#39;t all, though, as there was a third intensive session for the Munich men in the afternoon followed by some exercises in the gym.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><img alt=\"17-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/17-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"18-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/18-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"19-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/19-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"20-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/20-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"21-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/21-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"07-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/07-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"08-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/08-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>After&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/dayot-upamecano\">Dayot Upamecano</a>&nbsp;had already joined the group on Friday evening, the other two French World Cup runners-up&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/benjamin-pavard\">Benjamin Pavard</a>, who took part in the afternoon training, and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/kingsley-coman\">Kingsley Coman</a>&nbsp;arrived on Saturday to great applause from their teammates. Welcome back, boys!</p>\r\n\r\n<p><img alt=\"Benjamin Pavard FC Bayern\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673117505/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Pavard/230107-pavard-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"Benjamin Pavard was back training with the team on Saturday afternoon.\" /></p>\r\n\r\n<p>Benjamin Pavard was back training with the team on Saturday afternoon.</p>\r\n\r\n<h2>Unveiling of Daley Blind with Hasan Salihamidžić</h2>\r\n\r\n<p>Bayern&#39;s new signing Daley Blind has been with the team since the start of the training camp. On Saturday, the 32-year-old Dutchman introduced himself at a press conference: &quot;I have to be ready to help the team when they need me.&quot; Good luck in Munich, Daley!</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><a href=\"https://fcbayern.com/fcbayerntv/en/videos/2023/01/re-live-press-conference-with-hasan-salihamidzic-and-daley-blind-from-doha\" rel=\"noopener noreferrer\" target=\"_blank\"><img alt=\"06-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_800,c_fill/q_auto/v1673095750/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/06-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></a></p>', '2023-01-08 02:36:00.000000', '2023-01-07 21:42:52.270973', 'pavard-and-coman-return-blind-unveiling-and-triple-training', 2, 'It\'s been clear from the start that FC Bayern are fully commited to laying the foundation for a successful second half of the season at their winter training camp. On day two in Doha, Julian Nagelsmann and his team were out at 7:30 for the first session, which consisted of running in the pouring rain. Three hours later, it was onto the pitch at the Aspire Academy. That wasn\'t all, though, as there was a third intensive session for the Munich men in the afternoon followed by some exercises in the gym.', 0, 2, 2, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1673117623/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/230107-coman-training-katar-169-mel.jpg', NULL, 1);
+(7, 'Nagelsmann welcomes training group before leaving for Doha', '', '<p>Bayern had their final two training sessions in Munich on Thursday before they head off to Doha and the Aspire Academy for their winter training camp on Friday. However, coach&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/coaches-and-staff/julian-nagelsmann\">Julian Nagelsmann</a>&nbsp;was still without a few players at S&auml;bener Stra&szlig;e.</p>\r\n\r\n<p><img alt=\"Joshua Kimmich FC Bayern Training\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672921075/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Kimmich/230105-kimmich-training-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"Joshua Kimmich and his teammates were hard at work in the morning session.\" /></p>\r\n\r\n<p>Joshua Kimmich and his teammates were hard at work in the morning session.</p>\r\n\r\n<h2>French players to travel directly</h2>\r\n\r\n<p>Among the players absent in Munich were French trio&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/dayot-upamecano\">Dayot Upamecano</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/benjamin-pavard\">Benjamin Pavard</a>&nbsp;and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/kingsley-coman\">Kingsley Coman</a>&nbsp;after they were given some extra time off following France&rsquo;s World Cup final loss to Argentina. They will travel directly to Doha on Friday.&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/marcel-sabitzer\">Marcel Sabitzer</a>&nbsp;and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/noussair-mazraoui\">Noussair Mazraoui</a>&nbsp;didn&rsquo;t take part either. Long-term injury absentees&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/manuel-neuer\">Manuel Neuer</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/sadio-mane\">Sadio Mane</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/lucas-hernandez\">Lucas Hernandez</a>&nbsp;and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/bouna-sarr\">Bouna Sarr</a>&nbsp;were also missing and will continue their respective recovery programmes in Munich. They won&rsquo;t be traveling to the training camp.</p>\r\n\r\n<h2>First open session of the year</h2>\r\n\r\n<p>After the day&rsquo;s first session in the morning,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/thomas-mueller\">Thomas M&uuml;ller</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/jamal-musiala\">Jamal Musiala</a>&nbsp;and their teammates welcomed fans to S&auml;bener Stra&szlig;e for the afternoon. It was the first open training session of the year as the players and coaches took time to sign autographs and take selfies with those in attendance.</p>\r\n\r\n<p><em>Check out the photos from the open session at S&auml;bener Stra&szlig;e:</em></p>\r\n\r\n<p><img alt=\"01-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/01-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"02-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/02-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"03-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/03-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"04-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/04-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"05-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/05-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"06-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/06-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"07-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/07-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"08-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/08-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"09-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/09-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"10-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/10-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"11-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/11-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"12-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/12-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>', '2023-01-05 22:30:00.000000', '2023-01-08 17:44:13.446869', 'nagelsmann-welcomes-training-group-before-leaving-for-doha', 8, 'Bayern had their final two training sessions in Munich on Thursday before they head off to Doha and the Aspire Academy for their winter training camp on Friday. However, coach Julian Nagelsmann was still without a few players at Säbener Straße.', 0, 6, 4, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1672920797/cms/public/images/fcbayern-com/homepage/Saison-22-23/Trainer/Nagelsmann/230105-nagelsmann-training-mel.jpg', NULL, 0),
+(8, 'Friendly against FC Red Bull Salzburg on 13 January', '', '<p>FC Bayern will play a friendly against FC Red Bull&nbsp;Salzburg on 13 January 2023. The match will take place at the FC Bayern Campus, kicking off at 18:00 CET. A week later, on 20 January,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/coaches-and-staff/julian-nagelsmann\">Julian Nagelsmann</a>&#39;s side begin the second half of the season with the Bundesliga away match at RB Leipzig.</p>\r\n\r\n<p>Tickets for the friendly against Salzburg can be requested from today up until 18 December via the&nbsp;<a href=\"http://tickets.fcbayern.com/internetverkaufanfragen/EventList.aspx\">Online Shop</a>.</p>\r\n\r\n<p><img alt=\"champions league last 16 fc bayern salzburg\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1670504083/cms/public/images/fcbayern-com/homepage/saison-21-22/Galerien/Spiele/FCB-Salzburg/12_FCBSAL_220308_DON.jpg\" style=\"height:2160px; width:3840px\" title=\"Bayern and Salzburg last met in the last 16 of the 2021/22 Champions League campaign, with the German record champions coming out on top.\" /></p>\r\n\r\n<p>Bayern and Salzburg last met in the last 16 of the 2021/22 Champions League campaign, with the German record champions coming out on top.</p>\r\n\r\n<h2>Start of preparations on 3 January</h2>\r\n\r\n<p>Bayern begin their preparations for the rest of the season on 3 January, before heading off to Doha for a six-day training camp on 6 January. The friendly against the Austrian champions follows their return.</p>', '2023-01-02 06:00:00.000000', '2023-01-08 17:56:20.612472', 'friendly-against-fc-red-bull-salzburg-on-13-january', 3, 'FC Bayern will play a friendly against FC Red Bull Salzburg on 13 January 2023. The match will take place at the FC Bayern Campus, kicking off at 18:00 CET. A week later, on 20 January, Julian Nagelsmann\'s side begin the second half of the season with the Bundesliga away match at RB Leipzig.', 1, 2, 6, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1670511127/cms/public/images/fcbayern-com/homepage/stadien/fcbayern-campus-190327-get.jpg', NULL, 1),
+(9, 'FC Bayern sign Daley Blind', '', '<p>Bayern Munich have signed defender Daley Blind on a deal till the end of the season. The 32-year-old Netherlands international came through the youth system at Ajax, which was also his most recent club. He also played for Manchester United between 2014 and 2018.</p>\r\n\r\n<p><a href=\"https://fcbayern.com/en/club/company/hasan-salihamid%C5%BEi%C4%87\">Hasan Salihamidzic</a>: &ldquo;We&rsquo;re delighted that Daley is joining our team. Daley is a versatile defender, capable of playing on the left or in the centre. He has great international experience and leadership qualities. I&rsquo;m sure he&rsquo;ll help us.&rdquo;</p>\r\n\r\n<p><img alt=\"06-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948377/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/06-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>Daley Blind: &ldquo;I can hardly wait to play here. We&rsquo;ve got the most important part of the season coming up, where it&rsquo;s about titles &ndash; and a club like Bayern can win every trophy. The hunger for titles here at the club was key in my decision. I hope I can bring my experience to help the team. I&rsquo;ll give everything for Bayern Munich.&rdquo;</p>\r\n\r\n<p><em>Check out the photos from Blind&#39;s arrival:</em></p>\r\n\r\n<p><img alt=\"01-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948228/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/01-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"02-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948228/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/02-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"03-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948228/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/03-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"04-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948228/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/04-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"05-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948228/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/05-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"06-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948228/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/06-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"07-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948228/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/07-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"08-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948228/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/08-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>Blind will fly with the team to their training camp in Doha in Friday. He completed his medical in Munich on Thursday.</p>\r\n\r\n<p>Blind has won the Dutch Eredivisie seven times with Ajax, as well as the domestic cup twice. He also won the 2017 Europa League with Manchester United. The defender has 99 caps (three goals) for the Netherlands national team, having also played in every game for the Dutch as they reached the quarter-finals at the World Cup in Qatar.</p>', '2023-01-06 01:30:00.000000', '2023-01-08 17:36:29.437729', 'fc-bayern-sign-daley-blind', 7, 'Bayern Munich have signed defender Daley Blind on a deal till the end of the season. The 32-year-old Netherlands international came through the youth system at Ajax, which was also his most recent club. He also played for Manchester United between 2014 and 2018.', 1, 2, 7, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1672938216/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/03-daley-blind-unterschrift-230105-mel.jpg', NULL, 1),
+(10, 'Pavard and Coman return, Blind unveiling and triple training', '', '<p>It&#39;s been clear from the start that FC Bayern are fully commited to laying the foundation for a successful second half of the season at their winter training camp. On day two in Doha,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/coaches-and-staff/julian-nagelsmann\">Julian Nagelsmann</a>&nbsp;and his team were out at 7:30 for the first session, which consisted of running in the pouring rain. Three hours later, it was onto the pitch at the Aspire Academy. That wasn&#39;t all, though, as there was a third intensive session for the Munich men in the afternoon followed by some exercises in the gym.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><img alt=\"17-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/17-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"18-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/18-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"19-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/19-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"20-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/20-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"21-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/21-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"07-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/07-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"08-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/08-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>After&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/dayot-upamecano\">Dayot Upamecano</a>&nbsp;had already joined the group on Friday evening, the other two French World Cup runners-up&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/benjamin-pavard\">Benjamin Pavard</a>, who took part in the afternoon training, and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/kingsley-coman\">Kingsley Coman</a>&nbsp;arrived on Saturday to great applause from their teammates. Welcome back, boys!</p>\r\n\r\n<p><img alt=\"Benjamin Pavard FC Bayern\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673117505/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Pavard/230107-pavard-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"Benjamin Pavard was back training with the team on Saturday afternoon.\" /></p>\r\n\r\n<p>Benjamin Pavard was back training with the team on Saturday afternoon.</p>\r\n\r\n<h2>Unveiling of Daley Blind with Hasan Salihamidžić</h2>\r\n\r\n<p>Bayern&#39;s new signing Daley Blind has been with the team since the start of the training camp. On Saturday, the 32-year-old Dutchman introduced himself at a press conference: &quot;I have to be ready to help the team when they need me.&quot; Good luck in Munich, Daley!</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><a href=\"https://fcbayern.com/fcbayerntv/en/videos/2023/01/re-live-press-conference-with-hasan-salihamidzic-and-daley-blind-from-doha\" rel=\"noopener noreferrer\" target=\"_blank\"><img alt=\"06-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_800,c_fill/q_auto/v1673095750/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/06-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></a></p>', '2023-01-08 02:36:00.000000', '2023-01-08 17:09:19.368200', 'pavard-and-coman-return-blind-unveiling-and-triple-training', 3, 'It\'s been clear from the start that FC Bayern are fully commited to laying the foundation for a successful second half of the season at their winter training camp. On day two in Doha, Julian Nagelsmann and his team were out at 7:30 for the first session, which consisted of running in the pouring rain. Three hours later, it was onto the pitch at the Aspire Academy. That wasn\'t all, though, as there was a third intensive session for the Munich men in the afternoon followed by some exercises in the gym.', 0, 2, 2, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1673117623/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/230107-coman-training-katar-169-mel.jpg', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -1495,6 +1542,26 @@ INSERT INTO `main_news_article_liked` (`id`, `news_article_id`, `customuser_id`)
 (23, 2, 3),
 (24, 2, 6),
 (21, 5, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `main_news_article_player_tags`
+--
+
+CREATE TABLE `main_news_article_player_tags` (
+  `id` bigint(20) NOT NULL,
+  `news_article_id` bigint(20) NOT NULL,
+  `player_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `main_news_article_player_tags`
+--
+
+INSERT INTO `main_news_article_player_tags` (`id`, `news_article_id`, `player_id`) VALUES
+(2, 5, 3),
+(1, 10, 3);
 
 -- --------------------------------------------------------
 
@@ -1525,6 +1592,18 @@ INSERT INTO `main_news_article_related_news` (`id`, `from_news_article_id`, `to_
 (28, 7, 1),
 (24, 7, 8),
 (23, 8, 7);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `main_news_article_staff_tags`
+--
+
+CREATE TABLE `main_news_article_staff_tags` (
+  `id` bigint(20) NOT NULL,
+  `news_article_id` bigint(20) NOT NULL,
+  `staff_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1573,38 +1652,8 @@ INSERT INTO `main_news_tag` (`id`, `name`, `display`) VALUES
 (5, 'award', 'Awards'),
 (6, 'germany', 'Germany'),
 (7, 'injury', 'Injuries'),
-(8, 'ucl', 'Champions League');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `main_news_tag_player`
---
-
-CREATE TABLE `main_news_tag_player` (
-  `id` bigint(20) NOT NULL,
-  `news_id` bigint(20) NOT NULL,
-  `player_tag_id` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `main_news_tag_player`
---
-
-INSERT INTO `main_news_tag_player` (`id`, `news_id`, `player_tag_id`) VALUES
-(1, 6, 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `main_news_tag_staff`
---
-
-CREATE TABLE `main_news_tag_staff` (
-  `id` bigint(20) NOT NULL,
-  `news_id` bigint(20) NOT NULL,
-  `staff_tag_id` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+(8, 'ucl', 'Champions League'),
+(9, 'tour', 'Tour');
 
 -- --------------------------------------------------------
 
@@ -1810,6 +1859,28 @@ INSERT INTO `main_season` (`id`, `name`, `start_year`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `main_social_media_links`
+--
+
+CREATE TABLE `main_social_media_links` (
+  `id` bigint(20) NOT NULL,
+  `insta_link` varchar(150) DEFAULT NULL,
+  `twitter_link` varchar(150) DEFAULT NULL,
+  `fb_link` varchar(150) DEFAULT NULL,
+  `player_id` bigint(20) DEFAULT NULL,
+  `staff_id` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `main_social_media_links`
+--
+
+INSERT INTO `main_social_media_links` (`id`, `insta_link`, `twitter_link`, `fb_link`, `player_id`, `staff_id`) VALUES
+(1, 'https://www.instagram.com/sergegnabry/', 'https://twitter.com/SergeGnabry', NULL, 3, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `main_sponsor`
 --
 
@@ -1903,6 +1974,30 @@ INSERT INTO `main_team` (`id`, `name`, `logo`, `color`, `alt_color`, `manager`, 
 (12, 'Inter Milan', 'logos/FC_Internazionale_Milano_2021.png', '#0202a4', 'black', 'Simone Inzaghi', 0, 1, 0, 'INT'),
 (13, 'FC Barcelona', 'logos/FC_Barcelona.png', '#09397c', '#8c003a', 'Xavi', 0, 1, 0, 'FCB'),
 (14, 'FC Viktoria Plzeň', 'logos/Viktoria_Plzen_logo.png', '#9f1919', '#052c89', 'Michal Bílek', 0, 1, 0, 'PLZ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `main_timeline`
+--
+
+CREATE TABLE `main_timeline` (
+  `id` bigint(20) NOT NULL,
+  `category` varchar(10) DEFAULT NULL,
+  `description` longtext NOT NULL,
+  `date` date NOT NULL,
+  `player_id` bigint(20) DEFAULT NULL,
+  `staff_id` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `main_timeline`
+--
+
+INSERT INTO `main_timeline` (`id`, `category`, `description`, `date`, `player_id`, `staff_id`) VALUES
+(1, 'join', '<b>Serge Gnabry</b> has joined the team after playing for <b>SV Werder Bremen</b> for a year.', '2017-06-30', 3, NULL),
+(2, 'award', '<b>Serge Gnabry</b> wins <b>FC Bayern Player of the season</b> for 2019-20', '2020-06-07', 3, NULL),
+(3, 'join', '<b>Hasan Salihamidžić</b> renewed his contract with FC Bayern as <b>Executive Sporting Director</b>', '2021-05-05', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -2189,12 +2284,28 @@ ALTER TABLE `main_news_article_liked`
   ADD KEY `main_news_article_li_customuser_id_123e1990_fk_main_cust` (`customuser_id`);
 
 --
+-- Indexes for table `main_news_article_player_tags`
+--
+ALTER TABLE `main_news_article_player_tags`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `main_news_article_player_news_article_id_player_i_ddc2a987_uniq` (`news_article_id`,`player_id`),
+  ADD KEY `main_news_article_pl_player_id_da14aff8_fk_main_play` (`player_id`);
+
+--
 -- Indexes for table `main_news_article_related_news`
 --
 ALTER TABLE `main_news_article_related_news`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `main_news_article_relate_from_news_article_id_to__bb808bb0_uniq` (`from_news_article_id`,`to_news_article_id`),
   ADD KEY `main_news_article_re_to_news_article_id_5890ae80_fk_main_news` (`to_news_article_id`);
+
+--
+-- Indexes for table `main_news_article_staff_tags`
+--
+ALTER TABLE `main_news_article_staff_tags`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `main_news_article_staff__news_article_id_staff_id_94601461_uniq` (`news_article_id`,`staff_id`),
+  ADD KEY `main_news_article_staff_tags_staff_id_a872cfc5_fk_main_staff_id` (`staff_id`);
 
 --
 -- Indexes for table `main_news_article_tags`
@@ -2209,22 +2320,6 @@ ALTER TABLE `main_news_article_tags`
 --
 ALTER TABLE `main_news_tag`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `main_news_tag_player`
---
-ALTER TABLE `main_news_tag_player`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `main_news_tag_player_news_id_d19b6a92_fk_main_news_article_id` (`news_id`),
-  ADD KEY `main_news_tag_player_player_tag_id_26328068_fk_main_player_id` (`player_tag_id`);
-
---
--- Indexes for table `main_news_tag_staff`
---
-ALTER TABLE `main_news_tag_staff`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `main_news_tag_staff_news_id_39039858_fk_main_news_article_id` (`news_id`),
-  ADD KEY `main_news_tag_staff_staff_tag_id_ac828c08_fk_main_staff_id` (`staff_tag_id`);
 
 --
 -- Indexes for table `main_opponent_goalscorers`
@@ -2287,6 +2382,14 @@ ALTER TABLE `main_season`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `main_social_media_links`
+--
+ALTER TABLE `main_social_media_links`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `main_social_media_links_player_id_bce74c07_fk_main_player_id` (`player_id`),
+  ADD KEY `main_social_media_links_staff_id_38eed57d_fk_main_staff_id` (`staff_id`);
+
+--
 -- Indexes for table `main_sponsor`
 --
 ALTER TABLE `main_sponsor`
@@ -2304,6 +2407,14 @@ ALTER TABLE `main_staff`
 --
 ALTER TABLE `main_team`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `main_timeline`
+--
+ALTER TABLE `main_timeline`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `main_timeline_player_id_277befbd_fk_main_player_id` (`player_id`),
+  ADD KEY `main_timeline_staff_id_82ed2262_fk_main_staff_id` (`staff_id`);
 
 --
 -- Indexes for table `main_trophies`
@@ -2331,7 +2442,7 @@ ALTER TABLE `auth_group_permissions`
 -- AUTO_INCREMENT for table `auth_permission`
 --
 ALTER TABLE `auth_permission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=181;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=189;
 
 --
 -- AUTO_INCREMENT for table `auth_user`
@@ -2343,7 +2454,7 @@ ALTER TABLE `auth_user`
 -- AUTO_INCREMENT for table `auth_user_groups`
 --
 ALTER TABLE `auth_user_groups`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `auth_user_user_permissions`
@@ -2355,19 +2466,19 @@ ALTER TABLE `auth_user_user_permissions`
 -- AUTO_INCREMENT for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=248;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=273;
 
 --
 -- AUTO_INCREMENT for table `django_content_type`
 --
 ALTER TABLE `django_content_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `main_address`
@@ -2385,7 +2496,7 @@ ALTER TABLE `main_album_image`
 -- AUTO_INCREMENT for table `main_article_type`
 --
 ALTER TABLE `main_article_type`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `main_board_member`
@@ -2427,7 +2538,7 @@ ALTER TABLE `main_goalscorers`
 -- AUTO_INCREMENT for table `main_likes`
 --
 ALTER TABLE `main_likes`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `main_match`
@@ -2511,13 +2622,25 @@ ALTER TABLE `main_news_article`
 -- AUTO_INCREMENT for table `main_news_article_liked`
 --
 ALTER TABLE `main_news_article_liked`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `main_news_article_player_tags`
+--
+ALTER TABLE `main_news_article_player_tags`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `main_news_article_related_news`
 --
 ALTER TABLE `main_news_article_related_news`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT for table `main_news_article_staff_tags`
+--
+ALTER TABLE `main_news_article_staff_tags`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `main_news_article_tags`
@@ -2529,19 +2652,7 @@ ALTER TABLE `main_news_article_tags`
 -- AUTO_INCREMENT for table `main_news_tag`
 --
 ALTER TABLE `main_news_tag`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `main_news_tag_player`
---
-ALTER TABLE `main_news_tag_player`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `main_news_tag_staff`
---
-ALTER TABLE `main_news_tag_staff`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `main_opponent_goalscorers`
@@ -2592,6 +2703,12 @@ ALTER TABLE `main_season`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `main_social_media_links`
+--
+ALTER TABLE `main_social_media_links`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `main_sponsor`
 --
 ALTER TABLE `main_sponsor`
@@ -2608,6 +2725,12 @@ ALTER TABLE `main_staff`
 --
 ALTER TABLE `main_team`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `main_timeline`
+--
+ALTER TABLE `main_timeline`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `main_trophies`
@@ -2774,6 +2897,13 @@ ALTER TABLE `main_news_article_liked`
   ADD CONSTRAINT `main_news_article_li_news_article_id_a8d6b27f_fk_main_news` FOREIGN KEY (`news_article_id`) REFERENCES `main_news_article` (`id`);
 
 --
+-- Constraints for table `main_news_article_player_tags`
+--
+ALTER TABLE `main_news_article_player_tags`
+  ADD CONSTRAINT `main_news_article_pl_news_article_id_b8dd885b_fk_main_news` FOREIGN KEY (`news_article_id`) REFERENCES `main_news_article` (`id`),
+  ADD CONSTRAINT `main_news_article_pl_player_id_da14aff8_fk_main_play` FOREIGN KEY (`player_id`) REFERENCES `main_player` (`id`);
+
+--
 -- Constraints for table `main_news_article_related_news`
 --
 ALTER TABLE `main_news_article_related_news`
@@ -2781,25 +2911,18 @@ ALTER TABLE `main_news_article_related_news`
   ADD CONSTRAINT `main_news_article_re_to_news_article_id_5890ae80_fk_main_news` FOREIGN KEY (`to_news_article_id`) REFERENCES `main_news_article` (`id`);
 
 --
+-- Constraints for table `main_news_article_staff_tags`
+--
+ALTER TABLE `main_news_article_staff_tags`
+  ADD CONSTRAINT `main_news_article_st_news_article_id_82f0bc40_fk_main_news` FOREIGN KEY (`news_article_id`) REFERENCES `main_news_article` (`id`),
+  ADD CONSTRAINT `main_news_article_staff_tags_staff_id_a872cfc5_fk_main_staff_id` FOREIGN KEY (`staff_id`) REFERENCES `main_staff` (`id`);
+
+--
 -- Constraints for table `main_news_article_tags`
 --
 ALTER TABLE `main_news_article_tags`
   ADD CONSTRAINT `main_news_article_ta_news_article_id_4873cac4_fk_main_news` FOREIGN KEY (`news_article_id`) REFERENCES `main_news_article` (`id`),
   ADD CONSTRAINT `main_news_article_tags_news_tag_id_008fd8c1_fk_main_news_tag_id` FOREIGN KEY (`news_tag_id`) REFERENCES `main_news_tag` (`id`);
-
---
--- Constraints for table `main_news_tag_player`
---
-ALTER TABLE `main_news_tag_player`
-  ADD CONSTRAINT `main_news_tag_player_news_id_d19b6a92_fk_main_news_article_id` FOREIGN KEY (`news_id`) REFERENCES `main_news_article` (`id`),
-  ADD CONSTRAINT `main_news_tag_player_player_tag_id_26328068_fk_main_player_id` FOREIGN KEY (`player_tag_id`) REFERENCES `main_player` (`id`);
-
---
--- Constraints for table `main_news_tag_staff`
---
-ALTER TABLE `main_news_tag_staff`
-  ADD CONSTRAINT `main_news_tag_staff_news_id_39039858_fk_main_news_article_id` FOREIGN KEY (`news_id`) REFERENCES `main_news_article` (`id`),
-  ADD CONSTRAINT `main_news_tag_staff_staff_tag_id_ac828c08_fk_main_staff_id` FOREIGN KEY (`staff_tag_id`) REFERENCES `main_staff` (`id`);
 
 --
 -- Constraints for table `main_opponent_goalscorers`
@@ -2841,6 +2964,20 @@ ALTER TABLE `main_player_stats`
   ADD CONSTRAINT `main_player_stats_competition_id_d2329dbe_fk_main_competition_id` FOREIGN KEY (`competition_id`) REFERENCES `main_competition` (`id`),
   ADD CONSTRAINT `main_player_stats_player_id_b6811abd_fk_main_player_id` FOREIGN KEY (`player_id`) REFERENCES `main_player` (`id`),
   ADD CONSTRAINT `main_player_stats_season_id_b47c767f_fk_main_season_id` FOREIGN KEY (`season_id`) REFERENCES `main_season` (`id`);
+
+--
+-- Constraints for table `main_social_media_links`
+--
+ALTER TABLE `main_social_media_links`
+  ADD CONSTRAINT `main_social_media_links_player_id_bce74c07_fk_main_player_id` FOREIGN KEY (`player_id`) REFERENCES `main_player` (`id`),
+  ADD CONSTRAINT `main_social_media_links_staff_id_38eed57d_fk_main_staff_id` FOREIGN KEY (`staff_id`) REFERENCES `main_staff` (`id`);
+
+--
+-- Constraints for table `main_timeline`
+--
+ALTER TABLE `main_timeline`
+  ADD CONSTRAINT `main_timeline_player_id_277befbd_fk_main_player_id` FOREIGN KEY (`player_id`) REFERENCES `main_player` (`id`),
+  ADD CONSTRAINT `main_timeline_staff_id_82ed2262_fk_main_staff_id` FOREIGN KEY (`staff_id`) REFERENCES `main_staff` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

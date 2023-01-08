@@ -25,6 +25,52 @@ class CustomUser(User):
     def __str__(self):
         return self.name_display
 
+class Position(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+class Player(models.Model):
+    name = models.CharField(max_length=100)
+    first_name = models.CharField(max_length=100, null=True)
+    second_name = models.CharField(max_length=100, null=True)
+    kit_no = models.IntegerField(null=True)
+    nationality = CountryField(blank_label='(select country)', null=True)
+    profile_pic = models.ImageField(
+        default='players/player-placeholder-380x570.jpg', upload_to='players', null=True)
+    height = models.DecimalField(decimal_places=2, max_digits=3, null=True)
+    weight = models.IntegerField(null=True)
+    age = models.IntegerField(null=True)
+    past_club = models.CharField(max_length=100, null=True)
+    position = models.ForeignKey(Position, on_delete=models.CASCADE, null=True)
+    born = models.DateField(null=True)
+    contract_end = models.DateField(null=True)
+    rating = models.DecimalField(decimal_places=1, max_digits=3, null=True)
+    profile_banner = models.ImageField(blank=True, upload_to='players', null=True)
+    biography = RichTextField(null=True)
+    slug = models.SlugField(default='', max_length=500, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+class Staff(models.Model):
+    name = models.CharField(max_length=100)
+    designation = models.CharField(max_length=100, null=True)
+    nationality = CountryField(blank_label='(select country)', null=True)
+    profile_pic = models.ImageField(
+        default='players/player-placeholder-380x570.jpg', upload_to='staff', null=True)
+    age = models.IntegerField(null=True)
+    previous_post = models.CharField(max_length=100, null=True)
+    short_name = models.CharField(max_length=10, null=True)
+    born = models.DateField(null=True)
+    contract_start = models.DateField(null=True)
+    contract_end = models.DateField(null=True)
+    biography = RichTextField(null=True)
+    slug = models.SlugField(default='', max_length=500, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
 class News_Tag(models.Model):
     name = models.CharField(max_length=40)
     display = models.CharField(max_length=40)
@@ -50,6 +96,8 @@ class News_article(models.Model):
     video_url = models.CharField(max_length=200, null=True, blank=True)
     related_news = models.ManyToManyField('self', default=None, blank=True)
     tags = models.ManyToManyField(News_Tag, default=None, blank=True)
+    player_tags = models.ManyToManyField(Player, default=None, blank=True)
+    staff_tags = models.ManyToManyField(Staff, default=None, blank=True)
 
     def __str__(self):
         return self.title
@@ -177,35 +225,6 @@ class Match(models.Model):
     def __str__(self):
         return self.competition.name + "-" + self.match_title + "-" + self.opponent.name
 
-class Position(models.Model):
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
-
-class Player(models.Model):
-    name = models.CharField(max_length=100)
-    first_name = models.CharField(max_length=100, null=True)
-    second_name = models.CharField(max_length=100, null=True)
-    kit_no = models.IntegerField(null=True)
-    nationality = CountryField(blank_label='(select country)', null=True)
-    profile_pic = models.ImageField(
-        default='players/player-placeholder-380x570.jpg', upload_to='players', null=True)
-    height = models.DecimalField(decimal_places=2, max_digits=3, null=True)
-    weight = models.IntegerField(null=True)
-    age = models.IntegerField(null=True)
-    past_club = models.CharField(max_length=100, null=True)
-    position = models.ForeignKey(Position, on_delete=models.CASCADE, null=True)
-    born = models.DateField(null=True)
-    contract_end = models.DateField(null=True)
-    rating = models.DecimalField(decimal_places=1, max_digits=3, null=True)
-    profile_banner = models.ImageField(blank=True, upload_to='players', null=True)
-    biography = RichTextField(null=True)
-    slug = models.SlugField(default='', max_length=500, null=True, blank=True)
-
-    def __str__(self):
-        return self.name
-
 class Goalscorers(models.Model):
     name = models.ForeignKey(Player, on_delete=models.SET_NULL, null=True)
     match = models.ForeignKey(Match, on_delete=models.CASCADE)
@@ -297,33 +316,14 @@ class Player_Image(models.Model):
     description = models.CharField(max_length=300, null=True)
 
 
-class Staff(models.Model):
-    name = models.CharField(max_length=100)
-    designation = models.CharField(max_length=100, null=True)
-    nationality = CountryField(blank_label='(select country)', null=True)
-    profile_pic = models.ImageField(
-        default='players/player-placeholder-380x570.jpg', upload_to='staff', null=True)
-    age = models.IntegerField(null=True)
-    previous_post = models.CharField(max_length=100, null=True)
-    short_name = models.CharField(max_length=10, null=True)
-    born = models.DateField(null=True)
-    contract_start = models.DateField(null=True)
-    contract_end = models.DateField(null=True)
-    biography = RichTextField(null=True)
-    slug = models.SlugField(default='', max_length=500, null=True, blank=True)
-
-    def __str__(self):
-        return self.name
-
-
-class News_Tag_Player(models.Model):
+'''class News_Tag_Player(models.Model):
     news = models.ForeignKey(News_article, on_delete=models.CASCADE)
-    player_tag = models.ForeignKey(Player, on_delete=models.CASCADE, null=True)
+    player_tag = models.ForeignKey(Player, on_delete=models.CASCADE, null=True)'''
 
 
-class News_Tag_Staff(models.Model):
+'''class News_Tag_Staff(models.Model):
     news = models.ForeignKey(News_article, on_delete=models.CASCADE)
-    staff_tag = models.ForeignKey(Staff, on_delete=models.CASCADE, null=True)
+    staff_tag = models.ForeignKey(Staff, on_delete=models.CASCADE, null=True)'''
 
 
 class Club_Album(models.Model):
@@ -492,3 +492,28 @@ class Mini_Articles(models.Model):
     def __str__(self):
         return self.name
 
+TIMELINE_TYPE = (("join", "Joined"),
+                ("exit", "Left"),
+                ("injury", "Injury"),
+                ("award", "Award"))
+class Timeline(models.Model):
+    category = models.CharField(max_length=10, choices=TIMELINE_TYPE, null=True, default="join")
+    description = models.TextField(max_length=300)
+    player = models.ForeignKey(Player, on_delete=models.CASCADE, null=True, default=None, blank=True)
+    staff = models.ForeignKey(Staff, on_delete=models.CASCADE, null=True, default=None, blank=True)
+    date = models.DateField()
+
+    def __str__(self):
+        relation = self.player.name if self.staff == None else self.staff.name
+        return relation + "-" + str(self.date)
+    
+class Social_Media_Links(models.Model):
+    player = models.ForeignKey(Player, on_delete=models.CASCADE, null=True, default=None, blank=True)
+    staff = models.ForeignKey(Staff, on_delete=models.CASCADE, null=True, default=None, blank=True)
+    insta_link = models.CharField(max_length=150, blank=True, null=True)
+    twitter_link = models.CharField(max_length=150, blank=True, null=True)
+    fb_link = models.CharField(max_length=150, blank=True, null=True)
+
+    def __str__(self):
+        relation = self.player.name if self.staff == None else self.staff.name
+        return relation
