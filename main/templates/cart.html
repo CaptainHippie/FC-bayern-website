@@ -146,21 +146,37 @@
                                                                             <td data-title="Subtotal">
                                                                                 <span class="amount">
                                                                                     <span class="woocommerce-Price-amount amount">
-                                                                                        <bdi>
-                                                                                            <span class="woocommerce-Price-currencySymbol">&euro;</span>
-                                                                                            {{cart_total_amount}}
-                                                                                        </bdi>
+                                                                                        <bdi><span class="woocommerce-Price-currencySymbol">&euro;</span>{{cart_total_amount}}</bdi>
                                                                                     </span>
                                                                                 </span>
                                                                             </td>
                                                                         </tr>
-
-
+                                                                        <tr class="cart-subtotal">
+                                                                            <th>Promotion Applied</th>
+                                                                            <td data-title="Subtotal">
+                                                                                <span class="amount">
+                                                                                    <span class="woocommerce-Price-amount amount">
+                                                                                        <bdi><span class="woocommerce-Price-currencySymbol"></span>None</bdi>
+                                                                                    </span>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr class="cart-subtotal">
+                                                                            <th>Package & Delivery</th>
+                                                                            <td data-title="Subtotal">
+                                                                                <span class="amount">
+                                                                                    <span class="woocommerce-Price-amount amount">
+                                                                                        <bdi><span class="woocommerce-Price-currencySymbol">&euro;</span>{{delivery}}</bdi>
+                                                                                    </span>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
                                                                         <tr class="order-total">
-                                                                            <th>Total</th>
-                                                                            <td data-title="Total"><strong><span
-                                                                                        class="woocommerce-Price-amount amount"><bdi><span
-                                                                                                class="woocommerce-Price-currencySymbol">&euro;</span>{{cart_total_amount}}</bdi></span></strong>
+                                                                            <th>Order Total</th>
+                                                                            <td data-title="Total">
+                                                                                <strong><span class="woocommerce-Price-amount amount">
+                                                                                    <bdi><span class="woocommerce-Price-currencySymbol">&euro;</span>{{order_total}}</bdi>
+                                                                                </span></strong>
                                                                             </td>
                                                                         </tr>
 

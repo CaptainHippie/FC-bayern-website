@@ -111,17 +111,6 @@
                                         <div class="card card--lg" id="account-orders">
                                             <header class="card__header"><h4>Orders</h4></header>
                                             <div class="card__content">
-                                                <div class="woocommerce-notices-wrapper">
-                                                    {% if messages %}
-                                                        {% for message in messages %}
-                                                            {% if message.tags == 'success' %}
-                                                                <div class="woocommerce-message" role="alert">{{message}}</div>
-                                                            {% elif message.tags == 'error' %}
-                                                                <div class="woocommerce-error" role="alert">{{message}}</div>
-                                                            {% endif %}
-                                                        {% endfor %}
-                                                    {% endif %}
-                                                </div>
 
                                                 {% if all_orders == None %}
 
@@ -177,20 +166,7 @@
                                         <div class="card card--lg" id="account-addresses">
                                             <header class="card__header"><h4>Addresses</h4></header>
                                             <div class="card__content">
-                                                <div class="woocommerce-notices-wrapper">
-
-                                                    {% if messages %}
-                                                        {% for message in messages %}
-                                                            {% if message.tags == 'success' %}
-                                                                <div class="woocommerce-message" role="alert">{{message}}</div>
-                                                            {% elif message.tags == 'error' %}
-                                                                <div class="woocommerce-error" role="alert">{{message}}</div>
-                                                            {% endif %}
-                                                        {% endfor %}
-                                                    {% endif %}
-
-                                                </div>
-
+                                                
                                                 <p>The following addresses will be used on the checkout page by default.</p>
                                                 <div class="u-columns woocommerce-Addresses col2-set addresses">
                                                     <div class="u-column1 col-1 woocommerce-Address">
@@ -234,23 +210,7 @@
                                         <div class="card card--lg" id="account-account">
                                             <header class="card__header"><h4>Account Details</h4></header>
                                             <div class="card__content">
-                                                <div class="woocommerce-notices-wrapper">
-
-                                                    {% if messages %}
-                                                        {% for message in messages %}
-                                                            {% if message.tags == 'success' %}
-                                                                <ul class="woocommerce-message" role="alert">
-                                                                    <li>{{message}}</li>
-                                                                </ul>
-                                                            {% elif message.tags == 'error' %}
-                                                                <div class="woocommerce-error" role="alert">
-                                                                    {{message}}
-                                                                </div>
-                                                            {% endif %}
-                                                        {% endfor %}
-                                                    {% endif %}
-
-                                                </div>
+                                                
                                                 <div class="player-info__item player-info__item--photo">
                                                     <figure class="player-info__photo"><img id="uploadPreview" src="/media/{{logged_user.profile_pic}}" width="222px"></figure>
                                                 </div>

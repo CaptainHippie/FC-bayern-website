@@ -30,8 +30,11 @@ middlewares
 rework login system with builtin tools - almost done
 implement news likes- done
 revamp contact us page
-proper error/info message tags
-search and tag search
+proper error/info message tags - almost done
+search and tag search - tag done, search-->soon
 improve news category colours and add one for champions league & youth - done
 add player and staff newslog - done
 improve dashboard in personal profile - done
+discount coupons 
+dropdowns for city, state and country
+reset password function

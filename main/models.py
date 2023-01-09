@@ -392,12 +392,14 @@ class Merchandise_Information(models.Model):
     specification = models.CharField(max_length=100)
     detail = models.CharField(max_length=100)
 
-
+PAYMENT_METHOD = (("bank", "Direct Bank Transfer"),
+                ("upi", "UPI Payment"),
+                ("cod", "Cash on Delivery"))
 class Order(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
     first_name = models.CharField(max_length=100, null=True)
-    last_name = models.CharField(max_length=100, null=True)
-    company = models.CharField(max_length=100, null=True)
+    last_name = models.CharField(max_length=100, null=True, blank=True)
+    company = models.CharField(max_length=100, null=True, blank=True)
     country = CountryField(blank_label='(select country)', null=True)
     address_1 = models.CharField(max_length=200, null=True, blank=True)
     address_2 = models.CharField(max_length=200, null=True, blank=True)
@@ -407,12 +409,11 @@ class Order(models.Model):
     phone_number = models.CharField(max_length=20, null=True, blank=True)
     email = models.CharField(max_length=100, null=True)
 
-    order_notes = models.TextField()
+    order_notes = models.TextField(null=True, blank=True)
     subtotal = models.DecimalField(decimal_places=2, max_digits=10, null=True)
-    tax = models.DecimalField(decimal_places=2, max_digits=4, null=True)
     packaging = models.DecimalField(decimal_places=2, max_digits=4, null=True)
     total_amount = models.DecimalField(decimal_places=2, max_digits=10, null=True)
-    payment_method = models.CharField(max_length=100)
+    payment_method = models.CharField(max_length=20, choices=PAYMENT_METHOD, default='cod')
     dispatched = models.BooleanField(default=False)
     delivered = models.BooleanField(default=False)
     order_date = models.DateTimeField(auto_now_add=True, null=True)

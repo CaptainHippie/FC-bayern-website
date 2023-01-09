@@ -151,6 +151,10 @@
                                 <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-md-8">
                                     <div class="vc_column-inner">
                                         <div class="wpb_wrapper">
+
+                                            {% include 'includes/widgets/membership.html' %}
+                                            <div class="vc_empty_space" style="height: 16px"></div>
+
                                             <!-- Post Loop -->
                                             <div class="card card--clean">
                                                 <div class="card__header card__header--has-filter">
@@ -163,7 +167,10 @@
                                                             <a href="#" class="category-filter__link" data-category="category-the-team">The Team</a>
                                                         </li>
                                                         <li class="category-filter__item">
-                                                            <a href="#" class="category-filter__link" data-category="category-the-league">The League</a>
+                                                            <a href="#" class="category-filter__link" data-category="category-the-league">Bundesliga</a>
+                                                        </li>
+                                                        <li class="category-filter__item">
+                                                            <a href="#" class="category-filter__link" data-category="category-ucl">Champions League</a>
                                                         </li>
                                                         <li class="category-filter__item">
                                                             <a href="#" class="category-filter__link" data-category="category-injuries">Injuries</a>
@@ -343,10 +350,6 @@
                                                 </div>
                                             </div>
                                             <!-- Post Loop / End -->
-
-
-
-                                            {% include 'includes/widgets/membership.html' %}
 
                                         </div>
                                     </div>

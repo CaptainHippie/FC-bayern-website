@@ -9,6 +9,7 @@ from django.db.models import Count, Max, Min
 from . models import *
 from . import calculations
 from . forms import News_Article_Form
+from cart.context_processor import cart_total_amount
 
 def HOME(request):
     featured_news = News_article.objects.filter(featured=True)
@@ -198,16 +199,11 @@ def ALBUM(request, slug_name):
 
 @login_required(login_url='login')
 def ACCOUNT(request, slug_name):
-    logged_user = CustomUser.objects.get(slug=slug_name)
+    logged_user = CustomUser.objects.filter(id=request.user.id).first()
     all_orders = Order.objects.filter(user__slug=slug_name)
     billing_address = Address.objects.filter(address_type="billing").first()
     shipping_address = Address.objects.filter(address_type="shipping").first()
-    context = {
-            'logged_user' : logged_user,
-            'all_orders' : all_orders,
-            'billing_address' : billing_address,
-            'shipping_address' : shipping_address
-    }
+    
     if 'save_account_details' in request.POST:
         username = request.POST.get('account_username')
         f_name = request.POST.get('account_first_name')
@@ -249,7 +245,16 @@ def ACCOUNT(request, slug_name):
                 else:
                     messages.error(request, 'Invalid Current password!')
         return redirect('account', slug_name=slug_name)
-    return render(request, 'account.html', context)
+    
+    context = {
+            'all_orders' : all_orders,
+            'billing_address' : billing_address,
+            'shipping_address' : shipping_address
+    }
+    if slug_name == logged_user.slug:
+        return render(request, 'account.html', context)
+    else:
+        return redirect('login')
 
 @login_required(login_url='login')
 def ADDRESS(request, slug_name, addr_type):
@@ -506,16 +511,13 @@ def CHECKOUT(request):
         new_order.phone_number = request.POST.get('billing_phone')
         new_order.email = request.POST.get('billing_email')
         new_order.order_notes = request.POST.get('order_comments')
-        subtotal = 0.0
-        for key, value in request.session['cart'].items():
-            subtotal = subtotal + (float(value['price']) * value['quantity'])
+        new_order.payment_method = request.POST.get('payment_method')
 
-        new_order.subtotal = subtotal
-        new_order.tax = 0
-        packaging = 2 if subtotal > 10 else 0
-        new_order.packaging = packaging
-        new_order.total_amount = (subtotal + packaging + 0)
-        new_order.payment_method = "Cash on Delivery"
+        cart_totals = cart_total_amount(request)
+
+        new_order.subtotal = cart_totals['cart_total_amount']
+        new_order.packaging = cart_totals['delivery']
+        new_order.total_amount = cart_totals['order_total']
         new_order.user_id = logged_user.id
         new_order.save()
         last_order_id = Order.objects.latest('id').id

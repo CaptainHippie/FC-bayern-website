@@ -4,6 +4,7 @@
 {% load cart_tag %}
 {% load countries %}
 {% get_countries as countries %}
+{% load custom_calculations %}
 
 <title>Checkout - FC Bayern</title>
 <div class="site-content " id="content">
@@ -199,7 +200,7 @@
                                                                             </td>
                                                                             <td class="product-total">
                                                                                 <span class="woocommerce-Price-amount amount">
-                                                                                    <bdi><span class="woocommerce-Price-currencySymbol">&euro;</span>{{value.price|multiply:value.quantity}}</bdi>
+                                                                                    <bdi><span class="woocommerce-Price-currencySymbol">&euro;</span>{% calc_rnd_price value.price value.quantity %}</bdi>
                                                                                 </span>
                                                                             </td>
                                                                         </tr>
@@ -214,10 +215,24 @@
                                                                                 </span>
                                                                             </td>
                                                                         </tr>
+                                                                        <tr class="cart-subtotal">
+                                                                            <th>Promotion Applied</th>
+                                                                            <td><span class="woocommerce-Price-amount amount">
+                                                                                    <bdi><span class="woocommerce-Price-currencySymbol"></span>None</bdi>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr class="cart-subtotal">
+                                                                            <th>Package & Delivery</th>
+                                                                            <td><span class="woocommerce-Price-amount amount">
+                                                                                    <bdi><span class="woocommerce-Price-currencySymbol">&euro;</span>{{delivery}}</bdi>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
                                                                         <tr class="order-total">
                                                                             <th>Total</th>
                                                                             <td><strong><span class="woocommerce-Price-amount amount">
-                                                                                    <bdi><span class="woocommerce-Price-currencySymbol">&euro;</span>{{cart_total_amount}}</bdi>
+                                                                                    <bdi><span class="woocommerce-Price-currencySymbol">&euro;</span>{{order_total}}</bdi>
                                                                                 </span></strong>
                                                                             </td>
                                                                         </tr>
@@ -227,78 +242,30 @@
                                                         </div>
                                                         <div id="payment" class="woocommerce-checkout-payment">
                                                             <ul class="wc_payment_methods payment_methods methods">
-                                                                <li class="wc_payment_method payment_method_bacs">
-                                                                    <label for="payment_method_bacs" class="radio radio-inline">
-                                                                        <input id="payment_method_bacs" type="radio" class="input-radio"
-                                                                            name="payment_method" value="bacs"
-                                                                            checked='checked'
-                                                                            data-order_button_text="" /> Direct
-                                                                        bank transfer <span
-                                                                            class="radio-indicator"></span>
+                                                                <li class="wc_payment_method payment_method_bank" title="Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.">
+                                                                    <label for="payment_method_bank" class="radio radio-inline">
+                                                                        <input id="payment_method_bank" type="radio" class="input-radio" name="payment_method" value="bank">Direct bank transfer
+                                                                            <span class="radio-indicator"></span>
                                                                     </label>
-                                                                    <div
-                                                                        class="payment_box payment_method_bacs">
-                                                                        <p>Make your payment directly into our
-                                                                            bank account. Please use your Order
-                                                                            ID as the payment reference. Your
-                                                                            order will not be shipped until the
-                                                                            funds have cleared in our account.
-                                                                        </p>
-                                                                    </div>
                                                                 </li>
-                                                                <li
-                                                                    class="wc_payment_method payment_method_cheque">
-                                                                    <label for="payment_method_cheque"
-                                                                        class="radio radio-inline">
-                                                                        <input id="payment_method_cheque"
-                                                                            type="radio" class="input-radio"
-                                                                            name="payment_method" value="cheque"
-                                                                            data-order_button_text="" /> Check
-                                                                        payments <span
-                                                                            class="radio-indicator"></span>
+                                                                <li class="wc_payment_method payment_method_cheque">
+                                                                    <label for="payment_method_upi" class="radio radio-inline">
+                                                                        <input id="payment_method_upi" type="radio" class="input-radio" name="payment_method" value="upi">UPI payment
+                                                                            <span class="radio-indicator"></span>
                                                                     </label>
-                                                                    <div class="payment_box payment_method_cheque"
-                                                                        style="display:none;">
-                                                                        <p>Please send a check to Store Name,
-                                                                            Store Street, Store Town, Store
-                                                                            State / County, Store Postcode.</p>
-                                                                    </div>
                                                                 </li>
-                                                                <li
-                                                                    class="wc_payment_method payment_method_cod">
-                                                                    <label for="payment_method_cod"
-                                                                        class="radio radio-inline">
-                                                                        <input id="payment_method_cod"
-                                                                            type="radio" class="input-radio"
-                                                                            name="payment_method" value="cod"
-                                                                            data-order_button_text="" /> Cash on
-                                                                        delivery <span
-                                                                            class="radio-indicator"></span>
+                                                                <li class="wc_payment_method payment_method_cod">
+                                                                    <label for="payment_method_cod" class="radio radio-inline">
+                                                                        <input id="payment_method_cod" type="radio" class="input-radio" name="payment_method" value="cod" checked>Cash on delivery
+                                                                            <span class="radio-indicator"></span>
                                                                     </label>
-                                                                    <div class="payment_box payment_method_cod"
-                                                                        style="display:none;">
-                                                                        <p>Pay with cash upon delivery.</p>
-                                                                    </div>
                                                                 </li>
                                                             </ul>
                                                             <div class="form-row place-order">
-                                                                <noscript>
-                                                                    Since your browser does not support
-                                                                    JavaScript, or it is disabled, please ensure
-                                                                    you click the <em>Update Totals</em> button
-                                                                    before placing your order. You may be
-                                                                    charged more than the amount stated above if
-                                                                    you fail to do so. <br /><button
-                                                                        type="submit" class="button alt"
-                                                                        name="woocommerce_checkout_update_totals"
-                                                                        value="Update totals">Update
-                                                                        totals</button>
-                                                                </noscript>
 
                                                                 <div class="woocommerce-terms-and-conditions-wrapper">
                                                                     <div class="woocommerce-privacy-policy-text"></div>
                                                                 </div>
-
                                                                 <input type="submit" class="button btn-lg btn-block btn-primary" name="woocommerce_checkout_place_order"
                                                                     id="place_order" value="Place order">
 
