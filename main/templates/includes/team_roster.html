@@ -48,6 +48,27 @@
                                                 <h3>Coaches</h3>
                                                         
                                                 <div class="team-roster team-roster--grid team-roster--grid-col-3 sp-player-gallery-wrapper sp-gallery-wrapper">                                                       
+                                                    
+                                                    <div class='team-roster__item'>
+                                                        <div class='team-roster__holder'>
+                                                            <figure class='team-roster__img'>
+                                                            <a href="{% url 'staff' head_coach.slug %}">
+                                                                <img src="/media/{{head_coach.profile_pic}}"  alt="">
+                                                            </a>
+                                                            </figure>
+                                                            <div class='team-roster__content'>
+                                                                <div class='team-roster__content-inner'>
+                                                                <div class='team-roster__member-number'>{{head_coach.short_name}}</div>
+                                                                    <div class='team-roster__member-info'>
+                                                                    <h2 class='team-roster__member-name team-roster__member-name--has-link'>
+                                                                        <a href="{% url 'staff' head_coach.slug %}">{{head_coach.name}}</a>
+                                                                    </h2>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                     {% for coach in all_staff %}
                                                     <div class='team-roster__item'>
                                                         <div class='team-roster__holder'>

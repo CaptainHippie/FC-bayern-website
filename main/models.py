@@ -32,23 +32,23 @@ POSITIONS = (("goalkeeper", "Goalkeeper"),
 
 class Player(models.Model):
     name = models.CharField(max_length=100)
-    first_name = models.CharField(max_length=100, null=True)
-    second_name = models.CharField(max_length=100, null=True)
+    first_name = models.CharField(max_length=100, null=True, blank=True)
+    second_name = models.CharField(max_length=100, null=True, blank=True)
     kit_no = models.IntegerField(null=True)
     nationality = CountryField(blank_label='(select country)', null=True)
     profile_pic = models.ImageField(
         default='players/player-placeholder-380x570.jpg', upload_to='players', null=True)
     height = models.DecimalField(decimal_places=2, max_digits=3, null=True)
-    weight = models.IntegerField(null=True)
-    age = models.IntegerField(null=True)
-    past_club = models.CharField(max_length=100, null=True)
+    weight = models.IntegerField(null=True, blank=True)
+    age = models.IntegerField(null=True, blank=True)
+    past_club = models.CharField(max_length=100, null=True, blank=True)
     position = models.CharField(max_length=10, choices=POSITIONS, default='midfielder')
     born = models.DateField(null=True)
-    contract_end = models.DateField(null=True)
+    contract_end = models.DateField(null=True, blank=True)
     rating = models.DecimalField(decimal_places=1, max_digits=3, null=True)
     profile_banner = models.ImageField(blank=True, upload_to='players', null=True)
-    biography = RichTextField(null=True)
-    slug = models.SlugField(default='', max_length=500, null=True, blank=True)
+    biography = RichTextField(null=True, blank=True)
+    slug = models.SlugField(default='', max_length=100)
 
     def __str__(self):
         return self.name
@@ -60,12 +60,12 @@ class Staff(models.Model):
     profile_pic = models.ImageField(
         default='players/player-placeholder-380x570.jpg', upload_to='staff', null=True)
     age = models.IntegerField(null=True)
-    previous_post = models.CharField(max_length=100, null=True)
+    previous_post = models.CharField(max_length=100, null=True, blank=True)
     short_name = models.CharField(max_length=10, null=True)
-    born = models.DateField(null=True)
-    contract_start = models.DateField(null=True)
-    contract_end = models.DateField(null=True)
-    biography = RichTextField(null=True)
+    born = models.DateField(null=True, blank=True)
+    contract_start = models.DateField(null=True, blank=True)
+    contract_end = models.DateField(null=True, blank=True)
+    biography = RichTextField(null=True, blank=True)
     slug = models.SlugField(default='', max_length=500, null=True, blank=True)
 
     def __str__(self):

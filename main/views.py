@@ -103,7 +103,8 @@ def PLAYER_DETAIL(request, slug_name):
 
 def TEAM_DATA(request):
     all_positions = POSITIONS
-    all_staff = Staff.objects.exclude(designation="Executive Sporting Director")
+    all_staff = Staff.objects.exclude(designation__in=("Executive Sporting Director","Head Coach")).order_by('short_name')
+    head_coach = Staff.objects.filter(designation="Head Coach").first()
     director = Staff.objects.filter(designation="Executive Sporting Director").first() or None
     club_league_stats = Club_season_stats.objects.filter(competition__name="BundesLiga").order_by('-points','-goal_diff','-scored')[0:20]
     club_ucl_stats = Club_season_stats.objects.filter(competition__name="UEFA Champions League").order_by('-points','-goal_diff','-scored')[0:6]
@@ -119,6 +120,7 @@ def TEAM_DATA(request):
             'all_positions': all_positions,
             'all_staff': all_staff,
             'director': director,
+            'head_coach': head_coach,
             'club_league_stats': club_league_stats,
             'club_ucl_stats': club_ucl_stats,
             'club_pokal_stats': club_pokal_stats,
@@ -458,7 +460,6 @@ def cart_clear(request):
 
 def CART(request):
     cart = request.session.get('cart')
-    #packing_cost = sum(i['packing_cost'] for i in cart.values() if i)
     if request.method == 'POST':
         cur_cart = Cart(request)
         for key in cart.copy():
@@ -474,11 +475,7 @@ def CART(request):
                 cur_cart.remove(product)
         messages.success(request,"cart updated!")
         return redirect("cart")
-    context = {
-	    #'packing_cost': packing_cost,
-        }
-
-    return render(request, 'cart.html', context)
+    return render(request, 'cart.html')
 
 @login_required(login_url='login')
 def ORDER(request, slug_name, order_id):
