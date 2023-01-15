@@ -1,5 +1,5 @@
 <main id="main" class="site-main">
-    <div class="sp-template sp-template-league-table">
+    <div-- class="sp-template sp-template-league-table">
         <div class="card card--has-table">
             <header class="card__header"><h4 class="sp-table-caption">Bundesliga</h4></header>
             <div class="card__content">
@@ -66,8 +66,7 @@
                         </thead>
                         <tbody>
                             {% for cur_club in club_ucl_stats %}
-                            <tr class="{% cycle 'odd' 'even' %} {% if cur_club.club.name == bayern.full_name %}highlighted{% endif %} sp-row-no-{{ forloop.counter0 }}"
-                            {% if forloop.counter == 4 %} style="border-bottom:2px solid white"{% endif %}>
+                            <tr class="{% cycle 'odd' 'even' %} {% if cur_club.club.name == bayern.full_name %}highlighted{% endif %} sp-row-no-{{ forloop.counter0 }}">
                                 <td class="data-rank {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="Pos">{{ forloop.counter }}</td>
                                 <td class="data-name has-logo {% if cur_club.club.name == bayern.full_name %}sp-highlight{% endif %}" data-label="Club">
                                     <span lass="team-logo">
@@ -89,7 +88,7 @@
         </div>
 
 
-        <div class="vc_empty_space" style="height: 30px"></div>
+        <!--div class="vc_empty_space" style="height: 30px"></div>
 
         <div class="card card--has-table">
             <header class="card__header">
@@ -133,6 +132,6 @@
                     </table>
                 </div>
             </div>
-        </div>
+        </div-->
     </div>
 </main>

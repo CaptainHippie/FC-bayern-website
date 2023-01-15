@@ -17,14 +17,15 @@
             <div class="sponsors row justify-content-md-center sponsors--default">
                 <div>
                     <div class="footer-logo__heading" style="text-align: center">
-                        <h4 class="footer-logo__txt">PARTNER</h4>
+                        <h2 class="footer-logo__txt">PARTNER</h2>
                     </div>
+                    <div class="spacer"></div>
                     <div class="team-roster team-roster--grid team-roster--grid-col-3" style="padding: 3px 15px 3px 15px">                                
                         {% for partner in partners_footer %}
                         <div class="custom-sponsor-footer-item"
                             style="display: flex;justify-content: center;align-items: center;text-align: center">
                             <a href="{{partner.url}}" target="_blank" title="{{partner.name}}">
-                                <img src="/media/{{partner.logo_white}}">
+                                <img src="/media/{{partner.logo_white}}" style="max-height: 60px">
                             </a>
                         </div>
                         {% endfor%}

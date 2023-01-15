@@ -308,10 +308,10 @@ class Sponsor(models.Model):
 
 class Player_Image(models.Model):
     player = models.ForeignKey(Player, on_delete=models.CASCADE)
-    image = models.ImageField(
-        default='gallery/player/default.png', upload_to='gallery/player', null=True)
-    date = models.DateField(null=True)
-    description = models.CharField(max_length=300, null=True)
+    image = models.ImageField(upload_to='gallery/player', null=True, blank=True)
+    image_url = models.CharField(max_length=600, null=True, blank=True)
+    date = models.DateField(null=True, blank=True)
+    description = models.CharField(max_length=300, null=True, blank=True)
 
 class Club_Album(models.Model):
     title = models.CharField(max_length=100, null=True)

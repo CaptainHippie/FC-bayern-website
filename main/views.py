@@ -104,7 +104,7 @@ def PLAYER_DETAIL(request, slug_name):
 
 def TEAM_DATA(request):
     all_positions = POSITIONS
-    all_staff = Staff.objects.exclude(designation__in=("Executive Sporting Director","Head Coach")).order_by('short_name')
+    all_staff = Staff.objects.exclude(designation__in=("Executive Sporting Director","Head Coach")).order_by('designation')
     head_coach = Staff.objects.filter(designation="Head Coach").first()
     director = Staff.objects.filter(designation="Executive Sporting Director").first() or None
     club_league_stats = Club_season_stats.objects.filter(competition__name="BundesLiga").order_by('-points','-goal_diff','-scored')[0:20]
@@ -213,6 +213,7 @@ def ACCOUNT(request, slug_name):
         l_name = request.POST.get('account_last_name')
         d_name = request.POST.get('account_display_name')
         email = request.POST.get('account_email')
+        social = request.POST.get('social_media_link')
         cur_pass = request.POST.get('password_current')
         new_pass = request.POST.get('password_1')
         conf_pass = request.POST.get('password_2')
@@ -224,6 +225,7 @@ def ACCOUNT(request, slug_name):
             user.last_name = l_name
             user.name_display = d_name
             user.email = email
+            user.social_link = social
             request_file = request.FILES['profile_pic'] if 'profile_pic' in request.FILES else None
             if request_file:
                 upload = request.FILES['profile_pic']
