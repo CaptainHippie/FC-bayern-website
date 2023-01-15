@@ -221,8 +221,8 @@
                                 <div class="progress__digit progress__digit--left progress__digit--highlight">{% rnd_pos_opp last_match.possession %}%</div>
                                 <div class="progress__double">
                                     <div class="progress" style="background-color:{{bayern.color}}">
-                                        <div class="progress__bar" role="progressbar" aria-valuenow="{{last_match.possession}}"
-                                            aria-valuemin="0" aria-valuemax="100" style="width:{{last_match.possession}}%;background-color:{{last_match.opponent.color}}"></div>
+                                        <div class="progress__bar" role="progressbar" aria-valuenow="{% get_other_possession last_match.possession %}"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{% get_other_possession last_match.possession %}%;background-color:{{last_match.opponent.color}}"></div>
                                     </div>
                                 </div>
                                 <div class="progress__digit progress__digit--right">{% rnd_pos last_match.possession %}%</div>

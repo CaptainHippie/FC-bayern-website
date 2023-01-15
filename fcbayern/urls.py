@@ -29,6 +29,8 @@ urlpatterns = [
 
     path('team/', views.TEAM_DATA, name='team'),
     path('team/match/<slug:slug_name>/', views.MATCH_DETAIL, name='match'),
+    path('team/match/<slug:slug_name>/book_tickets/', views.BOOK_TICKET, name='book'),
+    path('team/match/<slug:slug_name>/book_tickets/buy/', views.BUY_TICKET, name='buy_ticket'),
     path('team/player/<slug:slug_name>/', views.PLAYER_DETAIL, name='player'),
     path('team/staff/<slug:slug_name>/', views.STAFF, name='staff'),
     path('team/album/<slug:slug_name>/', views.ALBUM, name='album'),
@@ -47,6 +49,7 @@ urlpatterns = [
     path('shop/product/<slug:slug_name>/', views.PRODUCT, name='product'),
     path('shop/cart/', views.CART, name='cart'),
     path('shop/checkout/', views.CHECKOUT, name='checkout'),
+    path('download_ticket/', views.DOWNLOAD_TICKET, name='download_ticket'),
     path('test/', views.TEST, name='test'),
 
     #cart
@@ -59,5 +62,6 @@ urlpatterns = [
     path('like/<int:uid>/<int:pid>', views.Like_Unlike_Btn, name='like'),
 
     path('contact_us/', views.CONTACT_US, name='contact'),
+    path('contact_us/send/', views.Send_Contact_form, name='contact_send')
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT )

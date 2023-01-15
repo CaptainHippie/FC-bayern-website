@@ -1,0 +1,438 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<style>
+    .square_shape {
+      height: 50px;
+      width: 50px;
+      margin: auto;
+    }
+    .t_cat1 {
+        background-color: #C1144A;
+    }
+    .t_cat2 {
+        background-color: #D17427;
+    }
+    .t_cat3 {
+        background-color: #B3CC37;
+    }
+    .t_cat4 {
+        background-color: #2E5CAC;
+    }
+    .t_cat5 {
+        background-color: #E3C028;
+    }
+</style>
+
+<title>Book Tickets - {{match.competition}}, {{match.match_title}} - {{bayern.short_name}} vs {{match.opponent.short_name}}</title>
+<!-- Page Heading
+================================================== -->
+<div class="page-heading 1" style="background-image: url(/media/{{match.banner}});">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-10 offset-lg-1">
+                <h1 class='page-heading__title'>- {{bayern.full_name}} vs {{match.opponent}} -</h1>
+                
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="site-content " id="content">
+    <div class="container">
+        <div class="woocommerce-notices-wrapper">
+                                    
+            {% if messages %}
+                {% for message in messages %}
+                    {% if message.tags == 'success' %}
+                    <ul class="woocommerce-info" role="alert">
+                        <li><strong>Success : </strong>{{message}}</li>
+                    </ul>
+                    {% elif message.tags == 'error' %}
+                    <ul class="woocommerce-error" role="alert">
+                        <li><strong>Error : </strong>{{message}}</li>
+                    </ul>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            
+        </div>
+        <div class="row">
+
+            <div id="primary" class="content-area col-lg-8">
+                <main id="main" class="site-main">
+
+
+                    <div id="post-577" class="post-577 page type-page status-publish hentry">
+
+                        <div class="entry-content">
+                            <div class="vc_row wpb_row vc_row-fluid vc_custom_1496587941845">
+                                <div class="wpb_column vc_column_container vc_col-sm-12">
+                                    <div class="vc_column-inner">
+                                        <div class="wpb_wrapper">
+                                            <!-- Card -->
+                                            <div class="card">
+
+                                                <div class="card__header">
+                                                    <h4 class="">Book Tickets</h4>
+                                                </div>
+
+                                                <div class="card__content">
+
+                                                    <!-- Game Result -->
+                                                    <div class="game-result">
+                        
+                                                        <section class="game-result__section pt-0">
+                                                            <header class="game-result__header game-result__header--alt">
+                        
+                                                                <span class="game-result__league">
+                                                                    {{match.competition}}, {{match.match_title}}
+                                                                </span>
+                        
+                                                                <h3 class="game-result__title"><span>{{match.venue}}</span></h3>
+                        
+                                                                <time class="game-result__date">{{match.time|date:"F j, Y"}}
+                                                                    <span class="event-time-status event-time-status--has-divider">{{match.time|date:"g:i A"}}</span>
+                                                                    <meta itemprop="eventStatus" content="http://schema.org/EventScheduled">
+                                                                </time>
+                        
+                        
+                                                            </header>
+                        
+                                                            <!-- Team Logos + Game Result -->
+                                                            <div class="game-result__content">
+                                                                <div class="game-result__team game-result__team--odd">
+                                                                    <figure class="game-result__team-logo"><img width="100" height="100"
+                                                                        src="{% static 'images/logo.png' %}" class="attachment-alchemists_team-logo-fit size-alchemists_team-logo-fit wp-post-image">
+                                                                    </figure>
+                                                                    <div class="game-result__team-info" itemprop="performer" itemscope itemtype="http://schema.org/Organization">
+                                                                        <h5 class="game-result__team-name" itemprop="name">{{bayern.full_name}}</h5>
+                                                                        <div class="game-result__team-desc">{{bayern.manager}}</div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="game-result__team game-result__team--even">
+                                                                    <figure class="game-result__team-logo"><img width="100" height="100" src="/media/{{match.opponent.logo}}" alt=""
+                                                                        class="attachment-alchemists_team-logo-fit size-alchemists_team-logo-fit wp-post-image" loading="lazy">
+                                                                    </figure>
+                                                                    <div class="game-result__team-info" itemprop="performer" itemscope itemtype="http://schema.org/Organization">
+                                                                        <h5 class="game-result__team-name" itemprop="name">{{match.opponent}}</h5>
+                                                                        <div class="game-result__team-desc">{{match.opponent.manager}}</div>
+                                                                    </div>
+                                                                </div>
+                        
+                                                                <!-- Game Score -->
+                                                                <div class="game-result__score-wrap">
+                                                                    <div class="game-result__score game-result__score--lg">
+                                                                        <span class="game-result__score-dash">-</span>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Game Score / End -->
+                        
+                                                            </div>
+                                                            <!-- Team Logos + Game Result / End -->
+                                                        </section>
+                        
+                        
+                        
+                                                    </div>
+                                                    <!-- Game Result / End -->
+                                                </div>
+
+                                                <div class="card__content">
+                                                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                                        <img src="/media/Stadion.png" style="width: 85%;display: block;margin: auto">
+                                                        <div class="vc_empty_space" style="height: 15px"></div>
+
+                                                        <div class="wpb_column vc_column_container">
+                                                            <div class="vc_column-inner">
+                                                                <div class="wpb_wrapper">
+
+                                                                    <div class="row" style="text-align:center">
+                                                                        <div class="col-md-2" style="flex: 20%;max-width: 20%">
+                                                                            <div class="square_shape t_cat1"></div>
+                                                                            <label>CATEGORY 1</label><br>
+                                                                            <h6>Price : &euro; <span id="cat_1-price">{{match.tickets_collection_set.first.cat_1_price}}</span></h6>
+                                                                            <div {% if match.tickets_collection_set.first.cat_1_seats == 0 %}style="display:none"{% endif %}>
+                                                                                <label>Seats left : <br><span id="cat_1-seats">{{match.tickets_collection_set.first.cat_1_seats}}</span></label>
+                                                                            </div>
+                                                                            {% if match.tickets_collection_set.first.cat_1_seats == 0 %}
+                                                                            <img src="/media/sold_out.png" style="width: 60%;display: block;margin: auto">
+                                                                            {% endif %}
+                                                                        </div>
+                                                                        <div class="col-md-2" style="flex: 20%;max-width: 20%">
+                                                                            <div class="square_shape t_cat2"></div>
+                                                                            <label>CATEGORY 2</label><br>
+                                                                            <h6>Price : &euro; <span id="cat_2-price">{{match.tickets_collection_set.first.cat_2_price}}</span></h6>
+                                                                            <div {% if match.tickets_collection_set.first.cat_2_seats == 0 %}style="display:none"{% endif %}>
+                                                                                <label>Seats left : <br><span id="cat_2-seats">{{match.tickets_collection_set.first.cat_2_seats}}</span></label>
+                                                                            </div>
+                                                                            {% if match.tickets_collection_set.first.cat_2_seats == 0 %}
+                                                                            <img src="/media/sold_out.png" style="width: 60%;display: block;margin: auto">
+                                                                            {% endif %}
+                                                                        </div>
+                                                                        <div class="col-md-2" style="flex: 20%;max-width: 20%">
+                                                                            <div class="square_shape t_cat3"></div>
+                                                                            <label>CATEGORY 3</label><br>
+                                                                            <h6>Price : &euro; <span id="cat_3-price">{{match.tickets_collection_set.first.cat_3_price}}</span></h6>
+                                                                            <div {% if match.tickets_collection_set.first.cat_3_seats == 0 %}style="display:none"{% endif %}>
+                                                                                <label>Seats left : <br><span id="cat_3-seats">{{match.tickets_collection_set.first.cat_3_seats}}</span></label>
+                                                                            </div>
+                                                                            {% if match.tickets_collection_set.first.cat_3_seats == 0 %}
+                                                                            <img src="/media/sold_out.png" style="width: 60%;display: block;margin: auto">
+                                                                            {% endif %}
+                                                                        </div>
+                                                                        <div class="col-md-2" style="flex: 20%;max-width: 20%">
+                                                                            <div class="square_shape t_cat4"></div>
+                                                                            <label>CATEGORY 4</label><br>
+                                                                            <h6>Price : &euro; <span id="cat_4-price">{{match.tickets_collection_set.first.cat_4_price}}</span></h6>
+                                                                            <div {% if match.tickets_collection_set.first.cat_4_seats == 0 %}style="display:none"{% endif %}>
+                                                                                <label>Seats left : <br><span id="cat_4-seats">{{match.tickets_collection_set.first.cat_4_seats}}</span></label>
+                                                                            </div>
+                                                                            {% if match.tickets_collection_set.first.cat_4_seats == 0 %}
+                                                                            <img src="/media/sold_out.png" style="width: 60%;display: block;margin: auto">
+                                                                            {% endif %}
+                                                                        </div>
+                                                                        <div class="col-md-2" style="flex: 20%;max-width: 20%">
+                                                                            <div class="square_shape t_cat5"></div>
+                                                                            <label>CATEGORY 5</label><br>
+                                                                            <h6>Price : &euro; <span id="cat_5-price">{{match.tickets_collection_set.first.cat_5_price}}</span></h6>
+                                                                            <div {% if match.tickets_collection_set.first.cat_5_seats == 0 %}style="display:none"{% endif %}>
+                                                                                <label>Seats left : <br><span id="cat_5-seats">{{match.tickets_collection_set.first.cat_5_seats}}</span></label>
+                                                                            </div>
+                                                                            {% if match.tickets_collection_set.first.cat_5_seats == 0 %}
+                                                                            <img src="/media/sold_out.png" style="width: 60%;display: block;margin: auto">
+                                                                            {% endif %}
+                                                                        </div>
+                                                                    </div>
+ 
+                                                                    <div class="vc_empty_space" style="height: 30px"></div>
+                                                                    {% if allowed_tickets == 0 %}
+                                                                    <div class="row">
+                                                                        <h4 style="margin:auto">You have reached your maximum Quota for this match!</h4>
+                                                                    </div>
+                                                                    {% else %}
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                        <label for="name">Name <abbr class="required" title="required">*</abbr></label><br>
+                                                                        <input type="text" class="input-text "  name="name" id="name"
+                                                                                    placeholder="" value="{{logged_user.name_display}}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="vc_empty_space" style="height: 8px"></div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <label for="ticket_category" class="">Ticket Category <abbr class="required" title="required">*</abbr></label>
+                                                                            <span class="woocommerce-input-wrapper">
+                                                                                <select name="ticket_category" id="ticket_category" data-placeholder="Select a category&hellip;">
+                                                                                    <option style="color:black" value="">Select a category&hellip;</option>
+                                                                                    {% for cat in seat_category %}
+                                                                                    <option class="seat-category-option" style="color:black" value="{{cat.0}}">{{cat.1}}</option>
+                                                                                    {% endfor %}
+                                                                                </select>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <label for="ticket_qty" class="">Number of Tickets <abbr class="required" title="required">*</abbr></label>
+                                                                            <span class="woocommerce-input-wrapper">
+                                                                                <select name="ticket_qty" id="ticket_qty" data-placeholder="Select upto 10&hellip;">
+                                                                                    <option style="color:black" value="">Select upto {{allowed_tickets}}&hellip;</option>
+                                                                                    {% for item in "x"|ljust:allowed_tickets %}
+                                                                                    <option class="seat-quantity-option" style="color:black" value="{{forloop.counter}}">{{forloop.counter}}</option>
+                                                                                    {% endfor %}
+                                                                                </select>
+
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    
+                                                                    <div class="form-group form-group--submit">
+                                                                        <label id="added-to-cart-msg" style="display:none"></label>
+                                                                        <input id="add-ticket-to-cart" type="button" value="Add to cart" class="btn btn-primary-inverse btn-lg btn-block">
+                                                                    </div>
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!-- Card / End -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div><!-- .entry-content -->
+                    </div><!-- #post-## -->
+
+                </main><!-- #main -->
+            </div><!-- #primary -->
+
+            <aside id="secondary" class="sidebar widget-area col-lg-4">
+                
+                <div class="card card--has-table">
+                    <header class="card__header"><h4 id="order_review_heading">Your order</h4></header>
+                    <div class="card__content">
+                        <form action="{% url 'buy_ticket' match.slug %}" method="post">
+                            {% csrf_token %}
+                            <div id="order_review" class="woocommerce-checkout-review-order">
+                                
+                                <div class="woocommerce-checkout-review-order-table">
+                                    <div class="table-responsive">
+                                        
+                                        <table class="table shop_table">
+                                            <thead>
+                                                <tr>
+                                                    <th class="product-name">Product</th>
+                                                    <th class="product-total">Price</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                <tr class="cart_item">
+                                                    <td class="product-name" id="ticket-type-display">
+                                                    </td>
+                                                    <td class="product-total" id="ticket-price-display">
+                                                    </td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                            <tfoot>
+
+                                                <tr class="order-total">
+                                                    <th>Total</th>
+                                                    <td><strong><span class="woocommerce-Price-amount amount">
+                                                            <bdi id="ticket-total-display"></bdi>
+                                                        </span></strong>
+                                                    </td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div id="payment" class="woocommerce-checkout-payment">
+                                    <ul class="wc_payment_methods payment_methods methods">
+                                        <li class="wc_payment_method payment_method_bank" title="Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.">
+                                            <label for="payment_method_bank" class="radio radio-inline">
+                                                <input id="payment_method_bank" type="radio" class="input-radio" name="payment_method" value="bank" checked>Direct bank transfer
+                                                    <span class="radio-indicator"></span>
+                                            </label>
+                                        </li>
+                                        <li class="wc_payment_method payment_method_cheque">
+                                            <label for="payment_method_upi" class="radio radio-inline">
+                                                <input id="payment_method_upi" type="radio" class="input-radio" name="payment_method" value="upi">UPI payment
+                                                    <span class="radio-indicator"></span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                    <div class="form-row place-order">
+
+                                        <div class="woocommerce-terms-and-conditions-wrapper">
+                                            <div class="woocommerce-privacy-policy-text"></div>
+                                        </div>
+                                        <input type="submit" class="button btn-lg btn-block btn-primary" name="woocommerce_checkout_place_order"
+                                            id="place_order" value="Place order">
+
+                                    </div>
+                                </div>
+                                <input id="hidden_seat_type" type="hidden" name="seat_type" value="">
+                                <input id="hidden_quantity" type="hidden" name="quantity" value="">
+                                <input id="hidden_total" type="hidden" name="total" value="">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </aside><!-- #secondary -->
+        </div>
+    </div>
+</div>
+
+<script>
+
+    (function (){
+        
+        const category_choices = document.getElementsByClassName("seat-category-option");
+        const quantity_choices = document.getElementsByClassName("seat-quantity-option");
+        const max_allowed_for_user = quantity_choices.length;
+        
+        const add_btn = document.getElementById("add-ticket-to-cart");
+        const ticket_select = document.getElementById("ticket_category");
+        const ticket_qty_select = document.getElementById("ticket_qty");
+        var ticket_cat = "";
+        var ticket_qty = 0;
+
+        const hidden_seat_type = document.getElementById("hidden_seat_type");
+        const hidden_quantity = document.getElementById("hidden_quantity");
+        const hidden_total = document.getElementById("hidden_total");
+        const alert_msg = document.getElementById("added-to-cart-msg");
+
+        const type_display = document.getElementById("ticket-type-display");
+        const price_display = document.getElementById("ticket-price-display");
+        const total_display = document.getElementById("ticket-total-display");
+
+        for (let i = 0; i <= (category_choices.length-1); i++) {
+            var cur_cat_type = category_choices[i].value;
+            var cur_cat_seats = parseInt(document.getElementById(cur_cat_type + "-seats").innerHTML);
+            //console.log(cur_cat_type);
+            //console.log(cur_cat_seats);
+            if (cur_cat_seats == 0){
+                category_choices[i].style.display = "none";
+            }
+                
+        }
+
+        function add_to_checkout(){
+            if ((ticket_cat != "") && (ticket_qty>0)){
+                hidden_seat_type.value = ticket_cat;
+                hidden_quantity.value = ticket_qty;
+                var price = document.getElementById(ticket_cat + "-price").innerHTML;
+                var total_value = ticket_qty * price;
+                hidden_total.value = total_value;
+                //console.log(total_value)
+                alert_msg.style.display = "block";
+                alert_msg.innerHTML = "Added to cart!";
+
+                var cat_no = ticket_cat.slice(-1);
+                type_display.innerHTML = "Category "+cat_no+"&nbsp; <strong class='product-quantity'>&times;&nbsp;" +ticket_qty+"</strong>";
+                price_display.innerHTML = "<span class='woocommerce-Price-amount amount'><bdi><span class='woocommerce-Price-currencySymbol'>&euro;</span> "+ price + "</bdi></span>";
+                total_display.innerHTML = "<span class='woocommerce-Price-currencySymbol'>&euro;</span>&nbsp;" + total_value;
+            } else {
+                alert_msg.style.display = "block";
+                alert_msg.innerHTML = "Please select a valid category and quantity!";
+            }
+
+        };
+        function update_ticket_and_qty(){
+            ticket_cat = ticket_select.value;
+            ticket_qty = ticket_qty_select.value;
+
+            var max_allowed_cat_seats = parseInt(document.getElementById(ticket_cat + "-seats").innerHTML);
+            var max_allowed = 10;
+            if (max_allowed_cat_seats<10){
+                max_allowed = max_allowed_cat_seats
+            }
+            if (max_allowed_cat_seats > max_allowed_for_user){
+                max_allowed = max_allowed_for_user;
+            }
+            for (let i = 0; i <= (max_allowed_for_user-1); i++) {
+                quantity_choices[i].style.display = "none";
+            }
+            for (let i = 0; i <= (max_allowed-1); i++) {
+                quantity_choices[i].style.display = "block";
+            }
+    
+        };
+        add_btn.addEventListener("click", function() { add_to_checkout() });
+        ticket_select.addEventListener("change", function() { update_ticket_and_qty() });
+        ticket_qty_select.addEventListener("change", function() { update_ticket_and_qty() });
+
+        
+    })();
+
+</script>
+{% endblock %}

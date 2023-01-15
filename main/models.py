@@ -8,8 +8,8 @@ from django_countries.fields import CountryField
 from django.utils import timezone
 
 class article_type(models.Model):
-    name = models.CharField(max_length=50)
-    css_name = models.CharField(max_length=50, null=True, blank=True)
+    name = models.CharField(max_length=20)
+    css_name = models.CharField(max_length=20, null=True, blank=True)
     category = models.SmallIntegerField(default=1)
 
     def __str__(self):
@@ -17,9 +17,8 @@ class article_type(models.Model):
 
 class CustomUser(User):
     name_display = models.CharField(max_length=100, null=True)
-    profile_pic = models.ImageField(default='user_pfps/default.jpg', upload_to='user_pfps')
-    content_creator = models.BooleanField(default=False)
-    slug = models.SlugField(default='', max_length=500, null=True, blank=True)
+    profile_pic = models.ImageField(default='user_pfps/default.jpg', upload_to='user_pfps', blank=True)
+    slug = models.SlugField(default='', max_length=100)
     social_link = models.CharField(max_length=100, null=True, blank=True)
 
     def __str__(self):
@@ -38,14 +37,14 @@ class Player(models.Model):
     nationality = CountryField(blank_label='(select country)', null=True)
     profile_pic = models.ImageField(
         default='players/player-placeholder-380x570.jpg', upload_to='players', null=True)
-    height = models.DecimalField(decimal_places=2, max_digits=3, null=True)
+    height = models.DecimalField(decimal_places=2, max_digits=3, null=True, blank=True)
     weight = models.IntegerField(null=True, blank=True)
     age = models.IntegerField(null=True, blank=True)
     past_club = models.CharField(max_length=100, null=True, blank=True)
     position = models.CharField(max_length=10, choices=POSITIONS, default='midfielder')
-    born = models.DateField(null=True)
+    born = models.DateField(null=True, blank=True)
     contract_end = models.DateField(null=True, blank=True)
-    rating = models.DecimalField(decimal_places=1, max_digits=3, null=True)
+    rating = models.DecimalField(decimal_places=1, max_digits=3, blank=True, default=6, null=True)
     profile_banner = models.ImageField(blank=True, upload_to='players', null=True)
     biography = RichTextField(null=True, blank=True)
     slug = models.SlugField(default='', max_length=100)
@@ -184,6 +183,7 @@ class Match(models.Model):
 
     at_home = models.BooleanField(default=True)
     finished = models.BooleanField(default=False)
+    booking_open = models.BooleanField(default=False)
     slug = models.SlugField(max_length=50)
     time = models.DateTimeField(null=True)
 
@@ -504,3 +504,48 @@ class Social_Media_Links(models.Model):
     def __str__(self):
         relation = self.player.name if self.staff == None else self.staff.name
         return relation
+
+SEAT_CATEGORY = (("cat_1", "Category 1"),
+                ("cat_2", "Category 2"),
+                ("cat_3", "Category 3"),
+                ("cat_4", "Category 4"),
+                ("cat_5", "Category 5"))
+class Tickets_Collection(models.Model):
+    match = models.ForeignKey(Match, on_delete=models.CASCADE, null=True, default=None, blank=True)
+    cat_1_seats = models.PositiveIntegerField()
+    cat_2_seats = models.PositiveIntegerField()
+    cat_3_seats = models.PositiveIntegerField()
+    cat_4_seats = models.PositiveIntegerField()
+    cat_5_seats = models.PositiveIntegerField()
+
+    cat_1_price = models.PositiveIntegerField(default=70)
+    cat_2_price = models.PositiveIntegerField(default=60)
+    cat_3_price = models.PositiveIntegerField(default=45)
+    cat_4_price = models.PositiveIntegerField(default=30)
+    cat_5_price = models.PositiveIntegerField(default=15)
+
+    def __str__(self):
+        return self.match.competition.name + "-" + self.match.match_title
+    
+
+class Sold_Ticket(models.Model):
+    match = models.ForeignKey(Tickets_Collection, on_delete=models.CASCADE, null=True, default=None, blank=True)
+    who = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, default=None, blank=True)
+    seat_cat = models.CharField(max_length=5, choices=SEAT_CATEGORY, null=True, default="cat_3")
+    quantity = models.PositiveSmallIntegerField()
+    payment_method = models.CharField(max_length=8, choices=PAYMENT_METHOD, default='cod')
+    price = models.DecimalField(decimal_places=2, max_digits=8, null=True)
+
+    def __str__(self):
+        return self.match.match.competition.name + "-" + self.match.match.match_title + "-" + self.who.name_display + "-" + self.seat_cat + "x" + str(self.quantity)
+    
+    
+class Contact_Us_Request(models.Model):
+    name = models.CharField(max_length=100, blank=True, null=True)
+    subject = models.CharField(max_length=50, blank=True, null=True)
+    email = models.EmailField(max_length=150, blank=True, null=True)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.name + "-" + self.subject
+    

@@ -115,7 +115,7 @@
                                                 {% if all_orders == None %}
 
                                                 <div class="woocommerce-message woocommerce-message--info woocommerce-Message woocommerce-Message--info woocommerce-info">
-                                                    <a class="woocommerce-Button button" href="http://alchemists-wp.dan-fisher.com/soccer-dark/shop/">Go to the shop </a>
+                                                    <a class="woocommerce-Button button" href="{% url 'shop' %}">Go to the shop </a>
                                                     No order has been made yet.
                                                 </div>
                                                 {% else %}
@@ -139,10 +139,10 @@
                                                         {% for order in all_orders %}
                                                         <tr class="woocommerce-orders-table__row woocommerce-orders-table__row--status-on-hold order">
                                                             <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-number" data-title="Order">
-                                                                <a href="http://alchemists-wp.dan-fisher.com/soccer-dark/my-account/view-order/1385/"> #{{order.id}} </a>
+                                                                <a href="{% url 'order' logged_user.slug order.id %}"> #{{order.id}} </a>
                                                             </td>
                                                             <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-date" data-title="Date">
-                                                                <time datetime="2022-11-28T16:33:40+00:00">{{order.order_date|date:"F d, Y"}}</time>
+                                                                <time>{{order.order_date|date:"F d, Y"}}</time>
                                                             </td>
                                                             <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-status" data-title="Status">
                                                             {% if order.dispatched == True %}<strong style="color:#049904">dispatched</strong>{% else %} On hold {% endif %}
@@ -153,6 +153,50 @@
                                                             <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-actions" data-title="Actions">
                                                                 <a href="{% url 'order' logged_user.slug order.id %}"
                                                                     class="woocommerce-button btn btn-primary btn-xs view">View</a>
+                                                            </td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                    </tbody>
+                                                </table>
+
+                                                {% endif %}
+
+                                                {% if logged_user.sold_ticket_set.count > 0  %}
+
+                                                <h5>BOOKED TICKETS</h5>
+                                                <table class="woocommerce-orders-table woocommerce-MyAccount-orders shop_table shop_table_responsive my_account_orders account-orders-table table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-number">
+                                                                <span class="nobr">Match</span></th>
+                                                            <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-date">
+                                                                <span class="nobr">Seat Category</span></th>
+                                                            <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-status">
+                                                                <span class="nobr">Quantity</span></th>
+                                                            <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-total">
+                                                                <span class="nobr">Total</span></th>
+                                                            <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-actions">
+                                                                <span class="nobr">Actions</span></th>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody>
+                                                        {% for ticket in logged_user.sold_ticket_set.all %}
+                                                        <tr class="woocommerce-orders-table__row woocommerce-orders-table__row--status-on-hold order">
+                                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-date">
+                                                                <time>{{ticket.match.match.competition.name}} - {{ticket.match.match.match_title}}</time>
+                                                            </td>
+                                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-date">
+                                                                <time>{{ticket.get_seat_cat_display}}</time>
+                                                            </td>
+                                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-date">
+                                                                <time>{{ticket.quantity}}</time>
+                                                            </td>
+                                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-date">
+                                                                <time>{{ticket.price}}</time>
+                                                            </td>
+                                                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-actions" data-title="Actions">
+                                                                <a href="/media/bayern_ticket.pdf" target="_blank" class="woocommerce-button btn btn-primary btn-xs view">Download</a>
                                                             </td>
                                                         </tr>
                                                         {% endfor %}

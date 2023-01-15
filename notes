@@ -8,8 +8,8 @@ lightest blue : rgb(18 31 56)
 
 Login Details
 Superusers:
-username = Vibez
-email = neerajvb4@gmail.com
+username = Neerajvibez
+email = neerajvb@gmail.com
 password = hello
 
 
@@ -26,7 +26,7 @@ fix the footer - done
 cleanup headers - done
 refine shop with filters - done(price filter can be improved)
 fix roster page toggle tab missing in mobile - done
-middlewares
+middlewares - no need
 rework login system with builtin tools - almost done
 implement news likes- done
 revamp contact us page
@@ -39,3 +39,6 @@ discount coupons
 dropdowns for city, state and country
 reset password function
 remember password function
+cancel order option
+ticket booking
+formal job application with file upload(resume)

@@ -10,7 +10,7 @@
 
             {% for news in related_news %}
 
-            <div class="posts__item posts__item--category-1 post-102 post type-post status-publish format-standard has-post-thumbnail hentry category-the-team tag-alchemists tag-stadium tag-team">
+            <div class="posts__item posts__item--category-{{news.news_type.category}} post type-post status-publish format-standard has-post-thumbnail hentry category-{{news.news_type.css_name}}">
                 <figure class="posts__thumb posts__thumb--hover">
                     <a href="{{news.get_absolute_url}}">
                         <img style="width:85px;height:85px;object-fit:cover;"
@@ -18,11 +18,11 @@
                     </a>
                 </figure>
                 <div class="posts__inner">
-                    <div class="posts__cat"><span class="label posts__cat-label posts__cat-label--category-1 category-the-team">{{news.news_type}}</span></div>
+                    <div class="posts__cat"><span class="label posts__cat-label posts__cat-label--category-{{news.news_type.category}} category-{{news.news_type.css_name}}">{{news.news_type}}</span></div>
                     <h6 class="posts__title posts__title--color-hover" title="{{news.title}}" style="height: 40px">
                         <a href="{{news.get_absolute_url}}">{{news.title}}</a>
                     </h6>
-                    <time datetime="2017-03-05T12:12:58+00:00" class="posts__date">{{news.added|date:"F j, Y"}}</time>
+                    <time class="posts__date">{{news.added|date:"F j, Y"}}</time>
                 </div>
             </div>
             {% endfor %}

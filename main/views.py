@@ -10,6 +10,7 @@ from . models import *
 from . import calculations
 from . forms import News_Article_Form
 from cart.context_processor import cart_total_amount
+from django.http import FileResponse
 
 def HOME(request):
     featured_news = News_article.objects.filter(featured=True)
@@ -203,8 +204,8 @@ def ALBUM(request, slug_name):
 def ACCOUNT(request, slug_name):
     logged_user = CustomUser.objects.filter(id=request.user.id).first()
     all_orders = Order.objects.filter(user__slug=slug_name)
-    billing_address = Address.objects.filter(address_type="billing").first()
-    shipping_address = Address.objects.filter(address_type="shipping").first()
+    billing_address = Address.objects.filter(user=logged_user, address_type="billing").first()
+    shipping_address = Address.objects.filter(user=logged_user, address_type="shipping").first()
     
     if 'save_account_details' in request.POST:
         username = request.POST.get('account_username')
@@ -620,3 +621,73 @@ def Like_Unlike_Btn(request, uid, pid):
     like.save()
     return redirect(request.META['HTTP_REFERER'])
     
+@login_required(login_url='login')
+def BOOK_TICKET(request, slug_name):
+    cur_match = Match.objects.get(slug=slug_name)
+    if cur_match.booking_open == False:
+        return redirect(request.META['HTTP_REFERER'])
+    logged_user = request.user if request.user.is_authenticated else None
+    tickets_brought = Sold_Ticket.objects.filter(who=logged_user, match__match__slug = slug_name)
+    tickets = 0
+    for ticket in tickets_brought:
+        tickets += ticket.quantity
+
+    allowed_tickets = 10 - tickets if tickets < 10 else 0
+    context = {
+            'match': cur_match,
+            'seat_category': SEAT_CATEGORY,
+            'allowed_tickets': allowed_tickets
+    }
+    return render(request, 'book_tickets.html', context)
+
+def BUY_TICKET(request, slug_name):
+    seat_type = request.POST.get('seat_type')
+    quantity = request.POST.get('quantity')
+    total = request.POST.get('total')
+    cur_match = Match.objects.get(slug=slug_name)
+    logged_user = request.user if request.user.is_authenticated else None
+    tickets_brought = Sold_Ticket.objects.filter(who=logged_user, match__match__slug = slug_name)
+    tickets = 0
+    for ticket in tickets_brought:
+        tickets += ticket.quantity
+    if tickets >= 10:
+        messages.error(request,"You have already reached your quota for this match!")
+        return redirect('book', slug_name=slug_name)
+
+    if seat_type != "" and seat_type != None:
+        quantity = int(quantity)
+        new_ticket = Sold_Ticket()
+        new_ticket.who_id = logged_user.id if logged_user else None
+        new_ticket.match_id = cur_match.id
+        new_ticket.seat_cat = seat_type
+        new_ticket.quantity = quantity
+        new_ticket.payment_method = request.POST.get('payment_method')
+        new_ticket.price = float(total)
+        new_ticket.save()
+        cur_ticket_collection = Tickets_Collection.objects.get(match__slug = slug_name)
+        if seat_type == "cat_1":
+            cur_ticket_collection.cat_1_seats -= quantity
+        elif seat_type == "cat_2":
+            cur_ticket_collection.cat_2_seats -= quantity
+        elif seat_type == "cat_3":
+            cur_ticket_collection.cat_3_seats -= quantity
+        elif seat_type == "cat_4":
+            cur_ticket_collection.cat_4_seats -= quantity
+        else:
+            cur_ticket_collection.cat_5_seats -= quantity
+        cur_ticket_collection.save()
+        messages.success(request,"Ticket booked succesfully!")
+    return redirect('book', slug_name=slug_name)
+
+def Send_Contact_form(request):
+    new_message = Contact_Us_Request()
+    new_message.name = request.POST.get('input-name')
+    new_message.email = request.POST.get('input-email')
+    new_message.subject = request.POST.get('input-subject')
+    new_message.message = request.POST.get('message')
+    new_message.save()
+    messages.success(request,"Contact Message Sent succesfully!")
+    return redirect('contact')
+
+def DOWNLOAD_TICKET(request):
+    pass

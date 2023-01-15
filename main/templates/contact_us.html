@@ -34,7 +34,24 @@
 
 <div class="site-content pb-0" id="content">
     <div class="container">
-        <div class="row">
+        <div class="woocommerce-notices-wrapper">
+                                    
+            {% if messages %}
+                {% for message in messages %}
+                    {% if message.tags == 'success' %}
+                    <ul class="woocommerce-info" role="alert">
+                        <li><strong>Success : </strong>{{message}}</li>
+                    </ul>
+                    {% elif message.tags == 'error' %}
+                    <ul class="woocommerce-error" role="alert">
+                        <li><strong>Error : </strong>{{message}}</li>
+                    </ul>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            
+        </div>
+        <div class="row" style="padding-bottom: 85px">
 
             <div id="primary" class="content-area col-lg-12">
                 <main id="main" class="site-main">
@@ -59,28 +76,21 @@
                                                         <div class="wpb_column vc_column_container vc_col-sm-4">
                                                             <div class="vc_column-inner">
                                                                 <div class="wpb_wrapper">
-                                                                    <div
-                                                                        class="wpb_text_column wpb_content_element ">
-                                                                        <div class="wpb_wrapper">
-                                                                            <h5>Questions? Send us a Message!
-                                                                            </h5>
-                                                                            <p>Sed ut perspiciatis unde omnis
-                                                                                iste natus error sit voluptatem
-                                                                                accusantium doloremque
-                                                                                laudantium, remeriam, eaque ipsa
-                                                                                quae ab illo et quasi
-                                                                                architecto.</p>
+                                                                    <div class="wpb_text_column wpb_content_element ">
+                                                                        <div class="wpb_wrapper" style="text-align:center;padding: 10px 30px 10px 30px;">
+                                                                            <h5>Questions? Send us a Message!</h5>
+                                                                            <p>Can't find the answer to your question in our FAQs? We are always on hand for help and advice!</p>
                                                                             <div class="spacer-sm"></div>
-                                                                            <h5>Open Practices</h5>
-                                                                            <p>Lorem ipsum dolor sit amet,
-                                                                                consectetur adipisicing elit,
-                                                                                sed do eiusmod tempor doloremque
-                                                                                incididunt ut labore et dolore
-                                                                                magna.</p>
-                                                                            <address><strong>Mondays to
-                                                                                    Fridays:</strong> 9:00am to
-                                                                                12:00pm</address>
-
+                                                                                <h5>TELEPHONE</h5>
+                                                                                <p><b>+49 89 699 31-0</b><br>
+                                                                                    Monday-Friday<br>
+                                                                                    08:00-20:00 (CET)</p>
+                                                                            <div class="spacer-sm"></div>
+                                                                                <h5>POST</h5>
+                                                                                <p><b>FC Bayern München AG</b><br>
+                                                                                    Säbener Straße 51-57<br>
+                                                                                    81547 Munich</p>
+                                                                            
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -89,112 +99,44 @@
                                                         <div class="wpb_column vc_column_container vc_col-sm-8">
                                                             <div class="vc_column-inner">
                                                                 <div class="wpb_wrapper">
-                                                                    <div role="form" class="wpcf7"
-                                                                        id="wpcf7-f575-p577-o1" lang="en-US"
-                                                                        dir="ltr">
-                                                                        <div class="screen-reader-response">
-                                                                            <p role="status" aria-live="polite"
-                                                                                aria-atomic="true"></p>
-                                                                            <ul></ul>
-                                                                        </div>
-                                                                        <form
-                                                                            action="/soccer-dark/contact-us/#wpcf7-f575-p577-o1"
-                                                                            method="post"
-                                                                            class="wpcf7-form init"
-                                                                            novalidate="novalidate"
-                                                                            data-status="init">
-                                                                            <div style="display: none;">
-                                                                                <input type="hidden"
-                                                                                    name="_wpcf7" value="575" />
-                                                                                <input type="hidden"
-                                                                                    name="_wpcf7_version"
-                                                                                    value="5.5.6" />
-                                                                                <input type="hidden"
-                                                                                    name="_wpcf7_locale"
-                                                                                    value="en_US" />
-                                                                                <input type="hidden"
-                                                                                    name="_wpcf7_unit_tag"
-                                                                                    value="wpcf7-f575-p577-o1" />
-                                                                                <input type="hidden"
-                                                                                    name="_wpcf7_container_post"
-                                                                                    value="577" />
-                                                                                <input type="hidden"
-                                                                                    name="_wpcf7_posted_data_hash"
-                                                                                    value="" />
-                                                                            </div>
+                                                                    <div role="form">
+                                                                        <form action="{% url 'contact_send' %}" method="post">
+                                                                            {% csrf_token %}
                                                                             <div class="row">
                                                                                 <div class="col-md-4">
                                                                                     <div class="form-group">
-                                                                                        <label>Your Name <span
-                                                                                                class="required">*</span></label><br />
-                                                                                        <span
-                                                                                            class="wpcf7-form-control-wrap input-name"><input
-                                                                                                type="text"
-                                                                                                name="input-name"
-                                                                                                value=""
-                                                                                                size="40"
-                                                                                                class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control"
-                                                                                                id="input-name"
-                                                                                                aria-required="true"
-                                                                                                aria-invalid="false"
-                                                                                                placeholder="Your full name..." /></span>
+                                                                                        <label>Your Name <span class="required">*</span></label><br>
+                                                                                        <span class="input-name">
+                                                                                            <input type="text" name="input-name" class="form-control" placeholder="Your full name...">
+                                                                                        </span>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-4">
                                                                                     <div class="form-group">
-                                                                                        <label>Your Email <span
-                                                                                                class="required">*</span></label><br />
-                                                                                        <span
-                                                                                            class="wpcf7-form-control-wrap input-email"><input
-                                                                                                type="email"
-                                                                                                name="input-email"
-                                                                                                value=""
-                                                                                                size="40"
-                                                                                                class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email form-control"
-                                                                                                id="input-email"
-                                                                                                aria-required="true"
-                                                                                                aria-invalid="false"
-                                                                                                placeholder="Your email..." /></span>
+                                                                                        <label>Your Email <span class="required">*</span></label><br>
+                                                                                        <span class="input-email">
+                                                                                            <input type="email" name="input-email" class="form-control" placeholder="Your email...">
+                                                                                        </span>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-4">
                                                                                     <div class="form-group">
                                                                                         <label>Subject</label><br />
-                                                                                        <span
-                                                                                            class="wpcf7-form-control-wrap input-subject"><input
-                                                                                                type="text"
-                                                                                                name="input-subject"
-                                                                                                value=""
-                                                                                                size="40"
-                                                                                                class="wpcf7-form-control wpcf7-text form-control"
-                                                                                                id="input-subject"
-                                                                                                aria-invalid="false"
-                                                                                                placeholder="Your subject..." /></span>
+                                                                                        <span class="input-subject">
+                                                                                            <input type="text" name="input-subject" size="40" class="form-control" placeholder="Your subject..." />
+                                                                                        </span>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group">
-                                                                                <label>Your Message <span
-                                                                                        class="required">*</span></label><br />
-                                                                                <span
-                                                                                    class="wpcf7-form-control-wrap textarea"><textarea
-                                                                                        name="textarea"
-                                                                                        cols="40" rows="5"
-                                                                                        class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required form-control"
-                                                                                        id="textarea"
-                                                                                        aria-required="true"
-                                                                                        aria-invalid="false"
-                                                                                        placeholder="Enter your message here.."></textarea></span>
+                                                                                <label>Your Message <span class="required">*</span></label><br>
+                                                                                <span class="textarea">
+                                                                                    <textarea name="message" cols="40" rows="5" class="form-control" placeholder="Enter your message here.."></textarea>
+                                                                                </span>
                                                                             </div>
-                                                                            <div
-                                                                                class="form-group form-group--submit">
-                                                                                <input type="submit"
-                                                                                    value="Send Your Message"
-                                                                                    class="wpcf7-form-control has-spinner wpcf7-submit btn btn-primary-inverse btn-lg btn-block"
-                                                                                    id="submit" />
+                                                                            <div class="form-group form-group--submit">
+                                                                                <input type="submit" value="Send Your Message" class="btn btn-primary-inverse btn-lg btn-block">
                                                                             </div>
-                                                                            <div class="wpcf7-response-output"
-                                                                                aria-hidden="true"></div>
                                                                         </form>
                                                                     </div>
                                                                 </div>
@@ -209,7 +151,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div data-vc-full-width="true" data-vc-full-width-init="false"
+                            <div data-vc-full-width="false" data-vc-full-width-init="false" style="left:auto;width:inherit"
                                 data-vc-stretch-content="true" class="vc_row wpb_row vc_row-fluid">
                                 <div class="wpb_column vc_column_container vc_col-sm-12">
                                     <div class="vc_column-inner">
@@ -217,8 +159,8 @@
                                             <div class="wpb_gmaps_widget wpb_content_element">
                                                 <div class="wpb_wrapper">
                                                     <div class="wpb_map_wraper"><iframe
-                                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4362.217946917728!2d-73.96433994205928!3d40.782361174716065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2f61ff729ada9%3A0xaffdbf4e2ac43486!2s85th+St+Transverse%2C+New+York%2C+NY!5e0!3m2!1sru!2sus!4v1496586369162"
-                                                            width="600" height="450" frameborder="0"
+                                                            src="https://maps.google.com/maps?hl=en&amp;q=allianz arena&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                                                             height="450" frameborder="0"
                                                             style="border:0" allowfullscreen></iframe></div>
                                                 </div>
                                             </div>
@@ -226,8 +168,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="vc_row-full-width vc_clearfix"></div>
+                                 <div class="vc_row-full-width vc_clearfix"></div>
                         </div><!-- .entry-content -->
+                        <div class="vc_empty_space" style="height: 30px"></div>
                     </div><!-- #post-## -->
 
                 </main><!-- #main -->
