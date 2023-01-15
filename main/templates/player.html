@@ -434,12 +434,12 @@
                     {% for img in gallery_images %}
                     <div class="album__item col-6 col-sm-4">
                         <div class="album__item-holder album__item-holder--color--primary">
-                            <a href="/media/{{img.image}}" class="album__item-link mp_gallery">
-                                <figure class="album__thumb"><img src="/media/{{img.image}}"></figure>
+                            <a href="{% if img.image %}/media/{{img.image}}{% else %}{{img.image_url}}{% endif %}" class="album__item-link mp_gallery">
+                                <figure class="album__thumb"><img src="{% if img.image %}/media/{{img.image}}{% else %}{{img.image_url}}{% endif %}"></figure>
                                 <div class="album__item-desc">
                                     <div class="album__item-desc-inner">
-                                        <h4 class="album__item-title">{{img.description}}</h4>
-                                        <div class="album__item-date">{{img.date|date:"F j, Y"}}</div>
+                                        {% if img.description %}<h4 class="album__item-title">{{img.description}}</h4>{% endif %}
+                                        {% if img.date %}<div class="album__item-date">{{img.date|date:"F j, Y"}}</div>{% endif %}
                                     </div>
                                 </div>
                             </a>

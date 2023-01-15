@@ -272,7 +272,7 @@ class Player_Stats(models.Model):
     ppg = models.DecimalField(decimal_places=2, max_digits=3, default=0)
     win_ratio = models.DecimalField(decimal_places=2, max_digits=3, default=0)
     motm = models.IntegerField(default=0)
-    rating = models.DecimalField(decimal_places=2, max_digits=3, default=0)
+    rating = models.DecimalField(decimal_places=2, max_digits=3, default=6)
 
     def __str__(self):
         return self.player.name + "-" + self.competition.name + "-" + self.season.name
