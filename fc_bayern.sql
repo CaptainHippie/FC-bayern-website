@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 15, 2023 at 09:45 PM
+-- Generation Time: Jan 15, 2023 at 10:11 PM
 -- Server version: 10.6.11-MariaDB-0ubuntu0.22.04.1
 -- PHP Version: 8.1.2-1ubuntu2.9
 
@@ -862,7 +862,11 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 (388, '2023-01-15 15:55:46.083041', '1', 'BundesLiga', 2, '[{\"changed\": {\"fields\": [\"Css name\"]}}]', 7, 2),
 (389, '2023-01-15 16:04:04.346841', '3', 'Serge Gnabry', 2, '[{\"added\": {\"name\": \"timeline\", \"object\": \"Serge Gnabry-2017-07-14\"}}, {\"added\": {\"name\": \"timeline\", \"object\": \"Serge Gnabry-2018-06-30\"}}, {\"changed\": {\"name\": \"timeline\", \"object\": \"Serge Gnabry-2017-07-01\", \"fields\": [\"Date\"]}}]', 19, 2),
 (390, '2023-01-15 16:11:02.233363', '3', 'Serge Gnabry', 2, '[{\"added\": {\"name\": \"timeline\", \"object\": \"Serge Gnabry-2021-04-05\"}}, {\"added\": {\"name\": \"timeline\", \"object\": \"Serge Gnabry-2020-01-02\"}}, {\"added\": {\"name\": \"timeline\", \"object\": \"Serge Gnabry-2022-03-21\"}}, {\"changed\": {\"name\": \"timeline\", \"object\": \"Serge Gnabry-2019-06-21\", \"fields\": [\"Description\", \"Date\"]}}]', 19, 2),
-(391, '2023-01-15 16:13:45.297160', '3', 'Serge Gnabry', 2, '[{\"added\": {\"name\": \"timeline\", \"object\": \"Serge Gnabry-2018-12-20\"}}, {\"added\": {\"name\": \"timeline\", \"object\": \"Serge Gnabry-2018-08-06\"}}]', 19, 2);
+(391, '2023-01-15 16:13:45.297160', '3', 'Serge Gnabry', 2, '[{\"added\": {\"name\": \"timeline\", \"object\": \"Serge Gnabry-2018-12-20\"}}, {\"added\": {\"name\": \"timeline\", \"object\": \"Serge Gnabry-2018-08-06\"}}]', 19, 2),
+(392, '2023-01-15 16:27:41.614960', '2', 'BundesLiga-Matchday 16', 1, '[{\"added\": {}}]', 49, 2),
+(393, '2023-01-15 16:35:01.012230', '5', 'Friendly-Friendly-Neeraj Vibez-cat_1x1', 3, '', 48, 2),
+(394, '2023-01-15 16:35:01.015695', '4', 'Friendly-Friendly-Neeraj Vibez-cat_1x2', 3, '', 48, 2),
+(395, '2023-01-15 16:35:01.016643', '1', 'Friendly-Friendly-Neeraj Vibez-cat_2x7', 3, '', 48, 2);
 
 -- --------------------------------------------------------
 
@@ -2211,9 +2215,7 @@ CREATE TABLE `main_sold_ticket` (
 --
 
 INSERT INTO `main_sold_ticket` (`id`, `seat_cat`, `quantity`, `match_id`, `who_id`, `payment_method`, `price`) VALUES
-(1, 'cat_2', 7, 1, 2, 'bank', '420.00'),
-(4, 'cat_1', 2, 1, 2, 'upi', '140.00'),
-(5, 'cat_1', 1, 1, 2, 'bank', '70.00');
+(12, 'cat_5', 6, 2, 2, 'bank', '90.00');
 
 -- --------------------------------------------------------
 
@@ -2350,7 +2352,8 @@ CREATE TABLE `main_tickets_collection` (
 --
 
 INSERT INTO `main_tickets_collection` (`id`, `cat_1_seats`, `cat_2_seats`, `cat_3_seats`, `cat_4_seats`, `cat_5_seats`, `match_id`, `cat_1_price`, `cat_2_price`, `cat_3_price`, `cat_4_price`, `cat_5_price`) VALUES
-(1, 197, 150, 300, 230, 0, 1, 70, 60, 45, 30, 15);
+(1, 197, 150, 300, 230, 0, 1, 70, 60, 45, 30, 15),
+(2, 12000, 8000, 8500, 10000, 13994, 4, 70, 60, 45, 30, 15);
 
 -- --------------------------------------------------------
 
@@ -2864,7 +2867,7 @@ ALTER TABLE `auth_user_user_permissions`
 -- AUTO_INCREMENT for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=392;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=396;
 
 --
 -- AUTO_INCREMENT for table `django_content_type`
@@ -3110,7 +3113,7 @@ ALTER TABLE `main_social_media_links`
 -- AUTO_INCREMENT for table `main_sold_ticket`
 --
 ALTER TABLE `main_sold_ticket`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `main_sponsor`
@@ -3134,7 +3137,7 @@ ALTER TABLE `main_team`
 -- AUTO_INCREMENT for table `main_tickets_collection`
 --
 ALTER TABLE `main_tickets_collection`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `main_timeline`

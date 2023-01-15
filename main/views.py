@@ -551,8 +551,7 @@ def save_comment(request, user_id):
     current_news = News_article.objects.get(id=current_news_id)
     return redirect('newspage', slug=current_news.slug)
 
-news_sort={ 'inj':3,'league':2,'team':1,
-        'time':'added','title':'title','views':'views','likes':'liked','comments':'comment',
+news_sort={ 'time':'added','title':'title','views':'views','likes':'liked','comments':'comment',
         'asc':'','desc':'-'
     }
 
@@ -563,10 +562,11 @@ def ALL_NEWS(request):
     sort = request.GET['sort'] if ('sort' in request.GET) else None
     order = request.GET['order'] if ('order' in request.GET) else None
     author = request.GET['author'] if ('author' in request.GET) else None
+    article_types = article_type.objects.all()
 
     if all_news.exists():
         if (categories != None) and (categories != ""):
-            all_news = all_news.filter(news_type__category=news_sort[categories])
+            all_news = all_news.filter(news_type__css_name=categories)
         if (author != None) and (author != ""):
             all_news = all_news.filter(author__id=author)
         if (sort != None):
@@ -584,9 +584,10 @@ def ALL_NEWS(request):
     news_per_page = 10
     extra_pages_count = ((int(news_count/news_per_page)-1) if ((news_count%news_per_page)==0) else int(news_count/news_per_page)) if (news_count>news_per_page) else 0
     context = {
-        'all_news' : all_news,
-        'all_authors' : all_authors,
-        'pages_count' : extra_pages_count
+        'article_types': article_types,
+        'all_news': all_news,
+        'all_authors': all_authors,
+        'pages_count': extra_pages_count
     }
     return render(request, 'all_news.html', context)
 
@@ -647,7 +648,8 @@ def BUY_TICKET(request, slug_name):
     quantity = request.POST.get('quantity')
     total = request.POST.get('total')
     cur_match = Match.objects.get(slug=slug_name)
-    logged_user = request.user if request.user.is_authenticated else None
+    logged_user_id = request.user.id if request.user.is_authenticated else None
+    logged_user = CustomUser.objects.filter(id=logged_user_id).first() if logged_user_id else None
     tickets_brought = Sold_Ticket.objects.filter(who=logged_user, match__match__slug = slug_name)
     tickets = 0
     for ticket in tickets_brought:
@@ -658,15 +660,17 @@ def BUY_TICKET(request, slug_name):
 
     if seat_type != "" and seat_type != None:
         quantity = int(quantity)
+        cur_ticket_collection = Tickets_Collection.objects.get(match__slug = slug_name)
+
         new_ticket = Sold_Ticket()
         new_ticket.who_id = logged_user.id if logged_user else None
-        new_ticket.match_id = cur_match.id
+        new_ticket.match_id = cur_ticket_collection.id
         new_ticket.seat_cat = seat_type
         new_ticket.quantity = quantity
         new_ticket.payment_method = request.POST.get('payment_method')
         new_ticket.price = float(total)
         new_ticket.save()
-        cur_ticket_collection = Tickets_Collection.objects.get(match__slug = slug_name)
+        
         if seat_type == "cat_1":
             cur_ticket_collection.cat_1_seats -= quantity
         elif seat_type == "cat_2":

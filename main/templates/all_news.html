@@ -21,10 +21,9 @@
                 <label class="post-filter__label">Category</label>
                 <select class="cs-select cs-skin-border" name="cat">
                     <option value="">All Articles</option>
-
-                    <option value="inj" {% if request.GET.cat == 'inj' %}selected{% endif %}>Injuries</option>
-                    <option value="league" {% if request.GET.cat == 'league' %}selected{% endif %}>Competitions</option>
-                    <option value="team" {% if request.GET.cat == 'team' %}selected{% endif %}>Team News</option>
+                    {% for a_type in article_types %}
+                        <option value="{{a_type.css_name}}" {% if request.GET.cat == a_type.css_name %}selected{% endif %}>{{a_type.name}}</option>
+                    {% endfor %}
                 </select>
             </div>
             <div class="post-filter__select">
