@@ -1,10 +1,12 @@
 # Football Club website
  A website I'm making for football club management, data and theme adjusted to my personal favourite club: FC Bayern
  
- This is still a work in progress, especially when it comes to feeding data. Website construction is about 70% completed.
+ This is still a work in progress, especially when it comes to populating the database,(because its huge). Website construction is about 95% completed.
  Bootstrap website template I've downloaded and tweaked to my preference, so I didn't do much work on the frontend.
- But backend is written from scratch entirely by myself, there's stil some work left to do and a some refactoring.
- The complete package should be ready before the end of the year
+ But backend is written from scratch entirely by myself, there are some future improvements I've listed down and will continue as soon as possible.
+ 
+ Requirements:
+ Any Linux/MacOS operating system with python and MySQL installed(the process is a bit more complicated on windows)
  
  How to run:
  1. create database fc_bayern and import fcbayern.sql file to get all tables and data
