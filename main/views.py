@@ -168,12 +168,12 @@ def CLUB_HISTORY(request):
 
 def STAFF(request, slug_name):
     staff = Staff.objects.get(slug=slug_name)
-    staff_news_models = News_article.objects.filter(staff_tags=staff)
+    related_news = News_article.objects.filter(staff_tags=staff)
     related_timelines = Timeline.objects.filter(staff=staff).order_by('-date')
 
     context = {
             'staff' : staff,
-            'staff_news_models': staff_news_models,
+            'related_news': related_news,
             'all_timelines': related_timelines
     }
     return render(request, 'staff.html', context)
@@ -627,6 +627,9 @@ def Like_Unlike_Btn(request, uid, pid):
 @login_required(login_url='login')
 def BOOK_TICKET(request, slug_name):
     cur_match = Match.objects.get(slug=slug_name)
+    related_tags = News_Tag.objects.filter(match=cur_match.id)
+    related_news = News_article.objects.filter(match=cur_match.id)
+
     if cur_match.booking_open == False:
         return redirect(request.META['HTTP_REFERER'])
     logged_user = request.user if request.user.is_authenticated else None
@@ -639,7 +642,9 @@ def BOOK_TICKET(request, slug_name):
     context = {
             'match': cur_match,
             'seat_category': SEAT_CATEGORY,
-            'allowed_tickets': allowed_tickets
+            'allowed_tickets': allowed_tickets,
+            'all_tags': related_tags,
+            'related_news': related_news
     }
     return render(request, 'book_tickets.html', context)
 
@@ -647,7 +652,6 @@ def BUY_TICKET(request, slug_name):
     seat_type = request.POST.get('seat_type')
     quantity = request.POST.get('quantity')
     total = request.POST.get('total')
-    cur_match = Match.objects.get(slug=slug_name)
     logged_user_id = request.user.id if request.user.is_authenticated else None
     logged_user = CustomUser.objects.filter(id=logged_user_id).first() if logged_user_id else None
     tickets_brought = Sold_Ticket.objects.filter(who=logged_user, match__match__slug = slug_name)

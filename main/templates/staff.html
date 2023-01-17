@@ -62,9 +62,9 @@
                             </div>
                         </div>
 
-                        {% if staff_news_models.count > 0 %}
+                        
                         <!-- Post Loop -->
-                        <div class="card card--clean mb-0">
+                        <!--div class="card card--clean mb-0">
 
                             <div class="card__header">
                                 <h4 class="">Related News</h4>
@@ -119,11 +119,11 @@
                                     </article>
                                     {% endfor %}
 
-                                </div><!-- .posts -->
+                                </div>
                             </div>
-                        </div>
+                        </div-->
                         <!-- Post Loop / End -->
-                        {% endif %}
+                        
                         
                     </div>
                 </div>
@@ -158,6 +158,10 @@
                             {% endif %}
                         </div>
                         <!-- Widget: Social Buttons / End -->
+                        {% endif %}
+
+                        {% if related_news.count > 0 %}
+                            {% include 'includes/widgets/related_news.html' %}
                         {% endif %}
 
                         {% if all_timelines.count > 0 %}
