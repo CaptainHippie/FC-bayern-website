@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -10,7 +10,7 @@ from . models import *
 from . import calculations
 from . forms import News_Article_Form
 from cart.context_processor import cart_total_amount
-from django.http import FileResponse
+from django.http import Http404
 
 def HOME(request):
     featured_news = News_article.objects.filter(featured=True)
@@ -33,7 +33,7 @@ def HOME(request):
     return render(request, 'home.html', context)
 
 def NEWS(request, slug):
-    post = News_article.objects.filter(slug=slug).first()
+    post = get_object_or_404(News_article, slug=slug)
 
     if post:
         post.views += 1
@@ -55,7 +55,7 @@ def NEWS(request, slug):
     return render(request, 'news.html', context)
 
 def MATCH_DETAIL(request, slug_name):
-    match = Match.objects.get(slug=slug_name)
+    match = get_object_or_404(Match, slug=slug_name)
     events = Match_timeline.objects.filter(match=match).order_by('minute')
     related_tags = News_Tag.objects.filter(match=match.id)
     related_news = News_article.objects.filter(match=match.id)
@@ -69,7 +69,7 @@ def MATCH_DETAIL(request, slug_name):
     return render(request, 'match_details.html', context)
 
 def PLAYER_DETAIL(request, slug_name):
-    player = Player.objects.get(slug=slug_name)
+    player = get_object_or_404(Player, slug=slug_name)
     all_league_stats = Player_Stats.objects.filter(player__slug=slug_name, competition__name="BundesLiga").order_by('-season__start_year')
     ucl_stats = Player_Stats.objects.filter(player__slug=slug_name, competition__name="UEFA Champions League").order_by('-season__start_year')
     pokal_stats = Player_Stats.objects.filter(player__slug=slug_name, competition__name="DFB Pokal").order_by('-season__start_year')
@@ -167,7 +167,7 @@ def CLUB_HISTORY(request):
 
 
 def STAFF(request, slug_name):
-    staff = Staff.objects.get(slug=slug_name)
+    staff = get_object_or_404(Staff, slug=slug_name)
     related_news = News_article.objects.filter(staff_tags=staff)
     related_timelines = Timeline.objects.filter(staff=staff).order_by('-date')
 
@@ -180,14 +180,14 @@ def STAFF(request, slug_name):
 
 
 def BOARD_MEMBER(request, slug_name):
-    officer = Board_Member.objects.filter(slug=slug_name).first()
+    officer = get_object_or_404(Board_Member, slug=slug_name)
     context = {
             'officer' : officer
     }
     return render(request, 'board_member.html', context)
 
 def MINI_ARTICLE(request, slug_name):
-    article = Mini_Articles.objects.filter(slug=slug_name).first()
+    article = get_object_or_404(Mini_Articles, slug=slug_name)
     context = {
             'article' : article
     }
@@ -202,7 +202,7 @@ def ALBUM(request, slug_name):
 
 @login_required(login_url='login')
 def ACCOUNT(request, slug_name):
-    logged_user = CustomUser.objects.filter(id=request.user.id).first()
+    logged_user = get_object_or_404(CustomUser, id=request.user.id)
     all_orders = Order.objects.filter(user__slug=slug_name)
     billing_address = Address.objects.filter(user=logged_user, address_type="billing").first()
     shipping_address = Address.objects.filter(user=logged_user, address_type="shipping").first()
@@ -259,11 +259,13 @@ def ACCOUNT(request, slug_name):
     if slug_name == logged_user.slug:
         return render(request, 'account.html', context)
     else:
-        return redirect('login')
+        raise Http404()
 
 @login_required(login_url='login')
 def ADDRESS(request, slug_name, addr_type):
-    logged_user = CustomUser.objects.get(slug=slug_name)
+    if addr_type != "billing" and addr_type != "shipping":
+        raise Http404()
+    logged_user = get_object_or_404(CustomUser, slug=slug_name)
     current_address_set = logged_user.address_set.filter(address_type=addr_type)
     context = {
         'address_type': addr_type,
@@ -326,6 +328,7 @@ def REG_LOGIN(request):
     if 'login' in request.POST:
         uname_or_email = request.POST.get('username')
         password = request.POST.get('password')
+        rememberme = request.POST.get('rememberme')
 
         customuser = None
         user_auth = None
@@ -341,10 +344,21 @@ def REG_LOGIN(request):
 
         if user_auth is not None:
             login(request, user_auth)
+            if rememberme == "forever":
+                response = redirect('account', slug_name=customuser.slug)  # django.http.HttpResponse
+                response.set_cookie(key='uname_email', value=uname_or_email)
+                response.set_cookie(key='rem_pass', value=password)
+                return response
             return redirect('account', slug_name=customuser.slug)
         else:
             messages.error(request, 'Invalid password!')
             return redirect('login')
+    if request.COOKIES.get('uname_email'):
+        context = {
+            'rem_user': request.COOKIES['uname_email'],
+            'rem_pword': request.COOKIES['rem_pass']
+        }
+        return render(request, 'register_login.html', context)
     return render(request, 'register_login.html')
 
 @login_required(login_url='login')
@@ -396,7 +410,7 @@ def SHOP(request, cat=None):
     return render(request, 'shop.html', context)
 
 def PRODUCT(request, slug_name):
-    product = Merchandise.objects.get(slug=slug_name)
+    product = get_object_or_404(Merchandise, slug=slug_name)
     all_players = Player.objects.all().order_by('kit_no')
     if request.method == 'POST':
         cur_cart = Cart(request)
@@ -413,19 +427,6 @@ def PRODUCT(request, slug_name):
             'all_players' : all_players
     }
     return render(request, 'product_detail.html', context)
-
-
-def TEST(request):
-    form = News_Article_Form()
-    form_post = News_Article_Form(request.POST)
-    if form_post.is_valid():
-        form_post.save()
-        return redirect('test')
-    context = {
-            'article_form' : form
-    }
-    return render(request, 'test.html', context)
-
 
 def cart_add(request, size, player, id):
     cart = Cart(request)
@@ -482,7 +483,7 @@ def CART(request):
 
 @login_required(login_url='login')
 def ORDER(request, slug_name, order_id):
-    current_order = Order.objects.get(id=order_id)
+    current_order = get_object_or_404(Order, id=order_id)
     context = {
             'order' : current_order,
     }
@@ -593,7 +594,7 @@ def ALL_NEWS(request):
 
 def NEWS_BY_TAGS(request, tag_name):
     all_tags = News_Tag.objects.annotate(news_count=Count('news_article')).order_by('-news_count','name')
-    tag = News_Tag.objects.get(name=tag_name)
+    tag = get_object_or_404(News_Tag, name=tag_name)
     all_news = News_article.objects.filter(tags=tag.id).order_by('-added')
 
     news_count = all_news.count()
@@ -626,7 +627,7 @@ def Like_Unlike_Btn(request, uid, pid):
     
 @login_required(login_url='login')
 def BOOK_TICKET(request, slug_name):
-    cur_match = Match.objects.get(slug=slug_name)
+    cur_match = get_object_or_404(Match, slug=slug_name)
     related_tags = News_Tag.objects.filter(match=cur_match.id)
     related_news = News_article.objects.filter(match=cur_match.id)
 
@@ -701,3 +702,18 @@ def Send_Contact_form(request):
 
 def DOWNLOAD_TICKET(request):
     pass
+
+def ERROR_404(request, exception):
+    return render(request, '404.html')
+
+def TEST(request):
+    form = News_Article_Form()
+    form_post = News_Article_Form(request.POST)
+    if form_post.is_valid():
+        form_post.save()
+        return redirect('test')
+    context = {
+            'article_form' : form
+    }
+
+    return render(request, 'test.html', context)

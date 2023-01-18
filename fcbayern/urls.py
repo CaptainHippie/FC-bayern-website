@@ -13,13 +13,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.urls import re_path as url
 from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from main import views
 
+from django.views.static import serve
+
 urlpatterns = [
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+    url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
+
     path('admin/', admin.site.urls),
     path('', views.HOME, name='home'),
     path('news/', views.ALL_NEWS, name='news_all'),
@@ -62,6 +68,10 @@ urlpatterns = [
     path('like/<int:uid>/<int:pid>', views.Like_Unlike_Btn, name='like'),
 
     path('contact_us/', views.CONTACT_US, name='contact'),
-    path('contact_us/send/', views.Send_Contact_form, name='contact_send')
+    path('contact_us/send/', views.Send_Contact_form, name='contact_send'),
+
+    path('404/', views.ERROR_404, name='error_404')
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT )
+
+handler404 = 'main.views.ERROR_404'

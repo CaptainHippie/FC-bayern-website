@@ -57,12 +57,12 @@
                                                     <div class="form-group">
                                                         <label for="username">Username or email address&nbsp;<span class="required">*</span></label>
                                                         <input type="text" class="woocommerce-Input woocommerce-Input--text form-control"
-                                                            name="username" id="username" autocomplete="username" value="" />
+                                                            name="username" id="username" autocomplete="username" value="{{rem_user}}" />
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="password">Password&nbsp;<span class="required">*</span></label>
                                                         <input class="woocommerce-Input woocommerce-Input--text form-control"
-                                                            type="password" name="password" id="password" autocomplete="current-password" />
+                                                            type="password" name="password" id="password" autocomplete="current-password" value="{{rem_pword}}" />
                                                     </div>
 
                                                     <div class="form-group form-group--password-forgot">
@@ -70,12 +70,12 @@
                                                             <div class="col-sm-5">
                                                                 <label class="checkbox checkbox-inline">
                                                                     <input type="checkbox" name="rememberme" type="checkbox" id="rememberme"
-                                                                        value="forever"> Remember me <span class="checkbox-indicator"></span>
+                                                                        value="forever" {% if rem_user %}checked{% endif %}> Remember me <span class="checkbox-indicator"></span>
                                                                 </label>
                                                             </div>
                                                             <div class="col-sm-7 lost_password-wrap">
                                                                 <span class="password-reminder woocommerce-LostPassword lost_password"> Lost your password? 
-                                                                    <a href="http://alchemists-wp.dan-fisher.com/soccer-dark/my-account/lost-password/">Click Here</a>
+                                                                    <a href="">Click Here</a>
                                                                 </span>
                                                             </div>
                                                         </div>

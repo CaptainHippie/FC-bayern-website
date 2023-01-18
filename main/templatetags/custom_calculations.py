@@ -78,7 +78,7 @@ def calc_rnd_price(price, qty):
 
 @register.filter(name='has_group')
 def has_group(user, group_name):
-    group = Group.objects.get(name=group_name)
+    group = Group.objects.filter(name=group_name).first()
     return True if group in user.groups.all() else False
 
 @register.filter(name='get_players')

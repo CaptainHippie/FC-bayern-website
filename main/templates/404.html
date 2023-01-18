@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="page-heading page-heading--has-bg">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-10 offset-lg-1">
+
+                <h1 class="page-heading__title">404 Error </h1>
+
+                <nav role="navigation" aria-label="Breadcrumbs" class="breadcrumb-trail breadcrumbs"
+                    itemprop="breadcrumb">
+                    <ul class="trail-items">
+                        <meta name="numberOfItems" content="2" />
+                        <meta name="itemListOrder" content="Ascending" />
+                        <li class="trail-item trail-begin">
+                            <a href="{% url 'home' %}">Home</span></a>
+                            <meta itemprop="position" content="1" />
+                        </li>
+                        <li class="trail-item trail-end">
+                            <span itemprop="item"><span itemprop="name">404 Not Found</span></span>
+                            <meta itemprop="position" content="2" />
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="site-content" id="content">
+    <div class="container">
+
+        <!-- Error 404 -->
+        <div class="error-404">
+            <div class="row">
+                <div class="col-lg-8 offset-md-2">
+                    <figure class="error-404__figure error-404__figure--cross">
+                        <img src="{% static 'images/icon-ghost.svg' %}"
+                            alt="404 Error Image">
+                    </figure>
+                    <header class="error__header">
+                        <h2 class="error__title">OOOOPS! Page not Found </h2>
+                        <h3 class="error__subtitle">Seems that we have a problem! </h3>
+                    </header>
+                    <div class="error__description">
+                        The page you are looking for has been moved or doesn't exist anymore, if you like you
+                        can return to our homepage. If the problem persists, please 
+                        <a href="{% url 'contact' %}">contact us</a>
+                    </div>
+                    <footer class="error__cta">
+
+                        <a href="{% url 'home' %}" class="btn btn-primary">
+                            Return to Home </a>
+
+                    </footer>
+                </div>
+            </div>
+        </div>
+        <!-- Error 404 / End -->
+
+    </div>
+</div>
+
+{% endblock %}
