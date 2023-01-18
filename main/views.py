@@ -13,7 +13,7 @@ from cart.context_processor import cart_total_amount
 from django.http import Http404
 
 def HOME(request):
-    featured_news = News_article.objects.filter(featured=True)
+    featured_news = News_article.objects.filter(featured=True).order_by('-added')
     last_match = Match.objects.filter(finished=True).order_by('-time').first()
     events = Match_timeline.objects.filter(match=last_match).order_by('minute')
     league_stats_widget = Club_season_stats.objects.filter(competition__name="BundesLiga").order_by('-points','-goal_diff','-scored')
@@ -141,7 +141,7 @@ def CLUB_HISTORY(request):
     president = Board_Member.objects.filter(board_type="ev", designation="President").first()
     ev_members = Board_Member.objects.filter(board_type="ev").exclude(designation="President")
 
-    trophies = Trophies.objects.all().order_by('-count')
+    trophies = Trophies.objects.all().order_by('priority','-count')
 
     honourary_members = Mini_Articles.objects.filter(category="past_mem")
     milestones = Mini_Articles.objects.filter(category="milestone")
@@ -200,7 +200,7 @@ def ALBUM(request, slug_name):
     }
     return render(request, 'album.html', context)
 
-@login_required(login_url='login')
+@login_required(login_url='custom_login')
 def ACCOUNT(request, slug_name):
     logged_user = get_object_or_404(CustomUser, id=request.user.id)
     all_orders = Order.objects.filter(user__slug=slug_name)
@@ -261,12 +261,12 @@ def ACCOUNT(request, slug_name):
     else:
         raise Http404()
 
-@login_required(login_url='login')
+@login_required(login_url='custom_login')
 def ADDRESS(request, slug_name, addr_type):
     if addr_type != "billing" and addr_type != "shipping":
         raise Http404()
     logged_user = get_object_or_404(CustomUser, slug=slug_name)
-    current_address_set = logged_user.address_set.filter(address_type=addr_type)
+    current_address_set = logged_user.address_set.filter(address_type=addr_type).first()
     context = {
         'address_type': addr_type,
         'current_address': current_address_set
@@ -314,7 +314,7 @@ def REG_LOGIN(request):
         password = request.POST.get('password')
         if CustomUser.objects.filter(email=email).exists():
             messages.error(request,"email already registered. Login or use a different email")
-            return redirect('login')
+            return redirect('custom_login')
         user = CustomUser()
         user.username = email
         user.email = email
@@ -323,7 +323,7 @@ def REG_LOGIN(request):
         user.set_password(password)
         user.save()
         messages.success(request,"user registered successfully")
-        return redirect('login')
+        return redirect('custom_login')
 
     if 'login' in request.POST:
         uname_or_email = request.POST.get('username')
@@ -340,7 +340,7 @@ def REG_LOGIN(request):
             user_auth = authenticate(request, username=customuser.username, password=password)
         else:
             messages.error(request, 'invalid username or email not registered!')
-            return redirect('login')
+            return redirect('custom_login')
 
         if user_auth is not None:
             login(request, user_auth)
@@ -352,19 +352,19 @@ def REG_LOGIN(request):
             return redirect('account', slug_name=customuser.slug)
         else:
             messages.error(request, 'Invalid password!')
-            return redirect('login')
+            return redirect('custom_login')
     if request.COOKIES.get('uname_email'):
         context = {
             'rem_user': request.COOKIES['uname_email'],
             'rem_pword': request.COOKIES['rem_pass']
         }
-        return render(request, 'register_login.html', context)
-    return render(request, 'register_login.html')
+        return render(request, 'registration/login.html', context)
+    return render(request, 'registration/login.html')
 
-@login_required(login_url='login')
+@login_required(login_url='custom_login')
 def LOGOUT(request):
     logout(request)
-    return redirect('login')
+    return redirect('custom_login')
 
 
 def SHOP(request, cat=None):
@@ -481,7 +481,7 @@ def CART(request):
         return redirect("cart")
     return render(request, 'cart.html')
 
-@login_required(login_url='login')
+@login_required(login_url='custom_login')
 def ORDER(request, slug_name, order_id):
     current_order = get_object_or_404(Order, id=order_id)
     context = {
@@ -490,7 +490,7 @@ def ORDER(request, slug_name, order_id):
 
     return render(request, 'orders.html', context)
 
-@login_required(login_url='login')
+@login_required(login_url='custom_login')
 def CHECKOUT(request):
     logged_user_id = request.user.id if request.user.is_authenticated else None
     logged_user = CustomUser.objects.filter(id=logged_user_id).first() if logged_user_id else None
@@ -540,7 +540,7 @@ def CHECKOUT(request):
     }
     return render(request, 'checkout.html', context)
 
-@login_required(login_url='login')
+@login_required(login_url='custom_login')
 def save_comment(request, user_id):
     new_comment = Comment()
     current_news_id = request.POST.get('comment_post_ID')
@@ -625,7 +625,7 @@ def Like_Unlike_Btn(request, uid, pid):
     like.save()
     return redirect(request.META['HTTP_REFERER'])
     
-@login_required(login_url='login')
+@login_required(login_url='custom_login')
 def BOOK_TICKET(request, slug_name):
     cur_match = get_object_or_404(Match, slug=slug_name)
     related_tags = News_Tag.objects.filter(match=cur_match.id)

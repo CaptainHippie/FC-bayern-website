@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.urls import re_path as url
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from main import views
@@ -49,7 +49,7 @@ urlpatterns = [
     path('account/<slug:slug_name>/<str:addr_type>/', views.ADDRESS, name='address'),
     path('account/<slug:slug_name>/order/<int:order_id>/', views.ORDER, name='order'),
     path('logout/', views.LOGOUT, name='logout'),
-    path('login/', views.REG_LOGIN, name='login'),
+    path('login/', views.REG_LOGIN, name='custom_login'),
     path('shop/', views.SHOP, name='shop'),
     path('shop/category/<str:cat>/', views.SHOP, name='shop_category'),
     path('shop/product/<slug:slug_name>/', views.PRODUCT, name='product'),
@@ -57,6 +57,8 @@ urlpatterns = [
     path('shop/checkout/', views.CHECKOUT, name='checkout'),
     path('download_ticket/', views.DOWNLOAD_TICKET, name='download_ticket'),
     path('test/', views.TEST, name='test'),
+
+    path('accounts/', include('django.contrib.auth.urls')),
 
     #cart
     path('cart/add/<int:size>/<int:player>/<int:id>/', views.cart_add, name='cart_add'),

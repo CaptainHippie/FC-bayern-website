@@ -10,7 +10,7 @@ from django.utils import timezone
 class article_type(models.Model):
     name = models.CharField(max_length=20)
     css_name = models.CharField(max_length=20, null=True, blank=True)
-    category = models.SmallIntegerField(default=1)
+    category = models.PositiveSmallIntegerField(default=1)
 
     def __str__(self):
         return self.name
@@ -33,13 +33,13 @@ class Player(models.Model):
     name = models.CharField(max_length=100)
     first_name = models.CharField(max_length=100, null=True, blank=True)
     second_name = models.CharField(max_length=100, null=True, blank=True)
-    kit_no = models.IntegerField(null=True)
+    kit_no = models.PositiveSmallIntegerField(null=True)
     nationality = CountryField(blank_label='(select country)', null=True)
     profile_pic = models.ImageField(
         default='players/player-placeholder-380x570.jpg', upload_to='players', null=True)
     height = models.DecimalField(decimal_places=2, max_digits=3, null=True, blank=True)
-    weight = models.IntegerField(null=True, blank=True)
-    age = models.IntegerField(null=True, blank=True)
+    weight = models.PositiveSmallIntegerField(null=True, blank=True)
+    age = models.PositiveSmallIntegerField(null=True, blank=True)
     past_club = models.CharField(max_length=100, null=True, blank=True)
     position = models.CharField(max_length=10, choices=POSITIONS, default='midfielder')
     born = models.DateField(null=True, blank=True)
@@ -58,7 +58,7 @@ class Staff(models.Model):
     nationality = CountryField(blank_label='(select country)', null=True)
     profile_pic = models.ImageField(
         default='players/player-placeholder-380x570.jpg', upload_to='staff', null=True)
-    age = models.IntegerField(null=True)
+    age = models.PositiveSmallIntegerField(null=True)
     previous_post = models.CharField(max_length=100, null=True, blank=True)
     short_name = models.CharField(max_length=10, null=True)
     born = models.DateField(null=True, blank=True)
@@ -161,14 +161,14 @@ class Team(models.Model):
 
 class Club_season_stats(models.Model):
     club = models.ForeignKey(Team, on_delete=models.CASCADE, null=True)
-    played = models.IntegerField(null=True)
-    wins = models.IntegerField(null=True)
-    loss = models.IntegerField(null=True)
-    draw = models.IntegerField(null=True)
-    scored = models.IntegerField(null=True)
-    conceded = models.IntegerField(null=True)
-    goal_diff = models.IntegerField(null=True)
-    points = models.IntegerField(null=True)
+    played = models.PositiveSmallIntegerField(null=True)
+    wins = models.PositiveSmallIntegerField(null=True)
+    loss = models.PositiveSmallIntegerField(null=True)
+    draw = models.PositiveSmallIntegerField(null=True)
+    scored = models.PositiveSmallIntegerField(null=True)
+    conceded = models.PositiveSmallIntegerField(null=True)
+    goal_diff = models.SmallIntegerField(null=True)
+    points = models.PositiveSmallIntegerField(null=True)
     competition = models.ForeignKey(
         Competition, on_delete=models.CASCADE, null=True)
 
@@ -249,7 +249,7 @@ class Match_timeline(models.Model):
 
 class Season(models.Model):
     name = models.CharField(max_length=100)
-    start_year = models.IntegerField(null=True)
+    start_year = models.PositiveSmallIntegerField(null=True)
 
     def __str__(self):
         return self.name
@@ -260,18 +260,18 @@ class Player_Stats(models.Model):
     season = models.ForeignKey(Season, on_delete=models.CASCADE)
     competition = models.ForeignKey(Competition, on_delete=models.CASCADE)
 
-    apps = models.IntegerField(default=0)
-    minutes = models.IntegerField(default=0)
-    goals = models.IntegerField(default=0)
-    assists = models.IntegerField(default=0)
-    yellows = models.IntegerField(default=0)
-    reds = models.IntegerField(default=0)
-    own_goals = models.IntegerField(default=0)
-    fouls = models.IntegerField(default=0)
-    offsides = models.IntegerField(default=0)
+    apps = models.PositiveSmallIntegerField(default=0)
+    minutes = models.PositiveSmallIntegerField(default=0)
+    goals = models.PositiveSmallIntegerField(default=0)
+    assists = models.PositiveSmallIntegerField(default=0)
+    yellows = models.PositiveSmallIntegerField(default=0)
+    reds = models.PositiveSmallIntegerField(default=0)
+    own_goals = models.PositiveSmallIntegerField(default=0)
+    fouls = models.PositiveSmallIntegerField(default=0)
+    offsides = models.PositiveSmallIntegerField(default=0)
     ppg = models.DecimalField(decimal_places=2, max_digits=3, default=0)
     win_ratio = models.DecimalField(decimal_places=2, max_digits=3, default=0)
-    motm = models.IntegerField(default=0)
+    motm = models.PositiveSmallIntegerField(default=0)
     rating = models.DecimalField(decimal_places=2, max_digits=3, default=6)
 
     def __str__(self):
@@ -367,7 +367,7 @@ class Merchandise(models.Model):
     category = models.ForeignKey(Merchandise_Type, on_delete=models.CASCADE, null=True)
     featured_image = models.ImageField(default='shop/product_default.jpg', upload_to='shop', null=True)
     price = models.DecimalField(decimal_places=2, max_digits=10, null=True)
-    discount = models.IntegerField()
+    discount = models.PositiveSmallIntegerField()
     description = models.TextField(null=True)
     product_information = RichTextField(null=True)
     slug = models.SlugField(default='', max_length=500, null=True, blank=True)
@@ -424,7 +424,7 @@ class Order(models.Model):
 class Order_Item(models.Model):
     parent_order = models.ForeignKey(Order, on_delete=models.CASCADE)
     product = models.ForeignKey(Merchandise, on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=1, null=True)
+    quantity = models.PositiveSmallIntegerField(default=1, null=True)
     price = models.DecimalField(decimal_places=2, max_digits=10, null=True)
     player = models.ForeignKey(Player, on_delete=models.CASCADE, null=True, blank=True)
     size = models.ForeignKey(Merchandise_Size, on_delete=models.CASCADE, null=True, blank=True)
@@ -457,7 +457,8 @@ class Board_Member(models.Model):
 
 class Trophies(models.Model):
     name = models.CharField(max_length=100)
-    count = models.SmallIntegerField(blank=True, null=True)
+    count = models.PositiveSmallIntegerField(blank=True, null=True)
+    priority = models.PositiveSmallIntegerField(default=2, blank=True, null=True)
     image = models.CharField(default='/media/trophies/placeholder-210x210.png', max_length=600)
 
     def __str__(self):

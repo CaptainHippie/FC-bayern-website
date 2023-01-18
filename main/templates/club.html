@@ -47,7 +47,7 @@
                     <p>With over 290,000 club members, FC Bayern M&uuml;nchen eV is the sports club boasting the largest number of members in the world. 
                         Through their membership, our supporters not only document their identification with the club, but are also part of the large FC Bayern family.</p>
                     <p>Your heart also beats for FC Bayern Munich and you would like to be part of the red and white club family? Then apply for&nbsp;
-                        <a href="{% url 'login' %}">membership</a>&nbsp;
+                        <a href="{% url 'custom_login' %}">membership</a>&nbsp;
                         now - we look forward to welcoming you!</p>
                     <p>You can find all the important information about membership here on this page.</p>
                     <p><strong>Oh, and by the way:</strong></p>
@@ -292,34 +292,18 @@
                                                                 <div class="vc_empty_space" style="height: 25px"></div>
 
                                                                 <div class="team-roster team-roster--grid team-roster--grid-col-trophy sp-player-gallery-wrapper sp-gallery-wrapper">                                                       
-                                                                    {% for trophy in all_trophies %}
-                                                                
-                                                                    <div class='team-roster__item' style="height: 260px;flex-basis" >
-                                                                        <div class='team-roster__holder' 
-                                                                        style="height: inherit;background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.9))">
-                                                                            <figure class='team-roster__img' style="border: none">
-                                                                                <img src="{{trophy.image}}">
-                                                                            </figure>
-                                                                            <div class='team-roster__content'>
-                                                                                <div class='team-roster__content-inner'>
-                                                                                    <div class='team-roster__member-info'>
-                                                                                        <div style="font-size:20px;text-align:center;color:white"><b>{{trophy.count}}</b></div> 
-                                                                                        <div style="font-size:17px;text-align:center;color:#c4ccd8">{{trophy.name}}</div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    {% endfor%}
-
 
                                                                     {% for trophy in all_trophies %}
                     
                                                                     <div class='custom-card-item-trophy'>
-                                                                        <div style="background-color: rgb(18 31 56)">
+                                                                        <div class='card-trophy-flex-bg'>
                                                                             <img class="trophy-image" src="{{trophy.image}}">
-                                                                            <div class="custom-card-subheading"><span>{{trophy.count}}</span></div>
-                                                                            <h6 class="custom-card-heading">{{trophy.name}}</h6>
+                                                                            <div class="trophy-desc">
+                                                                                <div class="trophy-desc-inner">
+                                                                                    <div class="trophy-card-name"><span>{{trophy.name}}</span></div>
+                                                                                    <h6 class="trophy-card-count">{{trophy.count}}</h6>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                     {% endfor%}

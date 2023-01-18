@@ -3,13 +3,13 @@
 {% load countries %}
 {% get_countries as countries %}
 
+<title>{{address_type}} address - {{logged_user.username}}</title>
 <div class="site-content " id="content">
     <div class="container">
         <div class="row">
 
             <div id="primary" class="content-area col-lg-12">
                 <main id="main" class="site-main">
-
 
                     <div id="post-83" class="post-83 page type-page status-publish hentry">
 
@@ -18,18 +18,12 @@
 
                                 <div class="row woocommerce-account">
 
-
-
                                     <div class="col-lg-12 alc-account-content alc-account-content--default">
-
-
-
 
                                         <div class="card card--lg">
                                             <header class="card__header"><h4>Addresses</h4></header>
                                             <div class="card__content">
                                                 <div class="woocommerce-notices-wrapper">
-
 
 
                                                 </div>
@@ -44,21 +38,21 @@
                                                                 <label for="first_name" class="">First name <abbr class="required" title="required">*</abbr></label>
                                                                 <span class="woocommerce-input-wrapper">
                                                                     <input type="text" class="input-text " name="first_name" id="first_name" 
-                                                                    placeholder="" value="{{current_address.first.first_name}}" autocomplete="given-name" />
+                                                                    placeholder="" value="{{current_address.first_name}}" autocomplete="given-name" />
                                                                 </span>
                                                             </p>
                                                             <p class="form-row form-row-last validate-required" id="last_name_field" data-priority="20">
                                                                 <label for="last_name" class="">Last name <abbr class="required" title="required">*</abbr></label>
                                                                 <span class="woocommerce-input-wrapper">
                                                                     <input type="text" class="input-text " name="last_name" id="last_name" 
-                                                                        placeholder="" value="{{current_address.first.last_name}}" autocomplete="family-name" />
+                                                                        placeholder="" value="{{current_address.last_name}}" autocomplete="family-name" />
                                                                 </span>
                                                             </p>
                                                             <p class="form-row form-row-wide" id="company_field" data-priority="30">
                                                                 <label for="company" class="">Company name <span class="optional">(optional)</span></label>
                                                                 <span class="woocommerce-input-wrapper">
                                                                     <input type="text" class="input-text " name="company" id="company" placeholder=""
-                                                                        value="{{current_address.first.company}}" autocomplete="organization" />
+                                                                        value="{{current_address.company}}" autocomplete="organization" />
                                                                 </span>
                                                             </p>
                                                             <p class="form-row form-row-wide address-field update_totals_on_change validate-required" id="country_field" data-priority="40">
@@ -69,7 +63,7 @@
 
                                                                         <option value="">Select a country / region&hellip;</option>
                                                                         {% for country in countries %}
-                                                                        <option style="color:black" value="{{ country.code }}" {% if current_address.first.country == country.code %} selected {% endif %}>{{ country.name }}</option>
+                                                                        <option style="color:black" value="{{ country.code }}" {% if current_address.country == country.code %} selected {% endif %}>{{ country.name }}</option>
                                                                         {% endfor %}
 
                                                                     </select>
@@ -79,7 +73,7 @@
                                                                 <label for="address_1" class="">Street address <abbr class="required" title="required">*</abbr></label>
                                                                 <span class="woocommerce-input-wrapper">
                                                                     <input type="text" class="input-text " name="address_1" id="address_1"
-                                                                        placeholder="House number and street name" value="{{current_address.first.address_1}}" autocomplete="address-line1" />
+                                                                        placeholder="House number and street name" value="{{current_address.address_1}}" autocomplete="address-line1" />
                                                                 </span>
                                                             </p>
                                                             <p class="form-row form-row-wide address-field" id="address_2_field" data-priority="60">
@@ -88,27 +82,27 @@
                                                                 </label>
                                                                 <span class="woocommerce-input-wrapper">
                                                                     <input type="text" class="input-text " name="address_2" id="address_2"
-                                                                        placeholder="Apartment, suite, unit, etc. (optional)" value="{{current_address.first.address_2}}" autocomplete="address-line2" />
+                                                                        placeholder="Apartment, suite, unit, etc. (optional)" value="{{current_address.address_2}}" autocomplete="address-line2" />
                                                                 </span>
                                                             </p>
                                                             <p class="form-row form-row-wide address-field validate-required validate-postcode" id="postcode_field" data-priority="65">
                                                                 <label for="postcode" class="">Postcode / ZIP <abbr class="required" title="required">*</abbr></label>
                                                                 <span class="woocommerce-input-wrapper">
                                                                     <input type="text" class="input-text " name="postcode" id="postcode" placeholder=""
-                                                                        value="{{current_address.first.postcode}}" autocomplete="postal-code" />
+                                                                        value="{{current_address.postcode}}" autocomplete="postal-code" />
                                                                 </span>
                                                             </p>
                                                             <p class="form-row form-row-wide address-field validate-required" id="city_field" data-priority="70">
                                                                 <label for="city" class="">Town / City <abbr class="required" title="required">*</abbr></label>
                                                                 <span class="woocommerce-input-wrapper">
                                                                     <input type="text" class="input-text " name="city" id="city"
-                                                                        placeholder="" value="{{current_address.first.city}}" autocomplete="address-level2" />
+                                                                        placeholder="" value="{{current_address.city}}" autocomplete="address-level2" />
                                                                 </span>
                                                             </p>
                                                             <p class="form-row form-row-wide address-field validate-state" id="state_field" data-priority="80">
                                                                 <label for="state" class="">State / County <abbr class="required" title="required">*</abbr></label>
                                                                 <span class="woocommerce-input-wrapper">
-                                                                    <input type="text" class="input-text " name="state" id="state" value="{{current_address.first.state}}" 
+                                                                    <input type="text" class="input-text " name="state" id="state" value="{{current_address.state}}" 
                                                                         autocomplete="address-level1" placeholder="">
                                                                 </span>
                                                             </p>
@@ -116,14 +110,14 @@
                                                                 <label for="phone" class="">Phone <abbr class="required" title="required">*</abbr></label>
                                                                 <span class="woocommerce-input-wrapper">
                                                                     <input type="tel" class="input-text " name="phone" id="phone"
-                                                                        placeholder="" value="{{current_address.first.phone_number}}" autocomplete="tel" />
+                                                                        placeholder="" value="{{current_address.phone_number}}" autocomplete="tel" />
                                                                 </span>
                                                             </p>
                                                             <p class="form-row form-row-wide validate-required validate-email" id="email_field" data-priority="110">
                                                                 <label for="email" class="">Email address <abbr class="required" title="required">*</abbr></label>
                                                                 <span class="woocommerce-input-wrapper">
                                                                     <input type="email" class="input-text " name="email" id="email" placeholder=""
-                                                                        value="{{current_address.first.email}}" autocomplete="email username" />
+                                                                        value="{{current_address.email}}" autocomplete="email username" />
                                                                 </span>
                                                             </p>
                                                         </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 15, 2023 at 10:11 PM
+-- Generation Time: Jan 19, 2023 at 01:23 AM
 -- Server version: 10.6.11-MariaDB-0ubuntu0.22.04.1
 -- PHP Version: 8.1.2-1ubuntu2.9
 
@@ -40,7 +40,7 @@ INSERT INTO `auth_group` (`id`, `name`) VALUES
 (1, 'Content Creators'),
 (3, 'Customer Service'),
 (2, 'Matchday Admin'),
-(4, 'Shop Handler');
+(4, 'Shop Manager');
 
 -- --------------------------------------------------------
 
@@ -416,9 +416,9 @@ CREATE TABLE `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(2, 'pbkdf2_sha256$390000$hU9yZogGfHRoBaXPNbTJtU$WiPUwhQC8Hvl/y6NUnkBBDVjhPKTgD7ltn3R9PfN5ZE=', '2023-01-11 17:50:45.265926', 1, 'Neerajvibez', 'Neeraj', 'V B', 'neerajvb@gmail.com', 1, 1, '2022-12-16 09:09:59.000000'),
+(2, 'pbkdf2_sha256$390000$jdeKk93HK7jWTs2Gnd0yA3$kUUYAT4MfynXu1/pqgmbvA6uTCjBuJS20j36JtYjdEs=', '2023-01-18 19:19:17.532312', 1, 'Neerajvibez', 'Neeraj', 'V B', 'neerajvb@gmail.com', 1, 1, '2022-12-16 09:09:59.000000'),
 (3, 'pbkdf2_sha256$390000$cPkRaIlss4jDv2JHgZi2Wx$BCAllESlQvH7MWVbVtx0RpGeiMMlzl+dW1D8+XWVzKE=', '2022-12-18 19:32:17.000000', 0, 'NeerajVB3', '', '', 'neerajvb3@gmail.com', 0, 1, '2022-12-18 19:30:49.000000'),
-(6, 'pbkdf2_sha256$390000$XAsXIGfD1IRTzfdWS3inb7$VrNg/esjbXY4BW49mJJ2yi/8zb9X+Qoin7IDqiJivHg=', '2023-01-11 07:55:02.777708', 0, 'ihsan_pandikkad', 'Ihsan', 'K', 'ihsankpkd@gmail.com', 0, 1, '2022-12-19 14:55:47.000000');
+(6, 'pbkdf2_sha256$390000$XAsXIGfD1IRTzfdWS3inb7$VrNg/esjbXY4BW49mJJ2yi/8zb9X+Qoin7IDqiJivHg=', '2023-01-18 12:28:57.913098', 0, 'ihsan_pandikkad', 'Ihsan', 'K', 'ihsankpkd@gmail.com', 1, 1, '2022-12-19 14:55:47.000000');
 
 -- --------------------------------------------------------
 
@@ -438,7 +438,8 @@ CREATE TABLE `auth_user_groups` (
 
 INSERT INTO `auth_user_groups` (`id`, `user_id`, `group_id`) VALUES
 (2, 2, 1),
-(1, 3, 1);
+(1, 3, 1),
+(4, 6, 2);
 
 -- --------------------------------------------------------
 
@@ -866,7 +867,51 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 (392, '2023-01-15 16:27:41.614960', '2', 'BundesLiga-Matchday 16', 1, '[{\"added\": {}}]', 49, 2),
 (393, '2023-01-15 16:35:01.012230', '5', 'Friendly-Friendly-Neeraj Vibez-cat_1x1', 3, '', 48, 2),
 (394, '2023-01-15 16:35:01.015695', '4', 'Friendly-Friendly-Neeraj Vibez-cat_1x2', 3, '', 48, 2),
-(395, '2023-01-15 16:35:01.016643', '1', 'Friendly-Friendly-Neeraj Vibez-cat_2x7', 3, '', 48, 2);
+(395, '2023-01-15 16:35:01.016643', '1', 'Friendly-Friendly-Neeraj Vibez-cat_2x7', 3, '', 48, 2),
+(396, '2023-01-15 16:47:37.739163', '6', 'Ihsan K', 2, '[{\"changed\": {\"fields\": [\"Groups\", \"Staff status\"]}}]', 11, 2),
+(397, '2023-01-15 16:59:46.211916', '10', 'Friendlies', 1, '[{\"added\": {}}]', 45, 6),
+(398, '2023-01-15 17:00:32.409152', '11', 'Nagelsmann: Can draw our conclusions', 1, '[{\"added\": {}}]', 17, 6),
+(399, '2023-01-15 17:04:33.577663', '12', 'Bayern play out eight-goal friendly thriller with Salzburg', 1, '[{\"added\": {}}]', 17, 6),
+(400, '2023-01-15 17:06:50.628169', '1', 'Friendly-Friendly-FC Red Bull Salzburg', 2, '[{\"changed\": {\"fields\": [\"News tags\"]}}]', 26, 2),
+(401, '2023-01-15 17:07:04.471463', '6', 'Ihsan K', 2, '[{\"changed\": {\"fields\": [\"Groups\"]}}]', 11, 2),
+(402, '2023-01-15 17:07:27.170992', '12', 'Bayern play out eight-goal friendly thriller with Salzburg', 2, '[{\"changed\": {\"fields\": [\"Video url\"]}}]', 17, 2),
+(403, '2023-01-15 17:14:37.470520', '11', 'Nagelsmann: Can draw our conclusions', 2, '[{\"changed\": {\"fields\": [\"Image\"]}}]', 17, 2),
+(404, '2023-01-15 17:19:49.832972', '13', 'Salihamidzic: Will be an interesting game against Leipzig', 1, '[{\"added\": {}}]', 17, 2),
+(405, '2023-01-15 17:20:45.406894', '4', 'BundesLiga-Matchday 16-RB Leipzig', 2, '[{\"changed\": {\"fields\": [\"News tags\"]}}]', 26, 2),
+(406, '2023-01-15 17:27:21.405666', '11', 'BundesLiga', 1, '[{\"added\": {}}]', 45, 2),
+(407, '2023-01-15 17:27:23.606293', '4', 'BundesLiga-Matchday 16-RB Leipzig', 2, '[{\"changed\": {\"fields\": [\"Tags\"]}}]', 26, 2),
+(408, '2023-01-15 19:27:43.241083', '13', 'Salihamidzic: Will be an interesting game against Leipzig', 2, '[{\"changed\": {\"fields\": [\"Excerpt\"]}}]', 17, 2),
+(409, '2023-01-15 19:42:17.225477', '14', 'Gnabry in seventh heaven', 1, '[{\"added\": {}}]', 17, 2),
+(410, '2023-01-15 19:43:10.633287', '3', 'BundesLiga-Matchday 14-SV Werder Bremen', 2, '[{\"changed\": {\"fields\": [\"News tags\"]}}]', 26, 2),
+(411, '2023-01-15 19:45:50.773176', '15', 'Gnabry: Togetherness is crucial', 1, '[{\"added\": {}}]', 17, 2),
+(412, '2023-01-15 19:47:34.428281', '16', 'Influential Gnabry leaves his mark on crunch match', 1, '[{\"added\": {}}]', 17, 2),
+(413, '2023-01-15 19:48:57.768862', '17', 'Neuer, de Ligt, Gnabry & Davies absent in Pilsen', 1, '[{\"added\": {}}]', 17, 2),
+(414, '2023-01-15 19:49:10.773401', '5', 'Stanišić misses out on World Cup final with Croatia', 2, '[{\"changed\": {\"fields\": [\"Player tags\"]}}]', 17, 2),
+(415, '2023-01-15 19:49:51.775255', '10', 'Pavard and Coman return, Blind unveiling and triple training', 2, '[{\"changed\": {\"fields\": [\"Player tags\"]}}]', 17, 2),
+(416, '2023-01-15 19:51:55.650655', '3', 'Serge Gnabry', 2, '[{\"added\": {\"name\": \"player_ image\", \"object\": \"Player_Image object (4)\"}}, {\"added\": {\"name\": \"player_ image\", \"object\": \"Player_Image object (5)\"}}]', 19, 2),
+(417, '2023-01-15 19:53:33.403108', '3', 'Serge Gnabry', 2, '[{\"added\": {\"name\": \"player_ image\", \"object\": \"Player_Image object (6)\"}}, {\"added\": {\"name\": \"player_ image\", \"object\": \"Player_Image object (7)\"}}, {\"added\": {\"name\": \"player_ image\", \"object\": \"Player_Image object (8)\"}}]', 19, 2),
+(418, '2023-01-15 19:58:27.170724', '7', 'Nagelsmann welcomes training group before leaving for Doha', 2, '[{\"changed\": {\"fields\": [\"Staff tags\"]}}]', 17, 2),
+(419, '2023-01-15 19:58:49.680011', '13', 'Salihamidzic: Will be an interesting game against Leipzig', 2, '[{\"changed\": {\"fields\": [\"Staff tags\"]}}]', 17, 2),
+(420, '2023-01-15 19:59:22.283321', '1', 'Serge Gnabry', 2, '[{\"changed\": {\"fields\": [\"Staff\"]}}]', 47, 2),
+(421, '2023-01-15 20:01:39.729244', '1', 'Serge Gnabry', 2, '[{\"changed\": {\"fields\": [\"Fb link\"]}}]', 47, 2),
+(422, '2023-01-15 20:03:57.560684', '2', 'Julian Nagelsmann', 1, '[{\"added\": {}}]', 47, 2),
+(423, '2023-01-15 20:10:36.142378', '17', 'Neuer, de Ligt, Gnabry & Davies absent in Pilsen', 2, '[{\"changed\": {\"fields\": [\"Added\"]}}]', 17, 2),
+(424, '2023-01-15 22:49:51.203211', '4', 'Shop Manager', 2, '[{\"changed\": {\"fields\": [\"Name\"]}}]', 3, 2),
+(425, '2023-01-17 09:33:03.634170', '18', 'Reviewing the first half of the Bundesliga season', 1, '[{\"added\": {}}]', 17, 2),
+(426, '2023-01-18 16:28:15.065259', '19', 'Bayern vs. Leipzig: looking back at previous clashes', 1, '[{\"added\": {}}]', 17, 2),
+(427, '2023-01-18 16:28:25.697506', '4', 'BundesLiga-Matchday 16-RB Leipzig', 2, '[{\"changed\": {\"fields\": [\"News tags\"]}}]', 26, 2),
+(428, '2023-01-18 19:40:43.223414', '1', 'German Championship', 2, '[{\"changed\": {\"fields\": [\"Priority\"]}}]', 42, 2),
+(429, '2023-01-18 19:40:56.629728', '1', 'German Championship', 2, '[{\"changed\": {\"fields\": [\"Priority\"]}}]', 42, 2),
+(430, '2023-01-18 19:41:07.823429', '1', 'German Championship', 2, '[{\"changed\": {\"fields\": [\"Priority\"]}}]', 42, 2),
+(431, '2023-01-18 19:44:13.304235', '3', 'Champions League', 1, '[{\"added\": {}}]', 42, 2),
+(432, '2023-01-18 19:45:20.507952', '4', 'German Supercup', 1, '[{\"added\": {}}]', 42, 2),
+(433, '2023-01-18 19:46:30.007288', '5', 'League Cup', 1, '[{\"added\": {}}]', 42, 2),
+(434, '2023-01-18 19:47:20.547507', '6', 'UEFA Supercup', 1, '[{\"added\": {}}]', 42, 2),
+(435, '2023-01-18 19:47:31.146350', '5', 'League Cup', 2, '[{\"changed\": {\"fields\": [\"Count\"]}}]', 42, 2),
+(436, '2023-01-18 19:48:18.324645', '7', 'UEFA Cup', 1, '[{\"added\": {}}]', 42, 2),
+(437, '2023-01-18 19:49:00.764819', '8', 'UEFA Cup Winners\' Cup', 1, '[{\"added\": {}}]', 42, 2),
+(438, '2023-01-18 19:49:42.246354', '9', 'Intercontinental Cup', 1, '[{\"added\": {}}]', 42, 2),
+(439, '2023-01-18 19:50:21.361243', '10', 'FIFA Club World Cup', 1, '[{\"added\": {}}]', 42, 2);
 
 -- --------------------------------------------------------
 
@@ -1020,7 +1065,8 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (82, 'main', '0044_alter_player_height', '2023-01-15 09:48:57.627444'),
 (83, 'main', '0045_alter_player_rating', '2023-01-15 09:49:32.160493'),
 (84, 'main', '0046_player_image_image_url_alter_player_image_date_and_more', '2023-01-15 10:56:49.202289'),
-(85, 'main', '0047_alter_player_stats_rating', '2023-01-15 15:37:09.032687');
+(85, 'main', '0047_alter_player_stats_rating', '2023-01-15 15:37:09.032687'),
+(86, 'main', '0048_trophies_priority_alter_article_type_category_and_more', '2023-01-18 19:38:53.906743');
 
 -- --------------------------------------------------------
 
@@ -1039,15 +1085,530 @@ CREATE TABLE `django_session` (
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
+('04196fyf605q9dlkaq5e0jpagzo6lxkf', 'eyJjYXJ0Ijp7fX0:1pI2go:y3lMmQljx6G84f2o0PeIViFvOI_vUD4o0qC_Jx1B7-Y', '2023-02-01 07:16:54.220222'),
+('04q258b3x59hlg4van1jozkyjttr12dn', 'eyJjYXJ0Ijp7fX0:1pIDLs:6w-IMjG8nWciudj-3wbNzzxm4MHp5Td85fUd0eExZm0', '2023-02-01 18:40:00.217176'),
+('06g4tcuojvyb6x5wb5yr2qddcpt4rtav', 'eyJjYXJ0Ijp7fX0:1pI2xF:d6YJgrVzEDjavK4GmLuepoOKDGeZnOXumSIzmePuEbg', '2023-02-01 07:33:53.459155'),
+('08cwkl8ope8xfm1w03kx28f9re3mvfiv', 'eyJjYXJ0Ijp7fX0:1pI2go:y3lMmQljx6G84f2o0PeIViFvOI_vUD4o0qC_Jx1B7-Y', '2023-02-01 07:16:54.227583'),
+('0be2sgoawxvnr6gdyq1o6l8l8oc096hk', 'eyJjYXJ0Ijp7fX0:1pI30R:qFsqRKgYNs4d6xHBaTEcAtGz9ws9T63NDZMiZSKs1K4', '2023-02-01 07:37:11.606997'),
+('0g3rbib5hd5os7x2kqvfd7624yqigyw1', 'eyJjYXJ0Ijp7fX0:1pI3Vr:UdNuEfTf0KbFmqi2Rl0BbCiEVmyyRBCirWMuJDkbs7U', '2023-02-01 08:09:39.552634'),
+('0guqk6lysw7ap3mq2cagski9zqw5a41a', 'eyJjYXJ0Ijp7fX0:1pI2bQ:HeDcWJzeHdDpifssVHKWX2UdYxOC4g6UQ7mQqiuQErI', '2023-02-01 07:11:20.962860'),
+('0mq4zadfws9aunfnjv5tv9yviyowphcp', 'eyJjYXJ0Ijp7fX0:1pI2ZF:8FeXkUep__z7E2RmVJVbs2cd4CteJ3qX3DDNAgWTjYk', '2023-02-01 07:09:05.749131'),
+('0oeee9daaypkiap1gu8jvpo8f0own3xi', 'eyJjYXJ0Ijp7fX0:1pI2Ve:C3hdMkQQMy4zfU4xcu61Z6Sy47pMgL6_7iZ5knvB7QI', '2023-02-01 07:05:22.532208'),
+('0p6hgfx6vehkj2p5xsdzm568woxp5wjy', 'eyJjYXJ0Ijp7fX0:1pI2vZ:ammluEj4Ov7yFCC-tgFVqUAVzVFxJKX0GnjbcfjAhJ8', '2023-02-01 07:32:09.904106'),
+('0pv8hshib3s1ugmpzg08e2mw9wb3kspo', 'eyJjYXJ0Ijp7fX0:1pI2S8:dHdhZc83w7O3xdg3ODhraq1_r3J5nvLEApcNwixf8K8', '2023-02-01 07:01:44.813912'),
+('0tdvlai50husekgkxoq82yznzhs3y4ff', 'eyJjYXJ0Ijp7fX0:1pIEHp:bycJeQCsz8CKjdEqvHYBmktLrKzlttBGE1BpZ5-RlFM', '2023-02-01 19:39:53.804286'),
+('0vbh6otqljgodq1205maau2vf64ux4lu', 'eyJjYXJ0Ijp7fX0:1pI30r:Z1pByzbzGGyMUQqQgdcaGJtE-7JakGIZSx_L64aba9k', '2023-02-01 07:37:37.184670'),
+('0wj92wudi3dzjkj1t87pjluz84g80bky', 'eyJjYXJ0Ijp7fX0:1pID4m:TQTn1xISxaN_tkEcHbzuw_4yvUEACa3dHTKBoStIekM', '2023-02-01 18:22:20.683394'),
+('0wwyemb82hixl1azkh53en7hy489xhhj', 'eyJjYXJ0Ijp7fX0:1pI2w0:BOENyYeya3ekZWPY4H30sLX01toydkBrP-RPIICJShg', '2023-02-01 07:32:36.889601'),
+('10x5cdjbtjkzo60bqfwdqtjefdfjnjcx', 'eyJjYXJ0Ijp7fX0:1pI2Ve:C3hdMkQQMy4zfU4xcu61Z6Sy47pMgL6_7iZ5knvB7QI', '2023-02-01 07:05:22.535736'),
+('12vs7l9i2pvj4kqkgnm7n0ck11ln8zcs', 'eyJjYXJ0Ijp7fX0:1pI2S1:DRW19hiRYBHkqifmXSrzH7wdflionTyWmbXIuWv8xkg', '2023-02-01 07:01:37.953521'),
+('13j2tpw8nxv2mqd43kuoqgeswba20l3u', 'eyJjYXJ0Ijp7fX0:1pI3Vr:UdNuEfTf0KbFmqi2Rl0BbCiEVmyyRBCirWMuJDkbs7U', '2023-02-01 08:09:39.576087'),
+('14rn4qtq0vhh7rke511u1md34w1ky5ks', 'eyJjYXJ0Ijp7fX0:1pI2ar:2X9BGyTE4zUXQ842sE6LHXyvVnO0nwprCXzTHHQgmXc', '2023-02-01 07:10:45.052320'),
+('14xt3vxtg5gqtsw7xj4ktsndwms970uc', 'eyJjYXJ0Ijp7fX0:1pI2S8:dHdhZc83w7O3xdg3ODhraq1_r3J5nvLEApcNwixf8K8', '2023-02-01 07:01:44.814197'),
+('15cl1hpokztlisqz2561aqnqbtatog2k', 'eyJjYXJ0Ijp7fX0:1pI2ax:zHyOaCIAvouiCSvY_h6KlGWfsJyvSrk5WD5WpVnfEZ4', '2023-02-01 07:10:51.267370'),
+('18dy82epy6i6s9m4coi9qn9p77wrtlol', 'eyJjYXJ0Ijp7fX0:1pI2xR:22G-cYyRwyYhLdHgLtGJLtUsrHVoeiXQKmOEPHv1_uM', '2023-02-01 07:34:05.976749'),
+('18vx5h0h3d17a1oivac6zyr9uqzmp2e2', 'eyJjYXJ0Ijp7fX0:1pI30h:2iTki6IuxD3OHCfQc9AJ2Q_cyefTSSXd5ACaYs9GXvc', '2023-02-01 07:37:27.855280'),
+('19c578y3s70a8y6dn1qkazdb6gi4umd6', 'eyJjYXJ0Ijp7fX0:1pI307:M2YMw9u8_pazi20SwOIhwHX7SjFHqCDVY-Q3W_-oGQ0', '2023-02-01 07:36:51.798899'),
+('1c21rt5gsskn2v5jstevzefkrxi4a59w', 'eyJjYXJ0Ijp7fX0:1pI307:M2YMw9u8_pazi20SwOIhwHX7SjFHqCDVY-Q3W_-oGQ0', '2023-02-01 07:36:51.953630'),
+('1eknuqentftm0usxcyyd5mckp1voqmu0', 'eyJjYXJ0Ijp7fX0:1pI2xR:22G-cYyRwyYhLdHgLtGJLtUsrHVoeiXQKmOEPHv1_uM', '2023-02-01 07:34:05.989518'),
+('1fpokuzgn06d4vno4b60m9jlrfav0rdi', 'eyJjYXJ0Ijp7fX0:1pI2w0:BOENyYeya3ekZWPY4H30sLX01toydkBrP-RPIICJShg', '2023-02-01 07:32:36.888705'),
+('1g7bwxbym7cix1m7ffk0ls69g87fxapy', 'eyJjYXJ0Ijp7fX0:1pI2S1:DRW19hiRYBHkqifmXSrzH7wdflionTyWmbXIuWv8xkg', '2023-02-01 07:01:37.798033'),
+('1gbym13org3g09mbjm04g9h3ly2czke0', 'eyJjYXJ0Ijp7fX0:1pI2w0:BOENyYeya3ekZWPY4H30sLX01toydkBrP-RPIICJShg', '2023-02-01 07:32:36.889938'),
+('1it794kw5bdblf7ievckjsxfv03oq5az', 'eyJjYXJ0Ijp7fX0:1pID4m:TQTn1xISxaN_tkEcHbzuw_4yvUEACa3dHTKBoStIekM', '2023-02-01 18:22:20.696701'),
+('1l35vq44xzrtiepj1i767sazah9p8akd', 'eyJjYXJ0Ijp7fX0:1pI2zx:bgPw7ZkQ5_O_QBLAKMygBqIwACvmj4MRy5PZ3wnmuW4', '2023-02-01 07:36:41.320139'),
+('1of4zu8u5m9d3c5iujpt2hbkcw8kbh4c', 'eyJjYXJ0Ijp7fX0:1pI2zx:bgPw7ZkQ5_O_QBLAKMygBqIwACvmj4MRy5PZ3wnmuW4', '2023-02-01 07:36:41.157763'),
+('1ouwosmlakub67lqkqx35h5iww84081y', 'eyJjYXJ0Ijp7fX0:1pI30q:mkZQmSqopJPqJZjazdmkjY65g1zngGJtY_x9lpJMrVU', '2023-02-01 07:37:36.999613'),
+('1p8l55scljl24vxfwcv5v4nxa9qbgra8', 'eyJjYXJ0Ijp7fX0:1pIDMO:JOpauYvdNeC2JMYs7axD0yL-4cz5fXAVsH-LLwwHrQs', '2023-02-01 18:40:32.830882'),
+('1u6k2s28dkvlivcyp6qq2y1v0g4yr8jo', 'eyJjYXJ0Ijp7fX0:1pI310:YcaWnXStmoEfYNKtZbw8fMw-q6i_LVfrroZn7Nz2SoE', '2023-02-01 07:37:46.326452'),
 ('1ug6m4u0exvsj2bp2s51iqnwz6gqbwt8', 'eyJpbnN0YS1mb2xsb3dlcnMiOiIzNS41TSJ9:1p6QXH:GqJSkYBb-aOjP2t7HFni5THY80bwrxG8rVj_4wZZB4I', '2022-12-31 06:19:03.154007'),
+('1vt2vccgrhdnyy936vl144yr50n5f922', 'eyJjYXJ0Ijp7fX0:1pI310:YcaWnXStmoEfYNKtZbw8fMw-q6i_LVfrroZn7Nz2SoE', '2023-02-01 07:37:46.331938'),
+('1xx5s4gjt8dl43h8ta19mo2odzddzl57', 'eyJjYXJ0Ijp7fX0:1pIEI4:WzyznG1QwhW_q7ErCNoI41EGNQJFdkdeYaI8w7lwlMA', '2023-02-01 19:40:08.479186'),
+('1yhgbk4yadjgirr6oe0s0vbmpxebw2ig', 'eyJjYXJ0Ijp7fX0:1pI30r:Z1pByzbzGGyMUQqQgdcaGJtE-7JakGIZSx_L64aba9k', '2023-02-01 07:37:37.186852'),
+('1yii1rtoxsmg2vt1xnix5s63pr8bfn1m', 'eyJjYXJ0Ijp7fX0:1pI31E:ayvUavA6Kg-LiBzxuJSyQ6pgk9C3osf5yYk0tm61wNY', '2023-02-01 07:38:00.382072'),
+('20kuva8w73e8zyr8uq7htmn764ompk5m', 'eyJjYXJ0Ijp7fX0:1pI2xR:22G-cYyRwyYhLdHgLtGJLtUsrHVoeiXQKmOEPHv1_uM', '2023-02-01 07:34:05.979272'),
+('256umncar6gzzufv2a9zfoiebvj2fssg', 'eyJjYXJ0Ijp7fX0:1pIBSK:M6swbAOs4a4KYj4GtOiAXE6WrX1Mj9LP6ZdWyl-rkgs', '2023-02-01 16:38:32.775834'),
+('2d0eu6no14kpn88df1jbo8tz6ekxp85t', 'eyJjYXJ0Ijp7fX0:1pI2go:y3lMmQljx6G84f2o0PeIViFvOI_vUD4o0qC_Jx1B7-Y', '2023-02-01 07:16:54.220521'),
+('2dsht2iro2ugcomnkbx951smkyiv52re', 'eyJjYXJ0Ijp7fX0:1pI3Vo:KTBvvUfPruA4V72qpJFfCBAeP-6hLpOWH5MMCJr-bXA', '2023-02-01 08:09:36.379549'),
+('2iezcro5x0xsypogrq6r00i31u2q2llw', 'eyJjYXJ0Ijp7fX0:1pI9lQ:j7kLJSdp0oYumCg3LrIWiBQl1WPPHWfXZjaQArUYMgQ', '2023-02-01 14:50:08.168411'),
+('2lwwnnwf6m8esveimvuybu8g9mwy0lmq', 'eyJjYXJ0Ijp7fX0:1pI2Un:FYzYUwu3XRq9hDGGSj6dkchN2S4a2RWiBbc0V5G004A', '2023-02-01 07:04:29.376321'),
+('2n5sdzg7hkl8fejesd35r85o6zizq3q2', 'eyJjYXJ0Ijp7fX0:1pI2cD:3PUCZoUVP7ApKHSTpuaP_sQfim4CpcKnI4EGTjPGiw0', '2023-02-01 07:12:09.152836'),
+('2nbxvujynycrbp3uej0wwszyc2f4qaih', 'eyJjYXJ0Ijp7fX0:1pI2Up:kXChGJkrpaA3xBy0-bHcLmiI6nmAsaTXkMnPYdvjCmE', '2023-02-01 07:04:31.988527'),
+('2os13skdz6raru6mslh55okadkp66dtg', 'eyJjYXJ0Ijp7fX0:1pI3Vo:KTBvvUfPruA4V72qpJFfCBAeP-6hLpOWH5MMCJr-bXA', '2023-02-01 08:09:36.377625'),
+('2pohxvtc3szpqvsf2ltubrkxlp9nfy8j', 'eyJjYXJ0Ijp7fX0:1pI30W:mmP-Dgvl79hsXQU6W8KGiyRiaXjSwVMAVBVUTSmbDnI', '2023-02-01 07:37:16.784963'),
+('2r5pak6s62awcxv9lkt6611qbfhibsse', 'eyJjYXJ0Ijp7fX0:1pI2VC:bQ26Fr6yvGlfDA2b5o2nXsYJeK2qxC9skhTMgTgDld0', '2023-02-01 07:04:54.923431'),
+('2uzlvbgamza7x0tsykz1u7ap1it5lpk9', 'eyJjYXJ0Ijp7fX0:1pIBSK:M6swbAOs4a4KYj4GtOiAXE6WrX1Mj9LP6ZdWyl-rkgs', '2023-02-01 16:38:32.764927'),
+('2v7xfgjp1tigpetnlvrmessaj8xm2jdy', 'eyJjYXJ0Ijp7fX0:1pI2x2:RQvjPM_SXOjY8R4Wxq-uO2UfWQzIoNsecJ1im0bSz0U', '2023-02-01 07:33:40.693107'),
+('2zl9j04z1ll2tbqg7f4zaahhp4llfbz2', 'eyJjYXJ0Ijp7fX0:1pI3Vo:KTBvvUfPruA4V72qpJFfCBAeP-6hLpOWH5MMCJr-bXA', '2023-02-01 08:09:36.144127'),
+('357knc8y1ceh3fclf2etna9o64yygh0y', 'eyJjYXJ0Ijp7fX0:1pI307:M2YMw9u8_pazi20SwOIhwHX7SjFHqCDVY-Q3W_-oGQ0', '2023-02-01 07:36:51.951872'),
+('35fij4rqm6iaaewt2op15w8czupbmr7q', 'eyJjYXJ0Ijp7fX0:1pIDMO:JOpauYvdNeC2JMYs7axD0yL-4cz5fXAVsH-LLwwHrQs', '2023-02-01 18:40:32.824350'),
+('37oyyrlvw6lpr55ftgr0221kvfxgb8am', 'eyJjYXJ0Ijp7fX0:1pI2S1:DRW19hiRYBHkqifmXSrzH7wdflionTyWmbXIuWv8xkg', '2023-02-01 07:01:37.972267'),
+('39u3rv4koqncwgwxzj9mtqrgj9pkmqtk', 'eyJjYXJ0Ijp7fX0:1pI2iH:5rPjSXbua_WZnaG7wbWrw2LzBhY5biKYAf4WPh5kgbQ', '2023-02-01 07:18:25.576210'),
+('3bicjj51a6nzawze88o26u4tnjpwkk8a', 'eyJjYXJ0Ijp7fX0:1pI2zx:bgPw7ZkQ5_O_QBLAKMygBqIwACvmj4MRy5PZ3wnmuW4', '2023-02-01 07:36:41.315566'),
+('3c86k8zl1fy2u5ct7zg5ohpfj119mn2r', 'eyJjYXJ0Ijp7fX0:1pI2VC:bQ26Fr6yvGlfDA2b5o2nXsYJeK2qxC9skhTMgTgDld0', '2023-02-01 07:04:54.925444'),
+('3jxdfdo7ombnn1771hu3h6f6m1h2duk1', 'eyJjYXJ0Ijp7fX0:1pI2UL:oS1sVGMJ6R0ij6WzS_DovlM6rjZA1QClf4OxyH3wxSo', '2023-02-01 07:04:01.459719'),
+('3o0qgzf0qonxfclfvnz1r0tisw12fntn', 'eyJjYXJ0Ijp7fX0:1pIEI4:WzyznG1QwhW_q7ErCNoI41EGNQJFdkdeYaI8w7lwlMA', '2023-02-01 19:40:08.230685'),
+('3q6z1dfwbmoxvkqx0nkp6ve9qveap5qe', 'eyJjYXJ0Ijp7fX0:1pI2iH:5rPjSXbua_WZnaG7wbWrw2LzBhY5biKYAf4WPh5kgbQ', '2023-02-01 07:18:25.481986'),
+('3r1tk538e5li1sq0dsdki9z9f2oaoly7', 'eyJjYXJ0Ijp7fX0:1pI2vZ:ammluEj4Ov7yFCC-tgFVqUAVzVFxJKX0GnjbcfjAhJ8', '2023-02-01 07:32:09.879068'),
+('3tzun0qq2eb85lsq5i1n8tvpeliyb354', 'eyJjYXJ0Ijp7fX0:1pIEHv:DxbSugD-7UxwgSdSuKprC45A5DmkrrpStrgnZKNoRNA', '2023-02-01 19:39:59.080285'),
+('3wxez97y4ihzpo4b81sxuj9gms37iqm7', 'eyJjYXJ0Ijp7fX0:1pIDLs:6w-IMjG8nWciudj-3wbNzzxm4MHp5Td85fUd0eExZm0', '2023-02-01 18:40:00.429579'),
+('3z0xsmeqefb2v3m8uy08qpxqx13nqxu5', 'eyJjYXJ0Ijp7fX0:1pI2Up:kXChGJkrpaA3xBy0-bHcLmiI6nmAsaTXkMnPYdvjCmE', '2023-02-01 07:04:31.820930'),
+('3zx0q9m34514qb7du6zdzs1hto28tzg0', 'eyJjYXJ0Ijp7fX0:1pI2dc:8ZtOPDkkHMIUfO3-5uBlzpp7eebw25P9e6UGStlBEHU', '2023-02-01 07:13:36.381494'),
+('40q81wrwaw7ey2si8yb671mpa7nlmhom', 'eyJjYXJ0Ijp7fX0:1pI2Vm:XXhCB2jP44emjJLbT5SrShOSl8MNVpq-dRXhCE_UGBQ', '2023-02-01 07:05:30.447807'),
+('4dx4qbi74up36s2osiouacwufoca3au4', 'eyJjYXJ0Ijp7fX0:1pI2iH:5rPjSXbua_WZnaG7wbWrw2LzBhY5biKYAf4WPh5kgbQ', '2023-02-01 07:18:25.269092'),
+('4iy50m12gmpcdx5awjhkag8a4ib8dz35', 'eyJjYXJ0Ijp7fX0:1pI2dc:8ZtOPDkkHMIUfO3-5uBlzpp7eebw25P9e6UGStlBEHU', '2023-02-01 07:13:36.370836'),
+('4k693uwvi9xgzl0x8gcq4jkzxunrofbe', 'eyJjYXJ0Ijp7fX0:1pIEI4:WzyznG1QwhW_q7ErCNoI41EGNQJFdkdeYaI8w7lwlMA', '2023-02-01 19:40:08.473586'),
+('4kcfafw8ns11lwlnf3ljfnzlrtuth1g7', 'eyJjYXJ0Ijp7fX0:1pI2UL:oS1sVGMJ6R0ij6WzS_DovlM6rjZA1QClf4OxyH3wxSo', '2023-02-01 07:04:01.455786'),
+('4mn5pycgn4wl6hf7rs2tqoye5owzf11v', 'eyJjYXJ0Ijp7fX0:1pI2xP:zbR6Shf8yE98fftbbSW4VK2Uc_jeJdg6IxEMbdOVIlU', '2023-02-01 07:34:03.320533'),
+('4q0wk7p1c0zmopeswo2mgl4268dvysux', 'eyJjYXJ0Ijp7fX0:1pIDMO:JOpauYvdNeC2JMYs7axD0yL-4cz5fXAVsH-LLwwHrQs', '2023-02-01 18:40:32.802716'),
+('4xcs3ewdbwspkvhtlodq2ftcfa90e99q', 'eyJjYXJ0Ijp7fX0:1pI2Un:FYzYUwu3XRq9hDGGSj6dkchN2S4a2RWiBbc0V5G004A', '2023-02-01 07:04:29.199644'),
+('526y1tha4d30xvf48slm15wr4n1vekth', 'eyJjYXJ0Ijp7fX0:1pI2Vm:XXhCB2jP44emjJLbT5SrShOSl8MNVpq-dRXhCE_UGBQ', '2023-02-01 07:05:30.251349'),
+('52qpe2vqb8m8ux6w2uqljvcbz7nbeepz', 'eyJjYXJ0Ijp7fX0:1pI2UK:9nMNX5L7LNKFgZT1BiyNt43khZ8HqA0zOtUsYlBBxeo', '2023-02-01 07:04:00.276013'),
+('5evrhnaway5lk6klbyn6y5x0x6b6s5nr', 'eyJjYXJ0Ijp7fX0:1pI2Wb:lRkQ-jG2TojNMGg6BXgOcjl34WoFrLDYAgytzTLNKOg', '2023-02-01 07:06:21.704489'),
+('5kwbw5cw829rw5wnjhlh3b4u55yodkpc', 'eyJjYXJ0Ijp7fX0:1pI2xB:LGAzvkRfDwyGU-hRe_bM1rd0rvbXD4tOM8TbUDehc64', '2023-02-01 07:33:49.197465'),
+('5lit47ryam7zo2407vt8729l6uc0i7oq', 'eyJjYXJ0Ijp7fX0:1pI2hS:c1DAGNew_KMxVl9TkU1-lxFrzaAsA44zsLDCv7Kbgus', '2023-02-01 07:17:34.118149'),
+('5nqlrl1xxt1t62qylvwom382fgyaobgl', 'eyJjYXJ0Ijp7fX0:1pI2h2:KZBHv7m7xzqukn4ESXLAdqpFJFwbYptZKSD0iC3D0OA', '2023-02-01 07:17:08.805622'),
+('5otpquauya249ddzopqmvz32q1a43fv5', 'eyJjYXJ0Ijp7fX0:1pI2go:y3lMmQljx6G84f2o0PeIViFvOI_vUD4o0qC_Jx1B7-Y', '2023-02-01 07:16:54.205445'),
+('5p25342aepbrhc2my68uoii1fmbjp683', 'eyJjYXJ0Ijp7fX0:1pI34H:E5NDGQZJ5R4vOWUFIZNvgBU89pfBhcuX8tf0K9qWQU4', '2023-02-01 07:41:09.815278'),
+('5s2irq10opxon89z6kvn9sxa83r9jqly', 'eyJjYXJ0Ijp7fX0:1pI2Un:FYzYUwu3XRq9hDGGSj6dkchN2S4a2RWiBbc0V5G004A', '2023-02-01 07:04:29.379439'),
+('5tse2mv01n9oxoedmjwh16lgdihhk48d', 'eyJjYXJ0Ijp7fX0:1pI2Un:FYzYUwu3XRq9hDGGSj6dkchN2S4a2RWiBbc0V5G004A', '2023-02-01 07:04:29.198728'),
+('5u6uycjgr81ohxdo3tnxynrjynk2avkk', 'eyJjYXJ0Ijp7fX0:1pI2bR:8JpRI-cNP4BfI97RwB1QeFJrlG3zwd8301zweW63DMk', '2023-02-01 07:11:21.153356'),
+('5x68a24v1o7wv8sys1x3qvm52m52jeiy', 'eyJjYXJ0Ijp7fX0:1pI2Un:FYzYUwu3XRq9hDGGSj6dkchN2S4a2RWiBbc0V5G004A', '2023-02-01 07:04:29.368557'),
+('5xesecl42ayw956qmay6ltii3xmbo24j', 'eyJjYXJ0Ijp7fX0:1pIEHv:DxbSugD-7UxwgSdSuKprC45A5DmkrrpStrgnZKNoRNA', '2023-02-01 19:39:59.081780'),
+('63qx85x6tyoe4nhsbjgpu5nmakznqq5r', 'eyJjYXJ0Ijp7fX0:1pI31H:D5D-AJSxQ9ZpagYiHih_1EKrJY4CFgRFKHH5sE-_fLo', '2023-02-01 07:38:03.556118'),
+('659h8m94blb8tuznyzxwr0l437160d2t', 'eyJjYXJ0Ijp7fX0:1pIEHp:bycJeQCsz8CKjdEqvHYBmktLrKzlttBGE1BpZ5-RlFM', '2023-02-01 19:39:53.807588'),
+('66ec7p5io03umdcdhowbfq7ipm18ldsu', 'eyJjYXJ0Ijp7fX0:1pI30h:2iTki6IuxD3OHCfQc9AJ2Q_cyefTSSXd5ACaYs9GXvc', '2023-02-01 07:37:27.854428'),
+('68j3rny6zcurlrxm00xwgqf4f1hlurl6', 'eyJjYXJ0Ijp7fX0:1pI2oI:1cpf1hRLTIH4ocfEOAHsC7izBP4L2R4Rr-qt6BSRDd4', '2023-02-01 07:24:38.197940'),
+('6a69dyts62k6x9u5g6sxniz1agtcxtoj', 'eyJjYXJ0Ijp7fX0:1pI2Ve:C3hdMkQQMy4zfU4xcu61Z6Sy47pMgL6_7iZ5knvB7QI', '2023-02-01 07:05:22.538021'),
 ('6g4f6go0qo8gc84e5ewmzkqznbf4fspw', '.eJxVjMsOgyAUBf-FdUsEebrs3m8wF7hUWyMJYLow_ns1ceN2Zs7ZyLSUCs-Y5jn9MBfSkVZS3ZMHGWCt47AWzMMUDs7vzIH_4nKK8IHlnahPS82To2dCL1tonwLOr6u9HYxQxmPtpAEvPTcOmLNOaSNDazVIZbxwkYvGYWTMCwgRrUUmo4oMG8FRCd_o49RDrqTb9v0PiZpD5Q:1pDgJO:9P15jd515mJV-f23gyziJX8s5H-8sXDdmlv3AfgspLQ', '2023-01-20 06:34:42.911084'),
+('6hbo8vrv5nj3i7wt8onlus46jmqtljqa', 'eyJjYXJ0Ijp7fX0:1pI307:M2YMw9u8_pazi20SwOIhwHX7SjFHqCDVY-Q3W_-oGQ0', '2023-02-01 07:36:51.947956'),
+('6hh2oou4blvpc8yfgkcmx4aes70gxddf', 'eyJjYXJ0Ijp7fX0:1pI2xP:zbR6Shf8yE98fftbbSW4VK2Uc_jeJdg6IxEMbdOVIlU', '2023-02-01 07:34:03.484717'),
+('6hwup0uokhwo1en7wdnxcbhtavxadxnx', 'eyJjYXJ0Ijp7fX0:1pI2UG:QibLGvHIkmUaGxSwI1-KM9uWLUDSMFqGtVz42PUjtR8', '2023-02-01 07:03:56.806547'),
+('6j2j6enizugx7skzroszm5sykst3zcpd', 'eyJjYXJ0Ijp7fX0:1pI2aW:4Igcp_uil4imP9a4VeSIYgTP_wY8BNWzSJm3wlCQzSc', '2023-02-01 07:10:24.385477'),
 ('6ptim8ys298c0ul1x4293u1rjr1wb8xi', 'e30:1p66kV:cb3rUeqJqBqMcmDMeEei7fjG_qYo3RTcpC843xL0xTQ', '2022-12-30 09:11:23.903579'),
-('7jhhkix806be0eaimi90otyh1sc7f7nw', '.eJydULtuwzAM_BVDc-RafttjAnTLUqCzQcl0rMaRVUtumwb591JBgDZrF4I8Hu9IXpiCxbP2wooQVoeL7lmbbphd5n5VvgtlsWEGTsha9ryLtnDGxUQi8WO0m41DtXr9gdFuhJPVBIzaRjuwEY9esKf4arTDL7Zh7ysYr_2ZtSLoaxUURRMnNTX1CQ6hduNsnwbF5c2GBxuufm24-mPDFVi-YM_Xm0XnXN5ZLrIsE3lVxdYcSHjS5ki6_5OkeQUeD_NCW1NqHSFOf9OmCd0wBUVKr1c6wDgPfJinaf7ExRE9K2OxJ34Hqx-78NvbN1n6iElQRzSh0b-BOcwx7eYXLeNAie9dF-_nHqftnfsgMIIbaVoWNahCpbUEIRtZVnXRZ00FRVmrXA5pnkgchFA59AM2DYpiKAeBSZ5imaukYtcfPTWuTg:1pGGZ3:Dr4aZXLqkx1GkcUr7vtkAxiZBEyPNa2cUW5Bv3JSkj4', '2023-01-27 09:41:33.024023'),
+('6wdrnnbrlg76qms3zb58sww2u6v8vc2r', 'eyJjYXJ0Ijp7fX0:1pI2Un:FYzYUwu3XRq9hDGGSj6dkchN2S4a2RWiBbc0V5G004A', '2023-02-01 07:04:29.382199'),
+('70kbsmqhjnmlqxtz2k2mcat751pccmpz', 'eyJjYXJ0Ijp7fX0:1pID4m:TQTn1xISxaN_tkEcHbzuw_4yvUEACa3dHTKBoStIekM', '2023-02-01 18:22:20.676095'),
+('71u3ph2oan305jo70lyypsmx2kzr2ca4', 'eyJjYXJ0Ijp7fX0:1pI2wv:V9DL9VGBGrUdjtnvXoCMJ8ULW306in5e6ubwnwKKeXE', '2023-02-01 07:33:33.038317'),
+('73d9awhpc7v95ix8qkgn1t8phwwqjw5q', 'eyJjYXJ0Ijp7fX0:1pIBSL:ui8TLm2woZ1uLipwgABBsocc7jrfjxwmlMSCeomej70', '2023-02-01 16:38:33.708926'),
+('74n4rl0zq2mfb07w5o0yl8ag14xscu33', 'eyJjYXJ0Ijp7fX0:1pI307:M2YMw9u8_pazi20SwOIhwHX7SjFHqCDVY-Q3W_-oGQ0', '2023-02-01 07:36:51.948860'),
+('77ebbgg257mn5gk2q6eai2uglux8mf0e', 'eyJjYXJ0Ijp7fX0:1pI2Up:kXChGJkrpaA3xBy0-bHcLmiI6nmAsaTXkMnPYdvjCmE', '2023-02-01 07:04:31.985731'),
+('7ffauswzmhvxeob52lkvakkjiv3sb7ur', 'eyJjYXJ0Ijp7fX0:1pI2wv:V9DL9VGBGrUdjtnvXoCMJ8ULW306in5e6ubwnwKKeXE', '2023-02-01 07:33:33.036675'),
+('7l4mdkk8gjce1kwszccdg5xu3exf67sb', 'eyJjYXJ0Ijp7fX0:1pI34I:0kWA_cX1CRpybxVKY_9kEru-WTGqmvCIpRF3CYIVRIA', '2023-02-01 07:41:10.033368'),
+('7ndplg5du47bvwvix9e1sdyn1yynxi7n', 'eyJjYXJ0Ijp7fX0:1pI2cD:3PUCZoUVP7ApKHSTpuaP_sQfim4CpcKnI4EGTjPGiw0', '2023-02-01 07:12:09.167083'),
+('7sf8nx9yi6sh9jqdag6q1287dwukonp2', 'eyJjYXJ0Ijp7fX0:1pI2x2:RQvjPM_SXOjY8R4Wxq-uO2UfWQzIoNsecJ1im0bSz0U', '2023-02-01 07:33:40.699738'),
+('7sm0yhnzct0mqwovnb5xefsgadfbqkti', 'eyJjYXJ0Ijp7fX0:1pIEHp:bycJeQCsz8CKjdEqvHYBmktLrKzlttBGE1BpZ5-RlFM', '2023-02-01 19:39:53.812237'),
+('7tms42jfedd6dt15lki2c5x9vhowx5ci', 'eyJjYXJ0Ijp7fX0:1pI2x2:RQvjPM_SXOjY8R4Wxq-uO2UfWQzIoNsecJ1im0bSz0U', '2023-02-01 07:33:40.704473'),
+('7v4b1cofc2cwb1f9u5w3rq47gs64d60d', 'eyJjYXJ0Ijp7fX0:1pI2vU:9M6JwBe5cqzDYRqA_9XX_2gtXTneRMkogbVc_cFjBZU', '2023-02-01 07:32:04.026103'),
+('858j7qjupa5zah4ux5ko30oc7f3wgycm', 'eyJjYXJ0Ijp7fX0:1pI31H:D5D-AJSxQ9ZpagYiHih_1EKrJY4CFgRFKHH5sE-_fLo', '2023-02-01 07:38:03.562381'),
+('8c72yug9vqs3dsp7viz8a865362sf48t', 'eyJjYXJ0Ijp7fX0:1pI2ax:zHyOaCIAvouiCSvY_h6KlGWfsJyvSrk5WD5WpVnfEZ4', '2023-02-01 07:10:51.074368'),
+('8hwu26zfeua6gxjub8x44ehw26lsnzxt', 'eyJjYXJ0Ijp7fX0:1pI2gm:ZA5qbqLopFG_PFrvXd5MNFZ_cWM764VwdX0tfcQzl54', '2023-02-01 07:16:52.576048'),
+('8iy2i5de8qt454n0888gy8lxl0l6gjy7', 'eyJjYXJ0Ijp7fX0:1pI2wz:i0257colU8Z6oR1b7CUy3592FcAkn0X9S1JwyoZQDRo', '2023-02-01 07:33:37.150082'),
+('8msvlqw8jjqpumuur2aq7kmz70n2o2ii', 'eyJjYXJ0Ijp7fX0:1pIEHp:bycJeQCsz8CKjdEqvHYBmktLrKzlttBGE1BpZ5-RlFM', '2023-02-01 19:39:53.611134'),
+('8oxl816e6gcckzriesjsb2grlz7nrdcw', 'eyJjYXJ0Ijp7fX0:1pI2vU:9M6JwBe5cqzDYRqA_9XX_2gtXTneRMkogbVc_cFjBZU', '2023-02-01 07:32:04.033760'),
+('8pdghzozjmabb5zwizf9ku82cw3qimv6', 'eyJjYXJ0Ijp7fX0:1pI2cD:3PUCZoUVP7ApKHSTpuaP_sQfim4CpcKnI4EGTjPGiw0', '2023-02-01 07:12:09.186720'),
+('8ts8y94cq5aqin57h3tujy6bcx7g5tvu', 'eyJjYXJ0Ijp7fX0:1pI2al:D9UJQsBNq8KRcEJK5fD9tUzrhl1oPDpgnXnUAnXm1B8', '2023-02-01 07:10:39.213889'),
+('8wrocsioaaoy6zsb8fsg67azgkcl6cc6', 'eyJjYXJ0Ijp7fX0:1pI2dc:8ZtOPDkkHMIUfO3-5uBlzpp7eebw25P9e6UGStlBEHU', '2023-02-01 07:13:36.385612'),
+('8y2i2np0fvif2b1pfrjdjsw298ru10sf', 'eyJjYXJ0Ijp7fX0:1pI2mk:kLlT_cSh949IKn6dq78JWlMdvmH0qWPNqbGz1E7m3V8', '2023-02-01 07:23:02.216378'),
+('9065qalcl33rrh9pznq805alq2jxu70w', 'eyJjYXJ0Ijp7fX0:1pI2aW:4Igcp_uil4imP9a4VeSIYgTP_wY8BNWzSJm3wlCQzSc', '2023-02-01 07:10:24.424969'),
+('9222snej9m49v69bgy6gkz71wjohs1um', 'eyJjYXJ0Ijp7fX0:1pI8Il:_YOznJz8iSTzCOfkxWfVCWkrLqyJd7g6AfGn3ip1_Hg', '2023-02-01 13:16:27.041199'),
+('924r46u3p1eiip8mdhoumvr379xulh8u', 'eyJjYXJ0Ijp7fX0:1pI3Vr:UdNuEfTf0KbFmqi2Rl0BbCiEVmyyRBCirWMuJDkbs7U', '2023-02-01 08:09:39.551131'),
+('927nvl51l0t0mcy3jl2yd2a0c05fv93b', 'eyJjYXJ0Ijp7fX0:1pI30r:Z1pByzbzGGyMUQqQgdcaGJtE-7JakGIZSx_L64aba9k', '2023-02-01 07:37:37.190037'),
+('98t5nbiimujft3lz9slzop4n036j3mh4', 'eyJjYXJ0Ijp7fX0:1pI2xB:LGAzvkRfDwyGU-hRe_bM1rd0rvbXD4tOM8TbUDehc64', '2023-02-01 07:33:49.469957'),
+('99uixvov14avcqz71ulxojxix1g2zyj7', 'eyJjYXJ0Ijp7fX0:1pI2ar:2X9BGyTE4zUXQ842sE6LHXyvVnO0nwprCXzTHHQgmXc', '2023-02-01 07:10:45.054804'),
 ('9fhja718b3wjdsht81g7xm4fg82caek3', 'eyJpbnN0YS1mb2xsb3dlcnMiOiIzNk0ifQ:1pDnrA:R8t6PPtNrQSb4IIK3dpEXu3dbrhOOkH5Zy2NuywwTCM', '2023-01-20 14:38:04.611842'),
+('9hykyoef20utxpv58fqmlazq84k4dmuv', 'eyJjYXJ0Ijp7fX0:1pI2S1:DRW19hiRYBHkqifmXSrzH7wdflionTyWmbXIuWv8xkg', '2023-02-01 07:01:37.798337'),
+('9lpgrhg62xlf978yd2x19af8l95wthj3', 'eyJjYXJ0Ijp7fX0:1pI2S8:dHdhZc83w7O3xdg3ODhraq1_r3J5nvLEApcNwixf8K8', '2023-02-01 07:01:44.815190'),
+('9mzw3xvjj8fjd0cs3qbd292qruc5mr37', 'eyJjYXJ0Ijp7fX0:1pI310:YcaWnXStmoEfYNKtZbw8fMw-q6i_LVfrroZn7Nz2SoE', '2023-02-01 07:37:46.319127'),
+('9nt8ue8dzz9o30krw0uhubm4yy1w77is', 'eyJjYXJ0Ijp7fX0:1pI2Up:kXChGJkrpaA3xBy0-bHcLmiI6nmAsaTXkMnPYdvjCmE', '2023-02-01 07:04:31.987830'),
+('9nuq9ac0pbfojt4z0by11i5on46njr77', 'eyJjYXJ0Ijp7fX0:1pI34I:0kWA_cX1CRpybxVKY_9kEru-WTGqmvCIpRF3CYIVRIA', '2023-02-01 07:41:10.004289'),
+('9ppyp97rntmbhnf5nmxugoayek3miw8t', 'eyJjYXJ0Ijp7fX0:1pI2ax:zHyOaCIAvouiCSvY_h6KlGWfsJyvSrk5WD5WpVnfEZ4', '2023-02-01 07:10:51.264512'),
+('9va8gx7yzbd91bvglsdmwhwjrefc1rvc', 'eyJjYXJ0Ijp7fX0:1pI2xB:LGAzvkRfDwyGU-hRe_bM1rd0rvbXD4tOM8TbUDehc64', '2023-02-01 07:33:49.462411'),
+('9wgi5n6odg92ksknrk1yfayutvf1acbc', 'eyJjYXJ0Ijp7fX0:1pID4m:TQTn1xISxaN_tkEcHbzuw_4yvUEACa3dHTKBoStIekM', '2023-02-01 18:22:20.427251'),
+('a2yevupckogkly2zuiu4duak7l5quzod', 'eyJjYXJ0Ijp7fX0:1pI2vU:9M6JwBe5cqzDYRqA_9XX_2gtXTneRMkogbVc_cFjBZU', '2023-02-01 07:32:04.025993'),
+('a6qq7qlxnc8lbzr6rpr8r8irs3hnvxce', 'eyJjYXJ0Ijp7fX0:1pI9lU:yjqV-aRMOglI-Q7xxLuO66rHCIUfnr0hPqvc11JIIqM', '2023-02-01 14:50:12.154447'),
+('a8doa83b7wofupdntfd72ynrgzi4lr8j', 'eyJjYXJ0Ijp7fX0:1pI2hn:g4afcAhsFR4UP94ESRHQXx-jUs7LendbiwVbMU020Cg', '2023-02-01 07:17:55.552273'),
+('abr7nne7qt0s22j7fm7igvfht9b21h6s', 'eyJjYXJ0Ijp7fX0:1pI9lP:TyMV3BXpqLA6icoBSk73ucxcH4dH-KA-kDA1Rfrm1L8', '2023-02-01 14:50:07.966496'),
+('adm43hseccd0sh5kxni55gsh2bpb7bvk', 'eyJjYXJ0Ijp7fX0:1pID4m:TQTn1xISxaN_tkEcHbzuw_4yvUEACa3dHTKBoStIekM', '2023-02-01 18:22:20.648792'),
+('aefp7q44i7yy5zojnmi675c2m5kr5dr9', 'eyJjYXJ0Ijp7fX0:1pIBSL:ui8TLm2woZ1uLipwgABBsocc7jrfjxwmlMSCeomej70', '2023-02-01 16:38:33.913701'),
+('an6jzs72sey6hrbzdcn2kglb4rnsq5en', 'eyJjYXJ0Ijp7fX0:1pI2Vm:XXhCB2jP44emjJLbT5SrShOSl8MNVpq-dRXhCE_UGBQ', '2023-02-01 07:05:30.432433'),
+('anoy3jqqr6aq8ds4ir49cx6dhwbfhgmq', 'eyJjYXJ0Ijp7fX0:1pI9lU:yjqV-aRMOglI-Q7xxLuO66rHCIUfnr0hPqvc11JIIqM', '2023-02-01 14:50:12.209969'),
+('argu4qsiqt907qcclhlwqgf5zfvydltg', 'eyJjYXJ0Ijp7fX0:1pI2zx:bgPw7ZkQ5_O_QBLAKMygBqIwACvmj4MRy5PZ3wnmuW4', '2023-02-01 07:36:41.158299'),
+('atnu0zm9rq4k0n97eqson0t5t01lvxxc', 'eyJjYXJ0Ijp7fX0:1pIEHu:7MOsXV9g_pRgvyNe1eTNTnTBVFy_btpKJonVsdMlqYE', '2023-02-01 19:39:58.836542'),
+('awn0objs6zh110yp42lbnr7ih2ktw7p9', 'eyJjYXJ0Ijp7fX0:1pI2VL:91fOp4kTQMTszNabXmSV7cH8fe_RDvd9hqlTCzDgFb0', '2023-02-01 07:05:03.667549'),
+('ay90uwyx6makzkpw80pmkqe9uq1swi86', 'eyJjYXJ0Ijp7fX0:1pI2ar:2X9BGyTE4zUXQ842sE6LHXyvVnO0nwprCXzTHHQgmXc', '2023-02-01 07:10:45.057561'),
+('b30zi5eth9c1vmc87y0ahjxvy6ekolsf', 'eyJjYXJ0Ijp7fX0:1pI2w0:BOENyYeya3ekZWPY4H30sLX01toydkBrP-RPIICJShg', '2023-02-01 07:32:36.884071'),
+('b4enuzaeto0e644qaijhgj742juyn07q', 'eyJjYXJ0Ijp7fX0:1pI2UK:9nMNX5L7LNKFgZT1BiyNt43khZ8HqA0zOtUsYlBBxeo', '2023-02-01 07:04:00.277997'),
+('b5l6x2wkcmq2ng6f29p4ine2n5rcbbbd', 'eyJjYXJ0Ijp7fX0:1pI2S8:dHdhZc83w7O3xdg3ODhraq1_r3J5nvLEApcNwixf8K8', '2023-02-01 07:01:44.654884'),
 ('b9bi7vxs7p9aatr7wb9zwxl7es3vzy5v', 'e30:1p6zNC:AvflqbDrX70MA-5s5NZFqkLvWLkqgF2dHXDZdA-MdLI', '2023-01-01 19:30:58.275569'),
+('b9lhmhiyb3qorus4pfwxph16c75oamnb', 'eyJjYXJ0Ijp7fX0:1pI2VL:91fOp4kTQMTszNabXmSV7cH8fe_RDvd9hqlTCzDgFb0', '2023-02-01 07:05:03.666089'),
+('berzy9erndqh985a40fmgns7srlra8qx', 'eyJjYXJ0Ijp7fX0:1pI2al:D9UJQsBNq8KRcEJK5fD9tUzrhl1oPDpgnXnUAnXm1B8', '2023-02-01 07:10:39.211261'),
+('bgye50yyz5iy85x2zgfgzskrvon25vqm', 'eyJjYXJ0Ijp7fX0:1pI2S4:NFLV4NP-OlMgH8DDrbn_OHdWjHp9NOSdf1IksLGrSJw', '2023-02-01 07:01:40.783702'),
+('bko083wjr9bnexs2r0y9rhur2amlvuhg', 'eyJjYXJ0Ijp7fX0:1pI2x2:RQvjPM_SXOjY8R4Wxq-uO2UfWQzIoNsecJ1im0bSz0U', '2023-02-01 07:33:40.703267'),
+('bqkrj0so770fjho8z11d0tnr8gxxmyzx', 'eyJjYXJ0Ijp7fX0:1pI2ZF:8FeXkUep__z7E2RmVJVbs2cd4CteJ3qX3DDNAgWTjYk', '2023-02-01 07:09:05.744315'),
+('btszk5alzvuhzdupnmkmxg6ri8x1dn1u', 'eyJjYXJ0Ijp7fX0:1pI2vT:AEydemPW4LorGZsy2W3sqvGo0H6xapUWUOyeLHDctao', '2023-02-01 07:32:03.860294'),
+('bylwx4mitk69x80kc7g8du57estxb1tl', 'eyJjYXJ0Ijp7fX0:1pI2wz:i0257colU8Z6oR1b7CUy3592FcAkn0X9S1JwyoZQDRo', '2023-02-01 07:33:37.136414'),
+('byq71lrmqt3a9b6mmcpl4fgw2jv4r9ly', 'eyJjYXJ0Ijp7fX0:1pI2S1:DRW19hiRYBHkqifmXSrzH7wdflionTyWmbXIuWv8xkg', '2023-02-01 07:01:37.979267'),
+('c2mb1xvjkdfujjna3hyvj8dxsary564j', 'eyJjYXJ0Ijp7fX0:1pIBSL:ui8TLm2woZ1uLipwgABBsocc7jrfjxwmlMSCeomej70', '2023-02-01 16:38:33.907133'),
+('c4203cda1fg7xkujwzpnk1gkgxet9hct', 'eyJjYXJ0Ijp7fX0:1pI2wv:V9DL9VGBGrUdjtnvXoCMJ8ULW306in5e6ubwnwKKeXE', '2023-02-01 07:33:33.044793'),
+('c4k3r5cea7p95awl0r3m36ntwscv71q3', 'eyJjYXJ0Ijp7fX0:1pI2xF:d6YJgrVzEDjavK4GmLuepoOKDGeZnOXumSIzmePuEbg', '2023-02-01 07:33:53.666518'),
+('c8157npdb2k8adhg6dtp81qy65sm35xo', 'eyJjYXJ0Ijp7fX0:1pI310:YcaWnXStmoEfYNKtZbw8fMw-q6i_LVfrroZn7Nz2SoE', '2023-02-01 07:37:46.162293'),
+('c95u6gggeem1syk7e3sfcu0928dfilo7', 'eyJjYXJ0Ijp7fX0:1pI31H:D5D-AJSxQ9ZpagYiHih_1EKrJY4CFgRFKHH5sE-_fLo', '2023-02-01 07:38:03.387017'),
+('cdhqlcg7y9d1a227c5he8qzgd5x8cdhu', 'eyJjYXJ0Ijp7fX0:1pI2S4:NFLV4NP-OlMgH8DDrbn_OHdWjHp9NOSdf1IksLGrSJw', '2023-02-01 07:01:40.765000'),
+('cl3on7otwnnjtrjz0o9oe01a276s2oav', 'eyJjYXJ0Ijp7fX0:1pI2xF:d6YJgrVzEDjavK4GmLuepoOKDGeZnOXumSIzmePuEbg', '2023-02-01 07:33:53.671874'),
+('cnd1jmdnuuze59gbltr7qmjj3x0xgnrs', 'eyJjYXJ0Ijp7fX0:1pI2xR:22G-cYyRwyYhLdHgLtGJLtUsrHVoeiXQKmOEPHv1_uM', '2023-02-01 07:34:05.989963'),
+('cpuqbejfwfeha4gp0iyhqi8ogi7v00i3', 'eyJjYXJ0Ijp7fX0:1pIBSL:ui8TLm2woZ1uLipwgABBsocc7jrfjxwmlMSCeomej70', '2023-02-01 16:38:33.912041'),
+('cq7md89kcqx1rr6klda5ecp24uhbilwq', 'eyJjYXJ0Ijp7fX0:1pI2iH:5rPjSXbua_WZnaG7wbWrw2LzBhY5biKYAf4WPh5kgbQ', '2023-02-01 07:18:25.571473'),
+('cr00pd57ei0qsy0zshzhcgfebhcnac7n', 'eyJjYXJ0Ijp7fX0:1pI30h:2iTki6IuxD3OHCfQc9AJ2Q_cyefTSSXd5ACaYs9GXvc', '2023-02-01 07:37:27.858298'),
+('crbeh2sumuu8gwoe39ywh6w4mkiemq22', 'eyJjYXJ0Ijp7fX0:1pIDMO:JOpauYvdNeC2JMYs7axD0yL-4cz5fXAVsH-LLwwHrQs', '2023-02-01 18:40:32.830204'),
+('csah8ps2jxx1x64009bq14wnl432zt6s', 'eyJjYXJ0Ijp7fX0:1pI2x2:RQvjPM_SXOjY8R4Wxq-uO2UfWQzIoNsecJ1im0bSz0U', '2023-02-01 07:33:40.434435'),
+('csomp8zgp6fwvi5mjyaci834lb2s1ejy', 'eyJjYXJ0Ijp7fX0:1pI3Vo:KTBvvUfPruA4V72qpJFfCBAeP-6hLpOWH5MMCJr-bXA', '2023-02-01 08:09:36.373821'),
+('csw1pvd8w6anq7nt8e04xx8uztgdbpd4', 'eyJjYXJ0Ijp7fX0:1pI2wy:nRul3u0lYIz9YOKTM2Lg6k0KKNuqyB2peZf2mZZcyaQ', '2023-02-01 07:33:36.943925'),
+('ctzz6sskshrkcw80gdfs77gqzc1m7wgf', 'eyJjYXJ0Ijp7fX0:1pI34I:0kWA_cX1CRpybxVKY_9kEru-WTGqmvCIpRF3CYIVRIA', '2023-02-01 07:41:10.034320'),
+('cvy32s8urvmfbdh63fcm2as977r8d3hs', 'eyJjYXJ0Ijp7fX0:1pI2bb:rBJN-dhMCHk4jx27PDSD-4HUZgK4zH27U3HqLtmjjl0', '2023-02-01 07:11:31.413323'),
+('czrsowl66sjtdy3tbfo72n9683pngu69', 'eyJjYXJ0Ijp7fX0:1pI2gm:ZA5qbqLopFG_PFrvXd5MNFZ_cWM764VwdX0tfcQzl54', '2023-02-01 07:16:52.574429'),
+('d730r45yl5wkzuelhfj7yye8utpa61fv', 'eyJjYXJ0Ijp7fX0:1pI9lT:WS8ZUNm7d1OAYH2TPrUxdkcs-T2i15ALsvSELoR1njg', '2023-02-01 14:50:11.989248'),
+('d8qpv9zvyjwrfbfn7zoxyoqqevt8yxn1', 'eyJjYXJ0Ijp7fX0:1pI2Ve:C3hdMkQQMy4zfU4xcu61Z6Sy47pMgL6_7iZ5knvB7QI', '2023-02-01 07:05:22.535402'),
+('db04i9cr14jaj8unwi2231k4w1gn620r', 'eyJjYXJ0Ijp7fX0:1pI2cD:3PUCZoUVP7ApKHSTpuaP_sQfim4CpcKnI4EGTjPGiw0', '2023-02-01 07:12:09.187529'),
+('db2596btrrxteb05xnd2mgjakszllgfy', 'eyJjYXJ0Ijp7fX0:1pIEI3:rtm5s0KvoTaea5NtbtCHeHuYfTHrmb7PWZv-7rh9RVg', '2023-02-01 19:40:07.523677'),
+('ddq5yk8ehyey19xut9n15f67ddpksprp', 'eyJjYXJ0Ijp7fX0:1pI2vU:9M6JwBe5cqzDYRqA_9XX_2gtXTneRMkogbVc_cFjBZU', '2023-02-01 07:32:04.025792'),
+('ddqahp19xz3y0lf9comd5ou05ygw0zkc', 'eyJjYXJ0Ijp7fX0:1pI2al:D9UJQsBNq8KRcEJK5fD9tUzrhl1oPDpgnXnUAnXm1B8', '2023-02-01 07:10:39.174422'),
+('dfez8yqje03a1ta85ql4howxz6v29ijq', 'eyJjYXJ0Ijp7fX0:1pIBSK:M6swbAOs4a4KYj4GtOiAXE6WrX1Mj9LP6ZdWyl-rkgs', '2023-02-01 16:38:32.764451'),
+('dkg98gxmape5jm6c9podme5dca1zhxdh', 'eyJjYXJ0Ijp7fX0:1pI2Wb:lRkQ-jG2TojNMGg6BXgOcjl34WoFrLDYAgytzTLNKOg', '2023-02-01 07:06:21.710598'),
+('dmssx5tmg012ddmezoj7l0vtfstw3s01', 'eyJjYXJ0Ijp7fX0:1pI2al:D9UJQsBNq8KRcEJK5fD9tUzrhl1oPDpgnXnUAnXm1B8', '2023-02-01 07:10:39.023651'),
+('dx4n0tj11as23sy67je8bc9zmi6uexaw', 'eyJjYXJ0Ijp7fX0:1pI2vZ:ammluEj4Ov7yFCC-tgFVqUAVzVFxJKX0GnjbcfjAhJ8', '2023-02-01 07:32:09.884423'),
+('dyvrubvsahk8rhobdsngtaibelewxyxi', 'eyJjYXJ0Ijp7fX0:1pI2mk:kLlT_cSh949IKn6dq78JWlMdvmH0qWPNqbGz1E7m3V8', '2023-02-01 07:23:02.237820'),
+('e0eb7ibt5dqm4odwohht67roz0mtkapi', 'eyJjYXJ0Ijp7fX0:1pI2UG:QibLGvHIkmUaGxSwI1-KM9uWLUDSMFqGtVz42PUjtR8', '2023-02-01 07:03:56.808472'),
+('e119jfsyvfbkfv9w5k5pivygf2f2os0z', 'eyJjYXJ0Ijp7fX0:1pIEHp:bycJeQCsz8CKjdEqvHYBmktLrKzlttBGE1BpZ5-RlFM', '2023-02-01 19:39:53.604246'),
+('e224gzaiv27blv4fae2e2skqmd8whmf7', 'eyJjYXJ0Ijp7fX0:1pI2S4:NFLV4NP-OlMgH8DDrbn_OHdWjHp9NOSdf1IksLGrSJw', '2023-02-01 07:01:40.589888'),
+('e2bi67jk0o5tivowsjvr6se5xf7di4rz', 'eyJjYXJ0Ijp7fX0:1pI2oI:1cpf1hRLTIH4ocfEOAHsC7izBP4L2R4Rr-qt6BSRDd4', '2023-02-01 07:24:38.189257'),
+('eaezm733kkmfinfrzd936yi0781sp5f8', 'eyJjYXJ0Ijp7fX0:1pI2ZF:8FeXkUep__z7E2RmVJVbs2cd4CteJ3qX3DDNAgWTjYk', '2023-02-01 07:09:05.741959'),
+('eb7taa633idxmi9h5qtwrmyevdk9vvlc', 'eyJjYXJ0Ijp7fX0:1pI2wz:i0257colU8Z6oR1b7CUy3592FcAkn0X9S1JwyoZQDRo', '2023-02-01 07:33:37.134487'),
+('ec0ny9hfklfeqxwqxrocrr18kyhrriur', 'eyJjYXJ0Ijp7fX0:1pI2bb:rBJN-dhMCHk4jx27PDSD-4HUZgK4zH27U3HqLtmjjl0', '2023-02-01 07:11:31.403232'),
+('ef0ccmdlxp2cvawpan001930wsfjpfjm', 'eyJjYXJ0Ijp7fX0:1pI2w0:BOENyYeya3ekZWPY4H30sLX01toydkBrP-RPIICJShg', '2023-02-01 07:32:36.877501'),
+('egqof82b25omjgbz68krtk4ds837nncm', 'eyJjYXJ0Ijp7fX0:1pI2ar:2X9BGyTE4zUXQ842sE6LHXyvVnO0nwprCXzTHHQgmXc', '2023-02-01 07:10:45.047185'),
+('ehaoavknejl96u7n5cg07eslqer0zc8n', 'eyJjYXJ0Ijp7fX0:1pI2dh:oEw3lq1EyZ97pUxRsvzScCnD4mPJ87ZzdqknaSoQMP8', '2023-02-01 07:13:41.615111'),
+('ejw217hpgg84647j3tf8mg1tddy3oq1p', 'eyJjYXJ0Ijp7fX0:1pI2iH:5rPjSXbua_WZnaG7wbWrw2LzBhY5biKYAf4WPh5kgbQ', '2023-02-01 07:18:25.570897'),
+('emt4pozh6pmdzrpo2jn4utm7pamed5wz', 'eyJjYXJ0Ijp7fX0:1pI2ZF:8FeXkUep__z7E2RmVJVbs2cd4CteJ3qX3DDNAgWTjYk', '2023-02-01 07:09:05.746810'),
+('en3g4ftk09qmrnuq37xnc54s9n1sfq7i', 'eyJjYXJ0Ijp7fX0:1pI2UL:oS1sVGMJ6R0ij6WzS_DovlM6rjZA1QClf4OxyH3wxSo', '2023-02-01 07:04:01.461092'),
+('eoff22zgx3ml0tc9kabhfp8h1ivjs5by', 'eyJjYXJ0Ijp7fX0:1pI2S1:DRW19hiRYBHkqifmXSrzH7wdflionTyWmbXIuWv8xkg', '2023-02-01 07:01:37.975690'),
+('epcezxrzh1r3ljghj2n0do3oyox65qxo', 'eyJjYXJ0Ijp7fX0:1pI2ax:zHyOaCIAvouiCSvY_h6KlGWfsJyvSrk5WD5WpVnfEZ4', '2023-02-01 07:10:51.272250'),
+('eqp5es1crgxa2vc36mro4ks94xmaf9e1', 'eyJjYXJ0Ijp7fX0:1pI2UL:oS1sVGMJ6R0ij6WzS_DovlM6rjZA1QClf4OxyH3wxSo', '2023-02-01 07:04:01.459152'),
+('eqps50egnxdc2oorhly4yj2rcf0csmkt', 'eyJjYXJ0Ijp7fX0:1pI31H:D5D-AJSxQ9ZpagYiHih_1EKrJY4CFgRFKHH5sE-_fLo', '2023-02-01 07:38:03.565678'),
+('er1cciysmrn2dqu8k573dvj25yuezuj1', 'eyJjYXJ0Ijp7fX0:1pI2S8:dHdhZc83w7O3xdg3ODhraq1_r3J5nvLEApcNwixf8K8', '2023-02-01 07:01:44.654569'),
+('ev58xvujqpwh31bp05lhh0b91w2fez8h', 'eyJjYXJ0Ijp7fX0:1pI2xF:d6YJgrVzEDjavK4GmLuepoOKDGeZnOXumSIzmePuEbg', '2023-02-01 07:33:53.655794'),
+('ex6nhf1rf5f1pdxpbh8hhv4ym6ivps6t', 'eyJjYXJ0Ijp7fX0:1pI3Vo:KTBvvUfPruA4V72qpJFfCBAeP-6hLpOWH5MMCJr-bXA', '2023-02-01 08:09:36.137648'),
+('eylzd352kptvkrvcg43rvq8uaepaq60f', 'eyJjYXJ0Ijp7fX0:1pI2VL:91fOp4kTQMTszNabXmSV7cH8fe_RDvd9hqlTCzDgFb0', '2023-02-01 07:05:03.542059'),
+('ezmj7391ihsiv3y23dg0opg7dv3rzc6k', 'eyJjYXJ0Ijp7fX0:1pIDMO:JOpauYvdNeC2JMYs7axD0yL-4cz5fXAVsH-LLwwHrQs', '2023-02-01 18:40:32.763433'),
+('f75y4b1xp5yeft4s6s6r1vbywca8vkyz', 'eyJjYXJ0Ijp7fX0:1pI2VL:91fOp4kTQMTszNabXmSV7cH8fe_RDvd9hqlTCzDgFb0', '2023-02-01 07:05:03.662194'),
+('f87m91cvicq1nyt2hvvqs6btevl9g4rc', 'eyJjYXJ0Ijp7fX0:1pI8Il:_YOznJz8iSTzCOfkxWfVCWkrLqyJd7g6AfGn3ip1_Hg', '2023-02-01 13:16:27.049063'),
+('feo1rqsztdlab10ha0y59r8ersgcmaym', 'eyJjYXJ0Ijp7fX0:1pI2h2:KZBHv7m7xzqukn4ESXLAdqpFJFwbYptZKSD0iC3D0OA', '2023-02-01 07:17:08.746934'),
+('fepmcu290bi4ugx5tpu37bbrxwuc24wa', 'eyJjYXJ0Ijp7fX0:1pI9lQ:j7kLJSdp0oYumCg3LrIWiBQl1WPPHWfXZjaQArUYMgQ', '2023-02-01 14:50:08.205549'),
+('ff78nwmu88v82nh3q0ncnv6d663l1yt5', 'eyJjYXJ0Ijp7fX0:1pIEHp:bycJeQCsz8CKjdEqvHYBmktLrKzlttBGE1BpZ5-RlFM', '2023-02-01 19:39:53.814999'),
+('fjdq45dozp9oh6wue3hduq0biqoxvly6', 'eyJjYXJ0Ijp7fX0:1pI2Un:FYzYUwu3XRq9hDGGSj6dkchN2S4a2RWiBbc0V5G004A', '2023-02-01 07:04:29.376985'),
+('fky9nlcz14apasjehyb1fjnow6oebsvd', 'eyJjYXJ0Ijp7fX0:1pIEI4:WzyznG1QwhW_q7ErCNoI41EGNQJFdkdeYaI8w7lwlMA', '2023-02-01 19:40:08.234150'),
+('fu35g2qukny7bckydesn7s7j4s7b7lbj', 'eyJjYXJ0Ijp7fX0:1pI310:YcaWnXStmoEfYNKtZbw8fMw-q6i_LVfrroZn7Nz2SoE', '2023-02-01 07:37:46.323198'),
+('fucyoqlrdk49gjuifr663kw01hd90hcs', 'eyJjYXJ0Ijp7fX0:1pI2ax:zHyOaCIAvouiCSvY_h6KlGWfsJyvSrk5WD5WpVnfEZ4', '2023-02-01 07:10:51.271994'),
+('fuwcjt7aw43vn6sq2ses6ueu0mqk6mm4', 'eyJjYXJ0Ijp7fX0:1pI2Ve:C3hdMkQQMy4zfU4xcu61Z6Sy47pMgL6_7iZ5knvB7QI', '2023-02-01 07:05:22.537630'),
+('fxphk68g0bx8oicx2zdd7p39w7o7yo7u', 'eyJjYXJ0Ijp7fX0:1pI2xP:zbR6Shf8yE98fftbbSW4VK2Uc_jeJdg6IxEMbdOVIlU', '2023-02-01 07:34:03.483194'),
+('fz5ua39sezo3sc85lzxoecmscjsi1m8v', 'eyJjYXJ0Ijp7fX0:1pI2gm:ZA5qbqLopFG_PFrvXd5MNFZ_cWM764VwdX0tfcQzl54', '2023-02-01 07:16:52.417847'),
+('g83htzr1chq0it3a9gl6grv63e179f8o', 'eyJjYXJ0Ijp7fX0:1pI30W:mmP-Dgvl79hsXQU6W8KGiyRiaXjSwVMAVBVUTSmbDnI', '2023-02-01 07:37:16.610817'),
+('g95ud6qewpjvn467p3wlsi3ft0ffmd3u', 'eyJjYXJ0Ijp7fX0:1pI3Vr:UdNuEfTf0KbFmqi2Rl0BbCiEVmyyRBCirWMuJDkbs7U', '2023-02-01 08:09:39.574275'),
+('g9q1tfa7zw1l2yrdy2z8a6ddjzjjqfp0', 'eyJjYXJ0Ijp7fX0:1pI2dc:8ZtOPDkkHMIUfO3-5uBlzpp7eebw25P9e6UGStlBEHU', '2023-02-01 07:13:36.238331'),
+('gdlfy4tl24m90rkko3wvj0bcy5pxfdg4', 'eyJjYXJ0Ijp7fX0:1pI3Vr:UdNuEfTf0KbFmqi2Rl0BbCiEVmyyRBCirWMuJDkbs7U', '2023-02-01 08:09:39.304205'),
+('geoxj3coqepz1y17bv5o2u24e2lm2suq', 'eyJjYXJ0Ijp7fX0:1pI2hS:c1DAGNew_KMxVl9TkU1-lxFrzaAsA44zsLDCv7Kbgus', '2023-02-01 07:17:34.107154'),
+('gfj8sv0ktjnft18qu41ndtmfq87nipgf', 'eyJjYXJ0Ijp7fX0:1pI2Wb:lRkQ-jG2TojNMGg6BXgOcjl34WoFrLDYAgytzTLNKOg', '2023-02-01 07:06:21.734111'),
+('gjw8wyc9jkx82egpezeakwlldam34e0d', 'eyJjYXJ0Ijp7fX0:1pI2gm:ZA5qbqLopFG_PFrvXd5MNFZ_cWM764VwdX0tfcQzl54', '2023-02-01 07:16:52.417738'),
+('gtlv6ufiqhuvxbjlopze5xiqd2j2lvfc', 'eyJjYXJ0Ijp7fX0:1pIBSL:ui8TLm2woZ1uLipwgABBsocc7jrfjxwmlMSCeomej70', '2023-02-01 16:38:33.906832'),
 ('gv35g17t2ipl0vcqu7z8f0a5k70kwq35', '.eJxVjkEOgyAURO_C2hIt_Qgu3XsG84FPtTWQAKYL492riYt2O-_NZDY24lqmcc2UxtmxjklW_WYG7ZvCCdwLwzNyG0NJs-Gnwi-a-RAdLf3l_g1MmKejTVJrYbBB5VTttTUAQEqCIU_ePKRwqm0VNIAkjLZ3h3iIytceG2jd-cpiKqzb9orNIRe8-bgs8UMpH_MCuBzY_gXTVEQt:1p9sQG:uS2Vy-UvffbYwIWrPEElEmRfL1uZY6eIDTdf2RCJlRs', '2023-01-09 18:42:04.679418'),
+('gvvmpupdwwbr4y7q61vya23qttwnomlp', 'eyJjYXJ0Ijp7fX0:1pI2xB:LGAzvkRfDwyGU-hRe_bM1rd0rvbXD4tOM8TbUDehc64', '2023-02-01 07:33:49.464887'),
+('h23c46nwqb5q0dmcejx9lkt3wvm6tvbp', 'eyJjYXJ0Ijp7fX0:1pI2hS:c1DAGNew_KMxVl9TkU1-lxFrzaAsA44zsLDCv7Kbgus', '2023-02-01 07:17:34.121419'),
+('h5wlflloyj20vz33ii4c9o9h6rdosgel', 'eyJjYXJ0Ijp7fX0:1pI3Vo:KTBvvUfPruA4V72qpJFfCBAeP-6hLpOWH5MMCJr-bXA', '2023-02-01 08:09:36.400180'),
+('h6ag8dmyh2gaqq276yw0cyc5gwvh3upt', 'eyJjYXJ0Ijp7fX0:1pI2bb:rBJN-dhMCHk4jx27PDSD-4HUZgK4zH27U3HqLtmjjl0', '2023-02-01 07:11:31.215703'),
+('hnjlp7fjes0n6wzeu69u5ztk9egoi8yt', 'eyJjYXJ0Ijp7fX0:1pI2Vm:XXhCB2jP44emjJLbT5SrShOSl8MNVpq-dRXhCE_UGBQ', '2023-02-01 07:05:30.434006'),
+('hoznq01u2yq4xsiqen6ajpb53hg2jyyn', 'eyJjYXJ0Ijp7fX0:1pIEHp:bycJeQCsz8CKjdEqvHYBmktLrKzlttBGE1BpZ5-RlFM', '2023-02-01 19:39:53.792155'),
+('hpe1jjztwbcwuq0nhlxhhppy4zle0u64', 'eyJjYXJ0Ijp7fX0:1pI2aW:4Igcp_uil4imP9a4VeSIYgTP_wY8BNWzSJm3wlCQzSc', '2023-02-01 07:10:24.238199'),
+('hshotzfm53j5lxlijpvl4rigqxv34t6q', 'eyJjYXJ0Ijp7fX0:1pI2Up:kXChGJkrpaA3xBy0-bHcLmiI6nmAsaTXkMnPYdvjCmE', '2023-02-01 07:04:31.985278'),
+('hvp4rq5oozrafawkihjdsnjeno4i01kq', 'eyJjYXJ0Ijp7fX0:1pIDMO:JOpauYvdNeC2JMYs7axD0yL-4cz5fXAVsH-LLwwHrQs', '2023-02-01 18:40:32.822358'),
+('hwmgtf7e1886w38jdifs1ikqupsvsyxp', 'eyJjYXJ0Ijp7fX0:1pI2VC:bQ26Fr6yvGlfDA2b5o2nXsYJeK2qxC9skhTMgTgDld0', '2023-02-01 07:04:54.913864'),
+('hy2kubkbc04izfv9gguu6otf8zxyuzum', 'eyJjYXJ0Ijp7fX0:1pI2vZ:ammluEj4Ov7yFCC-tgFVqUAVzVFxJKX0GnjbcfjAhJ8', '2023-02-01 07:32:09.718877'),
+('i00ad3tzfs5p9idge1aeapb60tf3gnp1', 'eyJjYXJ0Ijp7fX0:1pI2ZF:8FeXkUep__z7E2RmVJVbs2cd4CteJ3qX3DDNAgWTjYk', '2023-02-01 07:09:05.590239'),
+('i2s8sbavkiv1diix2i6dni7yeqdr3s57', 'eyJjYXJ0Ijp7fX0:1pI2UK:9nMNX5L7LNKFgZT1BiyNt43khZ8HqA0zOtUsYlBBxeo', '2023-02-01 07:04:00.279542'),
+('i5cqqjujp2twbso2n68qazwy4ydrgomh', 'eyJjYXJ0Ijp7fX0:1pI2Wb:lRkQ-jG2TojNMGg6BXgOcjl34WoFrLDYAgytzTLNKOg', '2023-02-01 07:06:21.731443'),
+('i6xt4dyqbxk41nellcw424vxdee7ip64', 'eyJjYXJ0Ijp7fX0:1pI2xP:zbR6Shf8yE98fftbbSW4VK2Uc_jeJdg6IxEMbdOVIlU', '2023-02-01 07:34:03.484228'),
+('i7us8c2vrmifz56ri6jr22vhmwrdxu67', 'eyJjYXJ0Ijp7fX0:1pI2hn:g4afcAhsFR4UP94ESRHQXx-jUs7LendbiwVbMU020Cg', '2023-02-01 07:17:55.377886'),
+('ia1s2iohswnn6nx4qpzx73vbcnruscno', 'eyJjYXJ0Ijp7fX0:1pI2VL:91fOp4kTQMTszNabXmSV7cH8fe_RDvd9hqlTCzDgFb0', '2023-02-01 07:05:03.667137'),
+('iby55m2pj2ivew19t4kb6va2eu0n5462', 'eyJjYXJ0Ijp7fX0:1pI2UK:9nMNX5L7LNKFgZT1BiyNt43khZ8HqA0zOtUsYlBBxeo', '2023-02-01 07:04:00.282699'),
+('iev6v16boj9alg20qyfh9mr2uqcetepd', 'eyJjYXJ0Ijp7fX0:1pI2xB:LGAzvkRfDwyGU-hRe_bM1rd0rvbXD4tOM8TbUDehc64', '2023-02-01 07:33:49.469636'),
+('ihfxnovmpe26y3kfqae5yl1z7oschmhp', 'eyJjYXJ0Ijp7fX0:1pIEHv:DxbSugD-7UxwgSdSuKprC45A5DmkrrpStrgnZKNoRNA', '2023-02-01 19:39:59.074390'),
+('ii0wbjntk11vij6w29kp752is14zajjx', 'eyJjYXJ0Ijp7fX0:1pI2dh:oEw3lq1EyZ97pUxRsvzScCnD4mPJ87ZzdqknaSoQMP8', '2023-02-01 07:13:41.615337'),
+('ilknb8zlm4yi5l32v4ialxpbacfiwdzq', 'eyJjYXJ0Ijp7fX0:1pI2cC:qz0CRP8s3CBLSH-cbZ4f7kwPeF6VoNFtxMla7q-kFro', '2023-02-01 07:12:08.938061'),
+('ilso8oxzalnnx2wjrngzhih7xi56tc3t', 'eyJjYXJ0Ijp7fX0:1pI2go:y3lMmQljx6G84f2o0PeIViFvOI_vUD4o0qC_Jx1B7-Y', '2023-02-01 07:16:54.019106'),
+('in342gukwsnks6usn3k5q16z1j1oqmqz', 'eyJjYXJ0Ijp7fX0:1pI2vZ:ammluEj4Ov7yFCC-tgFVqUAVzVFxJKX0GnjbcfjAhJ8', '2023-02-01 07:32:09.897124'),
+('iohhsdjqkgvzl2n98cd2gquj4t0k0anp', 'eyJjYXJ0Ijp7fX0:1pI2bR:8JpRI-cNP4BfI97RwB1QeFJrlG3zwd8301zweW63DMk', '2023-02-01 07:11:21.157733'),
+('ip42hmzivhm9d7vyd7kjdgmm1dbm6eal', 'eyJjYXJ0Ijp7fX0:1pI2dh:oEw3lq1EyZ97pUxRsvzScCnD4mPJ87ZzdqknaSoQMP8', '2023-02-01 07:13:41.437802'),
+('itdvz063o2nexs0gxc93uurhpyk70x13', 'eyJjYXJ0Ijp7fX0:1pI2bR:8JpRI-cNP4BfI97RwB1QeFJrlG3zwd8301zweW63DMk', '2023-02-01 07:11:21.157421'),
+('itl143tfe6dlg24tatnkjzhzx2xa1kz5', 'eyJjYXJ0Ijp7fX0:1pI2Vm:XXhCB2jP44emjJLbT5SrShOSl8MNVpq-dRXhCE_UGBQ', '2023-02-01 07:05:30.440766'),
+('iu94jjelpwhp1e0roqylkjrxaraspedy', 'eyJjYXJ0Ijp7fX0:1pI2oI:1cpf1hRLTIH4ocfEOAHsC7izBP4L2R4Rr-qt6BSRDd4', '2023-02-01 07:24:38.008979'),
+('j3ktzhh624pz585ptpp9qr5dt2mtvcm3', 'eyJjYXJ0Ijp7fX0:1pI307:M2YMw9u8_pazi20SwOIhwHX7SjFHqCDVY-Q3W_-oGQ0', '2023-02-01 07:36:51.953157'),
+('j3nir30q40wquzg6e036lbk3ffn32exf', 'eyJjYXJ0Ijp7fX0:1pI310:YcaWnXStmoEfYNKtZbw8fMw-q6i_LVfrroZn7Nz2SoE', '2023-02-01 07:37:46.162452'),
+('j3tiv79jvyyq2irx8lr26xhp485ne1af', 'eyJjYXJ0Ijp7fX0:1pI34I:0kWA_cX1CRpybxVKY_9kEru-WTGqmvCIpRF3CYIVRIA', '2023-02-01 07:41:10.032853'),
+('j6ctdtllmampyzgc21jo7s3ktft4ews8', 'eyJjYXJ0Ijp7fX0:1pI2wz:i0257colU8Z6oR1b7CUy3592FcAkn0X9S1JwyoZQDRo', '2023-02-01 07:33:37.113260'),
+('jbfgg5ppyj9nz1nasony92urzcklmaao', 'eyJjYXJ0Ijp7fX0:1pI30r:Z1pByzbzGGyMUQqQgdcaGJtE-7JakGIZSx_L64aba9k', '2023-02-01 07:37:37.136129'),
+('jd2jvofo6ecmbdkepqo2xvyn3vngrq72', 'eyJjYXJ0Ijp7fX0:1pI2x2:RQvjPM_SXOjY8R4Wxq-uO2UfWQzIoNsecJ1im0bSz0U', '2023-02-01 07:33:40.686630'),
+('jd95ynx8zyplwn6m8ttjvqay83rynm7y', 'eyJjYXJ0Ijp7fX0:1pI2UL:oS1sVGMJ6R0ij6WzS_DovlM6rjZA1QClf4OxyH3wxSo', '2023-02-01 07:04:01.459480'),
+('jfjjjssw2kffb76pnytcqk9f3g6ihp09', 'eyJjYXJ0Ijp7fX0:1pI30R:qFsqRKgYNs4d6xHBaTEcAtGz9ws9T63NDZMiZSKs1K4', '2023-02-01 07:37:11.407116'),
+('jfoppzbg3au063ft1yyiun8zm8sz4xa1', 'eyJjYXJ0Ijp7fX0:1pIEHu:7MOsXV9g_pRgvyNe1eTNTnTBVFy_btpKJonVsdMlqYE', '2023-02-01 19:39:58.987636'),
+('jgsnaob4395dmg4azdjw91cw372f1i3g', 'eyJjYXJ0Ijp7fX0:1pI2hR:pua0QEYpyaZKUdS5ZnXOq-fS-aE2lmlLtG_1-7x1jDs', '2023-02-01 07:17:33.950545'),
+('ji0i1rp21akvt3njghasqlgoq77k7yws', 'eyJjYXJ0Ijp7fX0:1pI2bR:8JpRI-cNP4BfI97RwB1QeFJrlG3zwd8301zweW63DMk', '2023-02-01 07:11:21.142015'),
+('jkyhjdvogd6lhnct59lj2skkl2nfkfcr', 'eyJjYXJ0Ijp7fX0:1pI31H:D5D-AJSxQ9ZpagYiHih_1EKrJY4CFgRFKHH5sE-_fLo', '2023-02-01 07:38:03.564769'),
+('jngaxgv4c3qyk15shdzsbfofdqjs05nt', 'eyJjYXJ0Ijp7fX0:1pI2Up:kXChGJkrpaA3xBy0-bHcLmiI6nmAsaTXkMnPYdvjCmE', '2023-02-01 07:04:31.984678'),
+('jnj51hkh4khbm8n6sjh1cokbk1mgjaq9', 'eyJjYXJ0Ijp7fX0:1pI30h:2iTki6IuxD3OHCfQc9AJ2Q_cyefTSSXd5ACaYs9GXvc', '2023-02-01 07:37:27.675526'),
+('jnmrvivmm3r5khpax1clwyi6komz1hmb', 'eyJjYXJ0Ijp7fX0:1pI2dc:8ZtOPDkkHMIUfO3-5uBlzpp7eebw25P9e6UGStlBEHU', '2023-02-01 07:13:36.239149'),
+('jnteftagyt4fm789tpm0qpxd3m5zb9ff', 'eyJjYXJ0Ijp7fX0:1pIEHp:bycJeQCsz8CKjdEqvHYBmktLrKzlttBGE1BpZ5-RlFM', '2023-02-01 19:39:53.812619'),
+('jsu08u60z5nch0qm7097txx4otknopd5', 'eyJjYXJ0Ijp7fX0:1pI2aW:4Igcp_uil4imP9a4VeSIYgTP_wY8BNWzSJm3wlCQzSc', '2023-02-01 07:10:24.419504'),
+('jvikmm2lzzb446sb9ca3ufarjd6lxtqa', 'eyJjYXJ0Ijp7fX0:1pI2xR:22G-cYyRwyYhLdHgLtGJLtUsrHVoeiXQKmOEPHv1_uM', '2023-02-01 07:34:05.989704'),
+('k0j7jw69rfi721aoc8xa2vxbvfo050kt', 'eyJjYXJ0Ijp7fX0:1pI2h2:KZBHv7m7xzqukn4ESXLAdqpFJFwbYptZKSD0iC3D0OA', '2023-02-01 07:17:08.637206'),
+('k1k49f88d1ch9t9b72a1eaeavni2l7ks', 'eyJjYXJ0Ijp7fX0:1pI2hS:c1DAGNew_KMxVl9TkU1-lxFrzaAsA44zsLDCv7Kbgus', '2023-02-01 07:17:34.096453'),
+('k1s2mqw5bxpogfbrpiu045tvo8dqol2m', 'eyJjYXJ0Ijp7fX0:1pI2oI:1cpf1hRLTIH4ocfEOAHsC7izBP4L2R4Rr-qt6BSRDd4', '2023-02-01 07:24:38.199467'),
+('k2fh5hdsb6beufwyfbibaef3m5skorf5', 'eyJjYXJ0Ijp7fX0:1pID4m:TQTn1xISxaN_tkEcHbzuw_4yvUEACa3dHTKBoStIekM', '2023-02-01 18:22:20.426441'),
+('k59fkno3p2f5kfe84151m7e28uicj9rc', 'eyJjYXJ0Ijp7fX0:1pI2S4:NFLV4NP-OlMgH8DDrbn_OHdWjHp9NOSdf1IksLGrSJw', '2023-02-01 07:01:40.815575'),
+('k5rwcxgns09za72vjfr7d3fs0rm8psuo', 'eyJjYXJ0Ijp7fX0:1pI2UK:9nMNX5L7LNKFgZT1BiyNt43khZ8HqA0zOtUsYlBBxeo', '2023-02-01 07:04:00.128162'),
+('kbpqxb84vkogg8x0eksvcy62nnisopc4', 'eyJjYXJ0Ijp7fX0:1pI30W:mmP-Dgvl79hsXQU6W8KGiyRiaXjSwVMAVBVUTSmbDnI', '2023-02-01 07:37:16.781294'),
+('kgsfq272xd7vgmgghinwn2imtpxt2351', 'eyJjYXJ0Ijp7fX0:1pI2dh:oEw3lq1EyZ97pUxRsvzScCnD4mPJ87ZzdqknaSoQMP8', '2023-02-01 07:13:41.610483'),
+('ki8ttj2ju2eotmr4lrkh6zmcqtg6568e', 'eyJjYXJ0Ijp7fX0:1pI2VC:bQ26Fr6yvGlfDA2b5o2nXsYJeK2qxC9skhTMgTgDld0', '2023-02-01 07:04:54.759826'),
+('kicuvknelpq11txeg05h4x5pd1se83av', 'eyJjYXJ0Ijp7fX0:1pI2zx:bgPw7ZkQ5_O_QBLAKMygBqIwACvmj4MRy5PZ3wnmuW4', '2023-02-01 07:36:41.315147'),
+('kl3riwcpownmwzhgkubsrx4j6t2q21w9', 'eyJjYXJ0Ijp7fX0:1pI2Wb:lRkQ-jG2TojNMGg6BXgOcjl34WoFrLDYAgytzTLNKOg', '2023-02-01 07:06:21.734403'),
+('knlv2s98ft9biqvrrfuzyrobmiilztti', 'eyJjYXJ0Ijp7fX0:1pI2oI:1cpf1hRLTIH4ocfEOAHsC7izBP4L2R4Rr-qt6BSRDd4', '2023-02-01 07:24:38.014203'),
+('kos5oi1wzbkv0shpjifz2u4itxg6aohe', 'eyJjYXJ0Ijp7fX0:1pI2UL:oS1sVGMJ6R0ij6WzS_DovlM6rjZA1QClf4OxyH3wxSo', '2023-02-01 07:04:01.330438'),
+('kptfco9243ntmwhorrsm3iw6xsbo1tqp', 'eyJjYXJ0Ijp7fX0:1pI2S8:dHdhZc83w7O3xdg3ODhraq1_r3J5nvLEApcNwixf8K8', '2023-02-01 07:01:44.756827'),
+('ktir7yept1cf0afqt4xh2qefco9629o9', 'eyJjYXJ0Ijp7fX0:1pI2wu:EryM0wRin8aRXkXFkguF4Z-liZ1-2MlzVJzyCCEv9JI', '2023-02-01 07:33:32.799559'),
+('kusid126rq1t0wjoa10o8q69rf6gi2nt', 'eyJjYXJ0Ijp7fX0:1pI2mk:kLlT_cSh949IKn6dq78JWlMdvmH0qWPNqbGz1E7m3V8', '2023-02-01 07:23:02.064657'),
+('kvaf65zcpkbruri1hwa01o4ped9bmzz9', 'eyJjYXJ0Ijp7fX0:1pI31E:ayvUavA6Kg-LiBzxuJSyQ6pgk9C3osf5yYk0tm61wNY', '2023-02-01 07:38:00.538284'),
+('kybqy6est6scba7agiefgk6ng5665w2w', 'eyJjYXJ0Ijp7fX0:1pI2xR:22G-cYyRwyYhLdHgLtGJLtUsrHVoeiXQKmOEPHv1_uM', '2023-02-01 07:34:05.784533'),
+('l0vqz1qf3a1x2bgr0wbimv65hj372sjy', 'eyJjYXJ0Ijp7fX0:1pI2mk:kLlT_cSh949IKn6dq78JWlMdvmH0qWPNqbGz1E7m3V8', '2023-02-01 07:23:02.203647'),
+('l39pit1zqhltnlehs2pg1d84nzu0bq8j', 'eyJjYXJ0Ijp7fX0:1pI34H:E5NDGQZJ5R4vOWUFIZNvgBU89pfBhcuX8tf0K9qWQU4', '2023-02-01 07:41:09.814300'),
+('l4itn1jzn6dxel4d65hscpqjm5u6hcvq', 'eyJjYXJ0Ijp7fX0:1pI8Il:_YOznJz8iSTzCOfkxWfVCWkrLqyJd7g6AfGn3ip1_Hg', '2023-02-01 13:16:27.038102'),
+('l5mqhwn9x3elpxgi2ynw5d523nplua9a', 'eyJjYXJ0Ijp7fX0:1pI2wv:V9DL9VGBGrUdjtnvXoCMJ8ULW306in5e6ubwnwKKeXE', '2023-02-01 07:33:33.023552'),
+('l6j3odrt1myjy0637d251zc82jkzyu5h', 'eyJjYXJ0Ijp7fX0:1pI2xB:LGAzvkRfDwyGU-hRe_bM1rd0rvbXD4tOM8TbUDehc64', '2023-02-01 07:33:49.462007'),
+('l8iupcux524rxqfxy2dt761ciyo2niz3', 'eyJjYXJ0Ijp7fX0:1pI2VL:91fOp4kTQMTszNabXmSV7cH8fe_RDvd9hqlTCzDgFb0', '2023-02-01 07:05:03.546123'),
+('l96w7ph176iqu5tal1i6ake6tmgdfdoo', 'eyJjYXJ0Ijp7fX0:1pI307:M2YMw9u8_pazi20SwOIhwHX7SjFHqCDVY-Q3W_-oGQ0', '2023-02-01 07:36:51.798401'),
+('lhl1mspsub61ackmnokjcs6v00xk23ri', 'eyJjYXJ0Ijp7fX0:1pI2Ve:C3hdMkQQMy4zfU4xcu61Z6Sy47pMgL6_7iZ5knvB7QI', '2023-02-01 07:05:22.411427'),
+('ligjnw718jgebhn31ypkv86nqojqkfkm', 'eyJjYXJ0Ijp7fX0:1pI30h:2iTki6IuxD3OHCfQc9AJ2Q_cyefTSSXd5ACaYs9GXvc', '2023-02-01 07:37:27.857789'),
+('liv2qqlg5hfv7xo8vst5ah1tdbxwkk9i', 'eyJjYXJ0Ijp7fX0:1pI2bb:rBJN-dhMCHk4jx27PDSD-4HUZgK4zH27U3HqLtmjjl0', '2023-02-01 07:11:31.423783'),
+('lkg8uscezgd3bq3y2hy98xinqx80hiyd', 'eyJjYXJ0Ijp7fX0:1pI2dc:8ZtOPDkkHMIUfO3-5uBlzpp7eebw25P9e6UGStlBEHU', '2023-02-01 07:13:36.387491'),
+('lnxb0wj98lss2bu2jx6ir0z31ysmkuwz', 'eyJjYXJ0Ijp7fX0:1pI2Wb:lRkQ-jG2TojNMGg6BXgOcjl34WoFrLDYAgytzTLNKOg', '2023-02-01 07:06:21.729552'),
+('lq127qw9akmoeqeb1bm3mj7vd67i489g', 'eyJjYXJ0Ijp7fX0:1pI2gm:ZA5qbqLopFG_PFrvXd5MNFZ_cWM764VwdX0tfcQzl54', '2023-02-01 07:16:52.579538'),
+('lry9v5mfsr6nisw1mgfouc819qmekhfd', 'eyJjYXJ0Ijp7fX0:1pI2ar:2X9BGyTE4zUXQ842sE6LHXyvVnO0nwprCXzTHHQgmXc', '2023-02-01 07:10:45.057889'),
+('lt6nmvhnn3ggfzgnfyv96o7tg18qf9ie', 'eyJjYXJ0Ijp7fX0:1pIEHv:DxbSugD-7UxwgSdSuKprC45A5DmkrrpStrgnZKNoRNA', '2023-02-01 19:39:59.096543'),
+('luhl2t6gneap9q5zspendwwm1p0ldz3b', 'eyJjYXJ0Ijp7fX0:1pI2S1:DRW19hiRYBHkqifmXSrzH7wdflionTyWmbXIuWv8xkg', '2023-02-01 07:01:37.974031'),
+('lwroee350l33dm3t8g17p3613bsktau5', 'eyJjYXJ0Ijp7fX0:1pI2hn:g4afcAhsFR4UP94ESRHQXx-jUs7LendbiwVbMU020Cg', '2023-02-01 07:17:55.553647'),
+('lz9vdbokrmuh187oi13kiedq1lhryvin', 'eyJjYXJ0Ijp7fX0:1pI2zx:bgPw7ZkQ5_O_QBLAKMygBqIwACvmj4MRy5PZ3wnmuW4', '2023-02-01 07:36:41.321841'),
+('lznrhg7zvpc4u7qg9ystup54tp783xur', 'eyJjYXJ0Ijp7fX0:1pIDLs:6w-IMjG8nWciudj-3wbNzzxm4MHp5Td85fUd0eExZm0', '2023-02-01 18:40:00.461209'),
+('lzudvfi2bd4mg8vdxomepnxgipblztd8', 'eyJjYXJ0Ijp7fX0:1pI2wv:V9DL9VGBGrUdjtnvXoCMJ8ULW306in5e6ubwnwKKeXE', '2023-02-01 07:33:33.024779'),
+('m3h2r6hbxfn33n9gdui9o9ahyj67j13k', 'eyJjYXJ0Ijp7fX0:1pIBSK:M6swbAOs4a4KYj4GtOiAXE6WrX1Mj9LP6ZdWyl-rkgs', '2023-02-01 16:38:32.569613'),
+('m5f5gr236ih2hfbb6smswtw6ygm9shc4', 'eyJjYXJ0Ijp7fX0:1pI31H:D5D-AJSxQ9ZpagYiHih_1EKrJY4CFgRFKHH5sE-_fLo', '2023-02-01 07:38:03.568575'),
+('m89uf7t7ov47tqtg1yn3yov0oqw6hjp7', 'eyJjYXJ0Ijp7fX0:1pIBSL:ui8TLm2woZ1uLipwgABBsocc7jrfjxwmlMSCeomej70', '2023-02-01 16:38:33.905572'),
+('mb5ex3cjh7t69infsh49nqn6g9rnt706', 'eyJjYXJ0Ijp7fX0:1pI30h:2iTki6IuxD3OHCfQc9AJ2Q_cyefTSSXd5ACaYs9GXvc', '2023-02-01 07:37:27.855176'),
+('mez1d11wv4hwzp387mw5h6363vejqd0r', 'eyJjYXJ0Ijp7fX0:1pI2hR:pua0QEYpyaZKUdS5ZnXOq-fS-aE2lmlLtG_1-7x1jDs', '2023-02-01 07:17:33.957155'),
+('mglcsbz418yor5d13znh6ef0qo36s661', 'eyJjYXJ0Ijp7fX0:1pI2dh:oEw3lq1EyZ97pUxRsvzScCnD4mPJ87ZzdqknaSoQMP8', '2023-02-01 07:13:41.609920'),
+('mgz34ndszytpv5t3giv5eafnfyqq3uan', 'eyJjYXJ0Ijp7fX0:1pI2bb:rBJN-dhMCHk4jx27PDSD-4HUZgK4zH27U3HqLtmjjl0', '2023-02-01 07:11:31.353156'),
 ('mh3pbpy918rp48o0isoy9836i3q6kk0y', '.eJx9kbtuwzAMRX_F0By5liw_xxTolqndDb1sK3EkV5JRpEH-vVTgJUsXAnzcw0vwjowNkePRLYv70T6gHpX1CR3QwLc4D1vQfjAKqvS1Jri8aJsa6szt5HLpbPRG5Gkk37shPzmll-M--wKYeZhBLaqWy0rSVnAiOlE3baXKruFV3UomRsoKoUdCJONq1F2nSTXWI9EFo7pmsmgAKrmPqL-DQwiJnfzSA1q9U5uMw55aftWw8OM9O_Kb9jb7mo1X2SfEmNGCUkxLoH1v3EYTb6gnCWFkEjUsJwU0zZVPKQ-zW99GicWThGMi4ZBIeCcNIbBhxaQsSUkakq92Av1i7AXk_yqfF0U9OQ8e0Bl-om8BisH8wuoGTC1JCzc9Ho8_YV6Olw:1pEqDr:Wr76F_RcmEh46lHuE3FyMvtAv8lWD_-gf5rGsk_74KU', '2023-01-23 11:21:47.409643'),
-('u7co98bhy5sqcrap4dbhvf03ur1680n5', 'eyJpbnN0YS1mb2xsb3dlcnMiOiIzNS41TSJ9:1p70FI:Ye5utLdiH572ZqbLGOqIiQAq0gGhssO-u0ATYGNoA2s', '2023-01-01 20:26:52.449094');
+('mjyeqr46zckpw4bceaftaviar8tiu1nt', 'eyJjYXJ0Ijp7fX0:1pI2Vm:XXhCB2jP44emjJLbT5SrShOSl8MNVpq-dRXhCE_UGBQ', '2023-02-01 07:05:30.450335'),
+('mjzumj5oklhnhsvycfmf1tf5747hv5i1', 'eyJjYXJ0Ijp7fX0:1pI2vZ:ammluEj4Ov7yFCC-tgFVqUAVzVFxJKX0GnjbcfjAhJ8', '2023-02-01 07:32:09.893221'),
+('mnn6q08oqptpkjb2k9gzrkupad00svag', 'eyJjYXJ0Ijp7fX0:1pI2al:D9UJQsBNq8KRcEJK5fD9tUzrhl1oPDpgnXnUAnXm1B8', '2023-02-01 07:10:39.204841'),
+('mu5mlh865zugvhl6d8d5y9fcwdtddwl3', 'eyJjYXJ0Ijp7fX0:1pI2w0:BOENyYeya3ekZWPY4H30sLX01toydkBrP-RPIICJShg', '2023-02-01 07:32:36.691564'),
+('mvqkrov3mozv1eoicst1bvzs8lbrrhy7', 'eyJjYXJ0Ijp7fX0:1pI31E:ayvUavA6Kg-LiBzxuJSyQ6pgk9C3osf5yYk0tm61wNY', '2023-02-01 07:38:00.540982'),
+('mz69smgf4hjcahqii1zv8hsd54vee5vp', 'eyJjYXJ0Ijp7fX0:1pI2cC:qz0CRP8s3CBLSH-cbZ4f7kwPeF6VoNFtxMla7q-kFro', '2023-02-01 07:12:08.938267'),
+('n2l7h11f8uh6qv5g3duha7pl3zow3zld', 'eyJjYXJ0Ijp7fX0:1pI2Un:FYzYUwu3XRq9hDGGSj6dkchN2S4a2RWiBbc0V5G004A', '2023-02-01 07:04:29.378489'),
+('nd5uh3wbupizu57u7a8k19b5abvi0bby', 'eyJjYXJ0Ijp7fX0:1pI2UK:9nMNX5L7LNKFgZT1BiyNt43khZ8HqA0zOtUsYlBBxeo', '2023-02-01 07:04:00.281942'),
+('ne2s5tsdf5a250tjhp3n0yqihpu8ywpq', 'eyJjYXJ0Ijp7fX0:1pI2hS:c1DAGNew_KMxVl9TkU1-lxFrzaAsA44zsLDCv7Kbgus', '2023-02-01 07:17:34.126042'),
+('ne7sgd6kwq9ezigtciug38owgp8mt7cz', 'eyJjYXJ0Ijp7fX0:1pI2vU:9M6JwBe5cqzDYRqA_9XX_2gtXTneRMkogbVc_cFjBZU', '2023-02-01 07:32:04.027269'),
+('neqhoqg5nkfs8dhk23stxluj79291q3t', 'eyJjYXJ0Ijp7fX0:1pI2S8:dHdhZc83w7O3xdg3ODhraq1_r3J5nvLEApcNwixf8K8', '2023-02-01 07:01:44.800560'),
+('ngbpwrrklzqzvlcxkqe5qqyg2wp0o407', 'eyJjYXJ0Ijp7fX0:1pI2Up:kXChGJkrpaA3xBy0-bHcLmiI6nmAsaTXkMnPYdvjCmE', '2023-02-01 07:04:31.989004'),
+('nn61wvsua2epw3b4jxwomy9hbi13bwa3', 'eyJjYXJ0Ijp7fX0:1pI2wz:i0257colU8Z6oR1b7CUy3592FcAkn0X9S1JwyoZQDRo', '2023-02-01 07:33:37.129058'),
+('nn79f02h8nur4lx4rr0l2voj5vtcku2c', 'eyJjYXJ0Ijp7fX0:1pI2xF:d6YJgrVzEDjavK4GmLuepoOKDGeZnOXumSIzmePuEbg', '2023-02-01 07:33:53.670649'),
+('nnfmhs2oadyygr82ey6i2q90uhvujx63', 'eyJjYXJ0Ijp7fX0:1pI2bb:rBJN-dhMCHk4jx27PDSD-4HUZgK4zH27U3HqLtmjjl0', '2023-02-01 07:11:31.411798'),
+('nnz5tl4oa3y8s3nc2jzgsf0c7yv1pbyd', 'eyJjYXJ0Ijp7fX0:1pI3Vr:UdNuEfTf0KbFmqi2Rl0BbCiEVmyyRBCirWMuJDkbs7U', '2023-02-01 08:09:39.576801'),
+('nqjrh79z7chi48595c9kwybe3mv7zmxy', 'eyJjYXJ0Ijp7fX0:1pI8Il:_YOznJz8iSTzCOfkxWfVCWkrLqyJd7g6AfGn3ip1_Hg', '2023-02-01 13:16:27.041294'),
+('nrmfkl5cghrzf0pzzschm2hulh8se6yz', 'eyJjYXJ0Ijp7fX0:1pIBSL:ui8TLm2woZ1uLipwgABBsocc7jrfjxwmlMSCeomej70', '2023-02-01 16:38:33.708348'),
+('nt71mibccn931pb1rl04jvuc5y57b99m', 'eyJjYXJ0Ijp7fX0:1pIDLs:6w-IMjG8nWciudj-3wbNzzxm4MHp5Td85fUd0eExZm0', '2023-02-01 18:40:00.221026'),
+('ntlkdttbfoaf4o1992qrtt1njivni62y', 'eyJjYXJ0Ijp7fX0:1pI2ZF:8FeXkUep__z7E2RmVJVbs2cd4CteJ3qX3DDNAgWTjYk', '2023-02-01 07:09:05.753819'),
+('nxfvi5hu95qocobslnbl66169i73who7', 'eyJjYXJ0Ijp7fX0:1pI9lU:yjqV-aRMOglI-Q7xxLuO66rHCIUfnr0hPqvc11JIIqM', '2023-02-01 14:50:12.153077'),
+('nz7cg23kzg5ppfm4g7qjombxov2jnzc1', 'eyJjYXJ0Ijp7fX0:1pI2wy:nRul3u0lYIz9YOKTM2Lg6k0KKNuqyB2peZf2mZZcyaQ', '2023-02-01 07:33:36.944321'),
+('o2ag1e5viwnegzg0odhurpl335prlbuu', 'eyJjYXJ0Ijp7fX0:1pI2gm:ZA5qbqLopFG_PFrvXd5MNFZ_cWM764VwdX0tfcQzl54', '2023-02-01 07:16:52.580073'),
+('o9b2gkqep44rtsng9brhj51kvclf05dj', 'eyJjYXJ0Ijp7fX0:1pID4m:TQTn1xISxaN_tkEcHbzuw_4yvUEACa3dHTKBoStIekM', '2023-02-01 18:22:20.675571'),
+('ocmjha8cqyu9dcvkvhv4yrxr51kjee5n', 'eyJjYXJ0Ijp7fX0:1pI2hn:g4afcAhsFR4UP94ESRHQXx-jUs7LendbiwVbMU020Cg', '2023-02-01 07:17:55.522561'),
+('odbndimrmhspgidjrgterxy1ue1l3lyg', 'eyJjYXJ0Ijp7fX0:1pI9lU:yjqV-aRMOglI-Q7xxLuO66rHCIUfnr0hPqvc11JIIqM', '2023-02-01 14:50:12.185364'),
+('og1hlwvvvncl5twu2busm830z652g6o8', 'eyJjYXJ0Ijp7fX0:1pIBSK:M6swbAOs4a4KYj4GtOiAXE6WrX1Mj9LP6ZdWyl-rkgs', '2023-02-01 16:38:32.773476'),
+('oi4ehc5bawycer2woeuyqrk0kypunc1z', 'eyJjYXJ0Ijp7fX0:1pI30R:qFsqRKgYNs4d6xHBaTEcAtGz9ws9T63NDZMiZSKs1K4', '2023-02-01 07:37:11.599962'),
+('oigq2pwg7tn8isvyetyclf10fenzujkb', 'eyJjYXJ0Ijp7fX0:1pI2al:D9UJQsBNq8KRcEJK5fD9tUzrhl1oPDpgnXnUAnXm1B8', '2023-02-01 07:10:39.206581'),
+('oqo6u15ze2sw80h9px5ca6g1po20rtvv', 'eyJjYXJ0Ijp7fX0:1pI31E:ayvUavA6Kg-LiBzxuJSyQ6pgk9C3osf5yYk0tm61wNY', '2023-02-01 07:38:00.381764'),
+('oqqm4huvfjlrv3d70jdp9a9xsxozn4q8', 'eyJjYXJ0Ijp7fX0:1pI2hn:g4afcAhsFR4UP94ESRHQXx-jUs7LendbiwVbMU020Cg', '2023-02-01 07:17:55.545091'),
+('orzcvmypqhdrcjykqw2hpqi2icdn5r8f', 'eyJjYXJ0Ijp7fX0:1pIDLs:6w-IMjG8nWciudj-3wbNzzxm4MHp5Td85fUd0eExZm0', '2023-02-01 18:40:00.451389'),
+('oww8f1lanz8inwvc5icbtwy8ow62o9dh', 'eyJjYXJ0Ijp7fX0:1pI2xP:zbR6Shf8yE98fftbbSW4VK2Uc_jeJdg6IxEMbdOVIlU', '2023-02-01 07:34:03.483330'),
+('p1dl28o25cs7xl8gik5g4svp3c2f121s', 'eyJjYXJ0Ijp7fX0:1pI2S4:NFLV4NP-OlMgH8DDrbn_OHdWjHp9NOSdf1IksLGrSJw', '2023-02-01 07:01:40.595622');
+INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
+('p5krl6k88zt2onavbgx2denqs4eh48nr', 'eyJjYXJ0Ijp7fX0:1pI2VC:bQ26Fr6yvGlfDA2b5o2nXsYJeK2qxC9skhTMgTgDld0', '2023-02-01 07:04:54.885354'),
+('p6ly9nflztrtlg9qwte8xsl7gw84w0x1', 'eyJjYXJ0Ijp7fX0:1pI2aq:a4DsKfP51ZY3B27VbfJ7OJ2opzMNfFZORqwvOWJ6JjA', '2023-02-01 07:10:44.855643'),
+('p7j7ny6t4j61mczmkuwt4apcewj3sijv', 'eyJjYXJ0Ijp7fX0:1pIDLs:6w-IMjG8nWciudj-3wbNzzxm4MHp5Td85fUd0eExZm0', '2023-02-01 18:40:00.453850'),
+('p7qo7n6am83mjjhxh1z6hkx96v4j2obk', 'eyJjYXJ0Ijp7fX0:1pI2vZ:ammluEj4Ov7yFCC-tgFVqUAVzVFxJKX0GnjbcfjAhJ8', '2023-02-01 07:32:09.717066'),
+('pbe2o96o8bh42nj0v3ijvivxmfrxjvct', 'eyJjYXJ0Ijp7fX0:1pI2dh:oEw3lq1EyZ97pUxRsvzScCnD4mPJ87ZzdqknaSoQMP8', '2023-02-01 07:13:41.612699'),
+('pc5hyv6gxeal52ywbxi4rbqs64412ylw', 'eyJjYXJ0Ijp7fX0:1pIEI4:WzyznG1QwhW_q7ErCNoI41EGNQJFdkdeYaI8w7lwlMA', '2023-02-01 19:40:08.474351'),
+('pd4dq2eqrnqekq15nxqy2p9tu1dw29r7', 'eyJjYXJ0Ijp7fX0:1pI2S4:NFLV4NP-OlMgH8DDrbn_OHdWjHp9NOSdf1IksLGrSJw', '2023-02-01 07:01:40.820192'),
+('pgyklieh44fjhog3eomu376dku8lfnpn', 'eyJjYXJ0Ijp7fX0:1pI9lQ:j7kLJSdp0oYumCg3LrIWiBQl1WPPHWfXZjaQArUYMgQ', '2023-02-01 14:50:08.193989'),
+('pixrh79pbij74m01pire9smodmpzj1v3', 'eyJjYXJ0Ijp7fX0:1pI2xP:zbR6Shf8yE98fftbbSW4VK2Uc_jeJdg6IxEMbdOVIlU', '2023-02-01 07:34:03.483053'),
+('plkkq8p9so2hh1miliybak886az6tr93', 'eyJjYXJ0Ijp7fX0:1pI2xF:d6YJgrVzEDjavK4GmLuepoOKDGeZnOXumSIzmePuEbg', '2023-02-01 07:33:53.463521'),
+('pofh9tfe03nyvxz8rxrm3agplyk9d3yh', 'eyJjYXJ0Ijp7fX0:1pI2aW:4Igcp_uil4imP9a4VeSIYgTP_wY8BNWzSJm3wlCQzSc', '2023-02-01 07:10:24.422880'),
+('ppccwu0saaiidmkzg8nto97cakdssuh9', 'eyJjYXJ0Ijp7fX0:1pI2VC:bQ26Fr6yvGlfDA2b5o2nXsYJeK2qxC9skhTMgTgDld0', '2023-02-01 07:04:54.907846'),
+('pphraqxbs8lct1gdiudx3m1d0k61btfh', 'eyJjYXJ0Ijp7fX0:1pI2iH:5rPjSXbua_WZnaG7wbWrw2LzBhY5biKYAf4WPh5kgbQ', '2023-02-01 07:18:25.266867'),
+('ppj320wz01epblifx1h163qityqfqpkn', 'eyJjYXJ0Ijp7fX0:1pI30W:mmP-Dgvl79hsXQU6W8KGiyRiaXjSwVMAVBVUTSmbDnI', '2023-02-01 07:37:16.781448'),
+('pq8pavtskiu08jx300u0wlmowmw6l4kc', 'eyJjYXJ0Ijp7fX0:1pIEI4:WzyznG1QwhW_q7ErCNoI41EGNQJFdkdeYaI8w7lwlMA', '2023-02-01 19:40:08.476910'),
+('pqc7tfw0hac925z6ia2qqpcj0ti6slmk', 'eyJjYXJ0Ijp7fX0:1pI2xB:LGAzvkRfDwyGU-hRe_bM1rd0rvbXD4tOM8TbUDehc64', '2023-02-01 07:33:49.199065'),
+('ptlxb358xoshgb2rt6l3gv78mf4y7poy', 'eyJjYXJ0Ijp7fX0:1pI2dc:8ZtOPDkkHMIUfO3-5uBlzpp7eebw25P9e6UGStlBEHU', '2023-02-01 07:13:36.381093'),
+('pul57d96qwugtjn9med4kokmti7vmnc1', 'eyJjYXJ0Ijp7fX0:1pI2gm:ZA5qbqLopFG_PFrvXd5MNFZ_cWM764VwdX0tfcQzl54', '2023-02-01 07:16:52.579001'),
+('pw4ss2ed921m5dagxdo179613fa6qq7q', 'eyJjYXJ0Ijp7fX0:1pI8Il:_YOznJz8iSTzCOfkxWfVCWkrLqyJd7g6AfGn3ip1_Hg', '2023-02-01 13:16:27.027883'),
+('q8u2140eegdvy0f8upmk9z4sumv8e3ti', 'eyJjYXJ0Ijp7fX0:1pI2oI:1cpf1hRLTIH4ocfEOAHsC7izBP4L2R4Rr-qt6BSRDd4', '2023-02-01 07:24:38.191987'),
+('qaxv90l9t92pt5vjcpvlxzeweo5bqlvo', 'eyJjYXJ0Ijp7fX0:1pI2al:D9UJQsBNq8KRcEJK5fD9tUzrhl1oPDpgnXnUAnXm1B8', '2023-02-01 07:10:39.213444'),
+('qb0bqgls1e41ecr65pi1abf6oxjd31b1', 'eyJjYXJ0Ijp7fX0:1pI3Vr:UdNuEfTf0KbFmqi2Rl0BbCiEVmyyRBCirWMuJDkbs7U', '2023-02-01 08:09:39.574699'),
+('qbiki0v5abp6p3qqv41x1xa3c77vaqkn', 'eyJjYXJ0Ijp7fX0:1pI30h:2iTki6IuxD3OHCfQc9AJ2Q_cyefTSSXd5ACaYs9GXvc', '2023-02-01 07:37:27.675678'),
+('qbjqqcg9zg4px5ow3i10knh86kb2sq6a', 'eyJjYXJ0Ijp7fX0:1pI3Vr:UdNuEfTf0KbFmqi2Rl0BbCiEVmyyRBCirWMuJDkbs7U', '2023-02-01 08:09:39.304031'),
+('qd6rf6usv6zmqf75kgxu8nveu85f4hek', 'eyJjYXJ0Ijp7fX0:1pI2Up:kXChGJkrpaA3xBy0-bHcLmiI6nmAsaTXkMnPYdvjCmE', '2023-02-01 07:04:31.820825'),
+('qeg49al914tx5m0d6kcdv6u9a5u2vztg', 'eyJjYXJ0Ijp7fX0:1pI2vT:AEydemPW4LorGZsy2W3sqvGo0H6xapUWUOyeLHDctao', '2023-02-01 07:32:03.864096'),
+('qhmcyu6l17i0gutewoxgarwwpmh9i16u', 'eyJjYXJ0Ijp7fX0:1pI2ZF:8FeXkUep__z7E2RmVJVbs2cd4CteJ3qX3DDNAgWTjYk', '2023-02-01 07:09:05.732456'),
+('qhxyey7w7597huqg5r4530r1v447954z', 'eyJjYXJ0Ijp7fX0:1pI2bR:8JpRI-cNP4BfI97RwB1QeFJrlG3zwd8301zweW63DMk', '2023-02-01 07:11:21.133409'),
+('qmmdf6qit4vb2nhgg45tm0x68oaeif11', 'eyJjYXJ0Ijp7fX0:1pI30R:qFsqRKgYNs4d6xHBaTEcAtGz9ws9T63NDZMiZSKs1K4', '2023-02-01 07:37:11.597767'),
+('qofe6w7wooys08o9ib02t0fur2mxhxu4', 'eyJjYXJ0Ijp7fX0:1pI2zx:bgPw7ZkQ5_O_QBLAKMygBqIwACvmj4MRy5PZ3wnmuW4', '2023-02-01 07:36:41.319123'),
+('r0wvts4nibhizrid6lw9gc9v6seoq5mn', 'eyJjYXJ0Ijp7fX0:1pI31E:ayvUavA6Kg-LiBzxuJSyQ6pgk9C3osf5yYk0tm61wNY', '2023-02-01 07:38:00.536929'),
+('r2y93a02ff7bcwpdxd8izxvsmy4zwcm4', 'eyJjYXJ0Ijp7fX0:1pI2mk:kLlT_cSh949IKn6dq78JWlMdvmH0qWPNqbGz1E7m3V8', '2023-02-01 07:23:02.064502'),
+('r6az3ucacdek9m3bf003amg1bskc62nj', 'eyJjYXJ0Ijp7fX0:1pI2Wb:lRkQ-jG2TojNMGg6BXgOcjl34WoFrLDYAgytzTLNKOg', '2023-02-01 07:06:21.579663'),
+('r7b10h0vy2ut56h7g28xud5hx68kzm0e', 'eyJjYXJ0Ijp7fX0:1pI2S4:NFLV4NP-OlMgH8DDrbn_OHdWjHp9NOSdf1IksLGrSJw', '2023-02-01 07:01:40.809122'),
+('rb6vsls46shhqu8pcjx1w4lyci0k8m6a', 'eyJjYXJ0Ijp7fX0:1pI30r:Z1pByzbzGGyMUQqQgdcaGJtE-7JakGIZSx_L64aba9k', '2023-02-01 07:37:37.181339'),
+('rhfoqpmvvrefc7i6ksk7rcprm4yjvw0z', 'eyJjYXJ0Ijp7fX0:1pI2xP:zbR6Shf8yE98fftbbSW4VK2Uc_jeJdg6IxEMbdOVIlU', '2023-02-01 07:34:03.455197'),
+('rm7idciaztcp0xx9fjx6j2e3v4vu8kyl', 'eyJjYXJ0Ijp7fX0:1pI2mk:kLlT_cSh949IKn6dq78JWlMdvmH0qWPNqbGz1E7m3V8', '2023-02-01 07:23:02.238222'),
+('rqisapjz74z0se1f4rbs43zothlntutg', 'eyJjYXJ0Ijp7fX0:1pIDLs:6w-IMjG8nWciudj-3wbNzzxm4MHp5Td85fUd0eExZm0', '2023-02-01 18:40:00.443378'),
+('rra7gas5qzqe008yjexurtvzeodlfz09', 'eyJjYXJ0Ijp7fX0:1pI30W:mmP-Dgvl79hsXQU6W8KGiyRiaXjSwVMAVBVUTSmbDnI', '2023-02-01 07:37:16.788247'),
+('rsv1aect0puuwjhw5blpjminsva3a6jt', 'eyJjYXJ0Ijp7fX0:1pI2al:D9UJQsBNq8KRcEJK5fD9tUzrhl1oPDpgnXnUAnXm1B8', '2023-02-01 07:10:39.024407'),
+('rynblt9l9bb4mijukgib0b94laj5kre4', 'eyJjYXJ0Ijp7fX0:1pI310:YcaWnXStmoEfYNKtZbw8fMw-q6i_LVfrroZn7Nz2SoE', '2023-02-01 07:37:46.332133'),
+('s18jb021oclogd7x75p8tlxgg045ofyk', 'eyJjYXJ0Ijp7fX0:1pI2VC:bQ26Fr6yvGlfDA2b5o2nXsYJeK2qxC9skhTMgTgDld0', '2023-02-01 07:04:54.763920'),
+('s2zwpfh7kghy0nmlor3us5ys5auo9yqj', 'eyJjYXJ0Ijp7fX0:1pI2UK:9nMNX5L7LNKFgZT1BiyNt43khZ8HqA0zOtUsYlBBxeo', '2023-02-01 07:04:00.127688'),
+('saehmux7s95gwidhym189w0i6cwt68cd', 'eyJjYXJ0Ijp7fX0:1pI30h:2iTki6IuxD3OHCfQc9AJ2Q_cyefTSSXd5ACaYs9GXvc', '2023-02-01 07:37:27.855025'),
+('sgzsb8fatgiy4mpbrwqzuq9oortfsxky', 'eyJjYXJ0Ijp7fX0:1pI2h2:KZBHv7m7xzqukn4ESXLAdqpFJFwbYptZKSD0iC3D0OA', '2023-02-01 07:17:08.800169'),
+('shub0omekd0zj7vpnv9l3q1gcnestv4z', 'eyJjYXJ0Ijp7fX0:1pI31E:ayvUavA6Kg-LiBzxuJSyQ6pgk9C3osf5yYk0tm61wNY', '2023-02-01 07:38:00.540162'),
+('smcxe7u68bl6j8rfdo06pzykbgfoeso3', 'eyJjYXJ0Ijp7fX0:1pI2oI:1cpf1hRLTIH4ocfEOAHsC7izBP4L2R4Rr-qt6BSRDd4', '2023-02-01 07:24:38.194107'),
+('sqgp5jd5pnxu3w6w3wiik2c12fjtcxki', 'eyJjYXJ0Ijp7fX0:1pI2VL:91fOp4kTQMTszNabXmSV7cH8fe_RDvd9hqlTCzDgFb0', '2023-02-01 07:05:03.664649'),
+('sqlszzc34p4nazggsqe1bxid0dxgy6xi', 'eyJjYXJ0Ijp7fX0:1pI2h2:KZBHv7m7xzqukn4ESXLAdqpFJFwbYptZKSD0iC3D0OA', '2023-02-01 07:17:08.772537'),
+('styqefmokpchopx85x7ukv87iybf6y9d', 'eyJjYXJ0Ijp7fX0:1pI31E:ayvUavA6Kg-LiBzxuJSyQ6pgk9C3osf5yYk0tm61wNY', '2023-02-01 07:38:00.539652'),
+('sudpxhe5qxvieo1cgyqnc2zeza1oedvu', 'eyJjYXJ0Ijp7fX0:1pI2VL:91fOp4kTQMTszNabXmSV7cH8fe_RDvd9hqlTCzDgFb0', '2023-02-01 07:05:03.665701'),
+('t20z1le0zz1jk2je7qzmxrige4r9cmer', 'eyJjYXJ0Ijp7fX0:1pI2xF:d6YJgrVzEDjavK4GmLuepoOKDGeZnOXumSIzmePuEbg', '2023-02-01 07:33:53.666731'),
+('t2cuitwtkxn5gtnbdfcqn3k5s17va4bw', 'eyJjYXJ0Ijp7fX0:1pI30R:qFsqRKgYNs4d6xHBaTEcAtGz9ws9T63NDZMiZSKs1K4', '2023-02-01 07:37:11.406654'),
+('t4pmsno0u3w3tjeltgjk06qwzsva7joi', 'eyJjYXJ0Ijp7fX0:1pI2UL:oS1sVGMJ6R0ij6WzS_DovlM6rjZA1QClf4OxyH3wxSo', '2023-02-01 07:04:01.465892'),
+('t9y4f9gabup4hazqqw6yye5pizv2p99c', 'eyJjYXJ0Ijp7fX0:1pI2go:y3lMmQljx6G84f2o0PeIViFvOI_vUD4o0qC_Jx1B7-Y', '2023-02-01 07:16:54.019191'),
+('ta6gmhwn2h8c1wlb1vftyyh0sby3tnnf', 'eyJjYXJ0Ijp7fX0:1pIDLs:6w-IMjG8nWciudj-3wbNzzxm4MHp5Td85fUd0eExZm0', '2023-02-01 18:40:00.454390'),
+('tbja2m08zsdz4j9ct0dl43brisytopss', 'eyJjYXJ0Ijp7fX0:1pI9lQ:j7kLJSdp0oYumCg3LrIWiBQl1WPPHWfXZjaQArUYMgQ', '2023-02-01 14:50:08.202718'),
+('tc09l4ckmgeh22890m1dcwtp32lkc08m', 'eyJjYXJ0Ijp7fX0:1pI2aW:4Igcp_uil4imP9a4VeSIYgTP_wY8BNWzSJm3wlCQzSc', '2023-02-01 07:10:24.429880'),
+('th6xr1d2expssjo8axwkvdgpycjbl27s', 'eyJjYXJ0Ijp7fX0:1pI2S1:DRW19hiRYBHkqifmXSrzH7wdflionTyWmbXIuWv8xkg', '2023-02-01 07:01:37.972043'),
+('tiz0ko64arkr9oktvc3j8jo0499ze9rx', 'eyJjYXJ0Ijp7fX0:1pI2wz:i0257colU8Z6oR1b7CUy3592FcAkn0X9S1JwyoZQDRo', '2023-02-01 07:33:37.140956'),
+('tm8ubbdztdd12ig8lpga0d3cqfhshzd9', 'eyJjYXJ0Ijp7fX0:1pI8Il:_YOznJz8iSTzCOfkxWfVCWkrLqyJd7g6AfGn3ip1_Hg', '2023-02-01 13:16:27.041043'),
+('to1l94mlstd0z7jdjug49xod9e5cxin0', 'eyJjYXJ0Ijp7fX0:1pI2gm:ZA5qbqLopFG_PFrvXd5MNFZ_cWM764VwdX0tfcQzl54', '2023-02-01 07:16:52.580996'),
+('toxxh1enw87mr5x0zy8ge5905ghcmhf7', 'eyJjYXJ0Ijp7fX0:1pI2dh:oEw3lq1EyZ97pUxRsvzScCnD4mPJ87ZzdqknaSoQMP8', '2023-02-01 07:13:41.608596'),
+('tpgdafo4hxunt534z0hsxws574rtihby', 'eyJjYXJ0Ijp7fX0:1pI2iH:5rPjSXbua_WZnaG7wbWrw2LzBhY5biKYAf4WPh5kgbQ', '2023-02-01 07:18:25.562493'),
+('tra6bs5d8g90kp4lvfztswc66pg0750o', 'eyJjYXJ0Ijp7fX0:1pI2xR:22G-cYyRwyYhLdHgLtGJLtUsrHVoeiXQKmOEPHv1_uM', '2023-02-01 07:34:05.768652'),
+('tsnzk6g6eymeo5lgznowuyv2cvijdgtt', 'eyJjYXJ0Ijp7fX0:1pI30W:mmP-Dgvl79hsXQU6W8KGiyRiaXjSwVMAVBVUTSmbDnI', '2023-02-01 07:37:16.787216'),
+('tw3y0xcnh4w31hgfgef7whpp3ocmg5ac', 'eyJjYXJ0Ijp7fX0:1pI2hS:c1DAGNew_KMxVl9TkU1-lxFrzaAsA44zsLDCv7Kbgus', '2023-02-01 07:17:34.124963'),
+('u3kgmlh82xyxoajipc516wtkhg8g4j5i', 'eyJjYXJ0Ijp7fX0:1pI30R:qFsqRKgYNs4d6xHBaTEcAtGz9ws9T63NDZMiZSKs1K4', '2023-02-01 07:37:11.602136'),
+('u4shehq4xq98db1ibz7t85d11kivf4xv', 'eyJjYXJ0Ijp7fX0:1pI2UG:QibLGvHIkmUaGxSwI1-KM9uWLUDSMFqGtVz42PUjtR8', '2023-02-01 07:03:56.634782'),
+('u7co98bhy5sqcrap4dbhvf03ur1680n5', 'eyJpbnN0YS1mb2xsb3dlcnMiOiIzNS41TSJ9:1p70FI:Ye5utLdiH572ZqbLGOqIiQAq0gGhssO-u0ATYGNoA2s', '2023-01-01 20:26:52.449094'),
+('u7t1tqls1sob95qtmr0phde0hsz117bx', 'eyJjYXJ0Ijp7fX0:1pI2w0:BOENyYeya3ekZWPY4H30sLX01toydkBrP-RPIICJShg', '2023-02-01 07:32:36.889788'),
+('uc0gh6pzysd8qpv3n5xsy15310ksgdb8', 'eyJjYXJ0Ijp7fX0:1pI2hn:g4afcAhsFR4UP94ESRHQXx-jUs7LendbiwVbMU020Cg', '2023-02-01 07:17:55.377659'),
+('ucc7f0li6ie09jydfl5oabilndbltaoh', 'eyJjYXJ0Ijp7fX0:1pI2xR:22G-cYyRwyYhLdHgLtGJLtUsrHVoeiXQKmOEPHv1_uM', '2023-02-01 07:34:05.979077'),
+('ueyt0u9qfxcqoiauo9h0munxcbb328gu', 'eyJjYXJ0Ijp7fX0:1pI2S4:NFLV4NP-OlMgH8DDrbn_OHdWjHp9NOSdf1IksLGrSJw', '2023-02-01 07:01:40.775847'),
+('ufi4od1olkldcgmk7jkhlelay4jnzyxr', 'eyJjYXJ0Ijp7fX0:1pI2x2:RQvjPM_SXOjY8R4Wxq-uO2UfWQzIoNsecJ1im0bSz0U', '2023-02-01 07:33:40.703398'),
+('ugv85vknmjm19o4pes1aj9z678jan5t4', 'eyJjYXJ0Ijp7fX0:1pI2wu:EryM0wRin8aRXkXFkguF4Z-liZ1-2MlzVJzyCCEv9JI', '2023-02-01 07:33:32.788708'),
+('uijhdusisegggbqqgix7k0infv5aj53q', 'eyJjYXJ0Ijp7fX0:1pIDMO:JOpauYvdNeC2JMYs7axD0yL-4cz5fXAVsH-LLwwHrQs', '2023-02-01 18:40:32.487059'),
+('ulrijf468o474382nhpu8qmua856if3x', 'eyJjYXJ0Ijp7fX0:1pI31E:ayvUavA6Kg-LiBzxuJSyQ6pgk9C3osf5yYk0tm61wNY', '2023-02-01 07:38:00.539082'),
+('uqd4nds3npz3xv2jj9ulmeglbxrrnj19', 'eyJjYXJ0Ijp7fX0:1pI9lP:TyMV3BXpqLA6icoBSk73ucxcH4dH-KA-kDA1Rfrm1L8', '2023-02-01 14:50:07.966263'),
+('us8pi1f2jq6yfmfmcevrfn4npnfojmrn', 'eyJjYXJ0Ijp7fX0:1pI2h2:KZBHv7m7xzqukn4ESXLAdqpFJFwbYptZKSD0iC3D0OA', '2023-02-01 07:17:08.790203'),
+('usd4nqkoztli591io7dhfsns5au94fts', 'eyJjYXJ0Ijp7fX0:1pI2xP:zbR6Shf8yE98fftbbSW4VK2Uc_jeJdg6IxEMbdOVIlU', '2023-02-01 07:34:03.320679'),
+('uu4ugd1fop775xrhqh61lncpx6cjkmyj', '.eJxVjEsOgkAQBe_SazORnkF6XLr3DKR_CGog4bMi3F1J2LB9VfVWUB5nuK_bBWpe5rZeJh_rzuAOCKdNWD_e78De3L-GoEM_j52EXQkHncJzMP8-Dvd00PLU_mtiqxotqnQrxT3GFKlwrjzna85IwoJK1ggZGqYyFmVWQSRSTpIUYfsBNBM7WQ:1pIEU3:AUo5KAaaAabc7IFFCg0yxMbO0E3yuboqhnSmPiyHYbY', '2023-02-01 19:52:31.301460'),
+('v0fudb9yka82qj9ynyw95plktiyjlyy8', 'eyJjYXJ0Ijp7fX0:1pI30W:mmP-Dgvl79hsXQU6W8KGiyRiaXjSwVMAVBVUTSmbDnI', '2023-02-01 07:37:16.790078'),
+('v2ecyjvtm0ywmv9tg0wrllevjc9s0o62', 'eyJjYXJ0Ijp7fX0:1pI3Vo:KTBvvUfPruA4V72qpJFfCBAeP-6hLpOWH5MMCJr-bXA', '2023-02-01 08:09:36.359680'),
+('v2f1rh8brmdl55z4ortk67wv5einvtd3', 'eyJjYXJ0Ijp7fX0:1pI2UG:QibLGvHIkmUaGxSwI1-KM9uWLUDSMFqGtVz42PUjtR8', '2023-02-01 07:03:56.798902'),
+('v4772lwqsysy3ak8y17qlvwe7uu4ns5l', 'eyJjYXJ0Ijp7fX0:1pI31H:D5D-AJSxQ9ZpagYiHih_1EKrJY4CFgRFKHH5sE-_fLo', '2023-02-01 07:38:03.386229'),
+('v59kzz97ya5nrthvrczquupfuqh5hr9i', 'eyJjYXJ0Ijp7fX0:1pIEHv:DxbSugD-7UxwgSdSuKprC45A5DmkrrpStrgnZKNoRNA', '2023-02-01 19:39:59.078472'),
+('vc8wm91ftc22g6retcpc859by6a5v2vm', 'eyJjYXJ0Ijp7fX0:1pIEI4:WzyznG1QwhW_q7ErCNoI41EGNQJFdkdeYaI8w7lwlMA', '2023-02-01 19:40:08.474087'),
+('vmj5g41qhb56rhdyht7vj2a1v6xsjcem', 'eyJjYXJ0Ijp7fX0:1pI2Ve:C3hdMkQQMy4zfU4xcu61Z6Sy47pMgL6_7iZ5knvB7QI', '2023-02-01 07:05:22.539083'),
+('vmkbhf2avewk7uieoki7m9x51e4ahd0q', 'eyJjYXJ0Ijp7fX0:1pI2h2:KZBHv7m7xzqukn4ESXLAdqpFJFwbYptZKSD0iC3D0OA', '2023-02-01 07:17:08.803879'),
+('vmn2owmfz1jqozqgiucu20b4gfesrug1', 'eyJjYXJ0Ijp7fX0:1pI2vU:9M6JwBe5cqzDYRqA_9XX_2gtXTneRMkogbVc_cFjBZU', '2023-02-01 07:32:04.028292'),
+('vnmwdo844no21fuycg10wv7mihxbb604', 'eyJjYXJ0Ijp7fX0:1pI2xB:LGAzvkRfDwyGU-hRe_bM1rd0rvbXD4tOM8TbUDehc64', '2023-02-01 07:33:49.435168'),
+('vpph7i9cq4ru7vkxpr9irpxkmsyff03m', 'eyJjYXJ0Ijp7fX0:1pI9lT:WS8ZUNm7d1OAYH2TPrUxdkcs-T2i15ALsvSELoR1njg', '2023-02-01 14:50:11.988968'),
+('vrj1v3f3cnwtel7cufwz2o91wdhoi075', 'eyJjYXJ0Ijp7fX0:1pI30q:mkZQmSqopJPqJZjazdmkjY65g1zngGJtY_x9lpJMrVU', '2023-02-01 07:37:36.998664'),
+('vsctqkzcosbg5yksh4vuzyowva81jlbn', 'eyJjYXJ0Ijp7fX0:1pI2aW:4Igcp_uil4imP9a4VeSIYgTP_wY8BNWzSJm3wlCQzSc', '2023-02-01 07:10:24.238309'),
+('vsiz0sbxso55fcty79mepb872908c4tg', 'eyJjYXJ0Ijp7fX0:1pI2S8:dHdhZc83w7O3xdg3ODhraq1_r3J5nvLEApcNwixf8K8', '2023-02-01 07:01:44.769636'),
+('vuc8dmsbfpi9fx9yvupx1em9e0uj3zbn', 'eyJjYXJ0Ijp7fX0:1pI2ax:zHyOaCIAvouiCSvY_h6KlGWfsJyvSrk5WD5WpVnfEZ4', '2023-02-01 07:10:51.264849'),
+('vv87w5rwsi0cb6vyp4dp5zq08weh38qa', 'eyJjYXJ0Ijp7fX0:1pI2VC:bQ26Fr6yvGlfDA2b5o2nXsYJeK2qxC9skhTMgTgDld0', '2023-02-01 07:04:54.921039'),
+('w6v5fqno1d42qpwpmifv6mgdq3j7rb1z', 'eyJjYXJ0Ijp7fX0:1pI2Vm:XXhCB2jP44emjJLbT5SrShOSl8MNVpq-dRXhCE_UGBQ', '2023-02-01 07:05:30.252055'),
+('walywtjztds6sg3oesoc16kfqsc0kd0o', 'eyJjYXJ0Ijp7fX0:1pIDMO:JOpauYvdNeC2JMYs7axD0yL-4cz5fXAVsH-LLwwHrQs', '2023-02-01 18:40:32.487485'),
+('wb5q919q7ar7x6gda62rts0te5bh29u0', 'eyJjYXJ0Ijp7fX0:1pI2oI:1cpf1hRLTIH4ocfEOAHsC7izBP4L2R4Rr-qt6BSRDd4', '2023-02-01 07:24:38.195032'),
+('wem3jyneczcmfpjk48mm3tkabda3nfv9', 'eyJjYXJ0Ijp7fX0:1pIBSK:M6swbAOs4a4KYj4GtOiAXE6WrX1Mj9LP6ZdWyl-rkgs', '2023-02-01 16:38:32.569482'),
+('wluvnzr8csp1e9m3y2bavdpedbzw5bqo', 'eyJjYXJ0Ijp7fX0:1pI2go:y3lMmQljx6G84f2o0PeIViFvOI_vUD4o0qC_Jx1B7-Y', '2023-02-01 07:16:54.219117'),
+('wo4shj7ym3xq0y4zja9x4n93tbtx663l', 'eyJjYXJ0Ijp7fX0:1pI2x2:RQvjPM_SXOjY8R4Wxq-uO2UfWQzIoNsecJ1im0bSz0U', '2023-02-01 07:33:40.434279'),
+('wq4xxpqymx5h32j5905ufyxcmcsv0h8w', 'eyJjYXJ0Ijp7fX0:1pIEHu:7MOsXV9g_pRgvyNe1eTNTnTBVFy_btpKJonVsdMlqYE', '2023-02-01 19:39:58.839253'),
+('wrpoehrvfxto7fmv0fhjdo9tx2alkm2p', 'eyJjYXJ0Ijp7fX0:1pI2dc:8ZtOPDkkHMIUfO3-5uBlzpp7eebw25P9e6UGStlBEHU', '2023-02-01 07:13:36.369846'),
+('wx6irspkt6oxxmxtpanz9vmb7d436rq8', 'eyJjYXJ0Ijp7fX0:1pI2hn:g4afcAhsFR4UP94ESRHQXx-jUs7LendbiwVbMU020Cg', '2023-02-01 07:17:55.532517'),
+('wy4bftju8l3tx6x6ndpqmlkl4zuncnx8', 'eyJjYXJ0Ijp7fX0:1pI310:YcaWnXStmoEfYNKtZbw8fMw-q6i_LVfrroZn7Nz2SoE', '2023-02-01 07:37:46.330835'),
+('x07yp8bn3ii5ld1ydwkai4u46la00niw', 'eyJjYXJ0Ijp7fX0:1pI2UG:QibLGvHIkmUaGxSwI1-KM9uWLUDSMFqGtVz42PUjtR8', '2023-02-01 07:03:56.803039'),
+('x19uu2i9uvnph3b1x2ckoaz0d6n2r588', 'eyJjYXJ0Ijp7fX0:1pIEI4:WzyznG1QwhW_q7ErCNoI41EGNQJFdkdeYaI8w7lwlMA', '2023-02-01 19:40:08.473240'),
+('x3jl0p7l5m0t3e2fhfzw2o40gnllxb5s', 'eyJjYXJ0Ijp7fX0:1pI2UG:QibLGvHIkmUaGxSwI1-KM9uWLUDSMFqGtVz42PUjtR8', '2023-02-01 07:03:56.634111'),
+('x4d3a96p8qkdgqnsg0vit7hgigerndrh', 'eyJjYXJ0Ijp7fX0:1pI2bb:rBJN-dhMCHk4jx27PDSD-4HUZgK4zH27U3HqLtmjjl0', '2023-02-01 07:11:31.420056'),
+('x8sef81x6lv87rckab05m81gquiey692', 'eyJjYXJ0Ijp7fX0:1pI8Ij:Nsid0k8h_cpqZsstFvkwFvIpih0sRTpznNmLDalzhUM', '2023-02-01 13:16:25.222795'),
+('xb1lttz1ic0rql7ae30t7fryb8q5osp7', 'eyJjYXJ0Ijp7fX0:1pI2vZ:ammluEj4Ov7yFCC-tgFVqUAVzVFxJKX0GnjbcfjAhJ8', '2023-02-01 07:32:09.876792'),
+('xbtjj9p9og6c5cxheml38po878cw8dq6', 'eyJjYXJ0Ijp7fX0:1pI2ax:zHyOaCIAvouiCSvY_h6KlGWfsJyvSrk5WD5WpVnfEZ4', '2023-02-01 07:10:51.074689'),
+('xetz7wgbfjnvw0cwtcwz0vba4o3f0tg1', 'eyJjYXJ0Ijp7fX0:1pIBSL:ui8TLm2woZ1uLipwgABBsocc7jrfjxwmlMSCeomej70', '2023-02-01 16:38:33.909502'),
+('xik9litjrq85ylasewg8a8cjugkvpnk7', 'eyJjYXJ0Ijp7fX0:1pI9lU:yjqV-aRMOglI-Q7xxLuO66rHCIUfnr0hPqvc11JIIqM', '2023-02-01 14:50:12.234568'),
+('xksbh45s26rg5o3wympif3j4hhaas6qz', 'eyJjYXJ0Ijp7fX0:1pI2mk:kLlT_cSh949IKn6dq78JWlMdvmH0qWPNqbGz1E7m3V8', '2023-02-01 07:23:02.232752'),
+('xocd350m4qmlig37oyampe24mdrya1lr', 'eyJjYXJ0Ijp7fX0:1pI2UL:oS1sVGMJ6R0ij6WzS_DovlM6rjZA1QClf4OxyH3wxSo', '2023-02-01 07:04:01.330707'),
+('xqxcq7jmqbb6zkgmifxatxd2okx607ev', 'eyJjYXJ0Ijp7fX0:1pI30r:Z1pByzbzGGyMUQqQgdcaGJtE-7JakGIZSx_L64aba9k', '2023-02-01 07:37:37.133197'),
+('xrzoetov8vukkpul50he6irn75srcduq', 'eyJjYXJ0Ijp7fX0:1pI2ZF:8FeXkUep__z7E2RmVJVbs2cd4CteJ3qX3DDNAgWTjYk', '2023-02-01 07:09:05.589746'),
+('xvjiv93d3t78m7wdl6ndxo27kn06c9cs', 'eyJjYXJ0Ijp7fX0:1pI2ar:2X9BGyTE4zUXQ842sE6LHXyvVnO0nwprCXzTHHQgmXc', '2023-02-01 07:10:45.043716'),
+('y0wnj0oniqjz81ym0zrbmki462ls6elj', 'eyJjYXJ0Ijp7fX0:1pI2iH:5rPjSXbua_WZnaG7wbWrw2LzBhY5biKYAf4WPh5kgbQ', '2023-02-01 07:18:25.569492'),
+('y1b3rndx71kh9y63zu2n9qgeoj092xe2', 'eyJjYXJ0Ijp7fX0:1pI9lQ:j7kLJSdp0oYumCg3LrIWiBQl1WPPHWfXZjaQArUYMgQ', '2023-02-01 14:50:08.199096'),
+('y5dlst19461hk7i19r9ruj93iniaz7vl', 'eyJjYXJ0Ijp7fX0:1pI2UK:9nMNX5L7LNKFgZT1BiyNt43khZ8HqA0zOtUsYlBBxeo', '2023-02-01 07:04:00.278682'),
+('y5oxh8wlc5jm8dgolpv25y5mio09p2zv', 'eyJjYXJ0Ijp7fX0:1pI2bQ:HeDcWJzeHdDpifssVHKWX2UdYxOC4g6UQ7mQqiuQErI', '2023-02-01 07:11:20.962577'),
+('y9871119r5r3ioyg2u1mdvc682y35mrw', 'eyJjYXJ0Ijp7fX0:1pI307:M2YMw9u8_pazi20SwOIhwHX7SjFHqCDVY-Q3W_-oGQ0', '2023-02-01 07:36:51.950733'),
+('yammmkxikbhg2fq6fmxy6qt2qdsuiz8p', 'eyJjYXJ0Ijp7fX0:1pI2ax:zHyOaCIAvouiCSvY_h6KlGWfsJyvSrk5WD5WpVnfEZ4', '2023-02-01 07:10:51.264142'),
+('yb28vvi6x8jx75o3f1wfnn7lqcanqiv9', 'eyJjYXJ0Ijp7fX0:1pI2zx:bgPw7ZkQ5_O_QBLAKMygBqIwACvmj4MRy5PZ3wnmuW4', '2023-02-01 07:36:41.318327'),
+('ydyptjo8rwc3g7ncoz4yxus7jspvb1tm', 'eyJjYXJ0Ijp7fX0:1pIBSK:M6swbAOs4a4KYj4GtOiAXE6WrX1Mj9LP6ZdWyl-rkgs', '2023-02-01 16:38:32.766832'),
+('yeaoi1tz39luthrifjeta58enyuyovi7', 'eyJjYXJ0Ijp7fX0:1pI4Gl:q8WWqrX-RkzJ3LwqQV6qXIVUdhu6ctk1gClZNoCR1So', '2023-02-01 08:58:07.182346'),
+('yilj6utq3vc0a7gjq4qz5skg7271f89v', 'eyJjYXJ0Ijp7fX0:1pI2wv:V9DL9VGBGrUdjtnvXoCMJ8ULW306in5e6ubwnwKKeXE', '2023-02-01 07:33:33.038508'),
+('ykurlwlz46rw942yahx6zlbn6tdleblu', 'eyJjYXJ0Ijp7fX0:1pI2UG:QibLGvHIkmUaGxSwI1-KM9uWLUDSMFqGtVz42PUjtR8', '2023-02-01 07:03:56.799158'),
+('ymx9iz1bcdi6y9qnegv4cgrtybjglpbr', 'eyJjYXJ0Ijp7fX0:1pI2UG:QibLGvHIkmUaGxSwI1-KM9uWLUDSMFqGtVz42PUjtR8', '2023-02-01 07:03:56.799273'),
+('yn1hr2jnsmlg63bv5q9yigql167n3dm7', 'eyJjYXJ0Ijp7fX0:1pI2Vm:XXhCB2jP44emjJLbT5SrShOSl8MNVpq-dRXhCE_UGBQ', '2023-02-01 07:05:30.445454'),
+('yo6pd58lw0jstop3qbyexn0zlrmzc1w1', 'eyJjYXJ0Ijp7fX0:1pI2bR:8JpRI-cNP4BfI97RwB1QeFJrlG3zwd8301zweW63DMk', '2023-02-01 07:11:21.157052'),
+('yoiawha0wagpbuf4mn5j3iebbe0hl5cr', 'eyJjYXJ0Ijp7fX0:1pI2w0:BOENyYeya3ekZWPY4H30sLX01toydkBrP-RPIICJShg', '2023-02-01 07:32:36.687120'),
+('yt11f01od628io318dkt75hzzpu9quse', 'eyJjYXJ0Ijp7fX0:1pI2mk:kLlT_cSh949IKn6dq78JWlMdvmH0qWPNqbGz1E7m3V8', '2023-02-01 07:23:02.234955'),
+('yuvi6vvb1heobdwe4mwrhn12h7swbh2a', 'eyJjYXJ0Ijp7fX0:1pI2cD:3PUCZoUVP7ApKHSTpuaP_sQfim4CpcKnI4EGTjPGiw0', '2023-02-01 07:12:09.113698'),
+('ywjabvpxf2ege9te36wqnflbb4bv6wbu', 'eyJjYXJ0Ijp7fX0:1pI2bb:rBJN-dhMCHk4jx27PDSD-4HUZgK4zH27U3HqLtmjjl0', '2023-02-01 07:11:31.216212'),
+('yxalzxu2dewbtjo48ehrnjwuto754s5l', 'eyJjYXJ0Ijp7fX0:1pI2go:y3lMmQljx6G84f2o0PeIViFvOI_vUD4o0qC_Jx1B7-Y', '2023-02-01 07:16:54.224142'),
+('yyd8argirvrel7sqnyu432a577p96131', 'eyJjYXJ0Ijp7fX0:1pIBSK:M6swbAOs4a4KYj4GtOiAXE6WrX1Mj9LP6ZdWyl-rkgs', '2023-02-01 16:38:32.752468'),
+('yz5he22cwbmzt67gsv7mpkpzlncppxl4', 'eyJjYXJ0Ijp7fX0:1pI8Ij:Nsid0k8h_cpqZsstFvkwFvIpih0sRTpznNmLDalzhUM', '2023-02-01 13:16:25.224881'),
+('yzgzutfx24xphxofnte338udtfvt5off', 'eyJjYXJ0Ijp7fX0:1pI31H:D5D-AJSxQ9ZpagYiHih_1EKrJY4CFgRFKHH5sE-_fLo', '2023-02-01 07:38:03.564241'),
+('z90lscyd0zuquib8cjx6elhhyhy0zx7h', 'eyJjYXJ0Ijp7fX0:1pI2dh:oEw3lq1EyZ97pUxRsvzScCnD4mPJ87ZzdqknaSoQMP8', '2023-02-01 07:13:41.437370'),
+('z9locn0g1lj5imyq932ck2k8gnxxif7m', 'eyJjYXJ0Ijp7fX0:1pID4m:TQTn1xISxaN_tkEcHbzuw_4yvUEACa3dHTKBoStIekM', '2023-02-01 18:22:20.675936'),
+('zaj0th5zf0shim4757h8qovyv3h7qbon', 'eyJjYXJ0Ijp7fX0:1pI2cD:3PUCZoUVP7ApKHSTpuaP_sQfim4CpcKnI4EGTjPGiw0', '2023-02-01 07:12:09.185595'),
+('zb65w6yut3k0nkynh2smjp0ky852jarx', 'eyJjYXJ0Ijp7fX0:1pI2aW:4Igcp_uil4imP9a4VeSIYgTP_wY8BNWzSJm3wlCQzSc', '2023-02-01 07:10:24.426954'),
+('zeqcdiw1xu2azfu1zzy9195kr0j2ksx2', 'eyJjYXJ0Ijp7fX0:1pI2xF:d6YJgrVzEDjavK4GmLuepoOKDGeZnOXumSIzmePuEbg', '2023-02-01 07:33:53.676079'),
+('zeukalj3x0iaq193ualymcxmw1r2zmzp', 'eyJjYXJ0Ijp7fX0:1pI3Vo:KTBvvUfPruA4V72qpJFfCBAeP-6hLpOWH5MMCJr-bXA', '2023-02-01 08:09:36.349837'),
+('zhn4p06btoxuqf5txk456vsiucicn3sc', 'eyJjYXJ0Ijp7fX0:1pI9lU:yjqV-aRMOglI-Q7xxLuO66rHCIUfnr0hPqvc11JIIqM', '2023-02-01 14:50:12.237034'),
+('zi0f878n961xjdivw6dudvs914jyzevy', 'eyJjYXJ0Ijp7fX0:1pI2hn:g4afcAhsFR4UP94ESRHQXx-jUs7LendbiwVbMU020Cg', '2023-02-01 07:17:55.540868'),
+('zk4xjqdah6fm3crjzyscx526qqa9gqln', 'eyJjYXJ0Ijp7fX0:1pI2Ve:C3hdMkQQMy4zfU4xcu61Z6Sy47pMgL6_7iZ5knvB7QI', '2023-02-01 07:05:22.411843'),
+('zkflunuwpr0ug6x83v454z7x7vt0lbcs', 'eyJjYXJ0Ijp7fX0:1pI30R:qFsqRKgYNs4d6xHBaTEcAtGz9ws9T63NDZMiZSKs1K4', '2023-02-01 07:37:11.602929'),
+('zq68p9dfak927vw1ghcnmykjs3j1d9jq', 'eyJjYXJ0Ijp7fX0:1pI34I:0kWA_cX1CRpybxVKY_9kEru-WTGqmvCIpRF3CYIVRIA', '2023-02-01 07:41:10.002463'),
+('zqz9wk0bl8sjo4uc0zu5r7sy6y9m8146', 'eyJjYXJ0Ijp7fX0:1pI34I:0kWA_cX1CRpybxVKY_9kEru-WTGqmvCIpRF3CYIVRIA', '2023-02-01 07:41:10.032746'),
+('ztirxzysgjx0br7y83wpf0dv4xc1d9q4', 'eyJjYXJ0Ijp7fX0:1pI9lQ:j7kLJSdp0oYumCg3LrIWiBQl1WPPHWfXZjaQArUYMgQ', '2023-02-01 14:50:08.189022'),
+('ztqptd6fll4vfiwcgibaxfrvoeb6hc34', 'eyJjYXJ0Ijp7fX0:1pI2h2:KZBHv7m7xzqukn4ESXLAdqpFJFwbYptZKSD0iC3D0OA', '2023-02-01 07:17:08.637694'),
+('zu48ad2fal5p9b7ktm27x4p31x5i169n', 'eyJjYXJ0Ijp7fX0:1pI30R:qFsqRKgYNs4d6xHBaTEcAtGz9ws9T63NDZMiZSKs1K4', '2023-02-01 07:37:11.613450'),
+('zwczoe78c144326py6q8lb775oue1qbq', 'eyJjYXJ0Ijp7fX0:1pI2Wb:lRkQ-jG2TojNMGg6BXgOcjl34WoFrLDYAgytzTLNKOg', '2023-02-01 07:06:21.584939'),
+('zwx8f1ayvk9pg902ybcve6b1j0xkhixp', 'eyJjYXJ0Ijp7fX0:1pI30W:mmP-Dgvl79hsXQU6W8KGiyRiaXjSwVMAVBVUTSmbDnI', '2023-02-01 07:37:16.611298'),
+('zx22lkxu2cjty578pyco54jzgmaizq3a', 'eyJjYXJ0Ijp7fX0:1pI2aq:a4DsKfP51ZY3B27VbfJ7OJ2opzMNfFZORqwvOWJ6JjA', '2023-02-01 07:10:44.855818');
 
 -- --------------------------------------------------------
 
@@ -1123,8 +1684,8 @@ CREATE TABLE `main_article_type` (
   `id` bigint(20) NOT NULL,
   `name` varchar(20) NOT NULL,
   `css_name` varchar(20) DEFAULT NULL,
-  `category` smallint(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `category` smallint(5) UNSIGNED NOT NULL
+) ;
 
 --
 -- Dumping data for table `main_article_type`
@@ -1197,17 +1758,17 @@ INSERT INTO `main_club_album` (`id`, `title`, `featured_image`, `date`, `slug`, 
 
 CREATE TABLE `main_club_season_stats` (
   `id` bigint(20) NOT NULL,
-  `played` int(11) DEFAULT NULL,
-  `wins` int(11) DEFAULT NULL,
-  `loss` int(11) DEFAULT NULL,
-  `draw` int(11) DEFAULT NULL,
-  `scored` int(11) DEFAULT NULL,
-  `conceded` int(11) DEFAULT NULL,
-  `goal_diff` int(11) DEFAULT NULL,
-  `points` int(11) DEFAULT NULL,
+  `played` smallint(5) UNSIGNED DEFAULT NULL,
+  `wins` smallint(5) UNSIGNED DEFAULT NULL,
+  `loss` smallint(5) UNSIGNED DEFAULT NULL,
+  `draw` smallint(5) UNSIGNED DEFAULT NULL,
+  `scored` smallint(5) UNSIGNED DEFAULT NULL,
+  `conceded` smallint(5) UNSIGNED DEFAULT NULL,
+  `goal_diff` smallint(6) DEFAULT NULL,
+  `points` smallint(5) UNSIGNED DEFAULT NULL,
   `club_id` bigint(20) DEFAULT NULL,
   `competition_id` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ;
 
 --
 -- Dumping data for table `main_club_season_stats`
@@ -1468,7 +2029,12 @@ CREATE TABLE `main_match_news_tags` (
 --
 
 INSERT INTO `main_match_news_tags` (`id`, `match_id`, `news_article_id`) VALUES
-(1, 1, 8);
+(1, 1, 8),
+(2, 1, 11),
+(3, 1, 12),
+(5, 3, 14),
+(4, 4, 13),
+(6, 4, 19);
 
 -- --------------------------------------------------------
 
@@ -1488,6 +2054,7 @@ CREATE TABLE `main_match_tags` (
 
 INSERT INTO `main_match_tags` (`id`, `match_id`, `news_tag_id`) VALUES
 (2, 1, 8),
+(3, 4, 11),
 (1, 7, 8);
 
 -- --------------------------------------------------------
@@ -1534,13 +2101,13 @@ CREATE TABLE `main_merchandise` (
   `name` varchar(100) DEFAULT NULL,
   `featured_image` varchar(100) DEFAULT NULL,
   `price` decimal(10,2) DEFAULT NULL,
-  `discount` int(11) NOT NULL,
+  `discount` smallint(5) UNSIGNED NOT NULL,
   `description` longtext DEFAULT NULL,
   `product_information` longtext DEFAULT NULL,
   `slug` varchar(500) DEFAULT NULL,
   `category_id` bigint(20) DEFAULT NULL,
   `added` datetime(6) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ;
 
 --
 -- Dumping data for table `main_merchandise`
@@ -1784,12 +2351,22 @@ INSERT INTO `main_news_article` (`id`, `title`, `image`, `post_content`, `added`
 (2, 'Manuel Neuer undergoes successful surgery', '', '<p><a href=\"https://fcbayern.com/de/teams/profis/manuel-neuer\">Manuel Neuer</a>, 36, will not be available to FC Bayern Munich for the rest of the season. The FC Bayern captain suffered a fracture of his lower right leg in a fall while skiing this Friday. He has already undergone successful surgery.</p>\r\n\r\n<p>CEO&nbsp;<a href=\"https://fcbayern.com/de/club/fcb-ag/oliver-kahn\">Oliver Kahn</a>: &quot;The news of Manuel&#39;s injury shocked us all. We will stand by him and support him on his way to his comeback. He will overcome this serious injury and return to the pitch as strong as before.&quot;</p>\r\n\r\n<p>Board Member for Sport:&nbsp;<a href=\"https://fcbayern.com/de/club/fcb-ag/hasan-salihamidzic\">Hasan Salihamidžić</a>: &quot;The fact Manuel had such an accident is terrible. And, of course, all our thoughts are with him. I spoke to him yesterday and today, and the surgery went as well as possible. Manuel will receive all the support he needs. He is a strong personality and he will be back. I wish him all the best, he can rely on FC Bayern!&quot;</p>', '2022-12-10 17:41:00.000000', '2023-01-07 19:12:43.207202', 'manuel-neuer-undergoes-successful-surgery', 8, 'Manuel Neuer, 36, will not be available to FC Bayern Munich for the rest of the season. The FC Bayern captain suffered a fracture of his lower right leg in a fall while skiing this Friday. He has already undergone successful surgery.', 1, 2, 3, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1670670343/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Neuer/220827-neuer-mel.jpg', NULL, 0),
 (3, 'Bundesliga 2023/24 outline schedule confirmed', '', '<p>The German Football Association (DFB) executive committee revealed the&nbsp;<a href=\"https://www.dfl.de/en/news/calendar-for-the-2023-24-season/\">outline schedule for the 2023/24 Bundesliga season</a>&nbsp;on Friday. The next Bundesliga campaign begins with the opening match on 18 August 2023, and ends with the final matchday on Saturday 18 May 2024.</p>\r\n\r\n<h2>Only one midweek round</h2>\r\n\r\n<p>The Bundesliga winter break starts after Matchday 16 (19/20 December 2023), which is also the only midweek matchday of the season. The action will recommence in Germany&#39;s top flight on 12 January 2024.</p>\r\n\r\n<p><img alt=\"FC Bayern DFL-Supercup winners 2022\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1670589939/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Spiele/Supercup-Leipzig-FCB/33-supercup-rbl-fcb-220730-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"Bayern won the 2022 DFL-Supercup against Leipzig - Julian Nagelsmann’s side still need to qualify for the next edition on 12 August 2023.\" /></p>\r\n\r\n<p>Bayern won the 2022 DFL-Supercup against Leipzig - Julian Nagelsmann&rsquo;s side still need to qualify for the next edition on 12 August 2023.</p>\r\n\r\n<p>A week before the league season starts, the Supercup between the Bundesliga champions and DFB Cup winners takes place on Saturday 12 August 2023. The DFB Cup begins on the same weekend (11-14 August) with the first round. The cup ties involving the Supercup participants have therefore been arranged for 26 and 27 September. The DFB Cup final is set to be played one week after the conclusion of the Bundesliga season, on Saturday 25 May 2024 at Berlin&#39;s Olympiastadion.</p>', '2022-12-09 19:21:00.000000', '2023-01-07 19:12:49.440727', 'bundesliga-202324-outline-schedule-confirmed', 6, 'The German Football Association (DFB) executive committee revealed the outline schedule for the 2023/24 Bundesliga season on Friday. The next Bundesliga campaign begins with the opening match on 18 August 2023, and ends with the final matchday on Saturday 18 May 2024.', 1, 2, 1, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1670590369/cms/public/images/fcbayern-com/homepage/platzhalter/pokale/220730-meisterschale-dfb-pokal-supercup-ima.jpg', NULL, 0),
 (4, 'Upamecano and Co reach World Cup final with France', '', '<p>Three Bayern players with France are just one step away from reaching football&#39;s summit - but for&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/noussair-mazraoui\">Noussair Mazraoui</a>, the dream of the World Cup final is over. On Wednesday evening, Les Bleus beat Morocco 2-0 in the semi-finals and now have the chance to become the first team since Brazil in 1962 to defend the world title.</p>\r\n\r\n<p><img alt=\"Noussair Mazraoui Morocco\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1671049330/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Nationalspieler/221214-mazraoui-marokko-frankreich-get.jpg\" style=\"height:2160px; width:3840px\" title=\"Noussair Mazraoui started for Morocco and was subbed at half-time.\" /></p>\r\n\r\n<p>Noussair Mazraoui started for Morocco and was subbed at half-time.</p>\r\n\r\n<p>While Mazraoui came off at half-time for the North Africans,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/kingsley-coman\">Kingsley Coman</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/dayot-upamecano\">Dayot Upamecano</a>&nbsp;and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/benjamin-pavard\">Benjamin Pavard</a>&nbsp;did not feature for the reigning champions. The two teams produced a high-quality encounter with numerous chances at both ends. After Theo Hern&aacute;ndez, brother of&nbsp;<a href=\"https://fcbayern.com/en/news/2022/11/lucas-hernandez-successfully-operated-on\">injured FCB defender</a><a href=\"https://fcbayern.com/de/teams/profis/lucas-hernandez\">Lucas Hern&aacute;ndez</a>, gave France an early lead in the fifth minute, it wasn&#39;t until the 79th minute that the net rippled again through Frankfurt striker Randal Kolo Muani, who had only just come on.</p>\r\n\r\n<h2>Fighting for a third star</h2>\r\n\r\n<p>Didier Deschamps&#39; men now face Argentina in the final at the Lusail Iconic Stadium on Sunday afternoon (16:00 CET). Both teams have been world champions on two occassions and are bidding to get a third star on their shirt. On Saturday (16:00 CET), Mazraoui will go up against Bayern teammate Josip&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/josip-stani%C5%A1i%C4%87\">Stani&scaron;ić</a>&nbsp;and Croatia in the third place playoff.</p>', '2022-12-15 15:11:00.000000', '2023-01-15 15:50:15.147240', 'upamecano-and-co-reach-world-cup-final-with-france', 5, 'Three Bayern players with France are just one step away from reaching football\'s summit - but for Noussair Mazraoui, the dream of the World Cup final is over. On Wednesday evening, Les Bleus beat Morocco 2-0 in the semi-finals and now have the chance to become the first team since Brazil in 1962 to defend the world title.', 1, 2, 2, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1671051371/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Nationalspieler/221214-juebl-upamecano-frankreich-get.jpg', NULL, 0),
-(5, 'Stanišić misses out on World Cup final with Croatia', '', '<p>Such a shame, Josip! On Tuesday evening, the Croatian national team featuring Bayern player Josip Stani&scaron;ić missed out on a place in the final of the World Cup in Qatar. In the 3-0 (2-0) semi-final loss to Argentina, the 22-year-old full-back once again watched the game from the bench. The South Americans dominated the first half and deservedly took the lead through Lionel Messi (34&#39;/pen) and Juli&aacute;n &Aacute;lvarez (39&#39;). After the break, the Croatians tried everything they could to turn the game around, but ultimately had no luck. Instead, &Aacute;lvarez (69&#39;) bagged his second goal of the evening with around 20 minutes to go.</p>\r\n\r\n<h2>Regroup and focus on the third place play-off</h2>\r\n\r\n<p>Stani&scaron;ić and Co. now need to prepare for the third place play-off on Saturday (16:00 CET), where Zlatko Dalić&#39;s side will meet the losers of the second semi-final between Morocco and France (Wednesday, 20:00 CET). After finishing in third place at the 1998 World Cup and reaching the final in 2018, the Croats now have a third chance to end a World Cup tournament with a medal.</p>', '2022-12-14 15:05:00.000000', '2023-01-15 07:42:11.217062', 'stanisic-misses-out-on-world-cup-final-with-croatia', 60, 'On Tuesday evening, the Croatian national team featuring Bayern player Josip Stanišić missed out on a place in the final of the World Cup in Qatar. In the 3-0 (2-0) semi-final loss to Argentina, the 22-year-old full-back once again watched the game from the bench.', 1, 3, 5, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1670962050/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Nationalspieler/221213-stanisic-kroatien-ima.jpg', NULL, 0),
+(5, 'Stanišić misses out on World Cup final with Croatia', '', '<p>Such a shame, Josip! On Tuesday evening, the Croatian national team featuring Bayern player Josip Stani&scaron;ić missed out on a place in the final of the World Cup in Qatar. In the 3-0 (2-0) semi-final loss to Argentina, the 22-year-old full-back once again watched the game from the bench. The South Americans dominated the first half and deservedly took the lead through Lionel Messi (34&#39;/pen) and Juli&aacute;n &Aacute;lvarez (39&#39;). After the break, the Croatians tried everything they could to turn the game around, but ultimately had no luck. Instead, &Aacute;lvarez (69&#39;) bagged his second goal of the evening with around 20 minutes to go.</p>\r\n\r\n<h2>Regroup and focus on the third place play-off</h2>\r\n\r\n<p>Stani&scaron;ić and Co. now need to prepare for the third place play-off on Saturday (16:00 CET), where Zlatko Dalić&#39;s side will meet the losers of the second semi-final between Morocco and France (Wednesday, 20:00 CET). After finishing in third place at the 1998 World Cup and reaching the final in 2018, the Croats now have a third chance to end a World Cup tournament with a medal.</p>', '2022-12-14 15:05:00.000000', '2023-01-15 19:49:10.763231', 'stanisic-misses-out-on-world-cup-final-with-croatia', 61, 'On Tuesday evening, the Croatian national team featuring Bayern player Josip Stanišić missed out on a place in the final of the World Cup in Qatar. In the 3-0 (2-0) semi-final loss to Argentina, the 22-year-old full-back once again watched the game from the bench.', 1, 3, 5, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1670962050/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Nationalspieler/221213-stanisic-kroatien-ima.jpg', NULL, 0),
 (6, 'Straight into the top corner – Fans honour Eric Maxim Choupo-Moting', 'uploads/chupo-goal-of-the-month-nov.jpg', '<p>Head up and into the top corner - that&#39;s how to do it! In FC Bayern&#39;s final Champions League group game against Inter Milan at the start of November,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/eric-maxim-choupo-moting\">Eric Maxim Choupo-Moting</a>&nbsp;went for goal with around a quarter of an hour left and lashed the ball into the top left corner from a good 20 metres out. The strike didn&#39;t just wrap up the&nbsp;<a href=\"https://fcbayern.com/en/matches/profis/champions-league/2022-2023/fc-bayern-muenchen-inter-mailand-01-11-2022/report\">2-0 final scoreline</a>&nbsp;and a&nbsp;<a href=\"https://fcbayern.com/en/news/2022/11/record-breaking-fc-bayern-complete-third-perfect-champions-league-group-stage\">sixth win in six games</a>&nbsp;in this UCL season, but also sent a ripple around the&nbsp;<a href=\"https://allianz-arena.com/en\">Allianz Arena</a>. It&#39;s not every day that you see such a brilliant goal, even at FCB&#39;s home stadium.</p>\r\n\r\n<h2>Choupo earns over a third of the votes</h2>\r\n\r\n<p><img alt=\"Choupo-Moting FC Bayern\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1671121333/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Spiele/FCB-Inter/19-fcb-inter-011122-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"Choupo-Moting instinctively drilled the ball into the top corner in the 72nd minute of the final Champions League group game.\" /></p>\r\n\r\n<p>Choupo-Moting instinctively drilled the ball into the top corner in the 72nd minute of the final Champions League group game.</p>\r\n\r\n<p>Fans of the German record champions agreed and voted Choupo-Moting&#39;s effort as the FC Bayern Goal of the Month for November, with the Cameroon international receiving 38% of the votes. Second place went to&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/jamal-musiala\">Jamal Musiala</a>&nbsp;(26%) for his skilful opening goal in the&nbsp;<a href=\"https://fcbayern.com/en/matches/profis/bundesliga/2022-2023/fc-bayern-muenchen-sv-werder-bremen-08-11-2022/report\">6-1 win</a>&nbsp;over Werder Bremen, while Carolin Simon&#39;s wonderful free-kick in the 7-0 DFB Cup win at MSV Duisburg came third (17%).</p>', '2022-12-17 19:11:00.000000', '2023-01-07 19:13:59.949680', 'straight-into-the-top-corner-fans-honour-eric-maxim-choupo-moting', 22, 'Head up and into the top corner - that\'s how to do it! In FC Bayern\'s final Champions League group game against Inter Milan at the start of November, Eric Maxim Choupo-Moting went for goal with around a quarter of an hour left and lashed the ball into the top left corner from a good 20 metres out. The strike didn\'t just wrap up the 2-0 final scoreline and a sixth win in six games in this UCL season, but also sent a ripple around the Allianz Arena. It\'s not every day that you see such a brilliant goal, even at FCB\'s home stadium.', 0, 3, 2, NULL, NULL, 0),
-(7, 'Nagelsmann welcomes training group before leaving for Doha', '', '<p>Bayern had their final two training sessions in Munich on Thursday before they head off to Doha and the Aspire Academy for their winter training camp on Friday. However, coach&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/coaches-and-staff/julian-nagelsmann\">Julian Nagelsmann</a>&nbsp;was still without a few players at S&auml;bener Stra&szlig;e.</p>\r\n\r\n<p><img alt=\"Joshua Kimmich FC Bayern Training\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672921075/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Kimmich/230105-kimmich-training-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"Joshua Kimmich and his teammates were hard at work in the morning session.\" /></p>\r\n\r\n<p>Joshua Kimmich and his teammates were hard at work in the morning session.</p>\r\n\r\n<h2>French players to travel directly</h2>\r\n\r\n<p>Among the players absent in Munich were French trio&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/dayot-upamecano\">Dayot Upamecano</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/benjamin-pavard\">Benjamin Pavard</a>&nbsp;and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/kingsley-coman\">Kingsley Coman</a>&nbsp;after they were given some extra time off following France&rsquo;s World Cup final loss to Argentina. They will travel directly to Doha on Friday.&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/marcel-sabitzer\">Marcel Sabitzer</a>&nbsp;and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/noussair-mazraoui\">Noussair Mazraoui</a>&nbsp;didn&rsquo;t take part either. Long-term injury absentees&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/manuel-neuer\">Manuel Neuer</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/sadio-mane\">Sadio Mane</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/lucas-hernandez\">Lucas Hernandez</a>&nbsp;and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/bouna-sarr\">Bouna Sarr</a>&nbsp;were also missing and will continue their respective recovery programmes in Munich. They won&rsquo;t be traveling to the training camp.</p>\r\n\r\n<h2>First open session of the year</h2>\r\n\r\n<p>After the day&rsquo;s first session in the morning,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/thomas-mueller\">Thomas M&uuml;ller</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/jamal-musiala\">Jamal Musiala</a>&nbsp;and their teammates welcomed fans to S&auml;bener Stra&szlig;e for the afternoon. It was the first open training session of the year as the players and coaches took time to sign autographs and take selfies with those in attendance.</p>\r\n\r\n<p><em>Check out the photos from the open session at S&auml;bener Stra&szlig;e:</em></p>\r\n\r\n<p><img alt=\"01-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/01-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"02-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/02-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"03-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/03-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"04-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/04-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"05-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/05-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"06-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/06-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"07-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/07-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"08-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/08-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"09-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/09-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"10-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/10-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"11-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/11-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"12-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/12-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>', '2023-01-05 22:30:00.000000', '2023-01-08 17:44:13.446869', 'nagelsmann-welcomes-training-group-before-leaving-for-doha', 8, 'Bayern had their final two training sessions in Munich on Thursday before they head off to Doha and the Aspire Academy for their winter training camp on Friday. However, coach Julian Nagelsmann was still without a few players at Säbener Straße.', 0, 6, 4, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1672920797/cms/public/images/fcbayern-com/homepage/Saison-22-23/Trainer/Nagelsmann/230105-nagelsmann-training-mel.jpg', NULL, 0),
+(7, 'Nagelsmann welcomes training group before leaving for Doha', '', '<p>Bayern had their final two training sessions in Munich on Thursday before they head off to Doha and the Aspire Academy for their winter training camp on Friday. However, coach&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/coaches-and-staff/julian-nagelsmann\">Julian Nagelsmann</a>&nbsp;was still without a few players at S&auml;bener Stra&szlig;e.</p>\r\n\r\n<p><img alt=\"Joshua Kimmich FC Bayern Training\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672921075/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Kimmich/230105-kimmich-training-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"Joshua Kimmich and his teammates were hard at work in the morning session.\" /></p>\r\n\r\n<p>Joshua Kimmich and his teammates were hard at work in the morning session.</p>\r\n\r\n<h2>French players to travel directly</h2>\r\n\r\n<p>Among the players absent in Munich were French trio&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/dayot-upamecano\">Dayot Upamecano</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/benjamin-pavard\">Benjamin Pavard</a>&nbsp;and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/kingsley-coman\">Kingsley Coman</a>&nbsp;after they were given some extra time off following France&rsquo;s World Cup final loss to Argentina. They will travel directly to Doha on Friday.&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/marcel-sabitzer\">Marcel Sabitzer</a>&nbsp;and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/noussair-mazraoui\">Noussair Mazraoui</a>&nbsp;didn&rsquo;t take part either. Long-term injury absentees&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/manuel-neuer\">Manuel Neuer</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/sadio-mane\">Sadio Mane</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/lucas-hernandez\">Lucas Hernandez</a>&nbsp;and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/bouna-sarr\">Bouna Sarr</a>&nbsp;were also missing and will continue their respective recovery programmes in Munich. They won&rsquo;t be traveling to the training camp.</p>\r\n\r\n<h2>First open session of the year</h2>\r\n\r\n<p>After the day&rsquo;s first session in the morning,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/thomas-mueller\">Thomas M&uuml;ller</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/jamal-musiala\">Jamal Musiala</a>&nbsp;and their teammates welcomed fans to S&auml;bener Stra&szlig;e for the afternoon. It was the first open training session of the year as the players and coaches took time to sign autographs and take selfies with those in attendance.</p>\r\n\r\n<p><em>Check out the photos from the open session at S&auml;bener Stra&szlig;e:</em></p>\r\n\r\n<p><img alt=\"01-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/01-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"02-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/02-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"03-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/03-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"04-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/04-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"05-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/05-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"06-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/06-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"07-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/07-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"08-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/08-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"09-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/09-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"10-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/10-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"11-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/11-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"12-oeffentliches-training-230105-fcbayern-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672937066/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Training/230105-oeff-training/12-oeffentliches-training-230105-fcbayern-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>', '2023-01-05 22:30:00.000000', '2023-01-18 08:24:54.733200', 'nagelsmann-welcomes-training-group-before-leaving-for-doha', 9, 'Bayern had their final two training sessions in Munich on Thursday before they head off to Doha and the Aspire Academy for their winter training camp on Friday. However, coach Julian Nagelsmann was still without a few players at Säbener Straße.', 0, 6, 4, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1672920797/cms/public/images/fcbayern-com/homepage/Saison-22-23/Trainer/Nagelsmann/230105-nagelsmann-training-mel.jpg', NULL, 0),
 (8, 'Friendly against FC Red Bull Salzburg on 13 January', '', '<p>FC Bayern will play a friendly against FC Red Bull&nbsp;Salzburg on 13 January 2023. The match will take place at the FC Bayern Campus, kicking off at 18:00 CET. A week later, on 20 January,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/coaches-and-staff/julian-nagelsmann\">Julian Nagelsmann</a>&#39;s side begin the second half of the season with the Bundesliga away match at RB Leipzig.</p>\r\n\r\n<p>Tickets for the friendly against Salzburg can be requested from today up until 18 December via the&nbsp;<a href=\"http://tickets.fcbayern.com/internetverkaufanfragen/EventList.aspx\">Online Shop</a>.</p>\r\n\r\n<p><img alt=\"champions league last 16 fc bayern salzburg\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1670504083/cms/public/images/fcbayern-com/homepage/saison-21-22/Galerien/Spiele/FCB-Salzburg/12_FCBSAL_220308_DON.jpg\" style=\"height:2160px; width:3840px\" title=\"Bayern and Salzburg last met in the last 16 of the 2021/22 Champions League campaign, with the German record champions coming out on top.\" /></p>\r\n\r\n<p>Bayern and Salzburg last met in the last 16 of the 2021/22 Champions League campaign, with the German record champions coming out on top.</p>\r\n\r\n<h2>Start of preparations on 3 January</h2>\r\n\r\n<p>Bayern begin their preparations for the rest of the season on 3 January, before heading off to Doha for a six-day training camp on 6 January. The friendly against the Austrian champions follows their return.</p>', '2023-01-02 06:00:00.000000', '2023-01-15 10:21:41.228072', 'friendly-against-fc-red-bull-salzburg-on-13-january', 4, 'FC Bayern will play a friendly against FC Red Bull Salzburg on 13 January 2023. The match will take place at the FC Bayern Campus, kicking off at 18:00 CET. A week later, on 20 January, Julian Nagelsmann\'s side begin the second half of the season with the Bundesliga away match at RB Leipzig.', 1, 2, 6, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1670511127/cms/public/images/fcbayern-com/homepage/stadien/fcbayern-campus-190327-get.jpg', NULL, 1),
 (9, 'FC Bayern sign Daley Blind', '', '<p>Bayern Munich have signed defender Daley Blind on a deal till the end of the season. The 32-year-old Netherlands international came through the youth system at Ajax, which was also his most recent club. He also played for Manchester United between 2014 and 2018.</p>\r\n\r\n<p><a href=\"https://fcbayern.com/en/club/company/hasan-salihamid%C5%BEi%C4%87\">Hasan Salihamidzic</a>: &ldquo;We&rsquo;re delighted that Daley is joining our team. Daley is a versatile defender, capable of playing on the left or in the centre. He has great international experience and leadership qualities. I&rsquo;m sure he&rsquo;ll help us.&rdquo;</p>\r\n\r\n<p><img alt=\"06-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948377/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/06-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>Daley Blind: &ldquo;I can hardly wait to play here. We&rsquo;ve got the most important part of the season coming up, where it&rsquo;s about titles &ndash; and a club like Bayern can win every trophy. The hunger for titles here at the club was key in my decision. I hope I can bring my experience to help the team. I&rsquo;ll give everything for Bayern Munich.&rdquo;</p>\r\n\r\n<p><em>Check out the photos from Blind&#39;s arrival:</em></p>\r\n\r\n<p><img alt=\"01-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948228/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/01-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"02-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948228/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/02-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"03-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948228/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/03-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"04-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948228/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/04-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"05-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948228/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/05-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"06-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948228/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/06-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"07-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948228/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/07-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"08-daley-blind-unterschrift-230105-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1672948228/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/08-daley-blind-unterschrift-230105-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>Blind will fly with the team to their training camp in Doha in Friday. He completed his medical in Munich on Thursday.</p>\r\n\r\n<p>Blind has won the Dutch Eredivisie seven times with Ajax, as well as the domestic cup twice. He also won the 2017 Europa League with Manchester United. The defender has 99 caps (three goals) for the Netherlands national team, having also played in every game for the Dutch as they reached the quarter-finals at the World Cup in Qatar.</p>', '2023-01-06 01:30:00.000000', '2023-01-08 17:36:29.437729', 'fc-bayern-sign-daley-blind', 7, 'Bayern Munich have signed defender Daley Blind on a deal till the end of the season. The 32-year-old Netherlands international came through the youth system at Ajax, which was also his most recent club. He also played for Manchester United between 2014 and 2018.', 1, 2, 7, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1672938216/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Blind-Transfer/03-daley-blind-unterschrift-230105-mel.jpg', NULL, 1),
-(10, 'Pavard and Coman return, Blind unveiling and triple training', '', '<p>It&#39;s been clear from the start that FC Bayern are fully commited to laying the foundation for a successful second half of the season at their winter training camp. On day two in Doha,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/coaches-and-staff/julian-nagelsmann\">Julian Nagelsmann</a>&nbsp;and his team were out at 7:30 for the first session, which consisted of running in the pouring rain. Three hours later, it was onto the pitch at the Aspire Academy. That wasn&#39;t all, though, as there was a third intensive session for the Munich men in the afternoon followed by some exercises in the gym.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><img alt=\"17-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/17-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"18-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/18-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"19-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/19-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"20-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/20-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"21-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/21-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"07-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/07-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"08-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/08-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>After&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/dayot-upamecano\">Dayot Upamecano</a>&nbsp;had already joined the group on Friday evening, the other two French World Cup runners-up&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/benjamin-pavard\">Benjamin Pavard</a>, who took part in the afternoon training, and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/kingsley-coman\">Kingsley Coman</a>&nbsp;arrived on Saturday to great applause from their teammates. Welcome back, boys!</p>\r\n\r\n<p><img alt=\"Benjamin Pavard FC Bayern\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673117505/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Pavard/230107-pavard-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"Benjamin Pavard was back training with the team on Saturday afternoon.\" /></p>\r\n\r\n<p>Benjamin Pavard was back training with the team on Saturday afternoon.</p>\r\n\r\n<h2>Unveiling of Daley Blind with Hasan Salihamidžić</h2>\r\n\r\n<p>Bayern&#39;s new signing Daley Blind has been with the team since the start of the training camp. On Saturday, the 32-year-old Dutchman introduced himself at a press conference: &quot;I have to be ready to help the team when they need me.&quot; Good luck in Munich, Daley!</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><a href=\"https://fcbayern.com/fcbayerntv/en/videos/2023/01/re-live-press-conference-with-hasan-salihamidzic-and-daley-blind-from-doha\" rel=\"noopener noreferrer\" target=\"_blank\"><img alt=\"06-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_800,c_fill/q_auto/v1673095750/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/06-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></a></p>', '2023-01-08 02:36:00.000000', '2023-01-13 09:32:51.534975', 'pavard-and-coman-return-blind-unveiling-and-triple-training', 8, 'It\'s been clear from the start that FC Bayern are fully commited to laying the foundation for a successful second half of the season at their winter training camp. On day two in Doha, Julian Nagelsmann and his team were out at 7:30 for the first session, which consisted of running in the pouring rain. Three hours later, it was onto the pitch at the Aspire Academy. That wasn\'t all, though, as there was a third intensive session for the Munich men in the afternoon followed by some exercises in the gym.', 0, 2, 2, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1673117623/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/230107-coman-training-katar-169-mel.jpg', NULL, 1);
+(10, 'Pavard and Coman return, Blind unveiling and triple training', '', '<p>It&#39;s been clear from the start that FC Bayern are fully commited to laying the foundation for a successful second half of the season at their winter training camp. On day two in Doha,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/coaches-and-staff/julian-nagelsmann\">Julian Nagelsmann</a>&nbsp;and his team were out at 7:30 for the first session, which consisted of running in the pouring rain. Three hours later, it was onto the pitch at the Aspire Academy. That wasn&#39;t all, though, as there was a third intensive session for the Munich men in the afternoon followed by some exercises in the gym.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><img alt=\"17-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/17-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"18-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/18-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"19-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/19-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"20-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/20-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"21-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/21-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"07-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/07-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><img alt=\"08-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673110727/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/08-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>After&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/dayot-upamecano\">Dayot Upamecano</a>&nbsp;had already joined the group on Friday evening, the other two French World Cup runners-up&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/benjamin-pavard\">Benjamin Pavard</a>, who took part in the afternoon training, and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/kingsley-coman\">Kingsley Coman</a>&nbsp;arrived on Saturday to great applause from their teammates. Welcome back, boys!</p>\r\n\r\n<p><img alt=\"Benjamin Pavard FC Bayern\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673117505/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Pavard/230107-pavard-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"Benjamin Pavard was back training with the team on Saturday afternoon.\" /></p>\r\n\r\n<p>Benjamin Pavard was back training with the team on Saturday afternoon.</p>\r\n\r\n<h2>Unveiling of Daley Blind with Hasan Salihamidžić</h2>\r\n\r\n<p>Bayern&#39;s new signing Daley Blind has been with the team since the start of the training camp. On Saturday, the 32-year-old Dutchman introduced himself at a press conference: &quot;I have to be ready to help the team when they need me.&quot; Good luck in Munich, Daley!</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><a href=\"https://fcbayern.com/fcbayerntv/en/videos/2023/01/re-live-press-conference-with-hasan-salihamidzic-and-daley-blind-from-doha\" rel=\"noopener noreferrer\" target=\"_blank\"><img alt=\"06-tag-2-doha-fcbayern-230107-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_800,c_fill/q_auto/v1673095750/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/06-tag-2-doha-fcbayern-230107-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></a></p>', '2023-01-08 02:36:00.000000', '2023-01-15 19:49:51.766873', 'pavard-and-coman-return-blind-unveiling-and-triple-training', 8, 'It\'s been clear from the start that FC Bayern are fully commited to laying the foundation for a successful second half of the season at their winter training camp. On day two in Doha, Julian Nagelsmann and his team were out at 7:30 for the first session, which consisted of running in the pouring rain. Three hours later, it was onto the pitch at the Aspire Academy. That wasn\'t all, though, as there was a third intensive session for the Munich men in the afternoon followed by some exercises in the gym.', 0, 2, 2, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1673117623/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/Tag%202/230107-coman-training-katar-169-mel.jpg', NULL, 1),
+(11, 'Nagelsmann: Can draw our conclusions', 'uploads/230113-interviews-fcbayern-salzburg-mueller-mel.png', '<p>&ldquo;We worked hard and saw things we can do better,&rdquo; said Jamal Musiala in summary of an entertaining friendly against Red Bull Salzburg on Friday evening. Julian Nagelsmann stated he was pleased with large parts of the&nbsp;<a href=\"https://fcbayern.com/en/matches/profis/friendly/2022-2023/testspiel-fc-bayern-fc-red-bull-salzburg-13-01-2023/report\">4-4 draw</a>&nbsp;against the champions of Austria: &ldquo;We still have a bit to do, but there were also plenty of good things.&rdquo;&nbsp;<em>fcbayern.com</em>&nbsp;has further reaction to the friendly.</p>\r\n\r\n<h2>Reaction to the friendly against Red Bull Salzburg</h2>\r\n\r\n<p><a href=\"https://fcbayern.com/en/teams/first-team/coaches-and-staff/julian-nagelsmann\">Julian Nagelsmann</a>: &ldquo;The first 20 minutes were good. After that, we weren&rsquo;t as resolute in our defending. We were a bit tired after the strenuous training camp. We still have a bit to do, but there were also plenty of good things. We then had fresh players in the final 30 minutes who were able to up the tempo. The substitutes brought a lot of energy. Mathys Tel had an excellent game, Kingsley was also good. There was good power out there. It was good for a friendly. We can draw our conclusions from it. The important thing is that our batteries are recharged for next Friday against Leipzig.&rdquo;</p>\r\n\r\n<p><a href=\"https://fcbayern.com/en/teams/first-team/thomas-mueller\">Thomas M&uuml;ller</a>: &ldquo;We&rsquo;d imagined things differently in terms of how the game would go, especially in the first half. But that&rsquo;s nothing new after such a strenuous training camp. The camp was intense in terms of work but also good in terms of quality. We&rsquo;ll see what that brings us for Friday. We&lsquo;ll go there full of confidence and don&rsquo;t just want to make a statement with this pivotal game but also move away from Leipzig in the table. We&rsquo;ll catch our breath now for two days and then get fully back to preparing from Monday. We&rsquo;re confident.&ldquo;</p>\r\n\r\n<p><a href=\"https://fcbayern.com/en/teams/first-team/daley-blind\">Daley Blind</a>: &ldquo;It&rsquo;s still tough to say where I&rsquo;m at. The training camp definitely helped me, also because I could get to know my teammates. I feel fit and ready for what&rsquo;s to come. FC Bayern is a very good club with tradition that speaks for itself, and I&rsquo;m proud to be here.&rdquo;</p>\r\n\r\n<p><a href=\"https://fcbayern.com/en/teams/first-team/jamal-musiala\">Jamal Musiala</a>: &ldquo;We obviously would&rsquo;ve liked to have won, but we worked hard and saw things we can do better. The mood in the team is very good. We&rsquo;re working hard and looking forward to the league resuming.&rdquo;</p>\r\n\r\n<h2>Reaction from the Red Bull Salzburg camp</h2>\r\n\r\n<p>Matthias Jaissle (Red Bull Salzburg head coach): &ldquo;If you let a team like Bayern play, then it&rsquo;s dangerous. They&rsquo;re ruthless in front of goal. Philipp K&ouml;hn was in outstanding form again today. But the young team did really well today. We really put our foot on the gas after the changes at half-time. It was good for where we are in pre-season.&rdquo;</p>', '2023-01-14 01:30:00.000000', '2023-01-18 13:05:12.869203', 'nagelsmann-can-draw-our-conclusions', 3, '“We worked hard and saw things we can do better,” said Jamal Musiala in summary of an entertaining friendly against Red Bull Salzburg on Friday evening. Julian Nagelsmann stated he was pleased with large parts of the 4-4 draw against the champions of Austria: “We still have a bit to do, but there were also plenty of good things.”', 1, 6, 2, 'https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_450,c_fill/q_auto/v1673639331/cms/public/images/fcbayern-tv/saison-22-23/Interviews/230113-interviews-fcbayern-salzburg-mueller-mel.jpg', NULL, 1),
+(12, 'Bayern play out eight-goal friendly thriller with Salzburg', '', '<p>FC Bayern drew 4-4 with Red Bull Salzburg in their only winter friendly before returning to Bundesliga action. Barely 24 hours after arriving back from the team&rsquo;s training camp in Doha, and with a week to go before the first competitive fixture of 2023, Julian Nagelsmann named a strong line-up of Sven Ulreich, Josip Stanisic, Benjamin Pavard, Dayot Upamecano, Alphonso Davies, Joshua Kimmich, Ryan Gravenberch, Leroy Sane, Jamal Musiala, Serge Gnabry and captain Thomas M&uuml;ller.</p>\r\n\r\n<p>It took the hosts only nine minutes to break through at the FC Bayern Campus as Sane picked out the far top corner on his left foot from right of centre. The champions of Germany were the dominant side against their Austrian counterparts, but the visitors were level after 17 minutes when Sekou Koita clinically rounded off a counter-attack. Bayern continued to press and the chances piled up. Kimmich and Sane both saw efforts parried away by goalkeeper Philipp K&ouml;hn as the score remained level after the first 45 minutes.</p>\r\n\r\n<p><img alt=\"13-fcb-rbs-130123-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673632788/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Spiele/FCB%20-%20RB%20Salzburg/13-fcb-rbs-130123-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>Salzburg changed their entire outfield team for the start of the second half and quickly went ahead through Karim Konate after the initial effort from a corner was flicked against the crossbar. It was 3-1 just three minutes later when Noah Okafor picked out the top corner from the edge of the box. As he&rsquo;d suggested, Nagelsmann did ring the changes on the hour mark, with only Kimmich remaining on the field throughout. It also brought about a change of momentum as youngster Arijon Ibrahimovic fired in from 20 yards to reduce the deficit. Kingsley Coman then swept home the equaliser from a Mathys Tel cutback as Bayern produced their own quickfire double.</p>\r\n\r\n<p>Tel and Marcel Sabitzer both came close to a winner but were denied by K&ouml;hn in the final 10 minutes. Coman struck the woodwork with a rasping effort from 25 yards before Tel put Bayern up once again, spinning his man to the left of goal and smashing inside the near post with two minutes remaining. However, Salzburg levelled only seconds later through Okafor to round off a highly entertaining friendly.</p>\r\n\r\n<p><img alt=\"29-fcb-rbs-130123-get\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673636096/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Spiele/FCB%20-%20RB%20Salzburg/29-fcb-rbs-130123-get.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>Bayern will have a week of training at S&auml;bener Stra&szlig;e before the Bundesliga leaders resume their league campaign away at Leipzig on Friday, 20 January at 20:30 CET.</p>', '2023-01-13 22:30:00.000000', '2023-01-15 17:07:30.840985', 'bayern-play-out-eight-goal-friendly-thriller-with-salzburg', 2, 'FC Bayern drew 4-4 with Red Bull Salzburg in their only winter friendly before returning to Bundesliga action. Barely 24 hours after arriving back from the team’s training camp in Doha, and with a week to go before the first competitive fixture of 2023, Julian Nagelsmann named a strong line-up of Sven Ulreich, Josip Stanisic, Benjamin Pavard, Dayot Upamecano, Alphonso Davies, Joshua Kimmich, Ryan Gravenberch, Leroy Sane, Jamal Musiala, Serge Gnabry and captain Thomas Müller.', 1, 2, 2, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1673627717/cms/public/images/fcbayern-com/homepage/Saison-22-23/Grafiken/Spieltag/2x1/230113-spieltag-salzburg-2-1.jpg', 'https://www.youtube.com/embed/d6zphAKiwhI', 1);
+INSERT INTO `main_news_article` (`id`, `title`, `image`, `post_content`, `added`, `updated`, `slug`, `views`, `excerpt`, `featured`, `author_id`, `news_type_id`, `image_url`, `video_url`, `home_banner`) VALUES
+(13, 'Salihamidzic: Will be an interesting game against Leipzig', 'uploads/230113-salihamidzic-itv-ima.png', '<p>With their&nbsp;<a href=\"https://fcbayern.com/en/news/2023/01/training-camp/round-up-of-bayern%E2%80%99s-winter-training-camp-in-doha\">training camp in Doha complete</a>, Bayern&rsquo;s preparations for the resumption of the 2022/23 campaign are heading into the final stretch. Board member for sport&nbsp;<a href=\"https://fcbayern.com/en/club/company/hasan-salihamid%C5%BEi%C4%87\">Hasan Salihamidzic</a>&nbsp;spoke ahead of kick-off in Friday&rsquo;s&nbsp;<a href=\"https://fcbayern.com/en/matches/profis/friendly/2022-2023/testspiel-fc-bayern-fc-red-bull-salzburg-13-01-2023/report\">friendly against Red Bull Salzburg</a>&nbsp;about how much he&rsquo;s looking forward to the Bundesliga&rsquo;s return when FCB go to RB Leipzig on 20 January.</p>\r\n\r\n<p>Talking with&nbsp;<em>FC Bayern.tv</em>, the 46-year-old also discussed the training camp, youth players, new signing&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/daley-blind\">Daley Blind</a>, and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/sadio-mane\">Sadio Mane</a>&rsquo;s recovery.</p>\r\n\r\n<h2>Interview with Hasan Salihamidzic:</h2>\r\n\r\n<p><strong>The training camp in Doha is done. You were closely following the work done out there. What&rsquo;s your summary of things?</strong></p>\r\n\r\n<p>&ldquo;We worked very well in excellent conditions and used the time well. The weather wasn&rsquo;t too hot. We obviously did lots of work in terms of fitness and tactics.&rdquo;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><a href=\"https://fcbayern.com/en/news/2023/01/training-camp/round-up-of-bayern%E2%80%99s-winter-training-camp-in-doha\"><img alt=\"FC Bayern, Training camp, Doha, 2023\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_800,c_fill/q_auto/v1673514113/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Doha/230112-recap-trainingslager-16-9.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></a></p>\r\n\r\n<p><a href=\"https://fcbayern.com/en/news/2023/01/training-camp/round-up-of-bayern%E2%80%99s-winter-training-camp-in-doha\">HIGHLIGHTS FROM DOHA</a></p>\r\n\r\n<p><a href=\"https://fcbayern.com/en/news/2023/01/training-camp/round-up-of-bayern%E2%80%99s-winter-training-camp-in-doha\">3 D</a></p>\r\n\r\n<h3><a href=\"https://fcbayern.com/en/news/2023/01/training-camp/round-up-of-bayern%E2%80%99s-winter-training-camp-in-doha\">Round-up of Bayern&rsquo;s winter training camp</a></h3>\r\n\r\n<p><strong>There were<a href=\"https://fcbayern.com/en/news/2023/01/training-camp/who-are-the-youth-players-with-the-first-team-in-doha-ibrahimovic\">&nbsp;five youth players involved</a>&nbsp;with Arijon Ibrahimovic, Ritzy H&uuml;lsmann, Tarek Buchmann, Yusuf Kabadayi and Lovro Zvonarek. What was your impression of them?</strong></p>\r\n\r\n<p>&ldquo;They did really well and showed what they can do. We as FC Bayern are proud to have boys like them in our ranks.&rdquo;</p>\r\n\r\n<p><strong>There are also some long-term injury absentees in the squad, including Sadio Mane. What&rsquo;s the status with him?</strong></p>\r\n\r\n<p>&ldquo;His rehabilitation is going very well, but it&rsquo;ll still take some time. We won&rsquo;t rush anything with him and will continue to support him for an optimal recovery process. He needs to let his injury heal, and we&lsquo;ll give him the time he needs for that. We&rsquo;re taking things one week at a time.&rdquo;</p>\r\n\r\n<p><a href=\"https://fcbayern.com/en/news/2023/01/behind-the-scenes---how-manes-rehab-is-going\"><img alt=\"Sadio Mané, FC Bayern\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_800,c_fill/q_auto/v1673366804/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Mane/01-Mane-100123-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></a></p>\r\n\r\n<p><a href=\"https://fcbayern.com/en/news/2023/01/behind-the-scenes---how-manes-rehab-is-going\">BEHIND THE SCENES</a></p>\r\n\r\n<p><a href=\"https://fcbayern.com/en/news/2023/01/behind-the-scenes---how-manes-rehab-is-going\">5 D</a></p>\r\n\r\n<h3><a href=\"https://fcbayern.com/en/news/2023/01/behind-the-scenes---how-manes-rehab-is-going\">How Sadio Man&eacute;&#39;s rehab at FC Bayern is going</a></h3>\r\n\r\n<p><strong>Matthijs de Ligt, Eric Maxim Choupo-Moting and Leon Goretzka missed the friendly against Salzburg. Do Bayern fans need to be worried?</strong></p>\r\n\r\n<p>&ldquo;No, that was purely about managing workloads. It&rsquo;s just little things with them. They&rsquo;ll return to full training in the next days.&rdquo;</p>\r\n\r\n<p><strong>Bayern have a new signing with Daley Blind. What&rsquo;s your impression of him after the first few sessions?</strong></p>\r\n\r\n<p>&ldquo;Honestly, it&rsquo;s like he&rsquo;s been playing with us for a long time. He&rsquo;s fit in very well. He brings a lot of experience and game intelligence. You always need players like him.&rdquo;</p>\r\n\r\n<p><strong>There are still discussions about signing another goalkeeper. What can you say on the subject?</strong></p>\r\n\r\n<p>&ldquo;We&rsquo;re continuing to look and see what&rsquo;s possible and what options there are in this currently difficult transfer market. We&rsquo;ll make the right decision at some point.&rdquo;</p>\r\n\r\n<p><strong>The first competitive fixture of the year is away at RB Leipzig on 20 January. Is this match already a defining one in the title race?</strong></p>\r\n\r\n<p>&ldquo;Definitely. We know how good Leipzig are. They&rsquo;re one of the best teams in the Bundesliga. Leipzig had some difficulties at the start of the season but have come together very well. It&rsquo;ll be an interesting game, which we&rsquo;ll obviously try to win.&rdquo;</p>', '2023-01-14 00:00:00.000000', '2023-01-15 19:58:49.670697', 'salihamidzic-will-be-an-interesting-game-against-leipzig', 2, 'With their training camp in Doha complete, Bayern’s preparations for the resumption of the 2022/23 campaign are heading into the final stretch. Board member for sport Hasan Salihamidzic spoke ahead of kick-off in Friday’s friendly against Red Bull Salzburg about how much he’s looking forward to the Bundesliga’s return when FCB go to RB Leipzig on 20 January.\r\n\r\nTalking with FC Bayern.tv, the 46-year-old also discussed the training camp, youth players, new signing Daley Blind, and Sadio Mane’s recovery.', 1, 6, 1, NULL, NULL, 0),
+(14, 'Gnabry in seventh heaven', '', '<p>With the fabled lucky number seven on his back,&nbsp;<a href=\"https://fcbayern.com/de/teams/profis/serge-gnabry\">Serge Gnabry</a>&nbsp;continues to delight teammates, coaches and fans alike. The FC Bayern winger must be pretty happy with himself, too, after scoring a hat-trick in the&nbsp;<a href=\"https://fcbayern.com/en/matches/profis/bundesliga/2022-2023/fc-bayern-muenchen-sv-werder-bremen-08-11-2022/report\">6-1 win</a>&nbsp;over Werder Bremen on Tuesday.</p>\r\n\r\n<h2>Gnabry&#39;s star shining brightest at brilliant Bayern</h2>\r\n\r\n<p><img alt=\"08-fcbsvw-221108-mel\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1667947882/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Spiele/FCB-Werder/08-fcbsvw-221108-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>Bayern&#39;s performance was hardly short of post-match talking points:&nbsp;<a href=\"https://fcbayern.com/de/teams/profis/lucas-hernandez\">Lucas Hern&aacute;ndez</a>&#39;s return to the starting line-up, the performance of&nbsp;<a href=\"https://fcbayern.com/de/teams/profis/joshua-kimmich\">Joshua Kimmich</a>&nbsp;and goalscorer&nbsp;<a href=\"https://fcbayern.com/de/teams/profis/leon-goretzka\">Leon Goretzka</a>&nbsp;in the midfield engine room, another&nbsp;<a href=\"https://fcbayern.com/de/teams/profis/jamal-musiala\">Jamal Musiala</a>&nbsp;star turn,&nbsp;<a href=\"https://fcbayern.com/de/teams/profis/leroy-sane\">Leroy San&eacute;</a>&#39;s form and super sub&nbsp;<a href=\"https://fcbayern.com/de/teams/profis/mathys-tel\">Mathys Tel</a>. Yet Gnabry was the real standout.</p>\r\n\r\n<p>The Germany international is Bayern&#39;s blistering run of form personified. He started the season with a bang, experienced a mini dip, but is now hurtling towards the 2022 World Cup at his explosive best.</p>\r\n\r\n<h2>Gnabry: &quot;The more goals, the better&quot;</h2>\r\n\r\n<p><img alt=\"07-fcbsvw-221108-get\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1667948148/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Spiele/FCB-Werder/07-fcbsvw-221108-get.jpg\" style=\"height:2160px; width:3840px\" title=\"Gnabry hit a sensational goal to put Bayern back on course for victory.\" /></p>\r\n\r\n<p>Gnabry hit a sensational goal to put Bayern back on course for victory.</p>\r\n\r\n<p>&quot;It always does you good - the more goals, the better,&quot; Gnabry enthused after the full-time whistle. &quot;It was a great win today.&quot;</p>\r\n\r\n<p><a href=\"https://fcbayern.com/de/teams/profis/trainer-und-betreuer/julian-nagelsmann\">Julian Nagelsmann</a>&nbsp;elaborated on Gnabry&#39;s purple patch. &quot;He believes in himself. He&#39;s an exceptionally good footballer - two-footed, a goal threat and has real composure as he showed with his third goal. I think really highly of him.&quot;</p>\r\n\r\n<p>Gnabry showcased his feel for the ball with a sensational strike into the far corner for 2-1. He profitted from some selfless play from San&eacute; to make it four, before slaloming through the Bremen defence for Bayern&#39;s fifth. Talk about confidence.</p>\r\n\r\n<h2>Seven Bundesliga goals</h2>\r\n\r\n<p>Gnabry&#39;s hat-trick takes him onto seven Bundesliga goals for the season. Only Musiala - with nine - has more among his Bayern teammates.</p>\r\n\r\n<p>What&#39;s more, the Stuttgart native is the first Bundesliga player this term to score three times in a single game. He&#39;s also second to ex-teammate Robert Lewandowski (seven) for hat-tricks since the start of the 2021/22 campaign - his last three-goal salvo having come against boyhood club VfB Stuttgart in December 2021.</p>\r\n\r\n<p>Now all Gnabry has to do is keep up the good work. Bayern go to Schalke in their final fixture of the calendar year on Saturday (kick-off: 18:30 CET), before Germany begin their World Cup campaign in Qatar. The record champions resume their title defence at the end of January, when they&#39;ll be looking to their peerless No.7 to keep them in seventh heaven.</p>', '2022-11-09 05:30:00.000000', '2023-01-18 08:25:20.731396', 'gnabry-in-seventh-heaven', 2, 'With the fabled lucky number seven on his back, Serge Gnabry continues to delight teammates, coaches and fans alike. The FC Bayern winger must be pretty happy with himself, too, after scoring a hat-trick in the 6-1 win over Werder Bremen on Tuesday.', 0, 2, 1, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1667947482/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Gnabry/221108-gnabry-werder-169.jpg', NULL, 0),
+(15, 'Gnabry: Togetherness is crucial', '', '<p>The winning streak continues and top spot regained, at least for one night! FC Bayern celebrated a decisive 6-2 win at home to 1. FSV Mainz 05 on Saturday. The three points saw FCB leapfrog to the top of the Bundesliga table, although Union Berlin can regain the lead with a win tomorrow against Borussia M&ouml;nchengladbach. &quot;We achieved our goal for the day, we did our homework. We wanted to be top as soon as possible, and we are at least until tomorrow,&quot; said midfielder Leon Goretzka. &quot;There&#39;s good energy on the pitch. It&#39;s fun to be out there with the boys,&quot; said Serge Gnabry, scorer of the opening goal, summarising Bayern&#39;s outstanding form of late.&nbsp;</p>\r\n\r\n<h2>Reaction from the Bayern camp:</h2>\r\n\r\n<p><strong>Julian Nagelsmann</strong>: &quot;Massive kudos to the team for what they&#39;re doing right now, the way they&#39;ve carried themselves the past three days has been outstanding. We scored a lot of goals again and did so in a beautiful way. It&#39;s great fun to watch from the sidelines. We&#39;ve got a good mix of quality and the right kind of attitude. It&#39;s truly great right now. It&#39;s nice when six different players score, it gives the players confidence. The guys who came in are doing very well, and that&#39;s what a team thrives on as well.&quot;</p>\r\n\r\n<p><strong>Leon Goretzka</strong>: &quot;It was a well-deserved win. It feels great to score, you could see that in my face when I did. Our big goal was to get into a rhythm. You have to work hard for that, and that&#39;s what we did. Then the game&#39;s a little easier. We achieved our goal for the day, we&#39;d done our homework. We wanted to be at the top of the table as soon as we could be, and we&#39;ve done that today, where we&#39;ll be at least until tomorrow.&quot;</p>\r\n\r\n<p><strong>Serge Gnabry</strong>: &quot;The whole week was very satisfying. We were excellent throughout the games we played. With the 6-2 win today, we go home happy. Our togetherness is crucial. There&#39;s a good energy on the pitch. It&#39;s fun to be out there with the boys. Everyone helps each other out, that&#39;s how that energy comes about and it makes it easier for everyone to perform well.&quot;</p>\r\n\r\n<h2>Reaction from the FSV Mainz 05 camp:</h2>\r\n\r\n<p><strong>Martin Schmidt (1. FSV Mainz 05 sporting director)</strong>: &quot;It was a heavy defeat. Defensively, we were not good, especially out wide where we let ourselves get caught off guard. We defended too passively and often didn&#39;t close down that extra yard out wide. We had a lot of chances, but we conceded six goals - we deserved to lose.&quot;</p>\r\n\r\n<p><strong>Bo Svensson (1. FSV Mainz 05 head coach)</strong>: &quot;Congratulations to Bayern for a well-earned win. They deserved to win by that much too. In the first half we were tidy in parts, in the second half we were lacking across the board.&quot;</p>\r\n\r\n<p><strong>Silvan Widmer (1. FSV Mainz 05 captain)</strong>: &quot;That was not a good performance from us. We scored two goals. But we defended very badly as a team and made it too easy for Bayern to create chances. We didn&#39;t have enough bite and spirit.&quot;</p>', '2022-10-29 23:02:00.000000', '2023-01-18 08:29:13.507623', 'gnabry-togetherness-is-crucial', 1, 'The winning streak continues and top spot regained, at least for one night! FC Bayern celebrated a decisive 6-2 win at home to 1. FSV Mainz 05 on Saturday. The three points saw FCB leapfrog to the top of the Bundesliga table, although Union Berlin can regain the lead with a win tomorrow against Borussia Mönchengladbach. \"We achieved our goal for the day, we did our homework. We wanted to be top as soon as possible, and we are at least until tomorrow,\" said midfielder Leon Goretzka. \"There\'s good energy on the pitch. It\'s fun to be out there with the boys,\" said Serge Gnabry, scorer of the opening goal, summarising Bayern\'s outstanding form of late.', 0, 2, 2, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1667059626/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Spiele/FCB-Mainz/06-fcb-mainz-221029-get.jpg', NULL, 0),
+(16, 'Influential Gnabry leaves his mark on crunch match', '', '<p>Goalscorer, provider, constant threat - in a spectacular Bayern attack, one man in particular stood out.&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/serge-gnabry\">Serge Gnabry</a>&nbsp;was one of the key men in Munich&rsquo;s rousing&nbsp;<a href=\"https://fcbayern.com/en/matches/profis/bundesliga/2022-2023/fc-bayern-muenchen-sport-club-freiburg-15-10-2022/report\">5-0 win</a>&nbsp;in the big match against SC Freiburg, and was pleased with his outstanding performance. &ldquo;It felt very good to produce a performance like that.&rdquo;</p>\r\n\r\n<p><img alt=\"Serge Gnabry, FC Bayern\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1665952171/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Spiele/FCB-SCF/09-fcb-scf-161022-ima.jpg\" style=\"height:2160px; width:3840px\" title=\"Serge Gnabry made his teammates and fans cheer in the 5-0 win.\" /></p>\r\n\r\n<p>Serge Gnabry made his teammates and fans cheer in the 5-0 win.</p>\r\n\r\n<h2>Opened the floodgates</h2>\r\n\r\n<p>It took the 27-year-old precisely 13 minutes to announce himself. From around ten metres out, he headed in the important opening goal and set his team on course for victory. After a cross from&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/alphonso-davies\">Alphonso Davies</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/leroy-sane\">Leroy San&eacute;</a>&nbsp;had been denied by Mark Flekken from close range, from which the ball bounced up for the onrushing Gnabry to power it into the net, delighting the majority of the fans at the Allianz Arena. &ldquo;My header was really great,&rdquo; exclaimed the goalscorer. With a bit more luck in their finishing, Bayern could&rsquo;ve had a couple more goals, but Flekken prevented them in the 21st and 40th minute with strong saves.</p>\r\n\r\n<p><img alt=\"Serge Gnabry, FC Bayern\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1665952695/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Gnabry/221016-serge-gnabry-02-ima.jpg\" style=\"height:2160px; width:3840px\" title=\"Not far away: Mark Flekken stopped it from getting worse for Freiburg, with saves like this one from Serge Gnabry.\" /></p>\r\n\r\n<p>Not far away: Mark Flekken stopped it from getting worse for Freiburg, with saves like this one from Serge Gnabry.</p>\r\n\r\n<h2>Sublime pass</h2>\r\n\r\n<p>Gnabry showed all his class again in the second half, including with his assist for&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/sadio-mane\">Sadio Man&eacute;</a>&rsquo;s goal in the 55th minute. The Germany international delicately chipped the ball over the Freiburg backline into the feet of Man&eacute;, whose lob over Flekken to make it 4-0 had even more feeling.</p>\r\n\r\n<p><img alt=\"Serge Gnabry, FC Bayern\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1665952618/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Gnabry/221016-serge-gnabry-01-ima.jpg\" style=\"height:2160px; width:3840px\" title=\"One pass, one assist, one wonder goal: The pass from Serge Gnabry as well as the finish from Sadio Mané were of the highest quality.\" /></p>\r\n\r\n<p>One pass, one assist, one wonder goal: The pass from Serge Gnabry as well as the finish from Sadio Man&eacute; were of the highest quality.</p>\r\n\r\n<h2>Constant threat over 90 minutes</h2>\r\n\r\n<p>As well as his decisive opening goal and the wonderful assist for the fourth goal, the attack was a constant threat for the Reds throughout the 90 minutes. In the 51st minute, he was inches away from his second goal, striking the post after a fine one-two with&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/eric-maxim-choupo-moting\">Eric Maxim Choupo-Moting</a>. In the closing stages, he produced another moment of quality, slipping the ball through to Man&eacute;, who set up&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/marcel-sabitzer\">Marcel Sabitzer</a>&nbsp;for the fifth and final goal. With a goal, an assist and some brilliant passing, Gnabry made his mark on the match and ensured an all-round successful evening for Bayern.</p>', '2022-10-17 03:23:00.000000', '2023-01-15 19:47:34.418191', 'influential-gnabry-leaves-his-mark-on-crunch-match', 0, 'Goalscorer, provider, constant threat - in a spectacular Bayern attack, one man in particular stood out. Serge Gnabry was one of the key men in Munich’s rousing 5-0 win in the big match against SC Freiburg, and was pleased with his outstanding performance. “It felt very good to produce a performance like that.”', 0, 2, 1, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1665952124/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Spiele/FCB-SCF/10-fcb-scf-161022-ima.jpg', NULL, 0),
+(17, 'Neuer, de Ligt, Gnabry & Davies absent in Pilsen', '', '<p>&nbsp;</p>\r\n\r\n<p>Four players have been ruled out of FC Bayern&#39;s Champions League match away to Viktoria Plzen on Wednesday (21:00 CEST). Captain&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/manuel-neuer\">Manuel Neuer</a>&nbsp;(shoulder bruise),&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/matthijs-de-ligt\">Matthijs de Ligt</a>&nbsp;(muscular problem in left hip),&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/serge-gnabry\">Serge Gnabry</a>&nbsp;(knee capsule injury) and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/alphonso-davies\">Alphonso Davie</a>s (rest after cranial bruise) will sit out the trip to the Czech Republic.</p>', '2022-10-11 18:22:00.000000', '2023-01-15 20:10:36.135232', 'neuer-de-ligt-gnabry-davies-absent-in-pilsen', 0, 'Four players have been ruled out of FC Bayern\'s Champions League match away to Viktoria Plzen on Wednesday (21:00 CEST). Captain Manuel Neuer (shoulder bruise), Matthijs de Ligt (muscular problem in left hip), Serge Gnabry (knee capsule injury) and Alphonso Davies (rest after cranial bruise) will sit out the trip to the Czech Republic.', 0, 2, 5, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1665488767/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Gruppe/221011-training-fc-bayern-mel.jpg', NULL, 0),
+(18, 'Reviewing the first half of the Bundesliga season', '', '<p>Real winners don&rsquo;t let setbacks knock them off course but in fact come back stronger from them.</p>\r\n\r\n<p>FC Bayern have proven impressively so far over the 2022/23 Bundesliga season that they continue to carry that mentality, going into the new year in first place after 15 games and with a four-point lead over Freiburg.</p>\r\n\r\n<h2>Goals remain lofty</h2>\r\n\r\n<p><img alt=\"FC Bayern\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1671182154/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Gruppe/221030-jubel-fc-bayern-ima.jpg\" style=\"height:2160px; width:3840px\" title=\"Bayern have won 10 times so far this Bundesliga campaign.\" /></p>\r\n\r\n<p>Bayern have won 10 times so far this Bundesliga campaign.</p>\r\n\r\n<p>Before the league action resumes with an away game at RB Leipzig on 20 January, there&rsquo;s a feeling of confidence at S&auml;bener Stra&szlig;e.</p>\r\n\r\n<p>&ldquo;We&rsquo;re happy that we&lsquo;re where we belong,&rdquo; said captain&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/manuel-neuer\">Manuel Neuer</a>&nbsp;before looking ahead to the new year: &ldquo;We&rsquo;re to some extent the favourites, and one of the favourites in the Champions League. We have the ambition and drive to want to achieve everything.&rdquo; Even though the goalkeeper will be out for the time being through injury, the goals remain the same.</p>\r\n\r\n<h2>In the right direction</h2>\r\n\r\n<p>What also provides excitement for the new year is the knowledge that Bayern have obviously scored goals and won games, but they have also learnt lessons. They failed to muster up a victory between Matchday 4 and 7, with the&nbsp;<a href=\"https://fcbayern.com/en/matches/profis/bundesliga/2022-2023/borussia-dortmund-fc-bayern-muenchen-08-10-2022/report\">draw at Borussia Dortmund</a>&nbsp;symptomatic of a difficult period. But shortcomings were recognised, analysed and ultimately remedied.</p>\r\n\r\n<p>&ldquo;It goes without saying that the results weren&rsquo;t right, but the way we played wasn&rsquo;t that bad. It was a process in the right direction,&rdquo; stated&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/joshua-kimmich\">Joshua Kimmich</a>. But October was definitely a &ldquo;golden&ldquo; month for&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/coaches-and-staff/julian-nagelsmann\">Julian Nagelsmann</a>&rsquo;s team, with far more big chances created and, crucially, taken.</p>\r\n\r\n<p><img alt=\"Julian Nagelsmann\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1671614933/cms/public/images/fcbayern-com/homepage/Saison-22-23/Grafiken/Zitate/221112-julian-nagelsmann-zitat-EN.jpg\" style=\"height:2160px; width:3840px\" title=\"Head coach Julian Nagelsmann is optimistic about the future.\" /></p>\r\n\r\n<p>Head coach Julian Nagelsmann is optimistic about the future.</p>\r\n\r\n<p>With six league wins in a row, scoring 21 goals and conceding just five, Nagelsmann was right to be full of praise: &ldquo;Real credit for what the team&rsquo;s doing right now. Both in terms of character and the manner, it&rsquo;s outstanding.&rdquo;</p>\r\n\r\n<p>The right tweaks ensured things turned around. An out-and-out centre-forward in&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/eric-maxim-choupo-moting\">Eric Maxim Choupo-Moting</a>&nbsp;came in up front to battle for and win balls.</p>\r\n\r\n<h2>Choupo and team in top form</h2>\r\n\r\n<p>The 33-year-old scored six times across 10 appearances (520 minutes) in the league and provided two assists. He was often in the right place at the right time. Just like defenders&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/matthijs-de-ligt\">Matthijs de Ligt</a>&nbsp;and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/dayot-upamecano\">Dayot Upamecano</a>, who improved with each passing game. The team was also defending as a unit.</p>\r\n\r\n<p><img alt=\"Choupo-Moting, goal, Bayern, Schalke\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1671182425/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Spiele/Schalke-FCB/14-s04-fcb-121122-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"Eric Maxim Choupo-Moting made it 2-0 against Schalke.\" /></p>\r\n\r\n<p>Eric Maxim Choupo-Moting made it 2-0 against Schalke.</p>\r\n\r\n<p>That new defensive strength after what Neuer called a &ldquo;dip&rdquo; was described as the &ldquo;biggest step&rdquo; by&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/leon-goretzka\">Leon Goretzka</a>. The midfielder added: &ldquo;It was our big goal to get into a flow. You have to work hard for that, which we&rsquo;ve done.&rdquo; There&rsquo;s been the right mix of quality and attitude, and not just with the first XI.</p>\r\n\r\n<p>No matter who&rsquo;s played or who&rsquo;s come on, &ldquo;it&rsquo;s worked and the game has continued smoothly,&rdquo; noted CEO&nbsp;<a href=\"https://fcbayern.com/en/club/company/oliver-kahn\">Oliver Kahn</a>&nbsp;after the impressive&nbsp;<a href=\"https://fcbayern.com/en/matches/profis/bundesliga/2022-2023/fc-bayern-muenchen-1-fsv-mainz-05-29-10-2022/report\">6-2 win over Mainz</a>. It was symptomatic for how versatile the team has been in attack, with six different goalscorers in&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/serge-gnabry\">Serge Gnabry</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/jamal-musiala\">Jamal Musiala</a>,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/sadio-mane\">Sadio Mane</a>, Goretzka,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/mathys-tel\">Mathys Tel</a>&nbsp;and Choupo-Moting.</p>\r\n\r\n<h2>Praise from Kahn</h2>\r\n\r\n<p>&ldquo;Everyone&rsquo;s up for it. You can see how the team ticks,&rdquo; said Kahn. Even the temporary absences of Neuer and&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/thomas-mueller\">Thomas M&uuml;ller</a>&nbsp;were excellently compensated for.</p>\r\n\r\n<p><img alt=\"Sven Ulreich FC Bayern Mainz\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1671182578/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Spiele/FCB-Mainz/19-fcb-mainz-221029-ima.jpg\" style=\"height:2160px; width:3840px\" title=\"The 6-2 victory over Mainz was a great game to watch and the celebrations were rightfully big.\" /></p>\r\n\r\n<p>The 6-2 victory over Mainz was a great game to watch and the celebrations were rightfully big.</p>\r\n\r\n<p><a href=\"https://fcbayern.com/en/news/2022/12/unterschenkel-fraktur-manuel-neuer-erfolgreich-operiert\">Neuer will now be sidelined for some time</a>, while M&uuml;ller and the rest of the Germany internationals, who didn&rsquo;t have a great time of things at the World Cup in Qatar, now have the ideal chance of the holidays to catch their breath, reflect and recover before going all out for their club again.</p>\r\n\r\n<p>Nagelsmann has already made clear what things will come down to: &ldquo;It&rsquo;s about maintaining the momentum for the second part of the season. But I&rsquo;m confident we&rsquo;ll also be able to take the spirit within the group into the new year.&rdquo;</p>\r\n\r\n<p><img alt=\"Julian Nagelsmann FC Bayern Bayer Leverkusen\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1671182674/cms/public/images/fcbayern-com/homepage/Saison-22-23/Galerien/Spiele/FCB-LEV/06-fcb-lev-300922-mel.jpg\" style=\"height:2160px; width:3840px\" title=\"Julian Nagelsmann believes things should continue in a similar vein.\" /></p>\r\n\r\n<p>Julian Nagelsmann believes things should continue in a similar vein.</p>\r\n\r\n<p>He also knows all too well that Bayern&rsquo;s winning mentality has already overcome such setbacks.</p>', '2022-12-22 14:17:00.000000', '2023-01-17 09:35:14.755187', 'reviewing-the-first-half-of-the-bundesliga-season', 1, 'Real winners don’t let setbacks knock them off course but in fact come back stronger from them.\r\n\r\nFC Bayern have proven impressively so far over the 2022/23 Bundesliga season that they continue to carry that mentality, going into the new year in first place after 15 games and with a four-point lead over Freiburg.', 0, 2, 1, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1671181796/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Gruppe/221108-jubel-fcbayern-fcbsvw-get.jpg', NULL, 1),
+(19, 'Bayern vs. Leipzig: looking back at previous clashes', '', '<p>FC Bayern have only met RB Leipzig 15&nbsp;times so far, but this match-up has quickly developed into a real cracker in Germany and has already provided some impressive photos. fcbayern.com has leafed through the photo archives ahead of the next encounter on Friday evening (20:30 CET) and picked out a snapshot of each game.</p>\r\n\r\n<h2>December 2016: Full commitment required</h2>\r\n\r\n<p><img alt=\"01_Lahm_get_211216\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1617199057/cms/public/images/fcbayern-com/homepage/saison-20-21/sonstiges/FCBRBL-Bilderbuch/01_Lahm_get_211216.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>That this promoted team would be tough opponents for FCB in the years to come was evident from their very first match. In thir debut Bundesliga season, RB travelled to the&nbsp;<a href=\"https://allianz-arena.com/en\">Allianz Arena</a>&nbsp;on MD16 level on points with league leaders Bayern, and put up a strong fight.&nbsp;<a href=\"https://fcbayern.com/en/club/hall-of-fame/philipp-lahm\">Philipp Lahm</a>&nbsp;not only had to throw everything at it against the powerful Yussuf Poulsen. In the end, Bayern won 3-0, partly because Leipzig played with ten men for over an hour after Emil Forsberg was shown a red card after just 31 minutes.</p>\r\n\r\n<h2>May&nbsp;2017: Thiago takes to the air</h2>\r\n\r\n<p><img alt=\"02_Thiago_get_130517\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1617199137/cms/public/images/fcbayern-com/homepage/saison-20-21/sonstiges/FCBRBL-Bilderbuch/02_Thiago_get_130517.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>Although the championship had already been decided in favour of FCB, the match on the penultimate day of the 2016/17 season nevertheless turned into a spectacle. It culminated in Arjen Robben&#39;s solo run to make it 5-4 to Bayern, the winning goal in the fifth minute of stoppage time. During the game, both teams played great football. Among much else, Thiago tried a bicycle kick. Unfortunately, the Spaniard was not successful.</p>\r\n\r\n<h2>October 2017, Part I: Ulreich becomes a&nbsp;penalty killer</h2>\r\n\r\n<p><img alt=\"03_Ulreich_ima_251017\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1617199159/cms/public/images/fcbayern-com/homepage/saison-20-21/sonstiges/FCBRBL-Bilderbuch/03_Ulreich_ima_251017.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>The first cup clash between the two opponents also turned into a thriller. The score was 1-1 after 90 and 120 minutes, respectively, so it went to a penalty shootout.&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/sven-ulreich\">Sven Ulreich</a>, who replaced the injured&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/manuel-neuer\">Manuel Neuer</a>, had already made some great saves in the match. Now he stepped into the spotlight. Time and again, the FCB goalkeeper came close, before he parried the fifth attempt - by Timo Werner - even almost holding onto the ball. FCB entered the last 16 and the celebrations suited the occasion.</p>\r\n\r\n<h2>October 2017, Part II: Kimmich does a&nbsp;Thiago</h2>\r\n\r\n<p><img alt=\"04_Kimmich_ima_281017\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1617199184/cms/public/images/fcbayern-com/homepage/saison-20-21/sonstiges/FCBRBL-Bilderbuch/04_Kimmich_ima_281017.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>By this point,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/joshua-kimmich\">Joshua Kimmich</a>&nbsp;had&nbsp;taken over the number 6 from Thiago, and Bayern fans were able to see a bit of what the Spaniard had done back in October 2017. Just three days after the cup clash, Leipzig and Bayern faced each other again and the Germany international acrobatically cleared a ball in front of Timo Werner with a side-footed volley to the keeper. In the end, FCB won this match 2-0.</p>\r\n\r\n<h2>Match&nbsp;2018: FCB lose for the first time</h2>\r\n\r\n<p><img alt=\"05_Hummels_get_180318\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1617199210/cms/public/images/fcbayern-com/homepage/saison-20-21/sonstiges/FCBRBL-Bilderbuch/05_Hummels_get_180318.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>It was an icy Sunday evening in March 2018 and FCB had to wrap up warmly at Leipzig&#39;s Red Bull Arena. Bayern initially took the lead through Sandro Wagner, but still suffered their first - and to date only - defeat (2-1) against Leipzig. However, Mats Hummels and his colleagues certainly had no reason to hide after their commnedable performance.</p>\r\n\r\n<h2>December 2018: Coman slams on the brakes</h2>\r\n\r\n<p><img alt=\"06_Coman_get_191218\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1617199243/cms/public/images/fcbayern-com/homepage/saison-20-21/sonstiges/FCBRBL-Bilderbuch/06_Coman_get_191218.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p><a href=\"https://fcbayern.com/en/teams/first-team/kingsley-coman\">Kingsley Coman</a>&nbsp;shows just how fast he really is whenever he puts on an FCB shirt. In the 1-0 win at the Allianz Arena on 19 December 2018, the future Lisbon final scorer had to slow down very quickly in a running race with Lukas Klostermann and slid down onto the turf. In clashes with Leipzig, full physical effort is always required.</p>\r\n\r\n<h2>May&nbsp;2019, Part I: Volley man Goretzka</h2>\r\n\r\n<p><img alt=\"07_Goretzka_get_110519\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1617199268/cms/public/images/fcbayern-com/homepage/saison-20-21/sonstiges/FCBRBL-Bilderbuch/07_Goretzka_get_110519.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>Superb and, above all, multiple goals have always been a trademark when Bayern and Leipzig have faced each other - until MD33 of the 2018/19 season, when a game ended goalless for the first time. In the process, Bayern tried everything.&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/leon-goretzka\">Leon Goretzka</a>&nbsp;even had this volleyed effort, and whilst the ball hit the back of the net, a narrow offside position saw it not count. With a win, FCB would have been champions for sure, but they made up for it on the last matchday.</p>\r\n\r\n<h2>May 2019, Part II: FCB overcome Leipzig hurdle to win cup</h2>\r\n\r\n<p><img alt=\"08_Lewandowski_get_250519\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1617199298/cms/public/images/fcbayern-com/homepage/saison-20-21/sonstiges/FCBRBL-Bilderbuch/08_Lewandowski_get_250519.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>Two weeks later, the teams then faced each other in a direct trophy match-up: In the final of the DFB Cup. The old and new German champions wanted to crown their season with a triumph in Berlin&#39;s Olympiastadion. As is so often the case, Leipzig made it a really tough task. Thanks mainly to two goals from Robert Lewandowski in the 3-0 win, however, Bayern were able to hurdle this challenge and celebrate with the trophy at the end.</p>\r\n\r\n<h2>September 2019: The GOAT keeper saves his side</h2>\r\n\r\n<p><img alt=\"09_Neuer_get_140919\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1617199320/cms/public/images/fcbayern-com/homepage/saison-20-21/sonstiges/FCBRBL-Bilderbuch/09_Neuer_get_140919.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>The games became closer and closer and the cup triumph was to be Bayern&#39;s last victory for the time being. Three draws followed to date. The focus was often on the keepers, who usually showed their best side in the top matches. In the first league fixture between the two in 2019/20, at 1-1, a long-range cracker from current FCB man&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/marcel-sabitzer\">Marcel Sabitzer</a>&nbsp;fluttered dangerously toward Manuel Neuer&#39;s goal. But the GOAT keeper, who was already on his way to the other corner, snatched up his left hand in a flash and made a sensational save. It remained a draw until the end.</p>\r\n\r\n<h2>February 2020: Flying Thiago Part II</h2>\r\n\r\n<p><img alt=\"10_Thiago_get_090220\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1617199352/cms/public/images/fcbayern-com/homepage/saison-20-21/sonstiges/FCBRBL-Bilderbuch/10_Thiago_get_090220.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>Highly exciting and spectacular are buzzwords that are often used when Bayern and RB meet. One who stood for the latter in particular is Thiago. Whether it be great passes, finishes or even aerial battles, the Spaniard was always good viewing. Leipzig&#39;s Tyler Adams was actually a little further ahead at the time, but Thiago made a diving tackle, put his upper body slightly backwards and tipped the ball away with his foot. Despite the final score being 0-0, it was an enthralling game. Incidentally, it was the last time Bayern failed to score in a competitive match. To date, they have managed to do so in the following 61 games - a club record.</p>\r\n\r\n<h2>December 2020: World&#39;s best player approaching</h2>\r\n\r\n<p><img alt=\"11_Lewandowski_get_051220\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1617199385/cms/public/images/fcbayern-com/homepage/saison-20-21/sonstiges/FCBRBL-Bilderbuch/11_Lewandowski_get_051220.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>David Alaba sends a cross into the middle and several Leipzig defenders and goalkeeper P&eacute;ter Gul&aacute;csi wait for the ball. But Robert Lewandowski rushes in at the back. The Pole had scored in almost every Bundesliga match up to this Matchday 10 and was about to be named The&nbsp;<a href=\"https://fcbayern.com/en/news/2020/12/robert-lewandowski-is-fifa-world-footballer-of-the-year\">Best FIFA Men&#39;s Player</a>. Just a few days after the Leipzig game, the big gala was planned. Unfortunately, in this incident he was not able to score and remained without a goal in the 3-3 draw. The joy was all the greater when shortly afterwards, of course, he still received the trophy to mark him as this year&#39;s best player on the planet.</p>\r\n\r\n<h2>April 2021: First he repaired the net, then he ensured victory</h2>\r\n\r\n<p><img alt=\"210910_Neuer_Leipzig\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1631293362/cms/public/images/fcbayern-com/homepage/saison-21-22/Profis/Neuer/210910_Neuer_Leipzig.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>In the last meeting between Leipzig and Bayern to dater,&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/manuel-neuer\">Manuel Neuer</a>&nbsp;took centre stage even before kick-off. There was a hole in the net of the FCB goal. Neuer improvised and patched it with a towel. The referee, however, wouldn&#39;t allow the makeshift repair, and shortly afterwards a Leipzig employee rushed over and fixed the hole with a cable tie. In the 58th minute, the keeper once again made an incredible save. A shot from distance from Marcel Sabitzer, who as is well known is now playing for Bayern, was tipped over the bar by Neuer with a lightning-quick reaction to preserve the&nbsp;<a href=\"https://fcbayern.com/en/matches/profis/bundesliga/2020-2021/rb-leipzig-fc-bayern-muenchen-03-04-2021/report\">1-0</a>&nbsp;lead for the men from Munich. The away win in Leipzig was crucial in determining the outcome of the 2020/21 title fight.&nbsp;</p>\r\n\r\n<h2>September 2021: Magic Musiala thrills FCB fans</h2>\r\n\r\n<p><img alt=\"230117-musiala-get\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673958887/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Musiala/230117-musiala-get.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>In last season&#39;s Bundesliga away match, Bayern produced a dazzling display to win 4-1. One youngster in particular thrilled the visiting supporters:&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/jamal-musiala\">Jamal Musiala</a>. Brought on at half-time with the score at 1-0, the skilful attacker immediately helped to settle the contest, scoring two minutes after the restart and then brilliantly setting up&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/leroy-sane\">Leroy San&eacute;</a>&nbsp;for 3-0 as Musiala proved his worth in impressive fashion.</p>\r\n\r\n<h2>February 2022: M&uuml;ller drives Bayern to victory</h2>\r\n\r\n<p><img alt=\"230117-mueller-ima\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673959583/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/M%C3%BCller/230117-mueller-ima.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>The most recent Bundesliga meeting between the two sides was also a ding-dong battle. Bayern twice took the lead at the Allianz Arena, but twice Leipzig pegged them back. Led by the ever fired-up&nbsp;<a href=\"https://fcbayern.com/en/teams/first-team/thomas-mueller\">Thomas&nbsp;M&uuml;ller</a>, FCB eventually battled to a 3-2 victory in their first home match in front of fans in over two months.</p>\r\n\r\n<h2>July 2022: Supercup spectacle</h2>\r\n\r\n<p><img alt=\"230117-supercup-get\" src=\"https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/w_1600,c_fill/q_auto/v1673960060/cms/public/images/fcbayern-com/homepage/Saison-22-23/Profis/Gruppe/230117-supercup-get.jpg\" style=\"height:2160px; width:3840px\" title=\"\" /></p>\r\n\r\n<p>What a game! Bundesliga champions Bayern took on cup winners Leipzig in the German Supercup at the start of the 2022/23 season. After a picture-perfect first half, Bayern led 3-0 by the break. In a thrilling second half, the Saxony side fought back and trailed 4-3 shortly before the end, but the Bavarians held their nerve, won 5-3 and lifted their first trophy of the campaign.</p>', '2023-01-17 18:30:00.000000', '2023-01-18 16:29:42.881456', 'bayern-vs-leipzig-looking-back-at-previous-clashes', 1, 'FC Bayern have only met RB Leipzig 15 times so far, but this match-up has quickly developed into a real cracker in Germany and has already provided some impressive photos. We have leafed through the photo archives ahead of the next encounter on Friday evening (20:30 CET) and picked out a snapshot of each game.', 1, 2, 1, 'https://img.fcbayern.com/image/upload/t_cms-2x1/f_auto/w_1600,c_fill/q_auto/v1617204187/cms/public/images/fcbayern-com/homepage/saison-20-21/sonstiges/FCBRBL-Bilderbuch/2x1/210401_FCBRBL-Bilderbuch_2x1.jpg', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -1832,8 +2409,19 @@ CREATE TABLE `main_news_article_player_tags` (
 --
 
 INSERT INTO `main_news_article_player_tags` (`id`, `news_article_id`, `player_id`) VALUES
-(2, 5, 3),
-(1, 10, 3);
+(13, 10, 8),
+(15, 10, 19),
+(14, 10, 25),
+(3, 11, 8),
+(4, 11, 21),
+(5, 11, 23),
+(6, 14, 3),
+(7, 15, 3),
+(8, 16, 3),
+(10, 17, 3),
+(11, 17, 4),
+(12, 17, 6),
+(9, 17, 11);
 
 -- --------------------------------------------------------
 
@@ -1863,7 +2451,15 @@ INSERT INTO `main_news_article_related_news` (`id`, `from_news_article_id`, `to_
 (15, 5, 3),
 (28, 7, 1),
 (24, 7, 8),
-(23, 8, 7);
+(23, 8, 7),
+(30, 8, 11),
+(33, 8, 12),
+(29, 11, 8),
+(34, 11, 12),
+(31, 12, 8),
+(32, 12, 11),
+(36, 13, 19),
+(35, 19, 13);
 
 -- --------------------------------------------------------
 
@@ -1876,6 +2472,16 @@ CREATE TABLE `main_news_article_staff_tags` (
   `news_article_id` bigint(20) NOT NULL,
   `staff_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `main_news_article_staff_tags`
+--
+
+INSERT INTO `main_news_article_staff_tags` (`id`, `news_article_id`, `staff_id`) VALUES
+(5, 7, 2),
+(3, 11, 2),
+(4, 13, 1),
+(6, 13, 2);
 
 -- --------------------------------------------------------
 
@@ -1898,7 +2504,9 @@ INSERT INTO `main_news_article_tags` (`id`, `news_article_id`, `news_tag_id`) VA
 (6, 1, 5),
 (4, 5, 3),
 (3, 8, 2),
-(2, 9, 2);
+(2, 9, 2),
+(7, 11, 10),
+(8, 12, 10);
 
 -- --------------------------------------------------------
 
@@ -1925,7 +2533,9 @@ INSERT INTO `main_news_tag` (`id`, `name`, `display`) VALUES
 (6, 'germany', 'Germany'),
 (7, 'injury', 'Injuries'),
 (8, 'ucl', 'Champions League'),
-(9, 'tour', 'Tour');
+(9, 'tour', 'Tour'),
+(10, 'friendly', 'Friendlies'),
+(11, 'bundesliga', 'BundesLiga');
 
 -- --------------------------------------------------------
 
@@ -1997,13 +2607,13 @@ INSERT INTO `main_order` (`id`, `first_name`, `last_name`, `company`, `country`,
 
 CREATE TABLE `main_order_item` (
   `id` bigint(20) NOT NULL,
-  `quantity` int(11) DEFAULT NULL,
+  `quantity` smallint(5) UNSIGNED DEFAULT NULL,
   `price` decimal(10,2) DEFAULT NULL,
   `parent_order_id` bigint(20) NOT NULL,
   `player_id` bigint(20) DEFAULT NULL,
   `product_id` bigint(20) NOT NULL,
   `size_id` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ;
 
 --
 -- Dumping data for table `main_order_item`
@@ -2031,12 +2641,12 @@ CREATE TABLE `main_player` (
   `name` varchar(100) NOT NULL,
   `first_name` varchar(100) DEFAULT NULL,
   `second_name` varchar(100) DEFAULT NULL,
-  `kit_no` int(11) DEFAULT NULL,
+  `kit_no` smallint(5) UNSIGNED DEFAULT NULL,
   `nationality` varchar(2) DEFAULT NULL,
   `profile_pic` varchar(100) DEFAULT NULL,
   `height` decimal(3,2) DEFAULT NULL,
-  `weight` int(11) DEFAULT NULL,
-  `age` int(11) DEFAULT NULL,
+  `weight` smallint(5) UNSIGNED DEFAULT NULL,
+  `age` smallint(5) UNSIGNED DEFAULT NULL,
   `past_club` varchar(100) DEFAULT NULL,
   `born` date DEFAULT NULL,
   `contract_end` date DEFAULT NULL,
@@ -2045,7 +2655,7 @@ CREATE TABLE `main_player` (
   `biography` longtext DEFAULT NULL,
   `slug` varchar(100) NOT NULL,
   `position` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ;
 
 --
 -- Dumping data for table `main_player`
@@ -2100,7 +2710,12 @@ CREATE TABLE `main_player_image` (
 INSERT INTO `main_player_image` (`id`, `image`, `date`, `description`, `player_id`, `image_url`) VALUES
 (1, 'gallery/player/serge-gnabry-bayern-munich-2019-20_1homawpof0s41q42nyhmdbhyq_1MgDjuB.jpg', NULL, 'Poker against Tottenham', 3, NULL),
 (2, 'gallery/player/skysports-serge-gnabry-bayern-munich_4930800_GWROeUO.jpg', NULL, 'Brace against Chelsea', 3, NULL),
-(3, 'gallery/player/cover_Ti6UFaW.jpg', NULL, 'For German national team', 3, NULL);
+(3, 'gallery/player/cover_Ti6UFaW.jpg', NULL, 'For German national team', 3, NULL),
+(4, '', NULL, NULL, 3, 'https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blte6f78f9bc5745c81/6252b8284aa9967e83a01640/110422_Serge_Gnabry_of_FC_Bayern_M%C3%BCnchen_1920.jpg'),
+(5, '', NULL, NULL, 3, 'https://img.bundesliga.com/tachyon/sites/2/2021/11/2122_MD09_FCBTSG_SW_004-scaled.jpg'),
+(6, '', NULL, NULL, 3, 'https://e0.365dm.com/19/10/2048x1152/skysports-serge-gnabry-bayern_4792757.jpg'),
+(7, '', NULL, NULL, 3, 'https://cdn.theathletic.com/app/uploads/2022/08/04154322/GettyImages-1228174040-scaled-e1659642238210.jpg'),
+(8, '', NULL, NULL, 3, 'https://assets.dfb.de/uploads/000/267/350/custom_style_1_gnabry.jpg?1661771559');
 
 -- --------------------------------------------------------
 
@@ -2110,23 +2725,23 @@ INSERT INTO `main_player_image` (`id`, `image`, `date`, `description`, `player_i
 
 CREATE TABLE `main_player_stats` (
   `id` bigint(20) NOT NULL,
-  `apps` int(11) NOT NULL,
-  `minutes` int(11) NOT NULL,
-  `goals` int(11) NOT NULL,
-  `assists` int(11) NOT NULL,
-  `yellows` int(11) NOT NULL,
-  `reds` int(11) NOT NULL,
-  `own_goals` int(11) NOT NULL,
-  `fouls` int(11) NOT NULL,
-  `offsides` int(11) NOT NULL,
+  `apps` smallint(5) UNSIGNED NOT NULL,
+  `minutes` smallint(5) UNSIGNED NOT NULL,
+  `goals` smallint(5) UNSIGNED NOT NULL,
+  `assists` smallint(5) UNSIGNED NOT NULL,
+  `yellows` smallint(5) UNSIGNED NOT NULL,
+  `reds` smallint(5) UNSIGNED NOT NULL,
+  `own_goals` smallint(5) UNSIGNED NOT NULL,
+  `fouls` smallint(5) UNSIGNED NOT NULL,
+  `offsides` smallint(5) UNSIGNED NOT NULL,
   `ppg` decimal(3,2) NOT NULL,
   `win_ratio` decimal(3,2) NOT NULL,
-  `motm` int(11) NOT NULL,
+  `motm` smallint(5) UNSIGNED NOT NULL,
   `rating` decimal(3,2) NOT NULL,
   `competition_id` bigint(20) NOT NULL,
   `player_id` bigint(20) NOT NULL,
   `season_id` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ;
 
 --
 -- Dumping data for table `main_player_stats`
@@ -2158,8 +2773,8 @@ INSERT INTO `main_player_stats` (`id`, `apps`, `minutes`, `goals`, `assists`, `y
 CREATE TABLE `main_season` (
   `id` bigint(20) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `start_year` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `start_year` smallint(5) UNSIGNED DEFAULT NULL
+) ;
 
 --
 -- Dumping data for table `main_season`
@@ -2192,7 +2807,8 @@ CREATE TABLE `main_social_media_links` (
 --
 
 INSERT INTO `main_social_media_links` (`id`, `insta_link`, `twitter_link`, `fb_link`, `player_id`, `staff_id`) VALUES
-(1, 'https://www.instagram.com/sergegnabry/', 'https://twitter.com/SergeGnabry', NULL, 3, 1);
+(1, 'https://www.instagram.com/sergegnabry/', 'https://twitter.com/SergeGnabry', 'https://www.facebook.com/SergeGnabry', 3, NULL),
+(2, 'https://www.instagram.com/julian.nagelsmann/', 'https://twitter.com/J__Nagelsmann', 'https://www.facebook.com/JulianNagelsmann2', NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -2264,7 +2880,7 @@ CREATE TABLE `main_staff` (
   `designation` varchar(100) DEFAULT NULL,
   `nationality` varchar(2) DEFAULT NULL,
   `profile_pic` varchar(100) DEFAULT NULL,
-  `age` int(11) DEFAULT NULL,
+  `age` smallint(5) UNSIGNED DEFAULT NULL,
   `previous_post` varchar(100) DEFAULT NULL,
   `short_name` varchar(10) DEFAULT NULL,
   `born` date DEFAULT NULL,
@@ -2272,7 +2888,7 @@ CREATE TABLE `main_staff` (
   `contract_end` date DEFAULT NULL,
   `biography` longtext DEFAULT NULL,
   `slug` varchar(500) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ;
 
 --
 -- Dumping data for table `main_staff`
@@ -2395,17 +3011,26 @@ INSERT INTO `main_timeline` (`id`, `category`, `description`, `date`, `player_id
 CREATE TABLE `main_trophies` (
   `id` bigint(20) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `count` smallint(6) DEFAULT NULL,
-  `image` varchar(600) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `count` smallint(5) UNSIGNED DEFAULT NULL,
+  `image` varchar(600) NOT NULL,
+  `priority` smallint(5) UNSIGNED DEFAULT NULL CHECK (`priority` >= 0)
+) ;
 
 --
 -- Dumping data for table `main_trophies`
 --
 
-INSERT INTO `main_trophies` (`id`, `name`, `count`, `image`) VALUES
-(1, 'German Championship', 32, 'https://img.fcbayern.com/image/upload/t_cms-1x1/f_auto/w_210,c_fill/q_auto/v1631524987/cms/public/images/fcbayern-com/media/images/erlebniswelt/erfolge/dfl_pokale.png'),
-(2, 'DFB German Cup', 20, 'https://img.fcbayern.com/image/upload/t_cms-1x1/f_auto/w_210,c_fill/q_auto/v1630397664/cms/public/images/fcbayern-com/media/images/erlebniswelt/erfolge/dfb_pokale.png');
+INSERT INTO `main_trophies` (`id`, `name`, `count`, `image`, `priority`) VALUES
+(1, 'German Championship', 32, 'https://img.fcbayern.com/image/upload/t_cms-1x1/f_auto/w_210,c_fill/q_auto/v1631524987/cms/public/images/fcbayern-com/media/images/erlebniswelt/erfolge/dfl_pokale.png', 1),
+(2, 'DFB German Cup', 20, 'https://img.fcbayern.com/image/upload/t_cms-1x1/f_auto/w_210,c_fill/q_auto/v1630397664/cms/public/images/fcbayern-com/media/images/erlebniswelt/erfolge/dfb_pokale.png', 2),
+(3, 'Champions League', 6, 'https://img.fcbayern.com/image/upload/t_cms-1x1/f_auto/w_210,c_fill/q_auto/v1630397748/cms/public/images/fcbayern-com/media/images/erlebniswelt/erfolge/cl_pokale.png', 1),
+(4, 'German Supercup', 11, 'https://img.fcbayern.com/image/upload/t_cms-1x1/f_auto/w_210,c_fill/q_auto/v1630398220/cms/public/images/fcbayern-com/media/images/erlebniswelt/erfolge/supercup.png', 2),
+(5, 'League Cup', 6, 'https://img.fcbayern.com/image/upload/t_cms-1x1/f_auto/w_210,c_fill/q_auto/v1630398342/cms/public/images/fcbayern-com/media/images/erlebniswelt/erfolge/liga_pokal.png', 2),
+(6, 'UEFA Supercup', 2, 'https://img.fcbayern.com/image/upload/t_cms-1x1/f_auto/w_210,c_fill/q_auto/v1630398621/cms/public/images/fcbayern-com/media/images/erlebniswelt/erfolge/eu_supercup.png', 2),
+(7, 'UEFA Cup', 1, 'https://img.fcbayern.com/image/upload/t_cms-1x1/f_auto/w_210,c_fill/q_auto/v1630398421/cms/public/images/fcbayern-com/media/images/erlebniswelt/erfolge/uefa_cup.png', 3),
+(8, 'UEFA Cup Winners\' Cup', 1, 'https://img.fcbayern.com/image/upload/t_cms-1x1/f_auto/w_210,c_fill/q_auto/v1630398457/cms/public/images/fcbayern-com/media/images/erlebniswelt/erfolge/ec_pokalsieger.png', 3),
+(9, 'Intercontinental Cup', 2, 'https://img.fcbayern.com/image/upload/t_cms-1x1/f_auto/w_210,c_fill/q_auto/v1630398491/cms/public/images/fcbayern-com/media/images/erlebniswelt/erfolge/weltpokal.png', 3),
+(10, 'FIFA Club World Cup', 2, 'https://img.fcbayern.com/image/upload/t_cms-1x1/f_auto/w_210,c_fill/q_auto/v1631524634/cms/public/images/fcbayern-com/media/images/erlebniswelt/erfolge/klubweltmeisterschaft_.png', 3);
 
 --
 -- Indexes for dumped tables
@@ -2855,7 +3480,7 @@ ALTER TABLE `auth_user`
 -- AUTO_INCREMENT for table `auth_user_groups`
 --
 ALTER TABLE `auth_user_groups`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `auth_user_user_permissions`
@@ -2867,7 +3492,7 @@ ALTER TABLE `auth_user_user_permissions`
 -- AUTO_INCREMENT for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=396;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=440;
 
 --
 -- AUTO_INCREMENT for table `django_content_type`
@@ -2879,7 +3504,7 @@ ALTER TABLE `django_content_type`
 -- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `main_address`
@@ -2897,7 +3522,7 @@ ALTER TABLE `main_album_image`
 -- AUTO_INCREMENT for table `main_article_type`
 --
 ALTER TABLE `main_article_type`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `main_board_member`
@@ -2915,7 +3540,7 @@ ALTER TABLE `main_club_album`
 -- AUTO_INCREMENT for table `main_club_season_stats`
 --
 ALTER TABLE `main_club_season_stats`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `main_comment`
@@ -2963,13 +3588,13 @@ ALTER TABLE `main_match_event`
 -- AUTO_INCREMENT for table `main_match_news_tags`
 --
 ALTER TABLE `main_match_news_tags`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `main_match_tags`
 --
 ALTER TABLE `main_match_tags`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `main_match_timeline`
@@ -2981,7 +3606,7 @@ ALTER TABLE `main_match_timeline`
 -- AUTO_INCREMENT for table `main_merchandise`
 --
 ALTER TABLE `main_merchandise`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `main_merchandise_image`
@@ -3023,7 +3648,7 @@ ALTER TABLE `main_mini_articles`
 -- AUTO_INCREMENT for table `main_news_article`
 --
 ALTER TABLE `main_news_article`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `main_news_article_liked`
@@ -3035,31 +3660,31 @@ ALTER TABLE `main_news_article_liked`
 -- AUTO_INCREMENT for table `main_news_article_player_tags`
 --
 ALTER TABLE `main_news_article_player_tags`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `main_news_article_related_news`
 --
 ALTER TABLE `main_news_article_related_news`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `main_news_article_staff_tags`
 --
 ALTER TABLE `main_news_article_staff_tags`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `main_news_article_tags`
 --
 ALTER TABLE `main_news_article_tags`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `main_news_tag`
 --
 ALTER TABLE `main_news_tag`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `main_opponent_goalscorers`
@@ -3077,37 +3702,37 @@ ALTER TABLE `main_order`
 -- AUTO_INCREMENT for table `main_order_item`
 --
 ALTER TABLE `main_order_item`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `main_player`
 --
 ALTER TABLE `main_player`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `main_player_image`
 --
 ALTER TABLE `main_player_image`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `main_player_stats`
 --
 ALTER TABLE `main_player_stats`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `main_season`
 --
 ALTER TABLE `main_season`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `main_social_media_links`
 --
 ALTER TABLE `main_social_media_links`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `main_sold_ticket`
@@ -3125,7 +3750,7 @@ ALTER TABLE `main_sponsor`
 -- AUTO_INCREMENT for table `main_staff`
 --
 ALTER TABLE `main_staff`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `main_team`
@@ -3149,7 +3774,7 @@ ALTER TABLE `main_timeline`
 -- AUTO_INCREMENT for table `main_trophies`
 --
 ALTER TABLE `main_trophies`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
