@@ -311,6 +311,19 @@
                                                                         </div>
                                                                     </div>
                                                                     {% endfor%}
+
+
+                                                                    {% for trophy in all_trophies %}
+                    
+                                                                    <div class='custom-card-item-trophy'>
+                                                                        <div style="background-color: rgb(18 31 56)">
+                                                                            <img class="trophy-image" src="{{trophy.image}}">
+                                                                            <div class="custom-card-subheading"><span>{{trophy.count}}</span></div>
+                                                                            <h6 class="custom-card-heading">{{trophy.name}}</h6>
+                                                                        </div>
+                                                                    </div>
+                                                                    {% endfor%}
+
                                                                 </div>
                                                                 <div class="vc_empty_space" style="height: 32px"></div>
 

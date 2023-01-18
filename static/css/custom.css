@@ -3397,3 +3397,20 @@ body {
   float: left;
   margin: auto;
 }
+
+.custom-card-item-trophy {
+  flex-basis: 25%;
+  max-width: 25%;
+  margin-bottom: 15px;
+  position: relative;
+  padding-left: 8px;
+  padding-right: 8px;
+  float: left;
+  
+}
+.trophy-image {
+  display: block;
+  max-width: 90%;
+  margin: auto;
+  padding-top: 25px;
+}
